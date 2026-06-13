@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://litmus.dev/schemas/verifier_manifest.schema.json",
+  "title": "LITMUS VerifierManifest",
+  "description": "Self-describing metadata for a verifier (DESIGN §6.3). The universal interface contract.",
+  "type": "object",
+  "required": ["id", "version", "kind", "epistemic_tier", "determinism", "consumes"],
+  "additionalProperties": false,
+  "properties": {
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$" },
+    "version": { "type": "string" },
+    "kind": { "type": "string", "enum": ["prebuilt", "templated", "synthesized", "assisted"] },
+    "epistemic_tier": { "type": "string", "enum": ["T0", "T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8"] },
+    "determinism": { "type": "string", "enum": ["deterministic", "lookup", "assisted", "synthesized"] },
+    "consumes": { "type": "array", "items": { "type": "string" } },
+    "capability_tags": { "type": "array", "items": { "type": "string" } },
+    "fpr_ceiling": { "type": "number", "minimum": 0, "maximum": 1 },
+    "authors": { "type": "array", "items": { "type": "string" } },
+    "license": { "type": "string" },
+    "provenance": { "type": "string" },
+    "built_vs_borrowed": {
+      "type": "object",
+      "properties": {
+        "ours": { "type": "array", "items": { "type": "string" } },
+        "libs": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "dependencies": { "type": "array", "items": { "type": "string" } },
+    "description": { "type": "string" }
+  }
+}

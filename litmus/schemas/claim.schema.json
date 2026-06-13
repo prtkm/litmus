@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://litmus.dev/schemas/claim.schema.json",
+  "title": "LITMUS ClaimGraph",
+  "description": "The per-paper claim graph (DESIGN §10, §11): the canonical, schema-validated structured extraction. Source of truth for what is in the paper.",
+  "type": "object",
+  "required": ["paper_id", "claims", "evidence"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "type": "string" },
+    "paper_id": { "type": "string", "minLength": 1 },
+    "meta": { "type": "object" },
+    "claims": { "type": "array", "items": { "$ref": "#/$defs/claim" } },
+    "evidence": { "type": "array", "items": { "$ref": "#/$defs/evidence" } },
+    "bindings": { "type": "array", "items": { "$ref": "#/$defs/binding" } }
+  },
+  "$defs": {
+    "location": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "section": { "type": ["string", "null"] },
+        "page": { "type": ["integer", "null"] },
+        "char_span": {
+          "oneOf": [
+            { "type": "null" },
+            { "type": "array", "items": { "type": "integer" }, "minItems": 2, "maxItems": 2 }
+          ]
+        },
+        "quote": { "type": ["string", "null"] }
+      }
+    },
+    "claim": {
+      "type": "object",
+      "required": ["id", "text"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "text": { "type": "string" },
+        "location": { "$ref": "#/$defs/location" },
+        "epistemic_tier": {
+          "type": ["string", "null"],
+          "enum": ["T0", "T1", "T2", "T3", "T4", "T5", "T6", "T7", "T8", null]
+        },
+        "predicate": { "type": ["string", "null"] },
+        "strength": { "type": ["string", "null"] },
+        "scope": { "type": ["string", "null"] },
+        "evidence_refs": { "type": "array", "items": { "type": "string" } },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "evidence": {
+      "type": "object",
+      "required": ["id", "kind"],
+      "additionalProperties": false,
+      "properties": {
+        "id": { "type": "string", "minLength": 1 },
+        "kind": {
+          "type": "string",
+          "enum": ["table", "figure", "dataset", "equation", "statistic", "number", "text"]
+        },
+        "location": { "$ref": "#/$defs/location" },
+        "extracted_values": { "type": "object" },
+        "confidence": { "type": "number", "minimum": 0, "maximum": 1 }
+      }
+    },
+    "binding": {
+      "type": "object",
+      "required": ["claim_id", "evidence_id"],
+      "additionalProperties": false,
+      "properties": {
+        "claim_id": { "type": "string" },
+        "evidence_id": { "type": "string" },
+        "relation": { "type": "string" }
+      }
+    }
+  }
+}

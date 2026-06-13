@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://litmus.dev/schemas/audit.schema.json",
+  "title": "LITMUS AuditReport",
+  "description": "The per-paper audit (DESIGN §10, §14): derived verdicts. CHECKABLE flags (each with executable evidence) + ROUTE-TO-HUMAN + abstained + dropped-flag log.",
+  "type": "object",
+  "required": ["paper_id", "findings"],
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": { "type": "string" },
+    "paper_id": { "type": "string", "minLength": 1 },
+    "meta": { "type": "object" },
+    "summary": { "type": "object" },
+    "findings": { "type": "array", "items": { "$ref": "#/$defs/finding" } },
+    "dropped_flags": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["finding", "reason"],
+        "properties": { "finding": { "$ref": "#/$defs/finding" }, "reason": { "type": "string" } }
+      }
+    },
+    "routed_to_human": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["dimension"],
+        "additionalProperties": false,
+        "properties": {
+          "claim_id": { "type": ["string", "null"] },
+          "dimension": { "type": "string" },
+          "note": { "type": "string" },
+          "quote": { "type": ["string", "null"] }
+        }
+      }
+    },
+    "abstained": { "type": "array", "items": { "$ref": "#/$defs/finding" } }
+  },
+  "$defs": {
+    "finding": {
+      "type": "object",
+      "required": ["verifier_id", "status", "trust_tier", "verifier_kind"],
+      "additionalProperties": false,
+      "properties": {
+        "verifier_id": { "type": "string" },
+        "claim_id": { "type": ["string", "null"] },
+        "status": { "type": "string", "enum": ["pass", "fail", "inconclusive", "error"] },
+        "trust_tier": {
+          "type": "string",
+          "enum": ["deterministic_confirmed", "calibrated_synthesized", "advisory_assisted", "routed_to_human"]
+        },
+        "verifier_kind": { "type": "string", "enum": ["prebuilt", "templated", "synthesized", "assisted"] },
+        "severity": { "type": ["string", "null"], "enum": ["A", "B", "C", null] },
+        "message": { "type": "string" },
+        "discrepancy": { "type": ["string", "null"] },
+        "reported": {},
+        "computed": {},
+        "evidence": { "type": "object" },
+        "details": { "type": "object" }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "status": { "const": "fail" } } },
+          "then": {
+            "required": ["severity"],
+            "properties": {
+              "severity": { "type": "string", "enum": ["A", "B", "C"] },
+              "evidence": {
+                "required": ["recompute_script", "expected_output"],
+                "properties": {
+                  "recompute_script": { "type": "string", "minLength": 1 },
+                  "expected_output": { "type": "string" }
+                }
+              }
+            }
+          }
+        }
+      ]
+    }
+  }
+}
