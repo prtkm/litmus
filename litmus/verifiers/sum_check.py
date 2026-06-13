@@ -12,10 +12,19 @@ rests on an :class:`~litmus.core.claim.Evidence` whose ``extracted_values`` carr
 ``judge`` recomputes ``sum(parts)`` and compares to ``reported_total``:
 
   * both keys absent on every bound evidence  -> ABSTAIN (DESIGN §3.4: abstain > guess).
-  * computed == reported (float tolerance)    -> PASS.
+  * computed == reported (rounding tolerance)  -> PASS.
   * computed != reported                       -> FAIL (severity B) shipping an EvidencePacket
         whose ``recompute_script`` is a self-contained stdlib program that reprints the
         discrepancy line, so a skeptical reader can rerun it (DESIGN §3.2: no script, no flag).
+
+**Rounding-aware tolerance (DESIGN §6.3, §3.4: prefer PASS over a trivial flag).** Table cells and
+totals are printed to finite precision, so a column of *displayed* values need not sum exactly to a
+*displayed* total — e.g. three shares printed as ``33.3`` sum to ``99.9`` against a printed total
+of ``100``; that is presentation rounding, not an arithmetic error. The tolerance is derived from
+how the numbers were printed: with the parts (and total) carrying at most ``D`` decimals, each of
+the ``n`` parts can be off by up to half a unit in the last place and the total by another half, so
+we allow ``(n + 1) * 0.5 * 10^-D`` (with a tiny absolute floor for exact-integer inputs). A genuine
+error — a dropped row, a transposition — exceeds this by far and still FAILs.
 
 Everything here is deterministic: no RNG, clock, or network in ``judge`` or in the emitted
 script (DESIGN §7 G4). The calibration kernel verifies that empirically.
@@ -46,11 +55,52 @@ from litmus.core.verifier import (
     VerifierManifest,
 )
 
-# Floats within this absolute distance are treated as equal (presentation rounding, DESIGN §6.3).
-TOLERANCE = 1e-9
+# Absolute floor on the equality tolerance: exact-integer inputs (the common case) still get a
+# whisker of float slack, but the real tolerance is rounding-aware (see ``_tolerance``).
+TOLERANCE_FLOOR = 1e-9
 
 PARTS_KEY = "parts"
 TOTAL_KEY = "reported_total"
+
+
+def _decimals_of(value: float | int) -> int:
+    """How many decimal places ``value`` was printed to (``33.3`` -> 1, ``100`` -> 0)."""
+    if isinstance(value, bool) or isinstance(value, int):
+        return 0
+    if isinstance(value, float):
+        if value.is_integer():
+            return 0
+        s = repr(value)
+        if "e" in s or "E" in s:  # scientific notation: count from the exponent
+            try:
+                mant, exp = s.lower().split("e")
+                frac = len(mant.split(".")[1]) if "." in mant else 0
+                return max(0, frac - int(exp))
+            except Exception:
+                return 0
+        if "." in s:
+            return len(s.split(".")[1])
+    return 0
+
+
+def _tolerance(parts: list, reported_total: float | int) -> float:
+    """Rounding-aware equality tolerance (DESIGN §6.3).
+
+    A value printed *with decimals* stands for a rounded quantity: ``33.3`` means the true value is
+    in ``[33.25, 33.35]``, i.e. up to half a unit-in-last-place away. A value printed as an integer
+    is taken as exact (a count, an exact total) and contributes no slack. So with the finest
+    fractional precision among the printed numbers being ``D`` decimals, each of the ``n`` parts can
+    drift half a ULP and the displayed total another half: a correctly-rounded column can miss its
+    rounded total by up to ``(n + 1) * 0.5 * 10^-D``. Below that the sum is treated as matching
+    (presentation rounding, not an error). When every input is an exact integer the tolerance is
+    just ``TOLERANCE_FLOOR`` (float noise only) — so a genuine integer miscount still FAILs.
+    """
+    fractional_decimals = [_decimals_of(v) for v in list(parts) + [reported_total]]
+    fractional_decimals = [d for d in fractional_decimals if d > 0]
+    if not fractional_decimals:
+        return TOLERANCE_FLOOR  # all exact integers: no rounding slack
+    half_ulp = 0.5 * 10 ** (-max(fractional_decimals))
+    return max(TOLERANCE_FLOOR, (len(parts) + 1) * half_ulp)
 
 
 def _fmt(value: float | int) -> str:
@@ -92,11 +142,11 @@ def _find_bound_values(evidence: list[Evidence]) -> Optional[tuple[Evidence, lis
     return None
 
 
-def _build_recompute_script(parts: list, reported_total: float | int) -> str:
+def _build_recompute_script(parts: list, reported_total: float | int, tolerance: float) -> str:
     """A self-contained stdlib program that recomputes the sum and prints the verdict line.
 
-    Hardcodes the parts + reported_total (no input, no network, no clock), recomputes
-    ``sum(parts)``, and prints exactly one line:
+    Hardcodes the parts + reported_total + the rounding-aware tolerance (no input, no network, no
+    clock), recomputes ``sum(parts)``, and prints exactly one line:
       * ``OK`` if they match (within tolerance),
       * ``MISMATCH reported=<r> computed=<c>`` otherwise.
     The ``_fmt`` body is identical to the module-level one so outputs agree byte-for-byte.
@@ -106,7 +156,7 @@ def _build_recompute_script(parts: list, reported_total: float | int) -> str:
         "# Self-contained, stdlib-only, network-less, deterministic.\n"
         f"PARTS = {parts!r}\n"
         f"REPORTED_TOTAL = {reported_total!r}\n"
-        "TOLERANCE = 1e-9\n"
+        f"TOLERANCE = {tolerance!r}\n"
         "\n"
         "\n"
         "def _fmt(value):\n"
@@ -160,20 +210,21 @@ class SumCheck(Verifier):
             )
         ev, parts, reported_total = bound
         computed = sum(parts)
+        tolerance = _tolerance(parts, reported_total)
 
-        if abs(computed - reported_total) <= TOLERANCE:
+        if abs(computed - reported_total) <= tolerance:
             return self.make_finding(
                 claim=claim,
                 status=Status.PASS,
-                message="reported total equals the sum of its parts",
+                message="reported total equals the sum of its parts (within printing precision)",
                 reported=reported_total,
                 computed=computed,
-                details={"parts": parts, "n_parts": len(parts)},
+                details={"parts": parts, "n_parts": len(parts), "tolerance": tolerance},
             )
 
         # FAIL: ship executable evidence (DESIGN §3.2).
         expected = _mismatch_line(reported_total, computed)
-        script = _build_recompute_script(parts, reported_total)
+        script = _build_recompute_script(parts, reported_total, tolerance)
         packet = EvidencePacket(
             quote=ev.location.quote,
             location=ev.location,
@@ -197,11 +248,14 @@ class SumCheck(Verifier):
 
     # --- admission fuel (DESIGN §6.3) ----------------------------------------
     def self_test(self) -> list[SelfTestCase]:
-        """Clean (correct totals) + planted (wrong totals) cases across >=2 claim types.
+        """Clean (correct totals, incl. realistic rounding) + planted (materially wrong totals).
 
-        Fixed, hand-written numbers — deterministic, no RNG (DESIGN §7 G4). At least 4 clean
-        and 4 planted, spanning ``table_total`` and ``sum_claim`` so per-claim-type FPR (G6)
-        is actually exercised. Includes int and float cases.
+        Fixed, hand-written numbers — deterministic, no RNG (DESIGN §7 G4). Clean cases include
+        displayed-value rounding that does NOT sum exactly to the displayed total — three ``33.3``
+        shares against a printed ``100``, rounded shares summing to ``99.9`` — which the
+        rounding-aware tolerance must PASS. Planted cases are materially wrong (a dropped row, a
+        transposition) and exceed the tolerance by far. >=6 clean and >=6 planted across
+        ``table_total`` and ``sum_claim`` so per-claim-type FPR (G6) is exercised.
         """
         cases: list[SelfTestCase] = []
 
@@ -211,11 +265,16 @@ class SumCheck(Verifier):
             ("table_total", "ints_yields", [12, 25, 63], 100),
             ("sum_claim", "ints_mixed", [40, 35, 25], 100),
             ("sum_claim", "floats_exact", [0.1, 0.2, 0.7], 1.0),
-            ("table_total", "floats_decimals", [2.5, 2.5, 5.0], 10.0),
+            # Rounding tails the OLD 1e-9 tolerance wrongly flagged (presentation, not error):
+            ("table_total", "rounded_thirds", [33.3, 33.3, 33.3], 100),     # sums to 99.9
+            ("sum_claim", "rounded_pcts", [20.1, 30.4, 49.6], 100.0),       # sums to 100.1
+            ("table_total", "rounded_shares", [12.3, 25.1, 62.6], 100.0),   # sums to 100.0
             ("sum_claim", "single_part", [42], 42),
         ]
         for ctype, suffix, parts, total in clean_specs:
-            assert abs(sum(parts) - total) <= TOLERANCE, f"clean spec not clean: {suffix}"
+            assert abs(sum(parts) - total) <= _tolerance(parts, total), (
+                f"clean spec not clean: {suffix}"
+            )
             cases.append(self._case(f"clean_{ctype}_{suffix}", "clean", ctype, parts, total))
 
         planted_specs: list[tuple[str, str, list, float | int]] = [
@@ -227,7 +286,9 @@ class SumCheck(Verifier):
             ("sum_claim", "negative_typo", [50, -10, 40], 100),   # sums to 80
         ]
         for ctype, suffix, parts, total in planted_specs:
-            assert abs(sum(parts) - total) > TOLERANCE, f"planted spec is actually clean: {suffix}"
+            assert abs(sum(parts) - total) > _tolerance(parts, total), (
+                f"planted spec is actually clean: {suffix}"
+            )
             cases.append(self._case(f"planted_{ctype}_{suffix}", "planted", ctype, parts, total))
 
         return cases

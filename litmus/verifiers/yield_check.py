@@ -11,7 +11,10 @@ Contract with the extractor (DESIGN §11): a claim of type ``yield`` / ``reactio
 carries a reported yield, and *optionally* the molar quantities to recompute it::
 
     {"reported_yield_pct": <number>}
-    # optionally, to recompute the theoretical yield (T0 layer):
+    # one row reporting SEVERAL product yields disambiguates them per product; each is still a
+    # percent yield owing 0<=y<=100, so the physical bound is checked on ALL of them:
+    {"reported_ipl_yield_pct": <number>, "reported_gvl_yield_pct": <number>, ...}
+    # optionally, to recompute the theoretical yield (T0 layer) — paired with the bare key only:
     {"mol_product": <number>, "mol_limiting_reagent": <number>, "stoich_coeff_ratio": <number>}
 
 ``stoich_coeff_ratio`` (default ``1.0``) is mol product expected per mol limiting reagent for a
@@ -20,7 +23,8 @@ quantitative reaction; ``theoretical = mol_limiting_reagent * stoich_coeff_ratio
 
 ``judge`` applies two layers, hardest first:
 
-  * **T1 physical bound** (always, if ``reported_yield_pct`` present):
+  * **T1 physical bound** (always, on EVERY reported yield — the bare ``reported_yield_pct`` and
+    any disambiguated ``*_yield_pct`` a multi-product row carries):
       * ``reported_yield_pct > 100 + tol``  -> FAIL **severity A** ("yield exceeds 100%
             stoichiometric maximum — impossible").
       * ``reported_yield_pct < -tol``       -> FAIL **severity A** ("negative yield").
@@ -28,7 +32,7 @@ quantitative reaction; ``theoretical = mol_limiting_reagent * stoich_coeff_ratio
       * ``|recomputed_yield - reported_yield_pct| > tol`` -> FAIL **severity B** (the reported
             yield disagrees with what the molar quantities imply).
 
-Abstain (DESIGN §3.4: abstain > guess) when neither ``reported_yield_pct`` nor the mol pair is
+Abstain (DESIGN §3.4: abstain > guess) when neither any ``*_yield_pct`` key nor the mol pair is
 present, or when a recompute is asked for but the theoretical yield is zero (undefined).
 
 Every ``FAIL`` ships an :class:`~litmus.core.finding.EvidencePacket` whose stdlib-only
@@ -66,6 +70,14 @@ from litmus.core.verifier import (
 TOLERANCE = 0.5
 
 REPORTED_KEY = "reported_yield_pct"
+# When ONE reaction row reports several product yields, the extractor disambiguates them per
+# product — ``reported_ipl_yield_pct``, ``reported_gvl_yield_pct``, ... — instead of the bare
+# canonical key, so it can keep them apart in a single evidence record (DESIGN §11). Every such
+# key is still a percent yield bound by 0<=y<=100, so the T1 physical check must see all of them;
+# otherwise a multi-product row binds nothing and the whole reaction goes unchecked. Any top-level
+# key ending in this suffix counts (the bare ``reported_yield_pct`` included); the bare key stays
+# the primary — it alone pairs with the molar recompute.
+YIELD_PCT_SUFFIX = "_yield_pct"
 MOL_PRODUCT_KEY = "mol_product"
 MOL_LIMITING_KEY = "mol_limiting_reagent"
 STOICH_RATIO_KEY = "stoich_coeff_ratio"
@@ -108,11 +120,40 @@ def _mismatch_line(reported: float | int, computed: float) -> str:
 
 
 def _find_reported(evidence: list[Evidence]) -> Optional[tuple[Evidence, float | int]]:
+    """The bare canonical ``reported_yield_pct`` — the *primary* yield, the one the molar
+    recompute pairs with (a disambiguated per-product key can't be matched to a single mol pair)."""
     for ev in evidence:
         vals = ev.extracted_values or {}
         if REPORTED_KEY in vals and _is_number(vals[REPORTED_KEY]):
             return ev, vals[REPORTED_KEY]
     return None
+
+
+def _find_all_reported(
+    evidence: list[Evidence],
+) -> list[tuple[Evidence, str, float | int]]:
+    """Every top-level reported-yield percentage across all evidence, canonical key first.
+
+    Beyond the bare ``reported_yield_pct`` this also picks up the disambiguated per-product
+    spellings (``reported_gvl_yield_pct``, ``isolated_ipl_yield_pct``, ...) the extractor uses
+    when one reaction row reports several product yields at once. Each is still a percent yield
+    owing the 0<=y<=100 bound, so ``judge`` runs the T1 physical check over all of them —
+    otherwise a multi-product row binds nothing and the whole reaction goes unchecked (DESIGN §11
+    key-alignment). Returns ``(ev, key, value)`` triples with the bare canonical key first so it
+    stays the primary, the rest in transcription order. Numeric values only.
+    """
+    primary: list[tuple[Evidence, str, float | int]] = []
+    extra: list[tuple[Evidence, str, float | int]] = []
+    for ev in evidence:
+        vals = ev.extracted_values or {}
+        for key, value in vals.items():
+            if not _is_number(value):
+                continue
+            if key == REPORTED_KEY:
+                primary.append((ev, key, value))
+            elif key.endswith(YIELD_PCT_SUFFIX):
+                extra.append((ev, key, value))
+    return primary + extra
 
 
 def _find_mol_pair(
@@ -226,27 +267,36 @@ class YieldCheck(Verifier):
             "Checks that a reported reaction yield obeys the stoichiometric bound 0<=y<=100 (T1 "
             "physical) and, when the molar quantities are present, equals 100*mol_product/"
             "(mol_limiting_reagent*stoich_coeff_ratio) (T0 recompute). Binds to evidence carrying "
-            "extracted_values {'reported_yield_pct': n} and optionally "
-            "{'mol_product': x, 'mol_limiting_reagent': y, 'stoich_coeff_ratio': r}."
+            "extracted_values {'reported_yield_pct': n} — or, for a row reporting several product "
+            "yields, the disambiguated per-product keys {'reported_<product>_yield_pct': n, ...} — "
+            "and optionally {'mol_product': x, 'mol_limiting_reagent': y, 'stoich_coeff_ratio': r}."
         ),
     )
 
     # --- verdict (pure, deterministic) ---------------------------------------
     def judge(self, claim: Claim, evidence: list[Evidence]) -> Finding:
+        # Every reported yield (bare canonical key + any disambiguated per-product *_yield_pct),
+        # primary first; plus the bare key alone, which is the only one the molar recompute pairs
+        # with (a per-product key can't be matched to a single mol pair).
+        reported_all = _find_all_reported(evidence)
         reported_bound = _find_reported(evidence)
         mol_bound = _find_mol_pair(evidence)
 
-        if reported_bound is None and mol_bound is None:
+        if not reported_all and mol_bound is None:
             return self.abstain(
                 claim,
-                "no bound evidence carries 'reported_yield_pct' or the "
-                "(mol_product, mol_limiting_reagent) pair; cannot check a yield "
-                "(DESIGN §3.4: abstain > guess)",
+                "no bound evidence carries 'reported_yield_pct' (or a disambiguated "
+                "'*_yield_pct') or the (mol_product, mol_limiting_reagent) pair; cannot "
+                "check a yield (DESIGN §3.4: abstain > guess)",
             )
 
-        # --- T1 physical bound (hardest first) -------------------------------
-        if reported_bound is not None:
-            ev, reported = reported_bound
+        # --- T1 physical bound (hardest first), over EVERY reported yield ----
+        # A row reporting several product yields packs them under disambiguated keys
+        # (reported_gvl_yield_pct, ...); each still owes 0<=y<=100, so check them all or the whole
+        # multi-product reaction goes unchecked (DESIGN §11 key-alignment). First violator wins —
+        # deterministic: bare key first, then transcription order.
+        for ev, key, reported in reported_all:
+            label = "" if key == REPORTED_KEY else f" ({key})"
 
             if reported > MAX_YIELD + TOLERANCE:
                 expected = _over_line(reported)
@@ -264,12 +314,13 @@ class YieldCheck(Verifier):
                     severity=Severity.A,
                     message="yield exceeds 100% stoichiometric maximum — impossible",
                     discrepancy=(
-                        f"reported {_fmt(reported)}% yield exceeds the 100% stoichiometric maximum"
+                        f"reported {_fmt(reported)}%{label} yield exceeds the 100% "
+                        "stoichiometric maximum"
                     ),
                     reported=reported,
                     computed=MAX_YIELD,
                     evidence=packet,
-                    details={"bound": "yield <= 100%", "violation": "over"},
+                    details={"bound": "yield <= 100%", "violation": "over", "key": key},
                 )
 
             if reported < -TOLERANCE:
@@ -287,11 +338,11 @@ class YieldCheck(Verifier):
                     status=Status.FAIL,
                     severity=Severity.A,
                     message="negative yield — impossible",
-                    discrepancy=f"reported {_fmt(reported)}% yield is negative",
+                    discrepancy=f"reported {_fmt(reported)}%{label} yield is negative",
                     reported=reported,
                     computed=0,
                     evidence=packet,
-                    details={"bound": "yield >= 0%", "violation": "negative"},
+                    details={"bound": "yield >= 0%", "violation": "negative", "key": key},
                 )
 
         # --- T0 recompute (only if the molar quantities are present) ---------
@@ -339,14 +390,14 @@ class YieldCheck(Verifier):
                         },
                     )
 
-        # Everything checks out (bound held; recompute, if any, agreed).
-        reported_for_pass = reported_bound[1] if reported_bound is not None else None
+        # Everything checks out (every bound held; recompute, if any, agreed).
+        reported_for_pass = reported_all[0][2] if reported_all else None
         return self.make_finding(
             claim=claim,
             status=Status.PASS,
             message="reported yield is within the stoichiometric bound and matches its quantities",
             reported=reported_for_pass,
-            details={"checked_bound": reported_bound is not None, "recomputed": mol_bound is not None},
+            details={"checked_bound": bool(reported_all), "recomputed": mol_bound is not None},
         )
 
     # --- admission fuel (DESIGN §6.3) ----------------------------------------
@@ -355,8 +406,9 @@ class YieldCheck(Verifier):
 
         Fixed, hand-written numbers — deterministic, no RNG (DESIGN §7 G4). >=6 clean and >=6
         planted across claim types ``percent_yield`` and ``reaction_yield`` so per-claim-type FPR
-        (G6) is exercised. Planted set spans all three failure modes: >100% (A), <0% (A), and a
-        molar-recompute mismatch (B).
+        (G6) is exercised. Planted set spans every failure mode: >100% (A), <0% (A), a
+        molar-recompute mismatch (B), and a multi-product row whose disambiguated ``*_yield_pct``
+        keys carry one impossible yield (A). Clean set includes an all-in-bounds multi-product row.
         """
         cases: list[SelfTestCase] = []
 
@@ -377,6 +429,13 @@ class YieldCheck(Verifier):
                     MOL_LIMITING_KEY: 1.0,
                     STOICH_RATIO_KEY: 1.0,
                 },
+            ),
+            # Multi-product row (the roy2025 shape): several disambiguated *_yield_pct keys, no
+            # bare reported_yield_pct, all within bound -> must bind and PASS (not abstain).
+            (
+                "reaction_yield",
+                "multi_product_ok",
+                {"reported_ipl_yield_pct": 50.0, "reported_gvl_yield_pct": 15.0},
             ),
         ]
         for ctype, suffix, vals in clean_specs:
@@ -403,6 +462,13 @@ class YieldCheck(Verifier):
                     STOICH_RATIO_KEY: 1.0,
                 },
             ),
+            # Multi-product row where ONE product yield is impossible (>100%) — the coverage gap
+            # this verifier now closes: gvl 142% must FAIL even with no bare reported_yield_pct.
+            (
+                "reaction_yield",
+                "multi_product_over",
+                {"reported_ipl_yield_pct": 61.0, "reported_gvl_yield_pct": 142.0},
+            ),
         ]
         for ctype, suffix, vals in planted_specs:
             assert not self._spec_is_clean(vals), f"planted spec is actually clean: {suffix}"
@@ -414,10 +480,13 @@ class YieldCheck(Verifier):
     def _spec_is_clean(vals: dict) -> bool:
         """Mirror of ``judge``'s verdict logic, used only to assert the self_test specs are
         labelled correctly (clean specs really pass; planted really fail)."""
+        # T1 physical bound over EVERY reported yield (bare + disambiguated *_yield_pct).
+        for key, value in vals.items():
+            if key.endswith(YIELD_PCT_SUFFIX) and _is_number(value):
+                if value > MAX_YIELD + TOLERANCE or value < -TOLERANCE:
+                    return False
+        # T0 recompute pairs only with the bare canonical key.
         reported = vals.get(REPORTED_KEY)
-        if _is_number(reported):
-            if reported > MAX_YIELD + TOLERANCE or reported < -TOLERANCE:
-                return False
         if MOL_PRODUCT_KEY in vals and MOL_LIMITING_KEY in vals:
             theoretical = vals[MOL_LIMITING_KEY] * vals.get(STOICH_RATIO_KEY, 1.0)
             if theoretical != 0 and _is_number(reported):
@@ -429,6 +498,13 @@ class YieldCheck(Verifier):
     @staticmethod
     def _case(name: str, kind: str, claim_type: str, vals: dict) -> SelfTestCase:
         reported = vals.get(REPORTED_KEY)
+        if reported is None:
+            # Multi-product specs carry only disambiguated *_yield_pct keys; surface one for the
+            # synthetic quote/text (cosmetic — judge scans them all regardless).
+            reported = next(
+                (v for k, v in vals.items() if k.endswith(YIELD_PCT_SUFFIX) and _is_number(v)),
+                None,
+            )
         ev = Evidence(
             id=f"ev_{name}",
             kind=EvidenceKind.NUMBER,

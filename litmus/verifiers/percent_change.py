@@ -17,10 +17,18 @@ carries::
   * any of the three keys absent on every bound evidence  -> ABSTAIN (DESIGN §3.4: abstain > guess).
   * ``old_value == 0``                                     -> ABSTAIN (percent change undefined; a
         division by zero is not a finding — it is a non-binding).
-  * computed == reported (float tolerance)                -> PASS.
+  * computed == reported (rounding tolerance)             -> PASS.
   * computed != reported                                   -> FAIL (severity B) shipping an
         EvidencePacket whose stdlib-only ``recompute_script`` reprints the discrepancy line, so a
         skeptical reader can rerun it (DESIGN §3.2: no script, no flag).
+
+**Rounding-aware tolerance (DESIGN §6.3, §3.4: prefer PASS over a trivial flag).** A reported
+percent is printed to finite precision: "a 36% increase" means the true change rounds to 36, i.e.
+lies in ``[35.5, 36.5]``. So ``50 -> 68.2`` (a true +36.4%) reported as "36%" is *correct* — the
+author rounded. The tolerance is half a unit in the reported percent's last printed place (``0.5``
+for an integer percent, ``0.05`` for one decimal), plus a small allowance for the inputs' own
+rounding. The flagship "+40% claimed but 50->68 is +36%" gap (4 points) blows past it and still
+FAILs.
 
 Everything here is deterministic: no RNG, clock, or network in ``judge`` or in the emitted script
 (DESIGN §7 G4). The calibration kernel verifies that empirically.
@@ -51,13 +59,53 @@ from litmus.core.verifier import (
     VerifierManifest,
 )
 
-# Absolute tolerance on the percentage-point comparison (presentation rounding, DESIGN §6.3).
-# A reported "+36%" vs a computed 36.0 must match; "+40%" vs 36.0 must not.
-TOLERANCE = 0.05
+# Absolute floor on the percentage-point tolerance (float noise). The real tolerance is
+# rounding-aware (see ``_tolerance``): a reported "+36%" must match a computed 36.4; "+40%" must
+# not match a computed 36.0 (DESIGN §6.3).
+TOLERANCE_FLOOR = 0.05
 
 OLD_KEY = "old_value"
 NEW_KEY = "new_value"
 REPORTED_KEY = "reported_pct_change"
+
+
+def _decimals_of(value: float | int) -> int:
+    """How many decimal places ``value`` was printed to (``36`` -> 0, ``36.4`` -> 1)."""
+    if isinstance(value, bool) or isinstance(value, int):
+        return 0
+    if isinstance(value, float):
+        if value.is_integer():
+            return 0
+        s = repr(value)
+        if "e" in s or "E" in s:
+            try:
+                mant, exp = s.lower().split("e")
+                frac = len(mant.split(".")[1]) if "." in mant else 0
+                return max(0, frac - int(exp))
+            except Exception:
+                return 0
+        if "." in s:
+            return len(s.split(".")[1])
+    return 0
+
+
+def _tolerance(old_value: float, new_value: float, reported: float) -> float:
+    """Rounding-aware percentage-point tolerance (DESIGN §6.3).
+
+    Dominant term: the reported percent is printed to some decimals, so the true change rounds
+    into ``reported ± 0.5 * 10^-D_reported`` (``0.5`` for an integer percent). Second-order: the
+    inputs are themselves rounded; propagating half-a-ULP of ``new`` and ``old`` through
+    ``pct = 100*(new-old)/old`` adds ``100/|old| * half_ulp(new) + 100*|new|/old^2 * half_ulp(old)``.
+    The sum (floored at ``TOLERANCE_FLOOR``) is the band within which a reported percent is a
+    correct rounding of the recomputed one. A genuine over-claim exceeds it and still FAILs.
+    """
+    rep_half = 0.5 * 10 ** (-_decimals_of(reported))
+    new_half = 0.5 * 10 ** (-_decimals_of(new_value))
+    old_half = 0.5 * 10 ** (-_decimals_of(old_value))
+    input_term = 0.0
+    if old_value != 0:
+        input_term = 100.0 / abs(old_value) * new_half + 100.0 * abs(new_value) / (old_value * old_value) * old_half
+    return max(TOLERANCE_FLOOR, rep_half + input_term)
 
 
 def _fmt(value: float | int) -> str:
@@ -103,12 +151,12 @@ def _find_bound_values(
 
 
 def _build_recompute_script(
-    old_value: float, new_value: float, reported: float
+    old_value: float, new_value: float, reported: float, tolerance: float
 ) -> str:
     """A self-contained stdlib program that recomputes the percent change and prints the verdict.
 
-    Hardcodes old/new/reported (no input, no network, no clock), recomputes
-    ``100*(new-old)/old``, and prints exactly one line:
+    Hardcodes old/new/reported + the rounding-aware tolerance (no input, no network, no clock),
+    recomputes ``100*(new-old)/old``, and prints exactly one line:
       * ``OK`` if it matches the reported change (within tolerance),
       * ``MISMATCH reported=<r> computed=<c>`` otherwise.
     The ``_fmt`` body is identical to the module-level one so outputs agree byte-for-byte.
@@ -119,7 +167,7 @@ def _build_recompute_script(
         f"OLD_VALUE = {old_value!r}\n"
         f"NEW_VALUE = {new_value!r}\n"
         f"REPORTED_PCT_CHANGE = {reported!r}\n"
-        "TOLERANCE = 0.05\n"
+        f"TOLERANCE = {tolerance!r}\n"
         "\n"
         "\n"
         "def _fmt(value):\n"
@@ -183,8 +231,9 @@ class PercentChange(Verifier):
             )
 
         computed = 100.0 * (new_value - old_value) / old_value
+        tol = _tolerance(old_value, new_value, reported)
 
-        if abs(computed - reported) <= TOLERANCE:
+        if abs(computed - reported) <= tol:
             return self.make_finding(
                 claim=claim,
                 status=Status.PASS,
@@ -196,7 +245,7 @@ class PercentChange(Verifier):
 
         # FAIL: ship executable evidence (DESIGN §3.2).
         expected = _mismatch_line(reported, computed)
-        script = _build_recompute_script(old_value, new_value, reported)
+        script = _build_recompute_script(old_value, new_value, reported, tol)
         packet = EvidencePacket(
             quote=ev.location.quote,
             location=ev.location,
@@ -239,7 +288,7 @@ class PercentChange(Verifier):
             ("percent_decrease", "tenth_drop", 50.0, 45.0, -10.0),    # -10%
         ]
         for ctype, suffix, old, new, rep in clean_specs:
-            assert abs(100.0 * (new - old) / old - rep) <= TOLERANCE, (
+            assert abs(100.0 * (new - old) / old - rep) <= _tolerance(old, new, rep), (
                 f"clean spec not clean: {suffix}"
             )
             cases.append(
@@ -256,7 +305,7 @@ class PercentChange(Verifier):
             ("percent_decrease", "flipped", 80.0, 100.0, -25.0),       # really +25%
         ]
         for ctype, suffix, old, new, rep in planted_specs:
-            assert abs(100.0 * (new - old) / old - rep) > TOLERANCE, (
+            assert abs(100.0 * (new - old) / old - rep) > _tolerance(old, new, rep), (
                 f"planted spec is actually clean: {suffix}"
             )
             cases.append(

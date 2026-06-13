@@ -128,11 +128,35 @@ class TestStatcheckJudge:
         assert "INCONSISTENT" in f.evidence.expected_output
         assert not f.validate()  # a valid FAIL ships script + expected_output + severity
 
-    def test_misrounded_without_flip_fails(self):
-        # z=2.5 -> p≈0.0124; reported 0.05 (not significant either way, but wrong rounding).
-        f = _judge_stat(test="z", statistic=2.5, reported_p=0.05, decimals=2)
+    def test_large_gap_without_flip_fails_severity_c(self):
+        # The real-paper material case: t(41)=3.6 -> p≈0.00085; reported 0.013. Both are
+        # "significant" (no .05 decision flip), but the reported p is ~15x the achievable p — no
+        # rounding of the statistic can produce it. That is a genuine (severity C) inconsistency,
+        # graded below a decision error but well above the rounding-tail nitpicks (DESIGN §6.3).
+        f = _judge_stat(test="t", statistic=3.6, df=41, reported_p=0.013)
         assert f.status is Status.FAIL
-        assert f.severity is Severity.B
+        assert f.severity is Severity.C
+        assert f.details["decision_flip"] is False
+        assert f.details["rel_err"] > 0.25
+        assert not f.validate()
+
+    def test_statistic_rounding_tail_passes(self):
+        # The owner's nitpick: F(2,41)=0.02 printed p=0.974. The 2-dp statistic admits true F in
+        # [0.015, 0.025], whose achievable p covers ~[0.975, 0.985]; the printed 0.974 is the same
+        # value to within presentation rounding (~0.6% off, decision intact). The OLD point-
+        # recompute flagged this as p=0.980; the rounding-aware + impact-graded check must PASS it.
+        f = _judge_stat(test="F", statistic=0.02, df1=2, df2=41, reported_p=0.974)
+        assert f.status is Status.PASS
+        assert f.details["rel_err"] < 0.25  # tiny gap -> below the flag bar
+        lo, hi = f.details["achievable_p_range"]
+        assert lo > 0.9 and hi < 1.0  # the achievable p-range is reported for the reader
+
+    def test_small_gap_without_flip_passes(self):
+        # F(1,41)=0.86 -> point p≈0.359 but printed p=0.375 — outside the statistic's rounding band
+        # yet only ~4.4% off with the decision intact. Below the severity-C relative-error bar, so
+        # PASS: a trivial gap is not worth a reader's time (DESIGN §3.4: abstain/PASS > guess).
+        f = _judge_stat(test="F", statistic=0.86, df1=1, df2=41, reported_p=0.375)
+        assert f.status is Status.PASS
 
     def test_z_needs_no_df(self):
         f = _judge_stat(test="z", statistic=1.95996, reported_p=0.05, decimals=2)
@@ -146,7 +170,20 @@ class TestStatcheckJudge:
         # No explicit decimals: 0.001 implies 3 dp. z=3.0 -> p≈0.0027 -> rounds to 0.003.
         f = _judge_stat(test="z", statistic=3.0, reported_p=0.003)
         assert f.status is Status.PASS
-        assert f.details["decimals"] == 3
+        assert f.details["rep_decimals"] == 3
+
+    def test_binds_variant_extracted_value_keys(self):
+        """Lenient key matching: p / pval and stat / bare distribution letter still bind
+        (DESIGN §11 key-alignment; robustness fixed in the verifier, not the extraction prompt)."""
+        # reported_p arrives as 'p', statistic as 'stat'.
+        f = _judge_stat(test="t", stat=2.0, df=20, p=0.04)
+        assert f.status is Status.FAIL and f.details["decision_flip"] is True
+        # statistic under the bare distribution-letter key, p under 'p', no explicit 'test'.
+        f = StatCheck().judge(_claim(), [_stat_ev(F=4.35125, df1=1, df2=20, p_value=0.05)])
+        assert f.status is Status.PASS
+        # 'pval' spelling.
+        f = _judge_stat(test="chi2", statistic=3.0, df=1, pval=0.04)
+        assert f.status is Status.FAIL and f.severity is Severity.B
 
     @pytest.mark.parametrize(
         "vals",
