@@ -202,6 +202,8 @@ The LLM front-end turns a PDF into structured, checkable assertions — **the on
   Binding: claim ──rests_on──▶ evidence
   ```
 - **Rules:** the extractor only *transcribes and locates* — never judges correctness, records `null` rather than inventing a missing value. Low-confidence extractions are flagged so the planner can downgrade or abstain.
+- **PDF ingestion:** native Claude PDF/vision is the primary path — Opus reads text + figures + tables directly, and **for the MVP (and the discovery study) this is the only extraction needed.** A thin, deterministic preprocessing layer is added in **WS-B**, not before: page render to high-DPI images (fine figure reading, §5), a text layer with coordinates (for `char_span`/`quote`), table capture (deterministic cross-check), and DOI + content-hash (the §2 cache key). SI ingested as additional documents; tabular SI parsed for T6. **The model extracts meaning; preprocessing only produces anchors.**
+- **Quote guard (WS-B):** every emitted `quote` must be substring-verifiable against the PDF text layer — a non-matching quote is dropped or flagged. A cheap deterministic defense against hallucinated locations (fits §3).
 
 ---
 
@@ -276,6 +278,7 @@ app/                            # Next.js (App Router) on Vercel — UI + API ro
 **Two sandbox profiles — keep them separate.** (1) The **recompute sandbox** — network-*less*, resource-limited, deterministic — runs verifier recompute scripts and untrusted synthesized/contributed verifier code. Its network-less property is a safety invariant; **do not weaken it.** (2) The **reproducibility container** (T6 only) — network-*allowed*, heavier — reruns a paper's *own* provided data/code to check the numbers reproduce. It is served by the **managed-agents sandbox** for the hosted app and a deferred local Docker runner for the CLI. Different trust models (untrusted *verifier* code vs. the paper's *own* analysis code); they must not share an environment.
 
 - **Runtime:** Python 3.12 (framework); Node/Next.js (app). Verifiers are entry-point plugins + MCP tools. Web: static where possible; in-browser Pyodide for portable recompute scripts.
+- **PDF preprocessing (framework, WS-B):** pypdfium2 + pdfplumber (+ pypdf), pinned and permissively licensed (avoid AGPL `PyMuPDF`) — page render + text-with-coordinates + table extraction for the extractor. **Extraction-time deps only; they do *not* enter the recompute sandbox — recompute scripts stay stdlib/declared-minimal per P8.** Not needed for the MVP or the discovery study (native PDF ingestion covers those).
 - **Credentials** live in the shell environment (`.zshrc`): `ANTHROPIC_API_KEY`, the Supabase URL + keys, the Vercel token. Never commit them.
 
 ---
@@ -324,7 +327,7 @@ Two workflows run **concurrently from day one** — they have almost no build-ti
 
 ## Track 1 — Discovery workflow (the study, §17)
 
-Runs immediately, in parallel, on the reasoner directly (no framework needed). Map → reduce:
+Runs immediately, in parallel, on the reasoner directly (no framework needed — PDFs go to Opus via native ingestion; no extraction tooling required). Map → reduce:
 1. **Source** 30–50 open-access papers, **2/3 chemistry + 1/3 cross-domain**, with positive/negative controls (§17). Surface the list for owner review before deep auditing.
 2. **Per-paper catalog (map):** one agent per paper — decompose into the `ClaimGraph`; per claim record `{tier, what verification is possible, what verifier it would need, does one exist yet, candidate verdict, confidence, quote}`.
 3. **Cross-paper cluster (reduce):** synthesize into **issue archetypes**, frequency-ranked per field.
