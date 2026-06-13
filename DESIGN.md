@@ -273,6 +273,8 @@ app/                            # Next.js (App Router) on Vercel — UI + API ro
 
 **The `ExecutorAdapter` seam (important):** the pipeline (§13) is written once and called through `ExecutorAdapter` with two implementations — `LocalExecutor` (subprocess/thread workers + direct API calls; used by the CLI, the gate, and the discovery study) and `ManagedAgentExecutor` (runs the pipeline inside a managed-agents session; used by the live app). **The framework and the study never depend on managed agents.** Only `ManagedAgentExecutor` does. A build agent working on the core can ignore managed agents entirely.
 
+**Two sandbox profiles — keep them separate.** (1) The **recompute sandbox** — network-*less*, resource-limited, deterministic — runs verifier recompute scripts and untrusted synthesized/contributed verifier code. Its network-less property is a safety invariant; **do not weaken it.** (2) The **reproducibility container** (T6 only) — network-*allowed*, heavier — reruns a paper's *own* provided data/code to check the numbers reproduce. It is served by the **managed-agents sandbox** for the hosted app and a deferred local Docker runner for the CLI. Different trust models (untrusted *verifier* code vs. the paper's *own* analysis code); they must not share an environment.
+
 - **Runtime:** Python 3.12 (framework); Node/Next.js (app). Verifiers are entry-point plugins + MCP tools. Web: static where possible; in-browser Pyodide for portable recompute scripts.
 - **Credentials** live in the shell environment (`.zshrc`): `ANTHROPIC_API_KEY`, the Supabase URL + keys, the Vercel token. Never commit them.
 
@@ -308,8 +310,8 @@ We discover the verifier taxonomy empirically, the way statcheck came from study
 5. **Dependencies:** Anthropic API + Vercel + Supabase + Claude managed agents (executor, app-only). No separate worker host, no graph DB, no auth in the first cut. (§15)
 6. **Executor:** one `ExecutorAdapter`; `LocalExecutor` for framework/study/gate, `ManagedAgentExecutor` for the live app. (§13, §15)
 7. **Discovery study:** 2/3 chemistry, 1/3 cross-domain, open-access, with positive/negative controls. (§17)
-
-*Still to confirm with the owner before the relevant workstream: (a) reproducibility (T6) depth — how far to invest in actually rerunning provided data/code in the first cut; (b) per-run budget for live Opus spend (extraction/synthesis/study).*
+8. **Budget:** no per-run ceiling. ~$500 Anthropic API credits cover the API-billed work (managed-agents sessions + direct Opus calls in the pipeline/study); the build runs on the Max subscription. Spend where it helps; avoid retry storms.
+9. **Reproducibility (T6):** a *capability*, not on the demo critical path. Build the verifier contract for it (rerun a paper's provided data/code → compare to the reported numbers), but it runs in the **networked reproducibility container** (§15) — served by the **managed-agents sandbox** for the hosted app, with a deferred local Docker runner for the CLI. The demo's reproducibility beat (Reinhart-Rogoff class) is a **curated recompute** under the normal recompute-script path, not a live arbitrary-code rerun.
 
 ---
 ---
@@ -347,6 +349,12 @@ Runs immediately, in parallel, on the reasoner directly (no framework needed). M
 
 - Track 1's **coverage map reprioritizes Track 2's verifier queue** (WS-D/E build the highest-frequency archetypes first). Track 2 starts on the obvious T0–T1 checks immediately and re-plans as Track 1 lands. Neither blocks the other.
 - Track 1's **candidate benchmark**, once its labels are confirmed by Track 2's deterministic verifiers (or a human), becomes the **external gold-standard eval** for the whole system.
+
+## Deferred capabilities (not first-cut gates)
+
+- **T6 reproducibility (live author-code rerun)** — the networked reproducibility container (§15). Ship the verifier *contract* now; the live arbitrary-code rerun is a capability built after the demo. The demo's reproducibility beat is a curated recompute under the normal path.
+- **The full cross-paper world model** (§10) — beyond the minimal embedded index for retraction-blast-radius / contradiction. Build when its use-cases are prioritized.
+- **Out-of-tree verifier plugins + the public contributor registry** (§9) — the in-tree commons ships first; the entry-point mechanism is designed in so this needs no redesign.
 
 ## System-level done (the rubric)
 
