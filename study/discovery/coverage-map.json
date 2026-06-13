@@ -1,0 +1,140 @@
+{
+  "generated_by": "LITMUS discovery-study reducer (DESIGN §17 step 4, §19 convergence). Maps each capability the corpus demands onto the current LITMUS verifier set {sum_check, percent_change, yield_check, mass_balance, unit_consistency, statcheck, grim, prose_vs_table, figure_vs_table}. 'exists' = covered by a current verifier; 'gap' = needs a new prebuild or synthesized/templated verifier. This reprioritizes the verifier queue.",
+  "n_catalogs_read": 30,
+  "current_verifiers": ["sum_check", "percent_change", "yield_check", "mass_balance", "unit_consistency", "statcheck", "grim", "prose_vs_table", "figure_vs_table"],
+  "capabilities": [
+    {
+      "capability": "table/column/row total and stoichiometric-sum recompute (subscripts->1, components->total, composition->100%)",
+      "maps_to_archetype": "internal_arithmetic_recompute",
+      "status": "exists",
+      "covered_by": "sum_check",
+      "note": "Heavy chemistry use (perovskite/HEA composition sums, Table-2 MACE column totals, ml AVG-row means). The MACE 'All Reactions' total 1739 vs 1569 (chemistry-arxiv-2605.09394#c1) is a live mismatch this would flag."
+    },
+    {
+      "capability": "percent / ratio / fold-change / percent-change recompute and percent-of-N",
+      "maps_to_archetype": "internal_arithmetic_recompute",
+      "status": "exists",
+      "covered_by": "percent_change",
+      "note": "Covers stabilization-energy delta (jana2025#c1: 0.5751 stated 0.64), Venn percent-of-total (zhang2025), L1/L2 elasticity 6x, gas-demand coverage %, PONV/rescue rates, exercise-HR Cohen's d. Highest-volume deterministic win across the corpus."
+    },
+    {
+      "capability": "reaction yield <= conversion and selectivity bookkeeping (per-row and summed)",
+      "maps_to_archetype": "internal_arithmetic_recompute",
+      "status": "exists",
+      "covered_by": "yield_check",
+      "note": "roy2025 furfural Tables 1-3, jimenezcruz2026 aldol/Heck yields-from-mass, oztoksoy crystallinity-retention. Note furfural mass balance never closes to 100% (humins) so the inequality, not closure, is what is verifiable."
+    },
+    {
+      "capability": "atom / charge / mass balance of reactions and condensation stoichiometry",
+      "maps_to_archetype": "equation_or_mechanism_recompute",
+      "status": "exists",
+      "covered_by": "mass_balance",
+      "note": "jana2025 CO2RR reactions, araruna InCl3 dissociation, roy2025 IntA/IntB condensation, mehta2018 N2+H2 balance. Decomposition-feed mole-fraction sums (mehta2020#c26) also fit."
+    },
+    {
+      "capability": "unit / dimensional consistency and unit-conversion checks (E=V/d, molarity<->mol%, power/flow SEI, geometry, axis-unit sanity)",
+      "maps_to_archetype": "unit_dimensional_consistency",
+      "status": "exists",
+      "covered_by": "unit_consistency",
+      "note": "Catches the physics Fig-4 Hall-V-vs-uV axis error (chiral-2d#c14), pzt E-field 375 kV/cm, mehta discharge-gap/volume geometry, anchuri block-rate 48x and gwei floors, perovskite DMF:DMSO 4:1."
+    },
+    {
+      "capability": "statcheck: recompute p from (F/t/chi2, df) and check decision/value consistency",
+      "maps_to_archetype": "statcheck_p_vs_teststatistic",
+      "status": "exists",
+      "covered_by": "statcheck",
+      "note": "The single highest-yield social/medical verifier. Directly catches anon2024-rr F(1,188)=1.58,p<.001 (impossible), wheeler2025 chi2/p slot-swap across c1/c2/c3, lin2025 exact-binomial p. gkekas2025/bai2025/zhou2025 mostly PASS statcheck (controls of internal consistency)."
+    },
+    {
+      "capability": "GRIM / GRIMMER / value-bounds plausibility (mean achievable from integer N; SD/proportion bounds; impossible-value screen)",
+      "maps_to_archetype": "value_bounds_plausibility",
+      "status": "exists",
+      "covered_by": "grim",
+      "note": "Flags bai2025 SD=0.97 on a [0,1] accuracy mean (#c11), gkekas2025 66.0% from 8/12, lin2025 6.2 vs 6.3 for identical 1/16. Needs extension to GRIM-on-percentages (denominator search) for reported exclusion-% (anon2024-rr#c18)."
+    },
+    {
+      "capability": "prose-vs-table value binding (transcription match, min/max-range bracketing, abstract-vs-body, stat-reported-twice, cross-table same-cell)",
+      "maps_to_archetype": "prose_vs_table_value_disagreement / cross_table_or_cross_section_value_conflict",
+      "status": "exists",
+      "covered_by": "prose_vs_table",
+      "note": "The most frequent archetype in the corpus. Catches lin2025 alopecia Grade-3-abstract vs Grade-2-table (#c16), roy2025 abstract 67% IPL with no table source, araruna Tg-range/conversion/dispersity mismatches, ml NMI 88.38-vs-83.88 cross-table, zhou2025 norepinephrine-vs-epinephrine naming."
+    },
+    {
+      "capability": "figure value-extraction and binding (bar/curve read, argmax/argmin, slope annotation, peak position, error-bar overlap, trend/ordering)",
+      "maps_to_archetype": "prose_vs_figure_value_extraction",
+      "status": "exists",
+      "covered_by": "figure_vs_table",
+      "note": "The dominant NON-deterministic frontier; appears in nearly every paper. CRITICAL: figure-reading is currently the bottleneck for the largest block of T2 claims (zhang2025 Fig 1/3/4/8 bars; physics slope m=2000-not-unity #c4; mace parity-plot MAEs; econ IRF Fig 8; ml radar ablations). The physics Fig-3a slope and Ashby-chart-coordinate contradictions (singh2026 c3/c4/c5/c8) are the load-bearing flags a robust figure reader must catch. Reliability of this verifier gates the most claims."
+    },
+    {
+      "capability": "method-appropriateness reasoning (test choice, DFT/NEB settings, MR convention, modeling/normalization choices)",
+      "maps_to_archetype": "method_appropriateness_judgment",
+      "status": "gap",
+      "covered_by": null,
+      "note": "GAP. Recurs in chemistry computation (functional/basis/k-mesh, DMC timestep, Sabatier/BEP) and stats (paired-vs-unpaired t, t-test on >2 groups -> ANOVA: wanazman#c12, zhang2025#c22, wheeler2025 chi/anova). Needs a synthesized LLM-judge verifier with a design-tag x analysis-tag rule library; advisory, calibrated, not deterministic."
+    },
+    {
+      "capability": "claim-vs-evidence support / overreach audit (interpretive conclusion broader than in-study evidence; affirming-the-null; absence-as-evidence; extrapolation-beyond-range)",
+      "maps_to_archetype": "claim_vs_evidence_support_overreach",
+      "status": "gap",
+      "covered_by": null,
+      "note": "GAP. T4, every field. e.g. gkekas2025 'superior' from null primary (#c22-23), mace 'efficiency' with no runtime table (#c23), singh2026 'bulk-dominated' with no Nyquist (#c21), water-nanodroplet nm->um extrapolation (#c21), lin2025 100% DCR framing. Synthesize an LLM-judge that anchors the claim to the enumerated evidence; route to advisory."
+    },
+    {
+      "capability": "external-literature / citation-fidelity check (cited value or fact entailed by the source; record/benchmark lookups; novelty/priority)",
+      "maps_to_archetype": "external_literature_citation_fidelity",
+      "status": "gap",
+      "covered_by": null,
+      "note": "GAP. T5 retrieval+entailment, high FP risk. Pervasive in chemistry intros (NREL records, prior PCE/PLQY) and medicine/psych comparators (MPACT/PCS07 OS, Kunda&Thagard r). Needs a retrieval-backed verifier + DOI/Crossref/Retraction-Watch resolver; keep advisory. Subsumes the retraction-status lookup the two positive-control biology notices motivate."
+    },
+    {
+      "capability": "fixed-knowledge constant / nomenclature / standard-limit / instrument-spec lookup",
+      "maps_to_archetype": "fixed_knowledge_constant_or_unit",
+      "status": "gap",
+      "covered_by": "unit_consistency (partial)",
+      "note": "PARTIAL/GAP. unit_consistency covers conversions but NOT the knowledge lookup itself (Faraday 96485 OK; SQ 33.7%; Si 1.12 eV; Au workfunction 5.1 eV mis-labeled 'electron affinity' jimenezcruz#c22; [NTf2] vs triflate araruna#c27; EDS Pd line 3.382 keV impossible; CTCAE alopecia max Grade 2 lin2025#c18). Synthesize a constants/nomenclature-DB verifier (CODATA/NIST/CTCAE/JEL)."
+    },
+    {
+      "capability": "equation / symbolic / thermodynamic-cycle recompute (algebraic reduction, series expansion, limit, cycle-from-SI-totals)",
+      "maps_to_archetype": "equation_or_mechanism_recompute",
+      "status": "gap",
+      "covered_by": null,
+      "note": "GAP, high-value in computational chemistry/physics/econ-theory. qmc-orr needs a bespoke 'cycle recompute from SI total-energy tables' template (#c2,c3,c4,c8,c10); pem-fuelcell needs sympy reductions Eq.18->20/21 and coth expansion (#c4,c5,c6); semiparametric-LP needs proof-form checks. Synthesize a symbolic-math (sympy/CAS) verifier."
+    },
+    {
+      "capability": "CI-symmetry and effect-size coherence (CI symmetric about estimate; eta_p^2/d/h/power derivable from F/t/SD/N)",
+      "maps_to_archetype": "CI_symmetry_and_effectsize_coherence",
+      "status": "gap",
+      "covered_by": "statcheck (partial)",
+      "note": "PARTIAL/GAP. statcheck does F/t<->p but NOT CI-symmetry or eta^2/d/h/power-from-stats. Catches anon2024-rr asymmetric 95% CI (#c4), wheeler2025 eta_p^2=0.28 vs F=66.96 (#c9), lin2025 power 77% inconsistent with Cohen's h=0.95 (#c5), lin2025 Clopper-Pearson CI mismatch (#c25). Small bespoke verifier; strong precision."
+    },
+    {
+      "capability": "sample-flow / df-budget / CONSORT reconciliation (recruited-excluded=analyzed; subcounts sum; per-condition n=df+1 sum to N; figure vs prose flow)",
+      "maps_to_archetype": "sample_flow_and_df_budget_consistency",
+      "status": "gap",
+      "covered_by": null,
+      "note": "GAP, clinical/social. Catches lin2025 CONSORT 7-vs-6 category split (#c10), anon2024-rr df-budget 507>506 (#c7) and within-model df 133-vs-381 (#c6), anchuri wallet-day panel 35.3M > 16.2M ceiling (#c27). A deterministic bookkeeping verifier; cheap and high-precision."
+    },
+    {
+      "capability": "reproducibility recompute from SI table / deposited data / code (SI-row counts & joins; re-estimate regressions; reliability; exclusion-% from raw counts; finite-size extrapolation)",
+      "maps_to_archetype": "reproducibility_recompute_from_SI_or_data",
+      "status": "gap",
+      "covered_by": null,
+      "note": "GAP (deferred T6 capability per DESIGN). Many concrete numbers are bound to SI/data not in the bundled PDF: zhang2025 450 SEs / 12-of-58 join (#c14), druckman2021 & goncalves2026 IRF/effect recomputes against Dataverse/code, anon2024-rr exclusion %s, mace/qmc Zenodo reruns. Needs the artifact-fetching + reproducibility-container; out of the deterministic frontier for now."
+    },
+    {
+      "capability": "integrity / provenance signal surfacing (retraction-notice detection; image-duplication; COI/AI/registration disclosure; blank-section/boilerplate; anomalous precision; data-availability gating)",
+      "maps_to_archetype": "integrity_provenance_signal",
+      "status": "gap",
+      "covered_by": null,
+      "note": "GAP, route-to-human (never scored, DESIGN §5/§16). The TWO positive-control biology papers are RETRACTION NOTICES whose only auditable content is integrity signals; a cheap document-type/retraction-notice detector is the single most useful pre-filter so the pipeline never scores a notice as a primary paper. Also: singh2026 blank DFT methodology (#c24), forensic image-duplication (needs the original figures), tortured-phrasing screen."
+    }
+  ],
+  "queue_priority_summary": {
+    "highest_value_prebuilt_already_covering_the_most_real_flags": ["prose_vs_table", "statcheck", "percent_change", "sum_check", "grim", "unit_consistency"],
+    "highest_value_to_harden_next": "figure_vs_table (figure value-extraction) — it gates the single largest block of T2 claims and the load-bearing physics figure-vs-prose contradictions; its reliability bounds corpus-wide recall",
+    "top_synthesize_gaps_by_payoff": ["sample_flow_df_budget (cheap, deterministic, catches real off-by-one/impossible-panel errors)", "CI_symmetry_and_effectsize_coherence (cheap, deterministic, catches eta^2/power/CI inconsistencies statcheck misses)", "equation_symbolic_cycle_recompute (high value in comp-chem/physics)", "fixed_knowledge_constant_nomenclature_DB (T1, deterministic-ish)"],
+    "deferred_until_artifact_access": ["reproducibility_recompute_from_SI_or_data (T6)", "external_literature_citation_fidelity (T5 retrieval)", "forensic_image_duplication (needs original figures)"],
+    "advisory_only_route_to_human": ["method_appropriateness_judgment", "claim_vs_evidence_support_overreach", "integrity_provenance_signal"]
+  }
+}

@@ -1,0 +1,184 @@
+{
+  "generated_by": "LITMUS discovery-study reducer (DESIGN §17 steps 3-4, §19). Synthesized across all 30 study/discovery/catalog-*.json against study/corpus/manifest.json. Cataloguers were blind to control_type; the reducer is not. Frequencies are claim-counts across the corpus (one claim may instantiate multiple archetypes; counts are the reducer's tallies of claims whose predicate matches the archetype FORM, not adjudicated gold).",
+  "n_catalogs_read": 30,
+  "n_archetypes": 16,
+  "frequency_rank_basis": "approximate count of catalogued claims (across all papers) whose checkable FORM matches the archetype",
+  "archetypes": [
+    {
+      "rank": 1,
+      "name": "prose_vs_table_value_disagreement",
+      "description": "A number stated in prose (abstract/body/conclusion) disagrees with, or cannot be bound to, the value in the table/figure it refers to: a transcribed value mismatch, a min/max range that excludes tabled extremes, a stat reported one way in two places, or an abstract figure with no in-text source. Includes prose-vs-figure-caption and abstract-vs-body.",
+      "tier": "T2",
+      "frequency_claims_across_corpus": 95,
+      "field_distribution": {"chemistry": 38, "medicine": 14, "psychology": 12, "economics": 10, "biology": 6, "ml": 8, "physics": 5, "all_fields_present": true},
+      "example_ids": ["medicine-lin2025-nimotuzumab-gemcitabine-pancreatic#c16", "chemistry-roy2025-transfer-hydrogenation-furfural#c4", "chemistry-araruna2025-lewis-acid-ionic-liquid-styrene#c3"],
+      "verifier_recommendation": "prebuild",
+      "prebuilt_match": "prose_vs_table"
+    },
+    {
+      "rank": 2,
+      "name": "internal_arithmetic_recompute",
+      "description": "A reported derived number (difference, ratio, percent, fold-change, sum-to-total, subscript sum, mass/mole/yield, percent-of-N, weighted average, kinematic/geometric consistency) does not equal the recomputation from its own stated inputs, or is confirmed to. The bread-and-butter T0 deterministic check; covers stoichiometry sums, percent recompute, percent-change, and table column/row totals.",
+      "tier": "T0",
+      "frequency_claims_across_corpus": 88,
+      "field_distribution": {"chemistry": 40, "economics": 12, "medicine": 10, "psychology": 9, "physics": 7, "biology": 4, "ml": 6},
+      "example_ids": ["chemistry-jana2025-co2-electroreduction-cu-zif#c1", "psychology-wheeler2025-face-interpretation-social-anxiety#c4", "chemistry-anon2026-triple-halide-perovskite-tandem#c3"],
+      "verifier_recommendation": "prebuild",
+      "prebuilt_match": "sum_check"
+    },
+    {
+      "rank": 3,
+      "name": "prose_vs_figure_value_extraction",
+      "description": "A claim about a value, ordering, peak/argmax, slope, trend, error-bar overlap, or distribution feature that lives ONLY in a figure (bar height, curve maximum, fitted slope annotation, Nyquist/IRF shape, dose-response ordering, parity-plot MAE). Requires reading numbers/relations off a plot and binding to prose. The dominant non-deterministic frontier across the corpus.",
+      "tier": "T2",
+      "frequency_claims_across_corpus": 78,
+      "field_distribution": {"chemistry": 30, "physics": 10, "economics": 8, "psychology": 8, "biology": 9, "ml": 8, "medicine": 5},
+      "example_ids": ["physics-singh2026-ultralow-thermal-conductivity#c4", "biology-zhang2025-brd4-protac-fulvestrant-breast#c12", "economics-goncalves2026-semiparametric-local-projections#c7"],
+      "verifier_recommendation": "prebuild",
+      "prebuilt_match": "figure_vs_table"
+    },
+    {
+      "rank": 4,
+      "name": "method_appropriateness_judgment",
+      "description": "Whether a stated method/analysis choice is appropriate (paired vs unpaired t-test, t-test on >2 groups where ANOVA is warranted, DFT functional/basis/k-mesh adequacy, NEB force tolerance, MR-normalization convention, post-hoc covariate adjustment, Sabatier/HSAB/BEP modeling choices, housekeeping-gene normalizer, single-timestep DMC). Calibrated reasoning, not deterministic.",
+      "tier": "T3",
+      "frequency_claims_across_corpus": 52,
+      "field_distribution": {"chemistry": 24, "medicine": 8, "psychology": 6, "economics": 5, "physics": 4, "ml": 4, "biology": 1},
+      "example_ids": ["psychology-wheeler2025-face-interpretation-social-anxiety#c1", "biology-zhang2025-brd4-protac-fulvestrant-breast#c22", "chemistry-arxiv-2606.12779-qmc-orr-adsorption-pt111#c26"],
+      "verifier_recommendation": "synthesize",
+      "prebuilt_match": null
+    },
+    {
+      "rank": 5,
+      "name": "claim_vs_evidence_support_overreach",
+      "description": "An interpretive/causal/scope conclusion is broader than the in-study evidence supports: affirming-the-null as robustness, attributing a bundle effect to one agent, 'bulk-dominated' without a Nyquist deconvolution, 'efficiency' claimed without runtime data, nm->um extrapolation, absence-of-evidence as evidence-of-absence, comparator framing that understates one's own result.",
+      "tier": "T4",
+      "frequency_claims_across_corpus": 44,
+      "field_distribution": {"chemistry": 16, "psychology": 8, "medicine": 6, "physics": 5, "economics": 4, "ml": 3, "biology": 2},
+      "example_ids": ["medicine-gkekas2025-rct-laparoscopic-supervision#c22", "chemistry-arxiv-2605.09394-mace-finetuning-catalysis#c9", "physics-singh2026-ultralow-thermal-conductivity#c22"],
+      "verifier_recommendation": "synthesize",
+      "prebuilt_match": null
+    },
+    {
+      "rank": 6,
+      "name": "statcheck_p_vs_teststatistic",
+      "description": "A reported (F or t or chi2, df, p) triple is internally inconsistent: recomputed p from the test statistic and df does not match the stated p (decision error or value error). Classic statcheck. Also covers p-from-(beta,SE) for regression stars and exact-binomial p-from-(x,n,p0).",
+      "tier": "T0",
+      "frequency_claims_across_corpus": 40,
+      "field_distribution": {"psychology": 22, "medicine": 10, "economics": 6, "biology": 2, "chemistry": 0, "physics": 0, "ml": 0},
+      "example_ids": ["psychology-anon2024-rr-group-membership-individuating#c1", "psychology-wheeler2025-face-interpretation-social-anxiety#c1", "medicine-lin2025-nimotuzumab-gemcitabine-pancreatic#c4"],
+      "verifier_recommendation": "prebuild",
+      "prebuilt_match": "statcheck"
+    },
+    {
+      "rank": 7,
+      "name": "external_literature_citation_fidelity",
+      "description": "A specific value or fact attributed to a cited source (record-efficiency, prior effect size, meta-analytic r, comparator OS/ORR, NREL chart record, lattice/elasticity benchmark, solubility, Nobel-year, prior-art priority) that must be checked against the source. T5 retrieval+entailment; higher false-positive risk.",
+      "tier": "T5",
+      "frequency_claims_across_corpus": 40,
+      "field_distribution": {"chemistry": 18, "medicine": 6, "psychology": 6, "physics": 4, "economics": 3, "ml": 1, "biology": 2},
+      "example_ids": ["chemistry-anon2026-triple-halide-perovskite-tandem#c13", "medicine-lin2025-nimotuzumab-gemcitabine-pancreatic#c28", "psychology-anon2024-rr-group-membership-individuating#c21"],
+      "verifier_recommendation": "synthesize",
+      "prebuilt_match": null
+    },
+    {
+      "rank": 8,
+      "name": "fixed_knowledge_constant_or_unit",
+      "description": "A physical constant, unit conversion, standard limit, instrument spec, characteristic energy, nomenclature, or definitional value is checked against fixed external knowledge (Faraday constant, Nernst slope, SQ limit, Si bandgap, EIP-1559 12.5%, N2 vibrational quantum, Au workfunction vs electron affinity, [NTf2] vs triflate naming, EDS X-ray line energy, QoR-15 scale range, CTCAE max grade).",
+      "tier": "T1",
+      "frequency_claims_across_corpus": 38,
+      "field_distribution": {"chemistry": 16, "physics": 6, "economics": 6, "medicine": 4, "psychology": 2, "ml": 2, "biology": 2},
+      "example_ids": ["chemistry-jimenezcruz2026-pd-prolinate-catalysis#c22", "economics-anchuri2026-gas-demand-elasticity-l1-l2#c24", "medicine-lin2025-nimotuzumab-gemcitabine-pancreatic#c18"],
+      "verifier_recommendation": "synthesize",
+      "prebuilt_match": "unit_consistency"
+    },
+    {
+      "rank": 9,
+      "name": "unit_dimensional_consistency",
+      "description": "Stated units/quantities are dimensionally inconsistent or implausible: an axis labelled in V that must be uV, a 'slope approximately unity' that is annotated 2000, E=V/d field conversion, molarity-vs-mol%, power/flow SEI, F.E. dimensional analysis, gas-target factor, block-rate ratio, BPR/discharge-volume geometry.",
+      "tier": "T0",
+      "frequency_claims_across_corpus": 30,
+      "field_distribution": {"chemistry": 14, "physics": 6, "economics": 5, "biology": 2, "medicine": 1, "ml": 1, "psychology": 1},
+      "example_ids": ["chemistry-arxiv-2606.13664-chiral-2d-perovskite-magnetotransport#c14", "physics-singh2026-ultralow-thermal-conductivity#c4", "chemistry-arxiv-2606.13399-pzt-pfn-multiferroic-photocurrent#c18"],
+      "verifier_recommendation": "prebuild",
+      "prebuilt_match": "unit_consistency"
+    },
+    {
+      "rank": 10,
+      "name": "reproducibility_recompute_from_SI_or_data",
+      "description": "A concrete number recomputable only from the SI tables, deposited dataset, or code (SI-table row count / join cardinality, KM IRF, regression re-estimate, Cronbach alpha, exclusion-% from raw counts, parity-plot MAE from data, N^-5/4 finite-size extrapolation needing electron counts). Deferred T6 capability; needs the artifact, not just the PDF.",
+      "tier": "T6",
+      "frequency_claims_across_corpus": 30,
+      "field_distribution": {"chemistry": 10, "economics": 8, "psychology": 6, "medicine": 3, "ml": 2, "physics": 1, "biology": 0},
+      "example_ids": ["psychology-druckman2021-rr-elite-influence-coronavirus#c14", "biology-zhang2025-brd4-protac-fulvestrant-breast#c14", "psychology-bai2025-acute-exercise-executive-function#c17"],
+      "verifier_recommendation": "synthesize",
+      "prebuilt_match": null
+    },
+    {
+      "rank": 11,
+      "name": "cross_table_or_cross_section_value_conflict",
+      "description": "The SAME quantity reported in two tables/sections/figures takes two different values, or a value is reused in the wrong slot (NMI 88.38 vs 83.88 for one model+dataset; ANOVA error-df 133 vs 381 in one model; F=1.58 copied into two rows; HCO/COH reference-base confusion; emotional-state IQR body vs table; Tg/lattice value reused across rows).",
+      "tier": "T2",
+      "frequency_claims_across_corpus": 24,
+      "field_distribution": {"ml": 4, "psychology": 6, "medicine": 4, "chemistry": 6, "economics": 2, "physics": 1, "biology": 1},
+      "example_ids": ["ml-xu2026-scllm-cross-modal-clustering#c5", "psychology-anon2024-rr-group-membership-individuating#c6", "chemistry-oztoksoy2025-melt-strength-polypropylene#c2"],
+      "verifier_recommendation": "prebuild",
+      "prebuilt_match": "prose_vs_table"
+    },
+    {
+      "rank": 12,
+      "name": "equation_or_mechanism_recompute",
+      "description": "A symbolic/algebraic identity, equation reduction, series expansion, balanced reaction, thermodynamic-cycle reconstruction, or limit is checked for correctness (coth small-x expansion, Eq.18->20/21 reductions, CHE linear-shift ladder, mass/charge balance of dissociation, DFT cycle recompute from SI total energies, Riesz-representer/double-robustness form). Largely chemistry/physics/econ-theory; deterministic but needs a symbolic engine.",
+      "tier": "T0",
+      "frequency_claims_across_corpus": 22,
+      "field_distribution": {"chemistry": 14, "physics": 3, "economics": 4, "biology": 1, "ml": 0, "medicine": 0, "psychology": 0},
+      "example_ids": ["chemistry-arxiv-2606.12999-pem-fuelcell-cathode-impedance#c5", "chemistry-arxiv-2606.12779-qmc-orr-adsorption-pt111#c2", "chemistry-jana2025-co2-electroreduction-cu-zif#c8"],
+      "verifier_recommendation": "synthesize",
+      "prebuilt_match": null
+    },
+    {
+      "rank": 13,
+      "name": "value_bounds_plausibility",
+      "description": "A reported value violates a hard bound or is physically impossible: an SD of 0.97 on a [0,1] accuracy mean; a CTCAE Grade-3 alopecia that does not exist; a wallet-day panel obs exceeding wallets x periods; a Clopper-Pearson CI narrower than exact; a within-group df budget summing above N; a percentage pair summing to 99; a 'hard magnet' Hc that is 1-2 orders too low.",
+      "tier": "T2",
+      "frequency_claims_across_corpus": 20,
+      "field_distribution": {"psychology": 6, "medicine": 5, "economics": 4, "chemistry": 3, "biology": 0, "ml": 1, "physics": 1},
+      "example_ids": ["psychology-bai2025-acute-exercise-executive-function#c11", "economics-anchuri2026-gas-demand-elasticity-l1-l2#c27", "medicine-lin2025-nimotuzumab-gemcitabine-pancreatic#c18"],
+      "verifier_recommendation": "prebuild",
+      "prebuilt_match": "grim"
+    },
+    {
+      "rank": 14,
+      "name": "CI_symmetry_and_effectsize_coherence",
+      "description": "A reported confidence interval is not symmetric about its point estimate, or an effect size (Cohen's d, partial eta^2, Cohen's h, post-hoc power) is inconsistent with the F/t/SD/N it should derive from (eta_p^2 vs F mismatch; CI half-width implying a different df than the p; d_av vs d_z ambiguity; power 77% inconsistent with the stated h=0.95).",
+      "tier": "T0",
+      "frequency_claims_across_corpus": 18,
+      "field_distribution": {"psychology": 8, "medicine": 6, "economics": 2, "biology": 1, "chemistry": 1, "ml": 0, "physics": 0},
+      "example_ids": ["psychology-anon2024-rr-group-membership-individuating#c4", "medicine-lin2025-nimotuzumab-gemcitabine-pancreatic#c5", "psychology-wheeler2025-face-interpretation-social-anxiety#c9"],
+      "verifier_recommendation": "synthesize",
+      "prebuilt_match": null
+    },
+    {
+      "rank": 15,
+      "name": "sample_flow_and_df_budget_consistency",
+      "description": "Participant/sample bookkeeping must reconcile: recruited - excluded = analyzed; exclusion-reason subcounts sum to the total; per-condition n (=df+1) sum to N; CONSORT figure matches prose; condition Ns sum to group total; abstract 'recruited' vs methods 'analyzed'. Catches off-by-one df typos and figure-vs-text flow conflicts.",
+      "tier": "T0",
+      "frequency_claims_across_corpus": 16,
+      "field_distribution": {"psychology": 5, "medicine": 6, "economics": 2, "chemistry": 1, "ml": 1, "biology": 1, "physics": 0},
+      "example_ids": ["medicine-lin2025-nimotuzumab-gemcitabine-pancreatic#c10", "psychology-anon2024-rr-group-membership-individuating#c7", "medicine-zhou2025-esketamine-low-opioid-anaesthesia#c13"],
+      "verifier_recommendation": "synthesize",
+      "prebuilt_match": null
+    },
+    {
+      "rank": 16,
+      "name": "integrity_provenance_signal",
+      "description": "A surfaced (route-to-human, never scored) integrity/transparency signal: retraction-notice document-type detection, declared image/data duplication, COI/funding disclosure, AI-use disclosure, registered-report deviation, data-availability gating ('upon request' vs deposited), blank methodology section, tortured/boilerplate phrasing ('clean version', 'final sharp exercises'), unassigned major spectral peaks, anomalous reported precision.",
+      "tier": "T7",
+      "frequency_claims_across_corpus": 28,
+      "field_distribution": {"chemistry": 8, "biology": 8, "psychology": 5, "medicine": 3, "physics": 2, "economics": 2, "ml": 0},
+      "example_ids": ["biology-anon-retracted-oblongifolin-gem-resistance#c7", "physics-singh2026-ultralow-thermal-conductivity#c24", "chemistry-arxiv-2605.09394-mace-finetuning-catalysis#c35"],
+      "verifier_recommendation": "synthesize",
+      "prebuilt_match": null
+    }
+  ]
+}
