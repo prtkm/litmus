@@ -30,20 +30,20 @@ export function PaperCard({ paper }: { paper: PaperSummary }) {
         </p>
       )}
 
+      <p className="mt-2 text-xs" style={{ color: hasFlags ? "var(--fail)" : "var(--ok)" }}>
+        {hasFlags
+          ? `${paper.flag_count} discrepancy${paper.flag_count === 1 ? "" : " checks"} you can re-run`
+          : "Nothing flagged by the automated checks"}
+      </p>
+
       <div className="mt-3 flex flex-wrap items-center gap-1.5">
-        {paper.trust_tiers.length > 0 ? (
-          paper.trust_tiers.map((t) => <TrustTierBadge key={t} tier={t} />)
-        ) : (
-          <span
-            className="text-xs"
-            style={{ color: hasFlags ? "var(--fail)" : "var(--ok)" }}
-          >
-            {hasFlags ? "" : "No confirmed flags"}
-          </span>
-        )}
+        {paper.trust_tiers.map((t) => (
+          <TrustTierBadge key={t} tier={t} />
+        ))}
         {paper.routed_count > 0 && (
           <span className="text-xs" style={{ color: "var(--faint)" }}>
-            · {paper.routed_count} routed to human
+            {paper.trust_tiers.length > 0 ? "· " : ""}
+            {paper.routed_count} for a human
           </span>
         )}
       </div>

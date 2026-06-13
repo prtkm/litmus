@@ -9,13 +9,16 @@ import { useState } from "react";
 import type { Finding } from "@/lib/types";
 import { SeverityBadge, StatusBadge, TrustTierBadge } from "@/components/badges";
 import { RecomputeRunner } from "@/components/recompute-runner";
-import { VERIFIER_KIND_LABEL } from "@/lib/labels";
+import { VERIFIER_KIND_LABEL, epistemicTier } from "@/lib/labels";
 
 export function FindingCard({ finding }: { finding: Finding }) {
   const ev = finding.evidence ?? {};
   const script = ev.recompute_script ?? "";
   const expected = ev.expected_output ?? "";
   const deps = ev.script_dependencies ?? [];
+  const tier = epistemicTier(
+    (finding.details?.epistemic_tier as string | undefined) ?? null,
+  );
   const [showScript, setShowScript] = useState(false);
 
   return (
@@ -28,9 +31,20 @@ export function FindingCard({ finding }: { finding: Finding }) {
           <StatusBadge status={finding.status} />
           {finding.severity && <SeverityBadge severity={finding.severity} />}
           <TrustTierBadge tier={finding.trust_tier} />
-          <span className="ml-auto font-mono text-[11px]" style={{ color: "var(--faint)" }}>
-            {finding.verifier_id}
-            {" · "}
+          {tier && (
+            <span
+              className="text-[11px]"
+              style={{ color: "var(--faint)" }}
+              title={`${tier.hint} (tier ${tier.code})`}
+            >
+              {tier.phrase} check
+            </span>
+          )}
+          <span
+            className="ml-auto font-mono text-[11px]"
+            style={{ color: "var(--faint)" }}
+            title={`verifier ${finding.verifier_id} · ${VERIFIER_KIND_LABEL[finding.verifier_kind] ?? finding.verifier_kind}`}
+          >
             {VERIFIER_KIND_LABEL[finding.verifier_kind] ?? finding.verifier_kind}
           </span>
         </div>

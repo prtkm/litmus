@@ -42,10 +42,16 @@ function Pill({
   );
 }
 
+// Compose the hover tooltip: plain-language hint, with the precise machine code
+// kept available for anyone who wants it (owner ask — code as tooltip, not label).
+function tip(hint: string | undefined, code: string): string {
+  return hint ? `${hint} (code: ${code})` : `code: ${code}`;
+}
+
 export function TrustTierBadge({ tier }: { tier: TrustTier }) {
   const s = TIER_STYLE[tier];
   return (
-    <Pill fg={s.fg} bg={s.bg} border={s.border} title={s.hint} dot>
+    <Pill fg={s.fg} bg={s.bg} border={s.border} title={tip(s.hint, s.code)} dot>
       {s.label}
     </Pill>
   );
@@ -54,7 +60,7 @@ export function TrustTierBadge({ tier }: { tier: TrustTier }) {
 export function StatusBadge({ status }: { status: FindingStatus }) {
   const s = STATUS_STYLE[status];
   return (
-    <Pill fg={s.fg} bg={s.bg} border={s.border}>
+    <Pill fg={s.fg} bg={s.bg} border={s.border} title={tip(s.hint, s.code)}>
       {s.label}
     </Pill>
   );
@@ -63,7 +69,7 @@ export function StatusBadge({ status }: { status: FindingStatus }) {
 export function SeverityBadge({ severity }: { severity: Severity }) {
   const s = SEVERITY_STYLE[severity];
   return (
-    <Pill fg={s.fg} bg={s.bg} border={s.border} title={s.hint}>
+    <Pill fg={s.fg} bg={s.bg} border={s.border} title={tip(s.hint, s.code)}>
       {s.label}
     </Pill>
   );

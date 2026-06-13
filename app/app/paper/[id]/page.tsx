@@ -18,6 +18,7 @@ import { notFound } from "next/navigation";
 import { getPaper, usingLiveData } from "@/lib/data";
 import { FindingCard } from "@/components/finding-card";
 import { SeverityBadge, StatusBadge, TrustTierBadge } from "@/components/badges";
+import { routedBucket } from "@/lib/labels";
 import type { Finding, RoutedToHuman, DroppedFlag } from "@/lib/types";
 
 // Read fresh on each request when Supabase is live; fixtures are static.
@@ -85,15 +86,23 @@ export default async function PaperPage({
           <span>{usingLiveData() ? "live (Supabase)" : "local fixture"}</span>
         </div>
 
+        <p
+          className="max-w-3xl rounded-lg border p-3 text-sm leading-relaxed"
+          style={{
+            borderColor: flags.length ? "var(--fail-border)" : "var(--pass-border)",
+            background: flags.length ? "var(--fail-bg)" : "var(--pass-bg)",
+            color: "var(--foreground)",
+          }}
+        >
+          {plainVerdict({
+            flags: flags.length,
+            routed: routed.length,
+            abstained: abstained.length,
+          })}
+        </p>
+
         {headline && (
-          <p
-            className="max-w-3xl rounded-lg border p-3 text-sm leading-relaxed"
-            style={{
-              borderColor: flags.length ? "var(--fail-border)" : "var(--pass-border)",
-              background: flags.length ? "var(--fail-bg)" : "var(--pass-bg)",
-              color: "var(--foreground)",
-            }}
-          >
+          <p className="max-w-3xl text-xs leading-relaxed" style={{ color: "var(--muted)" }}>
             {headline}
           </p>
         )}
@@ -108,13 +117,13 @@ export default async function PaperPage({
 
       {/* 1. CHECKABLE FLAGS — the heart of the page. */}
       <Section
-        title="Checkable flags"
-        blurb="Each flag carries a trust tier and an executable recompute script. Press ▶ to rerun it in your browser and confirm the verdict for yourself."
+        title="Discrepancies you can re-run"
+        blurb="Each one comes with the exact script LITMUS used. Press ▶ to re-run it in your browser and confirm the result for yourself."
       >
         {flags.length === 0 ? (
           <Empty>
-            No confirmed flags. The deterministic and calibrated verifiers that
-            ran found nothing to flag.
+            Nothing flagged. The checks that ran — recomputing the paper's own
+            numbers and consistency — found no discrepancy.
           </Empty>
         ) : (
           <div className="space-y-5">
@@ -128,8 +137,8 @@ export default async function PaperPage({
       {/* Non-fail findings (passes / inconclusive that were still surfaced). */}
       {otherFindings.length > 0 && (
         <Section
-          title="Other verifier results"
-          blurb="Verifiers that ran without raising a confirmed flag."
+          title="Other checks that ran"
+          blurb="Checks that ran without turning up a discrepancy."
         >
           <div className="space-y-3">
             {otherFindings.map((f) => (
@@ -139,52 +148,37 @@ export default async function PaperPage({
         </Section>
       )}
 
-      {/* 2. ROUTED TO HUMAN — surfaced, explicitly NOT scored. */}
-      <Section
-        title="Routed to a human"
-        notScored
-        blurb="Subjective dimensions — significance, novelty, framing. LITMUS surfaces these for a human reviewer and deliberately does not render a verdict (DESIGN §3.5)."
-      >
-        {routed.length === 0 ? (
-          <Empty>Nothing was routed to a human for this paper.</Empty>
-        ) : (
-          <div className="space-y-3">
-            {routed.map((r, i) => (
-              <RoutedRow key={`${r.dimension}-${i}`} routed={r} />
-            ))}
-          </div>
-        )}
-      </Section>
-
-      {/* 3. ABSTAINED — declined to guess. */}
-      {abstained.length > 0 && (
+      {/* 2. FOR A HUMAN — surfaced, explicitly NOT scored. */}
+      {routed.length > 0 && (
         <Section
-          title="Abstained"
-          blurb="Verifiers that could not reach a sound verdict on the available evidence and declined to guess (DESIGN §3.4)."
+          title="Flagged for a human reviewer"
+          notScored
+          blurb="LITMUS does not score these. They are points a person should weigh in on, not problems found in the paper."
         >
-          <div className="space-y-3">
-            {abstained.map((f) => (
-              <AbstainedRow key={f.verifier_id} finding={f} />
-            ))}
-          </div>
+          <RoutedGroups routed={routed} />
         </Section>
       )}
 
-      {/* 4. DROPPED-FLAG LOG — self-caught false positives. */}
-      <Section
-        title="Dropped-flag log"
-        blurb="Candidate flags a fresh-context confirmation pass re-read and retracted as false positives (DESIGN §13). Shown for transparency — these are NOT findings against the paper."
-      >
-        {dropped.length === 0 ? (
-          <Empty>No candidate flags were dropped on re-read.</Empty>
-        ) : (
+      {/* 3. OUTSIDE AUTOMATED CHECKS — one quiet line, not a wall. These are NOT
+          findings against the paper, so we de-emphasise and collapse them. */}
+      {abstained.length > 0 && (
+        <OutsideChecks items={abstained} />
+      )}
+
+      {/* 4. DROPPED-FLAG LOG — self-caught false positives. Shown only when
+          there is something to show; otherwise it is just noise. */}
+      {dropped.length > 0 && (
+        <Section
+          title="Caught and dropped on re-read"
+          blurb="Possible issues that a second, fresh read re-checked and withdrew as false alarms. Shown for transparency — these are NOT problems with the paper."
+        >
           <div className="space-y-3">
             {dropped.map((d, i) => (
               <DroppedRow key={`${d.finding.verifier_id}-${i}`} dropped={d} />
             ))}
           </div>
-        )}
-      </Section>
+        </Section>
+      )}
     </div>
   );
 }
@@ -201,10 +195,10 @@ function CountStrip({
   dropped: number;
 }) {
   const items: { label: string; value: number; tone: string }[] = [
-    { label: flags === 1 ? "confirmed flag" : "confirmed flags", value: flags, tone: flags ? "var(--fail)" : "var(--ok)" },
-    { label: "routed to human", value: routed, tone: "var(--tier-human)" },
-    { label: "abstained", value: abstained, tone: "var(--inconclusive)" },
-    { label: dropped === 1 ? "dropped flag" : "dropped flags", value: dropped, tone: "var(--faint)" },
+    { label: flags === 1 ? "discrepancy" : "discrepancies", value: flags, tone: flags ? "var(--fail)" : "var(--ok)" },
+    { label: "for a human", value: routed, tone: "var(--tier-human)" },
+    { label: "outside automated checks", value: abstained, tone: "var(--inconclusive)" },
+    { label: dropped === 1 ? "dropped on re-read" : "dropped on re-read", value: dropped, tone: "var(--faint)" },
   ];
   return (
     <div className="flex flex-wrap gap-2">
@@ -222,6 +216,44 @@ function CountStrip({
       ))}
     </div>
   );
+}
+
+// One plain-English sentence at the top of the page, built from the report's
+// own counts. Leads with what LITMUS could re-run, then what needs a person,
+// then what fell outside the automated checks.
+function plainVerdict({
+  flags,
+  routed,
+  abstained,
+}: {
+  flags: number;
+  routed: number;
+  abstained: number;
+}): string {
+  const parts: string[] = [];
+
+  parts.push(
+    flags === 0
+      ? "LITMUS re-ran its checks on this paper and found no discrepancy you'd need to act on"
+      : `LITMUS re-ran its checks on this paper and confirmed ${flags} discrepanc${
+          flags === 1 ? "y" : "ies"
+        } you can re-run yourself`,
+  );
+
+  if (routed > 0) {
+    parts.push(`${routed} point${routed === 1 ? "" : "s"} need a human`);
+  }
+
+  if (abstained > 0) {
+    parts.push(
+      `${abstained} claim${abstained === 1 ? "" : "s"} fall outside the current automated checks`,
+    );
+  }
+
+  // Join as a single sentence: "A; B; and C."
+  if (parts.length === 1) return parts[0] + ".";
+  const last = parts[parts.length - 1];
+  return parts.slice(0, -1).join("; ") + "; and " + last + ".";
 }
 
 function Section({
@@ -295,6 +327,68 @@ function MutedFindingRow({ finding }: { finding: Finding }) {
   );
 }
 
+// Split the routed items into genuine integrity screening (T7) and subjective
+// dimensions (T8). Only show the two-bucket structure when BOTH are present;
+// otherwise render a flat, compact list so the section never dominates.
+function RoutedGroups({ routed }: { routed: RoutedToHuman[] }) {
+  const integrity = routed.filter((r) => routedBucket(r.dimension) === "integrity");
+  const subjective = routed.filter((r) => routedBucket(r.dimension) === "subjective");
+  const bothPresent = integrity.length > 0 && subjective.length > 0;
+
+  if (!bothPresent) {
+    return (
+      <div className="space-y-3">
+        {routed.map((r, i) => (
+          <RoutedRow key={`${r.dimension}-${i}`} routed={r} />
+        ))}
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-5">
+      <RoutedSubgroup
+        heading="Integrity screening"
+        note="Automated screening signals a person should look at — not a verdict."
+        items={integrity}
+      />
+      <RoutedSubgroup
+        heading="Judgment calls"
+        note="Significance, novelty, framing — questions for the field, not arithmetic."
+        items={subjective}
+      />
+    </div>
+  );
+}
+
+function RoutedSubgroup({
+  heading,
+  note,
+  items,
+}: {
+  heading: string;
+  note: string;
+  items: RoutedToHuman[];
+}) {
+  return (
+    <div>
+      <div className="mb-2">
+        <span className="text-xs font-semibold" style={{ color: "var(--tier-human)" }}>
+          {heading}
+        </span>
+        <span className="ml-2 text-xs" style={{ color: "var(--faint)" }}>
+          {note}
+        </span>
+      </div>
+      <div className="space-y-3">
+        {items.map((r, i) => (
+          <RoutedRow key={`${r.dimension}-${i}`} routed={r} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function RoutedRow({ routed }: { routed: RoutedToHuman }) {
   return (
     <div
@@ -335,33 +429,51 @@ function RoutedRow({ routed }: { routed: RoutedToHuman }) {
   );
 }
 
-function AbstainedRow({ finding }: { finding: Finding }) {
+// The old "Abstained" wall, collapsed to a single quiet, muted line. These are
+// NOT findings against the paper — they are claims the current automated checks
+// don't cover yet. De-emphasised, click-to-expand for anyone who wants detail.
+function OutsideChecks({ items }: { items: Finding[] }) {
+  const n = items.length;
+  return (
+    <details className="group mt-2">
+      <summary
+        className="flex cursor-pointer list-none items-center gap-2 text-xs leading-relaxed"
+        style={{ color: "var(--faint)" }}
+      >
+        <span aria-hidden className="transition-transform group-open:rotate-90">
+          ›
+        </span>
+        <span>
+          {n} claim{n === 1 ? "" : "s"} fall outside the current automated checks.
+          Not problems with the paper — just things LITMUS can't verify on its
+          own yet.
+        </span>
+      </summary>
+      <div className="mt-3 space-y-2 pl-4">
+        {items.map((f) => (
+          <OutsideRow key={f.verifier_id} finding={f} />
+        ))}
+      </div>
+    </details>
+  );
+}
+
+function OutsideRow({ finding }: { finding: Finding }) {
   const ev = finding.evidence ?? {};
   return (
     <div
-      className="rounded-lg border p-4"
-      style={{ borderColor: "var(--inconclusive-border)", background: "var(--inconclusive-bg)" }}
+      className="rounded-md border p-3 text-xs leading-relaxed"
+      style={{ borderColor: "var(--border)", background: "var(--surface-2)", color: "var(--muted)" }}
     >
-      <div className="flex flex-wrap items-center gap-2">
-        <StatusBadge status={finding.status} />
-        <TrustTierBadge tier={finding.trust_tier} />
-        <span className="ml-auto font-mono text-[11px]" style={{ color: "var(--faint)" }}>
-          {finding.verifier_id}
-        </span>
-      </div>
-      {finding.message && (
-        <p className="mt-2 text-sm leading-relaxed" style={{ color: "var(--foreground)" }}>
-          {finding.message}
-        </p>
-      )}
       {ev.quote && (
         <blockquote
-          className="mt-3 border-l-2 pl-3 text-sm italic leading-relaxed"
-          style={{ borderColor: "var(--border-strong)", color: "var(--muted)" }}
+          className="border-l-2 pl-3 italic"
+          style={{ borderColor: "var(--border-strong)" }}
         >
           “{ev.quote}”
         </blockquote>
       )}
+      {finding.message && <p className={ev.quote ? "mt-2" : ""}>{finding.message}</p>}
     </div>
   );
 }
