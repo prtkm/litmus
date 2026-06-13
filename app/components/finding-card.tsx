@@ -9,7 +9,7 @@ import { useState } from "react";
 import type { Finding } from "@/lib/types";
 import { SeverityBadge, StatusBadge, TrustTierBadge } from "@/components/badges";
 import { RecomputeRunner } from "@/components/recompute-runner";
-import { VERIFIER_KIND_LABEL, epistemicTier } from "@/lib/labels";
+import { verifierKindLabel, epistemicTier } from "@/lib/labels";
 
 export function FindingCard({ finding }: { finding: Finding }) {
   const ev = finding.evidence ?? {};
@@ -43,9 +43,9 @@ export function FindingCard({ finding }: { finding: Finding }) {
           <span
             className="ml-auto font-mono text-[11px]"
             style={{ color: "var(--faint)" }}
-            title={`verifier ${finding.verifier_id} · ${VERIFIER_KIND_LABEL[finding.verifier_kind] ?? finding.verifier_kind}`}
+            title={`verifier ${finding.verifier_id} · ${verifierKindLabel(finding.verifier_kind)}`}
           >
-            {VERIFIER_KIND_LABEL[finding.verifier_kind] ?? finding.verifier_kind}
+            {verifierKindLabel(finding.verifier_kind)}
           </span>
         </div>
 
