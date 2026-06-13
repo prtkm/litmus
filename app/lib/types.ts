@@ -13,6 +13,18 @@ export type TrustTier =
 
 export type VerifierKind = "prebuilt" | "templated" | "synthesized" | "assisted";
 
+// Issue categories for the at-a-glance summary (DESIGN §4, §5). BOTH the
+// deterministic catch (quantitative) and the non-deterministic review
+// (overclaim / method / plausibility / integrity / subjective) are first-class —
+// the card and verdict show a count per category, never one undifferentiated number.
+export type IssueCategory =
+  | "quantitative" // deterministic, reproducible numeric error (a FAIL finding)
+  | "overclaim" // claim reaches past its evidence (T4)
+  | "method" // method appropriateness (T3)
+  | "plausibility" // domain-plausibility concern
+  | "integrity" // research-integrity screening signal (T7)
+  | "subjective"; // significance / novelty — not scored (T8)
+
 // Severity A (most severe) → C. Null only on non-fail findings.
 export type Severity = "A" | "B" | "C";
 
@@ -80,7 +92,11 @@ export interface PaperSummary {
   field: string;
   doi?: string | null;
   status: PaperStatus;
-  flag_count: number; // # of fail findings
+  flag_count: number; // # of fail findings (= categories.quantitative)
+  // Counts per issue category — the card renders these as "N quantitative · N overclaims · …"
+  categories: Record<IssueCategory, number>;
+  passes: number; // deterministic checks that passed
+  reviewed_clean: number; // claims a reviewer read and found nothing wrong with
   trust_tiers: TrustTier[]; // distinct tiers present across findings
   routed_count: number;
 }

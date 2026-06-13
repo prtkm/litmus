@@ -30,7 +30,14 @@ import { notFound } from "next/navigation";
 import { getPaper, usingLiveData } from "@/lib/data";
 import { FindingCard } from "@/components/finding-card";
 import { SeverityBadge, StatusBadge, TrustTierBadge } from "@/components/badges";
-import { dimensionLabel, routedGroup } from "@/lib/labels";
+import {
+  dimensionLabel,
+  routedGroup,
+  isReviewedClean,
+  categorize,
+  CATEGORY_META,
+  type AuditCategorization,
+} from "@/lib/labels";
 import type {
   Finding,
   RoutedToHuman,
@@ -85,11 +92,19 @@ export default async function PaperPage({
   // Routed items split into the advisory concerns (→ band 2) and the items a
   // person must judge (→ tail). routedGroup() already does this split.
   const routed = report.routed_to_human ?? [];
-  const advisoryRouted = routed.filter((r) => routedGroup(r.dimension) === "advisory");
+  const advisoryAll = routed.filter((r) => routedGroup(r.dimension) === "advisory");
+  // Split advisory items into GENUINE concerns vs "reviewed, nothing wrong"
+  // transparency notes — the latter are COUNTED, not listed, so a clean claim
+  // never inflates the concern list (the exact noise the owner flagged).
+  const advisoryRouted = advisoryAll.filter((r) => !isReviewedClean(r.note));
+  const reviewedCleanRouted = advisoryAll.length - advisoryRouted.length;
   const humanRouted = routed.filter((r) => routedGroup(r.dimension) === "human");
 
-  // Band 2's reviewer-concern count = advisory findings + advisory routed items.
+  // Band 2's reviewer-concern count = advisory findings + GENUINE advisory routed items.
   const reviewerConcerns = reasonedFindings.length + advisoryRouted.length;
+
+  // Category breakdown for the at-a-glance strip (deterministic + non-deterministic).
+  const cat = categorize(report);
 
   const abstained = report.abstained ?? [];
   const dropped = report.dropped_flags ?? [];
@@ -160,13 +175,10 @@ export default async function PaperPage({
           </p>
         )}
 
-        <CountStrip
+        <CategoryStrip
+          cat={cat}
           verified={deterministic.length}
-          flagged={checkableFlags.length}
-          concerns={reviewerConcerns}
-          human={humanRouted.length}
-          abstained={abstained.length}
-          dropped={dropped.length}
+          reviewedClean={cat.reviewedClean + reviewedCleanRouted}
         />
       </header>
 
@@ -233,6 +245,11 @@ export default async function PaperPage({
             {advisoryRouted.map((r, i) => (
               <ReviewConcernRow key={`${r.dimension}-${i}`} routed={r} />
             ))}
+            {reviewedCleanRouted > 0 && (
+              <p className="pt-1 text-[11px]" style={{ color: "var(--faint)" }}>
+                + {reviewedCleanRouted} more claim{reviewedCleanRouted === 1 ? "" : "s"} reviewed with no concern.
+              </p>
+            )}
           </div>
         </Band>
       )}
@@ -275,79 +292,57 @@ export default async function PaperPage({
   );
 }
 
-// The count strip mirrors the page's bands so the split is legible at a glance:
-//   · verified-by-recomputation (with how many flagged)  — band 1, blue
-//   · reviewer concerns                                  — band 2, amber
-//   · routed to a human                                  — tail, slate
-//   · outside automated checks / dropped                 — quiet tail
-// Each chip's accent matches its band's trust-tier color (DESIGN §3.6).
-function CountStrip({
+// The category strip summarizes the audit by ISSUE CATEGORY so both kinds of
+// value are legible at a glance: the deterministic catches ("quantitative
+// issues") AND the non-deterministic review ("overclaims" / "method concerns" /
+// "integrity signals" / "subjective"). Reviewed-clean transparency notes are NOT
+// shown as concerns — they roll into the quiet "reviewed, clean" footer line.
+function CategoryStrip({
+  cat,
   verified,
-  flagged,
-  concerns,
-  human,
-  abstained,
-  dropped,
+  reviewedClean,
 }: {
+  cat: AuditCategorization;
   verified: number;
-  flagged: number;
-  concerns: number;
-  human: number;
-  abstained: number;
-  dropped: number;
+  reviewedClean: number;
 }) {
-  const items: { key: string; label: string; value: number; tone: string }[] = [
-    {
-      key: "verified",
-      label: verified === 1 ? "check verified by recomputation" : "checks verified by recomputation",
-      value: verified,
-      tone: "var(--tier-deterministic)",
-    },
-    {
-      key: "flagged",
-      label: flagged === 1 ? "flagged" : "flagged",
-      value: flagged,
-      tone: flagged ? "var(--fail)" : "var(--ok)",
-    },
-    {
-      key: "concerns",
-      label: concerns === 1 ? "reviewer concern" : "reviewer concerns",
-      value: concerns,
-      tone: "var(--tier-advisory)",
-    },
-    {
-      key: "human",
-      label: "routed to a human",
-      value: human,
-      tone: "var(--tier-human)",
-    },
-    {
-      key: "abstained",
-      label: "outside automated checks",
-      value: abstained,
-      tone: "var(--inconclusive)",
-    },
-    {
-      key: "dropped",
-      label: "dropped on re-read",
-      value: dropped,
-      tone: "var(--faint)",
-    },
-  ];
   return (
-    <div className="flex flex-wrap gap-2">
-      {items.map((it) => (
-        <span
-          key={it.key}
-          className="inline-flex items-baseline gap-1.5 rounded-md border px-2.5 py-1 text-xs"
-          style={{ borderColor: "var(--border)", background: "var(--surface)" }}
-        >
-          <span className="font-semibold" style={{ color: it.tone }}>
-            {it.value}
+    <div className="space-y-2">
+      <div className="flex flex-wrap gap-2">
+        {cat.order.length === 0 ? (
+          <span
+            className="inline-flex items-center rounded-md border px-2.5 py-1 text-xs"
+            style={{ borderColor: "var(--pass-border)", background: "var(--pass-bg)", color: "var(--ok)" }}
+          >
+            No issues — the checks ran and the review found no concerns.
           </span>
-          <span style={{ color: "var(--muted)" }}>{it.label}</span>
-        </span>
-      ))}
+        ) : (
+          cat.order.map((c) => {
+            const m = CATEGORY_META[c];
+            return (
+              <span
+                key={c}
+                className="inline-flex items-baseline gap-1.5 rounded-md border px-2.5 py-1 text-xs"
+                style={{ borderColor: m.border, background: m.bg }}
+                title={m.blurb}
+              >
+                <span className="font-semibold" style={{ color: m.fg }}>
+                  {cat.counts[c]}
+                </span>
+                <span style={{ color: "var(--muted)" }}>
+                  {cat.counts[c] === 1 ? m.one : m.many}
+                </span>
+              </span>
+            );
+          })
+        )}
+      </div>
+      <p className="text-[11px]" style={{ color: "var(--faint)" }}>
+        {verified} check{verified === 1 ? "" : "s"} verified by recomputation
+        {reviewedClean > 0
+          ? ` · ${reviewedClean} claim${reviewedClean === 1 ? "" : "s"} reviewed, clean`
+          : ""}
+      </p>
     </div>
   );
 }

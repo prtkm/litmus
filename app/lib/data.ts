@@ -9,6 +9,7 @@
 import type { AuditReport, PaperStatus, PaperSummary, TrustTier } from "@/lib/types";
 import { FIXTURES, FIXTURE_BY_ID } from "@/lib/fixtures";
 import { getSupabase, isSupabaseConfigured, type PaperRow } from "@/lib/supabase";
+import { categorize } from "@/lib/labels";
 
 const TIER_ORDER: TrustTier[] = [
   "deterministic_confirmed",
@@ -30,6 +31,7 @@ export function summarize(report: AuditReport): PaperSummary {
   const status = ((report.summary as Record<string, unknown> | undefined)?.status ??
     "done") as PaperStatus;
 
+  const cat = categorize(report);
   return {
     id: report.paper_id,
     title: (meta.title as string) ?? report.paper_id,
@@ -37,6 +39,9 @@ export function summarize(report: AuditReport): PaperSummary {
     doi: (meta.doi as string) ?? null,
     status,
     flag_count: flags.length,
+    categories: cat.counts,
+    passes: cat.passes,
+    reviewed_clean: cat.reviewedClean,
     trust_tiers,
     routed_count: (report.routed_to_human ?? []).length,
   };

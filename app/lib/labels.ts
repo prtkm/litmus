@@ -6,7 +6,7 @@
 // value, the Tn epistemic tier) is kept as `code`/`hint` so it can ride along as
 // a hover `title=` tooltip — never as the visible label on a card.
 
-import type { FindingStatus, Severity, TrustTier, PaperStatus } from "@/lib/types";
+import type { FindingStatus, Severity, TrustTier, PaperStatus, IssueCategory } from "@/lib/types";
 
 interface Style {
   label: string; // plain-language, shown to the reader
@@ -303,4 +303,95 @@ export const VERIFIER_KIND_LABEL: Record<string, string> = {
 export function verifierKindLabel(kind: string | null | undefined): string {
   if (!kind) return "verifier";
   return VERIFIER_KIND_LABEL[kind] ?? `${humanize(kind)} verifier`;
+}
+
+// --- Issue categorization (DESIGN §4, §5) ------------------------------------
+// Summarize an audit by CATEGORY so both the deterministic catch and the
+// non-deterministic review are legible at a glance — "N quantitative issues ·
+// N overclaims · N method concerns" — instead of one undifferentiated number.
+
+export const CATEGORY_META: Record<
+  IssueCategory,
+  { one: string; many: string; blurb: string; kind: "deterministic" | "review"; fg: string; bg: string; border: string }
+> = {
+  quantitative: { one: "quantitative issue", many: "quantitative issues", blurb: "A recomputed numeric error — re-run the script yourself to reproduce it.", kind: "deterministic", fg: "var(--fail)", bg: "var(--fail-bg)", border: "var(--fail-border)" },
+  overclaim: { one: "overclaim", many: "overclaims", blurb: "The claim reaches further than the evidence shown supports.", kind: "review", fg: "var(--tier-advisory)", bg: "var(--tier-advisory-bg)", border: "var(--tier-advisory-border)" },
+  method: { one: "method concern", many: "method concerns", blurb: "The method may not fully fit the question — test choice, power, assumptions.", kind: "review", fg: "var(--tier-advisory)", bg: "var(--tier-advisory-bg)", border: "var(--tier-advisory-border)" },
+  plausibility: { one: "plausibility concern", many: "plausibility concerns", blurb: "A result a domain reviewer flagged as surprising and worth a closer look.", kind: "review", fg: "var(--tier-advisory)", bg: "var(--tier-advisory-bg)", border: "var(--tier-advisory-border)" },
+  integrity: { one: "integrity signal", many: "integrity signals", blurb: "An automated research-integrity screening signal for a human — not a finding.", kind: "review", fg: "var(--tier-human)", bg: "var(--tier-human-bg)", border: "var(--tier-human-border)" },
+  subjective: { one: "subjective call", many: "subjective calls", blurb: "Significance / novelty — surfaced for a human, explicitly not scored.", kind: "review", fg: "var(--tier-human)", bg: "var(--tier-human-bg)", border: "var(--tier-human-border)" },
+};
+
+export const CATEGORY_ORDER: IssueCategory[] = [
+  "quantitative", "overclaim", "method", "plausibility", "integrity", "subjective",
+];
+
+// A routed item whose NOTE reads as "reviewed, nothing wrong" is a transparency
+// note on a clean claim — count it as reviewed, NOT as a concern (otherwise every
+// clean claim inflates the overclaim count, which is exactly the noise to avoid).
+export function isReviewedClean(note?: string): boolean {
+  if (!note) return false;
+  const n = note.toLowerCase();
+  return (
+    /\bno over-?reach\b/.test(n) ||
+    /\bno (issue|concern|problem|error)s?\b/.test(n) ||
+    /\bsynthesis candidate\b/.test(n) ||
+    /\bnothing (wrong|to flag|amiss)\b/.test(n) ||
+    /\breviewed\b[^.]*\bclean\b/.test(n)
+  );
+}
+
+// Map one routed-to-human item → an issue category, or null if it's reviewed-clean.
+function routedToCategory(dimension: string, note?: string): IssueCategory | null {
+  const d = (dimension ?? "").trim().toLowerCase();
+  const rest = d.includes(":") ? d.slice(d.indexOf(":") + 1) : d;
+  if (d.startsWith("subjective:") || d === "tier:t8" || /^t8$/.test(d) || rest === "significance" || rest === "novelty")
+    return "subjective";
+  if (d.includes("integrity") || d === "tier:t7" || /^t7$/.test(d)) return "integrity";
+  if (rest.includes("method")) return "method";
+  if (rest.includes("domain") || rest.includes("plausib")) return "plausibility";
+  // over-reach / claims-auditor / skeptic / any other advisory → a genuine concern
+  // unless its note is a reviewed-clean transparency note.
+  return isReviewedClean(note) ? null : "overclaim";
+}
+
+export interface AuditCategorization {
+  counts: Record<IssueCategory, number>;
+  order: IssueCategory[]; // categories with count > 0, in display order
+  total: number; // sum of all category counts (things actually worth attention)
+  quantitative: number; // deterministic catches
+  reviews: number; // non-deterministic concerns (overclaim+method+plausibility+integrity)
+  subjective: number;
+  passes: number; // deterministic checks that passed
+  reviewedClean: number; // claims reviewed with nothing wrong
+}
+
+export function categorize(report: {
+  findings?: { status: string }[];
+  routed_to_human?: { dimension: string; note?: string }[];
+}): AuditCategorization {
+  const counts: Record<IssueCategory, number> = {
+    quantitative: 0, overclaim: 0, method: 0, plausibility: 0, integrity: 0, subjective: 0,
+  };
+  let passes = 0;
+  let reviewedClean = 0;
+  for (const f of report.findings ?? []) {
+    if (f.status === "fail") counts.quantitative++;
+    else if (f.status === "pass") passes++;
+  }
+  for (const r of report.routed_to_human ?? []) {
+    const c = routedToCategory(r.dimension, r.note);
+    if (c === null) reviewedClean++;
+    else counts[c]++;
+  }
+  const order = CATEGORY_ORDER.filter((c) => counts[c] > 0);
+  const total = order.reduce((s, c) => s + counts[c], 0);
+  const reviews = counts.overclaim + counts.method + counts.plausibility + counts.integrity;
+  return { counts, order, total, quantitative: counts.quantitative, reviews, subjective: counts.subjective, passes, reviewedClean };
+}
+
+// "3 overclaims" / "1 quantitative issue" — count + correctly-pluralized label.
+export function categoryCount(c: IssueCategory, n: number): string {
+  const m = CATEGORY_META[c];
+  return `${n} ${n === 1 ? m.one : m.many}`;
 }
