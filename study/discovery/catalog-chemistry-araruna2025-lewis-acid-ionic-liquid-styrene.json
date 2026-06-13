@@ -1,0 +1,404 @@
+{
+  "paper_id": "chemistry-araruna2025-lewis-acid-ionic-liquid-styrene",
+  "title": "Unveiling the Mechanistic Role of Lewis Acidic Ionic Liquids in Styrene Polymerization",
+  "doi": "10.1021/acspolymersau.6c00024",
+  "domain": "polymer chemistry / cationic polymerization / mass spectrometry",
+  "n_pages_read": 12,
+  "claims": [
+    {
+      "id": "c1",
+      "text": "For every polymer in Table 5, the reported molar-mass dispersity (DM) equals the ratio of the weight-average to number-average molar mass (i.e. col1/col2).",
+      "quote": "entry 1 InCl3 [C4C1Im][BF4] 90 (118 h) 54 426,155 206,094 2.07 71.8",
+      "section": "Table 5",
+      "page": 948,
+      "epistemic_tier": "T0",
+      "predicate": "For each of the 28 entries compute col1/col2 and compare to the printed DM (tolerance ~0.01-0.03 from rounding).",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 5", "quote": "entry1 426,155 / 206,094 = 2.068 (DM 2.07); entry18 6232/1336=4.665 (DM 4.67); entry27 16,063/11,280=1.424 (DM 1.42)", "extracted_values": {"entry1_col1": 426155, "entry1_col2": 206094, "entry1_DM": 2.07, "entry18_col1": 6232, "entry18_col2": 1336, "entry18_DM": 4.67, "entry27_col1": 16063, "entry27_col2": 11280, "entry27_DM": 1.42}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Arithmetic recompute of Mw/Mn for all 28 rows vs printed DM.", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.97, "rationale": "Recomputed all 28 entries: every col1/col2 matches the printed DM within <=0.005. DM is internally arithmetic-consistent. This is a clean off-the-shelf ratio/percent check."}
+    },
+    {
+      "id": "c2",
+      "text": "Table 5 column headers label the first molar-mass column as number-average (Mn) and the second as weight-average (Mw), but the body text and the DM>1 constraint imply the opposite (col1 = Mw, col2 = Mn).",
+      "quote": "the number-average molar mass (Mn) decreases from approximately 4700 to 2500 g mol-1 and the weight-average molar mass (Mw) decreases from approximately 7000 to 5800 g mol-1, as polymerization time increases from 10 to 60 min",
+      "section": "3. Results and Discussion (p948-949) vs Table 5 header",
+      "page": 948,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check the Table 5 header order (Mn then Mw) against (a) DM=Mw/Mn>=1 requiring the LARGER column be Mw, and (b) the body sentences naming Mn~4700->2500 (matches col2) and Mw~7000->5800 (matches col1).",
+      "evidence": [
+        {"id": "e2", "kind": "table", "location": "Table 5 entries 12-17", "quote": "col1 (labeled per header as first): 6954,6174,6617,4881,5483,5793 ; col2: 4746,3802,3578,2238,2160,2496", "extracted_values": {"e12_col1": 6954, "e12_col2": 4746, "e15_col1": 4881, "e15_col2": 2238, "e17_col1": 5793, "e17_col2": 2496}},
+        {"id": "e3", "kind": "text", "location": "p948-949", "quote": "Mn decreases from approximately 4700 to 2500 g mol-1 ... Mw decreases from approximately 7000 to 5800 g mol-1", "extracted_values": {"text_Mn_high": 4700, "text_Mn_low": 2500, "text_Mw_high": 7000, "text_Mw_low": 5800}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Prose-vs-table label matching: which printed column the body's Mn and Mw narratives actually track.", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.78, "rationale": "Body says Mn~4700->2500 (matches col2: 4746->2238) and Mw~7000->5800 (matches col1: 6954->5793), so col1=Mw and col2=Mn. Since DM=Mw/Mn>1 and col1>col2 for all rows, col1 MUST be Mw. The header (which prints the Mn symbol before the Mw symbol) is therefore in swapped order relative to body usage. The number-level analysis is unambiguous; only mild uncertainty about whether this is a header-typesetting artifact vs a substantive mislabel keeps confidence <0.85."}
+    },
+    {
+      "id": "c3",
+      "text": "The abstract/body state polymers were obtained with glass-transition temperatures in the range 40-71 C, but Table 5 lists Tg values as low as 25.0 C (entries 2, 3, 27).",
+      "quote": "glass transition temperatures in the range of 40-71 C by varying the catalytic system and/or the synthesis temperature",
+      "section": "Abstract; Results p949 vs Table 5",
+      "page": 941,
+      "epistemic_tier": "T2",
+      "predicate": "Compare the stated Tg range (40-71) to min/max of the Tg column in Table 5.",
+      "evidence": [
+        {"id": "e4", "kind": "table", "location": "Table 5 Tg column", "quote": "entry2 Tg=25.0; entry3 Tg=25.0; entry27 Tg=25.0; entry1 Tg=71.8", "extracted_values": {"Tg_min_table": 25.0, "Tg_max_table": 71.8, "stated_low": 40, "stated_high": 71}},
+        {"id": "e5", "kind": "text", "location": "p949", "quote": "Tg values varied from 71 to 40 C", "extracted_values": {"text_Tg_high": 71, "text_Tg_low": 40}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Min/max recompute of the Table 5 Tg column vs the stated 40-71 range.", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.7, "rationale": "Table 5 contains Tg=25.0 (entries 2,3,27) and Tg max 71.8 (entry1). The stated lower bound of 40 C excludes the three 25.0 C values, so the prose range understates the true spread (true min 25.0, not 40). Possible the authors restricted to a subset, but no such restriction is stated; flagged as prose-vs-table inconsistency. Off-the-shelf min/max-vs-claimed-range check."}
+    },
+    {
+      "id": "c4",
+      "text": "The text states a 99% conversion was achieved in just 40 min at 50 C with 0.1 mol% InCl3 in [C4C1Im][NTf2], but Table 5 entry 15 (50 C, 40 min) lists 95% conversion; 99% is only reached at 60 min (entry 17).",
+      "quote": "It was observed that the polymerization exhibited a low conversion rate up to 30 min, after which a 99% conversion was achieved in just 40 min of reaction.",
+      "section": "Results (Figure 2 discussion) vs Table 5",
+      "page": 946,
+      "epistemic_tier": "T2",
+      "predicate": "Match the text's '99% in 40 min' against the Table 5 row at 50 C / 40 min (entry 15).",
+      "evidence": [
+        {"id": "e6", "kind": "table", "location": "Table 5 entries 12-17", "quote": "entry15 50C 40min conversion=95; entry16 50min=97; entry17 60min=99", "extracted_values": {"e15_time_min": 40, "e15_conv": 95, "e16_time_min": 50, "e16_conv": 97, "e17_time_min": 60, "e17_conv": 99}},
+        {"id": "e7", "kind": "text", "location": "p946", "quote": "a 99% conversion was achieved in just 40 min", "extracted_values": {"text_conv": 99, "text_time_min": 40}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Prose-vs-table lookup at the (50 C, 40 min) condition.", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.72, "rationale": "Table 5 entry 15 at 40 min gives 95%, not 99%; 99% appears at 60 min (entry 17). The text overstates the 40-min conversion by ~4 percentage points and mislocates the 99% milestone. Could be Figure 2A reads slightly differently from the GPC-table sample, but Figure 2 caption states the same conditions, so this is a genuine internal mismatch. Deterministic table-lookup check."}
+    },
+    {
+      "id": "c5",
+      "text": "Polymerizations performed in the absence of any Lewis acid resulted in only trace amounts of polymer regardless of the IL used.",
+      "quote": "Polymerizations performed in the absence of any Lewis acid resulted in only trace amounts of polymer, regardless of the ILs used, indicating that Lewis acids are responsible for initiating the polymerization.",
+      "section": "Results (Table 1 discussion)",
+      "page": 943,
+      "epistemic_tier": "T2",
+      "predicate": "Verify against the control rows of Table 1 / the 'no Lewis acid' condition referenced in the table footnote.",
+      "evidence": [
+        {"id": "e8", "kind": "table", "location": "Table 1 footnote / text", "quote": "Traces: <=1% yield (footnote b)", "extracted_values": {"traces_threshold_pct": 1}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Confirm Table 1 (or SI) reports a no-Lewis-acid control yielding <=1% across all three ILs.", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.5, "rationale": "Table 1 tabulates Lewis acids WITH ILs; the explicit 'no Lewis acid, IL only' control values are referenced in prose but not shown as a labeled row in the printed Table 1, so the claim cannot be fully bound to a numeric cell. Plausible and consistent with the 'traces<=1%' convention, but data binding is incomplete -> inconclusive pending SI."}
+    },
+    {
+      "id": "c6",
+      "text": "Indium-based catalyst (InCl3) supported in [C4C1Im][NTf2] gave 99% styrene conversion, the best result among all Lewis acids screened.",
+      "quote": "Indium-based catalysts provided the best results, producing polystyrene with 99% conversion when supported in [C4C1Im][NTf2].",
+      "section": "Results (Table 1)",
+      "page": 944,
+      "epistemic_tier": "T2",
+      "predicate": "Confirm InCl3/[NTf2] = 99% in Table 1 and that no other Lewis acid/[NTf2] short-time entry exceeds it.",
+      "evidence": [
+        {"id": "e9", "kind": "table", "location": "Table 1", "quote": "InCl3 [NTf2] 99% ; 99% (2 h). FeCl3 [NTf2] 92%; ZnCl2 16%; FeCl2 6%", "extracted_values": {"InCl3_NTf2": 99, "FeCl3_NTf2": 92, "ZnCl2_NTf2": 16, "FeCl2_NTf2": 6}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Max-of-column check across the [NTf2] support column in Table 1.", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "Table 1 [NTf2] column: InCl3 99% (also 99% at 2 h) is the highest among the short-time entries (FeCl3 92%, rest lower). Claim is consistent with the table. Deterministic max-of-column check."}
+    },
+    {
+      "id": "c7",
+      "text": "Hard Lewis acids (FeCl3, InCl3, AlCl3) are more efficient at styrene polymerization than soft acids (FeCl2, ZnCl2, CoCl2, CuCl2, SnCl2), per the HSAB principle.",
+      "quote": "This explains the greater efficiency of polymerization in the presence of the FeCl3, InCl3, and AlCl3 catalysts compared to FeCl2, ZnCl2, CoCl2, CuCl2, and SnCl2, as the former are classified as hard acids, whereas the latter are considered soft acids.",
+      "section": "Results (Table 1 discussion)",
+      "page": 944,
+      "epistemic_tier": "T3",
+      "predicate": "Assess whether the HSAB rationalization is methodologically appropriate AND whether the Table 1 data actually support a hard>soft efficiency ordering.",
+      "evidence": [
+        {"id": "e10", "kind": "table", "location": "Table 1 [NTf2] short-time column", "quote": "InCl3 99, FeCl3 92, AlCl3 traces ; FeCl2 6, ZnCl2 16, CoCl2 traces, CuCl2 traces, SnCl2 traces", "extracted_values": {"InCl3": 99, "FeCl3": 92, "AlCl3": "traces", "FeCl2": 6, "ZnCl2": 16, "CoCl2": "traces", "SnCl2": "traces"}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Domain-expert appraisal of HSAB classification + check that the hard/soft split tracks the conversion data (it only partially does: AlCl3/[NTf2] short-time = traces, a 'hard' acid that underperforms).", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.45, "rationale": "HSAB is a recognized qualitative framework, so the method is plausible. But the supporting data are mixed: AlCl3 (claimed hard) gives only traces in [NTf2] short-time while ZnCl2 (claimed soft) gives 16%, partially contradicting the clean hard>soft ordering. Requires expert/literature judgement (T3); not a deterministic pass/fail."}
+    },
+    {
+      "id": "c8",
+      "text": "A prominent ESI(+)-MS signal at m/z 558.1672 is attributed to the ionic liquid as a supramolecular cluster of two [C4C1Im]+ cations and one [NTf2]- anion.",
+      "quote": "exhibiting a prominent signal of m/z 558.1672, attributed to the IL (2 cations, 1 anion) employed as the reaction medium",
+      "section": "Results (Figure 3A)",
+      "page": 948,
+      "epistemic_tier": "T1",
+      "predicate": "Compute the exact (monoisotopic) m/z of [2 (C8H15N2) + (C2F6NO4S2)]+ and compare to 558.1672.",
+      "evidence": [
+        {"id": "e11", "kind": "figure", "location": "Figure 3A", "quote": "labeled peak 558.1672 under 'Ionic liquid' with [C4C1Im]2[NTf2]+ structure", "extracted_values": {"reported_mz": 558.1672, "calc_mz": 558.1638, "diff_mDa": -3.41}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Monoisotopic exact-mass recompute for the assigned formula vs the reported m/z.", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "Calculated [2 C8H15N2 + C2F6NO4S2]+ = 558.1638 Da; reported 558.1672 differs by ~3.4 mDa (~6 ppm), within typical Q-TOF accuracy for this kind of cluster. The 2-cation/1-anion assignment is mass-consistent and matches known IL aggregate literature. Off-the-shelf exact-mass check."}
+    },
+    {
+      "id": "c9",
+      "text": "An ion at m/z 313 with an isotope cluster at m/z 314, 315, 316, 317 corresponds to the styrene-chloronium supramolecular cation, showing the 35Cl/37Cl pattern diagnostic of two chlorine atoms.",
+      "quote": "revealing the appearance of an ion of m/z 313. Its isotopic distribution (additional signals of m/z 314, 315, 316, and 317 ...) is consistent with the formation of the chloronium cation ... and reflects the expected 35Cl/37Cl pattern (two chlorine atoms)",
+      "section": "Results (Figure 3B)",
+      "page": 948,
+      "epistemic_tier": "T4",
+      "predicate": "Check whether the observed isotope envelope (313-317 spacing/intensities) matches a two-chlorine species and whether a defensible molecular formula reproduces m/z 313.",
+      "evidence": [
+        {"id": "e12", "kind": "figure", "location": "Figure 3B", "quote": "'Styrene-chloronium cation' label at m/z 313; isotope peaks 314, 315 visible in expansion", "extracted_values": {"base_mz": 313, "isotope_peaks": 5}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Isotope-pattern simulation for the proposed two-Cl supramolecular formula and exact-mass match to 313.", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.4, "rationale": "No explicit molecular formula is given for the m/z 313 species, so the exact mass cannot be independently recomputed. The authors themselves note 'a small deviation in the exact mass and isotopologue distribution' and call it an underestimation requiring caution. A two-Cl pattern is qualitatively plausible, but the support is self-described as weak/low-intensity -> inconclusive without SI formula and isotope simulation."}
+    },
+    {
+      "id": "c10",
+      "text": "Decreasing the InCl3 concentration below 0.1 mol% led to substantially lower styrene conversion.",
+      "quote": "A further decrease in catalyst concentration (below 0.1 mol %) led to lower conversions due to a significant reduction in the availability of active catalytic species.",
+      "section": "Results (Table 3)",
+      "page": 945,
+      "epistemic_tier": "T2",
+      "predicate": "Compare Table 3 conversions at 0.10 mol% vs all entries below 0.10 mol%.",
+      "evidence": [
+        {"id": "e13", "kind": "table", "location": "Table 3", "quote": "0.10->99; 0.09->2.6; 0.08->5.3; 0.07->2.2; 0.06-0.01 -> traces", "extracted_values": {"c_0.10": 99, "c_0.09": 2.6, "c_0.08": 5.3, "c_0.07": 2.2, "c_0.06_and_below": "traces"}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Monotonicity/threshold check of the Table 3 conversion column below 0.10 mol%.", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "All sub-0.10 mol% entries (0.09->2.6, 0.08->5.3, 0.07->2.2, <=0.06 traces) are far below the 99% at 0.10 mol%, supporting the directional claim. Note a non-monotonic blip (0.08 gives 5.3 > 0.09's 2.6) but all remain 'low', so the claim as stated holds. Deterministic table check."}
+    },
+    {
+      "id": "c11",
+      "text": "Quantitative conversion (99%) of styrene was achieved using only 0.1 mol% InCl3 supported in [C4C1Im][NTf2] in 2 h at 50 C.",
+      "quote": "cationic polymerization with quantitative conversion was successfully achieved using only 0.1 mol % of catalyst in 2 h at 50 C",
+      "section": "Results (Tables 2 and 3)",
+      "page": 945,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check the 0.1 mol% / 50 C / 2 h condition across Table 2 (entry 2) and Table 3 (entry 3).",
+      "evidence": [
+        {"id": "e14", "kind": "table", "location": "Table 2 entry 2 & Table 3 entry 3", "quote": "Table2 entry2: 50C -> 99 (0.1 mol%, 2h); Table3 entry3: 0.10 mol% -> 99 (50C, 2h)", "extracted_values": {"T2_50C_conv": 99, "T3_0.10_conv": 99}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Confirm both tables agree on 99% at the shared condition.", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.92, "rationale": "Table 2 entry 2 (50 C) and Table 3 entry 3 (0.10 mol%) both report 99% at 50 C / 0.1 mol% / 2 h; mutually consistent. Cross-table consistency check passes."}
+    },
+    {
+      "id": "c12",
+      "text": "Using polar and nonpolar aprotic organic solvents instead of ILs gave only very low (trace or zero) styrene conversion under the optimal InCl3 conditions.",
+      "quote": "Very low conversions were obtained in polymerizations carried out in these organic solvents, with only trace amounts of polystyrene being detected.",
+      "section": "Results (Table 4)",
+      "page": 946,
+      "epistemic_tier": "T2",
+      "predicate": "Check all seven Table 4 solvent entries report 0 or traces.",
+      "evidence": [
+        {"id": "e15", "kind": "table", "location": "Table 4", "quote": "DMF 0; DMSO traces; 1,4-dioxane traces; toluene 0; acetonitrile 0; chloroform traces; dichloromethane 0", "extracted_values": {"DMF": 0, "DMSO": "traces", "dioxane": "traces", "toluene": 0, "MeCN": 0, "chloroform": "traces", "DCM": 0}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Read all Table 4 cells and confirm none exceed 'traces'.", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.95, "rationale": "All seven Table 4 entries are 0 or 'traces', exactly matching the claim of very low conversion in organic solvents. Deterministic table-scan check."}
+    },
+    {
+      "id": "c13",
+      "text": "Polymerizations carried out in ILs produced polystyrenes with lower average molar mass AND lower dispersity than the corresponding IL-free polymerizations (FeCl3, FeCl2, SnCl2 pairs).",
+      "quote": "polymerizations carried out in these ionic media (Table 5, entries 19, 21, and 28) produced polystyrenes with lower average molar mass and lower dispersity values compared to polymerizations performed in the absence of ILs (Table 5, entries 18, 20, and 27)",
+      "section": "Results (Figure 4C discussion)",
+      "page": 950,
+      "epistemic_tier": "T4",
+      "predicate": "For each cited pair (18/19 FeCl3, 20/21 FeCl2, 27/28 SnCl2) verify both Mn and DM are lower with IL.",
+      "evidence": [
+        {"id": "e16", "kind": "table", "location": "Table 5 entries 18-21, 27-28", "quote": "FeCl3: e18 Mn=1336 DM=4.67 | e19 Mn=1065 DM=2.54. FeCl2: e20 Mn=1677 DM=4.34 | e21 Mn=777 DM=2.31. SnCl2: e27 Mn=11280 DM=1.42 | e28 Mn=731 DM=1.75", "extracted_values": {"e18_Mn": 1336, "e18_DM": 4.67, "e19_Mn": 1065, "e19_DM": 2.54, "e20_Mn": 1677, "e20_DM": 4.34, "e21_Mn": 777, "e21_DM": 2.31, "e27_Mn": 11280, "e27_DM": 1.42, "e28_Mn": 731, "e28_DM": 1.75}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Pairwise comparison of Mn and DM (IL vs no-IL) for all three cited pairs.", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.7, "rationale": "Mn is lower with IL for all three pairs (claim holds for molar mass). But the 'lower dispersity' half fails for the SnCl2 pair: no-IL entry 27 has DM=1.42 while the IL entry 28 has DM=1.75 (HIGHER, not lower). So the blanket 'lower dispersity with IL' claim is contradicted by one of its own cited pairs. Deterministic claim-vs-evidence comparison; flagged suspect."}
+    },
+    {
+      "id": "c14",
+      "text": "Polystyrenes synthesized in less viscous ILs [C4C1Im][BF4] and [C4C1Im][NTf2] exhibited higher average molar masses than those from the more viscous [C4C1Im][PF6] (entries 1 & 23 vs 2 & 24).",
+      "quote": "Polystyrenes synthesized in less viscous ILs [C4C1Im][BF4] and [C4C1Im][NTf2] exhibited higher average molar masses (Table 5, entries 1 and 23) than those obtained, under the same conditions, using more viscous ILs [C4C1Im][PF6] (Table 5, entries 2 and 24).",
+      "section": "Results (Figure 4B discussion)",
+      "page": 949,
+      "epistemic_tier": "T4",
+      "predicate": "Compare Mw/Mn of entries 1 & 23 (BF4/NTf2) against entries 2 & 24 (PF6) for the same Lewis acid/conditions.",
+      "evidence": [
+        {"id": "e17", "kind": "table", "location": "Table 5 entries 1, 2, 23, 24", "quote": "e1 (InCl3,BF4,90C) Mw=426155 Mn=206094; e2 (InCl3,PF6,90C) Mw=1415 Mn=692; e23 (ZnCl2,NTf2,90C) Mw=3501 Mn=1714; e24 (ZnCl2,PF6,90C) Mw=1332 Mn=660", "extracted_values": {"e1_Mw": 426155, "e2_Mw": 1415, "e23_Mw": 3501, "e24_Mw": 1332}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Pairwise Mw/Mn comparison BF4|NTf2 vs PF6 at matched conditions.", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.82, "rationale": "InCl3: BF4 (e1, Mw 426,155) >> PF6 (e2, Mw 1415). ZnCl2: NTf2 (e23, Mw 3501) > PF6 (e24, Mw 1332). Both cited pairings show higher molar mass in the less-viscous IL, supporting the claim. (Note e1 and e2 differ in IL only at fixed 90 C; the comparison is internally consistent.) Deterministic pairwise check."}
+    },
+    {
+      "id": "c15",
+      "text": "The number-average molar mass increases as InCl3 catalyst concentration decreases (entries 7 and 9-11).",
+      "quote": "a trend of increasing number-average molar mass is observed as the catalyst concentration decreases (Figure 4A). ... This results in the formation of polystyrenes with higher molar masses.",
+      "section": "Results (Figure 4A discussion)",
+      "page": 949,
+      "epistemic_tier": "T4",
+      "predicate": "Order entries 9 (1.0 mol%), 10 (0.2), 7 (0.1), 11 (0.08) by InCl3 amount and check Mn trend.",
+      "evidence": [
+        {"id": "e18", "kind": "table", "location": "Table 5 entries 7, 9, 10, 11", "quote": "e9 (1.0 mol%) Mn=1819; e10 (0.2 mol%) Mn=2385; e7 (0.1 mol%) Mn=2272; e11 (0.08 mol%) Mn=2552", "extracted_values": {"e9_amount": 1.0, "e9_Mn": 1819, "e10_amount": 0.2, "e10_Mn": 2385, "e7_amount": 0.1, "e7_Mn": 2272, "e11_amount": 0.08, "e11_Mn": 2552}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Monotonicity check of Mn vs decreasing catalyst loading.", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.68, "rationale": "Mn rises overall from 1.0 mol% (1819) to 0.08 mol% (2552), so the general decreasing-concentration -> higher-Mn trend holds at the endpoints. It is not strictly monotonic (0.2 mol% Mn 2385 > 0.1 mol% Mn 2272), and the authors themselves call the effect 'relatively weak', so the qualitative claim is supported but the monotonic reading is imperfect."}
+    },
+    {
+      "id": "c16",
+      "text": "The synthesized polystyrenes exhibited molar-mass dispersities ranging from 1.43 to 4.67.",
+      "quote": "The synthesized polystyrenes exhibited a wide range of molar-mass dispersities from 1.43 to 4.67.",
+      "section": "Results p950; Abstract",
+      "page": 950,
+      "epistemic_tier": "T2",
+      "predicate": "Compare the stated DM range (1.43-4.67) to min/max of the Table 5 DM column.",
+      "evidence": [
+        {"id": "e19", "kind": "table", "location": "Table 5 DM column", "quote": "min DM = 1.42 (entry 27); max DM = 4.67 (entry 18)", "extracted_values": {"DM_min_table": 1.42, "DM_max_table": 4.67, "stated_min": 1.43, "stated_max": 4.67}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Min/max recompute of the Table 5 DM column vs the stated 1.43-4.67.", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.6, "rationale": "Max 4.67 matches (entry 18). But the stated lower bound 1.43 does not match the table minimum of 1.42 (entry 27, SnCl2 no-IL); off by 0.01. Likely a rounding/transcription slip (entry 27 DM printed as 1.42), but it is a real prose-vs-table mismatch on the stated range minimum. Off-the-shelf min/max check."}
+    },
+    {
+      "id": "c17",
+      "text": "The literature range for cationic polymerization of styrene in the presence of ILs is typically 11,000 to 650 g mol-1 with dispersities between 1.3 and 3.1, and this work's molar masses and dispersities encompass that full range.",
+      "quote": "which typically yield polystyrene with between 11,000 to 650 g mol-1 and dispersities between 1.3 and 3.1.",
+      "section": "Results p949",
+      "page": 949,
+      "epistemic_tier": "T5",
+      "predicate": "Verify the cited prior-literature molar-mass and dispersity ranges against references 28,40,45,46,48-50.",
+      "evidence": [
+        {"id": "e20", "kind": "text", "location": "p949", "quote": "11,000 to 650 g mol-1 and dispersities between 1.3 and 3.1", "extracted_values": {"lit_Mn_high": 11000, "lit_Mn_low": 650, "lit_DM_low": 1.3, "lit_DM_high": 3.1}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "External literature lookup of the cited references' reported molar-mass/dispersity ranges.", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.3, "rationale": "This is an external-literature claim (T5) requiring retrieval and cross-reading of refs 28/40/45/46/48-50; cannot be settled from this PDF alone. Recorded as inconclusive pending source verification."}
+    },
+    {
+      "id": "c18",
+      "text": "Bueno et al. polymerized styrene cationically in [C4C1Im][PF6] using high AlCl3 concentration (5.8 mol%), nearly 60 times higher than the 0.1 mol% used in the present study.",
+      "quote": "they used high concentrations of AlCl3 (5.8 mol %), corresponding to a molar ratio nearly 60 times higher than that employed in the present study.",
+      "section": "Results p944",
+      "page": 944,
+      "epistemic_tier": "T0",
+      "predicate": "Compute 5.8 / 0.1 and compare to 'nearly 60'.",
+      "evidence": [
+        {"id": "e21", "kind": "number", "location": "p944 text", "quote": "5.8 mol % ... nearly 60 times higher ... present study 0.1 mol %", "extracted_values": {"bueno_mol_pct": 5.8, "this_work_mol_pct": 0.1, "ratio_claimed": 60}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Arithmetic ratio recompute (5.8/0.1).", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "5.8/0.1 = 58, consistent with 'nearly 60 times'. The internal-arithmetic relation holds (the underlying 5.8 mol% is an external value attributed to ref 28, but the multiplicative claim itself is T0 and correct)."}
+    },
+    {
+      "id": "c19",
+      "text": "InCl3 dissociates according to the equilibrium InCl3 <-> [InCl2]+ + [Cl]-, and [InCl2]+ is the catalytically active species that activates the styrene double bond.",
+      "quote": "Initially, InCl3 dissociates according to equilibrium InCl3 -> [InCl2]+ [Cl]-. The cation [InCl2]+ is expected to act as a stronger Lewis acid and is responsible for activating the monomer.",
+      "section": "Results (Scheme 1) p948",
+      "page": 948,
+      "epistemic_tier": "T0",
+      "predicate": "Check mass/charge balance of the dissociation equation InCl3 -> InCl2+ + Cl-.",
+      "evidence": [
+        {"id": "e22", "kind": "equation", "location": "Scheme 1 / p948 text", "quote": "InCl3 <-> [InCl2]+ + [Cl]-", "extracted_values": {"In_LHS": 1, "Cl_LHS": 3, "In_RHS": 1, "Cl_RHS": 3, "charge_LHS": 0, "charge_RHS": 0}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Atom and charge balance of the heterolytic dissociation.", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.92, "rationale": "Atom balance: In 1=1, Cl 3 = 2+1. Charge balance: 0 = (+1)+(-1) = 0. The dissociation equation is stoichiometrically and electrically balanced. The mechanistic role of [InCl2]+ as active species is a T3/T4 assertion (cited to ref 66), but the equation itself passes a deterministic mass-balance check."}
+    },
+    {
+      "id": "c20",
+      "text": "The abrupt rise in conversion after ~30 min is attributed to a viscosity-driven 'cationic gel effect' (a cationic analogue of the Trommsdorff/Norrish effect).",
+      "quote": "This abrupt increase in conversion is attributed to the rise in the medium's viscosity, triggering kinetic phenomenon that can be described as the 'cationic gel effect'.",
+      "section": "Results (Figure 2 discussion) p946",
+      "page": 946,
+      "epistemic_tier": "T3",
+      "predicate": "Assess whether invoking a cationic gel/Trommsdorff effect is a mechanistically appropriate explanation given the kinetic data.",
+      "evidence": [
+        {"id": "e23", "kind": "figure", "location": "Figure 2A", "quote": "low conversion up to 30 min, then sharp rise to ~99%", "extracted_values": {"onset_min": 30}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Domain-expert judgement on the validity/appropriateness of a cationic Trommsdorff analogue.", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.4, "rationale": "The authors themselves hedge ('it is reasonable to assume that a cationic analogue ... exists', 'less comprehensively characterized'). The autoacceleration shape in Figure 2A is consistent with a gel effect, but attributing it specifically to viscosity-driven termination suppression is an interpretive (T3) claim not deterministically verifiable from the data shown."}
+    },
+    {
+      "id": "c21",
+      "text": "All Lewis acids, in combination with different ILs, were able to catalyze the polymerization of styrene at 90 C.",
+      "quote": "All Lewis acids, in combination with different ILs, were able to catalyze the polymerization of styrene at 90 C.",
+      "section": "Results (Table 1) p943",
+      "page": 943,
+      "epistemic_tier": "T2",
+      "predicate": "Check whether every Lewis acid in Table 1 reaches non-trace conversion in at least one IL at 90 C.",
+      "evidence": [
+        {"id": "e24", "kind": "table", "location": "Table 1 (long-time rows)", "quote": "e.g. CuCl2 reaches 63% (PF6,110h); BaCl2 43% (PF6,64h); MnO2 61% (PF6,67h); CeCl3 92% (PF6,67h)", "extracted_values": {"CuCl2_PF6": 63, "BaCl2_PF6": 43, "MnO2_PF6": 61, "CeCl3_PF6": 92}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Row-wise check that each Lewis acid achieves >trace in some IL/time in Table 1.", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.78, "rationale": "Across the extended-time rows, each Lewis acid eventually reaches a non-trace conversion in at least one IL (commonly [PF6] or [BF4]), so the broad 'all were able to catalyze' claim is consistent with Table 1. Mild caveat: several only do so after very long times (e.g. 110-120 h) and some BF4 columns remain 'traces', so 'able to catalyze' is generous but defensible. Deterministic per-row scan."}
+    },
+    {
+      "id": "c22",
+      "text": "This work achieves high molar masses (Table 5 entry 1) and polystyrenes with unimodal, bimodal, narrow, and broad distributions (Table 5 entries 18 and 20).",
+      "quote": "this study stands out by achieving high molar masses (Table 5, entry 1), polystyrenes with unimodal, bimodal, narrow, and broad distributions (Table 5, entries 18 and 20)",
+      "section": "Results p949",
+      "page": 949,
+      "epistemic_tier": "T2",
+      "predicate": "Check that entry 1 has the highest molar mass and that entries 18/20 correspond to the multimodal/broad MMD curves shown in Figure 4.",
+      "evidence": [
+        {"id": "e25", "kind": "table", "location": "Table 5 entries 1, 18, 20", "quote": "e1 Mw=426155 (highest); e18 FeCl3 noIL DM=4.67; e20 FeCl2 noIL DM=4.34", "extracted_values": {"e1_Mw": 426155, "e18_DM": 4.67, "e20_DM": 4.34}},
+        {"id": "e26", "kind": "figure", "location": "Figure 4C", "quote": "entries 18 and 20 (no-IL) shown with the broadest/highest-mass MMD curves", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Max-Mw check (entry 1) + qualitative MMD-shape read of Figure 4C for entries 18/20.", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.7, "rationale": "Entry 1 Mw=426,155 is the highest in Table 5, supporting 'high molar masses (entry 1)'. Entries 18 and 20 have the highest dispersities (4.67, 4.34) and appear as the broad/multimodal curves in Figure 4C, consistent with the 'bimodal/broad distributions' claim. The unimodal/narrow vs bimodal/broad labeling is partly qualitative (Figure shape) so confidence held below 0.8."}
+    },
+    {
+      "id": "c23",
+      "text": "ESI-MS analyses were performed in positive ion mode over the m/z range 150-700 on a Q-TOF (TripleTOF 5600+), with ion source at 500 C and capillary voltage 5200 V.",
+      "quote": "Mass spectrometry analyses (ESI-MS) were performed in the positive ionization mode over the m/z range of 150-700 ... The ion source was maintained at 500 C with a capillary voltage of 5200 V.",
+      "section": "2. Experimental Methods p942",
+      "page": 942,
+      "epistemic_tier": "T2",
+      "predicate": "Check internal consistency: stated m/z range 150-700 vs the actual axis range of Figure 3A.",
+      "evidence": [
+        {"id": "e27", "kind": "figure", "location": "Figure 3A x-axis", "quote": "Mass/Charge (Da) axis spans 150-700", "extracted_values": {"axis_min": 150, "axis_max": 700, "method_min": 150, "method_max": 700}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Match the stated acquisition m/z window to the Figure 3A plotted range.", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.88, "rationale": "Figure 3A x-axis runs 150-700 Da, exactly matching the Methods-stated acquisition window of m/z 150-700. Instrument parameters (500 C, 5200 V) are descriptive and not independently checkable, but the range claim is internally consistent. Prose-vs-figure axis check."}
+    },
+    {
+      "id": "c24",
+      "text": "The reaction mechanism for MS monitoring was performed at a 1:250 catalyst:monomer molar ratio (vs 1:1000 used for the bulk polymerizations), to raise the intensity of transient ion signals.",
+      "quote": "The system was prepared using a 1:250 molar ratio (catalyst:monomer) ... This adjustment was necessary because in previous experiments conducted at a 1:1000 ratio, the relevant and transient ionic signals showed low intensity",
+      "section": "Methods p942 / Results p947",
+      "page": 947,
+      "epistemic_tier": "T2",
+      "predicate": "Check internal consistency between the Methods (1:250 for MS) and Results description, and that 1:1000 corresponds to the 0.1 mol% standard condition.",
+      "evidence": [
+        {"id": "e28", "kind": "text", "location": "Methods p942 & Results p947", "quote": "1:250 molar ratio (MS) ; 1:1000 molar ratio of Lewis acid to monomer = 0.1 mol% catalyst", "extracted_values": {"MS_ratio_denom": 250, "bulk_ratio_denom": 1000, "bulk_mol_pct": 0.1}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Cross-section consistency of the stated MS molar ratio and its relation to 0.1 mol%.", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "Methods and Results both state 1:250 for MS and 1:1000 (=0.1 mol%) for bulk runs; 1:1000 molar ratio indeed equals 0.1 mol% catalyst, and 1:250 = 0.4 mol%. Internally consistent. (1/1000 = 0.1%; 1/250 = 0.4%.)"}
+    },
+    {
+      "id": "c25",
+      "text": "Higher conversions were generally obtained with Lewis acids supported in [C4C1Im][PF6] (e.g. FeSO4, CuCl2, SnCl2, CoCl2, AlCl3, CeCl3, CdO, MnO2).",
+      "quote": "In general, higher conversions were obtained using the Lewis acids supported in [C4C1Im][PF6], for example, in the presence of FeSO4, CuCl2, SnCl2, CoCl2, AlCl3, CeCl3, CdO, and MnO2.",
+      "section": "Results (Table 1) p944",
+      "page": 944,
+      "epistemic_tier": "T2",
+      "predicate": "For each listed Lewis acid, compare its best [PF6] conversion to its best [NTf2] and [BF4] conversions in Table 1.",
+      "evidence": [
+        {"id": "e29", "kind": "table", "location": "Table 1", "quote": "AlCl3: PF6 81% vs NTf2 10% vs BF4 68%; CoCl2: PF6 93% vs BF4 77%; CeCl3: PF6 92% vs BF4 75%; CuCl2: PF6 63% vs others traces; MnO2: PF6 61% vs others traces", "extracted_values": {"AlCl3_PF6": 81, "AlCl3_NTf2": 10, "AlCl3_BF4": 68, "CoCl2_PF6": 93, "CoCl2_BF4": 77, "CeCl3_PF6": 92, "CuCl2_PF6": 63, "MnO2_PF6": 61}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Per-acid argmax-over-IL check in Table 1 for the eight listed Lewis acids.", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.8, "rationale": "For each listed acid (AlCl3, CoCl2, CeCl3, CuCl2, MnO2, etc.) the highest conversion in Table 1 is in the [PF6] column (e.g. AlCl3 81% PF6 vs 10% NTf2; CoCl2 93% PF6). The generalization is supported by the cited examples. Deterministic per-row max check; small caveat that it is 'in general' not universal (InCl3/FeCl3 favor NTf2)."}
+    },
+    {
+      "id": "c26",
+      "text": "Two prominent ESI(+)-MS peaks are labeled at m/z 325.8981 and 628.8071 in Figure 3A.",
+      "quote": null,
+      "section": "Figure 3A",
+      "page": 947,
+      "epistemic_tier": "T7",
+      "predicate": "These peaks are labeled in the figure but never assigned or discussed in the text; check whether unassigned major peaks indicate omitted species or selective reporting.",
+      "evidence": [
+        {"id": "e30", "kind": "figure", "location": "Figure 3A", "quote": "labeled peaks at 325.8981 and 628.8071 (in addition to 558.1672)", "extracted_values": {"peak_a": 325.8981, "peak_b": 628.8071}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Determine whether the two labeled-but-unassigned major peaks have a plausible identity and why they are not discussed (integrity/completeness signal).", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.3, "rationale": "Figure 3A labels two further prominent peaks (325.8981, 628.8071) that the text never assigns. This is not itself an error, but the selective discussion of only m/z 558 and 313 while leaving these intense peaks unexplained is a minor completeness/integrity observation worth flagging. No assertion is attached to them, so there is nothing to confirm or refute -> inconclusive."}
+    },
+    {
+      "id": "c27",
+      "text": "The IL [C4C1Im][NTf2] is named in the abstract/Results as '1-butyl-3-methylimidazolium trifluoromethanesulfonate' in the NMR section, whereas [NTf2] is bis(trifluoromethylsulfonyl)imide (triflate is OTf, not NTf2).",
+      "quote": "[C4C1Im][NTf2] (1-butyl-3-methylimidazolium trifluoromethanesulfonate)",
+      "section": "2.2.1 Synthesis of ILs (NMR assignment) p943",
+      "page": 943,
+      "epistemic_tier": "T1",
+      "predicate": "Check whether the spelled-out anion name matches the [NTf2] formula: NTf2 = bis(trifluoromethanesulfonyl)imide (C2F6NO4S2-), not 'trifluoromethanesulfonate' (= triflate, CF3SO3-).",
+      "evidence": [
+        {"id": "e31", "kind": "text", "location": "p943 NMR section", "quote": "[C4C1Im][NTf2] (1-butyl-3-methylimidazolium trifluoromethanesulfonate)", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Fixed-knowledge nomenclature check: [NTf2]- = bis(trifluoromethylsulfonyl)imide vs the printed 'trifluoromethanesulfonate' (triflate).", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.7, "rationale": "The full title given for [NTf2] in the NMR section is 'trifluoromethanesulfonate', which is the name of triflate ([OTf]-, CF3SO3-), not of [NTf2]- (bis(trifluoromethylsulfonyl)imide, C2F6NO4S2-). The Introduction correctly expands [NTf2] as 'bis(trifluoromethylsulfonyl)imide', so the NMR-section expansion is an internal nomenclature inconsistency / naming error. Notably the m/z 558.1672 exact-mass check (c8) is only consistent with the [NTf2]- (imide) formula, confirming the intended anion is NTf2 and the spelled-out name is the slip. Fixed-knowledge (T1) check."}
+    },
+    {
+      "id": "c28",
+      "text": "DSC was run on ~8.0 mg samples, cooled to -50 C then heated to 200 C at 10 C/min under helium at 30 mL/min, with Tg taken from the second heating cycle.",
+      "quote": "Initial sample masses were approximately 8.0 mg. The samples were cooled to -50 C and then heated to 200 C at a rate of 10 C/min and under an inert helium atmosphere at a flow rate of 30 mL min-1. Data from the second heating cycle were used to determine the glass transition temperature (Tg).",
+      "section": "2. Experimental Methods p941-942",
+      "page": 941,
+      "epistemic_tier": "T3",
+      "predicate": "Assess method appropriateness: is second-heating-cycle Tg by DSC at 10 C/min a standard, adequate protocol for polystyrene Tg?",
+      "evidence": [
+        {"id": "e32", "kind": "text", "location": "p941-942", "quote": "cooled to -50 C ... heated to 200 C at 10 C/min ... second heating cycle ... Tg", "extracted_values": {"sample_mass_mg": 8.0, "rate_C_per_min": 10, "T_low_C": -50, "T_high_C": 200, "He_flow_mL_min": 30}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Domain check that the DSC protocol is standard/adequate for the reported Tg values.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.6, "rationale": "Second-heating-cycle Tg determination at 10 C/min under inert gas is a conventional, appropriate DSC protocol for polystyrene; parameters are within normal practice. Method appropriateness (T3) judged sound, though the actual Tg readouts depend on the (unshown) thermograms in SI."}
+    },
+    {
+      "id": "c29",
+      "text": "The styrene polymerizations were heterogeneous because styrene has limited solubility in the ILs (e.g. 1.0 g of [C4C1Im][PF6] dissolves about 0.7 g of styrene).",
+      "quote": "the polymerization proceeded as a heterogeneous process due to the limited solubility of styrene in different ILs (for example, 1.0 g of [C4C1Im][PF6] dissolves about 0.7 g of styrene).",
+      "section": "Results p943",
+      "page": 943,
+      "epistemic_tier": "T5",
+      "predicate": "Verify the solubility figure (0.7 g styrene per 1.0 g [PF6]) against cited ref 40.",
+      "evidence": [
+        {"id": "e33", "kind": "number", "location": "p943", "quote": "1.0 g of [C4C1Im][PF6] dissolves about 0.7 g of styrene", "extracted_values": {"IL_mass_g": 1.0, "styrene_mass_g": 0.7}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "External lookup of the solubility value in ref 40 (Biedron & Kubisa).", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.3, "rationale": "Quantitative solubility (0.7 g/g) is attributed to ref 40; verifying it requires the external source. Plausible and consistent with the stated heterogeneity, but not internally checkable -> inconclusive (T5)."}
+    },
+    {
+      "id": "c30",
+      "text": "The article processing charge was funded by CAPES (ROR 00x0ma614) and the authors declare no competing financial interest.",
+      "quote": "The authors declare no competing financial interest.",
+      "section": "Funding / Notes p950",
+      "page": 950,
+      "epistemic_tier": "T7",
+      "predicate": "Integrity-signal record: funding disclosure and competing-interest statement present.",
+      "evidence": [
+        {"id": "e34", "kind": "text", "location": "p950", "quote": "The Article Processing Charge ... funded by ... (CAPES), Brazil (ROR identifier: 00x0ma614). ... The authors declare no competing financial interest.", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Presence/consistency check of funding + COI + author-contribution (CRediT) statements.", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.8, "rationale": "Standard integrity disclosures are present and internally complete: explicit funding (CAPES, CNPq, FAPDF, FINATEC), no-competing-interest statement, full CRediT author-contribution breakdown, and ORCIDs for most authors. No integrity red flags at the disclosure level. (Substantive integrity items are captured in c2-c4, c13, c16, c26, c27.)"}
+    }
+  ],
+  "paper_level_notes": "ACS Polymers Au 2026, 6, 941-952 (open access CC-BY); DOI 10.1021/acspolymersau.6c00024. 12 pages, all read (text layer + rendered page images at 150-300 DPI; figures/scheme/tables visually verified). DATA/SI: No Supporting Information file was provided with this PDF and none is cited as a separate document; raw GPC traces, DSC thermograms, full ESI-MS/MS data, and the no-Lewis-acid control rows are not in the main text, so several claims (c5, c9, c28, c29) cannot be fully bound to evidence here. REPRODUCIBILITY signals: detailed reagent purities, instrument models, and conditions are given (good), but key numeric inputs live only in tables without underlying data. DETERMINISTIC FRONTIER (T0-T2) findings of note: (1) all 28 Table 5 dispersities are arithmetically consistent as Mw/Mn (c1, supported); (2) Table 5 column-header order (Mn before Mw) appears swapped relative to body usage and the DM>1 constraint (c2, suspect); (3) prose Tg range '40-71 C' excludes the three 25.0 C Tg values in Table 5 (c3, suspect); (4) text 'a 99% conversion ... in just 40 min' contradicts Table 5 entry 15 (40 min = 95%; 99% only at 60 min) (c4, suspect); (5) the 'IL lowers dispersity' claim fails for its own cited SnCl2 pair (entry 27 no-IL DM 1.42 < entry 28 IL DM 1.75) (c13, suspect); (6) stated DM range minimum '1.43' vs table minimum 1.42 (entry 27) (c16, minor mismatch); (7) NMR-section names [NTf2] as 'trifluoromethanesulfonate' (= triflate/OTf), a nomenclature slip, while the m/z 558.1672 exact mass is only consistent with the bis(trifluoromethylsulfonyl)imide formula (c27/c8). POSITIVE checks: m/z 558.1672 exact mass matches [2 cation + 1 anion] within ~6 ppm (c8); InCl3 dissociation equation is mass/charge balanced (c19); ratio claim 5.8/0.1~60 holds (c18); organic-solvent control (Table 4) and best-catalyst (InCl3/NTf2 99%) claims are table-consistent (c12, c6). Two intense Figure 3A peaks (m/z 325.8981, 628.8071) are labeled but never assigned in text (c26). Most off-the-shelf checks usable: dispersity ratio, percent/range min-max, prose-vs-table lookup, exact-mass, mass/charge balance, ratio. T5 (external literature) and T3 (mechanism/method appropriateness) claims are recorded but require retrieval/expert judgement and are left inconclusive."
+}

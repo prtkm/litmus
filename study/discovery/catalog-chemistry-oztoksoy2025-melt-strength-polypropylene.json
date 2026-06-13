@@ -1,0 +1,821 @@
+{
+  "paper_id": "chemistry-oztoksoy2025-melt-strength-polypropylene",
+  "title": "High Melt Strength Polypropylene via Reactive Extrusion for Injection-Molded Foams: Performance of Virgin and Recycled Blends",
+  "doi": "10.1021/acsomega.5c13372",
+  "domain": "polymer chemistry / reactive extrusion / thermal analysis (DSC) / rheology / polymer foams",
+  "n_pages_read": 20,
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The PP-phase percentage crystallinity (Xc,PP) reported in Table 2 is recomputable from the reported PP melting enthalpy (ΔHm,PP) and the PP weight fraction via eq 5, Xc,PP = ΔHm,PP / (φPP · 207 J/g) · 100, using φPP = the nominal PP+rPP weight fraction from Table 1.",
+      "quote": "%χPP = ΔHmf / (φPP·ΔHm0(PP)) × 100 ... equilibrium melting enthalpy of PP = 207 J/g, φPP is the weight fraction of PP",
+      "section": "DSC Results / eq 5 / Table 2",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "For each of the 11 rows with a PP ΔHm, compute ΔHm,PP/(φPP·207)·100 with φPP=(PP%+rPP%)/100 from Table 1, compare to the printed Xc,PP (tolerance ~0.2 from 0.1 J/g enthalpy rounding).",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "table",
+          "location": "Table 2 (Xc,PP column) + Table 1 (compositions) + eq 5",
+          "quote": "PP0 ΔHm,PP=100.7 Xc=48.6; PP3 ΔHm,PP=52.4 φ=0.60 Xc=42.2; PP7 ΔHm,PP=50.9 φ=0.5475 Xc=45.0; rPP0 ΔHm,PP=121.1 Xc=58.5; rPP5 ΔHm,PP=42.9 φ=0.5775 Xc=35.8",
+          "extracted_values": {
+            "PP0_dHmPP": 100.7, "PP0_phi": 1.0, "PP0_Xc_rep": 48.6, "PP0_Xc_calc": 48.65,
+            "PP3_dHmPP": 52.4, "PP3_phi": 0.60, "PP3_Xc_rep": 42.2, "PP3_Xc_calc": 42.19,
+            "PP7_dHmPP": 50.9, "PP7_phi": 0.5475, "PP7_Xc_rep": 45.0, "PP7_Xc_calc": 44.91,
+            "rPP0_dHmPP": 121.1, "rPP0_phi": 1.0, "rPP0_Xc_rep": 58.5, "rPP0_Xc_calc": 58.5,
+            "rPP5_dHmPP": 42.9, "rPP5_phi": 0.5775, "rPP5_Xc_rep": 35.8, "rPP5_Xc_calc": 35.89,
+            "dH0_PP": 207
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Arithmetic recompute of eq 5 for all 11 PP-bearing rows vs the printed Xc,PP column, with φ pulled from Table 1.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.93,
+        "rationale": "I recomputed all 11 rows. Ten of eleven match the printed Xc,PP to within |Δ|<=0.09 (rounding noise of the 0.1 J/g enthalpies), which independently confirms (a) eq 5 was applied, (b) φ uses the Table-1 nominal wt% basis (NOT polymer-only renormalization), and (c) ΔHm0(PP)=207 J/g. The lone exception is rPP7 (see c2). Off-the-shelf percent/ratio recompute covers this once φ and ΔHm0 are bound."
+      }
+    },
+    {
+      "id": "c2",
+      "text": "The reported Xc,PP = 35.5% for sample rPP7 in Table 2 is internally inconsistent with the paper's own eq 5, Table-1 composition, and reported ΔHm,PP; eq 5 yields 37.4% for rPP7, while 35.5% is reproduced only by (incorrectly) using rPP5's weight fraction 0.5775 instead of rPP7's own 0.5475.",
+      "quote": "rPP7 ... ΔHm,PP=42.4 ... Xc,PP=35.5 ; rPP7 composition: rPP 54.75%, LDPE 40%, DHBP 0.25%, TMPTA 5%",
+      "section": "Table 2 (rPP7 row) vs Table 1 (rPP7 composition) / eq 5",
+      "page": 13,
+      "epistemic_tier": "T0",
+      "predicate": "Compute ΔHm,PP/(φPP·207)·100 for rPP7 with φPP=0.5475 (its Table-1 fraction); compare to printed 35.5; also test φ=0.5775 (rPP5's fraction) to localize the error source.",
+      "evidence": [
+        {
+          "id": "e2",
+          "kind": "table",
+          "location": "Table 2 rPP7 row + Table 1 rPP7 row + eq 5",
+          "quote": "rPP7: ΔHm,PP=42.4, φPP(Table1)=0.5475 -> Xc=42.4/(0.5475·207)·100=37.41; reported=35.5. Using rPP5 φ=0.5775 -> 35.47 ≈ 35.5. Every other Table-2 PP row matches its own composition to <=0.09.",
+          "extracted_values": {
+            "rPP7_dHmPP": 42.4,
+            "rPP7_phi_own": 0.5475,
+            "rPP7_Xc_calc_own": 37.41,
+            "rPP7_Xc_reported": 35.5,
+            "rPP7_residual": 1.91,
+            "rPP7_phi_rPP5": 0.5775,
+            "rPP7_Xc_calc_with_rPP5_phi": 35.47,
+            "max_residual_all_other_rows": 0.17
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Per-row eq-5 recompute with each sample's own Table-1 φ; flag any row whose residual is an order of magnitude above the cohort (here 1.91 vs <=0.17 elsewhere).",
+        "verifier_exists": false,
+        "candidate_verdict": "suspect",
+        "confidence": 0.82,
+        "rationale": "rPP7's residual (1.91) is ~10-20x larger than every other row (all <=0.17). The reported 35.5 is reproduced almost exactly (35.47) by substituting rPP5's weight fraction, strongly implying a copy/derivation error that carried rPP5's φPP into rPP7's Xc cell. The LDPE side of rPP7 is internally consistent (calc 29.95 vs reported 29.9), localizing the defect to the PP-phase crystallinity only. Deterministic and self-evident from the paper's own numbers; candidate suspect rather than confirmed because an undocumented per-sample basis change cannot be 100% excluded by reasoning alone."
+      }
+    },
+    {
+      "id": "c3",
+      "text": "The LDPE-phase percentage crystallinity (%Xc,LDPE) reported in Table 2 is recomputable from the reported LDPE melting enthalpy (ΔHm,LDPE) and the LDPE weight fraction via eq 4, %Xc,LDPE = ΔHm,LDPE / (φLDPE · 288 J/g) · 100.",
+      "quote": "%χLDPE = ΔHmi / (φLDPE·ΔHm0(LDPE)) × 100 ... equilibrium melting enthalpy of LDPE = 288 J/g",
+      "section": "DSC Results / eq 4 / Table 2",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "For each blend row with an LDPE ΔHm, compute ΔHm,LDPE/(φLDPE·288)·100, φLDPE=LDPE%/100, compare to printed %Xc,LDPE (tol ~0.2).",
+      "evidence": [
+        {
+          "id": "e3",
+          "kind": "table",
+          "location": "Table 2 (%Xc,LDPE column) + Table 1 + eq 4",
+          "quote": "PP2 ΔHm,LDPE=10.7 φ=0.20 -> 18.58 (rep 18.6); PP3 29.7 φ=0.40 -> 25.78 (rep 25.8); PP5 40.6 φ=0.40 -> 35.24 (rep 35.2); rPP7 34.5 φ=0.40 -> 29.95 (rep 29.9); neat LDPE 110.3 φ=1.0 -> 38.3 (rep 38.3)",
+          "extracted_values": {
+            "PP2_calc": 18.58, "PP2_rep": 18.6,
+            "PP3_calc": 25.78, "PP3_rep": 25.8,
+            "PP5_calc": 35.24, "PP5_rep": 35.2,
+            "PP4_calc": 29.17, "PP4_rep": 29.0,
+            "rPP7_calc": 29.95, "rPP7_rep": 29.9,
+            "neatLDPE_calc": 38.3, "neatLDPE_rep": 38.3,
+            "dH0_LDPE": 288
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Arithmetic recompute of eq 4 for all LDPE-bearing rows vs printed %Xc,LDPE.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.95,
+        "rationale": "All 9 LDPE rows (incl. neat LDPE=38.3) match to within |Δ|<=0.17; the neat-LDPE entry self-checks ΔHm0(LDPE)=288. Unlike the PP side, the LDPE column has no outlier (rPP7 LDPE side is fine). Clean off-the-shelf recompute."
+      }
+    },
+    {
+      "id": "c4",
+      "text": "Each row of the composition Table 1 sums to 100% across the PP/rPP, DHBP, TMPTA, and LDPE columns.",
+      "quote": "PP4 PP 77.75 DHBP 0.25 TMPTA 2 LDPE 20; PP7 PP 54.75 DHBP 0.25 TMPTA 5 LDPE 40; rPP5 rPP 57.75 DHBP 0.25 TMPTA 2 LDPE 40",
+      "section": "Table 1",
+      "page": 3,
+      "epistemic_tier": "T0",
+      "predicate": "For all 12 rows sum (PP%+rPP%+DHBP%+TMPTA%+LDPE%) and check ==100.",
+      "evidence": [
+        {
+          "id": "e4",
+          "kind": "table",
+          "location": "Table 1",
+          "quote": "PP0:100; PP1:99.75+0.25=100; PP2:80+20; PP3:60+40; PP4:77.75+0.25+2+20=100; PP5:57.75+0.25+2+40=100; PP6:74.75+0.25+5+20=100; PP7:54.75+0.25+5+40=100; rPP0:100; rPP3:60+40; rPP5:57.75+0.25+2+40=100; rPP7:54.75+0.25+5+40=100",
+          "extracted_values": {
+            "PP4_sum": 100.0, "PP5_sum": 100.0, "PP6_sum": 100.0, "PP7_sum": 100.0,
+            "rPP5_sum": 100.0, "rPP7_sum": 100.0, "PP1_sum": 100.0
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Table-total / row-sum check that each formulation sums to 100 wt%.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.99,
+        "rationale": "Every row sums to exactly 100. Standard table-totals check; trivially deterministic."
+      }
+    },
+    {
+      "id": "c5",
+      "text": "Prose statement that the ΔHc value of rPP decreased from 112.9 to 43.8 J/g matches Table 2 (rPP0 PP-phase ΔHc = 112.9; rPP3 PP-phase ΔHc = 43.8).",
+      "quote": "the ΔHc value of rPP decreased from 112.9 to 43.8 J/g (Table 2)",
+      "section": "DSC Results (prose) vs Table 2",
+      "page": 13,
+      "epistemic_tier": "T2",
+      "predicate": "Bind the two prose numbers to Table 2 cells: 112.9 -> rPP0 ΔHc(PP); 43.8 -> rPP3 ΔHc(PP); confirm equality.",
+      "evidence": [
+        {
+          "id": "e5",
+          "kind": "table",
+          "location": "Table 2 ΔHc(PP) column, rPP0 and rPP3 rows",
+          "quote": "rPP0 ΔHc(PP)=112.9 ; rPP3 ΔHc(PP)=43.8",
+          "extracted_values": {"rPP0_dHcPP": 112.9, "rPP3_dHcPP": 43.8}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Prose-vs-table binding: do the two cited J/g values appear in the named cells?",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.96,
+        "rationale": "Both numbers are exact matches to the cited Table 2 cells and the direction (decrease on adding 40% LDPE to rPP) is correct. Clean prose-vs-table T2 check."
+      }
+    },
+    {
+      "id": "c6",
+      "text": "Prose statement that blending rPP with LDPE (rPP5) caused PP crystallinity to fall to 35.8% matches the Table 2 Xc,PP value for rPP5.",
+      "quote": "comprehensive loss of polypropylene crystallinity such that it fell to 35.8%",
+      "section": "Structure of the Foams (prose) vs Table 2",
+      "page": 14,
+      "epistemic_tier": "T2",
+      "predicate": "Bind 35.8% to Table 2 Xc,PP for rPP5 and confirm equality.",
+      "evidence": [
+        {
+          "id": "e6",
+          "kind": "table",
+          "location": "Table 2 Xc,PP, rPP5 row",
+          "quote": "rPP5 Xc,PP = 35.8",
+          "extracted_values": {"rPP5_Xc_PP": 35.8, "prose_value": 35.8}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Prose-vs-table binding of the 35.8% crystallinity figure.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.95,
+        "rationale": "Exact match to Table 2. (Note: the rPP5 Xc,PP=35.8 is itself recompute-consistent per c1, so this prose claim chains to a confirmed number.)"
+      }
+    },
+    {
+      "id": "c7",
+      "text": "Prose claim that PP5 exhibited the highest cell density (1.1 x 10^8 cells/cm3) and smallest mean cell size (7.48 / ~7.5 um) matches Table 3 for the virgin PP series, though rPP5 (1.12 x 10^8) marginally exceeds PP5 in cell density across all samples.",
+      "quote": "PP5, provided a similar microcellular structure with the maximum cell density (1.1 × 10^8 cells/cm3) and minimum mean cell size (7.48 μm)",
+      "section": "Conclusions / Structure of the Foams (prose) vs Table 3",
+      "page": 16,
+      "epistemic_tier": "T2",
+      "predicate": "Bind 1.1e8 and 7.48 um to Table 3 PP5 row; check PP5 is the max-N0/min-D within the virgin series, and compare to rPP5.",
+      "evidence": [
+        {
+          "id": "e7",
+          "kind": "table",
+          "location": "Table 3 (cell density N0, average cell diameter D0)",
+          "quote": "PP5: D0=7.48±0.22 um, N0=(1.10±0.09)×10^8 ; rPP5: D0=7.77±0.46, N0=(1.12±0.33)×10^8 ; PP0 N0=6.59e7, PP7 N0=8.72e7",
+          "extracted_values": {
+            "PP5_D0": 7.48, "PP5_N0": 1.10e8, "PP5_N0_sd": 0.09e8,
+            "rPP5_N0": 1.12e8, "rPP5_N0_sd": 0.33e8,
+            "PP5_is_min_D_overall": 1
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Prose-vs-table binding + argmax/argmin check over Table 3 N0 and D0 columns, scoped to virgin series.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "PP5 = 7.48 um and 1.10e8 match Table 3 exactly, and PP5 is the global minimum diameter and the virgin-series maximum N0. Caveat (scope precision, not error): rPP5's N0=1.12e8 is nominally higher than PP5's overall, but the two overlap within reported error (1.10±0.09 vs 1.12±0.33), so 'maximum' is defensible for the virgin formulation the paper is highlighting. Recorded supported with a scope note rather than suspect."
+      }
+    },
+    {
+      "id": "c8",
+      "text": "Prose claim that PP0 had the lowest cell density (~6.6 x 10^7 cells/cm3) and largest mean cell size (~9.4 um) matches Table 3.",
+      "quote": "PP0 exhibited the lowest cell density (6.6 × 10^7 cells/cm3) and the largest mean cell size (≈9.4 μm)",
+      "section": "Structure of the Foams (prose) vs Table 3",
+      "page": 14,
+      "epistemic_tier": "T2",
+      "predicate": "Bind 6.6e7 and ~9.4 um to Table 3 PP0 row (rounded); confirm PP0 is min-N0 / max-D within virgin series.",
+      "evidence": [
+        {
+          "id": "e8",
+          "kind": "table",
+          "location": "Table 3 PP0 row",
+          "quote": "PP0: D0=9.36±0.33 um, N0=(6.59±0.54)×10^7",
+          "extracted_values": {"PP0_D0": 9.36, "PP0_N0": 6.59e7, "prose_N0": 6.6e7, "prose_D": 9.4}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Prose-vs-table rounding-tolerant binding + min/max check.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.95,
+        "rationale": "6.59e7 rounds to 6.6e7 and 9.36 um rounds to ~9.4 um; PP0 is the virgin-series minimum N0 and maximum D0. Clean T2."
+      }
+    },
+    {
+      "id": "c9",
+      "text": "Prose claim that PP7 had a lower cell nucleation density (N0 = 8.7 x 10^7 cells/cm3) and slightly larger cells (~7.8 um) than PP5 matches Table 3.",
+      "quote": "PP7 exhibited a lower cell nucleation density (N0 = 8.7 × 10^7 cells/cm3) compared to PP5 ... slightly larger cells (≈7.8 μm)",
+      "section": "Structure of the Foams (prose) vs Table 3",
+      "page": 14,
+      "epistemic_tier": "T2",
+      "predicate": "Bind 8.7e7 and ~7.8 um to Table 3 PP7 row; confirm N0(PP7) < N0(PP5) and D0(PP7) > D0(PP5).",
+      "evidence": [
+        {
+          "id": "e9",
+          "kind": "table",
+          "location": "Table 3 PP7 vs PP5",
+          "quote": "PP7: D0=7.80±0.50, N0=(8.72±1.43)×10^7 ; PP5: D0=7.48, N0=1.10×10^8",
+          "extracted_values": {"PP7_N0": 8.72e7, "PP7_D0": 7.80, "PP5_N0": 1.10e8, "PP5_D0": 7.48}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Prose-vs-table binding + pairwise inequality check.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.95,
+        "rationale": "8.72e7 rounds to 8.7e7, 7.80 um to ~7.8; both inequalities (PP7 lower N0, larger D than PP5) hold in Table 3."
+      }
+    },
+    {
+      "id": "c10",
+      "text": "Prose claim that neat PP0 displayed the highest tensile modulus (1957 MPa) and yield strength (39.6 MPa) among the PP-series, as plotted in Figure 15.",
+      "quote": "Neat polypropylene (PP0) displayed the highest tensile modulus (1957 MPa) and yield strength (39.6 MPa)",
+      "section": "Mechanical Properties (prose) vs Figure 15",
+      "page": 10,
+      "epistemic_tier": "T2",
+      "predicate": "Read PP0's tensile-modulus and yield-strength bars in Figure 15; confirm value labels 1957 and 39.6 and that PP0 is the max of each PP-series panel.",
+      "evidence": [
+        {
+          "id": "e10",
+          "kind": "figure",
+          "location": "Figure 15 (tensile modulus + yield strength bar panels) / page 10",
+          "quote": "Figure 15 PP0 tensile-modulus bar labelled 1957; yield-strength bar labelled 39.6 (data-label values legible on the bar chart)",
+          "extracted_values": {"PP0_tensile_modulus_MPa": 1957, "PP0_yield_strength_MPa": 39.6}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Vision value-extraction of Figure 15 bar labels + argmax over the PP-series; bind to prose numbers.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.8,
+        "rationale": "Figure 15 carries numeric data labels on each bar; the PP0 tensile-modulus and yield-strength labels read 1957 and 39.6, matching the prose, and PP0 is visibly the tallest bar in both panels. Confidence < 0.9 because exact bar-label OCR from the rendered figure is the binding step (no underlying data table for mechanical properties is provided)."
+      }
+    },
+    {
+      "id": "c11",
+      "text": "Prose claim that yield strength decreased to 36.5 MPa in PP1 (from 39.6 MPa in PP0) due to DHBP-induced chain scission, per Figure 15.",
+      "quote": "In PP1, the yield strength decreased to 36.5 MPa",
+      "section": "Mechanical Properties (prose) vs Figure 15",
+      "page": 10,
+      "epistemic_tier": "T2",
+      "predicate": "Read PP1 yield-strength bar label in Figure 15; confirm 36.5 and that it is below PP0's 39.6.",
+      "evidence": [
+        {
+          "id": "e11",
+          "kind": "figure",
+          "location": "Figure 15 yield-strength panel, PP1 bar",
+          "quote": "PP1 yield-strength bar labelled 36.5",
+          "extracted_values": {"PP1_yield_strength_MPa": 36.5, "PP0_yield_strength_MPa": 39.6}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Vision read of PP1 yield-strength bar label vs prose 36.5.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.78,
+        "rationale": "Bar label appears as 36.5 and is lower than PP0, matching prose. Same figure-OCR caveat as c10."
+      }
+    },
+    {
+      "id": "c12",
+      "text": "Prose claim that elongation at break was 112.8% in PP2 and 130.8% in PP3, per Figure 15.",
+      "quote": "significantly increasing elongation at break (112.8% in PP2 and 130.8% in PP3)",
+      "section": "Mechanical Properties (prose) vs Figure 15",
+      "page": 10,
+      "epistemic_tier": "T2",
+      "predicate": "Read elongation-at-break bar labels for PP2 and PP3 in Figure 15; confirm 112.8 and 130.8.",
+      "evidence": [
+        {
+          "id": "e12",
+          "kind": "figure",
+          "location": "Figure 15 elongation-at-break panel",
+          "quote": "PP2 and PP3 elongation bars (figure carries per-bar numeric labels; legibility of the precise decimals is the binding risk)",
+          "extracted_values": {"PP2_elongation_pct": 112.8, "PP3_elongation_pct": 130.8}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Vision value-extraction of the elongation panel bar labels vs prose.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.5,
+        "rationale": "The prose gives one-decimal precision (112.8, 130.8) but at the rendered figure resolution the exact decimal on the elongation bars could not be read off with certainty (the panel is dense). Binding is possible in principle with a higher-DPI figure crop or the source data; marked inconclusive rather than supported to avoid asserting a match I cannot confirm to the stated precision."
+      }
+    },
+    {
+      "id": "c13",
+      "text": "Prose claim that on foaming, rPP0 tensile modulus reduced from 1457 to 1348 MPa (per Figure 22).",
+      "quote": "tensile modulus reduced from only 1457 to 1348 MPa upon foaming (Figure 22)",
+      "section": "Mechanical Properties of Foamed Materials (prose) vs Figure 22",
+      "page": 16,
+      "epistemic_tier": "T2",
+      "predicate": "Read unfoamed and foamed rPP0 tensile-modulus bars in Figure 22; confirm 1457 and 1348.",
+      "evidence": [
+        {
+          "id": "e13",
+          "kind": "figure",
+          "location": "Figure 22 tensile-modulus panel, rPP0 (foamed vs unfoamed)",
+          "quote": "rPP0 tensile-modulus bars labelled 1457 (unfoamed) and 1348 (foamed)",
+          "extracted_values": {"rPP0_modulus_unfoamed": 1457, "rPP0_modulus_foamed": 1348, "pct_reduction": 7.5}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Vision read of the two rPP0 modulus bars in Figure 22; optional percent-change recompute (7.5%).",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.78,
+        "rationale": "Bar labels read 1457 and 1348 consistent with prose; the 'reduced from only ... ' framing (smallest reduction, 7.5%) is consistent with rPP0 being the stiffest recycled system. Figure-OCR caveat keeps confidence below 0.9."
+      }
+    },
+    {
+      "id": "c14",
+      "text": "Prose claim that rPP0 Izod impact strength 'reduced by half' from 43.7 to 24.7 kJ/m2 on foaming is a loose use of 'by half': the actual reduction is 43.5%, and an exact halving would give 21.85.",
+      "quote": "the Izod impact strength reduced by half 43.7 to 24.7 kJ/m2",
+      "section": "Mechanical Properties of Foamed Materials (prose) vs Figure 22",
+      "page": 16,
+      "epistemic_tier": "T0",
+      "predicate": "Compute (43.7-24.7)/43.7*100 and compare to 50%; assess whether 'by half' is quantitatively accurate.",
+      "evidence": [
+        {
+          "id": "e14",
+          "kind": "number",
+          "location": "prose page 16 (values also plotted in Figure 22 impact panel)",
+          "quote": "43.7 to 24.7 kJ/m2; (43.7-24.7)/43.7 = 43.5% reduction; 50% would be 21.85",
+          "extracted_values": {"before": 43.7, "after": 24.7, "pct_reduction": 43.5, "exact_half_value": 21.85}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Percent-change recompute on the two stated numbers vs the qualifier 'by half'.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.7,
+        "rationale": "The two numbers (43.7, 24.7) are self-consistent as stated; the descriptor 'by half' is a rounded/colloquial characterization (actual 43.5%, off the exact half by 2.85 kJ/m2). Not an error per se, but a verifier would tag 'by half' as an imprecise quantifier (rounding-up of 43.5% to 50%). Recorded supported (numbers fine) with the qualifier-precision caveat."
+      }
+    },
+    {
+      "id": "c15",
+      "text": "Prose claim that rPP5 impact strength was 100.4 kJ/m2 before foaming and 33.5 kJ/m2 after, and that rPP5 had the highest impact strength among recycled systems (per Figure 22).",
+      "quote": "the highest impact strength for the recycled systems, which is before foaming 100.4 to 33.5 kJ/m2 after foaming were recorded by it",
+      "section": "Mechanical Properties of Foamed Materials (prose) vs Figure 22",
+      "page": 16,
+      "epistemic_tier": "T2",
+      "predicate": "Read rPP5 impact bars (foamed/unfoamed) in Figure 22; confirm 100.4 and 33.5 and that 100.4 is the max unfoamed impact among rPP systems.",
+      "evidence": [
+        {
+          "id": "e15",
+          "kind": "figure",
+          "location": "Figure 22 Izod impact panel, rPP5",
+          "quote": "rPP5 impact bars labelled 100.4 (unfoamed) and 33.5 (foamed)",
+          "extracted_values": {"rPP5_impact_unfoamed": 100.4, "rPP5_impact_foamed": 33.5, "pct_reduction": 66.6}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Vision read + argmax over rPP impact bars.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.78,
+        "rationale": "Bar labels consistent with prose; rPP5 is the tallest unfoamed impact bar among recycled systems. Figure-OCR caveat."
+      }
+    },
+    {
+      "id": "c16",
+      "text": "Prose claim that rPP7 tensile modulus reduced from 796 to 615 MPa and impact toughness from 94.3 to 28.4 kJ/m2 on foaming (per Figure 22).",
+      "quote": "The modulus reduced by 796 to 615 MPa upon foaming and the impact toughness reduced from 94.3 to 28.4 kJ/m2",
+      "section": "Mechanical Properties of Foamed Materials (prose) vs Figure 22",
+      "page": 16,
+      "epistemic_tier": "T2",
+      "predicate": "Read rPP7 modulus and impact bars in Figure 22; confirm 796/615 and 94.3/28.4.",
+      "evidence": [
+        {
+          "id": "e16",
+          "kind": "figure",
+          "location": "Figure 22 modulus + impact panels, rPP7",
+          "quote": "rPP7 modulus 796->615; impact 94.3->28.4",
+          "extracted_values": {"rPP7_mod_unfoamed": 796, "rPP7_mod_foamed": 615, "rPP7_impact_unfoamed": 94.3, "rPP7_impact_foamed": 28.4}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Vision read of the four rPP7 bars in Figure 22.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.75,
+        "rationale": "Bar labels consistent with prose. Figure-OCR caveat keeps this below 0.9; values are otherwise internally plausible (intermediate between rPP0 and rPP5 as claimed)."
+      }
+    },
+    {
+      "id": "c17",
+      "text": "Prose claim that rPP7 exhibited 11% gel content while PP7 was 6%, attributed to higher cross-linking density in the recycled blend.",
+      "quote": "While rPP7 exhibited 11% gel content, this value was determined to be 6% for the PP7 sample.",
+      "section": "Rheological Results (prose) / Gel Content (eq 6)",
+      "page": 9,
+      "epistemic_tier": "T1",
+      "predicate": "Range/plausibility: gel content in [0,100]; consistency: rPP7 > PP7 supports the 'higher cross-linking in recycled' narrative. No table/raw W0,W1 provided to recompute eq 6.",
+      "evidence": [
+        {
+          "id": "e17",
+          "kind": "number",
+          "location": "prose page 9 (gel content); eq 6 defines gel% = W1/W0*100",
+          "quote": "rPP7 11%, PP7 6%",
+          "extracted_values": {"rPP7_gel_pct": 11, "PP7_gel_pct": 6}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Range check (0-100) + directional-consistency check vs the cross-linking claim; full eq-6 recompute would require the reported W0/W1 masses, which are not given.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.55,
+        "rationale": "Both values are in [0,100] and ordered consistently with the higher-cross-link-density story (rPP>PP), so nothing is falsified; but the numbers are single-source (no W0/W1, no per-sample SD, not in any table), so they cannot be recomputed or cross-checked. Checkable only as a plausibility/range screen, not a deterministic verdict."
+      }
+    },
+    {
+      "id": "c18",
+      "text": "Reported melting temperatures (Tm,PP) for all formulations fall in the 157-164 C window characteristic of isotactic polypropylene, and Tm,LDPE in the 94-105 C window characteristic of LDPE.",
+      "quote": "PP0 Tm(PP)=157.4 ... rPP7 Tm(PP)=163.8 ... LDPE Tm=105.1; PP3 Tm(LDPE)=94.7",
+      "section": "Table 2 (Tm columns)",
+      "page": 13,
+      "epistemic_tier": "T1",
+      "predicate": "Check every Tm,PP in [155,170] and every Tm,LDPE in [90,115] against known melting ranges for iPP and LDPE.",
+      "evidence": [
+        {
+          "id": "e18",
+          "kind": "table",
+          "location": "Table 2 Tm(PP) and Tm(LDPE) columns",
+          "quote": "Tm,PP range 157.4-163.8; Tm,LDPE range 94.7-105.1",
+          "extracted_values": {"TmPP_min": 157.4, "TmPP_max": 163.8, "TmLDPE_min": 94.7, "TmLDPE_max": 105.1}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Known-value range lookup for iPP (~160-166 C) and LDPE (~105-115 C, lower for blends) melting points.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.8,
+        "rationale": "All Tm,PP values are physically reasonable for iPP. Tm,LDPE values (94.7-105.1) sit at the low end / slightly below typical neat-LDPE Tm (~108-112 C); depression in blends and DSC second-heat is plausible, so not flagged, but a literature-anchored T1 check would confirm the LDPE side is at the low edge. PP3 Tm(LDPE)=94.7 is the lowest and slightly anomalous vs the cluster (~102-105) but not implausible. Supported with mild uncertainty."
+      }
+    },
+    {
+      "id": "c19",
+      "text": "For every Table 2 row, the PP-phase melting enthalpy ΔHm,PP and crystallization enthalpy ΔHc,PP are of comparable magnitude (|ΔHm - ΔHc| small), as physically expected for a semicrystalline polymer at matched scan rates.",
+      "quote": "PP0 ΔHm=100.7 ΔHc=102.6; PP3 ΔHm=52.4 ΔHc=50.7; rPP0 ΔHm=121.1 ΔHc=112.9; rPP7 ΔHm=42.4 ΔHc=42.2",
+      "section": "Table 2 (ΔHm,PP vs ΔHc,PP)",
+      "page": 13,
+      "epistemic_tier": "T2",
+      "predicate": "For each row compute |ΔHm,PP - ΔHc,PP| and ratio; flag any row where they diverge implausibly (e.g., >25%).",
+      "evidence": [
+        {
+          "id": "e19",
+          "kind": "table",
+          "location": "Table 2 ΔHm(PP) and ΔHc(PP) columns",
+          "quote": "All PP rows: ΔHm and ΔHc within ~10% of each other (e.g. PP0 100.7/102.6=0.98; rPP0 121.1/112.9=1.07; PP4 78.4/76.0=1.03)",
+          "extracted_values": {"PP0_ratio": 0.98, "rPP0_ratio": 1.07, "PP4_ratio": 1.03, "rPP7_ratio": 1.005}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Internal cross-consistency check that crystallization and melting enthalpies track within a reasonable band per row.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.7,
+        "rationale": "Every PP-phase ΔHm/ΔHc ratio is within ~0.93-1.07, physically consistent (melting and crystallization enthalpies should be close at equal 10 C/min ramps). This is a soft consistency signal, not a hard theorem, hence moderate confidence; no row violates it."
+      }
+    },
+    {
+      "id": "c20",
+      "text": "DSC percentage crystallinity was determined on the second-heating scan over -80 to 300 C at 10 C/min under nitrogen, which is an appropriate protocol for erasing thermal history before measuring Xc.",
+      "quote": "DSC analyses were performed between −80 and 300 °C at a heating rate of 10 °C/min ... Equations 4 and (5) are used to determine the percentage crystallinity",
+      "section": "Experimental (DSC method)",
+      "page": 4,
+      "epistemic_tier": "T3",
+      "predicate": "Method-appropriateness: second-heat at standard ramp over a range that brackets both Tm,LDPE and Tm,PP; reference-enthalpy normalization by weight fraction.",
+      "evidence": [
+        {
+          "id": "e20",
+          "kind": "text",
+          "location": "Experimental section, DSC paragraph + eq 4,5",
+          "quote": "−80 to 300 °C, 10 °C/min, nitrogen; Xc via ΔHm/(φ·ΔHm0)·100 with ΔHm0(LDPE)=288, ΔHm0(PP)=207",
+          "extracted_values": {"ramp_C_per_min": 10, "range_low_C": -80, "range_high_C": 300}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Method-signature check: standard ramp, range brackets all transitions, weight-fraction normalization, accepted reference enthalpies.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.75,
+        "rationale": "Protocol is standard and the crystallinity formula correctly normalizes by phase weight fraction. The PP reference enthalpy 207 J/g is a commonly cited 100%-crystalline iPP value (some sources use 209 J/g); LDPE 288 J/g is a standard PE value. Choices are defensible; method appropriateness is a reasoning judgment (T3), so confidence < 0.9."
+      }
+    },
+    {
+      "id": "c21",
+      "text": "Tensile/Izod mechanical results are reported as means of a minimum of six specimens with standard errors, supporting the comparative claims drawn from Figures 15/16/21/22.",
+      "quote": "a minimum of six specimens were tested, and the results were reported as mean values with corresponding standard errors",
+      "section": "Experimental (mechanical testing)",
+      "page": 4,
+      "epistemic_tier": "T3",
+      "predicate": "Check that the sample size (n>=6) and reported dispersion (standard error) are adequate to support the bar-chart comparisons.",
+      "evidence": [
+        {
+          "id": "e21",
+          "kind": "text",
+          "location": "Experimental (mechanical testing paragraph)",
+          "quote": "minimum of six specimens ... mean values with corresponding standard errors",
+          "extracted_values": {"min_specimens": 6}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Design-signature check (n, dispersion measure reported). Whether overlapping error bars undercut specific 'highest/lowest' claims would need the per-bar SE values from the figures.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.55,
+        "rationale": "n>=6 with standard errors is reasonable for polymer mechanical testing. But the paper reports standard ERROR (not SD); several close comparisons (e.g., PP5 vs rPP5 cell density) likely have overlapping intervals, so some 'maximum'/'highest' claims may not be statistically separated. Cannot confirm/deny without the figures' numeric error values; recorded inconclusive (a real check needs the bar-level SEs)."
+      }
+    },
+    {
+      "id": "c22",
+      "text": "The abstract claims the rheological changes (increased complex viscosity, storage modulus, melt elasticity, strain-hardening) are signatures of long-chain branching rather than extensive gel formation, supported by low measured gel content and absence of processing instabilities.",
+      "quote": "pronounced increases in complex viscosity, storage modulus, and melt elasticity, accompanied by strain-hardening behavior in TMPTA-modified blends, which are widely accepted rheological signatures of long-chain branching rather than extensive gel formation",
+      "section": "Abstract / Rheological Results",
+      "page": 1,
+      "epistemic_tier": "T4",
+      "predicate": "Claim<->evidence: do the rheological observations (Figs 7-14) + low gel content (6-11%) + 'no abrupt upturns/instabilities' adequately support 'LCB not gel'?",
+      "evidence": [
+        {
+          "id": "e22",
+          "kind": "text",
+          "location": "Abstract + Rheological Results (Figs 7-14) + gel content",
+          "quote": "no abrupt upturns, discontinuities, or processing instabilities indicative of macroscopic gel formation were observed; gel content 6-11%",
+          "extracted_values": {"PP7_gel_pct": 6, "rPP7_gel_pct": 11}
+        }
+      ],
+      "verification": {
+        "possible": false,
+        "verifier_needed": "Domain judgment anchored to rheological signatures (strain-hardening, tan delta<1, Cole-Cole upturn) + gel-content thresholds; advisory at best.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.5,
+        "rationale": "The LCB-vs-gel attribution is a calibrated interpretive claim (T4). It is internally well-supported (low gel %, characteristic rheology, no instability), but distinguishing LCB from light cross-linking from rheology alone is genuinely ambiguous (the authors hedge with 'possible intermolecular cross-linking' throughout). Not deterministically checkable; route to advisory/human."
+      }
+    },
+    {
+      "id": "c23",
+      "text": "The abstract/title claim that the recycled blend rPP5 displayed similar foamability to virgin material, indicating the procedure can upcycle waste PP.",
+      "quote": "The recycled blend (rPP5) displayed similar foamability, indicating the potential capability of the procedure to upcycle waste PP.",
+      "section": "Abstract / Conclusions",
+      "page": 1,
+      "epistemic_tier": "T2",
+      "predicate": "Compare rPP5 vs PP5 in Table 3 (cell density, cell diameter) and Figure 22 (mechanical retention) to test 'similar foamability'.",
+      "evidence": [
+        {
+          "id": "e23",
+          "kind": "table",
+          "location": "Table 3 (rPP5 vs PP5) + mechanical Figs",
+          "quote": "PP5 D0=7.48 N0=1.10e8 ; rPP5 D0=7.77 N0=1.12e8 (cell density and size nearly identical)",
+          "extracted_values": {"PP5_N0": 1.10e8, "rPP5_N0": 1.12e8, "PP5_D0": 7.48, "rPP5_D0": 7.77}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Similarity check on rPP5 vs PP5 foam metrics (N0, D0 within overlapping error) supporting 'similar foamability'.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.78,
+        "rationale": "Table 3 shows rPP5 and PP5 have nearly identical cell density (1.12e8 vs 1.10e8) and diameter (7.77 vs 7.48 um), and their error bars overlap, which directly substantiates 'similar foamability'. The broader 'upcycle waste PP' framing is an extrapolation (one recycled formulation, single feedstock), so the narrow foamability claim is supported while the generalization is a mild over-reach (recorded in notes)."
+      }
+    },
+    {
+      "id": "c24",
+      "text": "The abstract claims FTIR showed an absence of chemical interactions between PP and LDPE (blend is a simple spectral superposition), while a low-intensity ~1740 cm-1 C=O peak indicates incorporation of TMPTA-derived carbonyl moieties.",
+      "quote": "The spectra of PP/LDPE blends appear as a simple superposition of the individual polymer spectra ... no new absorption bands ... The appearance of a low-intensity peak around 1740 cm−1, corresponding to the carbonyl (C=O) stretching",
+      "section": "FTIR Results (vs Figures 1,2)",
+      "page": 4,
+      "epistemic_tier": "T2",
+      "predicate": "Check Figures 1/2: is there a ~1740 cm-1 feature in TMPTA-containing samples (PP4-PP7, rPP5, rPP7) and the marked 720 cm-1 LDPE band in blends?",
+      "evidence": [
+        {
+          "id": "e24",
+          "kind": "figure",
+          "location": "Figures 1 and 2 (FTIR spectra; dashed markers at 1740 and 720 cm-1)",
+          "quote": "Figures 1,2 mark C=O at 1740 cm-1 and CH2 at 720 cm-1 with dashed vertical lines; 720 cm-1 band present in LDPE-containing blends",
+          "extracted_values": {"C_O_marker_cm1": 1740, "CH2_marker_cm1": 720}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Vision check that the labelled bands (1740 C=O, 720 LDPE) appear where claimed and only in the expected samples.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.5,
+        "rationale": "The figures clearly mark 1740 and 720 cm-1, and the 720 cm-1 LDPE rocking band is visibly present in blends. But the claimed 1740 cm-1 peak is described as 'low-intensity' and at the rendered resolution its presence specifically in TMPTA samples vs absence in others cannot be confirmed band-by-band. Checkable with a higher-DPI spectral crop or the underlying spectra; inconclusive as read."
+      }
+    },
+    {
+      "id": "c25",
+      "text": "The abstract claims the recycled homopolymer rPP0 has lower molecular weight than virgin PP0, evidenced by lower complex viscosity and a broader Newtonian plateau (Figures 7/11).",
+      "quote": "The recycled homopolymer (rPP0) exhibited a lower molecular weight compared to the virgin PP0, as evidenced by its lower viscosity and broader Newtonian plateau",
+      "section": "Rheological Results (vs Figures 7,11,12)",
+      "page": 9,
+      "epistemic_tier": "T4",
+      "predicate": "Check that rPP0's complex-viscosity curve lies below PP0's at low frequency with a more extended plateau in Figures 7/11, and that this supports the lower-Mw inference.",
+      "evidence": [
+        {
+          "id": "e25",
+          "kind": "figure",
+          "location": "Figures 7 / 11 (complex viscosity vs frequency) and Figure 12 (Cole-Cole)",
+          "quote": "rPP0 curve shows reduced low-frequency viscosity and broader Newtonian region vs PP0; rPP0 Cole-Cole semicircle reduced",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Vision trend-extraction: compare rPP0 vs PP0 low-frequency viscosity ordering and plateau width; Mw inference is interpretive.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.5,
+        "rationale": "The qualitative trend (lower viscosity, broader plateau for rPP0) is readable from Figures 7/11/12 and is the textbook signature of lower Mw / chain scission, but no Mw (GPC) data are reported to confirm quantitatively. The viscosity ordering is checkable from the figure; the Mw conclusion is a calibrated inference (T4). Inconclusive as a hard verdict."
+      }
+    },
+    {
+      "id": "c26",
+      "text": "The paper reports thermal data (DSC Tm/Tc/enthalpies/crystallinity) for an rPP7 sample in Table 2, but Table 3 (foam cell sizes) and the mechanical-foam figures characterize rPP7 as well; rPP7 appears in Table 1 compositions, so the dataset is internally complete for the rPP7 formulation.",
+      "quote": "rPP7 rPP 54.75 DHBP 0.25 TMPTA 5 LDPE 40 (Table 1); rPP7 Tm/ΔHm... (Table 2); rPP7 N0=6.65e7 (Table 3)",
+      "section": "Cross-table completeness (Tables 1,2,3)",
+      "page": 13,
+      "epistemic_tier": "T2",
+      "predicate": "Verify each formulation defined in Table 1 has corresponding rows in Table 2 and Table 3 (no orphaned or missing samples).",
+      "evidence": [
+        {
+          "id": "e26",
+          "kind": "table",
+          "location": "Tables 1, 2, 3 sample-code rosters",
+          "quote": "Table 1 samples {PP0..PP7, rPP0, rPP3, rPP5, rPP7}; Table 2 same 12 rows; Table 3 foams subset {PP0,PP5,PP7,rPP0,rPP5,rPP7}",
+          "extracted_values": {"table1_n_samples": 12, "table2_n_rows": 12, "table3_n_foams": 6}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Set-membership/roster cross-check across the three tables.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "Table 1 and Table 2 share the identical 12-sample roster; Table 3 covers the 6 foamed samples (the neat/optimal subset), which is consistent with foaming only a subset. No orphaned sample codes. Clean roster-consistency check."
+      }
+    },
+    {
+      "id": "c27",
+      "text": "Adding 40 wt% LDPE to PP reduces PP-phase crystallinity relative to neat PP0, consistent with the reported Xc,PP values (PP0 48.6 -> PP3 42.2).",
+      "quote": "the spherulite density of both PP and LDPE decreases within the LDPE/PP blend",
+      "section": "DSC Results (prose) vs Table 2 Xc,PP",
+      "page": 13,
+      "epistemic_tier": "T2",
+      "predicate": "Check the monotonic/directional claim: Xc,PP(neat PP0) > Xc,PP(PP3, 40% LDPE) using Table 2.",
+      "evidence": [
+        {
+          "id": "e27",
+          "kind": "table",
+          "location": "Table 2 Xc,PP column",
+          "quote": "PP0 Xc,PP=48.6 ; PP3 (40% LDPE) Xc,PP=42.2 ; rPP0 58.5 -> rPP3 34.5",
+          "extracted_values": {"PP0_Xc": 48.6, "PP3_Xc": 42.2, "rPP0_Xc": 58.5, "rPP3_Xc": 34.5}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Directional consistency check between prose (crystallinity decreases with LDPE) and Table 2.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "Both virgin (48.6->42.2) and recycled (58.5->34.5) PP crystallinity drop on adding 40% LDPE, matching the prose direction. Recorded supported. (Note PP3 vs PP2 are non-monotonic with LDPE amount but the neat-vs-40% direction holds.)"
+      }
+    },
+    {
+      "id": "c28",
+      "text": "The reported standard error on the foam cell density N0 for rPP5, (1.12 +/- 0.33) x 10^8, is a ~30% relative spread, large enough that rPP5's N0 is statistically indistinguishable from PP5's (1.10 +/- 0.09) x 10^8.",
+      "quote": "rPP5 ... (1.12 ± 0.33) × 10^8 ; PP5 ... (1.10 ± 0.09) × 10^8",
+      "section": "Table 3 (cell density dispersion)",
+      "page": 14,
+      "epistemic_tier": "T2",
+      "predicate": "Compute overlap of the reported error intervals for PP5 and rPP5 N0 to test whether any 'higher/maximum density' ordering between them is supported.",
+      "evidence": [
+        {
+          "id": "e28",
+          "kind": "table",
+          "location": "Table 3 N0 column with reported +/- values",
+          "quote": "PP5 1.10e8 ±0.09e8 ; rPP5 1.12e8 ±0.33e8 -> intervals [1.01,1.19]e8 and [0.79,1.45]e8 overlap heavily",
+          "extracted_values": {"PP5_N0": 1.10e8, "PP5_err": 0.09e8, "rPP5_N0": 1.12e8, "rPP5_err": 0.33e8}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Interval-overlap / error-bar check on the two N0 values.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.8,
+        "rationale": "The error intervals overlap almost entirely, so PP5 and rPP5 cell densities are not statistically separable. This is consistent with (and strengthens) the 'similar foamability' claim c23, and means any prose ranking of one above the other is within noise. Deterministic interval check; recorded supported as an observation."
+      }
+    },
+    {
+      "id": "c29",
+      "text": "The abstract's framing of the method as 'eco-friendly and reproducible' and the conclusion's 'commercially viable' are qualitative value judgments not tied to a quantitative metric in the paper.",
+      "quote": "This research demonstrates an eco-friendly and reproducible method ... a commercially viable reactive extrusion method",
+      "section": "Abstract / Conclusions",
+      "page": 1,
+      "epistemic_tier": "T8",
+      "predicate": "Not operationalizable: 'eco-friendly', 'reproducible', 'commercially viable' lack defined, measured criteria in the text.",
+      "evidence": [
+        {
+          "id": "e29",
+          "kind": "text",
+          "location": "Abstract + Conclusions",
+          "quote": "eco-friendly and reproducible method ... commercially viable",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": false,
+        "verifier_needed": "None deterministic; route to human (subjective/under-operationalized claims).",
+        "verifier_exists": false,
+        "candidate_verdict": "not_checkable",
+        "confidence": 0.6,
+        "rationale": "'Eco-friendly', 'reproducible', and 'commercially viable' are not defined by any reported LCA, replicate-statistics, or cost metric. 'Reproducible' in particular is asserted but no inter-batch reproducibility data are shown. Irreducibly subjective / under-specified; surface to human, do not score."
+      }
+    },
+    {
+      "id": "c30",
+      "text": "Reported peak crystallization-onset temperatures Tc,onset(PP) increased on adding 2 wt% TMPTA (PP4 126.4, PP5 125.9 C) versus uncompatibilized blends, supporting TMPTA acting as a nucleating branching agent.",
+      "quote": "the melt crystallization onset temperature of the PP phase increased markedly to 126.4 and 125.9 °C ... TMPTA functions as a branching agent ... efficient nucleation sites",
+      "section": "DSC Results (prose) vs Table 2 Tc,onset(PP)",
+      "page": 13,
+      "epistemic_tier": "T2",
+      "predicate": "Bind 126.4 and 125.9 to Table 2 Tc,onset(PP) for PP4 and PP5, and confirm they exceed the uncompatibilized PP2/PP3 values (120.4, 120.7).",
+      "evidence": [
+        {
+          "id": "e30",
+          "kind": "table",
+          "location": "Table 2 Tc,onset(PP) column",
+          "quote": "PP4=126.4, PP5=125.9 ; PP2=120.4, PP3=120.7 (uncompatibilized)",
+          "extracted_values": {"PP4_Tc": 126.4, "PP5_Tc": 125.9, "PP2_Tc": 120.4, "PP3_Tc": 120.7}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Prose-vs-table binding + inequality check (PP4/PP5 Tc > PP2/PP3 Tc).",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.9,
+        "rationale": "126.4 and 125.9 are exact matches to Table 2 PP4/PP5 Tc,onset(PP), and both exceed the uncompatibilized PP2 (120.4) and PP3 (120.7), substantiating the nucleation claim direction. Clean T2 prose-vs-table with a supporting inequality."
+      }
+    }
+  ],
+  "paper_level_notes": "ACS Omega 2026, 11, 32290-32309 (open access, CC-BY 4.0), DOI 10.1021/acsomega.5c13372; Oztoksoy, Yildiz, Yildirim, Oral, Ozkoc, Kodal (Kocaeli University / Istanbul Technical Univ / Istinye Univ / Ravago Petrochemical). 20 pages read in full via page-image render (text + all figures + 3 tables + equations); no separate SI was bundled with the PDF. DATA/REPRODUCIBILITY: no raw datasets, no GPC molecular-weight tables, and no per-bar numeric error values are provided; mechanical results live only as bar charts (Figs 15,16,21,22) with on-bar data labels, and gel-content (6/11%) and several foam numbers are single-source prose without supporting tables. The strongest deterministic frontier is the DSC crystallinity block: Tables 1+2 plus eq 4/5 (with ref enthalpies 288 J/g LDPE, 207 J/g PP, phi = Table-1 nominal wt%) let Xc be fully recomputed. I recomputed all rows: every Xc,PP and %Xc,LDPE matches to within rounding (<=0.17) EXCEPT rPP7's Xc,PP=35.5, which is off by +1.91 and is reproduced only by (incorrectly) using rPP5's weight fraction 0.5775 instead of rPP7's own 0.5475 -> a clean candidate SUSPECT internal-consistency flag (c2), with the error localized to the PP phase (rPP7's LDPE crystallinity is consistent). This is the highest-value checkable finding and an ideal target for a synthesized/templated T0 crystallinity verifier. Other notable items: (1) the 'reduced by half' descriptor for rPP0 Izod (43.7->24.7, actually 43.5%) is an imprecise quantifier (c14); (2) 'maximum cell density' for PP5 is true only within the virgin series and overlaps rPP5 within error (c7/c28); (3) the LDPE Tm values (94.7-105.1 C) sit at the low edge of typical neat-LDPE melting and PP3's 94.7 is the lowest outlier (c18, not flagged); (4) interpretive LCB-vs-cross-linking and lower-Mw-for-rPP0 claims (c22,c25) are T4/advisory; (5) eco-friendly/reproducible/commercially-viable are unoperationalized T8 (c29). No integrity-screening red flags (image duplication, terminal-digit, too-perfect agreement) were evident from the rendered figures, though SEM micrographs were not forensically analyzed. Tiers represented: T0 x4, T1 x2, T2 x14, T3 x2, T4 x2, T8 x1 (+ T2-leaning interpretive). 30 claims total; ~20 are T0-T2 deterministically checkable, several already covered by off-the-shelf checks (table-totals, percent-change, prose-vs-table, percent-recompute)."
+}

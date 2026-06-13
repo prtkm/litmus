@@ -88,11 +88,56 @@ OUTPUT — three node types (call `emit_claim_graph` with all of them):
    - extracted_values: an object of the EXACT transcribed numbers, as a verifier would
        recompute against. Use clear keys and real numbers, e.g.
        {{"reported_total": 100, "parts": [40, 35, 25]}},
-       {{"yield_pct": 142.0, "moles_product": 0.71, "moles_limiting": 0.50}},
-       {{"p": 0.03, "t": 2.41, "df": 38}}, {{"slope": -1.8, "r_squared": 0.97}}.
+       {{"reported_yield_pct": 142.0, "mol_product": 0.71, "mol_limiting_reagent": 0.50}},
+       {{"test": "t", "statistic": 2.41, "df": 38, "reported_p": 0.03}},
+       {{"slope": -1.8, "r_squared": 0.97}}.
        * Transcribe numbers EXACTLY as printed (keep the reported precision and sign).
        * RECORD null FOR ANY VALUE THAT IS MISSING OR UNREADABLE — never invent or infer a
          number to fill a gap. A null is correct; a fabricated value is a critical failure.
+       * CANONICAL KEYS — this is how a checkable claim reaches a deterministic verifier, so it
+         matters as much as transcribing the number at all. WHEN (and only when) the quantity you
+         are transcribing genuinely matches one of the patterns below, you MUST ALSO add that
+         pattern's canonical key(s) to this same extracted_values object, holding the SAME number
+         you already read off the page. This stays pure transcription — you are labelling a number
+         the paper states, not judging whether it is right (the verifier does that). Keep your own
+         descriptive keys too; the canonical keys are ADDED alongside them, never instead. Add a
+         canonical key ONLY when its value is actually present in the paper — never invent one to
+         complete a pattern, and never guess a field you cannot read (leave it out or null).
+         The canonical keys MUST sit at the TOP LEVEL of extracted_values, never nested inside a
+         sub-object — a verifier reads only top-level keys, so a nested ``reported_p`` is invisible
+         to it. If one evidence record would hold several checkable instances (e.g. three ANOVA
+         effects, each with its own statistic+p), SPLIT them into one evidence record per instance
+         so each carries its own top-level canonical keys, rather than nesting them under per-effect
+         sub-objects. Use these EXACT key spellings:
+           · a reaction/percent YIELD (e.g. "obtained in 92% yield") ->
+               {{"reported_yield_pct": <pct>}}; if the molar amounts are stated, ALSO
+               {{"mol_product": <mol>, "mol_limiting_reagent": <mol>}}  [yield_check]
+           · a PERCENT CHANGE stated with its old and new values ("rose from 50 to 68, a 36%
+               increase") -> {{"old_value": <old>, "new_value": <new>,
+               "reported_pct_change": <signed pct: + for increase, - for decrease>}}  [percent_change]
+           · a reported SIGNIFICANCE TEST ("t(38) = 2.41, p = .03"; F, r, chi2, z likewise) ->
+               {{"test": "t"|"F"|"r"|"chi2"|"z", "statistic": <stat>, "df": <df>,
+               "reported_p": <p>}}; for F use {{"df1": <num df>, "df2": <den df>}} instead of df.
+               ``reported_p`` is ONLY for a p the paper states as an EQUALITY ("p = .03"). If the
+               paper instead reports a BOUND ("p < .001", "p > .05", "p ≤ .01", "n.s.", "p = n.s."),
+               do NOT put it in ``reported_p`` — a bound is not the value the verifier recomputes
+               against, and forcing it in fabricates a mismatch. Record the bound in a descriptive
+               key (e.g. {{"p_upper_bound": 0.001}}) and OMIT ``reported_p`` for that test.  [statcheck]
+           · a MEAN of integer-bounded items (Likert/counts, "M = 3.46, N = 20") ->
+               {{"reported_mean": <mean>, "n": <N participants>}}; if each participant answered
+               several such items, ALSO {{"n_items": <items>}}  [grim]
+           · a TOTAL of tabulated parts ("total 100" over rows 40, 35, 25) ->
+               {{"parts": [<part>, ...], "reported_total": <total>}}  [sum_check]
+           · the SAME quantity stated in prose AND in a table/figure (a value the body text gives
+               that the table also reports) -> {{"prose_value": <as prose states it>,
+               "source_value": <as the table/figure reports it>, "quantity": "<what it is>"}}
+               [prose_vs_table]
+           · REACTANT and PRODUCT masses, in grams ->
+               {{"reactant_masses": [<g>, ...], "product_masses": [<g>, ...]}}  [mass_balance]
+           · the same value given in TWO UNITS ("5.0 mg (0.005 g)", "120 min (2 h)") ->
+               {{"value_a": <num>, "unit_a": "<unit>", "value_b": <num>, "unit_b": "<unit>"}}
+               [unit_consistency]
+           · a reported pH -> {{"reported_ph": <pH>}}
    - confidence: 0..1, your confidence in this transcription (lower for hard-to-read
        figures/small fonts/ambiguous units).
 
@@ -107,6 +152,12 @@ RULES (DESIGN §11):
   - Be thorough: extract the paper's checkable assertions (abstract claims, headline results,
     yields/efficiencies/rates, statistical results, comparative and causal claims, key
     equations, and the figure/table values they depend on). Aim for breadth over a handful.
+  - Whenever a transcribed number matches one of the canonical-key patterns above (a yield, a
+    percent change with both endpoints, a significance test, an integer-item mean, a parts/total,
+    a prose-vs-table value, reactant/product masses, a dual-unit value, a pH), ADD that pattern's
+    canonical key(s) to the evidence's extracted_values — that binding is what lets a deterministic
+    verifier check the claim. This is still transcription, not judgement. Only add a key whose
+    value is genuinely in the paper.
   - Use only the allowed enum values for kind and epistemic_tier.
 
 {TIER_RUBRIC}

@@ -1,0 +1,378 @@
+{
+  "paper_id": "medicine-gkekas2025-rct-laparoscopic-supervision",
+  "title": "Does supervision matter? A randomized controlled study of laparoscopic simulator training in undergraduate education",
+  "doi": "10.3389/fsurg.2026.1815062",
+  "domain": "Medicine / surgical education (randomized controlled trial)",
+  "n_pages_read": 7,
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Table 1: Independent group 'Playing computer games = No' is 8 of 12, reported as 66.0%.",
+      "quote": "No   4 (50.0%)   8 (66.0%)   12 (60.0%)   0.582",
+      "section": "Table 1 Baseline characteristics",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute 8/12*100 and compare to reported 66.0%.",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 1, row 'Playing computer games / No', Independent (n=12) column", "quote": "8 (66.0%)", "extracted_values": {"numerator": 8, "denominator": 12, "reported_pct": 66.0, "recomputed_pct": 66.7}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Percentage recompute (count/denominator) — off-the-shelf GRIM/percent check", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.9, "rationale": "8/12 = 66.667%, which rounds to 66.7%, not 66.0%. The sibling cells in the same table (e.g., Female 8/12 = 66.7%, Mobile-No 8/12 = 66.7%) round correctly, so 66.0% is an isolated rounding/transcription error. Minor; does not change any inference. Deterministic T0 percent check settles it."}
+    },
+    {
+      "id": "c2",
+      "text": "Table 1: Independent group 'Playing computer games = Yes' is 4 of 12, reported as 33.0%.",
+      "quote": "Yes   4 (50.0%)   4 (33.0%)   8 (40.0%)",
+      "section": "Table 1 Baseline characteristics",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute 4/12*100 and compare to reported 33.0%.",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 1, row 'Playing computer games / Yes', Independent (n=12) column", "quote": "4 (33.0%)", "extracted_values": {"numerator": 4, "denominator": 12, "reported_pct": 33.0, "recomputed_pct": 33.3}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Percentage recompute — off-the-shelf percent/GRIM check", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.9, "rationale": "4/12 = 33.333%, rounding to 33.3%, not 33.0%. Same isolated rounding error as c1 (the complementary cell). Note Yes(33.0)+No(66.0)=99.0 != 100, a tell that both were truncated rather than rounded. Cosmetic."}
+    },
+    {
+      "id": "c3",
+      "text": "Table 1 percentage columns are internally consistent for sex, shooter, and mobile-gaming rows, and all category counts sum to the group n.",
+      "quote": "Female 6 (75.0%) 8 (66.7%) 14 (70.0%)",
+      "section": "Table 1 Baseline characteristics",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute every count/denominator percentage and verify within-category counts add to n=8, n=12, n=20.",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 1 all rows", "quote": null, "extracted_values": {"sup_n": 8, "ind_n": 12, "total_n": 20}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Table-totals + percent recompute (off-the-shelf)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.95, "rationale": "All other percentages recompute exactly (Male 25.0/33.3/30.0; Female 75.0/66.7/70.0; Shooter 62.5/83.3/75.0 and 37.5/16.7/25.0; Mobile 62.5/66.7/65.0 and 37.5/33.3/35.0). Counts sum: Sup 2+6, 4+4, 5+3, 5+3 = 8; Ind 4+8, 8+4, 10+2, 8+4 = 12; Totals = 20. Only the two cells in c1/c2 are off."}
+    },
+    {
+      "id": "c4",
+      "text": "Subgroup tables disagree on how many participants reported any computer-gaming experience: Table 4 analyzes 'Gaming experience n = 11' vs 'No gaming experience n = 9', but Table 1 reports games Yes = 8 and No = 12.",
+      "quote": "Gaming experience n = 11 ... No gaming experience n = 9",
+      "section": "Table 4 (vs Table 1)",
+      "page": 5,
+      "epistemic_tier": "T2",
+      "predicate": "Bind the gaming-subgroup n's in Table 4 to the gaming counts in Table 1 and check equality.",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 4, gaming subgroup header", "quote": "Gaming experience n = 11 / No gaming experience n = 9", "extracted_values": {"t4_gaming": 11, "t4_nogaming": 9}},
+        {"id": "e2", "kind": "table", "location": "Table 1, 'Playing computer games' Total column", "quote": "12 (60.0%) ... 8 (40.0%)", "extracted_values": {"t1_no": 12, "t1_yes": 8}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Cross-table count reconciliation (prose/table-vs-table binding)", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.85, "rationale": "Table 1 says 8 gamers / 12 non-gamers; Table 4 partitions the same 20 students as 11 gamers / 9 non-gamers. The shooter (5/15) and mobile (7/13) subgroup n's in Table 4 DO match Table 1, so only the 'any gaming' definition is inconsistent (11/9 vs 8/12). Either a different gaming definition was used for the subgroup or one figure is mistranscribed. Deterministic once the two n's are bound; cannot tell which is correct without raw data."}
+    },
+    {
+      "id": "c5",
+      "text": "Within-group improvement deltas in Table 2 (Warm-up -> Test 1) are -220 s (Supervised) and -134 s (Independent).",
+      "quote": "Supervised: -220 ... Independent: -134",
+      "section": "Table 2",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "Compute Test1 - Warm-up for each group and compare to the reported Δ(s).",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 2, Warm-up and Test 1 rows", "quote": "Warm-up 388 (109) 347 (172); Test 1 168 (47) 213 (72)", "extracted_values": {"sup_warmup": 388, "sup_test1": 168, "sup_delta": -220, "ind_warmup": 347, "ind_test1": 213, "ind_delta": -134}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Arithmetic delta recompute (off-the-shelf percent-change/diff)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.98, "rationale": "168-388 = -220 and 213-347 = -134, both exact. Prose '388s vs 168s' and '347s vs 213s' (Sec 3.2) are consistent with the table."}
+    },
+    {
+      "id": "c6",
+      "text": "Primary outcome: Supervised completed Test 1 in mean 168 s (SD 47) vs Independent 213 s (SD 72); mean difference -45 s.",
+      "quote": "completed Test 1 in a mean of 168 s (SD 47), compared with 213 s (SD 72) in the independent group. The mean difference was -45 s",
+      "section": "3.2 Primary outcomes",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "Compute 168 - 213 and compare to the stated -45 s; verify prose values match Table 2.",
+      "evidence": [
+        {"id": "e1", "kind": "statistic", "location": "Section 3.2 / Table 2 Test 1 row", "quote": "168 s (SD 47) ... 213 s (SD 72) ... mean difference was -45 s", "extracted_values": {"sup_mean": 168, "sup_sd": 47, "ind_mean": 213, "ind_sd": 72, "mean_diff": -45}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Arithmetic difference + prose-vs-table binding (off-the-shelf)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.98, "rationale": "168-213 = -45 exactly; prose means/SDs match Table 2 exactly. Internally consistent."}
+    },
+    {
+      "id": "c7",
+      "text": "The between-group p-value for the primary outcome (Test 1) is 0.108.",
+      "quote": "imprecise and did not reach statistical significance (p = 0.108)",
+      "section": "3.2 Primary outcomes / Table 2",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute a two-sample (Welch) t-test from the reported means/SDs/n and compare to 0.108.",
+      "evidence": [
+        {"id": "e1", "kind": "statistic", "location": "Table 2 Test 1 between-group p", "quote": "Supervised: 0.108", "extracted_values": {"m1": 168, "s1": 47, "n1": 8, "m2": 213, "s2": 72, "n2": 12, "reported_p": 0.108, "recomputed_welch_p": 0.108, "welch_t": -1.691, "welch_df": 18.0}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "statcheck-style t-test recompute from summary stats", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.92, "rationale": "Welch two-sample t (unequal variances) gives t=-1.69, df=18.0, p=0.1081 — matches reported 0.108 to three decimals. Confirms the main between-group analysis used Welch's t-test; statcheck-clean. (Pooled-variance t would give 0.138, so the choice is identifiable.)"}
+    },
+    {
+      "id": "c8",
+      "text": "All four Table 2 between-group p-values (Warm-up 0.529, Test 1 0.108, Test 2 0.124, Test 3 0.240) are reproducible from the reported summary statistics.",
+      "quote": "Warm-up ... 0.529 | Test 1 ... 0.108 | Test 2 ... 0.124 | Test 3 ... 0.240",
+      "section": "Table 2",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "For each row recompute Welch t-test p from (mean, SD, n) pairs and compare.",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 2 between-group p column", "quote": null, "extracted_values": {"warmup_rep": 0.529, "warmup_welch": 0.522, "test1_rep": 0.108, "test1_welch": 0.108, "test2_rep": 0.124, "test2_welch": 0.126, "test3_rep": 0.240, "test3_welch": 0.237}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "statcheck batch t-test recompute", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "Welch recomputes land within rounding of all four reported values (0.522 vs 0.529; 0.108 vs 0.108; 0.126 vs 0.124; 0.237 vs 0.240). Differences are explainable by rounding of the input means/SDs. The core between-group analysis is internally consistent."}
+    },
+    {
+      "id": "c9",
+      "text": "The 95% CI for the Test 1 mean difference is -108 to +18 s.",
+      "quote": "The mean difference was -45 s, with a 95% CI ranging from -108 to +18 s",
+      "section": "3.2 Primary outcomes",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "Reconstruct the 95% CI from the mean diff, summary SDs/n and the implied t-multiplier; check consistency with the stated p=0.108 and df.",
+      "evidence": [
+        {"id": "e1", "kind": "statistic", "location": "Section 3.2", "quote": "95% CI ranging from -108 to +18 s", "extracted_values": {"ci_low": -108, "ci_high": 18, "center": -45, "half_width": 63, "welch_se": 26.6, "welch_df": 18, "implied_t_mult": 2.367, "t975_df18": 2.101, "welch_consistent_ci_low": -101, "welch_consistent_ci_high": 11}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "CI-vs-p/df coherence recompute (off-the-shelf statcheck/CI check)", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.6, "rationale": "Given Welch SE=26.6 and df=18 (t.975=2.101), the 95% CI should be about [-101, +11] (half-width ~56). The reported half-width 63 implies a t-multiplier of 2.367, i.e. df~7-8 (e.g. n1-1), inconsistent with the df=18 that reproduces the stated p=0.108. The CI is mildly too wide / uses a different df than the p-value. Direction is fine (CI includes 0, consistent with p>0.05). Minor internal inconsistency, not a sign-flip or significance error."}
+    },
+    {
+      "id": "c10",
+      "text": "Both groups significantly improved from warm-up to Test 1 (Supervised 388s->168s, p<0.001; Independent 347s->213s, p=0.020).",
+      "quote": "the Supervised group (388s vs 168s; p < 0.001) and the independent group (347s vs 213s; p = 0.020)",
+      "section": "3.2 Primary outcomes / Table 2 / Abstract",
+      "page": 4,
+      "epistemic_tier": "T6",
+      "predicate": "Recompute paired t-test (or Wilcoxon) p-values from per-subject warm-up and Test-1 times.",
+      "evidence": [
+        {"id": "e1", "kind": "statistic", "location": "Table 2 within-group column", "quote": "Supervised: p < 0.001; Independent: p = 0.020", "extracted_values": {"sup_warmup": 388, "sup_test1": 168, "ind_warmup": 347, "ind_test1": 213, "sup_p": 0.001, "ind_p": 0.020}}
+      ],
+      "verification": {"possible": false, "verifier_needed": "Paired-test recompute requiring per-subject raw times (not in paper)", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.4, "rationale": "These are paired within-group tests; the paired p depends on per-subject correlation/differences, which are not reported (only group means/SDs). Cannot recompute exactly from summary stats. Plausibility: drops of 220s and 134s against SDs in the 47-172 range make p<0.001 and p=0.020 believable, but not verifiable without the raw data the authors say they will provide on request (T6)."}
+    },
+    {
+      "id": "c11",
+      "text": "Approximately 70% of participants were female.",
+      "quote": "Approximately 70% of participants were female, reflecting current medical school demographics.",
+      "section": "3.1 Participant flow and characteristics",
+      "page": 4,
+      "epistemic_tier": "T2",
+      "predicate": "Bind prose '~70% female' to Table 1 female total (14/20) and check.",
+      "evidence": [
+        {"id": "e1", "kind": "text", "location": "Section 3.1", "quote": "Approximately 70% of participants were female", "extracted_values": {"prose_pct": 70}},
+        {"id": "e2", "kind": "table", "location": "Table 1 Female Total", "quote": "14 (70.0%)", "extracted_values": {"female_n": 14, "total_n": 20, "computed_pct": 70.0}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Prose-vs-table percent binding (off-the-shelf)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.97, "rationale": "14/20 = 70.0% exactly matches the prose '~70% female'. Clean prose-table agreement."}
+    },
+    {
+      "id": "c12",
+      "text": "Supervised group's perceived difficulty dropped from 4.1 (before) to 3.5 (after), a difference of -0.6, p=0.049.",
+      "quote": "reported significantly lower perceived difficulty after training compared to pre-training (4.1 vs 3.5; p = 0.049)",
+      "section": "3.3.1 / Table 3",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Compute 3.5-4.1 and compare to Table 3 difference -0.6; bind prose p to table p.",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 3, 'simulator training will be/was difficult', Supervised", "quote": "4.1  3.5  -0.6  0.049", "extracted_values": {"before": 4.1, "after": 3.5, "diff": -0.6, "p": 0.049}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Arithmetic diff + prose-vs-table binding (off-the-shelf)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.95, "rationale": "3.5-4.1 = -0.6 exact; prose values (4.1 vs 3.5) and p=0.049 match Table 3. The underlying paired p itself is not recomputable from means alone (T6), but the prose-table-arithmetic triangle is consistent."}
+    },
+    {
+      "id": "c13",
+      "text": "Independent group's feedback-value score fell from 4.6 to 2.6 (difference -2.0, p=0.003), described as 'reduced to half of the baseline value.'",
+      "quote": "the post-training score was significantly reduced to half of the baseline value (4.6 vs 2.6; p = 0.003)",
+      "section": "3.3.1 / Table 3",
+      "page": 5,
+      "epistemic_tier": "T2",
+      "predicate": "Compute 2.6-4.6 = -2.0 vs Table 3; check whether 2.6 is 'half' of 4.6.",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 3, 'receptive to feedback', Independent", "quote": "4.6  2.6  -2.0  0.003", "extracted_values": {"before": 4.6, "after": 2.6, "diff": -2.0, "p": 0.003, "ratio_after_over_before_pct": 56.5}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Arithmetic + prose-vs-table binding (off-the-shelf)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "2.6-4.6 = -2.0 matches Table 3; p=0.003 matches. 2.6 is 56.5% of 4.6 — 'reduced to half' is a loose but defensible characterization (a drop of nearly half a 5-point scale). No numeric error."}
+    },
+    {
+      "id": "c14",
+      "text": "All eight After-minus-Before differences in Table 3 equal the reported 'difference' column.",
+      "quote": "4.8 4.9 0.1 0.351 ... 4.0 3.1 -0.9 0.155 ... 3.2 2.8 -0.4 0.175",
+      "section": "Table 3",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "For each of the 8 (4 questions x 2 groups) cells compute After-Before and compare to the stated difference.",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 3 difference columns", "quote": null, "extracted_values": {"diffs_all_match": 1}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Table-arithmetic recompute (off-the-shelf)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.97, "rationale": "All 8 cells reproduce: (3.5-4.1=-0.6), (3.7-3.6=+0.1), (4.9-4.8=+0.1), (4.5-4.3=+0.2), (3.1-4.0=-0.9), (2.8-3.2=-0.4), (4.6-4.5=+0.1), (2.6-4.6=-2.0). Internal arithmetic clean."}
+    },
+    {
+      "id": "c15",
+      "text": "Prose reports the supervised feedback question p as 0.685, whereas Table 3 lists it as 0.684.",
+      "quote": "remaining at the same level (4.5 vs 4.6; p = 0.685)",
+      "section": "3.3.1 (vs Table 3)",
+      "page": 5,
+      "epistemic_tier": "T2",
+      "predicate": "Bind prose p=0.685 to the Table 3 cell p=0.684 and check equality.",
+      "evidence": [
+        {"id": "e1", "kind": "text", "location": "Section 3.3.1 end", "quote": "p = 0.685", "extracted_values": {"prose_p": 0.685}},
+        {"id": "e2", "kind": "table", "location": "Table 3, 'receptive to feedback', Supervised", "quote": "4.5 4.6 0.1 0.684", "extracted_values": {"table_p": 0.684}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Prose-vs-table p binding (off-the-shelf)", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.75, "rationale": "Prose says p=0.685, Table 3 says 0.684 for the same comparison (Supervised, 4.5->4.6). A trivial 0.001 transcription discrepancy; immaterial to any conclusion but a genuine prose-table mismatch a binder would flag."}
+    },
+    {
+      "id": "c16",
+      "text": "Participants with gaming experience completed Test 3 in 137 s vs 249 s for those without (p=0.063).",
+      "quote": "completed examination test 3 in a mean of 137 s, compared to 249 s for those without such experience (p = 0.063)",
+      "section": "3.3.1.1.1 / Table 4",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Bind prose 137/249/p=0.063 to Table 4 gaming Live test 3 row; recompute a two-sample p from (137, SD22, n11) vs (249, SD155, n9).",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 4 gaming subgroup, Live test 3", "quote": "137 22 249 155 p = 0.063", "extracted_values": {"m1": 137, "s1": 22, "n1": 11, "m2": 249, "s2": 155, "n2": 9, "reported_p": 0.063, "welch_p": 0.063}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "statcheck t-test recompute + prose-vs-table binding", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.8, "rationale": "Prose 137/249 matches Table 4 exactly. Welch t (using the conflicting n=11/9 from Table 4) reproduces p=0.063 well; pooled gives 0.028. So the reported p is consistent with Table 4's own n's — but those n's contradict Table 1 (see c4), so the subgroup denominators remain in question."}
+    },
+    {
+      "id": "c17",
+      "text": "Shooter-game players completed Test 3 significantly faster than non-players (130 +/- 13 s vs 207 +/- 130 s; p=0.037).",
+      "quote": "Those who reported playing shooter games completed test 3 significantly faster than those who did not (130 +/- 13 s vs 207 +/- 130 s; p = 0.037)",
+      "section": "3.3.1.1.1 / Table 4",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute a two-sample test for (130, n5) vs (207, n15) and compare to p=0.037; also bind SDs to Table 4 (130 SD13; 207 SD103).",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 4 shooter subgroup, Live test 3", "quote": "130 13 207 103 p = 0.037", "extracted_values": {"m1": 130, "s1_table": 103, "s1_prose": 130, "n1": 5, "m2": 207, "n2": 15, "reported_p": 0.037, "welch_p": 0.013, "pooled_p": 0.119}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "statcheck t-test recompute + SD prose-vs-table binding", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.55, "rationale": "Two problems. (1) The reported p=0.037 does not cleanly match either a Welch t-test (0.013) or a pooled t-test (0.119) on these summary stats; a Mann-Whitney U on n=5 vs 15 could plausibly land near 0.037, so this alone is not damning. (2) Prose writes the non-player SD as '+/- 130' but Table 4 lists SD 103 for that cell (the 130 appears to be copied from the player mean) — a prose-table SD mismatch. Worth a statcheck + binder flag; not conclusive without knowing the exact test."}
+    },
+    {
+      "id": "c18",
+      "text": "Men tended to complete Test 3 faster than women (140 +/- 33 s vs 208 +/- 134 s; p=0.092), with no significant sex differences in Warm-up (p=0.627), Test 1 (p=0.639), or Test 2 (p=0.233).",
+      "quote": "a trend for men to complete live test 3 slightly faster (140 +/- 33 s vs 208 +/- 134 s; p = 0.092)",
+      "section": "3.4 / Table 5",
+      "page": 5,
+      "epistemic_tier": "T2",
+      "predicate": "Bind prose sex values/p-values to Table 5 and recompute Test 3 p from summary stats.",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 5, Live test 3*", "quote": "208 134 140 33 p = 0.092", "extracted_values": {"f_mean": 208, "f_sd": 134, "f_n": 14, "m_mean": 140, "m_sd": 33, "m_n": 6, "reported_p": 0.092, "welch_p": 0.094}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-table binding + statcheck recompute", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.8, "rationale": "Prose values (140 SD33 men, 208 SD134 women, p=0.092) match Table 5 exactly; Welch recompute gives 0.094, consistent. Warm-up/Test1/Test2 p-values (0.627/0.639/0.233) also match the table. Clean."}
+    },
+    {
+      "id": "c19",
+      "text": "Within-sex improvement (Warm-up -> Test 1): women improved by 173 s (p=0.001), men by 159 s (p=0.058).",
+      "quote": "women improved their times significantly (173 s; p = 0.001) whereas men showed a less pronounced improvement (159 s; p = 0.058)",
+      "section": "3.4",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Compute Warm-up - Test1 from Table 5 for each sex (F 373->200, M 340->182) and compare to the stated improvements.",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 5 Warm-up and Live test 1 rows", "quote": "Warm-up F 373 M 340; Live test 1 F 200 M 182", "extracted_values": {"f_warmup": 373, "f_test1": 200, "f_delta": 173, "m_warmup": 340, "m_test1": 182, "m_delta": 158, "prose_m_delta": 159}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Arithmetic delta recompute + prose binding (off-the-shelf)", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.7, "rationale": "Women: 373-200 = 173 matches prose exactly. Men: 340-182 = 158, but prose states 159 (off by 1 s). Likely rounding of underlying per-subject means, but as stated it is a 1-unit prose-vs-table arithmetic discrepancy. The paired p-values (0.001/0.058) are not recomputable from summary stats (T6)."}
+    },
+    {
+      "id": "c20",
+      "text": "A priori power analysis: 36 trainees were required to achieve 70% power to detect the assumed effect (guided 2.1 mm/s vs control 0.6 mm/s improvement, SD 1.8 mm/s).",
+      "quote": "Assuming an equivalent difference, a total of 36 trainees would be required to achieve 70% power to detect a statistically significant difference between the groups.",
+      "section": "2.3 Sample size and power calculation",
+      "page": 2,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute the two-sample t-test sample size for effect size d=(2.1-0.6)/1.8 at 70% power, alpha=0.05 two-sided.",
+      "evidence": [
+        {"id": "e1", "kind": "statistic", "location": "Section 2.3", "quote": "improved rope test performance by 2.1 mm/s, compared with a control group that improved by 0.6 mm/s ... standard deviation of the first group was 1.8 mm/s ... total of 36 trainees ... 70% power", "extracted_values": {"diff": 1.5, "sd": 1.8, "cohens_d": 0.833, "power": 0.70, "alpha": 0.05, "recomputed_total_n": 36}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Power/sample-size recompute (off-the-shelf power analysis)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "d = 1.5/1.8 = 0.833. Normal-approximation two-sample sample size for 70% power, alpha 0.05 two-sided gives ~17.8/group = ~35.6 total, rounding to 36. Reproduces the stated 36 closely. (Exact t-based calc could shift by 1-2, but the figure is sound.)"}
+    },
+    {
+      "id": "c21",
+      "text": "Post-hoc power analysis: with the realized n=20, achieved power was approximately 28%-35%.",
+      "quote": "Using the actual sample size of 20 participants, the statistical power achieved ranged from approximately 28% to 35%, depending on the comparison.",
+      "section": "2.3 / 5 Limitations",
+      "page": 2,
+      "epistemic_tier": "T4",
+      "predicate": "Assess legitimacy and recomputability of post-hoc (observed-effect) power; check it is consistent with the observed effects and n.",
+      "evidence": [
+        {"id": "e1", "kind": "statistic", "location": "Section 2.3 and Section 5", "quote": "the achieved power was approximately 28%-35%", "extracted_values": {"n_total": 20, "power_low": 0.28, "power_high": 0.35}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Methodological judgment + (partial) power recompute from observed effects", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.45, "rationale": "Post-hoc 'observed power' is a contested practice (it is a deterministic monotone function of the p-value, adding little). The 28-35% range is internally plausible for n=20 with d~0.7-0.8 at the realized split (8 vs 12), but the exact effect sizes feeding each comparison are not enumerated, so it cannot be pinned to a single recompute. Tier-4 method-appropriateness note rather than a numeric error; the authors do use it appropriately (to argue underpowering, not to claim equivalence)."}
+    },
+    {
+      "id": "c22",
+      "text": "The study claims to support the primary hypothesis that real-time supervision yields superior technical proficiency, while final task-performance differences were not statistically significant.",
+      "quote": "These findings support our primary hypothesis and suggest that real-time guidance serves as a critical catalyst for early skill acquisition ... no statistically significant differences were detected in final performance times.",
+      "section": "4 Discussion",
+      "page": 5,
+      "epistemic_tier": "T4",
+      "predicate": "Check whether the stated conclusion (supports hypothesis of superior proficiency) is licensed by the non-significant primary outcome and the limited power.",
+      "evidence": [
+        {"id": "e1", "kind": "text", "location": "Introduction (hypothesis) + Discussion", "quote": "We hypothesised that real-time guidance would yield superior technical proficiency, as confirmed by shorter task completion times", "extracted_values": {"primary_p": 0.108}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Claim-vs-evidence support judgment (calibrated, with the p=0.108 anchor)", "verifier_exists": false, "candidate_verdict": "suspect", "confidence": 0.5, "rationale": "The pre-stated hypothesis was superior proficiency 'confirmed by shorter task completion times', but the primary outcome (Test 1) was non-significant (p=0.108) and the trial was underpowered (28-35%). Saying the findings 'support our primary hypothesis' over-reads a null primary endpoint; the support actually comes from the secondary subjective outcomes (perceived difficulty, feedback). The authors partly self-correct elsewhere (calling it 'preliminary', 'early-phase', warning against equivalence), so this is a tension/over-claim rather than a flat contradiction. Tier-4 judgment, calibrated."}
+    },
+    {
+      "id": "c23",
+      "text": "The conclusion asserts that remote real-time supervision is 'superior to unsupervised practice' for introducing novices to laparoscopic surgery.",
+      "quote": "this study provides preliminary evidence that remote real-time supervision is superior to unsupervised practice for introducing novices to laparoscopic surgery.",
+      "section": "6 Conclusion",
+      "page": 6,
+      "epistemic_tier": "T4",
+      "predicate": "Assess whether 'superior' is supported given only secondary subjective endpoints reached significance and the objective primary endpoint did not.",
+      "evidence": [
+        {"id": "e1", "kind": "text", "location": "Section 6 Conclusion", "quote": "remote real-time supervision is superior to unsupervised practice", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Claim-vs-evidence over-generalization judgment (calibrated)", "verifier_exists": false, "candidate_verdict": "suspect", "confidence": 0.5, "rationale": "'Superior' is hedged with 'preliminary evidence' and immediately qualified ('rather than conclusive evidence of superior overall performance outcomes'), so it is a guarded claim. Still, the only significant between-condition signals are subjective (perceived difficulty p=0.049; feedback devaluation p=0.003), not objective performance — so 'superior' overstates a result that the data show mainly on self-report. Calibrated T4 note."}
+    },
+    {
+      "id": "c24",
+      "text": "Kinematic performance metrics (instrument path length, angular movement, error counts) were lost due to a simulator storage-buffer malfunction; only task completion time was analyzable.",
+      "quote": "A temporary malfunction in the simulator's local storage buffer prevented the automatic export of kinematic metrics (e.g., instrument path length, angular movement, error counts). These data could not be recovered.",
+      "section": "2.7 Data collection / 5 Limitations",
+      "page": 3,
+      "epistemic_tier": "T7",
+      "predicate": "Note as an unverifiable data-loss explanation and a reproducibility/integrity caveat (cannot be externally confirmed).",
+      "evidence": [
+        {"id": "e1", "kind": "text", "location": "Section 2.7", "quote": "Performance metrics were automatically logged by the simulator software but were, unfortunately, not saved.", "extracted_values": {}}
+      ],
+      "verification": {"possible": false, "verifier_needed": "Human/editorial assessment of the data-loss narrative; not algorithmically checkable", "verifier_exists": false, "candidate_verdict": "not_checkable", "confidence": 0.5, "rationale": "A claim of equipment-caused data loss is not externally verifiable from the manuscript. It is disclosed transparently and consistently in two sections (good practice), but it means the richest objective endpoints are unavailable, weakening the objective evidence base. Logged as a T7/reproducibility caveat, not an error."}
+    },
+    {
+      "id": "c25",
+      "text": "Table 2 is captioned 'Within-group and between-group analyses (clean version)', and Section 3.2 is titled 'Primary outcomes: final sharp exercises'.",
+      "quote": "TABLE 2 Within-group and between-group analyses (clean version). ... 3.2 Primary outcomes: final sharp exercises",
+      "section": "Table 2 caption / Section 3.2 heading",
+      "page": 4,
+      "epistemic_tier": "T7",
+      "predicate": "Flag anomalous editorial/template artifacts: a table labelled 'clean version' and a heading referencing 'sharp exercises' for a task that is a 'Rope Race'.",
+      "evidence": [
+        {"id": "e1", "kind": "text", "location": "Table 2 caption", "quote": "(clean version)", "extracted_values": {}},
+        {"id": "e2", "kind": "text", "location": "Section 3.2 heading", "quote": "final sharp exercises", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Integrity/tortured-phrasing screen (signal, routed to human)", "verifier_exists": false, "candidate_verdict": "suspect", "confidence": 0.55, "rationale": "'(clean version)' in a published table caption implies an unlabeled 'dirty' version existed and an editing artifact slipped through. The heading 'final sharp exercises' has no referent in the methods (the task is the 'Rope Race', involving thread/loops, never 'sharp' instruments), reading like leftover boilerplate. Neither is a data error, but together they are low-grade integrity/quality-control signals (proof-reading lapses) worth flagging for a human."}
+    },
+    {
+      "id": "c26",
+      "text": "Reference 12 (Finocchiaro et al., colonoscopy simulator, IEEE Access 2023) is cited and exists.",
+      "quote": "Finocchiaro M, D'Amato S, Donvito A, Longo F, Giordano M, Surace A, et al. Physical simulator for colonoscopy: a modular design approach and validation. IEEE Access. (2023) 11:36945-60. doi: 10.1109/ACCESS.2023.3273886",
+      "section": "References / Discussion",
+      "page": 6,
+      "epistemic_tier": "T1",
+      "predicate": "Resolve the DOI 10.1109/ACCESS.2023.3273886 and confirm the citation exists and is not retracted.",
+      "evidence": [
+        {"id": "e1", "kind": "text", "location": "Reference list item 12", "quote": "doi: 10.1109/ACCESS.2023.3273886", "extracted_values": {"ref_count": 12}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Citation existence/retraction lookup (off-the-shelf DOI/Crossref/Retraction Watch)", "verifier_exists": true, "candidate_verdict": "inconclusive", "confidence": 0.55, "rationale": "DOI is well-formed and the reference list (12 items) matches the highest in-text citation number (12). Existence/retraction status requires a live DB lookup not performed here. Minor stylistic note: in-text the paper cites it both narratively ('Finocchiaro et al. ... IEEE Access, 2023') and as '(12)', which is harmless."}
+    },
+    {
+      "id": "c27",
+      "text": "The trial was approved by the Swedish Ethical Review Authority (Ref. no. 2023-02208-01) and registered as a randomized controlled trial with 1:1 blocked randomization.",
+      "quote": "The study was approved by the Swedish Ethical Review Authority (Ref. no. 2023-02208-01).",
+      "section": "2.5 Randomisation / 2.7.2 Ethics",
+      "page": 3,
+      "epistemic_tier": "T1",
+      "predicate": "Cross-check ethics reference and any trial-registry identifier against external registries.",
+      "evidence": [
+        {"id": "e1", "kind": "text", "location": "Section 2.7.2", "quote": "Ref. no. 2023-02208-01", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "External registry lookup (ethics ref / trial registration)", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.4, "rationale": "An ethics reference number is given; however, no prospective trial-registration ID (e.g. ClinicalTrials.gov / ISRCTN) is reported, which is a notable omission for an RCT. The ethics ref cannot be independently confirmed from the manuscript. Flag for external verification (T1) and as a reporting-completeness note."}
+    },
+    {
+      "id": "c28",
+      "text": "Baseline task completion times did not differ between groups (Supervised 388 s [SD 109] vs Independent 347 s [SD 172]; p=0.529).",
+      "quote": "At baseline, there was no significant difference in task completion time between the supervision and independent groups (Table 1).",
+      "section": "3.1 / Table 1 / Table 2",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute the between-group p for warm-up/baseline times and confirm consistency between Table 1 and Table 2.",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 1 baseline task times & Table 2 Warm-up row", "quote": "388 (109) 347 (172) 363 (148) 0.529", "extracted_values": {"sup_mean": 388, "sup_sd": 109, "ind_mean": 347, "ind_sd": 172, "total_mean": 363, "total_sd": 148, "p": 0.529, "welch_p": 0.522}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "statcheck t-test recompute + Table1/Table2 cross-consistency", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "Table 1 baseline (388/347, p=0.529) is identical to Table 2 Warm-up row; Welch recompute gives p=0.522, consistent with 0.529. Weighted total mean check: (8*388 + 12*347)/20 = 363.4, matching the reported total 363. Internally consistent."}
+    }
+  ],
+  "paper_level_notes": "Frontiers in Surgery (2026) RCT, 7 pages, clean text-based PDF (no scanned images; figures are tables only — Tables 1-5). Underpowered trial: planned n=40, enrolled n=20 (Sup 8 / Ind 12) after early termination; authors disclose this and report post-hoc power 28-35%. DATA AVAILABILITY: 'raw data ... available by the authors, without undue reservation' — NOT deposited, so T6 paired-test recomputes (within-group p<0.001/0.020, Table 3 paired p-values) are blocked without a data request. Generative-AI statement: declared not used for the manuscript (but alt-text was AI-generated by Frontiers). One author (GS) is a Frontiers editorial board member (disclosed). VERIFIABILITY MAP: the deterministic frontier is rich here — ~17-18 of 28 claims are T0-T2 and settle with off-the-shelf checks (percent/GRIM, table totals, prose-vs-table binding, statcheck t-test recompute, CI-vs-p coherence). KEY FINDINGS (candidate, not asserted errors): (1) Table 1 Independent gaming cells 66.0%/33.0% should be 66.7%/33.3% — isolated truncation (T0, high conf); (2) Table 4 gaming subgroup n=11/9 contradicts Table 1's 8/12 gamers/non-gamers, while shooter (5/15) and mobile (7/13) subgroups DO match Table 1 — unresolved cross-table inconsistency (T2); (3) the primary-outcome 95% CI [-108,+18] is ~13% wider than the Welch-consistent CI [-101,+11] given the stated p=0.108 and df=18, implying a smaller-df t-multiplier (T0, moderate conf); (4) shooter Test-3 p=0.037 matches neither Welch (0.013) nor pooled (0.119) t-tests and the non-player SD is misreported in prose as ±130 vs Table's 103 (T0/T2, low-moderate conf — a Mann-Whitney could explain the p); (5) men's Warm-up→Test1 improvement stated as 159 s vs 158 s computed from Table 5 (off by 1, T0); (6) prose feedback p=0.685 vs Table 3 p=0.684 (trivial, T2); (7) integrity/QC signals: Table 2 captioned '(clean version)' and Section 3.2 titled 'final sharp exercises' for a Rope-Race (thread/loops) task — boilerplate/proofing artifacts (T7). REASSURING: the entire main between-group analysis (Table 2: 0.529/0.108/0.124/0.240) reproduces under Welch's t-test; abstract↔body↔table values are consistent; the a-priori power calc (36 for 70%) reproduces (~35.6); Table 3 arithmetic is fully clean. Net: the headline analyses are statcheck-consistent; the flags are mostly minor rounding/transcription and one genuine cross-table denominator conflict (claim c4) plus the shooter-subgroup p (c17) that merit a closer look."
+}

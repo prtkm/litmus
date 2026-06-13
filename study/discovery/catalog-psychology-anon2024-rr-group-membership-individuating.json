@@ -1,0 +1,770 @@
+{
+  "paper_id": "psychology-anon2024-rr-group-membership-individuating",
+  "title": "Perceived controllability of group membership does not moderate individuating information effects in implicit person perception",
+  "doi": "10.3389/fpsyg.2024.969382",
+  "domain": "psychology (social cognition; implicit person perception; Registered Report)",
+  "n_pages_read": 17,
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Study 2a: there was a significant main effect of information on stereotype D scores, F(1,188) = 1.58, p < 0.001, with partial eta-squared = 0.17.",
+      "quote": "There was a significant main effect of information, F (1,188) = 1.58, p < 0.001, η2 p = 0.17.",
+      "section": "Study 2a > Results > Implicit stereotyping",
+      "page": 8,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute the two-sided p-value from F and df (statcheck), and recompute partial eta-squared from F and df (eta2p = F*df1/(F*df1+df2)); both must be mutually consistent with the reported F.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "statistic",
+          "location": "Study 2a, Implicit stereotyping paragraph (p.8)",
+          "quote": "F (1,188) = 1.58, p < 0.001, η2 p = 0.17",
+          "extracted_values": {"F": 1.58, "df1": 1, "df2": 188, "p_reported_upper_bound": 0.001, "eta2p_reported": 0.17}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "statcheck (F,df->p decision-consistency) + an eta-squared-partial<->F coherence check",
+        "verifier_exists": true,
+        "candidate_verdict": "suspect",
+        "confidence": 0.96,
+        "rationale": "F(1,188)=1.58 gives recomputed two-sided p = 0.210, grossly inconsistent with the stated p < 0.001 (statcheck gross/decision error). Independently, eta2p implied by F=1.58 is 0.008, not 0.17; conversely eta2p=0.17 with df(1,188) implies F~38.5. The reported F=1.58 is therefore an impossible value: both p and eta2p point to a true F near 38.5. Note the SAME value F=1.58 is reused for the interaction F(2,188)=1.58 immediately below, suggesting a copy/transcription error into the main-effect slot. The verbal claim (significant, large information effect) is independently supported by the condition t-tests (t(100)=3.28, t(94)=-5.58) and eta2p=0.17, so the substantive conclusion stands; only the F statistic is mis-transcribed. Off-the-shelf statcheck catches this directly."
+      }
+    },
+    {
+      "id": "c2",
+      "text": "Study 1 explicit attitudes: there was a significant target x information interaction on the feeling thermometer, F(1,195) = 58.77, p = 0.008, partial eta-squared = 0.23.",
+      "quote": "The only significant result was the target X information interaction, F (1,195) = 58.77, p = 0.008, η2 p = 0.23.",
+      "section": "Study 1 > Explicit attitudes",
+      "page": 7,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute p from F(1,195) and compare to reported p=0.008; cross-check eta2p against F.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "statistic",
+          "location": "Study 1, Explicit attitudes paragraph (p.7)",
+          "quote": "F (1,195) = 58.77, p = 0.008, η2 p = 0.23",
+          "extracted_values": {"F": 58.77, "df1": 1, "df2": 195, "p_reported": 0.008, "eta2p_reported": 0.23}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "statcheck (F,df->p value-consistency)",
+        "verifier_exists": true,
+        "candidate_verdict": "suspect",
+        "confidence": 0.93,
+        "rationale": "F(1,195)=58.77 gives recomputed p ~ 8e-13, not 0.008. eta2p implied by F=58.77 is 0.232, matching the reported 0.23, so F and eta2p agree and p=0.008 is the inconsistent value (should be p < 0.001). Because alpha was adjusted to 0.01 here, the decision (significant) is unaffected, so statcheck flags this as an 'inconsistency' rather than a 'decision error'. Likely a typo for p < 0.001. Directly caught by off-the-shelf statcheck."
+      }
+    },
+    {
+      "id": "c3",
+      "text": "Study 4 implicit attitudes: D scores in the counterstereotypic-individuating + social-category condition were nonsignificant, t(245) = 6.84, p = 0.209.",
+      "quote": "D scores in the former condition were nonsignificant, t (245) = 6.84, p = 0.209, while those in the latter condition were positive and significant, t (260) = 2.95, p = 0.004.",
+      "section": "Study 4 > Implicit attitudes",
+      "page": 13,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute two-sided p from t(245)=6.84 (statcheck); a t of 6.84 cannot correspond to p=0.209 nor to 'nonsignificant'.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "statistic",
+          "location": "Study 4, Implicit attitudes paragraph (p.13)",
+          "quote": "t (245) = 6.84, p = 0.209",
+          "extracted_values": {"t": 6.84, "df": 245, "p_reported": 0.209}
+        },
+        {
+          "id": "e2",
+          "kind": "statistic",
+          "location": "Study 4, Implicit stereotyping paragraph (p.13) - same t value reused",
+          "quote": "single-sample t (237) = 6.84, p < 0.001",
+          "extracted_values": {"t": 6.84, "df": 237, "p_reported_upper_bound": 0.001}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "statcheck (t,df->p decision-consistency)",
+        "verifier_exists": true,
+        "candidate_verdict": "suspect",
+        "confidence": 0.95,
+        "rationale": "t(245)=6.84 gives recomputed two-sided p ~ 6e-11, not 0.209, and certainly not 'nonsignificant'. The identical statistic t=6.84 appears in the Implicit stereotyping section (t(237)=6.84, p<0.001), so the attitudes paragraph appears to have copy-pasted the wrong t and/or wrong p. At least one of {t=6.84, p=0.209, the word 'nonsignificant'} is wrong; they are mutually impossible. The narrative claim that the attitude effect was null here may itself be correct (attitudes were expected null when traits are similarly valenced), but the supporting statistic is internally inconsistent. Off-the-shelf statcheck catches the t/p mismatch."
+      }
+    },
+    {
+      "id": "c4",
+      "text": "Table 1: Study 3b stereotype D scores, uncontrollable-reason condition, M = 0.01, SD = 0.40, 95% CI = (-0.05, 0.30).",
+      "quote": "0.01a  0.40  -0.05, 0.30",
+      "section": "Table 1 (Descriptive statistics for main effects for IAT scores)",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "A reported 95% CI must be symmetric about its mean: (M - lower) should approximately equal (upper - M) to within rounding (<=0.01). Recompute both half-widths.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "table",
+          "location": "Table 1, Study 3b stereotype D scores row, Uncontrollable reason cell",
+          "quote": "0.01a (SD 0.40) 95% CI -0.05, 0.30",
+          "extracted_values": {"M": 0.01, "SD": 0.40, "CI_low": -0.05, "CI_high": 0.30, "lower_halfwidth": 0.06, "upper_halfwidth": 0.29}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "CI-symmetry check (lower half-width vs upper half-width about the reported mean)",
+        "verifier_exists": true,
+        "candidate_verdict": "suspect",
+        "confidence": 0.97,
+        "rationale": "Lower half-width = M - low = 0.06; upper half-width = high - M = 0.29; asymmetry 0.23. Every other one of the 50 Table 1 cells is symmetric to within <=0.01 (verified by an exhaustive CI-symmetry recompute). By symmetry the upper bound should be ~+0.07, not +0.30; the value 0.30 is almost certainly a typo for 0.07. Confined to a descriptive cell (not a hypothesis test), so substantive impact is negligible, but it is an unambiguous internal-consistency error with a one-line runnable check. Confirmed against the 300/400-DPI render of the table image."
+      }
+    },
+    {
+      "id": "c5",
+      "text": "Study 3b: the grand-mean attitude D score was statistically significant, M = -0.04, SD = 0.44, 95% CI = (-0.09, 0.00), t(403) = -2.00, p = 0.046, d = -0.10.",
+      "quote": "While the grand mean attitude D score was statistically significant, M = −0.04, SD = 0.44, 95% CI = (−0.09, 0.00), t (403) = −2.00, p = 0.046, d = −0.10, the p-value approached 0.05 and the effect was trivially small",
+      "section": "Study 3b > Implicit stereotypes controlling for implicit attitudes",
+      "page": 11,
+      "epistemic_tier": "T0",
+      "predicate": "From M, SD, N (=df+1=404) recompute one-sample t = M/(SD/sqrt(N)), its p, and Cohen's d = M/SD; all four reported quantities (t, p, d, and the CI bound) must be mutually consistent.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "statistic",
+          "location": "Study 3b, implicit-attitudes-as-covariate paragraph (p.11)",
+          "quote": "M = −0.04, SD = 0.44, 95% CI = (−0.09, 0.00), t (403) = −2.00, p = 0.046, d = −0.10",
+          "extracted_values": {"M": -0.04, "SD": 0.44, "df": 403, "N": 404, "CI_low": -0.09, "CI_high": 0.00, "t_reported": -2.00, "p_reported": 0.046, "d_reported": -0.10}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "one-sample t / Cohen's d recompute from M, SD, N (deterministic)",
+        "verifier_exists": true,
+        "candidate_verdict": "suspect",
+        "confidence": 0.85,
+        "rationale": "With M=-0.04, SD=0.44, N=404: recomputed t = -1.83 (not -2.00), p = 0.068 (not 0.046; i.e. NOT significant at .05), and d = M/SD = -0.091 (rounds to -0.09, not -0.10). The reported t=-2.00, p=0.046, d=-0.10 are mutually consistent only if SD ~ 0.40 (then d=-0.10 and t=-2.01). So the in-text SD=0.44 is inconsistent with the in-text t/p/d (which imply SD~0.40). This matters because the significance claim ('statistically significant', p=0.046) flips to nonsignificant (p=0.068) when the stated SD=0.44 is used. The authors themselves down-weight the effect as 'trivially small,' so substantive impact is minor, but the descriptive vs inferential statistics are internally inconsistent. Deterministic recompute settles it once one decides which input (SD vs t) is authoritative."
+      }
+    },
+    {
+      "id": "c6",
+      "text": "Study 3b: within the ANCOVA controlling for implicit attitudes, the information main effect was nonsignificant, F(1,133) = 1.96, while the covariate, reason main effect, and interaction in the SAME model are reported with error df = 381 (F(1,381)=15.07; F(2,381)=0.32; F(2,381)=1.40).",
+      "quote": "The effect of information remained nonsignificant, F (1,133) = 1.96, p = 0.164, η2 p = 0.02, as did the main effect of reason, F (2,381) = 0.32, p = 0.726, and the reason for group membership X information interaction, F (2,381) = 1.40, p = 0.247",
+      "section": "Study 3b > Implicit stereotypes controlling for implicit attitudes",
+      "page": 11,
+      "epistemic_tier": "T2",
+      "predicate": "Within a single ANCOVA, all F-tests share the same error (denominator) df. Check df coherence across the effects of one model.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "statistic",
+          "location": "Study 3b ANCOVA controlling for attitudes (p.11)",
+          "quote": "F (1,381) = 15.07 ... F (1,133) = 1.96 ... F (2,381) = 0.32 ... F (2,381) = 1.40",
+          "extracted_values": {"covariate_error_df": 381, "info_error_df": 133, "reason_error_df": 381, "interaction_error_df": 381}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "within-model df-coherence check (all effects in one ANCOVA must share denominator df)",
+        "verifier_exists": false,
+        "candidate_verdict": "suspect",
+        "confidence": 0.9,
+        "rationale": "The information main effect's error df (133) is inconsistent with the error df (381) used for every other effect in the same ANCOVA. The information df should be 1,381. statcheck would not catch this (it checks F<->p within one stat, not cross-effect df coherence) so it needs a small bespoke 'shared-denominator-df' verifier. Decision-neutral: F(1,381)=1.96 -> p=0.162 vs reported p=0.164, both nonsignificant, so the conclusion is unaffected; df=133 is a transcription typo. Recompute: p from F(1,381)=1.96 confirms p~0.162 (reported 0.164 is what you get from df=133), pinpointing 133 as the error."
+      }
+    },
+    {
+      "id": "c7",
+      "text": "Study 4 implicit attitudes: the two information-condition single-sample t-tests have df 245 and 260, implying condition n's of 246 and 261 that sum to 507, exceeding the stated total sample N = 506.",
+      "quote": "t (245) = 6.84 ... t (260) = 2.95, p = 0.004 ... the final sample size was N = 506 Prime Panels workers.",
+      "section": "Study 4 > Implicit attitudes / Participants",
+      "page": 13,
+      "epistemic_tier": "T0",
+      "predicate": "Sum of per-condition sample sizes (df+1) across the two mutually exclusive information conditions must not exceed the reported total N.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "statistic",
+          "location": "Study 4 Implicit attitudes t-tests (p.13)",
+          "quote": "t (245) = 6.84 ... t (260) = 2.95",
+          "extracted_values": {"df_cond1": 245, "df_cond2": 260, "n_cond1": 246, "n_cond2": 261, "sum_n": 507}
+        },
+        {
+          "id": "e2",
+          "kind": "number",
+          "location": "Study 4 Participants (p.13)",
+          "quote": "the final sample size was N = 506 Prime Panels workers",
+          "extracted_values": {"N_total": 506}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "sample-size / df-budget coherence check (sum of condition n's vs total N)",
+        "verifier_exists": false,
+        "candidate_verdict": "suspect",
+        "confidence": 0.6,
+        "rationale": "246 + 261 = 507 > 506. Every other study's two information conditions sum to <= N (e.g., S1: 88+116=204<=205; S2b: 144+148=292<=302), consistent with listwise deletion. S4 attitude is the only over-budget case, an off-by-one, most plausibly a df typo (and note the df=245 cell is also the one carrying the impossible t=6.84,p=0.209 in c3). Low severity; flagged as suspect with modest confidence because exact per-condition exclusion counts are not in the main text (would need SI to fully confirm)."
+      }
+    },
+    {
+      "id": "c8",
+      "text": "Study 1 stereotype D scores: a significant main effect of information, F(1,193) = 23.16, p < 0.001, partial eta-squared = 0.11.",
+      "quote": "There was a significant main effect of information, F (1,193) = 23.16, p < 0.001, η2 p = 0.11.",
+      "section": "Study 1 > Results > Implicit stereotyping",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute p from F(1,193) (statcheck) and eta2p from F,df; confirm consistency.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "statistic",
+          "location": "Study 1, Implicit stereotyping (p.5)",
+          "quote": "F (1,193) = 23.16, p < 0.001, η2 p = 0.11",
+          "extracted_values": {"F": 23.16, "df1": 1, "df2": 193, "eta2p": 0.11}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "statcheck + eta2p<->F coherence",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.97,
+        "rationale": "Recomputed p ~ 3e-6 < 0.001 (consistent). eta2p from F=23.16,df(1,193) = 0.107 ~ 0.11 (consistent). Representative of the ~55 other reported F-tests, which all check out internally; included as a confirmed-supported anchor."
+      }
+    },
+    {
+      "id": "c9",
+      "text": "Study 1 attitude D scores: significant main effect of information, F(1,192) = 10.50, p = 0.001, partial eta-squared = 0.05.",
+      "quote": "There was a significant main effect of information, F (1,192) = 10.50, p = 0.001, η2 p = 0.05.",
+      "section": "Study 1 > Implicit attitudes",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute p from F(1,192); confirm rounds to 0.001; eta2p from F,df.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "statistic",
+          "location": "Study 1, Implicit attitudes (p.5)",
+          "quote": "F (1,192) = 10.50, p = 0.001, η2 p = 0.05",
+          "extracted_values": {"F": 10.50, "df1": 1, "df2": 192, "p": 0.001, "eta2p": 0.05}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "statcheck",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.95,
+        "rationale": "Recomputed p = 0.0014 ~ rounds to 0.001 (consistent). eta2p from F = 0.052 ~ 0.05 (consistent)."
+      }
+    },
+    {
+      "id": "c10",
+      "text": "Study 2b stereotype D scores: large main effect of information, F(1,286) = 62.58, p < 0.001, partial eta-squared = 0.18.",
+      "quote": "there was a large, significant main effect of information, F (1,286) = 62.58, p < 0.001, η2 p = 0.18.",
+      "section": "Study 2b > Results > Implicit stereotyping",
+      "page": 9,
+      "epistemic_tier": "T0",
+      "predicate": "statcheck on F(1,286) and eta2p coherence.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "statistic",
+          "location": "Study 2b Implicit stereotyping (p.9)",
+          "quote": "F (1,286) = 62.58, p < 0.001, η2 p = 0.18",
+          "extracted_values": {"F": 62.58, "df1": 1, "df2": 286, "eta2p": 0.18}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "statcheck + eta2p<->F coherence",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.96,
+        "rationale": "Recomputed p < 1e-13 < 0.001 (consistent); eta2p from F = 0.180 = reported 0.18 (consistent)."
+      }
+    },
+    {
+      "id": "c11",
+      "text": "Study 4 implicit stereotyping: significant main effect of information, F(1,483) = 37.49, p < 0.001, partial eta-squared = 0.07, but in an unexpected (stereotype-consistent) direction.",
+      "quote": "The main effect of information was significant, F (1,483) = 37.49, p < 0.001, η2 p = 0.07. However, the means were in an unexpected direction",
+      "section": "Study 4 > Results > Implicit stereotyping",
+      "page": 13,
+      "epistemic_tier": "T0",
+      "predicate": "statcheck on F(1,483) and eta2p coherence.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "statistic",
+          "location": "Study 4 Implicit stereotyping (p.13)",
+          "quote": "F (1,483) = 37.49, p < 0.001, η2 p = 0.07",
+          "extracted_values": {"F": 37.49, "df1": 1, "df2": 483, "eta2p": 0.07}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "statcheck + eta2p<->F coherence",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.96,
+        "rationale": "Recomputed p < 1e-8 < 0.001 (consistent); eta2p from F=37.49,df(1,483)=0.072 ~ 0.07 (consistent)."
+      }
+    },
+    {
+      "id": "c12",
+      "text": "Study 4: the unexpected-direction grand-mean stereotype D (M = 0.10) was significantly below the |D| = 0.15 threshold for a small IAT effect, t(237) = -2.97, d = 0.19.",
+      "quote": "the magnitude of D, M = 0.10, was significantly below the threshold for a small IAT effect (|D| = 0.15; Rudman, 2011), t (237) = −2.97, p = 0.003, d = 0.19",
+      "section": "Study 4 > Results > Implicit stereotyping",
+      "page": 13,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute one-sample t of M against the constant 0.15 using the relevant SD and N; check t, p, d consistency.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "statistic",
+          "location": "Study 4 Implicit stereotyping (p.13)",
+          "quote": "M = 0.10 ... |D| = 0.15 ... t (237) = −2.97, p = 0.003, d = 0.19",
+          "extracted_values": {"M": 0.10, "constant": 0.15, "df": 237, "N": 238, "t": -2.97, "p": 0.003, "d": 0.19}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "one-sample t-against-constant recompute (deterministic)",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.8,
+        "rationale": "t(237)=-2.97 implies SD = (M-0.15)*sqrt(238)/(-2.97) = 0.260, giving d = |M-0.15|/SD = 0.193 ~ 0.19 (consistent). p from t(237)=2.97 = 0.0032 ~ 0.003 (consistent). Using the Table-1 SD=0.24 gives t=-3.21, slightly off, so the exact SD used is ~0.26 (subgroup SD), but the reported t/p/d are mutually coherent. Treated as supported with moderate confidence pending exact SD from SI."
+      }
+    },
+    {
+      "id": "c13",
+      "text": "The a priori power analysis (Studies 1-3b) showed that 140 participants were needed per study (alpha=0.05, 80% power, f=0.15, r=0.50, within-between interaction in factorial ANOVA).",
+      "quote": "Power analyses were performed for Studies 1-3b ... with α = 0.05, 80% power to detect an effect size of f = 0.15, and a correlation between repeated measures of r = 0.50 in a within-between subjects interaction in factorial ANOVA. The power analyses showed that 140 participants were needed for each study.",
+      "section": "Study 1 > Method > Participants",
+      "page": 3,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute required N with a G*Power-equivalent noncentral-F power routine for a within-between repeated-measures interaction (f=0.15, r=0.50, alpha=0.05, power=0.80) and compare to 140.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "statistic",
+          "location": "Study 1 Participants (p.3)",
+          "quote": "α = 0.05, 80% power ... f = 0.15 ... r = 0.50 ... 140 participants were needed",
+          "extracted_values": {"alpha": 0.05, "power": 0.80, "f": 0.15, "r": 0.50, "N_required": 140}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "G*Power-equivalent repeated-measures within-between ANOVA power calculator (noncentral F)",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.45,
+        "rationale": "Checkable in principle, but the exact N depends on the number of groups, measurements, and nonsphericity assumptions in G*Power's 'ANOVA repeated measures, within-between interaction' routine, which are not fully specified in-text. Needs a faithful re-implementation of that specific G*Power model to confirm 140; deferred as inconclusive. Note this is not on the substantive critical path: actual sample sizes (205, 202, 302, 419) comfortably exceed 140."
+      }
+    },
+    {
+      "id": "c14",
+      "text": "The a priori power analysis for Study 4 showed that 432 participants were needed (f=0.15, 80% power, alpha=0.05).",
+      "quote": "A power analysis using an effect size of f = 0.15, 80% power, and alpha of 0.05 showed that 432 participants were needed.",
+      "section": "Study 4 > Method > Participants",
+      "page": 13,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute required N for a between-subjects ANOVA (Study 4 dropped the within-subjects target factor) at f=0.15, alpha=0.05, power=0.80; compare to 432.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "statistic",
+          "location": "Study 4 Participants (p.13)",
+          "quote": "f = 0.15, 80% power, and alpha of 0.05 showed that 432 participants were needed",
+          "extracted_values": {"f": 0.15, "power": 0.80, "alpha": 0.05, "N_required": 432}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "G*Power-equivalent ANOVA power calculator (fixed-effects, special, main effects and interactions)",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.4,
+        "rationale": "Recomputable but the result is sensitive to the numerator df (which effect: 2x3 design -> main effects df 1 or 2, interaction df 2) and to whether G*Power's 'as in SPSS' option is used. A one-way 6-group F-test at f=0.15 gives ~432 only under specific df assumptions, so the figure is plausible but cannot be pinned without the exact G*Power inputs. Deferred inconclusive; actual N=506 exceeds 432."
+      }
+    },
+    {
+      "id": "c15",
+      "text": "Across six studies, when targets belonged to existing social groups, counterstereotypic individuating information consistently shifted implicit (D-score) judgments to become negative / stereotype-inconsistent.",
+      "quote": "We found that individuating information consistently shifted scores on implicit measures among targets belonging to existing social groups",
+      "section": "Abstract / General discussion",
+      "page": 1,
+      "epistemic_tier": "T4",
+      "predicate": "Check that the claimed direction and significance pattern is supported by the cell means and the reported information main effects for Studies 1, 2a, 2b (existing groups).",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "table",
+          "location": "Table 1 (Studies 1, 2a, 2b stereotype rows)",
+          "quote": "Study 1 stereotype SC+ind M=-0.36 vs SC only M=-0.08; Study 2a -0.21 vs 0.14; Study 2b -0.35 vs 0.12",
+          "extracted_values": {"S1_SCind": -0.36, "S1_SConly": -0.08, "S2a_SCind": -0.21, "S2a_SConly": 0.14, "S2b_SCind": -0.35, "S2b_SConly": 0.12}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "claim<->evidence direction/sign check against table means + significant info main effects",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "For existing-group studies (1, 2a, 2b) the SC+individuating means are consistently more negative than SC-only, and the information main effects are significant (S1 F(1,193)=23.16; S2a info effect significant; S2b F(1,286)=62.58), supporting the 'consistently shifted' claim. Direction-consistency is deterministically checkable from the table; the qualifier 'consistently' is well supported by 3/3 existing-group studies."
+      }
+    },
+    {
+      "id": "c16",
+      "text": "Among targets belonging to novel social groups, individuating information did not shift implicit judgments in the theoretically predicted direction (it either had no effect or shifted them in the opposite direction).",
+      "quote": "individuating information consistently shifted scores on implicit measures among targets belonging to existing social groups, but not in a theoretically predicted direction among targets belonging to novel social groups",
+      "section": "Abstract / General discussion",
+      "page": 1,
+      "epistemic_tier": "T4",
+      "predicate": "Check against Study 3b (null information main effect, F(1,398)=1.95, p=0.163) and Study 4 (significant but unexpected-direction effect, F(1,483)=37.49 with D becoming MORE stereotype-consistent).",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "statistic",
+          "location": "Study 3b and Study 4 implicit stereotyping main effects",
+          "quote": "S3b: F (1,398) = 1.95, p = 0.163 (ns); S4: F (1,483) = 37.49, p < 0.001 in an unexpected direction",
+          "extracted_values": {"S3b_F": 1.95, "S3b_p": 0.163, "S4_F": 37.49, "S4_direction": "unexpected"}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "claim<->evidence support check (null in S3b; opposite-direction significant in S4)",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "S3b shows a nonsignificant information effect and S4 shows a significant effect in the stereotype-consistent (opposite to predicted) direction; both match the abstract's 'not in a theoretically predicted direction' characterization for novel groups. Deterministically anchorable to the reported main effects and means."
+      }
+    },
+    {
+      "id": "c17",
+      "text": "Controllability of group membership did not moderate individuating-information effects on implicit measures in any of the six studies (all reason x information interactions nonsignificant).",
+      "quote": "Controllability of group membership did not moderate such effects.",
+      "section": "Abstract / General discussion (H1/H2 main tests)",
+      "page": 1,
+      "epistemic_tier": "T4",
+      "predicate": "Verify every reported reason-for-group-membership x information interaction (the key moderation test) is nonsignificant across studies/measures.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "statistic",
+          "location": "All studies, reason x information interaction tests",
+          "quote": "S1 stereo F(2,193)=0.46 p=0.632; S1 attit F(2,192)=1.51 p=0.223; S2a stereo F(2,188)=1.58 p=0.209; S2a attit F(2,187)=1.13 p=0.325; S2b stereo F(2,286)=0.47 p=0.624; S2b attit F(2,281)=1.48 p=0.229; S3b stereo F(2,398)=0.99 p=0.371; S3b attit F(2,397)=0.78 p=0.461; S4 stereo F(2,483)=0.40 p=0.669; S4 attit F(2,500)=0.90 p=0.405",
+          "extracted_values": {"max_interaction_p_reported": 0.669, "min_interaction_p_reported": 0.209, "n_interactions": 10}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "statcheck across all interaction tests + claim<->evidence consistency (all p > .05)",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.9,
+        "rationale": "Every reported reason x information interaction is nonsignificant (all p between 0.209 and 0.669), and each F<->p pair is internally consistent (verified by statcheck recompute). The central 'no moderation' conclusion is faithfully supported by the reported interaction statistics. (Power to detect such an interaction is a separate T3/T4 question; see c20.)"
+      }
+    },
+    {
+      "id": "c18",
+      "text": "Study 3a's individuating-information manipulation failed, attributed to high manipulation-check failure rates (30.69% in Study 3a; 24.02% in Study 4).",
+      "quote": "high rates of manipulation check failures (30.69%) ... there was a high rate of manipulation check failures (24.02%)",
+      "section": "Study 3a / Study 4",
+      "page": 12,
+      "epistemic_tier": "T6",
+      "predicate": "Recompute the failure-rate percentages from raw counts (n_failed / n_total) in the provided OSF data and confirm 30.69% and 24.02%.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "number",
+          "location": "Study 4 (p.12) and Study 4 Participants (p.13)",
+          "quote": "30.69% ... 24.02%",
+          "extracted_values": {"S3a_failure_rate_pct": 30.69, "S4_failure_rate_pct": 24.02}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "percentage recompute from raw exclusion counts (requires OSF dataset)",
+        "verifier_exists": true,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.3,
+        "rationale": "Both are bare percentages with no in-text numerator/denominator, so they cannot be recomputed from the manuscript alone. With the OSF data (repository linked) a GRIM-style denominator search could check whether 30.69% and 24.02% are achievable with plausible integer counts; without it, inconclusive. The two decimals make a GRIM-on-percentage check feasible if N per study is known."
+      }
+    },
+    {
+      "id": "c19",
+      "text": "Reported final sample sizes after preregistered exclusions were N=205 (Study 1), N=202 (Study 2a), N=302 (Study 2b), N=419 (Study 3b), and N=506 (Study 4).",
+      "quote": "the final sample size was N = 205 ... a sample of N = 202 remained ... the final sample size was N = 302 ... the final sample size was N = 419 ... the final sample size was N = 506",
+      "section": "Per-study Participants subsections",
+      "page": 3,
+      "epistemic_tier": "T6",
+      "predicate": "Reconcile each reported final N against the raw OSF datasets after applying the stated preregistered exclusion rules.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "number",
+          "location": "Participants subsections (pp.3,8,9,11,13)",
+          "quote": "N = 205; N = 202; N = 302; N = 419; N = 506",
+          "extracted_values": {"S1": 205, "S2a": 202, "S2b": 302, "S3b": 419, "S4": 506}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "raw-data reproduction (apply exclusion rules to OSF data, recount)",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.3,
+        "rationale": "Not checkable from the manuscript text alone; requires the OSF datasets and re-application of exclusion criteria (a T6 reproducibility task). Listed because the per-condition df budgets (c7) are derived from these N's and one (S4 attitude) is over-budget by 1."
+      }
+    },
+    {
+      "id": "c20",
+      "text": "The null moderation finding supports the conclusion that individuation is a robust means of implicit bias reduction not weakened by perceived controllability of group membership.",
+      "quote": "This suggests that individuation is a particularly robust and promising means of implicit bias reduction in that circumstances known to exacerbate biases did not reduce individuation effects",
+      "section": "Conclusion / General discussion",
+      "page": 14,
+      "epistemic_tier": "T4",
+      "predicate": "Assess whether a null interaction (no moderation) licenses an affirmative claim of robustness; check whether the study was powered to detect the moderating interaction it failed to find (accepting-the-null risk).",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "text",
+          "location": "Conclusion (p.14) + Participants power analysis (p.3)",
+          "quote": "individuation is a particularly robust ... means of implicit bias reduction; power analysis f=0.15, 140 needed",
+          "extracted_values": {"interaction_effect_target_f": 0.15, "interaction_nonsignificant": 1}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "design-tag x affirming-the-null lexicon (advisory) + power-for-the-interaction check",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.4,
+        "rationale": "Drawing an affirmative 'robust / does not moderate' conclusion from nonsignificant interactions is an accept-the-null inference; whether it is warranted depends on power to detect the moderating interaction (the a priori power was specified for an interaction f=0.15, and Ns met that target, which partially mitigates the concern). This is a calibrated T4 judgment with a deterministic power anchor, not a hard error; it is also a Registered Report whose primary value is the preregistered null. Flag advisory, not scoring; the authors themselves appropriately hedge in the Limitations."
+      }
+    },
+    {
+      "id": "c21",
+      "text": "Individuating-information effects are far larger than social-category effects (r = 0.71 vs r = 0.25, respectively, per Kunda and Thagard's 1996 meta-analysis).",
+      "quote": "Individuating information effects are far larger than social category effects—r = 0.71 vs. r = 0.25, respectively, according to Kunda and Thagard’s (1996) meta-analysis.",
+      "section": "General discussion > Lack of controllability effects",
+      "page": 14,
+      "epistemic_tier": "T5",
+      "predicate": "Verify that Kunda & Thagard (1996) report average effect sizes of r = 0.71 (individuating) and r = 0.25 (social category) as cited.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "text",
+          "location": "Discussion (pp.13-14); also stated as 'average effect size of r = 0.71' on p.13",
+          "quote": "r = 0.71 vs. r = 0.25",
+          "extracted_values": {"r_individuating": 0.71, "r_socialcategory": 0.25}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "citation-content check against Kunda & Thagard (1996) source text (retrieval + entailment)",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.4,
+        "rationale": "Checkable only against the cited source. Kunda & Thagard (1996) is a theory paper (parallel-constraint-satisfaction), and the provenance of these specific meta-analytic r values is worth verifying (they may originate in a different meta-analysis); requires source retrieval. Recorded as a T5 citation-fidelity candidate, inconclusive without the source."
+      }
+    },
+    {
+      "id": "c22",
+      "text": "When stereotype-relevant implicit judgments involved a valence contrast (Studies 1, 2a, 2b), implicit attitudes accounted for separate variance from implicit stereotypes (they were not fully redundant).",
+      "quote": "implicit stereotypes and implicit attitudes did account for separate variance in the data; they were not completely redundant",
+      "section": "Study 1 > Implicit stereotypes controlling for implicit attitudes / General discussion",
+      "page": 5,
+      "epistemic_tier": "T4",
+      "predicate": "Check that the information main effect on stereotype D remained significant after adding implicit attitudes as a covariate (Study 1 F(1,188)=16.64, p<0.001), supporting separate-variance claim.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "statistic",
+          "location": "Study 1 stereotypes-controlling-for-attitudes ANCOVA (p.5)",
+          "quote": "implicit attitudes significantly covaried with implicit stereotypes, F (1,188) = 7.68, p = 0.006 ... the information main effect remained significant, F (1,188) = 16.64, p < 0.001",
+          "extracted_values": {"attitude_covariate_F": 7.68, "info_after_covariate_F": 16.64}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "claim<->evidence support check (effect survives covariate)",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.8,
+        "rationale": "The information effect on stereotype D remains significant after controlling for implicit attitudes (F(1,188)=16.64, p<0.001, both internally consistent by statcheck), consistent with the 'separate variance / not redundant' claim. Supportable from the reported ANCOVA statistics."
+      }
+    },
+    {
+      "id": "c23",
+      "text": "This is the first research to test whether perceived controllability of group membership moderates the effectiveness of implicit bias reduction (individuating information) in the presence of counterstereotypic information.",
+      "quote": "the present research was the first to test whether perceived controllability moderates the effectiveness of implicit bias reduction techniques",
+      "section": "Introduction > The present research",
+      "page": 2,
+      "epistemic_tier": "T5",
+      "predicate": "Novelty/prior-art claim: would require literature search to falsify; per LITMUS guardrails, novelty-as-prior-art is advisory only, never a scored verdict.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "text",
+          "location": "Introduction, The present research (p.2)",
+          "quote": "no research of which we are aware has tested ... whether manipulating perceived controllability strengthens or weakens social category effects in the presence of counterstereotypic individuating information",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": false,
+        "verifier_needed": "literature priority search (retrieval); explicitly advisory per DESIGN section 16",
+        "verifier_exists": false,
+        "candidate_verdict": "not_checkable",
+        "confidence": 0.2,
+        "rationale": "A first-to-do priority claim, hedged with 'of which we are aware'. DESIGN guardrails route novelty/prior-art to advisory, never scored. Not deterministically checkable."
+      }
+    },
+    {
+      "id": "c24",
+      "text": "Homogeneity of variance: Levene's tests showed homogeneous variances for implicit measures in all studies except Study 2b (with reported ps: Study 1 > 0.321, Study 2a > 0.289, Study 3a > 0.192, Study 3b > 0.092), and Study 2b's stereotype-IAT variances were heterogeneous, F(5,286) = 2.38, p = 0.039.",
+      "quote": "Levene’s tests revealed that variances for implicit measures were homogenous in all studies except Study 2b, ps Study 1 > 0.321, ps Study 2a > 0.289, ps Study 3a > 0.192, ps Study 3b > 0.092 ... variances for the data from the stereotype IAT were heterogeneous, F (5,286) = 2.38, p = 0.039",
+      "section": "Analytical overview / Study 2b",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "statcheck the Levene F(5,286)=2.38 vs p=0.039; check decision against the stated alpha-halving rule.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "statistic",
+          "location": "Study 2b Implicit stereotyping (p.9)",
+          "quote": "F (5,286) = 2.38, p = 0.039",
+          "extracted_values": {"F": 2.38, "df1": 5, "df2": 286, "p": 0.039}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "statcheck",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.9,
+        "rationale": "Recomputed p for F(5,286)=2.38 = 0.0388 ~ 0.039 (consistent); heterogeneity flagged at p<.05, triggering the stated alpha=0.01 correction. Internally consistent."
+      }
+    },
+    {
+      "id": "c25",
+      "text": "Study 3a's individuating-information manipulation failed, so Study 3a is reported in Supplementary material and Study 4 (not in the Stage 1 registered report) was added to rectify it.",
+      "quote": "In Study 3a, the individuating information experimental manipulation failed. Therefore, this study is reported in Supplementary material. To address this, we performed Study 4, which was not included in the Stage 1 registered report",
+      "section": "Study 3a / Study 4",
+      "page": 11,
+      "epistemic_tier": "T7",
+      "predicate": "Registered-Report deviation: Study 4 was added post hoc (not preregistered); flag the protocol deviation for human review (transparency signal, not an error).",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "text",
+          "location": "Study 3a (p.11), Study 4 (p.12), Data availability (p.15)",
+          "quote": "Study 4 was not included in the Stage 1 registered report ... Studies 3a and 3b were not preregistered on OSF due to an oversight, but were preregistered in that the research was in the registered report format",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "preregistration-deviation detector (route to human; transparency signal)",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.6,
+        "rationale": "The authors transparently disclose that Study 4 was not in the Stage 1 RR and that Studies 3a/3b were not separately preregistered on OSF (an oversight). This is a disclosed protocol deviation, not a hidden one; it is a transparency/integrity SIGNAL to surface for human review per the RR framework, not a deterministic error. The disclosure itself is a positive integrity indicator."
+      }
+    },
+    {
+      "id": "c26",
+      "text": "Datasets, supplementary material, and preregistrations for all studies are available at the linked OSF repository.",
+      "quote": "Supplementary material and preregistrations for all studies can be found at https://osf.io/hw7ar/?view_only=baab178ea4444038b8376ee0db460245.",
+      "section": "Data availability statement",
+      "page": 15,
+      "epistemic_tier": "T1",
+      "predicate": "Check that the OSF link resolves and that the named datasets/preregistrations are actually present (data-availability verification).",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "dataset",
+          "location": "Data availability statement (p.15)",
+          "quote": "https://osf.io/hw7ar/?view_only=baab178ea4444038b8376ee0db460245",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "link-resolution + repository-content check (networked; runs outside the recompute sandbox)",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.3,
+        "rationale": "A view-only OSF link is provided (positive data-availability signal). Resolvability and completeness require a network fetch (the anonymized view_only token may have changed post-review), so not checkable in the deterministic offline sandbox; would enable T6 reproduction of c18/c19 if accessible."
+      }
+    },
+    {
+      "id": "c27",
+      "text": "Study 2b explicit attitudes: significant target x information interaction on the feeling thermometer, F(1,275) = 101.56, p < 0.001, partial eta-squared = 0.27.",
+      "quote": "The only significant interaction was a significant target X information interaction, F (1,275) = 101.56, p < 0.001, η2 p = 0.27.",
+      "section": "Study 2b > Explicit attitudes",
+      "page": 9,
+      "epistemic_tier": "T0",
+      "predicate": "statcheck on F(1,275); eta2p<->F coherence.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "statistic",
+          "location": "Study 2b Explicit attitudes (p.9)",
+          "quote": "F (1,275) = 101.56, p < 0.001, η2 p = 0.27",
+          "extracted_values": {"F": 101.56, "df1": 1, "df2": 275, "eta2p": 0.27}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "statcheck + eta2p<->F coherence",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.95,
+        "rationale": "Recomputed p < 1e-20 < 0.001 (consistent); eta2p from F=101.56,df(1,275) = 0.270 = reported 0.27 (consistent). Anchor confirming the explicit-measure manipulation checks are internally sound."
+      }
+    },
+    {
+      "id": "c28",
+      "text": "Explicit-measure results mirrored implicit-measure results when targets belonged to existing social groups, but were mostly inconsistent when targets belonged to novel social groups.",
+      "quote": "Results of implicit and explicit measures were mostly consistent when targets belonged to existing social groups, but mostly inconsistent when targets belonged to novel social groups.",
+      "section": "Abstract / General discussion",
+      "page": 1,
+      "epistemic_tier": "T4",
+      "predicate": "Check that for novel groups (Studies 3b, 4) the explicit individuating-information effects were significant/large while the implicit effects were null or opposite, establishing the implicit-explicit divergence.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "statistic",
+          "location": "Study 3b explicit (large target x info interactions F(1,390)=112.12 and 198.43) vs implicit null (F(1,398)=1.95)",
+          "quote": "explicit: F (1,390) = 112.12 ... F (1,390) = 198.43 ... implicit: F (1,398) = 1.95, p = 0.163",
+          "extracted_values": {"S3b_explicit_comp_F": 112.12, "S3b_explicit_warmth_F": 198.43, "S3b_implicit_F": 1.95}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "claim<->evidence consistency (explicit significant vs implicit null for novel groups)",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.8,
+        "rationale": "For novel groups, explicit individuating-information effects are large and significant (F=112.12, 198.43) while implicit effects are null (S3b F(1,398)=1.95, p=0.163) or opposite-direction (S4), establishing the claimed implicit-explicit divergence. Deterministically anchorable to the reported interaction tests."
+      }
+    },
+    {
+      "id": "c29",
+      "text": "Whether the central conclusion is undermined by the multiple statistical reporting errors (c1, c2, c3, c5, c6) is a judgment of overall study quality / trustworthiness.",
+      "quote": null,
+      "section": "(meta) whole paper",
+      "page": null,
+      "epistemic_tier": "T8",
+      "predicate": "Subjective overall-trust judgment; route to human, do not score.",
+      "evidence": [],
+      "verification": {
+        "possible": false,
+        "verifier_needed": "human expert judgment (route-to-human, not scored)",
+        "verifier_exists": false,
+        "candidate_verdict": "not_checkable",
+        "confidence": 0.0,
+        "rationale": "Per DESIGN section 5/16, overall significance and trustworthiness are irreducibly subjective and routed to a human. Objectively: the several flagged errors (c1-c3, c5-c6) are predominantly transcription/typographical and do not, individually, overturn the preregistered null-moderation conclusion (which rests on consistently nonsignificant interactions, c17). But the aggregate density of stat-reporting errors is itself a quality signal worth human attention. Not scored."
+      }
+    }
+  ],
+  "paper_level_notes": "Frontiers in Psychology Registered Report (Stage 2), Rubinstein et al. 2024, DOI 10.3389/fpsyg.2024.969382; CC-BY open access; 6 experiments (Studies 1, 2a, 2b, 3a[SI], 3b, 4) on IAT/ST-IAT D scores. No data figures (only journal logo on p.1) so no figure-reading checks apply; the checkable surface is almost entirely (a) reported inferential statistics (F/t/df/p/eta2p) -> statcheck T0, and (b) Table 1/Table 2 descriptive means/SD/95% CIs -> CI-symmetry and t/d-from-M,SD,N recompute (T0/T2). I ran an exhaustive statcheck pass over ~62 reported F-tests and an exhaustive CI-symmetry pass over all 50 Table 1 cells. DETERMINISTIC FINDINGS (confirmed by recompute): (1) c1 - Study 2a stereotype info main effect F(1,188)=1.58 with p<0.001 is impossible (recomp p=0.21; eta2p=0.17 implies F~38.5; same 1.58 reused as the interaction F) = statcheck gross error, high confidence, but the substantive 'significant info effect' is independently supported by t-tests/eta2p so it is a typo. (2) c2 - Study 1 explicit attitude F(1,195)=58.77 with p=0.008 is inconsistent (true p~8e-13; eta2p=0.23 matches F, so p is the typo; decision unaffected since alpha=.01). (3) c3 - Study 4 implicit-attitudes 'nonsignificant, t(245)=6.84, p=0.209' is impossible (t=6.84 -> p~6e-11; same t reused from stereotype section with p<.001). (4) c4 - Table 1 Study 3b stereotype uncontrollable 95% CI (-0.05, 0.30) is asymmetric (only such cell in the table); upper bound should be ~+0.07 = typo. (5) c5 - Study 3b grand-mean attitude D: stated SD=0.44 is inconsistent with the in-text t=-2.00/p=0.046/d=-0.10 (which imply SD~0.40); using SD=0.44 the effect is nonsignificant (p=0.068), so significance hinges on the discrepancy. (6) c6 - Study 3b attitude-controlled ANCOVA reports the information effect at error df=133 while all other effects in the same model use df=381 = within-model df incoherence (typo). (7) c7 - Study 4 attitude condition df budget sums to 507 > N=506 (off-by-one). Severity: all seven are predominantly transcription/typographical; NONE individually overturns the headline preregistered conclusion (no moderation by controllability, c17, which rests on 10/10 consistently nonsignificant and internally-consistent interaction tests; individuating information shifts implicit scores for existing but not novel groups). The aggregate density of ~6-7 stat-reporting errors in one paper is itself a quality signal. statcheck (off-the-shelf) directly catches c1/c2/c3; the CI-symmetry (c4), t/d-from-descriptives (c5), within-model df-coherence (c6), and df-budget-vs-N (c7) checks are simple bespoke T0 verifiers not in standard statcheck. T6 items (c18 manipulation-check %s 30.69/24.02; c19 final Ns; c26 OSF link) need the OSF data/network and are inconclusive offline. Power analyses (c13: 140 needed; c14: 432 needed) are checkable only with a faithful G*Power-equivalent and are inconclusive without exact design inputs, but are off the substantive critical path (actual Ns exceed targets). Positive transparency signals: it is a Registered Report, BMI/exclusions/Levene tests/alpha-halving all disclosed, data/preregistration links provided, and the Study 4 protocol deviation is explicitly disclosed (c25). Not told whether this is a control; judged on its merits, it reads as a competent, transparent null-result RR marred by a cluster of statistical transcription errors."
+}

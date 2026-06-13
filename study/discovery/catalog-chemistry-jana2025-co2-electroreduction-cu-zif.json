@@ -1,0 +1,863 @@
+{
+  "paper_id": "chemistry-jana2025-co2-electroreduction-cu-zif",
+  "title": "CO2 electroreduction on nano-Cu-ZIF grown inside activated carbon: experimental and computational aspects",
+  "doi": "10.1039/d6na00256k",
+  "domain": "electrochemistry / CO2 reduction electrocatalysis (MOF@carbon composite)",
+  "n_pages_read": 13,
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The spin-polarized configuration (MAGMOM = 0.6) reaches a total energy of -1756.0987 eV, lower than the non-spin-polarized (ISPIN = 1) energy of -1755.5236 eV, giving a stabilization energy of approximately 0.64 eV.",
+      "quote": "converged to the lowest-energy state with a total energy of -1756.0987 eV, whereas the non-spin-polarized configuration (ISPIN = 1) exhibited a higher energy of -1755.5236 eV. The stabilization energy of approximately 0.64 eV demonstrates that the Cu-ZIF framework energetically favours a spin-polarized electronic ground state.",
+      "section": "3.4 Structural and geometrical optimization of Cu-ZIF",
+      "page": 8,
+      "epistemic_tier": "T0",
+      "predicate": "Subtract the two stated total energies and compare the difference to the stated stabilization energy of 0.64 eV.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "number",
+          "location": "Section 3.4, page 8",
+          "quote": "-1756.0987 eV ... -1755.5236 eV ... stabilization energy of approximately 0.64 eV",
+          "extracted_values": {"E_spin_polarized_eV": -1756.0987, "E_non_spin_polarized_eV": -1755.5236, "stated_stabilization_eV": 0.64, "computed_difference_eV": 0.5751}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Two-number subtraction: (-1755.5236) - (-1756.0987) = 0.5751 eV, then compare against stated 0.64 eV.",
+        "verifier_exists": true,
+        "candidate_verdict": "suspect",
+        "confidence": 0.86,
+        "rationale": "The two stated total energies differ by exactly 0.5751 eV, which rounds to ~0.58 eV, not the stated 'approximately 0.64 eV'. A ~0.065 eV (≈11%) gap. Self-contained arithmetic discrepancy; covered by a percent-change / subtraction off-the-shelf check. Cannot be a rounding artifact since both energies are given to 4 decimals. Marked suspect rather than supported; 'approximately' softens it slightly but 0.64 is not the nearest two-decimal value."
+      }
+    },
+    {
+      "id": "c2",
+      "text": "The optimized unit cell of Cu-ZIF contains 276 atoms, built from 12 Cu(C4H5N2 = 2-MI)2 units, derived from a ZIF-8 cell containing 96 C, 120 H, 48 N, and 12 Zn with the 12 Zn substituted by 12 Cu.",
+      "quote": "The optimized unit cell of the Cu-ZIF contains 276 atoms ... The Cu-ZIF structure was adopted from the ZIF-8 MOF (Fig. S9) which contained 96 carbon, 120 hydrogen, 48 nitrogen and 12 zinc atoms ... Each unit cell of the Cu-ZIF was formed by the complexation of 12 Cu (C4H5N2 = 2-MI)2 units",
+      "section": "2.9 Structural optimization / 3.4",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Sum the stated atom inventory (96+120+48+12) and independently compute atoms from 12 x Cu(C4H5N2)2; both should equal 276.",
+      "evidence": [
+        {
+          "id": "e2",
+          "kind": "number",
+          "location": "Sections 2.9 and 3.4",
+          "quote": "96 carbon, 120 hydrogen, 48 nitrogen and 12 zinc atoms ... 12 Cu (C4H5N2 = 2-MI)2 units ... contains 276 atoms",
+          "extracted_values": {"C": 96, "H": 120, "N": 48, "metal": 12, "stated_total_atoms": 276, "computed_total_atoms": 276}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Stoichiometric atom count: 12 units x (1 Cu + 2x(4C+5H+2N)) = 12 Cu + 96 C + 120 H + 48 N = 276. Also 96+120+48+12 = 276.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.95,
+        "rationale": "Both routes give exactly 276. The ZIF-8 inventory is internally consistent (24 imidazolate linkers, 2 N and 5 H per linker, node:linker = 12:24 = 1:2), and Zn->Cu substitution preserves atom count. Clean stoichiometry/table-total check; supported."
+      }
+    },
+    {
+      "id": "c3",
+      "text": "Reaction 2 (2CO2 + 8H+ + 8e- -> CH3COOH + 2H2O) is mass- and charge-balanced, consistent with z = 8 electrons used in the F.E. calculation for acetic acid.",
+      "quote": "2CO2 + 8H+ + 8e- / CH3COOH + 2H2O (2)",
+      "section": "2.7 Product quantification",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "Balance C, H, O atoms and electrons across reaction (2) and confirm electron number z=8 matches its use in eqn (6).",
+      "evidence": [
+        {
+          "id": "e3",
+          "kind": "equation",
+          "location": "Eqn (2)",
+          "quote": "2CO2 + 8H+ + 8e- / CH3COOH + 2H2O",
+          "extracted_values": {"C_left": 2, "C_right": 2, "H_left": 8, "H_right": 8, "O_left": 4, "O_right": 4, "electrons": 8}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Atom/charge balance: C 2=2, H 8 = (4 in CH3COOH + 4 in 2H2O), O 4 = (2 + 2), charge neutral with 8 H+ + 8 e-.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.97,
+        "rationale": "Fully balanced; off-the-shelf stoichiometry/mass-balance check confirms. z=8 is the correct electron count for CO2->acetic acid and is used consistently in eqn (6)."
+      }
+    },
+    {
+      "id": "c4",
+      "text": "Reaction 3 (CO2 + 2H+ + 2e- -> HCOOH) is balanced with z = 2 electrons.",
+      "quote": "CO2 + 2H+ + 2e- / HCOOH (3)",
+      "section": "2.7 Product quantification",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "Balance atoms and electrons for reaction (3).",
+      "evidence": [
+        {
+          "id": "e4",
+          "kind": "equation",
+          "location": "Eqn (3)",
+          "quote": "CO2 + 2H+ + 2e- / HCOOH",
+          "extracted_values": {"C": 1, "H_left": 2, "H_right": 2, "O": 2, "electrons": 2}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Atom/charge balance: C 1=1, H 2=2, O 2=2, 2 electrons.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.97,
+        "rationale": "Balanced; z=2 correct for formic acid. Off-the-shelf stoichiometry check."
+      }
+    },
+    {
+      "id": "c5",
+      "text": "Reaction 4 (CO2 + 6H+ + 6e- -> CH3OH + H2O) is balanced with z = 6 electrons.",
+      "quote": "CO2 + 6H+ + 6e- /CH3OH + H2O (4)",
+      "section": "2.7 Product quantification",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "Balance atoms and electrons for reaction (4).",
+      "evidence": [
+        {
+          "id": "e5",
+          "kind": "equation",
+          "location": "Eqn (4)",
+          "quote": "CO2 + 6H+ + 6e- /CH3OH + H2O",
+          "extracted_values": {"C": 1, "H_left": 6, "H_right": 6, "O_left": 2, "O_right": 2, "electrons": 6}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Atom/charge balance: C 1=1, H 6 = (4 in CH3OH + 2 in H2O), O 2 = (1 + 1), 6 electrons.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.97,
+        "rationale": "Balanced; z=6 correct for methanol. Off-the-shelf stoichiometry check."
+      }
+    },
+    {
+      "id": "c6",
+      "text": "The Faraday constant used in the F.E. equation (6) is 96485 C mol-1.",
+      "quote": "F is the Faraday constant (96 485 C mol-1)",
+      "section": "2.7 Product quantification",
+      "page": 4,
+      "epistemic_tier": "T1",
+      "predicate": "Compare stated constant to the accepted Faraday constant value.",
+      "evidence": [
+        {
+          "id": "e6",
+          "kind": "number",
+          "location": "Eqn (6) definition",
+          "quote": "F is the Faraday constant (96 485 C mol-1)",
+          "extracted_values": {"F_stated": 96485}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Fixed-constant lookup: F = 96485.33 C/mol (CODATA). 96485 matches to 5 sig figs.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.99,
+        "rationale": "Correct value of the Faraday constant. T1 fixed external knowledge."
+      }
+    },
+    {
+      "id": "c7",
+      "text": "The RHE conversion equation is ERHE = EAg/AgCl + 0.0591 x pH + E0(Ag/AgCl).",
+      "quote": "ERHE = EAg/AgCl + 0.0591 x pH + E0Ag/AgCl (1)",
+      "section": "2.6 Electrochemical measurements",
+      "page": 3,
+      "epistemic_tier": "T1",
+      "predicate": "Check the Nernstian pH coefficient (0.0591 V/pH at 25 C) and the standard form of the RHE conversion.",
+      "evidence": [
+        {
+          "id": "e7",
+          "kind": "equation",
+          "location": "Eqn (1)",
+          "quote": "ERHE = EAg/AgCl + 0.0591 x pH + E0Ag/AgCl",
+          "extracted_values": {"pH_coefficient_V": 0.0591}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Unit/coefficient check: 2.303RT/F at 298 K = 0.0592 V; 0.0591 is the standard rounded value. Form of RHE conversion is the conventional one.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.9,
+        "rationale": "0.0591 V/pH is the textbook Nernst slope at room temperature; equation form is standard (E0 of Ag/AgCl 3 M KCl ~0.21 V is not numerically stated, so only the form and slope are checkable here)."
+      }
+    },
+    {
+      "id": "c8",
+      "text": "The potential-dependent overall DFT reaction energies (CO2 -> CH3COOH) for Cu3/Cu5/Cu7 are -7.05/-6.65/-7.01 eV at -0.70 V, -5.93/-5.53/-5.89 eV at -0.56 V, and -3.85/-3.45/-3.81 eV at -0.30 V; the zero-potential values are -1.45/-1.05/-1.41 eV.",
+      "quote": "Cu3 maintains the lowest overall thermodynamic reaction energy (-1.45 eV) without any applied potential ... relative to Cu5 (-1.05) and Cu7 (-1.41 eV) ... at -0.70 V vs. RHE ... -7.05, -6.65, and -7.01 eV ... at -0.56 and -0.30 V ... -5.93, -5.53, -5.89 eV and -3.85, -3.45, -3.81 eV, respectively.",
+      "section": "3.5 Thermodynamic energy analysis",
+      "page": 9,
+      "epistemic_tier": "T2",
+      "predicate": "Check that the four energy sets per site lie on the CHE line dE(U) = dE(0) - n e U with n = 8 (electrons for CO2->acetic acid); the spacing between potentials should be exactly n x |dU|.",
+      "evidence": [
+        {
+          "id": "e8",
+          "kind": "number",
+          "location": "Section 3.5 (and Fig. 6, Fig. S11)",
+          "quote": "-7.05, -6.65, and -7.01 eV ... -5.93, -5.53, -5.89 eV and -3.85, -3.45, -3.81 eV",
+          "extracted_values": {"Cu3_0V": -1.45, "Cu3_0.30": -3.85, "Cu3_0.56": -5.93, "Cu3_0.70": -7.05, "Cu5_0V": -1.05, "Cu7_0V": -1.41, "spacing_0.30_to_0.56_eV": -2.08, "spacing_0.56_to_0.70_eV": -1.12}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "CHE linear-shift recompute: for n=8, dE(0)-dE(-0.30) should = -8*0.30 = -2.40 eV; dE(-0.30)-dE(-0.56) = -8*0.26 = -2.08 eV; dE(-0.56)-dE(-0.70) = -8*0.14 = -1.12 eV. All three match the reported numbers exactly.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.92,
+        "rationale": "Recomputed: -1.45->-3.85 (-2.40), -3.85->-5.93 (-2.08), -5.93->-7.05 (-1.12) for Cu3, and identically for Cu5 and Cu7. All spacings equal n*e*dU with n=8 to the stated precision. The energy ladder is internally fully self-consistent (prose-vs-number cross check). Note: the sentence 'maintains the lowest overall thermodynamic reaction energy (-1.45 eV) without any applied potential' under the -0.70 V heading is awkwardly worded but the -1.45 eV is the 0 V value and is consistent with the ladder."
+      }
+    },
+    {
+      "id": "c9",
+      "text": "The ICP-OES-measured Cu content of Cu-ZIF@AC (2.1 wt% Cu) is consistent with the synthesis target of 7 wt% Cu-ZIF loading.",
+      "quote": "to get ultimate 7 wt% Cu-ZIF loading within the AC matrix ... ICP-OES quantified the copper (Cu) content of the Cu-ZIF@AC composite as 2.1 wt% (Table 1).",
+      "section": "2.3 Synthesis / 3.1 Physical characterization / Table 1",
+      "page": 8,
+      "epistemic_tier": "T2",
+      "predicate": "Compute Cu mass fraction within Cu-ZIF (Cu(C4H5N2)2) and multiply by the 7 wt% framework loading; compare to ICP-OES 2.1 wt% Cu.",
+      "evidence": [
+        {
+          "id": "e9a",
+          "kind": "number",
+          "location": "Section 2.3",
+          "quote": "7 wt% Cu-ZIF loading within the AC matrix",
+          "extracted_values": {"target_ZIF_loading_wt_pct": 7}
+        },
+        {
+          "id": "e9b",
+          "kind": "table",
+          "location": "Table 1",
+          "quote": "Cu-ZIF@AC  2.1 +/- 0.002",
+          "extracted_values": {"ICP_Cu_wt_pct": 2.1, "stated_uncertainty": 0.002}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Composition cross-check: Cu(C4H5N2)2 MW = 225.74, Cu fraction = 28.15%; 7% x 0.2815 = 1.97 wt% Cu, vs measured 2.1 wt%. Agreement within ~7% relative.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.7,
+        "rationale": "The two figures measure different quantities (framework loading vs elemental Cu) and could superficially look contradictory, but the stoichiometric cross-check shows 7 wt% Cu-ZIF -> ~1.97 wt% Cu, close to the measured 2.1 wt%. Consistent. Minor caveat: Table 1 reports '2.1 +/- 0.002', an oddly tight absolute uncertainty (3 decimal places on a 2-sig-fig value) and the column is labeled wt% of Cu while text twice writes '2.1 wt%'; integrity-adjacent formatting note, not a contradiction."
+      }
+    },
+    {
+      "id": "c10",
+      "text": "The F.E. for acetic acid decreases monotonically as the potential becomes more negative: 71.5 +/- 0.29% at -0.3 V, 54.79 +/- 0.15% at -0.4 V, 49.8 +/- 0.12% at -0.5 V, 44.23 +/- 0.15% at -0.56 V, 27.53 +/- 0.17% at -0.6 V, 19.12 +/- 0.14% at -0.7 V.",
+      "quote": "the highest F.E. of 71.5 +/- 0.29% is found for AcOH ... the F.E. of AcOH gradually decreases 54.79 +/- 0.15%, 49.8 +/- 0.12, 44.23 +/- 0.15%, 27.53 +/- 0.17%, 19.12 +/- 0.14% at -0.4, -0.5, -0.56, -0.6, -0.7 V (vs. RHE) respectively",
+      "section": "3.3 Product analysis (Fig. 4a)",
+      "page": 7,
+      "epistemic_tier": "T2",
+      "predicate": "Confirm the listed series is monotonically decreasing and matches the prose claim of a gradual decrease; cross-check against Fig. 4a.",
+      "evidence": [
+        {
+          "id": "e10",
+          "kind": "figure",
+          "location": "Fig. 4a + prose, page 7",
+          "quote": "71.5 +/- 0.29% ... 54.79 +/- 0.15%, 49.8 +/- 0.12, 44.23 +/- 0.15%, 27.53 +/- 0.17%, 19.12 +/- 0.14%",
+          "extracted_values": {"FE_-0.3": 71.5, "FE_-0.4": 54.79, "FE_-0.5": 49.8, "FE_-0.56": 44.23, "FE_-0.6": 27.53, "FE_-0.7": 19.12}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Ordering check (monotonic decrease 71.5>54.79>49.8>44.23>27.53>19.12) plus prose-vs-figure consistency once Fig. 4a bar values are digitized.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.75,
+        "rationale": "The numeric series is strictly monotonically decreasing as the prose states. Full settlement requires digitizing Fig. 4a to confirm the bar heights match these six numbers (prose-vs-figure verifier not yet built). Verdict supported on the internal numbers; figure cross-check pending."
+      }
+    },
+    {
+      "id": "c11",
+      "text": "At each potential the F.E. of acetic acid plus the minor products (HCOOH, MeOH) and competitive HER (H2) accounts for the total charge.",
+      "quote": "Minor amounts of formic acid (HCOOH) and methanol (MeOH) were detected ... accompanied by a concurrent rise in competitive Hydrogen Evolution Reaction (HER).",
+      "section": "3.3 Product analysis",
+      "page": 7,
+      "epistemic_tier": "T2",
+      "predicate": "Sum F.E. of all products (AcOH + HCOOH + MeOH + H2) at each potential and check it totals ~100%.",
+      "evidence": [
+        {
+          "id": "e11",
+          "kind": "figure",
+          "location": "Fig. 4a",
+          "quote": "Faradaic efficiency with error bar of the CO2RR products at different potentials",
+          "extracted_values": {"AcOH_FE_-0.3": 71.5}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "F.E. budget / mass-balance check: per-potential F.E. of HCOOH, MeOH, and H2 (only AcOH values are given numerically in text); these are only in Fig. 4a, not transcribed numerically in prose.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.4,
+        "rationale": "The F.E. closure (does AcOH+HCOOH+MeOH+H2 = ~100% at each potential?) is the natural integrity check, but the minor-product and H2 F.E. values are only encoded in Fig. 4a and are not numerically reported in the text. Cannot bind the claim to numbers without digitizing the figure; recorded null and marked inconclusive rather than inventing values."
+      }
+    },
+    {
+      "id": "c12",
+      "text": "Cu-ZIF@AC shows charge-transfer resistance Rct1 = 4.89 ohm, much lower than pristine Cu-ZIF (133.98 ohm) and slightly higher than bare AC (3.91 ohm).",
+      "quote": "the charge-transfer resistance (Rct1) of pristine Cu-ZIF is significantly high (133.98 U), confirming its intrinsically poor electrical conductivity. In contrast, Cu-ZIF@AC exhibits a dramatically reduced Rct1 value (4.89 U), which is slightly more than that of bare AC (3.91 U).",
+      "section": "3.2 Electrochemical tests (EIS, Table S2, Fig. S4)",
+      "page": 5,
+      "epistemic_tier": "T2",
+      "predicate": "Check the ordering 3.91 < 4.89 << 133.98 and that prose matches Table S2 / Nyquist plots (Fig. S4).",
+      "evidence": [
+        {
+          "id": "e12",
+          "kind": "number",
+          "location": "Section 3.2, refers to Table S2 / Fig. S4",
+          "quote": "133.98 U ... 4.89 U ... 3.91 U",
+          "extracted_values": {"Rct1_CuZIF_ohm": 133.98, "Rct1_CuZIF_AC_ohm": 4.89, "Rct1_AC_ohm": 3.91}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Ordering / prose-vs-table consistency against Table S2 and the Nyquist fit in Fig. S4 (in SI, not in main text).",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.7,
+        "rationale": "Internal ordering is self-consistent and matches the qualitative claims (composite much lower than MOF, slightly above AC). Full settlement needs the SI Table S2 values and the equivalent-circuit fit (Fig. S4) which are not in the provided main text; prose-vs-table verifier not run."
+      }
+    },
+    {
+      "id": "c13",
+      "text": "Cu-ZIF@AC achieves an overpotential of -0.56 V vs RHE at -10 mA cm-2, lower than -0.72 V vs RHE for Cu-ZIF.",
+      "quote": "The Cu-ZIF@AC demonstrated an overpotential of -0.56 V vs. RHE at -10 mA cm-2, compared to -0.72 V vs. RHE for Cu-ZIF",
+      "section": "3.2 Electrochemical tests (Fig. 3b)",
+      "page": 5,
+      "epistemic_tier": "T3",
+      "predicate": "Check whether the reported -0.56 V is a true overpotential (applied minus equilibrium potential) or simply the applied potential at -10 mA cm-2; and whether the prose value matches Fig. 3b.",
+      "evidence": [
+        {
+          "id": "e13",
+          "kind": "figure",
+          "location": "Fig. 3b LSV in CO2-saturated 0.5 M KHCO3",
+          "quote": "overpotential of -0.56 V vs. RHE at -10 mA cm-2 ... -0.72 V vs. RHE for Cu-ZIF",
+          "extracted_values": {"E_at_10mA_CuZIF_AC_V": -0.56, "E_at_10mA_CuZIF_V": -0.72}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Terminology/method check: overpotential = E_applied - E_equilibrium. For CO2->acetic acid E0 ~ +0.11 V vs RHE, so a true overpotential at -0.56 V applied would be ~0.67 V. The paper appears to report applied potential vs RHE and label it 'overpotential'.",
+        "verifier_exists": false,
+        "candidate_verdict": "suspect",
+        "confidence": 0.55,
+        "rationale": "The figures are reported 'vs. RHE' but labeled 'overpotential'; these are not the same unless the equilibrium potential is 0 (i.e. HER reference). For a CO2RR product the equilibrium potential is not 0 V vs RHE, so calling -0.56 V the 'overpotential' is a likely terminology/method imprecision (ref. 29 in the paper is literally 'How to Reliably Report the Overpotential of an Electrocatalyst'). Flagged as method-appropriateness suspect; needs a domain referee, not arithmetic. Note also -0.72 V is given for Cu-ZIF here but also quoted as the HER overpotential in 5 M Na2SO4 elsewhere (see c20)."
+      }
+    },
+    {
+      "id": "c14",
+      "text": "In N2-saturated 0.5 M KHCO3 (CO2-free) the overpotential shifts to -0.66 V vs RHE at -10 mA cm-2, and in 5 M Na2SO4 to -0.72 V vs RHE, indicating selectivity for CO2 reduction over HER.",
+      "quote": "the overpotential shifted to -0.66 V vs. RHE at -10 mA cm-2 (Fig. 3c) ... LSV measurements were also performed in 5 M Na2SO4 ... exhibiting overpotential of to -0.72 V vs. RHE at -10 mA cm-2.",
+      "section": "3.2 Electrochemical tests (Fig. 3c)",
+      "page": 5,
+      "epistemic_tier": "T4",
+      "predicate": "Check the logic: a more negative onset in CO2-free media supports CO2RR selectivity; verify the three potentials (-0.56 CO2, -0.66 N2/KHCO3, -0.72 Na2SO4) are consistent with Fig. 3c.",
+      "evidence": [
+        {
+          "id": "e14",
+          "kind": "figure",
+          "location": "Fig. 3c LSV (Na2SO4, N2-KHCO3, CO2-KHCO3)",
+          "quote": "-0.66 V vs. RHE at -10 mA cm-2 ... -0.72 V vs. RHE at -10 mA cm-2",
+          "extracted_values": {"E_CO2_KHCO3_V": -0.56, "E_N2_KHCO3_V": -0.66, "E_5M_Na2SO4_V": -0.72}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Claim<->evidence logic plus prose-vs-figure: confirm the three LSV curves in Fig. 3c cross -10 mA cm-2 at the stated potentials and that CO2 saturation gives the least negative onset.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.6,
+        "rationale": "The argument is internally coherent: lower (less negative) onset under CO2 vs CO2-free supports CO2RR contribution. Quantitative settlement needs Fig. 3c digitization. Caveat on electrolyte: 0.5 M Na2SO4 was used for CV but '5 M Na2SO4' is stated for this HER LSV, a 10x concentration; possibly intentional, possibly a typo (the methods 2.6 list 0.5 M Na2SO4). Marked supported on logic, low confidence pending figure + electrolyte-concentration check."
+      }
+    },
+    {
+      "id": "c15",
+      "text": "The 12 h chronoamperometry at -0.56 V vs RHE in CO2-saturated 0.5 M KHCO3 maintained an average current density of -10 mA cm-2, demonstrating operational stability.",
+      "quote": "chronoamperometry was performed at -0.56 V vs. RHE for 12 h in CO2-saturated 0.5 M KHCO3 solution, showing an average current density of -10 mA cm-2 (Fig. 3d).",
+      "section": "3.2 Electrochemical tests (Fig. 3d)",
+      "page": 5,
+      "epistemic_tier": "T4",
+      "predicate": "Check that Fig. 3d shows a near-constant current near -10 mA cm-2 over 12 h supporting the stability claim.",
+      "evidence": [
+        {
+          "id": "e15",
+          "kind": "figure",
+          "location": "Fig. 3d chronoamperometry",
+          "quote": "12 h ... average current density of -10 mA cm-2",
+          "extracted_values": {"duration_h": 12, "avg_current_density_mA_cm2": -10, "potential_V": -0.56}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Claim<->evidence: digitize Fig. 3d j(t) trace and confirm mean ~ -10 mA cm-2 with limited drift over 12 h.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.55,
+        "rationale": "Plausible and self-consistent (chronoamperometry held at -0.56 V, the potential giving -10 mA cm-2 in LSV). Needs figure digitization to confirm the trace is actually stable; T4 claim<->evidence verifier not yet built."
+      }
+    },
+    {
+      "id": "c16",
+      "text": "BET/BJH analysis: AC surface area 1350.25 m2 g-1, pristine Cu-ZIF 41.7 m2 g-1, Cu-ZIF@AC 502.02 m2 g-1; the composite's reduced area vs AC indicates MOF growth confined within the carbon matrix.",
+      "quote": "the preserved micro-porosity of AC (1350.25 m2 g-1) ... pristine Cu-ZIF shows a weak Type IV(a) isotherm ... and a very low surface area (41.7 m2 g-1). The significant decrease in BET surface area for Cu-ZIF@AC (502.02 m2 g-1) compared to AC",
+      "section": "3.1 Physical characterization (Fig. 2e)",
+      "page": 4,
+      "epistemic_tier": "T2",
+      "predicate": "Check ordering (Cu-ZIF 41.7 < composite 502.02 < AC 1350.25) and consistency with the 'decrease vs AC' / confinement narrative; cross-check with Fig. 2e labels.",
+      "evidence": [
+        {
+          "id": "e16",
+          "kind": "figure",
+          "location": "Fig. 2e N2 isotherms",
+          "quote": "1350.25 m2 g-1 ... 41.7 m2 g-1 ... 502.02 m2 g-1",
+          "extracted_values": {"SA_AC_m2g": 1350.25, "SA_CuZIF_m2g": 41.7, "SA_CuZIF_AC_m2g": 502.02}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Prose-vs-figure: confirm the surface areas annotated on Fig. 2e match the three text values and the ordering supports the confinement claim.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.7,
+        "rationale": "Numbers are internally consistent and the ordering supports the stated interpretation (composite area between AC and Cu-ZIF; lower than AC because pores are partly filled by MOF). A simple rule-of-mixtures sanity check (502 vs 7 wt% MOF of 41.7 + 93 wt% AC of 1350 ~ 1259) shows the composite area is well below a naive linear mixture, consistent with pore blocking/confinement, though the drop is larger than mixing alone - plausibly real pore occlusion. Figure-label cross-check pending."
+      }
+    },
+    {
+      "id": "c17",
+      "text": "Cu-ZIF@AC shows a Cu+/Cu2+ redox couple at 1.28 and 0.2 V vs RHE, while Cu-ZIF shows it at 1.01 and 0.57 V vs RHE (CV in N2-saturated 0.5 M Na2SO4).",
+      "quote": "The Cu-ZIF@AC showed Cu+/Cu2+ redox couple at 1.28 and 0.2 V vs. RHE, whereas the Cu-ZIF showed Cu+/Cu2+ redox couple at 1.01 and 0.57 V vs. RHE (Fig. 3a).",
+      "section": "3.2 Electrochemical tests (Fig. 3a)",
+      "page": 4,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check the four peak potentials against Fig. 3a CV traces.",
+      "evidence": [
+        {
+          "id": "e17",
+          "kind": "figure",
+          "location": "Fig. 3a CV",
+          "quote": "1.28 and 0.2 V vs. RHE ... 1.01 and 0.57 V vs. RHE",
+          "extracted_values": {"CuZIF_AC_anodic_V": 1.28, "CuZIF_AC_cathodic_V": 0.2, "CuZIF_anodic_V": 1.01, "CuZIF_cathodic_V": 0.57}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Prose-vs-figure peak-position check against Fig. 3a. Optional sanity: peak separation (Cu-ZIF@AC dE = 1.08 V vs Cu-ZIF dE = 0.44 V) is large for a reversible 1e couple.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.45,
+        "rationale": "Cannot settle without reading Fig. 3a. Minor concern: the composite's anodic-cathodic peak separation (1.08 V) is very large and larger than the MOF's (0.44 V), which is unusual if the composite is described as more conductive (more conductive usually => smaller separation). Possible mislabeling or genuinely irreversible surface redox; flagged, marked inconclusive pending figure."
+      }
+    },
+    {
+      "id": "c18",
+      "text": "DFT CO2 adsorption energies at the selected Cu sites are -0.58 eV (Cu3, most stable), -0.18 eV (Cu7, least stable), and -0.36 eV (Cu5, intermediate).",
+      "quote": "denoted as Cu3, Cu7, and Cu5, with adsorption energies of -0.58 eV, -0.18 eV, and -0.36 eV, respectively, were selected for detailed analysis.",
+      "section": "3.5 Thermodynamic energy analysis",
+      "page": 8,
+      "epistemic_tier": "T4",
+      "predicate": "Check the labeling: most/least/intermediate stable should correspond to most/least negative Eads; -0.58 (most negative) = most stable = Cu3, -0.18 (least negative) = least stable = Cu7, -0.36 = intermediate = Cu5.",
+      "evidence": [
+        {
+          "id": "e18",
+          "kind": "number",
+          "location": "Section 3.5 (Tables S3-S6)",
+          "quote": "the most stable, least stable, and intermediate stable adsorption configurations, denoted as Cu3, Cu7, and Cu5, with adsorption energies of -0.58 eV, -0.18 eV, and -0.36 eV",
+          "extracted_values": {"Eads_Cu3": -0.58, "Eads_Cu7": -0.18, "Eads_Cu5": -0.36}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Ordering/labeling consistency: -0.58 < -0.36 < -0.18 maps correctly to most/intermediate/least stable for Cu3/Cu5/Cu7. Full check needs Tables S3-S6 (all 12 sites) in SI.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.7,
+        "rationale": "Internal labeling is self-consistent (most negative Eads = most stable = Cu3). Whether these three are genuinely the most/least/intermediate among all 12 Cu sites requires the SI tables (S3-S6) not in the main text. Supported on the stated three values."
+      }
+    },
+    {
+      "id": "c19",
+      "text": "The DFT pathway potential-determining (most uphill) steps are C-O bond cleavage: *OCHOH->*CHO at 1.88 eV (Cu3) and *OCHOH->*CHO at 1.77 eV (Cu5), and *CH2OH->*CH2 at 2.53 eV (Cu7).",
+      "quote": "the subsequent conversion of *OCHOH to *CHO requires a substantial energy input, 1.88 eV, associated with C-O bond cleavage ... The transformation of *OCHOH to *CHO constitutes a key thermodynamically demanding step in the *OCHO-mediated pathway of 1.77 eV ... C-O bond cleavage during the transformation of *CH2OH to *CH2 is a highly energetically demanding step of 2.53 eV at the Cu7 site",
+      "section": "3.5 Thermodynamic energy analysis (Fig. 6a)",
+      "page": 8,
+      "epistemic_tier": "T2",
+      "predicate": "Check that the cited per-step free-energy changes are internally consistent with the free-energy diagrams in Fig. 6a/6b and that the identified bottleneck per site is the largest positive step.",
+      "evidence": [
+        {
+          "id": "e19",
+          "kind": "figure",
+          "location": "Fig. 6a (0 V) / 6b (-0.7 V)",
+          "quote": "1.88 eV ... 1.77 eV ... 2.53 eV ... bottleneck",
+          "extracted_values": {"PDS_Cu3_eV": 1.88, "PDS_Cu5_eV": 1.77, "PDS_Cu7_eV": 2.53}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Prose-vs-figure: reconstruct the cumulative free-energy ladder from Fig. 6a and confirm each step value and that the named step is the maximum uphill step per pathway.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.45,
+        "rationale": "Many individual step energies are given (e.g. *CH2OH->*CH2 penalties 1.40 eV Cu3, 2.36 eV Cu5, 2.53 eV Cu7) but settling whether they sum to the stated overall reaction energies and which step is truly rate/potential-limiting requires digitizing Fig. 6a/6b. A consistency note: Cu3's named bottleneck is 1.88 eV at *OCHOH->*CHO, yet a later *CH2->... text also cites a 1.40 eV *CH2 penalty; without the full ladder the global maximum per site cannot be confirmed. Marked inconclusive pending figure reconstruction."
+      }
+    },
+    {
+      "id": "c20",
+      "text": "Cu-ZIF exhibits an HER overpotential of -0.72 V vs RHE in 5 M Na2SO4, the same value reported for Cu-ZIF's CO2RR LSV onset.",
+      "quote": "exhibiting overpotential of to -0.72 V vs. RHE at -10 mA cm-2 ... compared to -0.72 V vs. RHE for Cu-ZIF",
+      "section": "3.2 Electrochemical tests",
+      "page": 5,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check whether the -0.72 V value is reused for two different measurements (Cu-ZIF CO2RR in KHCO3 vs Cu-ZIF@AC HER in 5 M Na2SO4) and whether that coincidence is intended.",
+      "evidence": [
+        {
+          "id": "e20a",
+          "kind": "text",
+          "location": "Section 3.2 (Fig. 3b)",
+          "quote": "-0.72 V vs. RHE for Cu-ZIF, having a lower current density than Cu-ZIF@AC",
+          "extracted_values": {"E_CuZIF_CO2RR_V": -0.72}
+        },
+        {
+          "id": "e20b",
+          "kind": "text",
+          "location": "Section 3.2 (5 M Na2SO4 HER LSV)",
+          "quote": "LSV measurements were also performed in 5 M Na2SO4 ... exhibiting overpotential of to -0.72 V vs. RHE at -10 mA cm-2.",
+          "extracted_values": {"E_CuZIF_AC_HER_Na2SO4_V": -0.72}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Internal cross-consistency: are two distinct experiments (Cu-ZIF CO2RR onset, Cu-ZIF@AC HER onset) really both exactly -0.72 V, or is one a transcription slip? Resolve against Fig. 3b and 3c.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.4,
+        "rationale": "The identical -0.72 V appears for (a) Cu-ZIF CO2RR LSV in KHCO3 and (b) Cu-ZIF@AC intrinsic HER in 5 M Na2SO4 - two different electrodes and electrolytes. Could be coincidence or copy error. Phrase 'overpotential of to -0.72 V' also contains a stray 'to'. Needs the underlying LSV curves to disambiguate; marked inconclusive."
+      }
+    },
+    {
+      "id": "c21",
+      "text": "The atmospheric CO2 concentration has increased by approximately 35% over the past six decades (per the Keeling curve).",
+      "quote": "the global mean CO2 concentration has increased by approximately 35% over the past six decades, as evidenced by continuous records such as the Keeling curve.",
+      "section": "1 Introduction",
+      "page": 1,
+      "epistemic_tier": "T5",
+      "predicate": "Compare against the Keeling/Mauna Loa record: ~315-317 ppm (early 1960s) to ~415-425 ppm (early 2020s).",
+      "evidence": [
+        {
+          "id": "e21",
+          "kind": "statistic",
+          "location": "Introduction, ref. 2 (Keeling curve)",
+          "quote": "increased by approximately 35% over the past six decades",
+          "extracted_values": {"stated_increase_pct": 35}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "External literature/percent-change check: (~420-316)/316 ~ 33%; using ~424 ppm gives ~34%. ~35% is slightly high but order-correct.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.65,
+        "rationale": "Mauna Loa record gives ~33-34% rise over six decades; 'approximately 35%' is a mild overstatement but within rounding tolerance of public data. Off-the-shelf percent-change against a fixed external dataset; supported with moderate confidence."
+      }
+    },
+    {
+      "id": "c22",
+      "text": "Cu-ZIF (Cu-substituted ZIF-type imidazolate framework) has not previously been investigated for CO2 reduction; the Cu-ZIF@AC composite is a novel catalyst platform.",
+      "quote": "Importantly, Cu-ZIF MOF has not been previously investigated for CO2 reduction, and the Cu-ZIF@AC composite introduced here represents a novel catalyst platform",
+      "section": "1 Introduction",
+      "page": 2,
+      "epistemic_tier": "T5",
+      "predicate": "Literature search for prior reports of Cu-ZIF (Cu(2-MI)2 imidazolate framework) used in CO2RR.",
+      "evidence": [
+        {
+          "id": "e22",
+          "kind": "text",
+          "location": "Introduction",
+          "quote": "Cu-ZIF MOF has not been previously investigated for CO2 reduction",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "External literature/novelty search (T5) for Cu-imidazolate ZIF analogues in CO2RR; the paper's own Table S1 cites several Cu-MOF CO2RR systems, so the claim is narrowly about this specific Cu-ZIF composition.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.4,
+        "rationale": "A novelty/priority claim that needs a literature verifier. Cu-imidazolate MOFs exist (the paper's own refs 24, 26 use 'Cu-Imidazolate MOF' for water remediation), so 'Cu-ZIF' as a material is not unprecedented; whether it has been used for CO2RR specifically is the checkable kernel. Cannot settle from the paper alone; inconclusive."
+      }
+    },
+    {
+      "id": "c23",
+      "text": "Gas-phase FTIR did not detect CO, and mass spectrometry of the cathode headspace detected no gas-phase product except H2 (no CH4 or C2H4).",
+      "quote": "Gas-phase FTIR (Fig. S8) did not detect CO in the product stream ... we performed Mass Spectroscopy of the samples taken from mouth space of the H-cell cathode chamber but no gas phase product was detected except H2 gas.",
+      "section": "3.3 Product analysis",
+      "page": 7,
+      "epistemic_tier": "T4",
+      "predicate": "Check internal consistency: claim of an acetate-selective Cu catalyst with HER as the only gas product, no CO/CH4/C2H4 detected, vs the DFT mechanism that invokes *CO intermediates.",
+      "evidence": [
+        {
+          "id": "e23",
+          "kind": "figure",
+          "location": "Fig. S8 (gas FTIR) + MS",
+          "quote": "did not detect CO ... no gas phase product was detected except H2 gas",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Claim<->evidence: requires Fig. S8 FTIR and the MS traces (SI) to confirm absence of CO/CH4/C2H4. Logic check: a CO-mediated pathway with zero detectable CO is explained as 'rapidly consumed', which is plausible but unfalsifiable from the data shown.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.45,
+        "rationale": "The negative-detection claims live in SI figures (S8, MS) not provided in main text; cannot bind. The reconciliation that transient CO is fully consumed is a reasonable narrative but not independently verifiable here. Inconclusive."
+      }
+    },
+    {
+      "id": "c24",
+      "text": "Cu-N bond lengths in the optimized Cu-ZIF range from 1.96 to 2.03 A, with each Cu tetrahedrally coordinated to four imidazolate N atoms (two distinct bond lengths).",
+      "quote": "The Cu-N bond lengths range from 1.96 A to 2.03 A. Each copper atom is tetrahedrally coordinated to the nitrogen atoms of the ligands, exhibiting two distinct bond lengths.",
+      "section": "3.4 Structural and geometrical optimization",
+      "page": 8,
+      "epistemic_tier": "T1",
+      "predicate": "Compare the 1.96-2.03 A Cu-N range to typical Cu(II)-N(imidazole) bond lengths (~1.95-2.05 A) from crystallography.",
+      "evidence": [
+        {
+          "id": "e24",
+          "kind": "number",
+          "location": "Section 3.4",
+          "quote": "Cu-N bond lengths range from 1.96 A to 2.03 A",
+          "extracted_values": {"CuN_min_A": 1.96, "CuN_max_A": 2.03}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Fixed external knowledge: Cu-N(imidazolate) distances in MOFs/coordination complexes are typically ~1.95-2.05 A. Values fall in range.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.7,
+        "rationale": "1.96-2.03 A is squarely within the physically expected Cu-N range for distorted-tetrahedral Cu(II) imidazolate coordination. T1 reference check; no contradiction. Note: text says 'two distinct bond lengths' but also a continuous 1.96-2.03 A range over 12 inequivalent Cu sites - minor wording tension, not a numeric error."
+      }
+    },
+    {
+      "id": "c25",
+      "text": "The lattice parameters of the optimized Cu-ZIF primitive cell are a = 16.33, b = 16.61, c = 16.62 A with angles alpha = 93.00, beta = 106.61, gamma = 100.06 deg.",
+      "quote": "lattice parameters: a = 16.33 A, b = 16.61 A, c = 16.62 A, and angles a = 93.00, b = 106.61, g = 100.06.",
+      "section": "3.4 Structural and geometrical optimization",
+      "page": 8,
+      "epistemic_tier": "T1",
+      "predicate": "Sanity-check the cell dimensions against ZIF-8 (cubic, a ~ 16.99 A); a distorted/triclinic ~16.3-16.6 A cell from Zn->Cu and relaxation is plausible.",
+      "evidence": [
+        {
+          "id": "e25",
+          "kind": "number",
+          "location": "Section 3.4 (Fig. 5a)",
+          "quote": "a = 16.33 A, b = 16.61 A, c = 16.62 A ... a = 93.00, b = 106.61, g = 100.06",
+          "extracted_values": {"a_A": 16.33, "b_A": 16.61, "c_A": 16.62, "alpha_deg": 93.0, "beta_deg": 106.61, "gamma_deg": 100.06}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "External reference: parent ZIF-8 is cubic I-43m, a = 16.99 A. The Cu analogue distorting to triclinic ~16.3-16.6 A with non-90 angles upon symmetry-free relaxation is physically reasonable but not independently re-derivable without the CIF (Fig. S9 / DFT files in SI).",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.55,
+        "rationale": "Dimensions are close to ZIF-8 (~17 A) and angles reflect the stated symmetry-unconstrained relaxation; no obvious inconsistency. Cannot be fully verified without the structure file; supported with low-moderate confidence."
+      }
+    },
+    {
+      "id": "c26",
+      "text": "DFT convergence criteria: total energy and forces converged to < 1e-6 eV and 2e-2 eV/A, plane-wave cutoff 500 eV, 1x1x1 Monkhorst-Pack k-grid, PBE-D3.",
+      "quote": "until the total energy and atomic forces converged to less than 10-6 eV and 2 x 10-2 eV A-1, respectively, using a plane-wave cutoff energy of 500 eV ... a 1 x 1 x 1 Monkhorst-Pack k-point grid was used",
+      "section": "2.8 Computational details",
+      "page": 3,
+      "epistemic_tier": "T3",
+      "predicate": "Assess method appropriateness: are these settings adequate for a 276-atom ZIF cell (Gamma-only k-grid, 500 eV cutoff, D3) to support the quantitative energy claims?",
+      "evidence": [
+        {
+          "id": "e26",
+          "kind": "text",
+          "location": "Section 2.8",
+          "quote": "10-6 eV and 2 x 10-2 eV A-1 ... 500 eV ... 1 x 1 x 1 Monkhorst-Pack k-point grid",
+          "extracted_values": {"energy_conv_eV": 1e-6, "force_conv_eV_A": 0.02, "cutoff_eV": 500, "kgrid": 1}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Method-appropriateness referee (T3): Gamma-only k-sampling is acceptable for a large insulating unit cell; 500 eV cutoff and D3 are standard for VASP/PBE. Force criterion 0.02 eV/A is somewhat loose but conventional.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.6,
+        "rationale": "Settings are within normal VASP practice for a large MOF cell; Gamma-point sampling is justified by cell size and the framework's insulating character. Not an arithmetic check; needs a DFT-methods referee. No red flag, supported with moderate confidence."
+      }
+    },
+    {
+      "id": "c27",
+      "text": "Cu-ZIF@AC achieves the highest AcOH faradaic efficiency (71.5%) outperforming several previously reported MOF- and Cu-based catalysts summarized in Table S1.",
+      "quote": "the highest F.E. of 71.5 +/- 0.29% is found for AcOH outperforming several previously reported MOF- and Cu-based catalysts summarized in Table S1.",
+      "section": "3.3 Product analysis / Abstract",
+      "page": 7,
+      "epistemic_tier": "T5",
+      "predicate": "Compare 71.5% AcOH F.E. against the literature values compiled in Table S1; verify the comparison is like-for-like (same product/acetic-acetate, conditions).",
+      "evidence": [
+        {
+          "id": "e27",
+          "kind": "table",
+          "location": "Table S1 (SI), refs 27,47-57",
+          "quote": "outperforming several previously reported MOF- and Cu-based catalysts summarized in Table S1",
+          "extracted_values": {"AcOH_FE_pct": 71.5}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "External-literature comparison (T5): requires Table S1 contents (SI) to confirm the cited benchmarks and that 71.5% AcOH F.E. genuinely exceeds them under comparable conditions.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.4,
+        "rationale": "The comparison rests on Table S1, which is in the SI and not in the provided main text. Cannot bind the 'outperforming' claim to specific competitor values; T5 literature verifier needed. Inconclusive."
+      }
+    },
+    {
+      "id": "c28",
+      "text": "The abstract states the catalyst 'selectively produced acetic acid (71.5% faradaic efficiency) at -0.3 V (vs. RHE) onset potential', framing -0.3 V as an onset potential.",
+      "quote": "the catalyst selectively produced acetic acid (71.5% faradaic efficiency) at -0.3 V (vs. RHE) onset potential",
+      "section": "Abstract",
+      "page": 1,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check abstract vs body: body reports 71.5% AcOH F.E. at -0.3 V and calls -0.3 V the 'onset potential'; verify the abstract value matches the body (Fig. 4a) and the onset-potential usage is consistent.",
+      "evidence": [
+        {
+          "id": "e28a",
+          "kind": "text",
+          "location": "Abstract",
+          "quote": "acetic acid (71.5% faradaic efficiency) at -0.3 V (vs. RHE) onset potential",
+          "extracted_values": {"FE_pct": 71.5, "onset_V": -0.3}
+        },
+        {
+          "id": "e28b",
+          "kind": "text",
+          "location": "Section 3.3",
+          "quote": "At -0.3 V potential, the highest F.E. of 71.5 +/- 0.29% is found for AcOH",
+          "extracted_values": {"FE_pct": 71.5, "potential_V": -0.3}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Prose-vs-prose internal consistency: abstract (71.5% at -0.3 V) matches body (71.5% at -0.3 V). Terminology check: -0.3 V is labeled 'onset potential' but is the least-negative measured point, not necessarily the current-onset.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.8,
+        "rationale": "The 71.5% / -0.3 V figure is consistent between abstract and Section 3.3 (and Fig. 4b is at -0.3 V). Self-consistent off-the-shelf prose-vs-prose check passes. Minor terminology caveat: '-0.3 V onset potential' uses 'onset' loosely (it is the lowest applied potential tested, where F.E. to AcOH peaks), but the numeric claim is internally consistent."
+      }
+    },
+    {
+      "id": "c29",
+      "text": "Pristine Cu-ZIF undergoes substantial mass loss at ~180 C and ~325 C, while Cu-ZIF@AC degrades gradually, indicating improved thermal stability of the composite.",
+      "quote": "the pristine Cu-ZIF undergoes substantial mass loss at ~180 C and ~325 C, while the Cu-ZIF@AC composite displays a gradual degradation pattern, indicating improved thermal stability.",
+      "section": "3.1 Physical characterization (Fig. 2d TGA)",
+      "page": 4,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check the TGA transition temperatures and the 'gradual vs stepwise' interpretation against Fig. 2d.",
+      "evidence": [
+        {
+          "id": "e29",
+          "kind": "figure",
+          "location": "Fig. 2d TGA",
+          "quote": "substantial mass loss at ~180 C and ~325 C ... gradual degradation",
+          "extracted_values": {"CuZIF_loss_T1_C": 180, "CuZIF_loss_T2_C": 325}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Prose-vs-figure: confirm Fig. 2d TGA curves show the stated mass-loss temperatures for Cu-ZIF and a more gradual profile for the composite.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.55,
+        "rationale": "Internally coherent. Minor note: the ~180 C TGA mass loss coincides with the hydrothermal synthesis temperature (180 C) used for the framework, which is slightly surprising for a material made at that temperature; could be solvent/linker loss. Needs Fig. 2d to confirm; supported with low-moderate confidence."
+      }
+    },
+    {
+      "id": "c30",
+      "text": "The product-quantification concentration formula (eqn 5) and F.E. formula (eqn 6 = nFz/It x 100) are dimensionally consistent for computing F.E. from NMR-quantified products.",
+      "quote": "F.E.(%) = (nFz/It) 100 (6)",
+      "section": "2.7 Product quantification",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "Dimensional analysis of eqn (6): n[mol] x F[C/mol] x z[dimensionless e-/molecule... ] divided by I[A=C/s] x t[s] = dimensionless; check units cancel to give a fraction.",
+      "evidence": [
+        {
+          "id": "e30",
+          "kind": "equation",
+          "location": "Eqn (6)",
+          "quote": "F.E.(%) = nFz/It 100 ; n is the number moles of the product; F is the Faraday constant; z is the number electrons; I is the current applied, t is the duration",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Unit-consistency check: n[mol]*F[C/mol]*z[-] / (I[C/s]*t[s]) = C / C = dimensionless. Units cancel correctly.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "Dimensionally correct: charge passed to form product (nzF) over total charge (It) gives a unitless fraction x 100 = percent. Standard F.E. definition. Off-the-shelf unit-consistency check passes. (Eqn 5 has more symbols but is a standard NMR internal-standard quantitation and is dimensionally a concentration; cannot fully re-derive without symbol definitions, but no inconsistency apparent.)"
+      }
+    },
+    {
+      "id": "c31",
+      "text": "Cu2+ is a d9 (3d9) configuration, and the paper attributes the two distinct Cu-N bond lengths to 'unsymmetrically filled t2g orbitals of Cu2+ (d9 configuration)'.",
+      "quote": "This variation may arise from the unsymmetrically filled t2g orbitals of Cu2+ (d9 configuration), as well as steric repulsions",
+      "section": "3.4 Structural and geometrical optimization",
+      "page": 8,
+      "epistemic_tier": "T1",
+      "predicate": "Check the crystal-field reasoning: in a tetrahedral field the d-orbitals split into e (lower) and t2 (upper), not t2g/eg (which are octahedral labels); attributing tetrahedral Cu2+ distortion to 't2g' is a terminology error.",
+      "evidence": [
+        {
+          "id": "e31",
+          "kind": "text",
+          "location": "Section 3.4",
+          "quote": "unsymmetrically filled t2g orbitals of Cu2+ (d9 configuration)",
+          "extracted_values": {"d_electrons": 9}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Fixed external knowledge (ligand-field theory): tetrahedral complexes use e/t2 labels (no inversion center, so no g/u subscript); 't2g' is octahedral nomenclature. Cu2+ is correctly d9.",
+        "verifier_exists": false,
+        "candidate_verdict": "suspect",
+        "confidence": 0.6,
+        "rationale": "Cu2+ = d9 is correct. But the paper repeatedly describes Cu as 'tetrahedrally coordinated' yet invokes 't2g orbitals' - t2g/eg are octahedral symmetry labels; the tetrahedral analogue is e/t2 (ungerade-free). This is a ligand-field-theory terminology inconsistency (octahedral label applied to a tetrahedral center). Minor T1 conceptual error, not affecting the energetics; flagged suspect on the orbital-label claim. Needs an inorganic-chemistry referee."
+      }
+    },
+    {
+      "id": "c32",
+      "text": "Data availability: all data are provided in the article and SI; raw electrochemical, NMR, structural, and DFT input/output files are 'available from the corresponding author upon reasonable request'.",
+      "quote": "All data supporting this study are provided within the article and supplementary information (SI). Raw electrochemical data, NMR spectra, structural characterization files, and density functional theory (DFT) input/output files are available from the corresponding author upon reasonable request.",
+      "section": "Data availability",
+      "page": 10,
+      "epistemic_tier": "T7",
+      "predicate": "Assess reproducibility/integrity signal: are the DFT structures and raw data openly deposited (enabling re-computation), or gated behind 'upon request'?",
+      "evidence": [
+        {
+          "id": "e32",
+          "kind": "text",
+          "location": "Data availability statement",
+          "quote": "available from the corresponding author upon reasonable request",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Integrity/availability check (T7): the key DFT structures (CIF/POSCAR) and raw electrochemistry are NOT deposited in a repository; they are 'upon request', which limits independent reproduction (T6).",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.5,
+        "rationale": "The 'upon reasonable request' gating for DFT input/output and raw data weakens reproducibility (T6) and is a soft integrity signal - the quantitative DFT energy claims (c1, c8, c18, c19) cannot be independently recomputed without these files. Not a finding per se; recorded as a reproducibility limitation. The optimized Cu-ZIF structure is the headline 'optimized for the first time' object yet no CIF is openly provided."
+      }
+    }
+  ],
+  "paper_level_notes": "Read all 13 pages (main text + references) via layout-preserving text extraction; the Read tool's PDF page-render path was unavailable (poppler/pdftoppm not on its PATH), so figures (Figs 1-6) and SI (Figs S1-S11, Tables S1-S6) were assessed through their captions, in-text numeric callouts, and the main-text Table 1 only - not by pixel inspection. Published in Nanoscale Advances 2026, DOI 10.1039/d6na00256k (RSC, open access, CC). DETERMINISTIC FRONTIER (T0-T2): the strongest checkable item is c1 - the spin stabilization energy: (-1755.5236)-(-1756.0987) = 0.5751 eV, but the paper states 'approximately 0.64 eV' (SUSPECT, off-the-shelf subtraction). All reaction stoichiometries (c3-c5) balance; Faraday constant (c6) and Nernst slope (c7) correct; F.E. unit analysis (c30) consistent. Two clean SUPPORTED stoichiometry/consistency wins: the 276-atom Cu-ZIF cell (c2) reproduces exactly from 12xCu(C4H5N2)2 and from 96+120+48+12; and the full DFT energy ladder (c8) is internally self-consistent to the stated precision under the CHE linear shift with n=8 electrons (spacings -2.40/-2.08/-1.12 eV between 0/-0.30/-0.56/-0.70 V match exactly). The 7 wt% Cu-ZIF loading vs 2.1 wt% ICP Cu (c9) are mutually CONSISTENT via composition (7%x28.2% Cu = ~1.97 wt%), not contradictory. SUSPECT/soft items needing referees: 'overpotential' is reported as potential-vs-RHE rather than true overpotential (c13, abstract); 't2g' (octahedral label) applied to a 'tetrahedrally coordinated' Cu center (c31, ligand-field terminology); the identical -0.72 V reused for two different experiments (c20); large CV peak separation for the 'more conductive' composite (c17); '5 M Na2SO4' HER electrolyte vs 0.5 M Na2SO4 in methods (c14) possible typo; Table 1 '2.1 +/- 0.002' has implausibly tight absolute uncertainty. Many quantitative claims (Figs 3,4,6; Tables S1-S6) are bindable only after figure digitization / SI access, hence several 'inconclusive' verdicts where evidence could not be bound. Reproducibility (c32): DFT input/output and raw data are 'upon reasonable request', not deposited, so the headline DFT energetics cannot be independently recomputed. No fabricated values were introduced; null/inconclusive recorded wherever a number was not directly available. Note on candidate_verdicts: these are first-pass cataloguer judgments for triage, not adjudicated outcomes."
+}

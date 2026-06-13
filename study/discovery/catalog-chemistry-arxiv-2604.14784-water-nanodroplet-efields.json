@@ -1,0 +1,353 @@
+{
+  "paper_id": "chemistry-arxiv-2604.14784-water-nanodroplet-efields",
+  "title": "Interfacial Electric Fields in Water Nanodroplets are Weakly Dependent on Curvature and pH",
+  "doi": null,
+  "domain": "computational chemistry / physical chemistry (AIMD + deep-learning MD of air-water interfaces)",
+  "n_pages_read": 27,
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Across planar interfaces and nanodroplets of varying curvature and charge state, the interfacial electric field (IEF) projected along the intrinsic surface normal is outward-oriented with magnitude ~1.0-1.2 V/Angstrom.",
+      "quote": "we find an outward-oriented field of ∼ 1.0–1.2 V/Å along the intrinsic surface normal.",
+      "section": "Abstract",
+      "page": 1,
+      "epistemic_tier": "T2",
+      "predicate": "Bind the abstract range 1.0-1.2 V/A to Fig. 2a/3a data points and the body statement 'Its magnitude ranges between ~1.0 and 1.2 V/A'; check the plotted IEF-vs-curvature and IEF-vs-charge points all fall in [1.0,1.2] and are positive (outward).",
+      "evidence": [
+        {"id": "e1", "kind": "figure", "location": "Figure 2a", "quote": "Average interfacial electric field projected along the Willard-Chandler surface normal as a function of the interface curvature κ", "extracted_values": {"ief_min_Vper_A": 1.0, "ief_max_Vper_A": 1.2}},
+        {"id": "e2", "kind": "text", "location": "Results, p11", "quote": "Its magnitude ranges between ∼1.0 and 1.2 V/Å", "extracted_values": {"ief_min_Vper_A": 1.0, "ief_max_Vper_A": 1.2}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "figure-value extraction (read IEF data points off Fig. 2a/3a y-axis) cross-checked against the prose range", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.8, "rationale": "High-resolution render of Fig. 2a shows all curvature data points lie between ~1.0 and ~1.2 V/A and are positive; Fig. 3a charge points span ~1.05-1.28 (the +5e outlier slightly exceeds 1.2 but the abstract caveats 'varying ... charge state'). Prose, abstract, Fig 2a and Fig 3a are mutually consistent on the neutral-to-mild range. Off-the-shelf prose-vs-figure binding covers this once a figure-reader extracts the axis."}
+    },
+    {
+      "id": "c2",
+      "text": "The IEF magnitude scales linearly with (anticorrelates with) the average number of hydrogen bonds per interfacial molecule, with the fit reporting R^2 = 0.994 and Pearson r = -0.997.",
+      "quote": "its magnitude scales linearly with the average number of hydrogen bonds per interfacial molecule ... A clear anticorrelation is observed: as the hydrogen-bond network becomes more complete, the magnitude of the electric field decreases.",
+      "section": "Abstract / Curvature Effects (Fig. 2b)",
+      "page": 11,
+      "epistemic_tier": "T2",
+      "predicate": "Bind 'scales linearly' / 'clear anticorrelation' to the fit statistics printed inside Fig. 2b (R^2=0.994, Pearson r=-0.997); confirm sign of r is negative (anticorrelation, consistent with 'field decreases as H-bonds increase').",
+      "evidence": [
+        {"id": "e3", "kind": "figure", "location": "Figure 2b", "quote": "R²=0.994  Pearson's r=-0.997", "extracted_values": {"R2": 0.994, "pearson_r": -0.997}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-figure consistency: negative r matches the 'anticorrelation' wording and the 'field increases with curvature' direction", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.82, "rationale": "Fig. 2b prints R^2=0.994 and Pearson r=-0.997 (read directly from the high-res render). Negative r is consistent with the prose 'anticorrelation'. The abstract phrase 'scales linearly' is loose (it is an anticorrelation, not a positive scaling) but not contradictory. Off-the-shelf prose-vs-figure binding settles the sign-consistency."}
+    },
+    {
+      "id": "c3",
+      "text": "The reported regression statistics in Fig. 2b are mutually consistent: Pearson r = -0.997 implies r^2 = 0.994, matching the reported R^2 = 0.994.",
+      "quote": "R²=0.994  Pearson's r=-0.997",
+      "section": "Figure 2b",
+      "page": 11,
+      "epistemic_tier": "T0",
+      "predicate": "Compute r^2 from the reported Pearson r and compare to the reported R^2: (-0.997)^2 = 0.994009 ~ 0.994.",
+      "evidence": [
+        {"id": "e4", "kind": "statistic", "location": "Figure 2b", "quote": "R²=0.994  Pearson's r=-0.997", "extracted_values": {"R2": 0.994, "pearson_r": -0.997, "r_squared_recomputed": 0.994009}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "arithmetic: square the Pearson r and round to 3 decimals; equality check against printed R^2", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.97, "rationale": "Pure internal arithmetic on the paper's own two printed numbers. (-0.997)^2 = 0.994009, which rounds to 0.994 = the printed R^2. Exact deterministic recompute (a percent/ratio-style T0 check) confirms internal consistency."}
+    },
+    {
+      "id": "c4",
+      "text": "The IEF changes by a factor of only ~10^-5 between 3- and 40-um-sized droplets (i.e., extrapolated curvature-induced variation ~10^-5 V/Angstrom, five orders of magnitude smaller than the field itself).",
+      "quote": "which changes by a factor of only ∼ 10−5 between 3 and 40µm-sized droplets.",
+      "section": "Abstract / Curvature Effects",
+      "page": 1,
+      "epistemic_tier": "T2",
+      "predicate": "Check internal consistency of the magnitude statement across abstract and body, and recompute the order-of-magnitude: extrapolate the Fig. 2a linear IEF-vs-kappa fit (slope x delta-kappa over kappa(3um)..kappa(40um)) and confirm the change is ~10^-5 V/A and ~5 orders below the ~1 V/A field. Note abstract calls it a dimensionless 'factor ~10^-5' while body states '~10^-5 V/A'.",
+      "evidence": [
+        {"id": "e5", "kind": "text", "location": "Abstract, p1", "quote": "which changes by a factor of only ∼ 10−5 between 3 and 40µm-sized droplets", "extracted_values": {"factor": 1e-05}},
+        {"id": "e6", "kind": "text", "location": "Curvature Effects, p12", "quote": "Extrapolation of the curvature dependence of the IEF to micrometer-sized droplets (3-40 µm) reveals variations on the order of 10−5 V/Å, i.e., five orders of magnitude smaller than the field itself.", "extracted_values": {"variation_Vper_A": 1e-05, "orders_below_field": 5}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "extrapolation recompute from Fig. 2a fit slope + curvature values, plus abstract-vs-body unit-consistency check", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.55, "rationale": "The body framing (~10^-5 V/A, 5 orders below ~1 V/A) is internally self-consistent: 1e-5 V/A is indeed 5 orders below 1 V/A. The abstract reframes the same quantity as a dimensionless 'factor ~10^-5', which is a slightly different statement (a factor vs an absolute variation). Quantitative recompute requires the Fig. 2a fit slope and kappa(3um),kappa(40um) from Table S1, which is NOT in this PDF, so the numeric extrapolation cannot be independently reproduced here. Mark inconclusive pending SI; the abstract/body unit-framing nuance is a minor T2 flag, not a clear error."}
+    },
+    {
+      "id": "c5",
+      "text": "The four simulated charge states (-5e, -e, +e, +5e) correspond to net pH values of 13.74, 13.0, 0.96, and 0.26, respectively.",
+      "quote": "These charge states approximately correspond to net pH values of 13.74, 13.0, 0.96, and 0.26, respectively.",
+      "section": "pH Effects",
+      "page": 13,
+      "epistemic_tier": "T1",
+      "predicate": "From each excess-ion count (5 OH-, 1 OH-, 1 H3O+, 5 H3O+) and the droplet volume implied by ~512 H2O / its radius (Table S1), compute molar concentration of the excess self-ion, then pH = 14 + log10[OH-] or pH = -log10[H3O+]; compare to 13.74, 13.0, 0.96, 0.26.",
+      "evidence": [
+        {"id": "e7", "kind": "number", "location": "pH Effects, p13", "quote": "net pH values of 13.74, 13.0, 0.96, and 0.26", "extracted_values": {"pH_minus5e": 13.74, "pH_minus_e": 13.0, "pH_plus_e": 0.96, "pH_plus5e": 0.26}},
+        {"id": "e8", "kind": "text", "location": "Methods, p4-5", "quote": "Also charged nanodroplets composed of 507 H2 O and 5 OH− (q = −5e− ), 511 H2 O and 1 OH− (q = −e− ), 511 H2 O and 1 H3 O+ (q = +e− ), and 507 H2 O and 5 H3 O+ (q = +5e− )", "extracted_values": {"H2O_minus5e": 507, "OH_minus5e": 5, "H2O_minus_e": 511, "OH_minus_e": 1, "H2O_plus_e": 511, "H3O_plus_e": 1, "H2O_plus5e": 507, "H3O_plus5e": 5}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "pH-from-concentration recompute given droplet volume (needs radius R from Table S1)", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.5, "rationale": "Self-consistency partly checkable: the symmetry 1-ion pH(+e)=0.96 vs pH(-e)=13.0 sum to 13.96 (~14), and 5-ion pH(+5e)=0.26 vs pH(-5e)=13.74 sum to 14.0 -- internally consistent with pH+pOH=14 and the same volume, which is a strong T0/T1 sanity signal. However, the absolute values require the droplet volume (radius from Table S1, not bundled in this PDF) to verify the molarity, so the numbers cannot be fully reproduced here. Note 1 ion in ~512 waters gives [ion] ~0.1 M -> pH~1 / 13, consistent in order of magnitude. Mark inconclusive pending SI."}
+    },
+    {
+      "id": "c6",
+      "text": "The plus/minus e and plus/minus 5e charge states probe regimes of 13% and 66% of the Rayleigh limit for Coulomb fission, respectively.",
+      "quote": "hence probing regimes of 13% and 66% of the Rayleigh limit for Coulomb fission.",
+      "section": "pH Effects",
+      "page": 13,
+      "epistemic_tier": "T1",
+      "predicate": "Compute the Rayleigh fission charge q_R = 8*pi*sqrt(epsilon0 * gamma * R^3) for water (gamma~0.072 N/m) using droplet radius R (Table S1, ~512-H2O droplet), then check 1e/q_R ~ 0.13 and 5e/q_R ~ 0.66.",
+      "evidence": [
+        {"id": "e9", "kind": "number", "location": "pH Effects, p13", "quote": "13% and 66% of the Rayleigh limit for Coulomb fission", "extracted_values": {"fraction_1e_pct": 13, "fraction_5e_pct": 66}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Rayleigh-limit formula recompute given droplet radius and water surface tension", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.55, "rationale": "Internal ratio check: 13% for 1e implies 5e should be ~65% (5x13=65), and the paper states 66%, which is internally consistent to rounding -- a clean T0 ratio sanity check that passes. The absolute fractions require R (Table S1, not in this PDF) and a value for surface tension to verify against the Rayleigh formula. The 5:1 ratio of charges mapping to ~5:1 ratio of fractions is consistent; absolute magnitude inconclusive pending SI."}
+    },
+    {
+      "id": "c7",
+      "text": "Mean charge transfer values for interfacial H2O across hydrogen-bond donor-acceptor families are nearly identical between droplet and slab geometries (Table 1), indicating curvature-independence of the H-bond/charge-transfer relationship.",
+      "quote": "the close similarity between droplet and slab results indicates that this relationship is largely independent from the curvature.",
+      "section": "Structural and Electronic Properties (Table 1)",
+      "page": 9,
+      "epistemic_tier": "T2",
+      "predicate": "Compare droplet-column vs slab-column mean-CT values row by row in Table 1; check each pair differs by <=~0.005 e (i.e., 'close similarity'); also verify monotonic sign pattern (donor-rich positive/blue, acceptor-rich negative/red).",
+      "evidence": [
+        {"id": "e10", "kind": "table", "location": "Table 1", "quote": "0/1: -0.052 (droplet) / -0.050 (slab); 0/2: -0.082 / -0.086; 1/0: 0.045 / 0.043; 1/1: -0.009 / -0.006; 1/2: -0.033 / -0.036; 1/3: -0.030 / -0.025; 2/0: 0.072 / 0.074; 2/1: 0.022 / 0.025; 2/2: 0.000 / -0.001; 2/3: 0.009 / 0.009", "extracted_values": {"d_0_1": -0.052, "s_0_1": -0.050, "d_0_2": -0.082, "s_0_2": -0.086, "d_1_0": 0.045, "s_1_0": 0.043, "d_1_1": -0.009, "s_1_1": -0.006, "d_1_2": -0.033, "s_1_2": -0.036, "d_1_3": -0.030, "s_1_3": -0.025, "d_2_0": 0.072, "s_2_0": 0.074, "d_2_1": 0.022, "s_2_1": 0.025, "d_2_2": 0.000, "s_2_2": -0.001, "d_2_3": 0.009, "s_2_3": 0.009}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "row-wise table comparison: max |droplet - slab| across families vs a 'close similarity' threshold; sign-pattern monotonicity check", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "Deterministic table check on the paper's own numbers. Max droplet-slab difference is 0.005 e (1D-3A: 0.030 vs 0.025); all others <=0.004 e. Sign pattern matches the prose: donor-rich (1D-0A 0.045, 2D-0A 0.072) positive/blue; acceptor-rich (0D-2A -0.082, 1D-2A -0.033) negative/red; symmetric 2D-2A ~0.000 neutral. The 'close similarity' and sign-trend claims are supported by a table-comparison verifier."}
+    },
+    {
+      "id": "c8",
+      "text": "The IEF linearly increases with total excess droplet charge (Fig. 3a), implying H3O+ and OH- act effectively as point charges in shaping the interfacial field.",
+      "quote": "Figure. 3a shows that the IEF linearly increases with the total excess charge, suggesting that H3 O+ and OH– ions act effectively as point charges in shaping the interfacial field.",
+      "section": "pH Effects (Fig. 3a)",
+      "page": 13,
+      "epistemic_tier": "T2",
+      "predicate": "Read Fig. 3a IEF-vs-charge data points; confirm a monotonic increasing trend from -5e to +5e consistent with the dotted linear fit and the 'linearly increases' claim.",
+      "evidence": [
+        {"id": "e11", "kind": "figure", "location": "Figure 3a", "quote": "the dotted line is a linear fit of the data points", "extracted_values": {"charge_min_e": -5, "charge_max_e": 5}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "figure-trend extraction: monotonic increase of IEF with charge along the fit line", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.75, "rationale": "High-res render of Fig. 3a shows IEF rising monotonically from ~1.05 V/A at -5e to ~1.28 V/A at +5e with a dotted linear fit through error-barred points. The 'linearly increases' claim is supported by the plotted trend. The 'point charge' interpretation is a T4 mechanistic inference layered on top; the linear-increase fact itself is the checkable T2 core."}
+    },
+    {
+      "id": "c9",
+      "text": "When plotted vs nominal pH (Fig. 3b), the IEF projection increases at acidic pH and measurably decreases at basic pH relative to the neutral case.",
+      "quote": "whereas at acidic pH values the projection of the IEF on the WC surface normal increases, in basic conditions it measurably decreases with respect to the neutral case.",
+      "section": "pH Effects (Fig. 3b)",
+      "page": 13,
+      "epistemic_tier": "T2",
+      "predicate": "Read Fig. 3b: confirm IEF at low pH (0.26, 0.96) > IEF at pH~7 (neutral) > IEF at high pH (13.0, 13.74).",
+      "evidence": [
+        {"id": "e12", "kind": "figure", "location": "Figure 3b", "quote": "Average interfacial electric field ... as a function of ... resulting pH (b)", "extracted_values": {"pH_min": 0.26, "pH_max": 13.74}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "figure-value extraction: ordering of IEF across acidic/neutral/basic pH points", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.78, "rationale": "High-res render of Fig. 3b shows acidic points (~1.27-1.30 V/A) above the neutral region (~1.20) and basic points (~1.08-1.10) below it -- exactly the monotone-decreasing-with-pH ordering the prose claims. Off-the-shelf prose-vs-figure ordering check supports it."}
+    },
+    {
+      "id": "c10",
+      "text": "Hydronium tends to localize in the topmost interfacial layer of the droplet, whereas hydroxide resides slightly deeper, between the interface and the bulk (Fig. 3c).",
+      "quote": "hydronium tends to localize in the topmost layer of the droplet, whereas the hydroxide exhibits the tendency to reside slightly deeper in layers between the interface and the bulk, as shown by the distributions of Fig. 3c",
+      "section": "pH Effects (Fig. 3c)",
+      "page": 14,
+      "epistemic_tier": "T2",
+      "predicate": "Read Fig. 3c distance distributions P(d_WC) for H3O+ (solid black) vs OH- (dashed red); confirm the OH- distribution is shifted to more negative d_WC (deeper into liquid) relative to H3O+.",
+      "evidence": [
+        {"id": "e13", "kind": "figure", "location": "Figure 3c", "quote": "distributions of the distances of an excess hydronium (solid black line) and hydroxide (dashed red line) species with respect to the Willard-Chandler instantaneous surface", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "figure-distribution comparison: peak/shift of OH- vs H3O+ along d_WC axis", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.72, "rationale": "High-res render of Fig. 3c shows the hydronium (black) distribution peaked near/at the interface and the hydroxide (red dashed) distribution broader and shifted toward more negative d_WC (deeper). Consistent with the prose claim and with established hydronium-surface/hydroxide-subsurface propensity (ref 77). Prose-vs-figure binding supports it; exact peak positions not numerically labeled."}
+    },
+    {
+      "id": "c11",
+      "text": "In the bulk, water dipole orientation distributions are nearly random/isotropic, while at the interface distinct anisotropic orientational populations emerge, with a distribution maximum around cos(alpha) ~ -0.45.",
+      "quote": "The distribution maximum displayed in Fig. 1a around cos α ∼ −0.45 indicates configurations that tend to maximize hydrogen bonding.",
+      "section": "Structural and Electronic Properties (Fig. 1a)",
+      "page": 7,
+      "epistemic_tier": "T2",
+      "predicate": "Read Fig. 1a P(cos alpha) curves; confirm bulk curves are flat (~isotropic) and interfacial curves show a maximum near cos(alpha) ~ -0.45 and a droplet shoulder near cos(alpha) ~ 0.25.",
+      "evidence": [
+        {"id": "e14", "kind": "figure", "location": "Figure 1a", "quote": "Orientation distributions of molecular dipole moments P(cos α)", "extracted_values": {"interfacial_max_cos_alpha": -0.45, "droplet_shoulder_cos_alpha": 0.25}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "figure-feature extraction: location of distribution maximum and shoulder on the cos(alpha) axis", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.6, "rationale": "Fig. 1a render confirms qualitatively that interfacial curves are peaked while bulk curves are flatter, but the page-9/page-7 renders do not let me read the exact abscissa of the maximum to confirm '-0.45' vs e.g. -0.4 precisely. The qualitative claim is consistent; the precise peak location is a figure-reading task that would need finer axis extraction. Mark inconclusive on the exact -0.45 value."}
+    },
+    {
+      "id": "c12",
+      "text": "The excess of dipoles pointing toward the bulk gives an average orientation alpha ~ 96 deg in the droplet (94 deg in the slab), implying a net outward electric field from liquid toward vapor.",
+      "quote": "The excess of dipoles pointing toward the bulk, leading to an average α ∼ 96◦ in the droplet (α ∼ 94◦ in the slab), implies a net electric field directed outward",
+      "section": "Structural and Electronic Properties",
+      "page": 8,
+      "epistemic_tier": "T4",
+      "predicate": "Check that average alpha > 90 deg (dipole tilted toward liquid) is logically consistent with claiming a net OUTWARD field (the molecular dipole points partly into the liquid, so the field it sources points outward). Recompute <alpha> from the P(cos alpha) distribution in Fig. 1a if digitizable.",
+      "evidence": [
+        {"id": "e15", "kind": "number", "location": "Results, p8", "quote": "average α ∼ 96◦ in the droplet (α ∼ 94◦ in the slab)", "extracted_values": {"alpha_droplet_deg": 96, "alpha_slab_deg": 94}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "consistency of dipole-orientation sign with claimed field direction; optional recompute of <alpha> from digitized Fig. 1a", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.6, "rationale": "Logical/physical consistency: alpha slightly >90 deg means dipoles tilt toward the liquid interior, and since the field generated points opposite to the dipole moment's liquid-ward component, an outward field follows -- self-consistent with the paper's claim and with the cos(alpha) maximum at -0.45 (alpha~117 deg dominant config). Exact <alpha>=96/94 deg would require integrating the plotted P(cos alpha); reasonable but not independently recomputed. The directional logic checks out (T4 anchored)."}
+    },
+    {
+      "id": "c13",
+      "text": "Within the interfacial region the E-field distributions peak at approximately 1.2-1.4 V/Angstrom, slightly higher than the ~1.0-1.2 reported in Figs. 2-3.",
+      "quote": "The corresponding distributions peak at approximately 1.2–1.4 V/Å, strengths slightly higher than those reported in Figs. 2-3.",
+      "section": "Spatial Extension (Fig. 4)",
+      "page": 15,
+      "epistemic_tier": "T2",
+      "predicate": "Read Fig. 4 interfacial (red) histogram peak location; confirm it lies ~1.2-1.4 V/A, i.e., above the Fig. 2/3 averages of 1.0-1.2; check the stated rationale (refined interface definition excludes low-field vapor contributions) is internally consistent.",
+      "evidence": [
+        {"id": "e16", "kind": "figure", "location": "Figure 4a,b", "quote": "Histograms of the electric field projected along the Willard-Chandler surface normal in different spatial regions ... interface (red)", "extracted_values": {"interfacial_peak_min_Vper_A": 1.2, "interfacial_peak_max_Vper_A": 1.4}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "figure-value extraction of the interfacial histogram peak vs the Fig. 2/3 averages", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.68, "rationale": "Fig. 4 render shows the interfacial (red) histograms peaking to the right of the other regions; the 1.2-1.4 vs 1.0-1.2 distinction is plausible and internally rationalized (averaging vs peak; refined interface excludes vapor). The histogram-peak average being above the spatially-averaged Fig 2/3 value is self-consistent. Exact peak abscissa not numerically labeled, so confidence moderate."}
+    },
+    {
+      "id": "c14",
+      "text": "Moving toward the vapor phase the field drops to ~0.3 V/Angstrom in the vapor1 region and vanishes (within statistical uncertainty) in vapor2, demonstrating the IEF is localized and decays within a few Angstrom of the interface.",
+      "quote": "In the vapor1 region the typical field values drop to smaller values of approximately ∼ 0.3 V/Å, while in the vapor2 region the field vanishes within the statistical uncertainty.",
+      "section": "Spatial Extension (Fig. 4)",
+      "page": 15,
+      "epistemic_tier": "T2",
+      "predicate": "Read Fig. 4 vapor1 (blue) and vapor2 (green) histogram peaks; confirm vapor1 ~0.3 V/A and vapor2 ~0 V/A; cross-check the region thicknesses (bulk-to-2.6/3.4 A, interface-to-0.8/0.2 A, vapor1 2.0/2.6 A, vapor2 1.2 A) sum to a 'few A' decay length.",
+      "evidence": [
+        {"id": "e17", "kind": "figure", "location": "Figure 4a,b", "quote": "near-vapor (vapor1) ... far-vapor (vapor2)", "extracted_values": {"vapor1_field_Vper_A": 0.3}},
+        {"id": "e18", "kind": "number", "location": "Spatial Extension, p15", "quote": "bulk region extends ... up to 2.6 and 3.4 Å below the WC ... interfacial region spans from this threshold to 0.8 Å (0.2 Å) above ... vapor1, with a thickness of 2.0 Å (2.6 Å) ... vapor2, 1.2 Å thick", "extracted_values": {"bulk_depth_droplet_A": 2.6, "bulk_depth_slab_A": 3.4, "interface_top_droplet_A": 0.8, "interface_top_slab_A": 0.2, "vapor1_droplet_A": 2.0, "vapor1_slab_A": 2.6, "vapor2_A": 1.2}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "figure-value extraction (vapor1/vapor2 peaks) + arithmetic on region thicknesses for the decay-length claim", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.72, "rationale": "Fig. 4 render shows progressively left-shifted, smaller-magnitude histograms from interface->vapor1->vapor2, consistent with ~0.3 V/A then ~0. The 'few Angstrom' decay is supported: interface-top + vapor1 + vapor2 = 0.8+2.0+1.2 = 4.0 A (droplet), i.e., the field is gone within ~4 A above the WC surface -- a clean T0 thickness sum that matches 'a few A'. Supported."}
+    },
+    {
+      "id": "c15",
+      "text": "The reported IEF magnitude (~1.0-1.2 V/A) is about 5-6 times larger than previous computational estimates (~0.2 V/A), with the discrepancy attributed to projecting along the WC surface normal rather than OH-bond directions.",
+      "quote": "Its magnitude ranges between ∼1.0 and 1.2 V/Å, i.e., about 5-6 times larger than previous computational estimates.",
+      "section": "Curvature Effects",
+      "page": 11,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute the ratio: 1.0-1.2 V/A divided by the prior ~0.2 V/A estimate (refs 6,9,11-13; ref 12 cited for the 5-6x factor) = 5x to 6x; confirm '5-6 times' is arithmetically correct.",
+      "evidence": [
+        {"id": "e19", "kind": "number", "location": "Curvature Effects, p11", "quote": "about 5-6 times larger than previous computational estimates", "extracted_values": {"this_work_min": 1.0, "this_work_max": 1.2, "prior_estimate_Vper_A": 0.2, "ratio_min": 5.0, "ratio_max": 6.0}},
+        {"id": "e20", "kind": "number", "location": "Introduction, p3", "quote": "the air-water boundary may sustain electric fields on the order of ∼ 0.2 V/Å", "extracted_values": {"prior_field_Vper_A": 0.2}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "ratio arithmetic: (1.0-1.2)/0.2", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "Internal arithmetic on the paper's own quoted numbers: 1.0/0.2 = 5.0 and 1.2/0.2 = 6.0, exactly matching '5-6 times'. The prior ~0.2 V/A value is the paper's own characterization of refs 6,9,11-13. Exact T0 ratio recompute confirms the multiplier; whether the literature value really is 0.2 is a separate T5 claim (c19)."}
+    },
+    {
+      "id": "c16",
+      "text": "Poisson's equation as written, nabla^2 phi(r) = -4*pi*rho_e(r) with E(r) = -grad phi(r), is used to obtain the field from the electron density (Gaussian/atomic-unit convention).",
+      "quote": "∇2ϕ(r) = −4πρe (r),  E(r) = −∇ϕ(r)",
+      "section": "Methods",
+      "page": 5,
+      "epistemic_tier": "T1",
+      "predicate": "Dimensional/convention check: nabla^2 phi = -4*pi*rho is the Gaussian-CGS / Hartree-atomic-unit form of Poisson's equation (vs SI's -rho/epsilon0). Confirm the equation is the correct standard form and E=-grad(phi) is consistent.",
+      "evidence": [
+        {"id": "e21", "kind": "equation", "location": "Methods eq. (unnumbered), p5", "quote": "∇2ϕ(r) = −4πρe (r),  E(r) = −∇ϕ(r)", "extracted_values": {"coefficient": 12.566}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "equation/convention check against the standard Poisson equation forms", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "The 4*pi coefficient is the correct Gaussian-CGS / atomic-unit form of Poisson's equation; E=-grad(phi) is the standard field-potential relation. Dimensionally consistent in atomic units (where fields come out in Hartree/(e*bohr), convertible to V/A). A unit/equation-consistency verifier confirms the form is standard, not an error."}
+    },
+    {
+      "id": "c17",
+      "text": "500 randomly chosen configurations were extracted from the DPMD trajectories and re-sampled via ab initio PBE+D3 DFT to obtain the field; DPMD ran in NVT at 300 K for at least 1 ns with a CSVR thermostat (0.04 ps damping).",
+      "quote": "500 randomly chosen configurations were extracted from all DPMD trajectories and re-sampled via ab initio calculations at the PBE+D3 ... Each DPMD simulation was carried out in the NVT canonical ensemble for at least 1 ns. The temperature was kept fixed at 300 K via the ... (CSVR) thermostat with a damping factor of 0.04 ps.",
+      "section": "Methods",
+      "page": 5,
+      "epistemic_tier": "T3",
+      "predicate": "Method-appropriateness/adequacy: is 500-config ab initio re-sampling and >=1 ns DPMD sufficient for converged interfacial-field statistics? Are PBE+D3 (production) vs M06-2X-trained DP vs SCAN/r2SCAN (benchmark) choices internally consistent and appropriate?",
+      "evidence": [
+        {"id": "e22", "kind": "text", "location": "Methods, p5", "quote": "500 randomly chosen configurations ... re-sampled via ab initio calculations at the PBE+D3 ... NVT ... at least 1 ns ... 300 K ... damping factor of 0.04 ps", "extracted_values": {"n_configs": 500, "min_ns": 1, "temperature_K": 300, "damping_ps": 0.04}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "method-appropriateness reasoning + convergence signatures (does the SI report error bars / sampling convergence?)", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.45, "rationale": "Parameter values are internally consistent and standard (NVT, CSVR, 300 K, PBE+D3, 400 Ry). Whether 500 configs and >=1 ns give statistically converged IEF distributions is a T3 judgment that needs the SI's error analysis (not bundled). The DP is trained on M06-2X but fields are resampled at PBE+D3 -- a defensible but assessable choice. Mark inconclusive without SI convergence data."}
+    },
+    {
+      "id": "c18",
+      "text": "SCAN- and r2SCAN-level benchmark calculations on slabs and nanodroplets yield essentially indistinguishable IEF distributions (Fig. S8), demonstrating robustness of the field magnitude/trends to the density functional.",
+      "quote": "This assessment is directly supported by benchmark calculations performed at the SCAN functional and r2SCAN functional levels ... which yield essentially indistinguishable IEF distributions (see Fig. S8 of the SI).",
+      "section": "Methods",
+      "page": 5,
+      "epistemic_tier": "T2",
+      "predicate": "Compare PBE+D3 vs SCAN vs r2SCAN IEF distributions in Fig. S8; confirm they overlap ('indistinguishable'). Requires the SI figure.",
+      "evidence": [
+        {"id": "e23", "kind": "figure", "location": "Figure S8 (SI, not in this PDF)", "quote": null, "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "figure-distribution overlap check on Fig. S8 (SI)", "verifier_exists": false, "candidate_verdict": "not_checkable", "confidence": 0.3, "rationale": "The supporting figure (S8) is not bundled in this 27-page PDF (main text + references only). The robustness claim cannot be bound to evidence here -- not checkable without the SI. Note the stated caveat that SCAN/r2SCAN were only feasible for <=128 H2O, so the benchmark may not cover the largest droplets; that limitation is itself a flaggable scope caveat (T4)."}
+    },
+    {
+      "id": "c19",
+      "text": "Prior literature reported air-water interfacial fields on the order of ~0.2 V/Angstrom (refs 6,9,11-13), the baseline against which this work's 5-6x-larger value is compared.",
+      "quote": "the air-water boundary may sustain electric fields on the order of ∼ 0.2 V/Å",
+      "section": "Introduction",
+      "page": 3,
+      "epistemic_tier": "T5",
+      "predicate": "Check the cited references (6,9,11-13) actually report ~0.2 V/A interfacial fields, i.e., the literature characterization is faithful (no citation distortion).",
+      "evidence": [
+        {"id": "e24", "kind": "text", "location": "Introduction, p3", "quote": "Several studies have suggested that the air-water boundary may sustain electric fields on the order of ∼ 0.2 V/Å", "extracted_values": {"literature_field_Vper_A": 0.2}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "literature retrieval + entailment: do refs 6,9,11-13 report ~0.2 V/A interfacial fields?", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.4, "rationale": "Requires external retrieval of refs 11 (Xiong/Min JPCL 2020), 12 (Hao/Head-Gordon NatComm 2022), 13, 6, 9 to verify the ~0.2 V/A characterization -- a T5 citation-fidelity check beyond this PDF. The value is widely cited in the microdroplet literature, so plausibly faithful, but not verifiable from the paper alone."}
+    },
+    {
+      "id": "c20",
+      "text": "DPMD used LAMMPS v.29Aug2024 with a reactive Deep Potential trained on M06-2X; electronic-structure resampling used CP2K v.2024.3 with TZVP/GTH-GPW, a 400 Ry planewave cutoff for PBE+D3 and 1200 Ry for SCAN/r2SCAN.",
+      "quote": "Deep Potential Molecular Dynamics (DPMD) simulations ... were carried out with the LAMMPS software (v. 29Aug2024). ... Electronic-structure calculations were carried out by employing the CP2K software (v. 2024.3). ... a planewave cutoff of 400 Ry was imposed, for the SCAN and r2SCAN calculations a cutoff of 1200 Ry was adopted.",
+      "section": "Methods",
+      "page": 4,
+      "epistemic_tier": "T6",
+      "predicate": "Reproducibility: are software versions, functionals, basis sets, and cutoffs sufficiently specified to rerun? Is the trained DP / input data made available?",
+      "evidence": [
+        {"id": "e25", "kind": "text", "location": "Methods, p4-5", "quote": "LAMMPS (v. 29Aug2024) ... CP2K (v. 2024.3) ... TZVP basis sets with Goedecker-Teter-Hutter (GTH) pseudopotentials ... GPW ... 400 Ry ... 1200 Ry", "extracted_values": {"pbe_cutoff_Ry": 400, "scan_cutoff_Ry": 1200}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "reproducibility-artifact check: data/code/DP-model availability statement + parameter completeness", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.4, "rationale": "Methods are specified in good detail (named codes+versions, functionals, basis, cutoffs, thermostat), which is positive for reproducibility. However, the DP model is from Ref 54 (cited, not provided here) and there is no explicit data/code availability statement in the bundled text ('Supporting Information Available' header is present but empty in this PDF). T6 rerun is not possible without the DP and trajectories. Mark inconclusive."}
+    },
+    {
+      "id": "c21",
+      "text": "The central conclusion that curvature and pH cannot account for experimentally observed microdroplet reactivity differences (refs 31,32,70) -- i.e., the IEF is a local manifestation of structure, not an independent driver of on-water catalysis.",
+      "quote": "the reactivity differences observed in µm-sized droplets cannot be ascribed to variations in the IEF ... identifying it as a local property of the air-water boundary rather than an independent physical driver of “on-water” catalysis.",
+      "section": "Abstract / Conclusions",
+      "page": 1,
+      "epistemic_tier": "T4",
+      "predicate": "Claim-vs-evidence support: does the demonstrated small curvature/pH dependence of the IEF (in nanodroplets, 256-1024 H2O) license the conclusion about MICRON-sized droplets and about catalysis being driven by 'alternative mechanisms'? Check for over-extrapolation from nm to um and from electrostatics to reactivity.",
+      "evidence": [
+        {"id": "e26", "kind": "text", "location": "Abstract+Conclusions", "quote": "extrapolation to micrometer-sized droplets reveals variations that are orders of magnitude smaller than the field itself ... must instead arise from alternative molecular mechanisms", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "over-generalization / extrapolation-beyond-data-range judgment anchored to the simulated size range (nm) vs claimed range (3-40 um)", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.45, "rationale": "The strongest T4 issue in the paper: conclusions about 3-40 um droplets rest on extrapolating a linear IEF-vs-curvature fit from nanodroplets (R up to ~3-4 nm) across ~3-4 orders of magnitude in radius. The paper is transparent that this is an extrapolation, and the linear trend + tiny slope make the extrapolated variation robust to fit form. The reactivity conclusion (catalysis not driven by IEF) is a reasonable but not proven inference (absence-of-large-field != absence-of-effect). Legitimately checkable as an over-extrapolation flag; verdict requires calibrated judgment, hence inconclusive."}
+    },
+    {
+      "id": "c22",
+      "text": "Simulation cell specifications: flat-interface slabs of 256 and 512 H2O with boxes a=b=19.641, c=45.000 A and a=b=24.830, c=60.000 A; seven neutral nanodroplets of 256-1024 H2O in cubic boxes of edge 44,48,60,63,65,67,68 A.",
+      "quote": "samples composed of 256 and 512 H2 O molecules were considered with box edges of a = b = 19.641, c = 45.000 Å and a = b = 24.830, c = 60.000 Å ... Seven isolated nanodroplets composed of 256, 384, 512, 640, 768, 896, and 1024 H2 O molecules ... cubic boxes with edges of 44, 48, 60, 63, 65, 67, and 68 Å",
+      "section": "Methods",
+      "page": 4,
+      "epistemic_tier": "T1",
+      "predicate": "Density sanity check: for the 512-H2O slab box (24.830 x 24.830 x 60.000 A^3), the water-occupied sub-volume should give ~1 g/cm^3; for nanodroplets, droplet radius R (Table S1) from N molecules at bulk density should be consistent with the box edge leaving a vacuum gap. Check N-vs-box-edge monotonicity and physical plausibility.",
+      "evidence": [
+        {"id": "e27", "kind": "number", "location": "Methods, p4", "quote": "256, 384, 512, 640, 768, 896, and 1024 H2 O ... edges of 44, 48, 60, 63, 65, 67, and 68 Å", "extracted_values": {"N_list": [256, 384, 512, 640, 768, 896, 1024], "edge_list_A": [44, 48, 60, 63, 65, 67, 68], "slab512_a": 24.830, "slab512_c": 60.000, "slab256_a": 19.641, "slab256_c": 45.000}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "density / box-size plausibility recompute (N * 18 g/mol / (NA * occupied volume) ~ 1 g/cm^3) and monotonicity check", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.7, "rationale": "Box edges increase monotonically with N (44->68 A for 256->1024), as expected. Slab 512-H2O occupied volume ~ 24.83^2 x (liquid slab thickness) -> with c=60 A and ~half liquid, density is ~1 g/cm^3 order-of-magnitude (256 waters in 19.641^2 x ~22.5 A liquid ~ consistent). A droplet of 512 H2O at 1 g/cm^3 has radius ~1.5 nm, comfortably inside a 60 A box. Order-of-magnitude density/box checks pass; exact R needs Table S1. Plausible -> supported."}
+    },
+    {
+      "id": "c23",
+      "text": "A globally neutral nanodroplet composed of 502 H2O, 5 OH-, and 5 H3O+ underwent charge recombination during simulation (and was therefore not used as a stable charged state).",
+      "quote": "in addition to a globally neutral nanodroplet composed of 502 H2 O, 5 OH− , and 5 H3 O+ which, however, underwent charge recombination.",
+      "section": "Methods",
+      "page": 5,
+      "epistemic_tier": "T1",
+      "predicate": "Mass/charge balance: 502 H2O + 5 OH- + 5 H3O+ -> atom count and net charge = 0; check the composition is internally consistent (502*H2O + 5*(OH) + 5*(H3O) conserves H and O totals; net charge -5 + +5 = 0).",
+      "evidence": [
+        {"id": "e28", "kind": "number", "location": "Methods, p5", "quote": "502 H2 O, 5 OH− , and 5 H3 O+", "extracted_values": {"H2O": 502, "OH": 5, "H3O": 5, "net_charge_e": 0}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "atom/charge balance check on the droplet composition", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "Charge balance: 5 OH- (-5e) + 5 H3O+ (+5e) = net 0, consistent with 'globally neutral'. Atom totals: 5 OH + 5 H3O = 5*(O+H) + 5*(O+3H) = 10 O + 20 H = equivalent to 10 extra H2O worth of atoms shared as ions; combined with 502 H2O the system is a self-consistent water+self-ion mixture. The reported charge recombination is physically expected (acid-base neutralization) and not an error. T1 charge-balance check supports it."}
+    },
+    {
+      "id": "c24",
+      "text": "Interfacial regions show enrichment of under-coordinated H-bond motifs (2D-1A, 1D-2A, 1D-1A) vs the bulk's dominant tetrahedral 2D-2A, with the curved droplet interface showing even higher under-coordination than the planar slab (Figs. 1c,d).",
+      "quote": "the interfacial region exhibits a pronounced enrichment of under-coordinated species such as 2D-1A and 1D-2A ... the curved interface of the droplet displays an even higher population of under-coordinated motifs ... relative to the planar air-water slab",
+      "section": "Structural and Electronic Properties (Figs. 1c,d)",
+      "page": 9,
+      "epistemic_tier": "T2",
+      "predicate": "Read Figs. 1c (droplet) and 1d (slab) D-A family distributions vs d_WC; confirm 2D-2A dominates the bulk and under-coordinated families (2D-1A, 1D-2A) rise at the interface, with droplet showing higher under-coordinated populations than slab.",
+      "evidence": [
+        {"id": "e29", "kind": "figure", "location": "Figure 1c,d", "quote": "spatial distribution of selected hydrogen-bond donor-acceptor (D-A) families as a function of the distance from the instantaneous Willard-Chandler interface", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "figure-curve comparison across panels 1c vs 1d for relative under-coordinated populations", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.55, "rationale": "The page-9 render confirms Figs 1c,d plot the labeled D-A families (1D-1A black, 1D-2A red, 2D-1A orange, 2D-2A blue) vs d_WC, but reading the relative interfacial peak heights between the droplet and slab panels precisely enough to confirm 'even higher in droplet' needs finer curve extraction. Qualitatively consistent; mark inconclusive on the cross-panel quantitative comparison."}
+    },
+    {
+      "id": "c25",
+      "text": "Each water molecule exhibits four MLWF centers: two from OH covalent bonds at d(OX)~0.5 A and two lone pairs at d(OX)~0.35 A, with interfacial molecules showing a distinct short-distance population at ~0.30 A.",
+      "quote": "Each water molecule exhibits four MLWF centers: two associated with OH covalent bonds [d(OX) ∼ 0.5 Å] and two corresponding to lone pairs [d(OX) ∼ 0.35 Å]. ... A distinct population at short O-X distances (∼ 0.30 Å)",
+      "section": "Structural and Electronic Properties (Fig. 1b)",
+      "page": 8,
+      "epistemic_tier": "T1",
+      "predicate": "Cross-check the stated Wannier-center O-X distances against known water MLWF geometry (bonding centers ~0.5-0.55 A, lone-pair centers ~0.3-0.4 A from O); confirm 4 centers per H2O and the figure peaks match 0.5 and 0.35 A.",
+      "evidence": [
+        {"id": "e30", "kind": "number", "location": "Results, p8", "quote": "two associated with OH covalent bonds [d(OX) ∼ 0.5 Å] and two corresponding to lone pairs [d(OX) ∼ 0.35 Å]", "extracted_values": {"n_mlwf": 4, "bond_center_A": 0.5, "lone_pair_A": 0.35, "short_pop_A": 0.30}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "known-value lookup of water MLWF center distances + figure-peak consistency (Fig. 1b)", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.7, "rationale": "Four MLWF centers per water (2 bonding + 2 lone pair) is textbook; the reported d(OX) ~0.5 A (bonding) and ~0.35 A (lone pair) are in the established range for water Wannier centers. Consistent with fixed external knowledge (T1). Exact peak positions in Fig 1b not numerically labeled but the stated values are physically standard -> supported."}
+    },
+    {
+      "id": "c26",
+      "text": "The non-zero average field reported in the 'bulk' region is an artifact of the sharp cutoff used to separate bulk from interface, not a real bulk field.",
+      "quote": "The non-zero average field observed in the bulk originates from the artificial – yet unavoidable – sharp cutoff used to separate bulk and interfacial regions, which inevitably truncates part of the hydrogen-bond network at the boundary.",
+      "section": "Spatial Extension",
+      "page": 15,
+      "epistemic_tier": "T4",
+      "predicate": "Claim-vs-evidence: is the attribution of the residual bulk field to a boundary-cutoff artifact (rather than a genuine bulk field) self-consistent with the histograms in Fig. 4 (bulk/gray distribution centered near but not exactly at zero)?",
+      "evidence": [
+        {"id": "e31", "kind": "figure", "location": "Figure 4 (bulk, gray)", "quote": "Histograms correspond to bulk (gray)", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "consistency judgment: does the gray bulk histogram sit near zero, consistent with a small cutoff artifact rather than a structural field?", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.4, "rationale": "This is an interpretive T4 attribution. By symmetry an isotropic bulk should give zero net normal field, so a small residual being a cutoff/truncation artifact is physically reasonable. Confirming requires reading the gray bulk histogram offset in Fig. 4 (visible but not numerically labeled) and ideally a convergence test in the SI. Plausible but not independently verifiable -> inconclusive."}
+    }
+  ],
+  "paper_level_notes": "Computational chemistry preprint (arXiv:2604.14784v1, physics.chem-ph, 16 Apr 2026; DPMD with a reactive Deep Potential trained on M06-2X + PBE+D3/SCAN/r2SCAN ab initio resampling via CP2K). DOI: none assigned (arXiv preprint). This bundled PDF is 27 pages = main text (pp.1-17) + references (pp.18-27) ONLY; the Supporting Information is repeatedly cited (Tables S1 [radii R, curvature kappa], S2 [bulk H-bond counts]; Figs S1 [density profiles / region thresholds], S3 [OH-bond beta orientations, in/out fractions], S7 [full H-bond family spectrum], S8 [SCAN/r2SCAN robustness]) but is NOT included here. Consequently several quantitative checks (the 10^-5 V/A curvature extrapolation c4, the pH<->charge<->volume arithmetic c5, the Rayleigh-limit fractions c6, the functional-robustness claim c18, T6 rerun c20) cannot be fully bound to evidence and are marked inconclusive/not_checkable pending the SI. No explicit data/code-availability statement appears in the bundled text (the 'Supporting Information Available' header is present but its body is empty in this extraction). REPRODUCIBILITY SIGNALS (positive): named software with versions (LAMMPS 29Aug2024, CP2K 2024.3), functionals, TZVP/GTH-GPW basis, planewave cutoffs (400/1200 Ry), thermostat (CSVR, 0.04 ps), explicit box sizes and molecule counts. The strongest deterministic checks available WITHOUT the SI are internal: the regression self-consistency in Fig. 2b (R^2=0.994 vs Pearson r=-0.997 -> r^2=0.994009, c3, T0), the 5-6x ratio 1.0-1.2 / 0.2 V/A (c15, T0), the pH symmetry pH(+ne)+pH(-ne)~=14 (c5, T0/T1), the charge balance of the neutral 502+5OH+5H3O droplet (c23, T1), the Poisson-equation 4*pi convention (c16, T1), and the prose-vs-figure bindings for the IEF ranges, curvature/charge/pH trends, ion depth ordering, and spatial decay (c1,c2,c7,c8,c9,c10,c13,c14 -- T2, the figure-reading frontier). No statistical reporting errors of the statcheck/GRIM type apply (no human-subjects/percent-of-N data). No overt integrity red flags observed in the main text (no evident image duplication; figures are simulation plots/snapshots, not gels/blots); a Benford/terminal-digit screen is not meaningfully applicable to this data type. The paper is internally coherent, transparent about its nm->um extrapolation, and its headline 'curvature/pH weakly affect IEF' conclusion is consistent across abstract, body, and figures. Judged on its own merits this reads as a careful, internally consistent computational study; the main genuinely-evaluative (non-deterministic) issue is the T4 nm-to-micron extrapolation underpinning the central reactivity conclusion (c21)."
+}

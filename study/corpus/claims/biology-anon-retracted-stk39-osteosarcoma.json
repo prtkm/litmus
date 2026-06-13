@@ -1,0 +1,168 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "biology-anon-retracted-stk39-osteosarcoma",
+  "meta": {
+    "document_type": "retraction_notice",
+    "journal": "Oncology Letters",
+    "retraction_doi": "10.3892/ol.2024.14510",
+    "original_doi": "10.3892/ol.2017.6728",
+    "note": "This is a retraction notice, not the original research article. The original article's scientific claims are not present in this document; only the retraction statement is available.",
+    "extractor": "litmus.extract",
+    "model": "claude-opus-4-8",
+    "source": "opus-native-pdf"
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "text": "This article (STK39, overexpressed in osteosarcoma, regulates osteosarcoma cell invasion and proliferation) has been retracted from Oncology Letters.",
+      "location": {
+        "section": "RETRACTION",
+        "page": 1,
+        "char_span": null,
+        "quote": "the Editor has decided that this paper \nshould be retracted from the Journal"
+      },
+      "epistemic_tier": "T7",
+      "predicate": "retraction_status(original_doi='10.3892/ol.2017.6728') == 'retracted'",
+      "strength": "qualitative",
+      "scope": "Oncol Lett 14: 4599-4604, 2017",
+      "evidence_refs": [
+        "ev1",
+        "ev2"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "c2",
+      "text": "Certain Transwell invasion assay data shown in Fig. 4B on p. 4602 were strikingly similar to data appearing in different form in other articles written by different authors at different research institutes.",
+      "location": {
+        "section": "RETRACTION",
+        "page": 1,
+        "char_span": null,
+        "quote": "certain of the \nTranswell invasion assay data shown in Fig. 4B on p. 4602 \nwere strikingly similar to data appearing in different form in \nother articles written by different authors at different research \ninstitutes"
+      },
+      "epistemic_tier": "T7",
+      "predicate": "image_duplication_detected(figure='Fig. 4B', page=4602) == true",
+      "strength": "qualitative",
+      "scope": "Fig. 4B, p. 4602 of original article",
+      "evidence_refs": [
+        "ev3"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "id": "c3",
+      "text": "The contentious data in the article had already been published prior to its submission to Oncology Letters.",
+      "location": {
+        "section": "RETRACTION",
+        "page": 1,
+        "char_span": null,
+        "quote": "the contentious data in the \nabove article had already been published prior to its submission \nto"
+      },
+      "epistemic_tier": "T7",
+      "predicate": "prior_publication(contentious_data) == true",
+      "strength": "qualitative",
+      "scope": "original article submission",
+      "evidence_refs": [
+        "ev3"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c4",
+      "text": "The authors were asked for an explanation to account for these concerns, but the Editorial Office did not receive a reply.",
+      "location": {
+        "section": "RETRACTION",
+        "page": 1,
+        "char_span": null,
+        "quote": "The authors were asked \nfor an explanation to account for these concerns, but the \nEditorial Office did not receive a reply"
+      },
+      "epistemic_tier": "T7",
+      "predicate": "author_response_received == false",
+      "strength": "qualitative",
+      "scope": "retraction process",
+      "evidence_refs": [
+        "ev2"
+      ],
+      "confidence": 0.93
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev1",
+      "kind": "text",
+      "location": {
+        "section": "header",
+        "page": 1,
+        "char_span": null,
+        "quote": "Oncol Lett 14: 4599‑4604, 2017; DOI: 10.3892/ol.2017.6728"
+      },
+      "extracted_values": {
+        "original_journal": "Oncol Lett",
+        "volume": 14,
+        "pages": "4599-4604",
+        "year": 2017,
+        "original_doi": "10.3892/ol.2017.6728"
+      },
+      "confidence": 0.97
+    },
+    {
+      "id": "ev2",
+      "kind": "text",
+      "location": {
+        "section": "RETRACTION",
+        "page": 1,
+        "char_span": null,
+        "quote": "RETRACTION"
+      },
+      "extracted_values": {
+        "retraction_doi": "10.3892/ol.2024.14510",
+        "retraction_year": 2024,
+        "retraction_citation": "ONCOLOGY LETTERS 28: 377, 2024"
+      },
+      "confidence": 0.97
+    },
+    {
+      "id": "ev3",
+      "kind": "figure",
+      "location": {
+        "section": "RETRACTION",
+        "page": 1,
+        "char_span": null,
+        "quote": "Transwell invasion assay data shown in Fig. 4B on p. 4602"
+      },
+      "extracted_values": {
+        "figure": "Fig. 4B",
+        "page_in_original": 4602,
+        "assay": "Transwell invasion assay"
+      },
+      "confidence": 0.95
+    }
+  ],
+  "bindings": [
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c4",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    }
+  ]
+}

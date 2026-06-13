@@ -1,0 +1,1157 @@
+{
+  "paper_id": "chemistry-arxiv-2605.09394-mace-finetuning-catalysis",
+  "title": "Systematic Fine-Tuning of MACE Interatomic Potentials for Catalysis",
+  "doi": null,
+  "domain": "computational chemistry / catalysis (machine-learned interatomic potentials)",
+  "n_pages_read": 50,
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Table 2 'All Reactions' column total is reported as 1569, but the sum of its per-dataset entries (170 + 512 + 840 + 217; BMA row is '-') equals 1739.",
+      "quote": "Total ... 49,860 88 1569",
+      "section": "3 Datasets, Table 2",
+      "page": 8,
+      "epistemic_tier": "T0",
+      "predicate": "Sum the 'All Reactions' column entries across the five dataset rows and compare to the reported Total cell.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "table",
+          "location": "Table 2",
+          "quote": "C2+ oxygenates ... 170 ; NH3 synthesis ... 512 ; C2H6 dehydrogenation ... 840 ; O, OH adsorption ... 217 ; Total ... 1569",
+          "extracted_values": {"row_C2plus": 170, "row_NH3": 512, "row_C2H6": 840, "row_OOH": 217, "row_BMA": null, "reported_total": 1569, "computed_sum": 1739}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "table-total / column-sum verifier (off-the-shelf 'table totals' check)",
+        "verifier_exists": false,
+        "candidate_verdict": "suspect",
+        "confidence": 0.72,
+        "rationale": "170+512+840+217 = 1739 != 1569 reported. A genuine column-total mismatch IF the column is meant to sum (BMA cell is '-'). Confidence held below 0.9 because the table semantics of 'All Reactions' (which counts enumerations across terminations/compositions) may not be intended to be additive across rows, and the BMA '-' is ambiguous; an off-the-shelf table-total verifier would flag it for human disambiguation."
+      }
+    },
+    {
+      "id": "c2",
+      "text": "Table 2 'Surface comps.' column total (2200) equals the sum of its entries (1924 + 23 + 71 + 94 + 88).",
+      "quote": "Total ... 2200",
+      "section": "3 Datasets, Table 2",
+      "page": 8,
+      "epistemic_tier": "T0",
+      "predicate": "Sum the Surface comps. column entries and compare to the reported Total cell.",
+      "evidence": [
+        {
+          "id": "e2",
+          "kind": "table",
+          "location": "Table 2",
+          "quote": "1924 ; 23 ; 71 ; 94 ; 88 ; Total 2200",
+          "extracted_values": {"v1": 1924, "v2": 23, "v3": 71, "v4": 94, "v5": 88, "reported_total": 2200, "computed_sum": 2200}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "table-total / column-sum verifier",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.97,
+        "rationale": "1924+23+71+94+88 = 2200 exactly matches the reported Total. Exact internal-arithmetic confirmation."
+      }
+    },
+    {
+      "id": "c3",
+      "text": "Table 2 'Configs.' column total (49,860) equals the sum of its entries (39,983 + 2,056 + 2,577 + 2,551 + 2,693).",
+      "quote": "Total ... 49,860",
+      "section": "3 Datasets, Table 2",
+      "page": 8,
+      "epistemic_tier": "T0",
+      "predicate": "Sum the Configs. column entries and compare to the reported Total cell.",
+      "evidence": [
+        {
+          "id": "e3",
+          "kind": "table",
+          "location": "Table 2",
+          "quote": "39,983 ; 2,056 ; 2,577 ; 2,551 ; 2,693 ; Total 49,860",
+          "extracted_values": {"v1": 39983, "v2": 2056, "v3": 2577, "v4": 2551, "v5": 2693, "reported_total": 49860, "computed_sum": 49860}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "table-total / column-sum verifier",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.98,
+        "rationale": "39,983+2,056+2,577+2,551+2,693 = 49,860 exactly. Exact internal-arithmetic confirmation; also corroborates the headline '49,860 configurations' claim."
+      }
+    },
+    {
+      "id": "c4",
+      "text": "Table 2 'Unique Reactions' column total (88) equals the sum of its entries (6 + 25 + 6 + 45 + 6).",
+      "quote": "Total ... 88",
+      "section": "3 Datasets, Table 2",
+      "page": 8,
+      "epistemic_tier": "T0",
+      "predicate": "Sum the Unique Reactions column entries and compare to the reported Total cell.",
+      "evidence": [
+        {
+          "id": "e4",
+          "kind": "table",
+          "location": "Table 2",
+          "quote": "6 ; 25 ; 6 ; 45 ; 6 ; Total 88",
+          "extracted_values": {"v1": 6, "v2": 25, "v3": 6, "v4": 45, "v5": 6, "reported_total": 88, "computed_sum": 88}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "table-total / column-sum verifier",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.97,
+        "rationale": "6+25+6+45+6 = 88 exactly matches the reported Total. Exact internal-arithmetic confirmation."
+      }
+    },
+    {
+      "id": "c5",
+      "text": "The abstract states the headline FT MLIP 'fine-tuned to 49,860 configurations'; this matches the FT-All NFT-TS in Table 5 and the Table 2 grand total.",
+      "quote": "a large MLIP fine-tuned to 49,860 configurations shows the best performance across both metallic and metal-oxide catalysts",
+      "section": "Abstract; Table 5; Table 2",
+      "page": 1,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check the abstract's 49,860 against FT-All NFT-TS (Table 5) and the Table 2 Configs total.",
+      "evidence": [
+        {
+          "id": "e5a",
+          "kind": "number",
+          "location": "Abstract",
+          "quote": "fine-tuned to 49,860 configurations",
+          "extracted_values": {"abstract_n": 49860}
+        },
+        {
+          "id": "e5b",
+          "kind": "table",
+          "location": "Table 5 (FT-All NFT-TS)",
+          "quote": "FT-All 49,860",
+          "extracted_values": {"ft_all_NFT_TS": 49860}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "prose-vs-table consistency check on a single quantity",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.95,
+        "rationale": "Abstract 49,860 == Table 5 FT-All NFT-TS == Table 2 Configs total. Internally consistent across three locations."
+      }
+    },
+    {
+      "id": "c6",
+      "text": "The abstract claims an MLIP fine-tuned on metallic catalysts achieves an MAE of 0.30 eV for OER on iridium oxide polymorphs, which is 0.08 eV lower than out-of-box MACE-MH-1 and 0.14 eV lower than the best-performing FS MLIP.",
+      "quote": "an MLIP fine-tuned on metallic catalysts achieves an MAE of 0.30 eV for OER on iridium oxide polymorphs, which is 0.08 eV lower than out-of-box MACE-MH-1 and 0.14 eV lower than the best performing FS MLIP",
+      "section": "Abstract",
+      "page": 1,
+      "epistemic_tier": "T2",
+      "predicate": "Bind the abstract's 0.30 / 0.08 / 0.14 eV to the §4.2.2 OER body values (FT-All 0.278, FT-MD(MO) 0.313, MACE-MH-1 0.384, FS-All 0.438) and recompute the differences.",
+      "evidence": [
+        {
+          "id": "e6a",
+          "kind": "number",
+          "location": "Abstract",
+          "quote": "MAE of 0.30 eV for OER on iridium oxide polymorphs, which is 0.08 eV lower than out-of-box MACE-MH-1 and 0.14 eV lower than the best performing FS MLIP",
+          "extracted_values": {"abstract_oer_mae": 0.30, "delta_vs_mh1": 0.08, "delta_vs_best_fs": 0.14}
+        },
+        {
+          "id": "e6b",
+          "kind": "text",
+          "location": "Sec 4.2.2 (OER on iridium oxides)",
+          "quote": "The total MAEs for the 96 reaction for FT-MD(MO) and FT-All models are 0.313 and 0.278 eV, respectively ... Using the MACE-MH-1 model (no fine-tuning) ... has an overall MAE of 0.384 eV ... the FS-All model has an MAE of 0.438 eV",
+          "extracted_values": {"ft_all_oer": 0.278, "ft_md_mo_oer": 0.313, "mh1_oer": 0.384, "fs_all_oer": 0.438}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "prose-vs-prose/figure cross-consistency + percent/delta verifier (binding which body number the abstract's 0.30 refers to)",
+        "verifier_exists": false,
+        "candidate_verdict": "suspect",
+        "confidence": 0.55,
+        "rationale": "0.384 - 0.30 = 0.084 (~0.08) and 0.438 - 0.30 = 0.138 (~0.14), so the abstract's two DELTAS are internally consistent with using 0.30 as the reference. BUT 0.30 itself matches no single reported body value: FT-All OER = 0.278 and FT-MD(MO) = 0.313; the abstract elsewhere headlines FT-All OER = 0.278 (Conclusion) and Table 5 FT-All Er(MO) = 0.277. The 0.30 appears to be a loose round/representative figure rather than a transcribed result. Also note the abstract says 'fine-tuned on metallic catalysts', which best fits FT-MD(M) or FT-BMA, but the OER numbers quoted are for FT-All / FT-MD(MO) (which include metal-oxide data) — a possible model/scope mismatch. Flag for human: which model and which number does '0.30 eV' denote?"
+      }
+    },
+    {
+      "id": "c7",
+      "text": "FS models with 5-10% perturbed (high-energy) configurations from MD or CE can reduce the error by over 2x compared to models trained only on relaxation trajectories.",
+      "quote": "FS models with 5 % to 10 % of perturbed (high-energy) configurations from MD or contour exploring (CE), can reduce the error by over 2x compared to models trained only on relaxation trajectories",
+      "section": "Abstract",
+      "page": 1,
+      "epistemic_tier": "T2",
+      "predicate": "Bind 'reduce error by over 2x' to Table 4 (FS-BMA vs FS-All / FS-BMA+MD) and recompute the ratio; also check the 5-10% perturbed-fraction figure against config counts.",
+      "evidence": [
+        {
+          "id": "e7a",
+          "kind": "table",
+          "location": "Table 4",
+          "quote": "FS-BMA 0.659 ; FS-BMA+MD 0.310 ... 0.476 ... 0.398 ; FS-All 0.279 ... 0.398 ... 0.175",
+          "extracted_values": {"fs_bma_ErM": 0.659, "fs_all_ErM": 0.279, "fs_bma_md_EaM": 0.398, "fs_all_EaM": 0.175}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "percent/delta (ratio) verifier with claim<->table binding",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.7,
+        "rationale": "Er(M): 0.659/0.279 = 2.36x; Ea(M): 0.398/0.175 = 2.27x; both exceed 2x, consistent with 'over 2x'. Confidence < 0.9 because 'the error' is unspecified (Er or Ea?) and the 5-10% perturbed fraction (2,209 CE + ~7,659 MD on ~49,860) needs its own arithmetic binding; the ratio claim itself recomputes as supported."
+      }
+    },
+    {
+      "id": "c8",
+      "text": "An MLIP fine-tuned to O and OH adsorption on metal oxides gives an Ea MAE of 0.19 eV for the out-of-distribution CO2RR reaction on Cu.",
+      "quote": "an MLIP fine-tuned to O and OH adsorption on metal oxides gives an Ea MAE of 0.19 eV for out-of-distribution CO2 RR reaction on Cu",
+      "section": "Abstract",
+      "page": 1,
+      "epistemic_tier": "T2",
+      "predicate": "Bind 0.19 eV to the FT-MD(MO) Ea value. Table 5 lists FT-MD(MO) Ea(M) = 0.184 eV; SI Table 6 lists FT-MD(MO) Ea = 0.149 eV for the 23 Ref.[62] reactions. Determine which the abstract's 0.19 refers to.",
+      "evidence": [
+        {
+          "id": "e8a",
+          "kind": "table",
+          "location": "Table 5",
+          "quote": "FT-MD(MO) 2,692 0.334 0.306 0.184",
+          "extracted_values": {"ft_md_mo_EaM_table5": 0.184}
+        },
+        {
+          "id": "e8b",
+          "kind": "table",
+          "location": "SI Table 6",
+          "quote": "FT-MD(MO) 0.149 91 %",
+          "extracted_values": {"ft_md_mo_Ea_table6": 0.149}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "prose-vs-table binding across abstract and two tables (which Ea aggregate is 0.19?)",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.45,
+        "rationale": "Abstract 0.19 eV does not exactly match Table 5 FT-MD(MO) Ea(M) = 0.184 (rounds to 0.18) nor SI Table 6 = 0.149. 0.184 rounds to 0.18, not 0.19, so the abstract appears to round up or refer to a Cu-specific subset not separately tabulated. Cannot bind to a unique evidence number, so inconclusive rather than suspect; the abstract's parenthetical 'equivalent to an FS model trained to in-distribution carbon bond-breaking on Cu' is the comparative claim, separately checkable only if that FS Cu Ea is tabulated (it is not given explicitly)."
+      }
+    },
+    {
+      "id": "c9",
+      "text": "The FT-All model fine-tuned to 49,860 configurations was used to screen a large left-out set of 90,781 bimetallic alloy structures, achieving an MAE of 0.15 eV for Er.",
+      "quote": "which was used to screen a large-left out, 90,781, of bimetallic alloys, achieving an MAE of 0.15 eV for Er",
+      "section": "Abstract; Sec 4.2.3",
+      "page": 1,
+      "epistemic_tier": "T4",
+      "predicate": "Check scope: the 0.15 eV MAE is computed on a 2,115-structure DFT-validated subset, not on all 90,781 screened structures. Verify the abstract does not overstate the support set for the 0.15 eV figure.",
+      "evidence": [
+        {
+          "id": "e9a",
+          "kind": "text",
+          "location": "Sec 4.2.3",
+          "quote": "This procedure produced 90,781 total initialized structures, of which 90,181 converged ... we selected 2,115 structures ... For these 2,115 configurations, the FT-All model adsorption energy MAE is 0.15 eV",
+          "extracted_values": {"n_screened": 90781, "n_converged": 90181, "n_dft_validated": 2115, "mae_eV": 0.15}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "scope/claim<->evidence support verifier (does the error metric's support set match the screened set?)",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.6,
+        "rationale": "The 0.15 eV is genuinely measured on a 2,115-structure DFT subset of the 90,781 screened, and the body is explicit about this. The abstract phrasing ('screen ... 90,781 ... achieving an MAE of 0.15 eV') is defensible because the MAE characterizes the screening accuracy via a representative sample; mild over-compression but not a misrepresentation. Marked supported with moderate confidence; a strict scope verifier might downgrade to 'suspect' for conflating screened-N with validated-N."
+      }
+    },
+    {
+      "id": "c10",
+      "text": "FS-All achieves an MAE of 0.175 eV for Ea(M) predictions, about half of the error of the FS-BMA+MD model.",
+      "quote": "This model achieves an MAE of 0.175 eV for Ea (M) predictions, about half of the error calculated using the FS-BMA+MD model",
+      "section": "Sec 4.1.1; Table 4",
+      "page": 9,
+      "epistemic_tier": "T2",
+      "predicate": "Recompute 0.175 / FS-BMA+MD Ea(M) and check it is ~0.5.",
+      "evidence": [
+        {
+          "id": "e10a",
+          "kind": "table",
+          "location": "Table 4",
+          "quote": "FS-BMA+MD ... 0.398 ; FS-All ... 0.175",
+          "extracted_values": {"fs_all_EaM": 0.175, "fs_bma_md_EaM": 0.398, "ratio": 0.4397}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "percent/ratio verifier with prose<->table binding",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "0.175 / 0.398 = 0.44, i.e. 'about half' (slightly less than half). Consistent with the prose and the table values; the table Ea(M) values for FS-BMA+MD (0.398) and FS-All (0.175) both transcribe correctly into this claim."
+      }
+    },
+    {
+      "id": "c11",
+      "text": "FS-All is within 0.05 eV of the UMA and MACE-MH-1 models' Ea(M) MAE.",
+      "quote": "This model achieves an MAE of 0.175 eV for Ea (M) predictions ... within 0.05 eV of the UMA and MACE-MH-1 models' MAE.",
+      "section": "Sec 4.1.1; Table 4",
+      "page": 9,
+      "epistemic_tier": "T2",
+      "predicate": "Compare FS-All Ea(M) 0.175 against UMA(OC20) 0.131 and MACE-MH-1(OC20) 0.176 from Table 4; check all differences <= 0.05 eV.",
+      "evidence": [
+        {
+          "id": "e11a",
+          "kind": "table",
+          "location": "Table 4 (Ea (M) column)",
+          "quote": "FS-All 0.175 ; UMA (OC20) 0.131 ; UMA (OMAT) 0.453 ; MACE-MP0 0.493 ; MACE-MH-1 (OC20) 0.176 ; MACE-MH-1 (OMAT) 0.220",
+          "extracted_values": {"fs_all": 0.175, "uma_oc20": 0.131, "uma_omat": 0.453, "mace_mh1_oc20": 0.176, "mace_mh1_omat": 0.220}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "claim<->table threshold/delta verifier",
+        "verifier_exists": false,
+        "candidate_verdict": "suspect",
+        "confidence": 0.55,
+        "rationale": "0.175 vs UMA(OC20) 0.131 = 0.044 (<=0.05, OK) and vs MACE-MH-1(OC20) 0.176 = 0.001 (OK). HOWEVER UMA(OMAT)=0.453 and MACE-MH-1(OMAT)=0.220 give differences 0.278 and 0.045; the latter is borderline and the OMAT variants differ markedly. The claim 'within 0.05 eV of UMA and MACE-MH-1' holds only for the OC20 variants (and MH-1 OMAT at 0.045) but NOT for UMA(OMAT). Whether the claim implicitly means the best/OC20 variant is the binding ambiguity; flag for human. Numbers themselves transcribe correctly."
+      }
+    },
+    {
+      "id": "c12",
+      "text": "FS-BMA+MD achieves an MAE of 0.310 eV for metallic catalyst Er, better than the unmodified large foundation models (UMA and MACE-MH-1).",
+      "quote": "the model achieves an MAE of 0.310 eV for metallic catalyst Er , better than the performance of the unmodified large foundation models (UMA and MACE-MH-1)",
+      "section": "Sec 4.1.1; Table 4",
+      "page": 9,
+      "epistemic_tier": "T2",
+      "predicate": "Compare FS-BMA+MD Er(M) 0.310 against UMA and MACE-MH-1 Er(M) values in Table 4; verify it is lower than all listed foundation-model values.",
+      "evidence": [
+        {
+          "id": "e12a",
+          "kind": "table",
+          "location": "Table 4 (Er (M) column)",
+          "quote": "FS-BMA+MD 0.310 ; UMA (OC20) 0.403 ; UMA (OMAT) 0.558 ; MACE-MP0 0.745 ; MACE-MH-1 (OC20) 0.578 ; MACE-MH-1 (OMAT) 0.478",
+          "extracted_values": {"fs_bma_md": 0.310, "uma_oc20": 0.403, "uma_omat": 0.558, "mace_mh1_oc20": 0.578, "mace_mh1_omat": 0.478}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "claim<->table comparison verifier (min over a set)",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.9,
+        "rationale": "0.310 < 0.403 (UMA OC20), < 0.558 (UMA OMAT), < 0.578 (MH-1 OC20), < 0.478 (MH-1 OMAT). FS-BMA+MD Er(M) is lower than every listed UMA/MACE-MH-1 Er(M) value. Claim recomputes as supported directly from Table 4."
+      }
+    },
+    {
+      "id": "c13",
+      "text": "FS-BMA+MD performs poorly for Er(MO) with an MAE of 0.476 eV, higher than the corresponding values for UMA(OMAT) or MACE-MH-1(OMAT).",
+      "quote": "performs poorly for Er (MO) with an MAE of 0.476 eV, higher than corresponding values for UMA (OMAT) or MACE-MH-1 (OMAT)",
+      "section": "Sec 4.1.1; Table 4",
+      "page": 9,
+      "epistemic_tier": "T2",
+      "predicate": "Compare FS-BMA+MD Er(MO) 0.476 against UMA(OMAT) 0.243 and MACE-MH-1(OMAT) 0.322 in Table 4.",
+      "evidence": [
+        {
+          "id": "e13a",
+          "kind": "table",
+          "location": "Table 4 (Er (MO) column)",
+          "quote": "FS-BMA+MD 0.476 ; UMA (OMAT) 0.243 ; MACE-MH-1 (OMAT) 0.322",
+          "extracted_values": {"fs_bma_md": 0.476, "uma_omat": 0.243, "mace_mh1_omat": 0.322}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "claim<->table comparison verifier",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.92,
+        "rationale": "0.476 > 0.243 (UMA OMAT) and 0.476 > 0.322 (MACE-MH-1 OMAT). Both comparisons hold; numbers transcribe correctly from Table 4."
+      }
+    },
+    {
+      "id": "c14",
+      "text": "FT-BMA (fine-tuned to BMA relaxation trajectories only) outperforms the best-performing from-scratch model FS-All across the tabulated metrics.",
+      "quote": "The model fine-tuned to the BMA dataset (FT-BMA) with just relaxation trajectories is better than best-performing from scratch model (FS-All)",
+      "section": "Sec 4.1.2; Tables 4 and 5",
+      "page": 10,
+      "epistemic_tier": "T2",
+      "predicate": "Compare FT-BMA (Table 5: Er(M) 0.238, Er(MO) 0.334, Ea(M) 0.145) against FS-All (Table 4: Er(M) 0.279, Er(MO) 0.398, Ea(M) 0.175) metric-by-metric.",
+      "evidence": [
+        {
+          "id": "e14a",
+          "kind": "table",
+          "location": "Table 5 (FT-BMA) and Table 4 (FS-All)",
+          "quote": "FT-BMA 39,983 0.238 0.334 0.145 ; FS-All 49,860 0.279 0.398 0.175",
+          "extracted_values": {"ftbma_ErM": 0.238, "ftbma_ErMO": 0.334, "ftbma_EaM": 0.145, "fsall_ErM": 0.279, "fsall_ErMO": 0.398, "fsall_EaM": 0.175}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "multi-metric claim<->table comparison verifier",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.9,
+        "rationale": "FT-BMA beats FS-All on all three: Er(M) 0.238<0.279, Er(MO) 0.334<0.398, Ea(M) 0.145<0.175. 'Better than' holds across the board. Note also it achieves this with NFT-TS=39,983 vs FS-All's 49,860, supporting the efficiency framing."
+      }
+    },
+    {
+      "id": "c15",
+      "text": "With no metal-oxide in the FT-BMA training set, the Er(MO) MAE is 0.334 eV, about 0.06 eV lower than a model that had about 2,692 metal-oxide configurations in the training set (FT-MD(MO), Er(MO)=0.306).",
+      "quote": "with no metal oxide in the training set, the Er (MO) MAE is 0.334 eV, about 0.06 eV lower than a model that had about 2,692 metal-oxides configurations in the training set",
+      "section": "Sec 4.1.2; Table 5",
+      "page": 10,
+      "epistemic_tier": "T0",
+      "predicate": "Bind 'a model with ~2,692 metal-oxide configs' to FT-MD(MO) (Er(MO)=0.306) and recompute 0.334 - 0.306.",
+      "evidence": [
+        {
+          "id": "e15a",
+          "kind": "table",
+          "location": "Table 5",
+          "quote": "FT-BMA ... 0.334 ; FT-MD(MO) 2,692 ... 0.306",
+          "extracted_values": {"ftbma_ErMO": 0.334, "ftmdmo_ErMO": 0.306, "diff": 0.028}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "percent/delta verifier with prose<->table binding",
+        "verifier_exists": false,
+        "candidate_verdict": "suspect",
+        "confidence": 0.5,
+        "rationale": "0.334 - 0.306 = 0.028 eV, which rounds to ~0.03, NOT ~0.06 as stated, IF the comparison model is FT-MD(MO) (the model with 2,692 MO configs, Er(MO)=0.306). The direction is also notable: FT-BMA (0.334) is HIGHER, not lower, than FT-MD(MO) (0.306) on Er(MO), yet the prose says 0.334 is '0.06 eV lower'. This appears internally inconsistent. Possible alternative binding: FT-MD(M) Er(MO)=0.428 gives 0.428-0.334=0.094 (~0.09); FT-BMA+MD(M) Er(MO)=0.348 gives 0.014. None yields 0.06 with the correct sign. Flag as suspect / prose-table mismatch; confidence held at 0.5 because the intended comparison model is ambiguous (the '2,692 metal-oxides configurations' descriptor most directly matches FT-MD(MO), against which the sign is wrong)."
+      }
+    },
+    {
+      "id": "c16",
+      "text": "FT-MD(M) performs worse than FT-BMA with a 0.15 eV increase in Er(M) MAE.",
+      "quote": "The FT-MD(M) model performs worse than the FT-BMA model with a 0.15 eV increase in Er (M) MAE.",
+      "section": "Sec 4.1.2; Table 5",
+      "page": 10,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute FT-MD(M) Er(M) - FT-BMA Er(M) = 0.376 - 0.238.",
+      "evidence": [
+        {
+          "id": "e16a",
+          "kind": "table",
+          "location": "Table 5",
+          "quote": "FT-BMA ... 0.238 ; FT-MD(M) 4,976 0.376",
+          "extracted_values": {"ftbma_ErM": 0.238, "ftmdm_ErM": 0.376, "diff": 0.138}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "percent/delta verifier with prose<->table binding",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.8,
+        "rationale": "0.376 - 0.238 = 0.138 eV, which the authors round to '0.15 eV increase'. 0.138 rounds to 0.14 conventionally; the paper's 0.15 is a slight over-round but defensible as 'a ~0.15 eV increase'. Direction (FT-MD(M) worse) is correct. Marginally suspect on the rounding (0.138 -> 0.15) but within reasonable reporting tolerance."
+      }
+    },
+    {
+      "id": "c17",
+      "text": "After fine-tuning on all datasets (FT-All), the Er(MO) MAE decreases by 0.07 eV relative to the previous FT models.",
+      "quote": "after fine-tuning on all of our datasets (FT-All), the Er (M) and Ea (M) MAE are unchanged, the Er (MO) MAE decreases by 0.07 eV.",
+      "section": "Sec 4.1.2; Table 5",
+      "page": 11,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute the Er(MO) decrease for FT-All (0.277) relative to the comparison FT model; check 'unchanged' for Er(M) and Ea(M).",
+      "evidence": [
+        {
+          "id": "e17a",
+          "kind": "table",
+          "location": "Table 5",
+          "quote": "FT-BMA+MD(M) 44,959 0.245 0.348 0.152 ; FT-All 49,860 0.247 0.277 0.144",
+          "extracted_values": {"ftbmamdm_ErM": 0.245, "ftbmamdm_ErMO": 0.348, "ftbmamdm_EaM": 0.152, "ftall_ErM": 0.247, "ftall_ErMO": 0.277, "ftall_EaM": 0.144}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "percent/delta verifier with prose<->table binding",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.7,
+        "rationale": "Relative to FT-BMA+MD(M): Er(MO) 0.348 -> 0.277 = 0.071 decrease (~0.07, supported). Er(M) 0.245 -> 0.247 (essentially unchanged, +0.002) and Ea(M) 0.152 -> 0.144 (-0.008, ~unchanged) are consistent with 'unchanged' to two decimals. Binding to FT-BMA+MD(M) as 'the previous FT model' is the natural reading and yields exactly 0.07."
+      }
+    },
+    {
+      "id": "c18",
+      "text": "For the CHCOH* pathway of the CO2RR (7 reactions on Cu(001)), MACE-MH-1(OMAT) MAE=1.011 eV, FS-BMA=0.455 eV, FS-All=0.251 eV, and FT-All=0.141 eV is the best.",
+      "quote": "MACE-MH-1 (OMAT) performs the worst with an MAE of 1.011 eV. The FS-BMA model exhibits an error ... (overall MAE of 0.455 eV) ... reduced to 0.251 eV by the FS-All model ... FT-All model ... best performing model with an MAE of 0.141 eV across these 7 reactions",
+      "section": "Sec 4.2.1",
+      "page": 12,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check the four MAE values against Fig. 3a; verify the ordering claim (FT-All lowest, MACE-MH-1 highest) is consistent with the recomputable per-step errors plotted.",
+      "evidence": [
+        {
+          "id": "e18a",
+          "kind": "text",
+          "location": "Sec 4.2.1 + Fig 3a",
+          "quote": "MAE of 1.011 eV ... overall MAE of 0.455 eV ... reduced to 0.251 eV ... MAE of 0.141 eV across these 7 reactions",
+          "extracted_values": {"mh1": 1.011, "fs_bma": 0.455, "fs_all": 0.251, "ft_all": 0.141, "n_reactions": 7}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "figure-reading verifier: read per-step MLIP-vs-DFT energies off Fig 3a and recompute the 4 MAEs over the 7-step pathway",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.4,
+        "rationale": "The four MAEs are mutually ordered as claimed (1.011 > 0.455 > 0.251 > 0.141) and the conclusion restates FT-All=0.141, so internal consistency holds. A true verdict requires reading the plotted solid/dashed line values off Fig 3a and recomputing MAE over the 7 steps; without the underlying per-step numbers (only the figure and Zenodo data) the recompute is not bindable from the text alone. Data IS on Zenodo (10.5281/zenodo.20043317), so this is T6-reproducible in principle. Inconclusive pending figure extraction or data rerun."
+      }
+    },
+    {
+      "id": "c19",
+      "text": "The FT-All model achieves an MAE of 0.143 eV across the entire set of 101 reactions reported across other catalysts in this study.",
+      "quote": "similarly achieve an MAE of 0.143 eV across the entire 101 reactions reported across other catalysts in this study",
+      "section": "Sec 4.2.1",
+      "page": 12,
+      "epistemic_tier": "T6",
+      "predicate": "Recompute the MAE of FT-All vs DFT over the 101 reactions from the provided Zenodo data and compare to 0.143 eV.",
+      "evidence": [
+        {
+          "id": "e19a",
+          "kind": "number",
+          "location": "Sec 4.2.1",
+          "quote": "an MAE of 0.143 eV across the entire 101 reactions",
+          "extracted_values": {"mae": 0.143, "n_reactions": 101}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "reproducibility verifier (rerun provided FT-All predictions vs DFT over the 101-reaction set from Zenodo)",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.4,
+        "rationale": "Not recomputable from the manuscript text (the 101 per-reaction errors are not tabulated). Data availability is declared (Zenodo 10.5281/zenodo.20043317), so a T6 rerun could settle it, but that is a networked reproducibility-container task, not a deterministic recompute on the paper's own numbers. Inconclusive at the deterministic frontier."
+      }
+    },
+    {
+      "id": "c20",
+      "text": "For the OER on alpha-IrO3(110), the FS-All model has an error of 0.21 eV for O and OH adsorption but 1.6 eV for OOH* adsorption, attributed to the absence of OOH* species in the training set.",
+      "quote": "The FS-All model, trained to 2,692 metal-oxide configurations in addition to 47,168 metallic surfaces, has an error of 0.21 eV for O and OH adsorption. However, the error is significantly higher for OOH* adsorption at 1.6 eV",
+      "section": "Sec 4.2.2; Fig 5a",
+      "page": 15,
+      "epistemic_tier": "T2",
+      "predicate": "Read the FS-All vs DFT OOH* and O*/OH* relative energies off Fig 5a and check the ~0.21 eV and ~1.6 eV discrepancies; also check 2,692 + 47,168 against the stated FS-All training composition.",
+      "evidence": [
+        {
+          "id": "e20a",
+          "kind": "figure",
+          "location": "Fig 5a (OER pathway on OH-covered alpha-IrO3)",
+          "quote": "Comparison of the MACE-MH-1 (OMAT), FS-All, FT-MD(MO), and FT-All MLIPs (solid lines) for OER pathway predictions on OH covered alpha-IrO3 with the DFT reported values (dashed lines)",
+          "extracted_values": {"fs_all_O_OH_err": 0.21, "fs_all_OOH_err": 1.6, "mo_configs": 2692, "metallic_surfaces": 47168}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "figure-reading verifier (read solid-vs-dashed gap at OOH* and O*/OH* steps in Fig 5a)",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.4,
+        "rationale": "The specific 0.21 and 1.6 eV errors are single-point gaps readable only from Fig 5a; not bindable from text. Note a side-consistency check: FS-All total = 49,860 (Table 2); 49,860 - 2,692 (MO) = 47,168 metallic, exactly matching the stated 47,168 metallic surfaces — that subtraction IS deterministically confirmable (49,860-2,692=47,168). The per-step error magnitudes require figure extraction."
+      }
+    },
+    {
+      "id": "c21",
+      "text": "FS-All trained to 2,692 metal-oxide configs plus 47,168 metallic surfaces (the metallic complement of the 49,860 total).",
+      "quote": "The FS-All model, trained to 2,692 metal-oxide configurations in addition to 47,168 metallic surfaces",
+      "section": "Sec 4.2.2; Table 2",
+      "page": 15,
+      "epistemic_tier": "T0",
+      "predicate": "Check 2,692 + 47,168 = 49,860 (Table 2 total) and that 2,692 matches the O,OH dataset configs (Table 2 lists 2,693).",
+      "evidence": [
+        {
+          "id": "e21a",
+          "kind": "number",
+          "location": "Sec 4.2.2 + Table 2",
+          "quote": "2,692 metal-oxide configurations in addition to 47,168 metallic surfaces ; Table 2 O,OH adsorption Configs = 2,693 ; Total = 49,860",
+          "extracted_values": {"mo_configs": 2692, "metallic": 47168, "sum": 49860, "table2_OOH": 2693, "table2_total": 49860}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "internal-arithmetic + cross-reference consistency verifier",
+        "verifier_exists": false,
+        "candidate_verdict": "suspect",
+        "confidence": 0.6,
+        "rationale": "2,692 + 47,168 = 49,860 = Table 2 total: the partition is internally consistent. BUT the metal-oxide config count is reported as 2,692 here and as 2,693 in Table 2 (and the CE/MD text uses 2,209 for several subsets); the recurring 2,692-vs-2,693 off-by-one (also seen in FT-MD(MO) NFT-TS=2,692 vs Table 2=2,693) is a minor but real internal inconsistency. The arithmetic 2692+47168=49860 holds; the source-count transcription is off by 1 across locations. Low-severity suspect."
+      }
+    },
+    {
+      "id": "c22",
+      "text": "For the 96 reactions on iridium oxides (Ref.[58]), FS-All MAE=0.438 eV, MACE-MH-1 overall MAE=0.384 eV (0.05 eV lower than FS-All), FT-MD(MO)=0.313 eV, FT-All=0.278 eV.",
+      "quote": "For the 96 reactions reported in Ref. [58], the FS-All model has an MAE of 0.438 eV. Using the MACE-MH-1 model (no fine-tuning) ... has an overall MAE of 0.384 eV, which is a 0.05 eV lower than FS-All model ... The total MAEs for the 96 reaction for FT-MD(MO) and FT-All models are 0.313 and 0.278 eV",
+      "section": "Sec 4.2.2",
+      "page": 15,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute 0.438 - 0.384 = 0.054 and check '0.05 eV lower'; verify FT-All < FT-MD(MO) < MACE-MH-1 < FS-All ordering.",
+      "evidence": [
+        {
+          "id": "e22a",
+          "kind": "text",
+          "location": "Sec 4.2.2",
+          "quote": "FS-All ... 0.438 eV ... MACE-MH-1 ... 0.384 eV, which is a 0.05 eV lower than FS-All ... FT-MD(MO) and FT-All models are 0.313 and 0.278 eV",
+          "extracted_values": {"fs_all": 0.438, "mh1": 0.384, "ft_md_mo": 0.313, "ft_all": 0.278, "diff_mh1_fsall": 0.054}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "percent/delta + ordering verifier on prose numbers",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "0.438 - 0.384 = 0.054 eV ~ '0.05 eV lower' (supported). Ordering 0.278 (FT-All) < 0.313 (FT-MD(MO)) < 0.384 (MH-1) < 0.438 (FS-All) is consistent with the narrative that FT models beat foundation and FS models. All values self-consistent within the section."
+      }
+    },
+    {
+      "id": "c23",
+      "text": "On the binary-alloy screening test set, accuracy is lowest for the (532) facet with only 58% of predictions within +/-0.2 eV, while (311) has 77% and all other terminations 65-75%.",
+      "quote": "For the (311) surface termination, 77% of configurations are within the target threshold of +-0.2 eV. The accuracy is lowest for the (532) facet ... with only 58% of predictions within the error threshold. Nevertheless for all other surface terminations, 65% to 75% of the tested configurations lie within the +-0.2 eV tolerance.",
+      "section": "Sec 4.2.3; Fig 6a",
+      "page": 16,
+      "epistemic_tier": "T2",
+      "predicate": "Read the per-facet bee-swarm distributions in Fig 6a, count points within the +/-0.2 eV dashed band, and recompute the percentages (58%, 77%, 65-75%).",
+      "evidence": [
+        {
+          "id": "e23a",
+          "kind": "figure",
+          "location": "Fig 6a (bee-swarm by surface termination)",
+          "quote": "Bee-swarm plots ... grouped by (a) surface termination ... The dashed red lines indicates the 0.2 eV threshold",
+          "extracted_values": {"f311_pct": 77, "f532_pct": 58, "others_low": 65, "others_high": 75, "threshold_eV": 0.2}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "figure-reading verifier (count within-band fraction per facet) OR data rerun on the 2,115-structure test set",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.4,
+        "rationale": "Percentages are computable from the bee-swarm point clouds in Fig 6a or directly from the 2,115-structure errors on Zenodo, but not from text. Internally, '(532) lowest at 58%' and '(311)=77%' are consistent with 'all other terminations 65-75%' only if 311 is treated as an exception above the band (77% > 75%) — a slight phrasing tension worth noting. T6/figure check needed to settle the exact counts."
+      }
+    },
+    {
+      "id": "c24",
+      "text": "For surface compositions, AgNi and CuAu show 68% and 46% within +/-0.2 eV respectively, while CuIr shows 73%.",
+      "quote": "For AgNi and CuAu, the performance is mediocre with only 68% and 46% within +-0.2 eV of the DFT values, respectively. On the other hand, the model performance is much better for CuIr, with 73% within the threshold.",
+      "section": "Sec 4.2.3; Fig 6b",
+      "page": 16,
+      "epistemic_tier": "T2",
+      "predicate": "Read Fig 6b per-composition bee-swarms and recompute within-band fractions for AgNi, CuAu, CuIr.",
+      "evidence": [
+        {
+          "id": "e24a",
+          "kind": "figure",
+          "location": "Fig 6b (bee-swarm by surface composition)",
+          "quote": "grouped by ... (b) surface composition in decreasing order of lattice mismatch",
+          "extracted_values": {"AgNi_pct": 68, "CuAu_pct": 46, "CuIr_pct": 73, "threshold_eV": 0.2}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "figure-reading verifier or data rerun on the per-composition subset",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.4,
+        "rationale": "Same as c23: within-band percentages are computable from Fig 6b or the Zenodo test-set errors, not from text. The narrative point ('error does not strongly correlate with atomic-radii mismatch', since CuIr at 73% beats AgNi at 68% despite ordering) is a T4 claim resting on these numbers; the numbers themselves need figure/data extraction."
+      }
+    },
+    {
+      "id": "c25",
+      "text": "The conclusion states 81% of a randomly selected subset of reactions have less than +/-0.2 eV error with respect to DFT in the binary-alloy screening.",
+      "quote": "we applied the FT-All model to screen adsorption energy predictions ... with 81% of randomly selected subset of reactions having less than +-0.2 eV error with respect to the DFT values.",
+      "section": "Conclusion; Sec 4.2.3; Fig 6",
+      "page": 17,
+      "epistemic_tier": "T2",
+      "predicate": "Recompute the overall fraction of the 2,115-structure test set within +/-0.2 eV and check it equals 81%; cross-check against the per-facet (58-77%) and per-composition (46-73%) breakdowns for aggregate consistency.",
+      "evidence": [
+        {
+          "id": "e25a",
+          "kind": "number",
+          "location": "Conclusion",
+          "quote": "81% of randomly selected subset of reactions having less than +-0.2 eV error",
+          "extracted_values": {"overall_within_band_pct": 81}
+        },
+        {
+          "id": "e25b",
+          "kind": "figure",
+          "location": "Fig 6a/6b breakdowns",
+          "quote": "per-facet 58% to 77%; per-composition 46% to 73%",
+          "extracted_values": {"facet_min": 58, "facet_max": 77, "comp_min": 46, "comp_max": 73}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "aggregate-vs-subgroup consistency verifier (does an 81% overall reconcile with subgroup fractions of 46-77%?) + data rerun",
+        "verifier_exists": false,
+        "candidate_verdict": "suspect",
+        "confidence": 0.5,
+        "rationale": "An overall 81%-within-band is numerically possible alongside subgroup fractions of 46-77% only if the subgroups shown in Fig 6 are unrepresentative or unequally weighted, since 81% exceeds every individual per-facet (max 77%) and per-composition (max 73%) value reported. A weighted average of the displayed subgroups would generally fall below 81%, so the 81% headline sits in tension with the breakdowns. This is checkable by recomputing the within-band fraction over the full 2,115-structure set (Zenodo). Flag as suspect pending that recompute; the apparent inconsistency may be explained by the random subset differing from the grouped subsets shown."
+      }
+    },
+    {
+      "id": "c26",
+      "text": "The screening produced 90,781 total initialized structures, of which 90,181 converged.",
+      "quote": "This procedure produced 90,781 total initialized structures, of which 90,181 converged.",
+      "section": "Sec 4.2.3",
+      "page": 16,
+      "epistemic_tier": "T2",
+      "predicate": "Check internal consistency of 90,781 across abstract, intro, and Sec 4.2.3, and that 90,181 <= 90,781.",
+      "evidence": [
+        {
+          "id": "e26a",
+          "kind": "number",
+          "location": "Abstract / Intro / Sec 4.2.3",
+          "quote": "screen a large-left out, 90,781, of bimetallic alloys ... predict 90,781 adsorption energies ... produced 90,781 total initialized structures, of which 90,181 converged",
+          "extracted_values": {"n_init": 90781, "n_converged": 90181}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "cross-section numeric-consistency verifier",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "90,781 is used consistently in the abstract, introduction, and Sec 4.2.3; 90,181 converged <= 90,781 initialized (600 failed to converge), internally coherent. Minor note: the abstract calls it '90,781 adsorption energies' while only 90,181 converged, a small scope rounding, but the screened/initialized count is consistent throughout."
+      }
+    },
+    {
+      "id": "c27",
+      "text": "The binary-alloy screening space is built from 8 FCC metals in 3 mixing ratios (100/0%, 25/75%, 50/50%), 6 surface terminations, and 33 adsorbates, yielding 56 total surface compositions.",
+      "quote": "binary metal surfaces selected from 8 common FCC metal alloys in 3 different mixing ratios ... and the (001), (111), (211), (311), (511), and (532) facets ... we placed 33 different adsorbates ... seven surface compositions were selected out of the 56 total surface compositions",
+      "section": "Sec 4.2.3; SI Table 7",
+      "page": 16,
+      "epistemic_tier": "T0",
+      "predicate": "Check the combinatorics: number of unordered metal pairs from 8 elements = C(8,2)=28; with 2 mixed ratios (25/75, 50/50, where 50/50 is symmetric and 25/75 gives 2 orderings) plus 8 pure (100/0) compositions; reconcile to the stated 56 total surface compositions and 6 facets and 33 adsorbates.",
+      "evidence": [
+        {
+          "id": "e27a",
+          "kind": "number",
+          "location": "Sec 4.2.3 + SI Table 7",
+          "quote": "8 common FCC metal alloys ... 3 different mixing ratios ... 6 ... facets ... 33 different adsorbates ... 56 total surface compositions",
+          "extracted_values": {"n_metals": 8, "n_ratios": 3, "n_facets": 6, "n_adsorbates": 33, "n_surface_comps": 56}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "combinatorial-consistency verifier (reconcile element/ratio counts to 56 compositions and 90,781 structures)",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.45,
+        "rationale": "56 surface compositions is plausibly C(8,2)=28 pairs x 2 mixed ratios (25/75 and 50/50) = 56, which is internally consistent if pure metals are counted separately or excluded; the exact accounting (whether 100/0 pure metals add 8, and whether 25/75 is directionally distinct) is not fully specified, so the 56 cannot be uniquely re-derived from text. The 33 adsorbates are enumerated in SI Table 7 (countable). The jump from compositions x facets x adsorbates to 90,781 depends on per-surface unique-site counts (SI S8), not deterministically reconstructable. Inconclusive on the full combinatorics; the 33-adsorbate count is independently checkable against SI Table 7."
+      }
+    },
+    {
+      "id": "c28",
+      "text": "SI Table 7 lists 33 adsorbates targeted in the screening task.",
+      "quote": "The list of 33 adsorbates that were targeted in the screening task.",
+      "section": "SI S8, Table 7",
+      "page": 41,
+      "epistemic_tier": "T0",
+      "predicate": "Count the distinct adsorbate species enumerated in SI Table 7 and check it equals 33.",
+      "evidence": [
+        {
+          "id": "e28a",
+          "kind": "table",
+          "location": "SI Table 7",
+          "quote": "C, CCH, CCH2, CCH3, CCHO, CCHOH, CCO, CHCH, CH2, CH2O, CH3, CH4, CHCH2, CHCHO, CHCO, CHO, CHOCHO, CHOH, COCH2O, COCH3, COCHO, COH, COHCHO, COHCOH, NH2, NH3, NONH, OCHCH2, OHCH3, OOH, CHCOH, CH2CO, COCOH",
+          "extracted_values": {"claimed_count": 33}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "list-count verifier (enumerate distinct species in SI Table 7)",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.45,
+        "rationale": "The species are listed in a multi-column SI table whose exact tokenization is uncertain in the extracted text (some tokens like 'CHO CHO' / 'CHOCHO' and asterisk notation are ambiguous in the text layer). A clean OCR/parse of SI Table 7 would let a list-count verifier confirm exactly 33; from the text layer the count is approximately consistent with 33 but not unambiguously bindable. Inconclusive pending a faithful table parse."
+      }
+    },
+    {
+      "id": "c29",
+      "text": "SI Table 6 reports Ea MAEs and NEB convergence over the 23 Ref.[62] reactions: FT-BMA 0.141 (100%), FT-MD(M) 0.159 (91%), FT-MD(MO) 0.149 (91%), FT-CE 0.143 (100%), FT-BMA+MD(M) 0.153 (100%), FT-All 0.142 (100%).",
+      "quote": "FT-BMA 0.141 100 % ; FT-MD(M) 0.159 91 % ; FT-MD(MO) 0.149 91 % ; FT-CE 0.143 100 % ; FT-BMA+MD(M) 0.153 100 % ; FT-All 0.142 100 %",
+      "section": "SI S7, Table 6",
+      "page": 40,
+      "epistemic_tier": "T2",
+      "predicate": "Check that the body claim 'all FT models have an Ea MAE between 0.14 and 0.15 eV' is consistent with SI Table 6; check that 91% convergence over 23 reactions corresponds to an integer count of converged NEBs.",
+      "evidence": [
+        {
+          "id": "e29a",
+          "kind": "table",
+          "location": "SI Table 6",
+          "quote": "the 23 reactions in Ref. [62] ... convergence column shows the percentage of NEBs that converged from the 23 reactions",
+          "extracted_values": {"ftbma": 0.141, "ftmdm": 0.159, "ftmdmo": 0.149, "ftce": 0.143, "ftbmamdm": 0.153, "ftall": 0.142, "n_reactions": 23, "conv_91pct_count": 20.93}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "integer-count consistency verifier (does 91% of 23 yield an integer?) + prose-vs-SI-table binding",
+        "verifier_exists": false,
+        "candidate_verdict": "suspect",
+        "confidence": 0.5,
+        "rationale": "Two issues. (1) Body says 'all our MLIPs ... have a MAE of between 0.14 to 0.15 eV' (Conclusion) and 'almost the same performance as FT-All' (Sec 4.2.1), but SI Table 6 lists FT-MD(M)=0.159 eV, which is ABOVE 0.15 — a minor prose-vs-SI inconsistency. (2) 91% of 23 = 20.93, not an integer; 20/23=86.96% and 21/23=91.30%, so 91% rounds from 21/23 (consistent). The 0.159 > 0.15 overshoot is the substantive flag. Low-severity suspect."
+      }
+    },
+    {
+      "id": "c30",
+      "text": "The DFT plane-wave and charge-density cutoffs were set at 500 eV and 5000 eV respectively (BEEF-vdW, ultrasoft GBRV pseudopotentials, Quantum Espresso).",
+      "quote": "The plane-wave and charge density cutoffs were set at 500 eV and 5000 eV, respectively.",
+      "section": "Sec 2.1 DFT calculations",
+      "page": 5,
+      "epistemic_tier": "T3",
+      "predicate": "Assess method appropriateness: 500 eV plane-wave / 5000 eV charge-density cutoff ratio (10x) is conventional for ultrasoft pseudopotentials; charge-density cutoff typically 8-12x the wavefunction cutoff. Check units (cutoffs in eV vs the more common Ry).",
+      "evidence": [
+        {
+          "id": "e30a",
+          "kind": "text",
+          "location": "Sec 2.1",
+          "quote": "ultrasoft pseudopotentials (GBRV) ... plane-wave and charge density cutoffs were set at 500 eV and 5000 eV",
+          "extracted_values": {"ecutwfc_eV": 500, "ecutrho_eV": 5000, "ratio": 10}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "method-appropriateness signature check (cutoff ratio for ultrasoft PP; unit plausibility)",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.65,
+        "rationale": "A 10x charge-density-to-wavefunction cutoff ratio is appropriate for ultrasoft pseudopotentials (USPP commonly use 8-12x). 500 eV (~36.7 Ry) wavefunction cutoff is reasonable for GBRV USPP. Method signature looks valid; T3 so calibrated/partial. Minor note: QE conventionally reports cutoffs in Ry, but eV is internally consistent here."
+      }
+    },
+    {
+      "id": "c31",
+      "text": "The k-point grids used a density of 50 k-points per A for in-plane lattice vectors, with 0.15 eV Fermi smearing and at least 12 A of vacuum.",
+      "quote": "The k-point grids were generated using Monkhorst-Pack [23] with a density of 50 k-points per A for in-plane lattice vectors, along with a 0.15 eV Fermi smearing, and at least 12 A of vacuum.",
+      "section": "Sec 2.1",
+      "page": 5,
+      "epistemic_tier": "T3",
+      "predicate": "Assess whether '50 k-points per A' (a k-point density expressed as points per inverse-Angstrom or per Angstrom of real-space lattice) is a well-defined and adequate sampling for metallic surfaces; check 12 A vacuum adequacy and 0.15 eV smearing for metals.",
+      "evidence": [
+        {
+          "id": "e31a",
+          "kind": "text",
+          "location": "Sec 2.1",
+          "quote": "density of 50 k-points per A for in-plane lattice vectors ... 0.15 eV Fermi smearing ... at least 12 A of vacuum",
+          "extracted_values": {"kpoint_density": 50, "fermi_smearing_eV": 0.15, "vacuum_A": 12}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "method-appropriateness verifier (k-density convention + adequacy for metals); unit/definition disambiguation",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.45,
+        "rationale": "The unit '50 k-points per A' is ambiguous (k-point density is conventionally k-points x A, i.e. points per inverse-length such as the VASP KSPACING / per-reciprocal-Angstrom convention). 12 A vacuum and 0.15 eV smearing are standard-to-adequate for metallic slabs. Without a precise definition the k-density adequacy cannot be deterministically judged; the smearing/vacuum are fine. T3, inconclusive on the k-density phrasing."
+      }
+    },
+    {
+      "id": "c32",
+      "text": "Initial magnetic moments of 3, 3, 2, 1 were chosen for Fe, Mn, Co, and Ni respectively.",
+      "quote": "Initial magnetic moments of 3, 3, 2, 1 were chosen for Fe, Mn, Co and Ni, respectively.",
+      "section": "Sec 2.1",
+      "page": 5,
+      "epistemic_tier": "T1",
+      "predicate": "Check the initial moments against known atomic d-electron / Hund's-rule expectations: high-spin Fe2+/Fe3+ ~4-5, Mn ~5, Co ~3, Ni ~2 muB. The chosen 3,3,2,1 are lower than typical high-spin values.",
+      "evidence": [
+        {
+          "id": "e32a",
+          "kind": "text",
+          "location": "Sec 2.1",
+          "quote": "magnetic moments of 3, 3, 2, 1 ... for Fe, Mn, Co and Ni",
+          "extracted_values": {"Fe": 3, "Mn": 3, "Co": 2, "Ni": 1}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "fixed-knowledge lookup verifier (typical initial-moment ranges per TM); appropriateness, not correctness",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.4,
+        "rationale": "Initial magnetic moments are user-chosen seeds, not physical observables, so there is no single 'correct' value to look up; the converged moment is what matters. The chosen values (Fe 3, Mn 3, Co 2, Ni 1) are on the low side relative to free-atom high-spin moments (Mn ~5, Fe ~4) but are legitimate initialization choices for surface/bulk metallic environments where moments are quenched. Not a checkable error; routed as inconclusive (initialization, not a verifiable constant)."
+      }
+    },
+    {
+      "id": "c33",
+      "text": "Structures were optimized until MLIP forces on all atoms were less than 5 meV/A; NEBs were considered converged once normal forces to images were all less than 50 meV/A.",
+      "quote": "optimized ... until the forces predicted by the MLIP on all atoms were less than 5 meV/A ... A NEB calculation was considered converged once the normal forces to images were all less than 50 meV/A.",
+      "section": "Sec 2.2",
+      "page": 5,
+      "epistemic_tier": "T3",
+      "predicate": "Assess convergence-criterion appropriateness: 5 meV/A relaxation force tolerance is tight (good); 50 meV/A NEB force tolerance is looser (10x). Check internal consistency of the two thresholds and adequacy for barrier accuracy.",
+      "evidence": [
+        {
+          "id": "e33a",
+          "kind": "text",
+          "location": "Sec 2.2",
+          "quote": "forces ... less than 5 meV/A ... NEB ... normal forces to images ... less than 50 meV/A",
+          "extracted_values": {"relax_force_tol_meV_A": 5, "neb_force_tol_meV_A": 50}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "method-appropriateness signature verifier (force-tolerance adequacy for Ea accuracy)",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.6,
+        "rationale": "5 meV/A endpoint relaxation is tight; 50 meV/A NEB convergence is a common, somewhat loose threshold that could contribute to the ~0.1-0.3 eV Ea sensitivity the authors themselves note (Sec 4.2.1, '0.3 eV difference in barrier predictions'). Internally consistent and defensible; T3 partial. The paper's own observation that Ea is highly sensitive to endpoint structure is consistent with the looser NEB criterion."
+      }
+    },
+    {
+      "id": "c34",
+      "text": "The relative force uncertainty is defined as frel_i = sigma_i / (F_bar_i + epsilon) with epsilon = 0.2 eV/A, and MD was terminated if max(frel) < 0.2 after a step.",
+      "quote": "frel_i = sigma_i / (F_bar_i + epsilon) ... epsilon is a regularizer set to 0.2 eV/A to avoid diverging ratios for small forces. MD simulations were terminated if max(frel) < 0.2 after a step.",
+      "section": "Sec 2.5; Eq. 2",
+      "page": 5,
+      "epistemic_tier": "T2",
+      "predicate": "Check internal logical consistency of the stopping rule: terminating when max(frel) < 0.2 means MD stops once uncertainty is LOW everywhere, i.e., when no high-uncertainty (informative) configurations remain — verify this matches the intended active-learning sampling purpose.",
+      "evidence": [
+        {
+          "id": "e34a",
+          "kind": "equation",
+          "location": "Eq. 2",
+          "quote": "frel_i = sigma_i / (F_bar_i + epsilon) ... max(frel) < 0.2",
+          "extracted_values": {"epsilon_eV_A": 0.2, "stop_threshold": 0.2}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "logical-consistency check of stopping criterion vs stated sampling goal",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.35,
+        "rationale": "The rule 'terminate if max(frel) < 0.2' is internally well-defined but its direction is the opposite of a naive uncertainty-driven sampler (which would CONTINUE while uncertainty is high and stop when low). As written, MD halts when the committee agrees everywhere (low uncertainty), which is a reasonable convergence/safety stop but could equally read as 'stop collecting once nothing informative remains'. Without more context the intent is ambiguous; the equation and epsilon are transcribed exactly. Inconclusive — a possible wording/logic ambiguity rather than a numeric error."
+      }
+    },
+    {
+      "id": "c35",
+      "text": "GC declares a competing interest: partner in Symmetric Group LLP (which licenses force fields commercially) and equity interest in Angstrom AI.",
+      "quote": "GC is a partner in Symmetric Group LLP that licenses force-fields commercially and also has equity interest in Angstrom AI.",
+      "section": "Declarations",
+      "page": 18,
+      "epistemic_tier": "T7",
+      "predicate": "Screen for a declared conflict of interest relevant to a paper promoting a specific force-field methodology (MACE).",
+      "evidence": [
+        {
+          "id": "e35a",
+          "kind": "text",
+          "location": "Declarations",
+          "quote": "GC is a partner in Symmetric Group LLP that licenses force-fields commercially and also has equity interest in Angstrom AI.",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "integrity/COI screening signal (surface, not score)",
+        "verifier_exists": false,
+        "candidate_verdict": "not_checkable",
+        "candidate_verdict_note": "surface as a signal, not a verdict",
+        "confidence": 0.9,
+        "rationale": "A competing-interest declaration is present and properly disclosed; this is a T7 integrity signal to surface (an author has commercial interests in force fields, and the paper advocates a fine-tuned MACE force field). Not an error and not scorable — routed-to-human transparency note. Disclosure being present is itself a positive integrity signal."
+      }
+    },
+    {
+      "id": "c36",
+      "text": "All DFT calculations and MLIPs (from-scratch and fine-tuned) are provided in a Zenodo directory (10.5281/zenodo.20043317).",
+      "quote": "All the DFT calculations and MLIPs trained in this study, both from scratch and FT models are provided in the Zenodo directory 10.5281/zenodo.20043317",
+      "section": "7 Data Availability",
+      "page": 18,
+      "epistemic_tier": "T6",
+      "predicate": "Check that the declared data/model artifact (Zenodo DOI) exists and contains the DFT calculations + trained MLIPs needed to reproduce the reported MAEs.",
+      "evidence": [
+        {
+          "id": "e36a",
+          "kind": "dataset",
+          "location": "Data Availability",
+          "quote": "Zenodo directory 10.5281/zenodo.20043317",
+          "extracted_values": {"zenodo_doi": "10.5281/zenodo.20043317"}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "data-availability resolver (DOI resolves + contains models/DFT) and, for full T6, a rerun of the predictions vs DFT",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.5,
+        "rationale": "Strong reproducibility signal: code/models and DFT calculations are declared as openly archived on Zenodo, which would in principle make most of the reported MAEs (c18, c19, c22, c23, c24, c25) re-derivable. Resolving the DOI and confirming contents requires network access (T6 reproducibility container), outside the deterministic frontier; cannot be confirmed from the manuscript alone. Inconclusive pending DOI resolution."
+      }
+    },
+    {
+      "id": "c37",
+      "text": "Per-training-set parity-plot MAEs reported in the SI: synthesis-gas C2+ oxygenates 0.123 eV, ethane dehydrogenation 0.097 eV, electrochemical ammonia synthesis 0.138 eV, industrial ammonia 0.177 eV, O/OH on TM oxides 0.664 eV.",
+      "quote": "MAE = 0.123 eV ; MAE = 0.097 eV ; MAE = 0.138 eV ; MAE = 0.177 eV ; MAE = 0.664 eV",
+      "section": "SI S3.1-S3.5 (Figs 9-13)",
+      "page": 21,
+      "epistemic_tier": "T2",
+      "predicate": "For each SI parity plot, read the scattered (predicted, reported) points and recompute the annotated MAE; cross-check the metal-oxide training MAE (0.664 eV) against the much lower test-time FT-MD(MO) Er(MO) (0.306 eV) for plausibility.",
+      "evidence": [
+        {
+          "id": "e37a",
+          "kind": "figure",
+          "location": "SI Figs 9-13",
+          "quote": "Fig 9 MAE=0.123 ; Fig 10 MAE=0.097 ; Fig 11 MAE=0.138 ; Fig 12 MAE=0.177 ; Fig 13 (O,OH on TM oxides) MAE=0.664",
+          "extracted_values": {"c2_oxygenates": 0.123, "ethane_dehyd": 0.097, "nh3_electro": 0.138, "nh3_industrial": 0.177, "o_oh_oxides": 0.664}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "figure-reading + MAE-recompute verifier per parity plot",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.4,
+        "rationale": "Each annotated MAE is recomputable by reading the parity-plot scatter (or from Zenodo per-dataset predictions), not from text. Worth flagging: the O/OH-on-oxides TRAINING-set parity MAE is 0.664 eV (Fig 13), far larger than the ~0.30 eV test-time metal-oxide MAEs (Table 5) — likely because Fig 13 spans a very wide energy range (up to ~10 eV) so absolute MAE is large; a verifier should confirm whether 0.664 is the in-sample training error and reconcile with the headline accuracy. Inconclusive pending figure/data extraction."
+      }
+    },
+    {
+      "id": "c38",
+      "text": "Per-test-set parity-plot MAEs in the SI: CO2-to-CO on Ag 0.051 eV, multi-carbon on single metals [48] 0.374 eV, C2 selectivity [50] 0.254 eV, multi-carbon [49] 0.183 eV, C1 selectivity [54] 0.148 eV, H intercalation in Pd 0.129 eV, O/N/CH/Li on alloys [51] 0.388 eV, CO2-to-methanol [52] 0.193 eV, HER [53] 0.096 eV, ORR/HER on Pt [55] 0.118 eV, propane dehydrogenation [56] 0.121 eV, Rh C2+ oxygenates [57] 0.038 eV.",
+      "quote": "MAE = 0.051 eV ; 0.374 ; 0.254 ; 0.183 ; 0.148 ; 0.129 ; 0.388 ; 0.193 ; 0.096 ; 0.118 ; 0.121 ; 0.038 eV",
+      "section": "SI S4.1-S4.7 (Figs 14-25)",
+      "page": 25,
+      "epistemic_tier": "T2",
+      "predicate": "Read each SI test-set parity plot and recompute the annotated MAE; cross-check that the body claim 'MAE of 0.143 eV across the entire 101 reactions' (c19) is consistent with the spread of these per-dataset MAEs (0.038-0.388).",
+      "evidence": [
+        {
+          "id": "e38a",
+          "kind": "figure",
+          "location": "SI Figs 14-25",
+          "quote": "Fig14 0.051 ; Fig15 0.374 ; Fig16 0.254 ; Fig17 0.183 ; Fig18 0.148 ; Fig19 0.129 ; Fig20 0.388 ; Fig21 0.193 ; Fig22 0.096 ; Fig23 0.118 ; Fig24 0.121 ; Fig25 0.038",
+          "extracted_values": {"co2_co_Ag": 0.051, "multiC_48": 0.374, "c2_sel_50": 0.254, "multiC_49": 0.183, "c1_sel_54": 0.148, "h_pd_47": 0.129, "alloys_51": 0.388, "methanol_52": 0.193, "her_53": 0.096, "pt_55": 0.118, "propane_56": 0.121, "rh_57": 0.038}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "figure-reading + MAE-recompute verifier per parity plot; aggregate-consistency check vs the 0.143 eV headline",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.4,
+        "rationale": "Each per-dataset MAE is recomputable from its parity plot or the Zenodo data, not from text. These plots do not all use the same model label in the captions (S3 mentions 'v5 MLIP'; figures are not consistently labeled with which model), so binding each MAE to FT-All vs another model is itself ambiguous and should be flagged. An aggregate of these (spanning 0.038-0.388) being summarized as ~0.143 across 101 reactions is plausible but needs the per-reaction counts to verify the weighted mean. Inconclusive pending extraction."
+      }
+    },
+    {
+      "id": "c39",
+      "text": "Schaaf et al. trained an MLIP with MAE of 0.05 eV for Ea for CO2 hydrogenation to methanol on In2O3 in six active-learning loops (cited prior work).",
+      "quote": "Schaaf, et al. [27] trained an accurate MLIP (MAE of 0.05 eV for Ea ) for CO2 hydrogenation to methanol on In2 O3 in six active-learning loops",
+      "section": "Introduction; Ref [27]",
+      "page": 3,
+      "epistemic_tier": "T5",
+      "predicate": "Verify the cited claim against Schaaf et al. (npj Comput. Mater. 9:180, 2023): does the source report a 0.05 eV Ea MAE for methanol synthesis on In2O3 via six active-learning iterations?",
+      "evidence": [
+        {
+          "id": "e39a",
+          "kind": "text",
+          "location": "Introduction",
+          "quote": "Schaaf, et al. [27] trained an accurate MLIP (MAE of 0.05 eV for Ea ) ... in six active-learning loops",
+          "extracted_values": {"cited_mae_eV": 0.05, "n_loops": 6}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "citation-content verifier (retrieve Ref [27] and entail the 0.05 eV / six-loop claim)",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.4,
+        "rationale": "Requires retrieving Ref [27] and checking the source's reported Ea MAE and loop count. External-literature entailment (T5), not deterministic; higher FP risk. Inconclusive from the manuscript alone."
+      }
+    },
+    {
+      "id": "c40",
+      "text": "Batatia et al.'s multi-head-replay fine-tuned model reports an MAE of 0.095 eV for S24 and 0.138 eV for OC20 benchmarks (cited prior work).",
+      "quote": "This model is shown to have good performance for adsorbate-surface interaction prediction, with an MAE of 0.095 eV for the S24 [25] and 0.138 eV for OC20 benchmark tests.",
+      "section": "Introduction; Refs [25],[28]",
+      "page": 2,
+      "epistemic_tier": "T5",
+      "predicate": "Verify the cited S24 (0.095 eV) and OC20 (0.138 eV) MAEs against the cited MACE foundation-model papers.",
+      "evidence": [
+        {
+          "id": "e40a",
+          "kind": "text",
+          "location": "Introduction",
+          "quote": "an MAE of 0.095 eV for the S24 [25] and 0.138 eV for OC20 benchmark tests",
+          "extracted_values": {"s24_mae": 0.095, "oc20_mae": 0.138}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "citation-content verifier (retrieve cited benchmarks and entail the two MAEs)",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.4,
+        "rationale": "External-literature numeric claims requiring source retrieval and entailment (T5). Not deterministic from this paper. Inconclusive; flagged for citation-content checking."
+      }
+    },
+    {
+      "id": "c41",
+      "text": "The CatTSunami project found MLIP-predicted NEBs were successful for 56% of the 900 reactions studied, improving to 86% when delta-Ea were computed with single-point DFT at the MLIP's IS/TS/FS structures (cited prior work).",
+      "quote": "They found that the MLIP-predicted NEBs were successful for 56% of the 900 reactions studied, which improved to 86% when the dEa were calculated using single-point DFT energies at the MLIP's initial, transition, and final state structures.",
+      "section": "Introduction",
+      "page": 2,
+      "epistemic_tier": "T5",
+      "predicate": "Verify the CatTSunami 56%/86% of 900 reactions claim against the cited source.",
+      "evidence": [
+        {
+          "id": "e41a",
+          "kind": "text",
+          "location": "Introduction",
+          "quote": "successful for 56% of the 900 reactions studied, which improved to 86%",
+          "extracted_values": {"success_pct": 56, "improved_pct": 86, "n_reactions": 900}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "citation-content verifier",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.4,
+        "rationale": "Cited external statistics; requires source retrieval (T5). 56% of 900 = 504 and 86% of 900 = 774 are integer-consistent, but the substantive check is against the CatTSunami paper. Inconclusive from this manuscript."
+      }
+    },
+    {
+      "id": "c42",
+      "text": "Wood et al. (UMA) estimate Er within 0.1 eV of DFT for 74% of Er reported in the AdsorbML task (cited prior work).",
+      "quote": "is able to estimate Er within 0.1 eV of DFT, for 74 % of Er reported in AdsorbML task.",
+      "section": "Introduction; Ref [15]",
+      "page": 2,
+      "epistemic_tier": "T5",
+      "predicate": "Verify the UMA 74%-within-0.1 eV AdsorbML claim against Ref [15].",
+      "evidence": [
+        {
+          "id": "e42a",
+          "kind": "text",
+          "location": "Introduction",
+          "quote": "estimate Er within 0.1 eV of DFT, for 74 % of Er reported in AdsorbML task",
+          "extracted_values": {"within_pct": 74, "threshold_eV": 0.1}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "citation-content verifier",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.4,
+        "rationale": "External-literature claim (T5) requiring retrieval of the UMA paper. Not deterministic here. Inconclusive."
+      }
+    },
+    {
+      "id": "c43",
+      "text": "Table 1 specifies the MACE model: 512 chemical channels, maximum equivariance order L=1, single-layer cutoff radius 6 A, 2 layers.",
+      "quote": "Number of chemical channels 512 ; Maximum equivariance order, L 1 ; Single layer cutoff radius (A) 6 ; Number of layers 2",
+      "section": "Sec 2.4; Table 1",
+      "page": 5,
+      "epistemic_tier": "T3",
+      "predicate": "Assess whether the stated architecture (L=1, 2 layers, 6 A cutoff, 512 channels) is internally consistent with the claimed effective receptive field (2 layers x 6 A = 12 A many-body range) and is a sensible MACE configuration.",
+      "evidence": [
+        {
+          "id": "e43a",
+          "kind": "table",
+          "location": "Table 1",
+          "quote": "512 ; L=1 ; 6 A ; 2 layers",
+          "extracted_values": {"channels": 512, "L": 1, "cutoff_A": 6, "layers": 2}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "method-spec plausibility check (consistent, reproducible hyperparameters)",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.6,
+        "rationale": "The hyperparameters are a self-consistent, conventional MACE configuration (L=1, 2 message-passing layers, 6 A cutoff -> ~12 A effective range, 512 channels). No internal contradiction; provides reproducibility anchors. T3 partial. Marked supported as a well-specified, plausible architecture."
+      }
+    }
+  ],
+  "paper_level_notes": "Real arXiv preprint (2605.09394v1, physics.chem-ph, 10 May 2026; Karimitari, Sutton et al., USC/NREL/RPI/Cambridge/MPI/Toronto). 50 pages incl. extensive SI (parity plots Figs 9-25, NEB pathways Figs 26-33, screening tables). Native-PDF Read path was unavailable in this environment (poppler not on the tool's PATH); catalog built from a faithful `pdftotext -layout` extraction of all 50 pages plus rendered images of key table/abstract pages. Tables 4 and 5 column alignment confirmed from the layout-preserving text. DATA AVAILABILITY is strong: all DFT calcs + trained MLIPs declared on Zenodo (10.5281/zenodo.20043317), making most figure-MAE and screening claims T6-reproducible in principle (DOI not resolved here - no network). COMPETING INTEREST properly disclosed (G. Csanyi: Symmetric Group LLP commercial force-field licensing + Angstrom AI equity); the paper advocates a fine-tuned MACE force field, so this is an integrity signal to surface (c35), not an error. DETERMINISTIC FRONTIER (T0-T2): the strongest checkable items are the Table 2 column totals (c2/c3/c4 confirm exactly; c1 'All Reactions' total 1569 vs sum 1739 is a genuine table-total mismatch IF additive - the leading suspect flag) and the many prose-vs-table delta/ratio claims (c7 'over 2x' supported at 2.27-2.36x; c10 'about half' = 0.44 supported; c15 '0.06 eV lower' recomputes to 0.028 with WRONG SIGN vs FT-MD(MO) - a prose-table inconsistency; c25 overall 81%-within-band sits above every per-subgroup fraction (max 77%) shown in Fig 6, a tension worth recomputing from data). Recurring minor off-by-one in the metal-oxide config count (2,692 vs Table 2's 2,693; CE/MD subsets 2,208 vs 2,209) across c8/c15/c21/c29. Abstract OER headline '0.30 eV' (c6) matches no single body value (FT-All=0.278, FT-MD(MO)=0.313) though its stated deltas (0.08/0.14 lower) are internally consistent with 0.30 as reference; also a model-scope ambiguity ('fine-tuned on metallic catalysts' vs OER numbers from FT-All/FT-MD(MO) which include MO data). SI Table 6 lists FT-MD(M) Ea=0.159 eV, above the body's '0.14-0.15 eV for all FT models' (c29). Many figure-MAE and within-threshold-percent claims (c18,c20,c23,c24,c37,c38) are T2 figure-reading tasks that collapse to deterministic recompute once values are read off the plots or the Zenodo data is rerun - high-value targets for the figure-reading verifier (DESIGN WS-E). No off-the-shelf verifier currently exists for any of these (verifier_exists=false throughout); the highest-leverage prebuilds suggested by this paper are: (1) a table-column-total verifier, (2) a prose-vs-table delta/ratio binder with sign-checking, (3) a parity-plot MAE recomputer, and (4) an aggregate-vs-subgroup percentage-consistency checker. Judged on its own merits this reads as a careful, data-shared methods paper; the flags are predominantly low-to-medium-severity internal-consistency/rounding issues plus the one clear table-total mismatch (c1) - not fabrication. No claim was bound to an invented number; nulls/inconclusives recorded wherever a value could not be transcribed or a figure/external source was needed."
+}

@@ -1,0 +1,660 @@
+{
+  "paper_id": "biology-zhang2025-brd4-protac-fulvestrant-breast",
+  "title": "BRD4 PROTAC degrader enhances fulvestrant sensitivity in ER+ breast cancer via super-enhancer associated GREB1",
+  "doi": "10.3389/fonc.2026.1828900",
+  "domain": "cancer biology / cancer epigenetics (ER+ breast cancer)",
+  "n_pages_read": 10,
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Across the BRD4 vs ER ChIP-seq peak Venn (Fig 6A), the displayed percentages (BRD4-only 43.2%, overlap 34.6%, ER-only 22.2%) are arithmetically faithful to the displayed counts as each region's share of the union.",
+      "quote": "7416 (43.2%) 5951 (34.6%) 3812 (22.2%)",
+      "section": "Results 3.5 / Figure 6A",
+      "page": 7,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute each region's percentage as count/(sum of the three displayed counts) and confirm it equals the displayed percentage and that the three percentages sum to 100%.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "figure",
+          "location": "Figure 6A",
+          "quote": "BRD4_ChIP-seq 7416 (43.2%); overlap 5951 (34.6%); ER_ChIP-seq 3812 (22.2%)",
+          "extracted_values": {"brd4_only": 7416, "overlap": 5951, "er_only": 3812, "union": 17179, "pct_brd4_only": 43.2, "pct_overlap": 34.6, "pct_er_only": 22.2, "recomputed_brd4_only": 43.17, "recomputed_overlap": 34.64, "recomputed_er_only": 22.19, "pct_sum": 100.0}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "percent-of-total / Venn-region arithmetic recompute (region count over union, sum-to-100 check)",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.96,
+        "rationale": "7416/17179=43.17, 5951/17179=34.64, 3812/17179=22.19; rounds to displayed 43.2/34.6/22.2 and sums to 100.0. NOTE on process: a first low-resolution read mis-OCR'd the overlap as 9951, which produced a spurious sum-to-101 inconsistency; re-reading the panel at 300 DPI confirmed 5951 and the arithmetic is clean. Off-the-shelf percent-of-total verifier covers this."
+      }
+    },
+    {
+      "id": "c2",
+      "text": "61.0% of ER promoter-binding genes overlapped with BRD4 promoter-binding genes.",
+      "quote": "Analysis revealed that 61.0% of ER promoter-binding genes overlapped with BRD4 promoter-binding genes",
+      "section": "Results 3.5",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Bind the prose 61.0% to the Fig 6A Venn and test whether it equals overlap/(ER total) = 5951/(5951+3812).",
+      "evidence": [
+        {
+          "id": "e2",
+          "kind": "figure",
+          "location": "Figure 6A + prose",
+          "quote": "5951 (34.6%) overlap; ER total = 5951+3812 = 9763",
+          "extracted_values": {"overlap": 5951, "er_total": 9763, "overlap_over_er_total_pct": 60.95, "claimed_pct": 61.0}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "prose-vs-figure ratio recompute (overlap/denominator with denominator disambiguation)",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.82,
+        "rationale": "5951/9763 = 60.95% which rounds to the claimed 61.0%. Caveat: Fig 6A circles are labeled ChIP-seq PEAKS while the prose says promoter-binding GENES; the numeric agreement strongly suggests the same set drives both, but the labeling mismatch (peaks vs genes) is the only reason this is not confidence ~0.95. A figure-vs-prose binding verifier with denominator disambiguation settles it."
+      }
+    },
+    {
+      "id": "c3",
+      "text": "50% of fulvestrant-downregulated genes were also suppressed by JQ1.",
+      "quote": "50% of fulvestrant-downregulated genes were also suppressed by JQ1",
+      "section": "Results 3.5",
+      "page": 7,
+      "epistemic_tier": "T2",
+      "predicate": "From Fig 6C three-way Venn, take all regions in the Ful_RNA-seq_down circle as the denominator and the regions it shares with JQ1_RNA-seq_down as the numerator; test ~50%.",
+      "evidence": [
+        {
+          "id": "e3",
+          "kind": "figure",
+          "location": "Figure 6C",
+          "quote": "JQ1_down/Ful_down overlap = 49; center = 58; Ful_down-only = 59; Ful_down/FulR overlap = 48",
+          "extracted_values": {"jq1_ful_overlap": 49, "center_all3": 58, "ful_only": 59, "ful_fulR_overlap": 48, "ful_down_total": 214, "shared_with_jq1": 107, "shared_pct": 50.0}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "prose-vs-figure set-overlap recompute on a 3-way Venn",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.74,
+        "rationale": "Ful_down regions in Fig 6C = 49+59+58+48 = 214; those shared with JQ1_down = 49+58 = 107; 107/214 = exactly 50.0%. Confidence is moderate because the denominator partition (which regions count as 'fulvestrant-downregulated') is an interpretive choice from the Venn; the most natural reading gives exactly 50%, so the claim is consistent."
+      }
+    },
+    {
+      "id": "c4",
+      "text": "Fig 6B up-regulated overlap percentages (90.5% / 0.1% / 9.4%) are faithful to the displayed counts (859 / 1 / 89).",
+      "quote": "859 (90.5%) 1 (0.1%) 89 (9.4%)",
+      "section": "Figure 6B",
+      "page": 7,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute count/sum for each region and confirm equality with displayed percentages and sum-to-100.",
+      "evidence": [
+        {
+          "id": "e4",
+          "kind": "figure",
+          "location": "Figure 6B",
+          "quote": "JQ1_RNA-seq_up 859 (90.5%); overlap 1 (0.1%); Ful_RNA-seq_up 89 (9.4%)",
+          "extracted_values": {"jq1_up": 859, "overlap": 1, "ful_up": 89, "total": 949, "recomputed_overlap_pct": 0.105, "pct_sum": 100.0}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "percent-of-total / Venn arithmetic recompute",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.95,
+        "rationale": "859/949=90.52, 1/949=0.105, 89/949=9.38; rounds to 90.5/0.1/9.4 and sums to 100.0. Notable substantively: only 1 gene overlaps between JQ1-up and Ful-up, consistent with the paper's narrative that the two agents share down-regulation not up-regulation; arithmetic is exact."
+      }
+    },
+    {
+      "id": "c5",
+      "text": "Fig 6C three-way Venn percentages (31.2 / 1.3 / 1.5 / 8.0 / 1.5 / 1.3 / 55.2) are faithful to the displayed counts and sum to 100%.",
+      "quote": "1189 (31.2%) 49 (1.3%) 59 (1.5%) 303 (8.0%) 58 (1.5%) 48 (1.3%) 2100 (55.2%)",
+      "section": "Figure 6C",
+      "page": 7,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute each region count/total and confirm displayed percentages and sum-to-100.",
+      "evidence": [
+        {
+          "id": "e5",
+          "kind": "figure",
+          "location": "Figure 6C",
+          "quote": "regions: 1189, 49, 59, 303, 58, 48, 2100; total 3806",
+          "extracted_values": {"r1189": 1189, "r49": 49, "r59": 59, "r303": 303, "center58": 58, "r48": 48, "r2100": 2100, "total": 3806, "pct_sum": 100.0}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "percent-of-total / Venn arithmetic recompute",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.95,
+        "rationale": "Sum of regions = 3806; each region/3806 rounds to the displayed percentages (e.g. 1189/3806=31.24->31.2; 58/3806=1.52->1.5) and the seven percentages sum to exactly 100.0. Off-the-shelf percent-of-total verifier covers this."
+      }
+    },
+    {
+      "id": "c6",
+      "text": "The center of the Fig 6C Venn (genes down in both JQ1 and fulvestrant AND up in fulvestrant-resistant cells) is 58 genes, matching the prose 'identifying 58 candidate genes'.",
+      "quote": "identifying 58 candidate genes potentially core to BRD4 and ER function as well as therapy resistance",
+      "section": "Results 3.5",
+      "page": 7,
+      "epistemic_tier": "T2",
+      "predicate": "Compare the prose count (58) to the Fig 6C central intersection label (58).",
+      "evidence": [
+        {
+          "id": "e6",
+          "kind": "figure",
+          "location": "Figure 6C center",
+          "quote": "58 (1.5%)",
+          "extracted_values": {"prose_count": 58, "figure_center": 58}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "prose-vs-figure integer match",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.9,
+        "rationale": "Prose '58 candidate genes' equals the Fig 6C central three-way intersection (58) exactly. Direct integer match between prose and figure label."
+      }
+    },
+    {
+      "id": "c7",
+      "text": "A substantial majority (>=78%) of BRD4 binding sites coincided with histone acetylation sites, specifically H3K27ac 93.93%, H3K4ac 88.42%, H3K9ac 83.18%, and H3K23ac 78.00%.",
+      "quote": "a substantial majority (≥78%) of BRD4 binding sites coincided with histone acetylation sites, specifically H3K27ac (93.93%), H3K4ac (88.42%), H3K9ac (83.18%), and H3K23ac (78.00%)",
+      "section": "Results 3.1",
+      "page": 4,
+      "epistemic_tier": "T2",
+      "predicate": "Check the prose summary '>=78%' against the minimum of the four listed overlap percentages, and bind each listed percentage to the corresponding Fig 1 F-J co-localization panel.",
+      "evidence": [
+        {
+          "id": "e7",
+          "kind": "figure",
+          "location": "Figure 1 F-J (co-localization panels)",
+          "quote": "co-localization sites and correlation coefficients between H3K4ac, H3K9ac, H3K23ac, H3K27ac and BRD4",
+          "extracted_values": {"h3k27ac": 93.93, "h3k4ac": 88.42, "h3k9ac": 83.18, "h3k23ac": 78.0, "stated_min": 78.0}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "prose-vs-figure value extraction (read the four co-localization percentages off Fig 1 F-J and confirm min == 78.00 and the >=78% summary)",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.55,
+        "rationale": "The prose '>=78%' is internally consistent with the stated minimum (78.00%). However the four exact percentages are quoted in the body but I could not independently read precise numeric labels off the Fig 1 F-J Venn/scatter panels at available resolution; binding the four numbers to the panels needs a vision value-extraction verifier (the T2 figure-reading frontier). Marked inconclusive pending that extraction; the internal '>=78% = min(values)' relation alone is supported."
+      }
+    },
+    {
+      "id": "c8",
+      "text": "Co-localization of BRD4 with all four acetylation marks was supported by strong correlation coefficients, all exceeding 0.7.",
+      "quote": "These co-localization events were supported by strong correlation coefficients, all exceeding 0.7 (Figures 1F–J)",
+      "section": "Results 3.1",
+      "page": 4,
+      "epistemic_tier": "T2",
+      "predicate": "Read the four correlation coefficients displayed in Fig 1 F-J and confirm each is > 0.7.",
+      "evidence": [
+        {
+          "id": "e8",
+          "kind": "figure",
+          "location": "Figure 1 F-J",
+          "quote": null,
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "vision value-extraction of correlation coefficients from Fig 1 F-J, then threshold check (>0.7)",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.4,
+        "rationale": "The individual correlation coefficient values printed in Fig 1 F-J were not legible at available render resolution, so the '>0.7' claim cannot be bound to specific numbers here; recording null rather than inventing values. Settled only by a figure value-extraction verifier reading each coefficient."
+      }
+    },
+    {
+      "id": "c9",
+      "text": "The chromatin binding densities of all five factors (H3K4ac, H3K9ac, H3K23ac, H3K27ac, BRD4) were significantly elevated in promoter regions of MCF7 cells compared to MCF10A cells.",
+      "quote": "the chromatin binding densities of all five factors were significantly elevated in promoter regions of MCF7 cells compared to MCF10A cells (Figures 1A–E)",
+      "section": "Results 3.1",
+      "page": 4,
+      "epistemic_tier": "T4",
+      "predicate": "Assess whether the Fig 1 A-E TSS-density profiles and any reported significance support 'significantly elevated' for all five factors; check that a significance test is actually reported vs. asserted.",
+      "evidence": [
+        {
+          "id": "e9",
+          "kind": "figure",
+          "location": "Figure 1 A-E (TSS +/- 3 kb density profiles)",
+          "quote": null,
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "claim<->evidence support check: is a significance statistic reported for the MCF7-vs-MCF10A density comparison, or is 'significantly' an unsupported qualifier?",
+        "verifier_exists": false,
+        "candidate_verdict": "suspect",
+        "confidence": 0.45,
+        "rationale": "Fig 1 A-E are metagene density traces; the word 'significantly' implies a statistical test but no test statistic, p-value, or replicate structure for the MCF7-vs-MCF10A comparison is reported in text or legend (these are public-dataset profile plots). Likely a descriptive 'higher' dressed as 'significant'. Low confidence because a test could be in the SI; an evidence-support verifier checking for a reported statistic settles it."
+      }
+    },
+    {
+      "id": "c10",
+      "text": "Among BRD4-targeting compounds, ZBC260 exhibited the strongest anti-proliferative (relative cell inhibitory rate) activity on MCF7, exceeding ARV825 and JQ1 across 0-200 nM.",
+      "quote": "In a screen for compounds with anti-proliferative activity, ZBC260 exhibited the strongest inhibitory activity (Figure 4A)",
+      "section": "Results 3.3",
+      "page": 4,
+      "epistemic_tier": "T2",
+      "predicate": "Read the three dose-response curves in Fig 4A (ZBC260, ARV825, JQ1) and confirm ZBC260 has the highest inhibitory rate at matched doses.",
+      "evidence": [
+        {
+          "id": "e10",
+          "kind": "figure",
+          "location": "Figure 4A",
+          "quote": "Relative Cell Inhibitory Rate(%) vs 0-200 nM; ZBC260 (red) ~50% plateau, ARV825 (blue) ~40%, JQ1 (green) ~25%",
+          "extracted_values": {"zbc260_plateau_pct_approx": 50, "arv825_plateau_pct_approx": 40, "jq1_plateau_pct_approx": 25}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "figure value-extraction + ordering check (ZBC260 > ARV825 > JQ1 at matched dose)",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.78,
+        "rationale": "Fig 4A clearly shows the ZBC260 curve (red) above ARV825 (blue) above JQ1 (green) at every concentration, with significance markers (*, #) on ZBC260 at higher doses; the qualitative ordering claim is visually supported. Plateau values are approximate reads, not printed numbers, hence not 0.9+."
+      }
+    },
+    {
+      "id": "c11",
+      "text": "Cell counts of MCF7 were significantly lower for Ful+ZBC260 than for Ful alone, for ZBC260 alone vs vehicle, and for Ful+ZBC260 vs ZBC260 (Fig 4D), supporting that the combination is more anti-proliferative than either agent.",
+      "quote": "* indicates p<0.05, ZBC260 compared to vehicle; # indicates p<0.05, Ful+ZBC260 compared to Ful; $ indicates p<0.05, Ful+ZBC260 compared to ZBC260",
+      "section": "Figure 4 legend / Results 3.3",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Read the Fig 4D bar heights (Veh, Ful, ZBC260, Ful+ZBC260) and confirm the direction of the marked significant comparisons; check the 'ns' between Veh and Ful.",
+      "evidence": [
+        {
+          "id": "e11",
+          "kind": "figure",
+          "location": "Figure 4D",
+          "quote": "Cell counts(10^6): Veh and Ful ~4.8 (ns between them); ZBC260 ~3.9 (*); Ful+ZBC260 ~2.0 (#, $)",
+          "extracted_values": {"veh_approx": 4.8, "ful_approx": 4.7, "zbc260_approx": 3.9, "ful_zbc260_approx": 2.0}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "figure bar-height extraction + direction-of-effect consistency with significance markers and 'ns'",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.72,
+        "rationale": "Bar ordering Veh~Ful (marked ns) > ZBC260 (*) > Ful+ZBC260 (#,$) is consistent with the legend's significance scheme and the combination-superiority claim. Fulvestrant alone barely differs from vehicle in MCF7 cell count (consistent with parental, fulvestrant-sensitive cells over 48 h). Confidence moderate: bar heights are read approximately and no numeric values/error bars are tabulated."
+      }
+    },
+    {
+      "id": "c12",
+      "text": "Approximately 50% of BRD4 binding sites are located in promoter regions.",
+      "quote": "Genomic annotation revealed that approximately 50% of BRD4 binding sites are located in promoter regions (Figure 5A)",
+      "section": "Results 3.4",
+      "page": 4,
+      "epistemic_tier": "T2",
+      "predicate": "Read the Fig 5A BRD4 genomic-feature bar plot and confirm the promoter category is ~50%.",
+      "evidence": [
+        {
+          "id": "e12",
+          "kind": "figure",
+          "location": "Figure 5A (BRD4 chromatin binding features bar plot)",
+          "quote": null,
+          "extracted_values": {"claimed_promoter_pct": 50}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "figure value-extraction of the promoter fraction from the Fig 5A feature-distribution bar plot",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.4,
+        "rationale": "The exact promoter percentage in Fig 5A was not legible at available resolution; 'approximately 50%' is plausible for ChIP-seq feature distributions but cannot be bound to a read value here, so recorded inconclusive rather than inventing a number. A figure value-extraction verifier settles it."
+      }
+    },
+    {
+      "id": "c13",
+      "text": "About one-third of ER binding sites were found in promoter regions.",
+      "quote": "About one-third of ER binding sites were found in promoter regions (Figure 5E)",
+      "section": "Results 3.4",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Read the Fig 5E ER genomic-feature bar plot and confirm the promoter category is ~33%.",
+      "evidence": [
+        {
+          "id": "e13",
+          "kind": "figure",
+          "location": "Figure 5E (ER chromatin binding features bar plot)",
+          "quote": null,
+          "extracted_values": {"claimed_promoter_fraction": 0.33}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "figure value-extraction of the ER promoter fraction from Fig 5E",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.4,
+        "rationale": "Exact ER promoter fraction in Fig 5E not legible at available resolution; 'about one-third' is plausible but unbound to a read value, so inconclusive. Figure value-extraction verifier settles it."
+      }
+    },
+    {
+      "id": "c14",
+      "text": "BRD4's downstream super-enhancer landscape comprises 450 super-enhancers, of which 12 are associated with the 58 shortlisted candidate genes.",
+      "quote": "we mapped its downstream SE landscape and identified 450 SEs (Supplementary Table 3). Intriguingly, these SEs were associated with 12 of the 58 shortlisted genes",
+      "section": "Results 3.5",
+      "page": 7,
+      "epistemic_tier": "T6",
+      "predicate": "Open Supplementary Table 3/4 (SE annotation) and confirm 450 super-enhancer rows and that exactly 12 of the 58 candidate genes map to an SE; 12/58 = 20.7%.",
+      "evidence": [
+        {
+          "id": "e14",
+          "kind": "dataset",
+          "location": "Supplementary Table 3 / Supplementary Table 4 (SE annotation), Figure 6D",
+          "quote": "identified 450 SEs; 12 of the 58 shortlisted genes",
+          "extracted_values": {"n_super_enhancers": 450, "se_associated_candidates": 12, "candidate_total": 58, "se_assoc_pct_of_58": 20.7}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "SI-table reproducibility check: row count of SE table == 450 and SE<->candidate gene join cardinality == 12",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.5,
+        "rationale": "Both 450 and 12 are concrete and checkable against Supplementary Tables 3/4, but the SI was not provided in this PDF, so the count cannot be confirmed now. The internal ratio 12/58 = 20.7% is arithmetically consistent with the figures cited. Marked inconclusive pending SI; a tabular-SI verifier (T6) settles it."
+      }
+    },
+    {
+      "id": "c15",
+      "text": "The super-enhancer inflection cutoff used to define BRD4 super-enhancers was a signal intensity of 8034.7455 (ROSE, 12.5 kb stitching window).",
+      "quote": "Enhancers above the inflection point of the curve were defined as super-enhancers (BRD4 cut-off, 8034.7455).",
+      "section": "Methods 2.5",
+      "page": 2,
+      "epistemic_tier": "T3",
+      "predicate": "Assess whether the ROSE super-enhancer-calling pipeline (12.5 kb stitching, hockey-stick inflection cutoff) was applied appropriately; the specific cutoff is data-derived and only reproducible from raw signal.",
+      "evidence": [
+        {
+          "id": "e15",
+          "kind": "number",
+          "location": "Methods 2.5",
+          "quote": "stitched together within a 12.5 kb window using the ROSE algorithm; BRD4 cut-off, 8034.7455",
+          "extracted_values": {"rose_stitch_window_kb": 12.5, "brd4_se_cutoff": 8034.7455}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "method-appropriateness signature check (standard ROSE params) + (for the cutoff value) rerun ROSE on the raw BRD4 ChIP signal",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.6,
+        "rationale": "12.5 kb stitching and the inflection-point definition are the standard ROSE super-enhancer convention, so the method is appropriate. The exact cutoff 8034.7455 is a data-derived inflection value not recomputable from the manuscript alone (needs raw signal); method-validity is supported, the specific number is T6-reproducibility only."
+      }
+    },
+    {
+      "id": "c16",
+      "text": "BRD4 expression is significantly upregulated in the fulvestrant-resistant MCF7 cell line relative to parental MCF7 (GSE118713).",
+      "quote": "This analysis revealed that BRD4 expression is significantly upregulated in the fulvestrant-resistant cell line (Figure 2D, Supplementary Table 1)",
+      "section": "Results 3.2",
+      "page": 4,
+      "epistemic_tier": "T4",
+      "predicate": "Confirm BRD4 appears as a significantly upregulated gene (above the |log2FC|>=1, padj<0.05 thresholds) in the Fig 2D volcano / Supplementary Table 1, with BRD4 specifically highlighted.",
+      "evidence": [
+        {
+          "id": "e16",
+          "kind": "figure",
+          "location": "Figure 2D (volcano plot) + Supplementary Table 1",
+          "quote": "volcano plot of the differential expression genes in MCF7 fulvestrant resistant cell line",
+          "extracted_values": {"log2fc_threshold": 1, "padj_threshold": 0.05}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "claim<->evidence check: is BRD4 specifically labeled/above-threshold in the volcano plot and Suppl Table 1, applying the stated DESeq2 cutoffs",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.45,
+        "rationale": "Fig 2D shows a volcano of resistant-vs-parental DEGs, but whether BRD4 itself crosses the significance threshold is not legibly highlighted in the rendered volcano; binding requires reading Supplementary Table 1. Recorded inconclusive rather than asserting BRD4's position. Settled by the SI DE table (T4/T6)."
+      }
+    },
+    {
+      "id": "c17",
+      "text": "Pre-treatment with the proteasome inhibitor MG132 (10 uM, 6 h) abrogated ZBC260-induced BRD4 degradation, indicating a ubiquitin-proteasome mechanism.",
+      "quote": "pre-treatment with the proteasome inhibitor MG132 abrogated ZBC260-induced BRD4 degradation (Figure 3B), indicating that ZBC260 promoted BRD4 degradation through the ubiquitin-proteasome pathway",
+      "section": "Results 3.3 / Figure 3B",
+      "page": 5,
+      "epistemic_tier": "T4",
+      "predicate": "Read the Fig 3B western blot lanes (ZBC260 vs MG132+ZBC260) and confirm BRD4 band is restored with MG132 co-treatment vs reduced with ZBC260 alone.",
+      "evidence": [
+        {
+          "id": "e17",
+          "kind": "figure",
+          "location": "Figure 3B (western blot)",
+          "quote": "western blot of BRD4 after pre-treatment with MG132 (10mM, 6h) followed by ZBC260 (50nM, 48h)",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "blot densitometry / band-presence reading (BRD4 restored in MG132+ZBC260 vs depleted in ZBC260) and loading-control normalization",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.4,
+        "rationale": "The rescue logic is standard PROTAC pharmacology and the blot qualitatively shows BRD4 recovery with MG132, but a quantitative claim about 'abrogated' degradation requires densitometry against the GAPDH loading control, which is not tabulated. Recorded inconclusive; a blot-quantification verifier would settle it. (Also a typo: legend writes MG132 '10mM' where 10 uM is intended.)"
+      }
+    },
+    {
+      "id": "c18",
+      "text": "ER+ (estrogen receptor-positive) breast cancer accounts for about 75% of all breast cancer cases.",
+      "quote": "endocrine therapies in treating ERa-positive breast cancer, which accounts for about 75% of all cases",
+      "section": "Discussion",
+      "page": 7,
+      "epistemic_tier": "T5",
+      "predicate": "Compare the stated ~75% ER+ prevalence against established breast-cancer epidemiology (literature/known value).",
+      "evidence": [
+        {
+          "id": "e18",
+          "kind": "text",
+          "location": "Discussion para 1",
+          "quote": "accounts for about 75% of all cases",
+          "extracted_values": {"er_positive_prevalence_pct": 75}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "external known-value lookup against breast-cancer epidemiology references",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.8,
+        "rationale": "ER+ breast cancer is widely cited at ~70-80% of cases, so 'about 75%' is within the accepted range. Confidence not higher because no citation is attached to this specific figure; a literature-lookup verifier confirms against a reference table."
+      }
+    },
+    {
+      "id": "c19",
+      "text": "Acquired endocrine resistance drives relapse in up to 30% of ER+ breast cancer patients.",
+      "quote": "acquired resistance drives relapse in up to 30% of patients (7)",
+      "section": "Discussion",
+      "page": 7,
+      "epistemic_tier": "T5",
+      "predicate": "Verify that cited reference 7 supports the 'up to 30% relapse' figure (citation-accuracy / source-says check).",
+      "evidence": [
+        {
+          "id": "e19",
+          "kind": "text",
+          "location": "Discussion para 1, citation (7)",
+          "quote": "up to 30% of patients (7)",
+          "extracted_values": {"relapse_pct": 30, "citation_ref": 7}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "citation-distortion check: does ref 7 (Zhang et al., BioMed Res Int 2020, lncRNAs in tamoxifen resistance) actually state ~30% relapse?",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.5,
+        "rationale": "The ~30% relapse figure is broadly consistent with endocrine-resistance literature, but ref 7 is a lncRNA bioinformatics paper, not obviously the canonical source for a 30% relapse rate; whether it supports this number needs source retrieval. Recorded inconclusive; a citation-entailment verifier (T5) settles it."
+      }
+    },
+    {
+      "id": "c20",
+      "text": "Over 60% of ER promoter-binding events and 50% of its transcriptome overlap with that of BRD4.",
+      "quote": "over 60% of ER promoter-binding events and 50% of its transcriptome overlap with that of BRD4",
+      "section": "Discussion",
+      "page": 8,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check the Discussion's 'over 60%' against the Results 61.0% (c2) and the '50% of transcriptome' against the Results 50% downregulated-overlap (c3) for internal abstract/body-vs-discussion consistency.",
+      "evidence": [
+        {
+          "id": "e20",
+          "kind": "text",
+          "location": "Discussion vs Results 3.5",
+          "quote": "over 60% ... and 50% of its transcriptome",
+          "extracted_values": {"discussion_promoter_overlap_pct": 60, "results_promoter_overlap_pct": 61.0, "discussion_transcriptome_pct": 50, "results_downreg_overlap_pct": 50}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "internal cross-consistency (Discussion-vs-Results numeric agreement)",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.78,
+        "rationale": "'over 60%' is consistent with the Results 61.0% (c2); '50% of its transcriptome' aligns with the 50% fulvestrant-downregulated/JQ1 overlap (c3). Internally consistent restatement. Slight looseness because 'transcriptome overlap' is a broad paraphrase of the specific downregulated-gene overlap, not a separate computed figure."
+      }
+    },
+    {
+      "id": "c21",
+      "text": "Table 1's public GEO datasets are internally consistent: the same accession is reused across condition columns rather than mislabeled (e.g., GSE123284 for BRD4; GSE85158 for H3K9/23/27ac).",
+      "quote": "BRD4 GSE72931, GSE123284 ... BRD4 GSE55921, GSE123284 ... H3K9ac GSE85158 ... H3K23ac GSE85158 ... H3K27ac GSE85158",
+      "section": "Table 1",
+      "page": 4,
+      "epistemic_tier": "T7",
+      "predicate": "Validate that each GEO accession is well-formed (GSE + digits) and that repeated accessions correspond to the same underlying dataset reused across columns (not transcription drift).",
+      "evidence": [
+        {
+          "id": "e21",
+          "kind": "table",
+          "location": "Table 1",
+          "quote": "GSE69377, GSE85158, GSE72931, GSE123284, GSE167451, GSE29073, GSE113092, GSE55921, GSE23701, GSE123285",
+          "extracted_values": {"distinct_accessions_listed": 10, "GSE123284_reuse_count": 2, "GSE85158_reuse_count": 3}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "accession well-formedness + existence lookup against GEO (and consistency that GSE123284/GSE85158 are legitimately reused)",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.65,
+        "rationale": "All accessions are well-formed GSE IDs; GSE85158 appearing for three acetylation marks and GSE123284 for two conditions is consistent with multi-assay series, i.e., legitimate reuse rather than a transcription error. Existence/scope confirmation requires a GEO lookup; flagged as an integrity/provenance signal, not an error."
+      }
+    },
+    {
+      "id": "c22",
+      "text": "All experiments were performed with at least three independent biological replicates (n=3); statistics used a two-tailed paired t-test in GraphPad Prism with p<0.05 significant.",
+      "quote": "All experiments were performed at least three independent biological replicates (n=3) ... Statistical significance was determined using a two-tailed paired t-test in GraphPad Prism 6.0 ... with a p-value < 0.05 considered significant.",
+      "section": "Methods 2.15",
+      "page": 3,
+      "epistemic_tier": "T3",
+      "predicate": "Assess whether a two-tailed PAIRED t-test is the appropriate test for the in vitro group comparisons described (independent biological replicates across treatment arms), versus an unpaired test / ANOVA with multiple-comparison correction for the >2-group bar charts (Fig 4D, Fig 8B-D).",
+      "evidence": [
+        {
+          "id": "e22",
+          "kind": "text",
+          "location": "Methods 2.15 + 2.7",
+          "quote": "two-tailed paired t-test in GraphPad Prism 6.0 ... n=3",
+          "extracted_values": {"n_replicates": 3, "test": "two-tailed paired t-test", "alpha": 0.05}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "method-appropriateness check: paired vs unpaired t-test justification, and whether multi-group comparisons (4 arms in Fig 4D/8) warrant ANOVA + multiple-comparison correction rather than pairwise t-tests",
+        "verifier_exists": false,
+        "candidate_verdict": "suspect",
+        "confidence": 0.55,
+        "rationale": "Two issues: (1) a PAIRED t-test is only justified if replicates are matched across conditions (e.g., same-day batches); for independent biological replicates an unpaired test is usually correct, and the pairing is not justified. (2) Fig 4D and Fig 8B-D compare four treatment arms with multiple pairwise * / # / $ markers, which calls for ANOVA with multiple-comparison correction rather than repeated two-group t-tests. This is a method-design concern, not an arithmetic error; flagged suspect at moderate confidence pending the per-test design details. No p-values are reported numerically, so statcheck-style p-recompute is not applicable."
+      }
+    },
+    {
+      "id": "c23",
+      "text": "The relative GREB1 expression by RT-qPCR was quantified using the 2^(-ddCt) method with 18S rRNA as the endogenous control.",
+      "quote": "The relative expression levels were calculated using the 2^(-DDCt) method, with 18S rRNA serving as the endogenous control.",
+      "section": "Methods 2.7 / Figure 8C",
+      "page": 2,
+      "epistemic_tier": "T3",
+      "predicate": "Assess appropriateness of 18S rRNA as a normalizer for the 2^(-ddCt) method under the treatment conditions, and consistency of the qPCR analysis description with the Fig 8C 'Fold Change' bar graph.",
+      "evidence": [
+        {
+          "id": "e23",
+          "kind": "figure",
+          "location": "Figure 8C (GREB1 RNA fold change) + Methods 2.7",
+          "quote": "Fold Change of GREB1 (vehicle, fulvestrant, ZBC260, Ful+ZBC260, +/- E2)",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "method-appropriateness check (housekeeping-gene choice for the 2^-ddCt method) + figure-vs-method consistency",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.6,
+        "rationale": "2^(-ddCt) with a single housekeeping reference is standard; 18S rRNA is a conventional (if high-abundance) normalizer. The Fig 8C fold-change presentation is consistent with the method. No raw Ct values are provided, so the actual 2^(-ddCt) recompute (a clean T0 check if Ct tables existed) is not possible here; method choice itself is acceptable."
+      }
+    },
+    {
+      "id": "c24",
+      "text": "Estrogen (E2) rescues the BRD4/ZBC260-induced loss of GREB1 chromatin binding and expression, while tamoxifen induces less BRD4/ER/H3K27ac and more HDAC1 binding at the GREB1 promoter.",
+      "quote": "ZBC260 combined with fulvestrant more impair the events, but estrogen rescue the events ... tamoxifen treatment induces less BRD4, ER and H3K27ac chromatin binding on the promoter regions of GREB1, whereas more HDAC1 binding events",
+      "section": "Results 3.6 / Figure 8A-D",
+      "page": 7,
+      "epistemic_tier": "T2",
+      "predicate": "Read Fig 8A density tracks (estrogen vs tamoxifen at GREB1) and Fig 8B-D bars (vehicle/Ful/ZBC260/Ful+ZBC260, +/- E2) and confirm the described direction of changes and the E2-rescue pattern.",
+      "evidence": [
+        {
+          "id": "e24",
+          "kind": "figure",
+          "location": "Figure 8A (tracks), 8B (ChIP-qPCR % input), 8C (RNA fold change), 8D (protein WB)",
+          "quote": "* p<0.05 ZBC260 vs vehicle; # p<0.05 Ful+ZBC260 vs ZBC260, E2+ZBC260 vs ZBC260",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "figure value-extraction + direction-of-effect consistency across the 8A tracks and 8B-D bars (E2-rescue pattern)",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.6,
+        "rationale": "Fig 8B (% input) and 8C (fold change) bars qualitatively show the lowest GREB1 signal in Ful+ZBC260 and recovery with E2 (the E2+ZBC260 bar marked vs ZBC260), and Fig 8A tracks show estrogen vs tamoxifen differences at GREB1, consistent with the prose. Direction is visually supported; exact bar values not printed, hence moderate confidence."
+      }
+    },
+    {
+      "id": "c25",
+      "text": "ZBC260 (a BRD4 PROTAC) reduces BRD4 protein in a dose-dependent (0-50 nM, 48 h) and time-dependent (50 nM, 0-48 h) manner.",
+      "quote": "ZBC260 also led to a marked reduction in BRD4 protein levels in a dose- and time-dependent manner (Figures 3C, D)",
+      "section": "Results 3.3 / Figure 3C,D",
+      "page": 5,
+      "epistemic_tier": "T2",
+      "predicate": "Read Fig 3C (0-50 nM dose series) and 3D (0-48 h time series) western blots, normalized to GAPDH, and confirm monotonic BRD4 decrease with dose and time.",
+      "evidence": [
+        {
+          "id": "e25",
+          "kind": "figure",
+          "location": "Figure 3C, 3D (western blots, GAPDH loading control)",
+          "quote": "BRD4 after 0-50nM ZBC260 (48h); BRD4 after 50nM ZBC260 for 0-48h",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "blot densitometry trend check (BRD4/GAPDH decreasing across the dose and time series)",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.55,
+        "rationale": "Fig 3C/D qualitatively show progressively fainter BRD4 bands with increasing dose and time against stable GAPDH, supporting 'dose- and time-dependent'. A rigorous monotonicity claim needs densitometry (not tabulated); direction is visually consistent, so supported at moderate confidence."
+      }
+    }
+  ],
+  "paper_level_notes": "Frontiers in Oncology (2026), open-access CC-BY, Original Research; 10 pages. Largely a bioinformatics-reanalysis paper: most quantitative content is derived from PUBLIC GEO ChIP-seq/RNA-seq datasets (Table 1: GSE69377, GSE85158, GSE72931, GSE123284, GSE167451, GSE29073, GSE113092, GSE55921, GSE23701, GSE123285, GSE118713 for fulvestrant-resistant RNA-seq) plus modest wet-lab validation (CCK-8, transwell, calcein-AM/PI, IF, ChIP-qPCR, RT-qPCR, WB) in MCF7 only. STRONGEST deterministic frontier = the Figure 6 Venn diagrams (6A/6B/6C): all displayed percentages recompute exactly from the displayed counts and sum to 100.0%, AND the two key prose figures bind cleanly to them -- '61.0% of ER promoter-binding genes overlap BRD4' = 5951/9763 = 60.95%, and '50% of fulvestrant-downregulated genes also suppressed by JQ1' = 107/214 = exactly 50.0% (from the 6C regions). The prose '58 candidate genes' matches the 6C central intersection exactly. PROCESS CAVEAT worth recording for the study: an initial 150-DPI read mis-OCR'd the Fig 6A overlap as 9951, which fabricated a sum-to-101 'inconsistency'; a 300-DPI re-read corrected it to 5951 and the arithmetic is clean -- a concrete reminder that figure-number transcription must be done at high resolution before any T0/T2 verdict. NO arithmetic errors found. Genuine WEAKER spots (suspect, not errors): (1) statistics -- a two-tailed PAIRED t-test is declared for what appear to be independent biological replicates and is used pairwise across 4-arm bar charts (Fig 4D, 8B-D) where ANOVA + multiple-comparison correction would be expected (c22); (2) 'significantly elevated' density (Fig 1A-E) asserted without a reported test statistic (c9). NO numeric p-values are reported anywhere, so statcheck/GRIM/GRIMMER are N/A. Several concrete numbers (450 SEs; 12 of 58 SE-associated; whether BRD4 itself crosses DE thresholds in Fig 2D) are checkable ONLY against Supplementary Tables 1-4, which are NOT bundled in this PDF -> T6/SI-dependent, marked inconclusive (recorded null rather than invented). Minor transcription/typo signals (not errors of result): MG132 written as '10mM' where 10 uM is intended; '2mM Calcein-AM'/'5mM PI' likely uM. Data availability = 'online repositories ... names/accessions in article/Supplementary Material' (GEO accessions are in Table 1); no new raw data deposited beyond the wet-lab validations; no code repository stated. Generative-AI statement: authors declare gen-AI not used for the manuscript (Frontiers auto-generated alt-text only). Off-the-shelf coverage: a percent-of-total / Venn-region arithmetic verifier covers c1/c4/c5 outright; a prose-vs-figure binding+ratio verifier covers c2/c3/c6; the figure-value-extraction (vision) frontier is the bottleneck for c7-c13, c24-c25 (reading printed numbers and bar/track heights off panels)."
+}

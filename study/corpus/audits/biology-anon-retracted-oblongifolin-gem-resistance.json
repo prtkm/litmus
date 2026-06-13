@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "biology-anon-retracted-oblongifolin-gem-resistance",
+  "meta": {
+    "executor": "local",
+    "n_claims": 3,
+    "n_verifiers": 9,
+    "synthesis_candidates": [
+      "c1",
+      "c3"
+    ],
+    "confirmation": "fresh-sandbox",
+    "registry_load_errors": []
+  },
+  "summary": {
+    "n_findings": 0,
+    "n_flags": 0,
+    "n_dropped": 0,
+    "n_routed_to_human": 1,
+    "n_abstained": 2,
+    "flags_by_trust_tier": {},
+    "flags_by_severity": {}
+  },
+  "findings": [],
+  "dropped_flags": [],
+  "routed_to_human": [
+    {
+      "claim_id": "c2",
+      "dimension": "tier:T7",
+      "note": "tier T7: subjective/integrity \u2014 surfaced, not scored (DESIGN \u00a73.5)",
+      "quote": "the\nimmunohistochemical image shown in Fig. 1C on p. 1434 and \ncertain of the western blot data featured in Figs. 3B and 4B \nwere strikingly similar to data that had already appeared \npreviously in articles written by different authors at different \nresearch institutes."
+    }
+  ],
+  "abstained": [
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c1",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "Oblongifolin C reverses GEM resistance via suppressing \nautophagy flux in bladder cancer cells",
+        "location": {
+          "section": "RETRACTION",
+          "page": 1,
+          "char_span": null,
+          "quote": "Oblongifolin C reverses GEM resistance via suppressing \nautophagy flux in bladder cancer cells"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c3",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "has decided that this \npaper should be retracted from the Journal. The authors were \nasked for an explanation to account for these concerns, but the \nEditorial Office did not receive a reply.",
+        "location": {
+          "section": "RETRACTION",
+          "page": 1,
+          "char_span": null,
+          "quote": "has decided that this \npaper should be retracted from the Journal. The authors were \nasked for an explanation to account for these concerns, but the \nEditorial Office did not receive a reply."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    }
+  ]
+}

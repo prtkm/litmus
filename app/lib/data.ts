@@ -80,13 +80,17 @@ export async function getPaper(id: string): Promise<AuditReport | null> {
   if (isSupabaseConfigured()) {
     const supabase = getSupabase();
     if (supabase) {
-      // Look up by primary id first, then by content_hash as a fallback key.
-      const { data, error } = await supabase
-        .from("papers")
-        .select("*")
-        .or(`id.eq.${id},content_hash.eq.${id}`)
-        .limit(1)
-        .maybeSingle();
+      // The gallery routes by report.paper_id (a slug), which lives in
+      // audit_report->>paper_id — NOT the uuid `id` column. Comparing a slug to
+      // the uuid column makes Postgres throw on the cast, so branch on shape:
+      // a uuid hits `id`; anything else matches the paper_id slug (with
+      // content_hash as a secondary key).
+      const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
+      const base = supabase.from("papers").select("*").limit(1);
+      const query = isUuid
+        ? base.eq("id", id)
+        : base.or(`content_hash.eq.${id},audit_report->>paper_id.eq.${id}`);
+      const { data, error } = await query.maybeSingle();
       if (error) throw new Error(`Supabase getPaper failed: ${error.message}`);
       return data ? rowToReport(data as PaperRow) : null;
     }

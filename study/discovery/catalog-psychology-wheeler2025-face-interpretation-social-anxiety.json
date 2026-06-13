@@ -1,0 +1,439 @@
+{
+  "paper_id": "psychology-wheeler2025-face-interpretation-social-anxiety",
+  "title": "The effect of face interpretation training on social anxiety symptoms",
+  "doi": "10.3389/fpsyg.2026.1735938",
+  "domain": "Psychology / clinical (cognitive bias modification; single-session online RCT, repeated-measures ANOVA)",
+  "n_pages_read": 10,
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Gender did not differ between conditions: chi-square test of independence chi2(8, N=139)=0.72, p=0.653.",
+      "quote": "There were no differences between conditions in gender [X2 (8, N = 139) = 0.72 p = 0.653]",
+      "section": "Results / Group differences",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute the chi-square statistic and p from the Table 1 gender x condition counts; check that the reported chi2=0.72 and p=0.653 are mutually consistent and match the contingency table.",
+      "evidence": [
+        {"id": "e1", "kind": "statistic", "location": "Results, Group differences", "quote": "X2 (8, N = 139) = 0.72 p = 0.653", "extracted_values": {"reported_chi2": 0.72, "reported_df": 8, "reported_p": 0.653, "recomputed_chi2": 5.363, "recomputed_p": 0.718}},
+        {"id": "e2", "kind": "table", "location": "Table 1 Gender rows (cisF 29/29/32, cisM 13/14/13, NB 3/3/1, transM 1/0/0, other 0/0/1)", "quote": "Cisgender female 29 ... 29 ... 32", "extracted_values": {"pos_n": 46, "neg_n": 46, "acc_n": 47, "categories": 5}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Chi-square-from-contingency-table recompute + statcheck (test-statistic vs p coherence)", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.85, "rationale": "Recomputing chi-square from the Table 1 gender counts (5 categories x 3 conditions, df=8) gives chi2=5.36, p=0.718 -- NOT chi2=0.72. The reported 'chi2 = 0.72' is essentially the recomputed p-value (0.718) placed in the statistic slot, while the reported p=0.653 is unexplained. Statcheck also fails internally: chi2=0.72 at df=8 yields p=0.9995, not 0.653. Substantive conclusion (no gender difference) is unchanged (truly non-significant), but the reported statistic AND p are wrong. Fully deterministic from the table."}
+    },
+    {
+      "id": "c2",
+      "text": "Ethnicity did not differ between conditions: chi2(2, N=139)=0.27, p=0.277.",
+      "quote": "ethnicity [X2 (2, N = 139) = 0.27, p = 0.277]",
+      "section": "Results / Group differences",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute chi-square and p from the Table 1 ethnicity (Non-Hispanic/Hispanic) x condition counts and check coherence with reported chi2=0.27, p=0.277.",
+      "evidence": [
+        {"id": "e1", "kind": "statistic", "location": "Results, Group differences", "quote": "X2 (2, N = 139) = 0.27, p = 0.277", "extracted_values": {"reported_chi2": 0.27, "reported_df": 2, "reported_p": 0.277, "recomputed_chi2": 2.647, "recomputed_p": 0.266}},
+        {"id": "e2", "kind": "table", "location": "Table 1 Ethnicity rows (Non-Hispanic 43/40/45; Hispanic 3/6/2)", "quote": "Non-Hispanic 43 ... 40 ... 45", "extracted_values": {"nonhisp": [43, 40, 45], "hisp": [3, 6, 2]}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Chi-square-from-table recompute + statcheck", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.85, "rationale": "Recomputed chi2=2.647 (df=2), p=0.266. The reported 'chi2=0.27' is the recomputed p-value (0.266 rounded), and the reported p=0.277 happens to equal the recomputed p (0.266->~0.277 within rounding) -- so the p is roughly right but the chi2 'statistic' is actually the p. Internally, chi2=0.27 at df=2 gives p=0.874, not 0.277, so the pair as printed is incoherent. Same statistic/p confusion as c1 and c3. Conclusion (no ethnicity difference) holds. Deterministic. (Aside: the printed p=0.277 is identical to the FIBM phase-main p=0.277 in c8 -- coincidence or copy artifact.)"}
+    },
+    {
+      "id": "c3",
+      "text": "Race did not differ between conditions: chi2(8, N=139)=0.57, p=0.512.",
+      "quote": "race [X2 (8, N = 139) = 0.57, p = 0.512]",
+      "section": "Results / Group differences",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute chi-square and p from the Table 1 race (5 categories) x condition counts and check coherence with chi2=0.57, p=0.512.",
+      "evidence": [
+        {"id": "e1", "kind": "statistic", "location": "Results, Group differences", "quote": "X2 (8, N = 139) = 0.57, p = 0.512", "extracted_values": {"reported_chi2": 0.57, "reported_df": 8, "reported_p": 0.512, "recomputed_chi2": 6.694, "recomputed_p": 0.570}},
+        {"id": "e2", "kind": "table", "location": "Table 1 Race rows (White 32/35/33; Asian/PI 6/6/2; Black 1/1/3; Multi 5/2/7; Other 2/2/2)", "quote": "White 32 ... 35 ... 33", "extracted_values": {"white": [32, 35, 33], "asian": [6, 6, 2], "black": [1, 1, 3], "multi": [5, 2, 7], "other": [2, 2, 2]}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Chi-square-from-table recompute + statcheck", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.85, "rationale": "Recomputed chi2=6.694 (df=8), p=0.570. The reported 'chi2=0.57' is exactly the recomputed p-value (0.570), and the reported p=0.512 is unexplained. chi2=0.57 at df=8 gives p=0.9998, not 0.512, so the printed pair is incoherent. This completes the systematic pattern across all three baseline chi-square tests (c1/c2/c3): the p-value was written into the chi-square slot. Conclusion (no race difference) holds. Fully deterministic from Table 1 counts."}
+    },
+    {
+      "id": "c4",
+      "text": "Table 1 Negative-condition White race is reported as 7.61% with N=35.",
+      "quote": "White 69.57 32 7.61 35 70.21 33",
+      "section": "Table 1",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute 35/46*100 and compare to the reported 7.61%.",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 1, Race / White, Negative (N=46) column", "quote": "7.61", "extracted_values": {"numerator": 35, "denominator": 46, "reported_pct": 7.61, "recomputed_pct": 76.09}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Percentage recompute (off-the-shelf percent/GRIM check)", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.95, "rationale": "35/46 = 76.09%, not 7.61% -- a misplaced-decimal/dropped-digit typo (the sibling White cells are 69.57% and 70.21%, both in the 70s, confirming 76.09 is intended). The count 35 sums correctly with the other race counts to N=46. Cosmetic transcription error; does not change the (non-significant) race comparison. Deterministic T0 percent check settles it."}
+    },
+    {
+      "id": "c5",
+      "text": "Table 1 Positive-condition Multi-racial is reported as 13.04% with N=5.",
+      "quote": "Multi-racial 13.04 5 4.34 2 14.89 7",
+      "section": "Table 1",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute 5/46*100 and compare to the reported 13.04%.",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 1, Race / Multi-racial, Positive (N=46) column", "quote": "13.04", "extracted_values": {"numerator": 5, "denominator": 46, "reported_pct": 13.04, "recomputed_pct": 10.87}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Percentage recompute (off-the-shelf percent/GRIM check)", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.85, "rationale": "5/46 = 10.87%, not 13.04%. The reported 13.04% equals the Positive Asian/Pacific-Islander cell value (6/46 = 13.04%) one row above, so the percentage appears mis-copied from the adjacent row while the count (5) is correct (race counts still sum to 46). Minor; does not affect inference. Deterministic percent check."}
+    },
+    {
+      "id": "c6",
+      "text": "All other Table 1 percentages (gender, remaining race/ethnicity cells, by condition) recompute exactly from their counts, and category counts sum to the condition n (46/46/47).",
+      "quote": "Cisgender female 63.04 29 ... 63.04 29 ... 68.09 32",
+      "section": "Table 1",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "For every cell compute count/n*100 and compare to the reported percentage; verify each demographic block's counts sum to 46, 46, 47.",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 1 (all cells except c4, c5)", "quote": null, "extracted_values": {"pos_n": 46, "neg_n": 46, "acc_n": 47, "checked_blocks": 3}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Table-totals + percent recompute (off-the-shelf)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "Spot/full recompute: Positive cisF 29/46=63.04, cisM 13/46=28.26, NB 3/46=6.52, transM 1/46=2.17; Asian 6/46=13.04, Black 1/46=2.17, Other 2/46=4.35 (printed 4.34, rounding); Accurate cisF 32/47=68.09, White 33/47=70.21, Multi 7/47=14.89, Non-Hisp 45/47=95.74; Negative Non-Hisp 40/46=86.96, Hisp 6/46=13.04. Gender counts sum 46/46/47, Race 46/46/47, Ethnicity 46/46/47. Only the two cells in c4 and c5 are off."}
+    },
+    {
+      "id": "c7",
+      "text": "There was a main effect of condition on FIBM scores (positive vs negative): F(1, 90)=13.85, p<0.001, partial eta^2=0.13.",
+      "quote": "There was a main effect of condition [F(1, 90) = 13.85, p < 0.001, ηp2 = 0.13]",
+      "section": "Results / FIBM effects on interpretation of faces",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute p from F(1,90)=13.85 (statcheck) and partial eta^2 = F*df1/(F*df1+df2); check df1=1, df2=90 consistent with 2 conditions x n=46.",
+      "evidence": [
+        {"id": "e1", "kind": "statistic", "location": "Results", "quote": "F(1, 90) = 13.85, p < 0.001, ηp2 = 0.13", "extracted_values": {"F": 13.85, "df1": 1, "df2": 90, "reported_p_lt": 0.001, "computed_p": 0.0003, "reported_etap2": 0.13, "computed_etap2": 0.1334}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "statcheck F-to-p + partial-eta^2 recompute", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.95, "rationale": "F(1,90)=13.85 gives p=0.0003 (<0.001, consistent) and partial eta^2 = 13.85/(13.85+90) = 0.1334 ~ 0.13 (exact). df2=90 = 2*46-2 matches the positive(46)+negative(46) repeated-measures design. Clean."}
+    },
+    {
+      "id": "c8",
+      "text": "There was no main effect of phase on FIBM scores: F(1, 90)=1.20, p=0.277, partial eta^2=0.01.",
+      "quote": "There was not a main effect of phase [F(1, 90) = 1.20, p = 0.277, ηp2 = 0.01]",
+      "section": "Results / FIBM effects on interpretation of faces",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute p from F(1,90)=1.20 and partial eta^2; compare to 0.277 and 0.01.",
+      "evidence": [
+        {"id": "e1", "kind": "statistic", "location": "Results", "quote": "F(1, 90) = 1.20, p = 0.277, ηp2 = 0.01", "extracted_values": {"F": 1.20, "df1": 1, "df2": 90, "reported_p": 0.277, "computed_p": 0.2762, "reported_etap2": 0.01, "computed_etap2": 0.0132}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "statcheck F-to-p + partial-eta^2 recompute", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.95, "rationale": "F(1,90)=1.20 gives p=0.2762 ~ 0.277 (exact) and partial eta^2 = 1.20/(1.20+90) = 0.0132 ~ 0.01. Statcheck-clean."}
+    },
+    {
+      "id": "c9",
+      "text": "There was a significant phase-by-condition interaction on FIBM scores: F(1, 90)=66.96, p<0.001, partial eta^2=0.28.",
+      "quote": "there was a significant phase by condition interaction [F(1, 90) = 66.96, p < 0.001, ηp2 = 0.28]",
+      "section": "Results / FIBM effects on interpretation of faces",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute partial eta^2 = F*df1/(F*df1+df2) from F(1,90)=66.96 and compare to the reported 0.28; recompute p.",
+      "evidence": [
+        {"id": "e1", "kind": "statistic", "location": "Results", "quote": "F(1, 90) = 66.96, p < 0.001, ηp2 = 0.28", "extracted_values": {"F": 66.96, "df1": 1, "df2": 90, "reported_p_lt": 0.001, "computed_p": 1e-12, "reported_etap2": 0.28, "computed_partial_etap2": 0.4266}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Partial-eta^2 recompute from F and df (off-the-shelf statcheck/effect-size check)", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.6, "rationale": "The p-value (<0.001) is consistent, but partial eta^2 = 66.96/(66.96+90) = 0.4266, NOT the reported 0.28. To obtain partial eta^2=0.28 the F would have to be ~35, not 66.96. The reported 0.28 likely reflects a different effect-size base (e.g., generalized eta^2, or eta^2 against total SS that includes the between-subjects variance) rather than partial eta^2; the label 'ηp2' (partial) is then inconsistent with the value. This is the only ANOVA in the paper whose eta^2 does not reconcile with the standard partial-eta^2 formula. Worth a closer look; not a significance-changing error."}
+    },
+    {
+      "id": "c10",
+      "text": "At post-test, positive condition had greater FIBM scores than negative: t(90)=6.69, p<0.001, Cohen's d=1.40.",
+      "quote": "participants in the positive condition had significantly greater FIBM scores than participants in the negative condition, t(90) = 6.69, p < 0.001, Cohen’s d = 1.40",
+      "section": "Results / FIBM effects on interpretation of faces",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute p from t(90)=6.69 and the between-groups Cohen's d = t*sqrt(1/n1+1/n2) with n1=n2=46.",
+      "evidence": [
+        {"id": "e1", "kind": "statistic", "location": "Results", "quote": "t(90) = 6.69, p < 0.001, Cohen’s d = 1.40", "extracted_values": {"t": 6.69, "df": 90, "reported_d": 1.40, "computed_d_indep": 1.395, "reported_p_lt": 0.001}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "statcheck t-to-p + independent-samples Cohen's d recompute", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "t(90)=6.69 -> p<0.001 (consistent). Independent-samples d = 6.69*sqrt(2/46) = 1.395 ~ 1.40 (exact). df=90 matches n=46+46-2. The post-test means (Table 2: positive 8.30, negative 5.79) support a large effect. Clean."}
+    },
+    {
+      "id": "c11",
+      "text": "Within the positive condition, FIBM scores significantly increased: t(46)=5.13, p<0.001, Cohen's d=0.71.",
+      "quote": "participants’ FIBM scores significantly increased following FIBM, t(46) = 5.13, p < 0.001, Cohen’s d = 0.71",
+      "section": "Results / FIBM effects on interpretation of faces",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute p from t(46)=5.13; check the paired Cohen's d against d_z=t/sqrt(n) and against d from Table 2 means/SDs; check df=46 vs positive n=46.",
+      "evidence": [
+        {"id": "e1", "kind": "statistic", "location": "Results", "quote": "t(46) = 5.13, p < 0.001, Cohen’s d = 0.71", "extracted_values": {"t": 5.13, "df": 46, "reported_d": 0.71, "d_z_if_n47": 0.748, "implied_n_from_df": 47}},
+        {"id": "e2", "kind": "table", "location": "Table 2 FIBM Positive baseline 6.88(2.03) -> post 8.30(2.01)", "quote": "6.88 2.03 ... 8.30 2.01", "extracted_values": {"base_m": 6.88, "base_sd": 2.03, "post_m": 8.30, "post_sd": 2.01, "mean_diff": 1.42}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "statcheck t-to-p + paired Cohen's d recompute (d_z and d_av) + df/n coherence", "verifier_exists": true, "candidate_verdict": "inconclusive", "confidence": 0.55, "rationale": "p<0.001 is consistent. Cohen's d for paired tests is ambiguous: d_z = t/sqrt(n) = 5.13/sqrt(47) = 0.748 (df=46 implies n=47), not 0.71; d_av using Table 2 SDs = 1.42/2.02 = 0.703 ~ 0.71. So the reported 0.71 matches d_av (mean change / average SD), a legitimate but unlabeled choice -- supported under that definition. SEPARATE ISSUE: df=46 implies n=47 for the positive condition, but Table 1/text give positive n=46. The same off-by-one appears for the negative condition (c12, df=46). Cannot resolve d-definition vs df-typo without the raw data, hence inconclusive on the t/df line."}
+    },
+    {
+      "id": "c12",
+      "text": "Within the negative condition, FIBM scores significantly decreased: t(46)=3.36, p=0.002, Cohen's d=0.53.",
+      "quote": "participants’ FIBM scores significantly decreased following FIBM, t(46) = 3.36, p = 0.002, Cohen’s d = 0.53",
+      "section": "Results / FIBM effects on interpretation of faces",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute p from t(46)=3.36; check paired d via d_z and d_av (Table 2 negative 6.78(2.13)->5.79(1.57)); check df=46 vs negative n=46.",
+      "evidence": [
+        {"id": "e1", "kind": "statistic", "location": "Results", "quote": "t(46) = 3.36, p = 0.002, Cohen’s d = 0.53", "extracted_values": {"t": 3.36, "df": 46, "reported_p": 0.002, "computed_p": 0.0016, "d_z_if_n47": 0.490, "reported_d": 0.53}},
+        {"id": "e2", "kind": "table", "location": "Table 2 FIBM Negative baseline 6.78(2.13) -> post 5.79(1.57)", "quote": "6.78 2.13 ... 5.79 1.57", "extracted_values": {"base_m": 6.78, "base_sd": 2.13, "post_m": 5.79, "post_sd": 1.57, "mean_diff": -0.99, "d_av": 0.535}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "statcheck t-to-p + paired Cohen's d recompute + df/n coherence", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.65, "rationale": "t(46)=3.36 -> p=0.0016, rounds to 0.002 (consistent). d_av = |6.78-5.79| / ((2.13+1.57)/2) = 0.99/1.85 = 0.535 ~ 0.53 -- matches the reported d using the average-SD definition (d_z=0.49 does not). So d is supported under d_av. The df=46 (implying n=47) vs negative n=46 off-by-one (shared with c11) remains a minor unresolved tension, but the statistics themselves reproduce."}
+    },
+    {
+      "id": "c13",
+      "text": "The accurate condition was significantly more accurate at post-test than baseline: t(45)=4.58, p<0.001, Cohen's d=0.78.",
+      "quote": "participants in the accurate condition were significantly more accurate at identifying facial expressions at post-test compared to baseline, t(45) = 4.58, p = <0.001, Cohen’s d = 0.78",
+      "section": "Results / FIBM effects on interpretation of faces",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute p from t(45)=4.58; check paired d via d_z and d_av (Table 2 accurate 11.17(1.21)->12.09(1.16)); check df=45 vs accurate n=47.",
+      "evidence": [
+        {"id": "e1", "kind": "statistic", "location": "Results", "quote": "t(45) = 4.58, p = <0.001, Cohen’s d = 0.78", "extracted_values": {"t": 4.58, "df": 45, "reported_d": 0.78, "implied_n_from_df": 46, "accurate_n_reported": 47, "d_z_if_n46": 0.675}},
+        {"id": "e2", "kind": "table", "location": "Table 2 FIBM Accurate baseline 11.17(1.21) -> post 12.09(1.16)", "quote": "11.17 1.21 ... 12.09 1.16", "extracted_values": {"base_m": 11.17, "base_sd": 1.21, "post_m": 12.09, "post_sd": 1.16, "mean_diff": 0.92, "d_av": 0.776}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "statcheck t-to-p + paired Cohen's d recompute + df/n coherence", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.55, "rationale": "p<0.001 consistent. d_av = 0.92 / ((1.21+1.16)/2) = 0.92/1.185 = 0.776 ~ 0.78 (matches under average-SD definition; d_z=0.675 does not). BUT df=45 implies n=46 for the accurate condition, whereas the accurate condition n=47 everywhere else (Table 1, text, CONSORT). Expected paired df = 47-1 = 46, not 45. So either one accurate participant was dropped from this specific paired test, or df is a typo. Note this is the OPPOSITE direction from c11/c12 (where df implied one MORE than the stated n). The df inconsistencies across the three within-condition tests don't follow a single pattern, which is itself a small flag. Deterministic once raw n is known."}
+    },
+    {
+      "id": "c14",
+      "text": "FIBM scores did not differ between positive and negative conditions at baseline: t(90)=0.23, p=0.815, Cohen's d=0.05.",
+      "quote": "FIBM score [t(90) = 0.23, p = 0.815, Cohen’s d = 0.05]; FIBM score could only be compared positive and negative conditions",
+      "section": "Results / Group differences",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute p from t(90)=0.23 and d=t*sqrt(2/46); cross-check against Table 2 baseline FIBM (positive 6.88, negative 6.78).",
+      "evidence": [
+        {"id": "e1", "kind": "statistic", "location": "Results", "quote": "t(90) = 0.23, p = 0.815, Cohen’s d = 0.05", "extracted_values": {"t": 0.23, "df": 90, "reported_p": 0.815, "computed_p": 0.8186, "reported_d": 0.05, "computed_d_indep": 0.048}},
+        {"id": "e2", "kind": "table", "location": "Table 2 FIBM baseline", "quote": "6.88 ... 6.78", "extracted_values": {"pos_base": 6.88, "neg_base": 6.78, "diff": 0.10}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "statcheck t-to-p + independent Cohen's d recompute", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "t(90)=0.23 -> p=0.819 ~ 0.815 (consistent). d = 0.23*sqrt(2/46) = 0.048 ~ 0.05 (exact). Baseline FIBM means 6.88 vs 6.78 (diff 0.10) are consistent with a near-zero effect. Clean -- and consistent with d here being the independent-samples form (whereas the within-condition d's use d_av), confirming the d-definition reading in c11-c13."}
+    },
+    {
+      "id": "c15",
+      "text": "There was no baseline difference between conditions on FPES [F(2,134)=1.91, p=0.153, partial eta^2=0.03] or SIAS [F(2,134)=0.43, p=0.649, partial eta^2=0.01].",
+      "quote": "FPES [F(2, 134) = 1.91, p = 0.153, ηp2 = 0.03], SIAS [F(2, 134) = 0.43 p = 0.649, ηp2 = 0.01]",
+      "section": "Results / Group differences",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute p and partial eta^2 from each F; note that df2=134 implies N=137, two fewer than the analyzed 139.",
+      "evidence": [
+        {"id": "e1", "kind": "statistic", "location": "Results", "quote": "F(2, 134) = 1.91, p = 0.153 ... F(2, 134) = 0.43 p = 0.649", "extracted_values": {"fpes_F": 1.91, "fpes_p": 0.153, "fpes_computed_p": 0.1521, "fpes_etap2": 0.03, "fpes_computed_etap2": 0.0277, "sias_F": 0.43, "sias_p": 0.649, "sias_computed_p": 0.6514, "sias_etap2": 0.01, "implied_N": 137}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "statcheck F-to-p + partial-eta^2 recompute + df/N coherence", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "Both reproduce: FPES F(2,134)=1.91 -> p=0.152 (~0.153), partial eta^2=0.028 (~0.03); SIAS F(2,134)=0.43 -> p=0.651 (~0.649), partial eta^2=0.006 (~0.01). df2=134 implies total N=137 for these questionnaires (2 fewer than the 139 analyzed) -- plausibly 2 participants had missing FPES/baseline-SIAS items. Statistics clean; the small N drop is a reporting detail, not an error."}
+    },
+    {
+      "id": "c16",
+      "text": "The accurate condition was significantly younger (M=20.62 yr) than the negative condition (M=24.13 yr): F(2,136)=4.11, p=0.019, partial eta^2=0.06.",
+      "quote": "the accurate condition had an average age of 20.62 years old, which was significantly younger than the negative condition (24.13 years old) [F(2, 136) = 4.11, p = 0.019, ηp2 = 0.06]",
+      "section": "Results / Group differences",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute p and partial eta^2 from F(2,136)=4.11; check df2=136 = 139-3; cross-check ages against Table 1.",
+      "evidence": [
+        {"id": "e1", "kind": "statistic", "location": "Results", "quote": "F(2, 136) = 4.11, p = 0.019, ηp2 = 0.06", "extracted_values": {"F": 4.11, "df1": 2, "df2": 136, "reported_p": 0.019, "computed_p": 0.0185, "reported_etap2": 0.06, "computed_etap2": 0.0570}},
+        {"id": "e2", "kind": "table", "location": "Table 1 Age row", "quote": "22.87 5.00 24.13 8.50 20.62 3.34", "extracted_values": {"pos_age": 22.87, "neg_age": 24.13, "acc_age": 20.62}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "statcheck F-to-p + partial-eta^2 recompute + df coherence", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "F(2,136)=4.11 -> p=0.0185 (~0.019) and partial eta^2 = 8.22/(8.22+136) = 0.057 ~ 0.06 (exact). df2=136 = 139-3 (full omnibus age ANOVA over all 139). Ages match Table 1. The omnibus F is reported; the specific accurate-vs-negative pairwise claim would need a post-hoc test not separately given, but the omnibus is internally consistent. Clean."}
+    },
+    {
+      "id": "c17",
+      "text": "There was a significant main effect of phase on SIAS: post-test SIAS was greater than baseline, F(1,132)=8.56, p=0.004, partial eta^2=0.06.",
+      "quote": "SIAS scores at post-test were significantly greater than SIAS scores at baseline [F(1, 132) = 8.56, p = 0.004, ηp2 = 0.06]",
+      "section": "Results / FIBM effects on social anxiety",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute p and partial eta^2 from F(1,132)=8.56; sanity-check the direction against Table 2 SIAS totals (30.16 -> 31.42).",
+      "evidence": [
+        {"id": "e1", "kind": "statistic", "location": "Results", "quote": "F(1, 132) = 8.56, p = 0.004, ηp2 = 0.06", "extracted_values": {"F": 8.56, "df1": 1, "df2": 132, "reported_p": 0.004, "computed_p": 0.0040, "reported_etap2": 0.06, "computed_etap2": 0.0609}},
+        {"id": "e2", "kind": "table", "location": "Table 2 SIAS baseline vs post total", "quote": "30.16 ... 31.42", "extracted_values": {"sias_base_total": 30.16, "sias_post_total": 31.42}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "statcheck F-to-p + partial-eta^2 recompute", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.92, "rationale": "F(1,132)=8.56 -> p=0.0040 (exact) and partial eta^2 = 8.56/(8.56+132) = 0.0609 ~ 0.06 (exact). Direction is consistent: SIAS rose 30.16 -> 31.42. (Note: an unintended INCREASE in anxiety at post-test, opposite to the hypothesized reduction; the authors discuss this honestly.) Statcheck-clean."}
+    },
+    {
+      "id": "c18",
+      "text": "There was no main effect of condition [F(2,132)=0.51, p=0.601, partial eta^2=0.01] and, contrary to hypotheses, no phase-by-condition interaction [F(2,132)=0.60, p=0.549, partial eta^2=0.01] for SIAS.",
+      "quote": "There was not a main effect of condition [F(2, 132) = 0.51, p = 0.601, ηp2 = 0.01]. Contrary to hypotheses, there was not a significant phase by condition interaction for SIAS scores [F(2, 132) = 0.60, p = 0.549, ηp2 = 0.01]",
+      "section": "Results / FIBM effects on social anxiety",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute p and partial eta^2 for both F's; this interaction null is the paper's central result.",
+      "evidence": [
+        {"id": "e1", "kind": "statistic", "location": "Results", "quote": "F(2, 132) = 0.51, p = 0.601 ... F(2, 132) = 0.60, p = 0.549", "extracted_values": {"cond_F": 0.51, "cond_p": 0.601, "cond_computed_p": 0.6017, "cond_etap2": 0.01, "int_F": 0.60, "int_p": 0.549, "int_computed_p": 0.5503, "int_etap2": 0.01, "int_computed_etap2": 0.0090}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "statcheck F-to-p + partial-eta^2 recompute", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.92, "rationale": "Both reproduce: condition F(2,132)=0.51 -> p=0.602 (~0.601), eta^2=0.008 (~0.01); interaction F(2,132)=0.60 -> p=0.550 (~0.549), partial eta^2=0.009 (~0.01). This null interaction is the headline finding ('FIBM did not affect social anxiety') and it is statcheck-consistent and supported by the flat, overlapping lines in Figure 3. Clean."}
+    },
+    {
+      "id": "c19",
+      "text": "Post-intervention LSAS-SR did not differ between conditions: one-way ANOVA F(2,132)=0.07, p=0.928, partial eta^2<0.01.",
+      "quote": "there was not a significant difference between groups for Total LSAS-SR scores, [F(2, 132) = 0.07, p = 0.928, ηp2 < 0.01]",
+      "section": "Results / FIBM effects on social anxiety",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute p and partial eta^2 from F(2,132)=0.07; sanity-check near-equal LSAS-SR means in Table 2.",
+      "evidence": [
+        {"id": "e1", "kind": "statistic", "location": "Results", "quote": "F(2, 132) = 0.07, p = 0.928, ηp2 < 0.01", "extracted_values": {"F": 0.07, "df1": 2, "df2": 132, "reported_p": 0.928, "computed_p": 0.9324, "computed_etap2": 0.0011}},
+        {"id": "e2", "kind": "table", "location": "Table 2 LSAS-SR post by condition", "quote": "59.20 ... 57.81 ... 60.67", "extracted_values": {"pos": 59.20, "neg": 57.81, "acc": 60.67}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "statcheck F-to-p + partial-eta^2 recompute", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "F(2,132)=0.07 -> p=0.932 ~ 0.928 (consistent) and partial eta^2=0.001 (<0.01). LSAS-SR means (59.20/57.81/60.67) are nearly identical, consistent with the null. Clean. (Note: this LSAS-SR ANOVA also uses df2=132 -> N=135, while the SIAS RM-ANOVA uses df2=132; minor N bookkeeping varies by measure due to missingness.)"}
+    },
+    {
+      "id": "c20",
+      "text": "Table 2 questionnaire descriptives are internally consistent and the FIBM line plots (Figures 2-3) match the tabled means.",
+      "quote": "FIBM* 6.88 2.03 6.78 2.13 11.17 1.21 ... 8.30 2.01 5.79 1.57 12.09 1.16",
+      "section": "Table 2 / Figures 2-3",
+      "page": 5,
+      "epistemic_tier": "T2",
+      "predicate": "Bind the plotted points in Figure 2 (FIBM) and Figure 3 (SIAS) to the Table 2 means and check agreement; check that FIBM total-sample is correctly left blank (different scoring for accurate).",
+      "evidence": [
+        {"id": "e1", "kind": "figure", "location": "Figure 2 (FIBM by phase, positive vs negative)", "quote": "Significant changes in FIBM score from baseline to post-test", "extracted_values": {"pos_base_plot": 6.9, "pos_post_plot": 8.3, "neg_base_plot": 6.8, "neg_post_plot": 5.8}},
+        {"id": "e2", "kind": "figure", "location": "Figure 3 (SIAS by phase, 3 conditions)", "quote": "Non-significant changes in social anxiety from baseline to post-test by condition", "extracted_values": {"pos_base_plot": 29.6, "acc_base_plot": 31.6, "neg_base_plot": 28.7, "pos_post_plot": 31.1, "acc_post_plot": 33.2, "neg_post_plot": 29.4}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Figure-value extraction (vision) vs table binding (T2 prose/figure-vs-table)", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.8, "rationale": "Figure 2 line endpoints read off the axis (positive 6.9->8.3, negative 6.8->5.8) match Table 2 (6.88->8.30; 6.78->5.79); the crossing lines correctly depict the significant interaction. Figure 3's three near-flat, overlapping lines (positive 29.6->31.1, negative 28.7->29.4, accurate 31.6->33.2) match Table 2 SIAS and correctly depict the null interaction. The Table 2 FIBM* total-sample cells are appropriately blank (footnote: accurate uses different scoring), so no improper pooling. Figure-table consistent; verdict would be deterministic with a calibrated figure-reader."}
+    },
+    {
+      "id": "c21",
+      "text": "Total-sample questionnaire means in Table 2 (SIAS 30.16/31.42; FPES 31.36; LSAS-SR 60.15) are the pooled means of the three conditions.",
+      "quote": "SIAS 29.60 ... 28.73 ... 31.61 ... 30.16 ... FPES 32.53 ... 28.43 ... 33.61 ... 31.36",
+      "section": "Table 2",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Compute the n-weighted mean of the three condition means (n=46/46/47) and compare to the reported total-sample mean.",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 2 Total sample column", "quote": "30.16 ... 31.42 ... 31.36 ... 60.15", "extracted_values": {"sias_base_total": 30.16, "sias_base_weighted": 29.99, "sias_post_total": 31.42, "sias_post_weighted": 31.23, "fpes_total": 31.36, "fpes_weighted": 31.54, "lsas_total": 60.15, "lsas_weighted": 59.24}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Weighted-mean recompute (off-the-shelf table-totals/percent-change family)", "verifier_exists": true, "candidate_verdict": "inconclusive", "confidence": 0.5, "rationale": "Using n=46/46/47, the weighted means (SIAS base 29.99 vs 30.16; SIAS post 31.23 vs 31.42; FPES 31.54 vs 31.36; LSAS 59.24 vs 60.15) are CLOSE but not exact -- discrepancies of 0.2-0.9. This is expected if the per-condition cell n's differ from 46/46/47 due to item-level missingness (the FPES/SIAS ANOVAs imply N=137, i.e. ~2 fewer), so the totals are likely computed over slightly different denominators. Cannot confirm exactly without the per-cell n's; not flagged as an error, but the total-sample means are not reproducible from the printed condition means + nominal n's alone. Marked inconclusive."}
+    },
+    {
+      "id": "c22",
+      "text": "Sample size was set by a G*Power analysis for a repeated-measures within-between ANOVA interaction to detect f=0.15 at power 0.85, alpha=0.05, giving an optimal N of at least 126.",
+      "quote": "a power analysis to detect a small effect size (f = 0.15) with a power of 0.85 (alpha = 0.05) was conducted, leading to an optimal N of at least 126",
+      "section": "Methods / Participants",
+      "page": 3,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute the G*Power RM-ANOVA (within-between interaction, 3 groups x 2 measurements) required N for f=0.15, power 0.85, alpha 0.05 and compare to 126.",
+      "evidence": [
+        {"id": "e1", "kind": "statistic", "location": "Methods, Participants", "quote": "f = 0.15 ... power of 0.85 (alpha = 0.05) ... optimal N of at least 126", "extracted_values": {"f": 0.15, "power": 0.85, "alpha": 0.05, "groups": 3, "measurements": 2, "reported_N": 126, "approx_recomputed_N": 125}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "G*Power sample-size recompute (RM-ANOVA within-between interaction)", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.65, "rationale": "An approximate noncentral-F computation (df1=(3-1)(2-1)=2, default correlation among repeated measures rho=0.5, nonsphericity=1) yields N~125 for 0.85 power, very close to the stated 126. Exact G*Power output for these settings is commonly 126-130, so the figure is sound. Cannot be reproduced to the exact integer without G*Power's specific algorithm/assumptions (correlation, nonsphericity), hence moderate confidence. The analyzed N=139 exceeds 126, so the study met its a priori target."}
+    },
+    {
+      "id": "c23",
+      "text": "FIBM is scored as (number of faces categorized as happy / 45) * 15, rounded to the nearest whole integer (range 0-15).",
+      "quote": "FIBM is scored by the number of faces categorized as happy divided by 45 (total number of trials in phase), then multiplied by 15 (number of unique faces in trial), and finally rounded to the nearest whole integer",
+      "section": "Methods / FIBM scoring",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "Check the scoring formula is internally coherent (45 trials = 15 faces x 3 presentations; max score 15) and that Table 2 FIBM means fall within 0-15.",
+      "evidence": [
+        {"id": "e1", "kind": "text", "location": "Methods, FIBM scoring; Task", "quote": "Each face was presented three times (45 trials) ... divided by 45 ... multiplied by 15", "extracted_values": {"trials": 45, "faces": 15, "presentations": 3, "max_score": 15, "table2_fibm_range_observed": [5.79, 12.09]}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Unit/formula coherence + range check (off-the-shelf unit-consistency)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "45 trials = 15 faces x 3 presentations is internally consistent; (k/45)*15 maps 0..45 happy responses onto a 0..15 'balance point' scale. All Table 2 FIBM means (5.79 to 12.09) lie within 0-15. The accurate condition is scored on correctness over the same 45 trials and is correctly analyzed separately. Formula and scale coherent."}
+    },
+    {
+      "id": "c24",
+      "text": "CONSORT/enrollment: 141 adults were recruited, 2 were excluded, and 139 were analyzed (negative n=46, positive n=46, accurate n=47).",
+      "quote": "data from 139 individuals were analyzed among the negative (n = 46), positive (n = 46), and accurate conditions (n = 47)",
+      "section": "Methods / Participants + Figure 1 (CONSORT)",
+      "page": 3,
+      "epistemic_tier": "T2",
+      "predicate": "Reconcile the recruited/excluded/analyzed counts across the abstract (N=139), the text (141 recruited, 2 excluded), and the Figure 1 CONSORT diagram (randomized 141; allocated 46/46/49; 2 excluded from accurate).",
+      "evidence": [
+        {"id": "e1", "kind": "figure", "location": "Figure 1 CONSORT diagram", "quote": "Randomized (n = 141) ... Positive condition (n = 46) ... Negative condition (n = 46) ... Accurate condition (n = 49) ... Excluded ... condition (n = 1) ... Extreme outlier ... measure (n = 1)", "extracted_values": {"randomized": 141, "alloc_pos": 46, "alloc_neg": 46, "alloc_acc": 49, "acc_excluded": 2, "acc_analyzed": 47}},
+        {"id": "e2", "kind": "text", "location": "Methods, Participants + Abstract", "quote": "The sample included 141 adults ... We excluded two participants ... N = 139", "extracted_values": {"recruited": 141, "excluded": 2, "analyzed": 139}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Cross-source count reconciliation (prose-vs-figure binding; participant-flow consistency)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.8, "rationale": "Counts reconcile: CONSORT allocates 46+46+49 = 141 (= randomized), with both exclusions (1 researcher error, 1 extreme FIBM outlier) falling in the accurate arm -> accurate analyzed 49-2 = 47, total 46+46+47 = 139 = abstract N. The text's '141 recruited, 2 excluded, 139 analyzed' matches the diagram. One subtlety: the text describes the outlier exclusion generically (could be any condition) while the CONSORT places both exclusions in the accurate arm; this is consistent (accurate had 49 allocated vs 46/46) but worth a glance. Overall the participant flow is internally coherent."}
+    },
+    {
+      "id": "c25",
+      "text": "Correlation-table (Table 3) significance markers are consistent with the sample sizes (** p<.01, * p<.05).",
+      "quote": "FIBM post 0.43** ... FIBM Acc post 0.33* ... Baseline SIAS 0.62** ... Post SIAS 0.95**",
+      "section": "Table 3",
+      "page": 7,
+      "epistemic_tier": "T0",
+      "predicate": "For each starred/unstarred Pearson r, compare |r| to the critical r at the relevant n (n~92 for positive/negative FIBM pairs, n~47 for accurate, n~139 for questionnaire pairs).",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 3 (correlation matrix)", "quote": "FIBM post 0.43** ... FPES -0.10 ... SIAS change-FPES 0.28** ... LSAS total-avoid 0.951**", "extracted_values": {"r_crit_05_n92": 0.205, "r_crit_01_n92": 0.267, "r_crit_05_n47": 0.288, "r_crit_01_n47": 0.372, "r_crit_01_n139": 0.218}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Correlation significance recompute (r-to-p from n; off-the-shelf)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.7, "rationale": "Spot-checks pass: FIBM base-post 0.43** > r_crit.01(n=92)=0.267 (OK); FIBM Acc base-post 0.33* lies between r_crit.05(n=47)=0.288 and r_crit.01=0.372 (correctly single-star); FPES-FIBMbase -0.10 < r_crit.05 (correctly unstarred); FPES-baselineSIAS 0.62** and post-SIAS pairs >> thresholds. Exact n per cell is approximate (mixed denominators), so confidence is moderate, but no star is obviously misassigned. Minor formatting tell: LSAS total-avoid printed as 0.951** (three decimals) while every other cell uses two decimals -- cosmetic inconsistency, not an error."}
+    },
+    {
+      "id": "c26",
+      "text": "Internal-consistency (Cronbach's alpha) values are reported: FPES alpha=0.82; SIAS baseline alpha=0.92, post alpha=0.95; LSAS-SR alpha=0.95.",
+      "quote": "the FPES had strong internal consistency (α = 0.82) ... the SIAS demonstrated strong internal consistency (baseline α = 0.92; post-intervention assessment α = 0.95) ... the LSAS-SR demonstrated strong internal consistency (α = 0.95)",
+      "section": "Methods / Measures",
+      "page": 4,
+      "epistemic_tier": "T6",
+      "predicate": "Recompute Cronbach's alpha from item-level responses (in the OSF dataset) and compare to reported values; not recomputable from the manuscript alone.",
+      "evidence": [
+        {"id": "e1", "kind": "statistic", "location": "Methods, Measures", "quote": "α = 0.82 ... baseline α = 0.92; post-intervention assessment α = 0.95 ... α = 0.95", "extracted_values": {"fpes_alpha": 0.82, "sias_base_alpha": 0.92, "sias_post_alpha": 0.95, "lsas_alpha": 0.95}}
+      ],
+      "verification": {"possible": false, "verifier_needed": "Cronbach's alpha recompute from the OSF item-level data (reproducibility/T6)", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.4, "rationale": "Alpha values are in the normal-to-strong range for these validated scales and are plausible, but they cannot be verified from the manuscript -- they require the item-level responses. The data are deposited at OSF (doi:10.17605/OSF.IO/XS7JE), so this is a genuine T6 recompute candidate if the raw item responses are present. Not an error; flagged as data-backed-but-unverified-here."}
+    },
+    {
+      "id": "c27",
+      "text": "Baseline SIAS (M=30.16) indicates higher social anxiety than unselected samples (M=19) and similar to clinical samples (M=34.6).",
+      "quote": "Baseline SIAS (M = 30.16) suggest the sample had higher levels of social anxiety symptoms than unselected samples (M = 19), and similar levels to clinical samples (M = 34.6; Mattick and Clarke, 1998)",
+      "section": "Results / Descriptive statistics",
+      "page": 5,
+      "epistemic_tier": "T5",
+      "predicate": "Verify the cited norm values (SIAS unselected M~19, clinical M~34.6) against Mattick & Clarke (1998) and judge whether 30.16 supports 'higher than unselected, similar to clinical.'",
+      "evidence": [
+        {"id": "e1", "kind": "statistic", "location": "Results, Descriptive statistics", "quote": "higher ... than unselected samples (M = 19), and similar levels to clinical samples (M = 34.6)", "extracted_values": {"sample_M": 30.16, "unselected_norm": 19, "clinical_norm": 34.6}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "External literature lookup (cited norm values in Mattick & Clarke 1998) + magnitude judgment", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.45, "rationale": "30.16 lies between 19 and 34.6, so the directional claim ('higher than unselected') is arithmetically fine, though 'similar to clinical (34.6)' is a stretch -- 30.16 is roughly midway, closer to clinical than unselected but not equal to it. Verifying the norm values themselves (M=19 unselected, M=34.6 clinical) requires checking Mattick & Clarke (1998); these are commonly cited SIAS benchmarks and look right, but I cannot confirm from this paper. T5 literature check + a soft magnitude judgment; no numeric error in the paper's own arithmetic."}
+    },
+    {
+      "id": "c28",
+      "text": "The study's sample skewed more female (63%), White (70%), and non-Hispanic (93%) than the US general undergraduate population (57% female, 52% White, 79% non-Hispanic).",
+      "quote": "The current study population also skewed more female (63%), White (70%), and non-Hispanic (93%) than the general undergraduate population in the United States (57% female, 52% White, 79% non-Hispanic; Hanson, 2025)",
+      "section": "Discussion",
+      "page": 8,
+      "epistemic_tier": "T2",
+      "predicate": "Bind the prose sample percentages to Table 1 totals: female (cisgender-female total/139), White (White total/139), non-Hispanic (non-Hispanic total/139).",
+      "evidence": [
+        {"id": "e1", "kind": "text", "location": "Discussion", "quote": "more female (63%), White (70%), and non-Hispanic (93%)", "extracted_values": {"prose_female_pct": 63, "prose_white_pct": 70, "prose_nonhisp_pct": 93}},
+        {"id": "e2", "kind": "table", "location": "Table 1 totals (cisF 29+29+32=90; White 32+35+33=100; Non-Hisp 43+40+45=128)", "quote": null, "extracted_values": {"cisF_total": 90, "white_total": 100, "nonhisp_total": 128, "computed_female_pct": 64.7, "computed_white_pct": 71.9, "computed_nonhisp_pct": 92.1}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Prose-vs-table percent binding (off-the-shelf) + external population norms (Hanson 2025)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.7, "rationale": "Recomputed from Table 1: cisgender-female 90/139 = 64.7% (~63%), White 100/139 = 71.9% (~70%), non-Hispanic 128/139 = 92.1% (~93%). All within ~2 points of the prose, consistent (the slight under-statement of female% likely reflects counting only cisgender female vs all female-identifying, or rounding). The US-population comparison figures (57/52/79%) are cited to Hanson (2025) and would need an external lookup to verify but are plausible. Prose-table binding holds."}
+    },
+    {
+      "id": "c29",
+      "text": "Exploratory moderation: neither FPES nor baseline SIAS moderated condition effects on any outcome (FPES: all p>0.141, all partial eta^2<=0.03; baseline SIAS: all p>0.196, all partial eta^2<=0.04).",
+      "quote": "FPES did not moderate condition effects on any analyses (all p > 0.141, all ηp2 ≤ 0.03) ... baseline SIAS (all p > 0.196; all ηp2 ≤ 0.04) did not moderate condition effects on any analyses",
+      "section": "Results / Exploratory moderator analyses",
+      "page": 6,
+      "epistemic_tier": "T4",
+      "predicate": "Assess whether the summarized moderation nulls are checkable; only ranges (min p, max eta^2) are given, not individual statistics.",
+      "evidence": [
+        {"id": "e1", "kind": "statistic", "location": "Results, Exploratory moderator analyses", "quote": "all p > 0.141, all ηp2 ≤ 0.03 ... all p > 0.196; all ηp2 ≤ 0.04", "extracted_values": {"fpes_min_p": 0.141, "fpes_max_etap2": 0.03, "sias_min_p": 0.196, "sias_max_etap2": 0.04}}
+      ],
+      "verification": {"possible": false, "verifier_needed": "Per-test recompute requires the individual moderation F/p values (only summarized ranges reported) or the OSF data", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.4, "rationale": "Only boundary summaries ('all p>0.141', 'all eta^2<=0.03') are reported, with no per-analysis statistics, so no individual statcheck is possible. The summary is internally plausible (a max eta^2 of 0.03 at these df corresponds to p well above 0.05, consistent with 'did not moderate'). Recomputable only from the OSF dataset (T6). No error evident; not bindable to a single statistic."}
+    },
+    {
+      "id": "c30",
+      "text": "The trial was preregistered/registered at OSF (doi:10.17605/OSF.IO/XS7JE) on 5/14/25, and the dataset is available there.",
+      "quote": "Trial was registered at https://doi.org/10.17605/OSF.IO/XS7JE on 5/14/25. ... Data are available at https://doi.org/10.17605/OSF.IO/XS7JE.",
+      "section": "Methods / Procedure + Results + Data availability statement",
+      "page": 5,
+      "epistemic_tier": "T1",
+      "predicate": "Resolve the OSF DOI; confirm the registration exists, its date (5/14/25), and that the dataset is deposited; check that registration predates/follows data collection appropriately.",
+      "evidence": [
+        {"id": "e1", "kind": "dataset", "location": "Procedure / Data availability statement", "quote": "doi: 10.17605/OSF.IO/XS7JE", "extracted_values": {"osf_doi": "10.17605/OSF.IO/XS7JE", "registration_date": "5/14/25"}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "DOI/OSF resolution (existence + registration date + data-presence check)", "verifier_exists": true, "candidate_verdict": "inconclusive", "confidence": 0.5, "rationale": "A single OSF DOI serves as both the registration and the data repository, with a stated registration date of 5/14/25. The DOI is well-formed and resolvable in principle, but its existence, the registration timing relative to data collection, and whether item-level data are actually deposited cannot be confirmed from the manuscript (requires a live OSF lookup -- which would also unlock the T6 recomputes in c21/c26/c29). Note a possible timing point worth checking: a single 2025-dated OSF link used for both 'registration' and 'data' could be a registration created near analysis time rather than a true prospective preregistration; only the OSF timestamps settle this."}
+    },
+    {
+      "id": "c31",
+      "text": "Core conclusion: FIBM successfully shifted face interpretations in all conditions but did not affect social anxiety, challenging the audience-evaluation tenet of the Rapee & Heimberg (1997) cognitive model.",
+      "quote": "FIBM successfully shifted interpretation of ambiguous faces in expected directions for all conditions, but such shifts did not affect social anxiety. ... This challenges the importance of evaluating audience reaction in the Rapee and Heimberg (1997) cognitive model of social anxiety.",
+      "section": "Discussion / Conclusion",
+      "page": 7,
+      "epistemic_tier": "T4",
+      "predicate": "Assess whether the manipulation-check successes (significant FIBM interaction) plus the null SIAS/LSAS interaction license the causal-model conclusion, given the design and the unexpected anxiety INCREASE.",
+      "evidence": [
+        {"id": "e1", "kind": "text", "location": "Discussion / Conclusion", "quote": "this suggests the interpretation of ambiguous faces may not be causally related to social anxiety, and thus this cognitive model may need modification", "extracted_values": {"fibm_interaction_p": 0.001, "sias_interaction_p": 0.549, "lsas_anova_p": 0.928}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Claim-vs-evidence support judgment (calibrated, anchored on the manipulation-check F and the null interaction p's)", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.55, "rationale": "The logic is sound and appropriately hedged: the manipulation check worked (significant phase x condition interaction on FIBM, p<0.001, large d=1.40), yet the anxiety interaction was clearly null (SIAS p=0.549; LSAS p=0.928), licensing the 'no downstream effect on anxiety' inference. The authors explicitly say they are 'hesitant to interpret null results' and frame the model implication as 'may need modification' rather than refutation. A calibrated T4 verifier should accept this as a well-qualified null claim, not an over-reach. (One internal tension the authors flag honestly: anxiety actually INCREASED at post-test, F(1,132)=8.56, p=0.004 -- a main effect of phase regardless of condition -- which they attribute to measurement/order rather than FIBM.) Net: defensible interpretation of a genuine null."}
+    },
+    {
+      "id": "c32",
+      "text": "The within-condition paired t-tests (c11-c13) all report 'Cohen's d' computed by an unstated convention, and the three reported df (46, 46, 45) are not all consistent with the stated condition n's (46, 46, 47).",
+      "quote": "t(46) = 5.13 ... Cohen’s d = 0.71 ... t(46) = 3.36 ... Cohen’s d = 0.53 ... t(45) = 4.58 ... Cohen’s d = 0.78",
+      "section": "Results / FIBM effects on interpretation of faces",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check the three within-condition df against the analyzed n of each condition (positive 46, negative 46, accurate 47) and flag the inconsistency; determine the Cohen's d convention by matching d_z vs d_av.",
+      "evidence": [
+        {"id": "e1", "kind": "statistic", "location": "Results (within-condition paired tests)", "quote": "t(46) ... t(46) ... t(45)", "extracted_values": {"pos_df": 46, "pos_n_reported": 46, "neg_df": 46, "neg_n_reported": 46, "acc_df": 45, "acc_n_reported": 47, "pos_implied_n": 47, "neg_implied_n": 47, "acc_implied_n": 46}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "df-vs-n coherence check across paired tests (deterministic, from the reported df and the Table 1 condition n's)", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.6, "rationale": "Aggregating c11-c13: a paired t on a condition of size n has df=n-1. Positive and negative both have n=46 (df should be 45) yet report t(46) (df=46 -> n=47); accurate has n=47 (df should be 46) yet reports t(45) (df=45 -> n=46). So all three within-condition df are off by one relative to the stated n's, and not even in the same direction (positive/negative one too high, accurate one too low). Most likely typographical, and the reported d's all match the d_av convention (mean change / average of the two SDs) computed from Table 2, so the effect sizes are internally consistent. But the df/n mismatch is a genuine, deterministic cross-consistency flag worth a human glance. Does not change any significance verdict."}
+    }
+  ],
+  "paper_level_notes": "Frontiers in Psychology (2026), 10 pages, clean digital PDF (text + 3 figures: Fig 1 CONSORT 2025 flow diagram, Fig 2 FIBM line plot, Fig 3 SIAS line plot; Tables 1-3). Single-session online RCT (N=139; positive 46 / negative 46 / accurate 47) of Facial Interpretation Bias Modification (FIBM) on social anxiety. NULL RESULT paper (FIBM shifted face interpretations but did NOT affect social anxiety) -- honestly reported, with the authors flagging an unexpected anxiety INCREASE at post-test (phase main effect F(1,132)=8.56, p=0.004) and explicitly hesitant about null interpretation. DATA AVAILABILITY: item-level data deposited at OSF (doi:10.17605/OSF.IO/XS7JE), also used as the registration (date 5/14/25) -- so T6 recomputes (Cronbach's alphas c26, total-sample means c21, moderation nulls c29) and a registration-timing check (c30) are all live candidates given an OSF lookup. VERIFIABILITY MAP: this paper is DENSE in the deterministic frontier -- 28 of 32 claims are T0-T2 (23 T0 + 1 T1 + 4 T2) and settle with off-the-shelf checks (statcheck F/t->p, partial-eta^2 recompute, chi-square-from-table recompute, percent/GRIM, Cohen's d recompute, df coherence, prose/figure-vs-table binding); the remaining 4 are T4 method/claim-support (c29, c31), T5 literature (c27), and T6 reproducibility (c26). KEY FINDINGS (candidate, not asserted errors): (1) **All three baseline chi-square tests report the p-value in the chi-square slot** -- gender 'chi2(8)=0.72' recomputes from Table 1 to chi2=5.36/p=0.718 (0.72 IS the p); ethnicity 'chi2(2)=0.27' -> chi2=2.65/p=0.266; race 'chi2(8)=0.57' -> chi2=6.69/p=0.570 (0.57 IS the p). Systematic statistic/p confusion, fully deterministic from the counts; conclusions (no baseline group differences) unaffected (c1-c3, high conf). (2) Table 1 typos: Negative-White 7.61% should be 76.09% (35/46); Positive Multi-racial 13.04% should be 10.87% (5/46, value copied from the Asian row) (c4-c5, high conf). (3) The FIBM phase-by-condition interaction reports partial eta^2=0.28 but F(1,90)=66.96 gives partial eta^2=0.427 -- the only ANOVA whose eta^2 fails the standard partial-eta^2 formula; likely a different effect-size base mislabeled 'ηp2' (c9, moderate conf). (4) The three within-condition paired-t df (46,46,45) are each off-by-one vs the condition n's (46,46,47), and not in a consistent direction -- a df/n coherence flag (c11-c13, c32, moderate conf). (5) Within-condition Cohen's d values match the d_av convention (mean change / average SD), not d_z=t/sqrt(n) -- legitimate but unlabeled; the between-condition d's use the standard independent-samples form (resolved, supported). REASSURING / SUPPORTED: every parametric test (15 ANOVA/t statistics) is statcheck-clean (p reproduces from F/t and df); all partial-eta^2 reproduce EXCEPT the interaction in c9; the a-priori G*Power N>=126 reproduces (~125); the central null interaction (SIAS p=0.549, LSAS p=0.928) is solid and matches Figure 3; Figures 2-3 endpoints match Table 2 means; CONSORT counts reconcile (141 randomized -> 2 excluded from accurate arm -> 139 analyzed); Table 1 percentages and counts all check except the two typos; correlation significance stars are consistent with critical-r thresholds; demographic prose (63/70/93%) matches Table 1 totals (64.7/71.9/92.1%). NET: a transparently reported null study whose substantive conclusions hold; the flags are a SYSTEMATIC chi-square reporting error (statistic and p swapped/garbled in all three baseline tests), two isolated Table 1 percentage typos, one mislabeled interaction effect size, and a set of off-by-one paired-test df -- all minor to the inference but each a clean, deterministic catch for a statcheck/percent/effect-size/df verifier suite. The dataset is on OSF, enabling full T6 confirmation."
+}

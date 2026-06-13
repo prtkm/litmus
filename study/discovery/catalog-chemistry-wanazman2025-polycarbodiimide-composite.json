@@ -1,0 +1,422 @@
+{
+  "paper_id": "chemistry-wanazman2025-polycarbodiimide-composite",
+  "title": "Physicomechanical Performance and Aging Behavior of Polycarbodiimide-Cross-Linked Accelerator-Free Carboxylated Nitrile Butadiene Rubber Latex Gloves",
+  "doi": "10.1021/acsomega.6c02669",
+  "domain": "polymer chemistry / materials science (elastomer cross-linking, glove manufacturing)",
+  "n_pages_read": 11,
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Durability retention (crotch and palm, Table 6) equals aged durability time divided by unaged durability time times 100, per eq 4 (retention = aged/unaged x 100%).",
+      "quote": "retention = (aged/unaged) × 100%",
+      "section": "3.6 / Table 5 + Table 6",
+      "page": 7,
+      "epistemic_tier": "T0",
+      "predicate": "For each of the 9 latex/temperature rows, compute aged/unaged*100 from Table 5 durability times and compare to the retention values in Table 6 (both crotch and palm columns).",
+      "evidence": [
+        {"id": "e1", "kind": "equation", "location": "eq 4", "quote": "retention = (aged/unaged) × 100%", "extracted_values": {}},
+        {"id": "e2", "kind": "table", "location": "Table 5 (Durability Properties, 55 um)", "quote": "K834/65: crotch unaged 120 aged 43, palm unaged 120 aged 69; NL129/90 crotch 120/90 palm 120/120; NL117/110 crotch 117/120 palm 120/120", "extracted_values": {"K834_65_crotch_unaged": 120, "K834_65_crotch_aged": 43, "K834_65_palm_unaged": 120, "K834_65_palm_aged": 69, "NL117_110_crotch_unaged": 117, "NL117_110_crotch_aged": 120}},
+        {"id": "e3", "kind": "table", "location": "Table 6 (Durability Retention, 55 um)", "quote": "K834/65 crotch 35.8 palm 57.5; NL129/90 crotch 75.0 palm 100.0; NL117/110 crotch 102.6 palm 100.0", "extracted_values": {"K834_65_crotch_ret": 35.8, "K834_65_palm_ret": 57.5, "NL117_110_crotch_ret": 102.6}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "percent-ratio recompute across two linked tables (aged/unaged*100)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.97, "rationale": "Recomputed all 9 rows x 2 columns: every value matches Table 6 to one decimal (e.g. 43/120=35.8, 69/120=57.5, 120/117=102.6 explains the >100% crotch value, 90/120=75.0). The lone >100% entry (NL117/110 crotch 102.6%) is internally consistent because that single cell has unaged 117 < aged 120. Off-the-shelf percent-change / table-totals checker fully settles this."}
+    },
+    {
+      "id": "c2",
+      "text": "All unaged samples passed the durability test (reached the 120 min ceiling); NL117/110 unaged crotch is the only unaged value below 120 min (117 min).",
+      "quote": "All unaged samples were successful for the durability test as listed in Table 5.",
+      "section": "4.1.3 Durability Properties / Table 5",
+      "page": 10,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check the prose statement 'all unaged samples were successful' against the unaged columns of Table 5 and the 42-min target / 120-min study ceiling.",
+      "evidence": [
+        {"id": "e4", "kind": "table", "location": "Table 5 unaged columns", "quote": "NL117/110 C: crotch 117 (unaged), palm 120 (unaged); all other unaged crotch & palm = 120", "extracted_values": {"target_min": 42, "study_ceiling_min": 120, "NL117_110_crotch_unaged": 117}},
+        {"id": "e5", "kind": "text", "location": "Section 4.1.3", "quote": "While 42 min is the target time for the durability of nitrile gloves, a maximum of 120 min is needed for this specific study", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-table consistency + threshold comparison (all unaged >= 42 min)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "Every unaged value (>=117 min) exceeds the 42-min pass target, so 'all unaged successful' holds. Minor prose imprecision: text implies a uniform 120-min cap but NL117/110 unaged crotch is 117, not 120; this does not break the success claim. Deterministic threshold check."}
+    },
+    {
+      "id": "c3",
+      "text": "Calculated cross-link density (Table 4) increases after aging for every latex/temperature combination (aged > unaged in all 9 rows).",
+      "quote": "The reduced swelling observed in aged samples suggests an increase in cross-link density",
+      "section": "4.1.2 / Table 4",
+      "page": 9,
+      "epistemic_tier": "T2",
+      "predicate": "Compare aged vs unaged cross-link density columns in Table 4 for all 9 rows and check the prose claim that aging increases cross-link density.",
+      "evidence": [
+        {"id": "e6", "kind": "table", "location": "Table 4 (Cross-Linked Density, x10^-5 mol/cm3)", "quote": "K834/65 unaged 4.5 aged 6.5; K834/110 unaged 5.2 aged 5.6; NL117/65 unaged 11.5 aged 13.5; NL117/110 unaged 10.2 aged 12.3", "extracted_values": {"K834_65_u": 4.5, "K834_65_a": 6.5, "K834_110_u": 5.2, "K834_110_a": 5.6, "NL117_65_u": 11.5, "NL117_65_a": 13.5, "NL117_110_u": 10.2, "NL117_110_a": 12.3}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "pairwise column comparison (aged > unaged) across all rows", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.95, "rationale": "Verified all 9 rows: aged CLD strictly exceeds unaged CLD in every case (smallest margin K834/110: 5.6 vs 5.2). Prose claim of aging-induced CLD increase is fully supported by the tabulated numbers. Deterministic."}
+    },
+    {
+      "id": "c4",
+      "text": "NL117 exhibits the highest calculated cross-link density of all latex grades across all curing temperatures (both unaged and aged).",
+      "quote": "the calculated cross-link density, obtained via the Flory−Rehner equation, reveals a clear dependence on latex grade, with NL117 consistently exhibiting the highest values",
+      "section": "4.1.2 / Table 4",
+      "page": 9,
+      "epistemic_tier": "T2",
+      "predicate": "Check whether every NL117 cross-link density value in Table 4 exceeds every K834 and NL129 value (separately for unaged and aged).",
+      "evidence": [
+        {"id": "e7", "kind": "table", "location": "Table 4", "quote": "NL117 unaged 11.5/10.8/10.2 vs all others unaged 4.4-5.3; NL117 aged 13.5/12.7/12.3 vs others aged 5.6-7.2", "extracted_values": {"NL117_unaged_min": 10.2, "others_unaged_max": 5.3, "NL117_aged_min": 12.3, "others_aged_max": 7.2}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "min(NL117) vs max(others) comparison per condition", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.96, "rationale": "min NL117 unaged (10.2) > max others unaged (5.3 for NL129/65); min NL117 aged (12.3) > max others aged (7.2 for NL129/65). Claim of NL117 being consistently highest is fully supported. Note (not contradicting claim): within NL117 the unaged CLD slightly DEcreases with curing temperature (11.5->10.8->10.2), a mild anti-intuitive trend the paper does not flag, but it does not affect this claim."}
+    },
+    {
+      "id": "c5",
+      "text": "Swelling index has an inverse relationship with cross-link density (lower swelling index = more tightly cross-linked network), and NL117 has both the lowest swelling and the highest cross-link density.",
+      "quote": "The swelling index exhibits an inverse relationship with cross-link density, where a lower swelling index corresponds to a more tightly cross-linked network as shown in Table 4.",
+      "section": "4.1.2",
+      "page": 9,
+      "epistemic_tier": "T2",
+      "predicate": "Check directional consistency between the swelling-index figure (Fig 3) and the cross-link density table (Table 4): NL117 lowest swelling should pair with highest CLD; and check whether the K834-vs-NL129 swelling ordering matches their CLD ordering at each temperature.",
+      "evidence": [
+        {"id": "e8", "kind": "figure", "location": "Figure 3 (Toluene swelling index, 55 um)", "quote": "NL117 lowest swelling (~140-150% unaged, ~125-135% aged); K834 & NL129 ~250-275% unaged, ~210-230% aged", "extracted_values": {"NL117_unaged_swell_pct_approx": 145, "K834_NL129_unaged_swell_pct_approx": 260}},
+        {"id": "e9", "kind": "table", "location": "Table 4", "quote": "K834/65 CLD 4.5 < NL129/65 CLD 5.3; K834/110 CLD 5.2 > NL129/110 CLD 4.7", "extracted_values": {"K834_65_cld": 4.5, "NL129_65_cld": 5.3, "K834_110_cld": 5.2, "NL129_110_cld": 4.7}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "directional/rank consistency between figure ranking and table ranking", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.75, "rationale": "NL117 = lowest swelling + highest CLD: consistent. The prose claim (lines 357-361) that at 65 C K834 (27% ACN) shows slightly higher swelling than NL129 (20% ACN) is consistent with Table 4 (K834/65 CLD 4.5 < NL129/65 CLD 5.3 => K834 lower CLD => higher swelling). However at 110 C the CLD ordering reverses (K834 5.2 > NL129 4.7), so the inverse-swelling/CLD rule predicts K834 should swell LESS than NL129 at 110 C; figure resolution (~250-275% lumped band) is too coarse to confirm/refute this, so the K834<->NL129 fine ordering is partially inconclusive. Needs exact per-bar swelling values from SI to fully settle."}
+    },
+    {
+      "id": "c6",
+      "text": "K834 and NL129 gloves show high swelling (~250-275%) when unaged, decreasing to ~210-230% after aging; NL117 shows much lower swelling (~140-150% unaged, ~125-135% aged).",
+      "quote": "XNBR gloves with latex K834 and NL129 for all three curing conditions show high swelling (∼250−275%) when unaged. After aging, swelling decreases moderately (∼210− 230%) ... XNBR gloves using latex NL117 show much lower initial swelling (∼140−150%) ... Slight further reduction after aging (∼125−135%)",
+      "section": "4.1.2",
+      "page": 9,
+      "epistemic_tier": "T2",
+      "predicate": "Read bar heights from Figure 3 and compare to the prose-quoted approximate ranges for each latex/aging condition.",
+      "evidence": [
+        {"id": "e10", "kind": "figure", "location": "Figure 3 (y-axis 0-350%)", "quote": "Unaged (teal) K834/NL129 bars ~250-275%, NL117 bars ~140-150%; Aged (orange) bars correspondingly lower", "extracted_values": {"y_axis_max_pct": 350, "K834_NL129_unaged_approx": 262, "NL117_unaged_approx": 145}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-figure bar-height read-off", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.8, "rationale": "Visual read of Figure 3 (rendered at 220 DPI): unaged K834/NL129 cluster sits between the 250 and 275 gridlines; NL117 unaged sits ~140-150; aged bars are uniformly lower. Quoted ranges match the chart within read precision. Exact bar values would require SI data table (the SI lists 'swelling index analysis data')."}
+    },
+    {
+      "id": "c7",
+      "text": "All XNBR gloves, regardless of latex grade and curing temperature, show elongation at break exceeding 500% (the ASTM D6319 minimum).",
+      "quote": "Figure 7 demonstrates all XNBR latex gloves, regardless of latex grade (K834, NL129, or NL117) and curing temperature (65, 90, or 110 °C), demonstrated elongation at break values exceeding 500%.",
+      "section": "4.3.1 / Figure 7",
+      "page": 12,
+      "epistemic_tier": "T2",
+      "predicate": "Read all bars in Figure 7 and check each exceeds 500%; cross-check against the ASTM D6319 minimum-elongation requirement stated in Methods.",
+      "evidence": [
+        {"id": "e11", "kind": "figure", "location": "Figure 7 (Elongation at break, y-axis 0-600%)", "quote": "K834 bars ~520-540%, NL129 ~575-585%, NL117 ~580-590%, all above the 500% line", "extracted_values": {"K834_approx_pct": 530, "NL129_approx_pct": 580, "NL117_approx_pct": 585, "astm_min_pct": 500}},
+        {"id": "e12", "kind": "text", "location": "Section 3.7", "quote": "ASTM D6319-19, 2023, which specifies a minimum tensile strength of 14 MPa and a minimum elongation at break of 500% for nitrile examination gloves", "extracted_values": {"astm_min_elong_pct": 500, "astm_min_tensile_mpa": 14}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-figure bar-height read-off + threshold check (>500%)", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "All 9 bars in Figure 7 visibly clear the 500% gridline (lowest, K834, ~520-540%). Claim of universal >500% elongation is supported by the chart and meets the ASTM 500% minimum. Exact values are in the SI table referenced as 'tensile strength and elongation at break ... with three different curing temperatures'."}
+    },
+    {
+      "id": "c8",
+      "text": "Tensile strength of K834 is ~30 MPa across all three curing temperatures, with a slight improvement from 65 to 110 C; films cured at 65 C reach about 30 MPa, similar to 110 C.",
+      "quote": "the tensile strength of the latex films cured at 65 °C reached about 30 MPa, which is similar to 110 °C. In particular, K834 latex shows consistently high tensile strength across all curing temperatures (∼30 MPa).",
+      "section": "4.3.1 / Figure 6",
+      "page": 12,
+      "epistemic_tier": "T2",
+      "predicate": "Read Figure 6 bar heights for K834 at 65/90/110 C and compare to the ~30 MPa prose claim; check all bars exceed the 14 MPa ASTM minimum.",
+      "evidence": [
+        {"id": "e13", "kind": "figure", "location": "Figure 6 (Tensile strength, y-axis 0-35 MPa)", "quote": "K834 bars ~30 MPa all three temps; NL129 ~27-28 MPa (slightly lower at 90 C); NL117 ~28 MPa; asterisks (*) over K834 only", "extracted_values": {"y_axis_max_mpa": 35, "K834_approx_mpa": 30, "NL129_approx_mpa": 27, "NL117_approx_mpa": 28, "astm_min_mpa": 14}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-figure bar-height read-off + threshold check (>14 MPa)", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.82, "rationale": "Figure 6 K834 bars all sit at/near the 30 MPa level (just below the 35-line). All grades clearly exceed the 14 MPa ASTM minimum. 'about 30 MPa at 65 C similar to 110 C' is visually supported. Exact bar values are in the SI."}
+    },
+    {
+      "id": "c9",
+      "text": "Across all latex grades and thicknesses, aged samples consistently show higher tear strength than unaged; K834 at 70 um rises from ~65 kN/m (unaged) to ~150 kN/m (aged), and K834 at 90 um aged shows the highest values (~160 kN/m).",
+      "quote": "the aged samples consistently exhibit higher tear strength than unaged ones as observed in Figure 5. For example, K834 at 70 μm increases from ∼65 kN/m (unaged) to ∼150 kN/m (aged) ... K834 at 90 μm shows the highest values (∼160 kN/m aged)",
+      "section": "4.2.2 / Figure 5",
+      "page": 11,
+      "epistemic_tier": "T2",
+      "predicate": "Read the two line series (unaged vs aged) in Figure 5 and verify aged > unaged everywhere, plus the specific K834/70um and K834/90um values.",
+      "evidence": [
+        {"id": "e14", "kind": "figure", "location": "Figure 5 (Tear strength line plot, y-axis 0-180 kN/m)", "quote": "Aged (red) line ~130-160 kN/m, unaged (blue) line ~60-75 kN/m; K834/70um unaged ~65 aged ~150; K834/90um aged ~160; asterisks over K834 70 & 90 um", "extracted_values": {"y_axis_max": 180, "K834_70_unaged_approx": 65, "K834_70_aged_approx": 150, "K834_90_aged_approx": 160}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "two-series ordering check (aged > unaged) + point read-off", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.83, "rationale": "Figure 5 is a line plot: the aged (red) series lies entirely above the unaged (blue) series across all 9 thickness/grade points. K834/70um reads ~65 (unaged) -> ~150 (aged) and K834/90um aged peaks ~160, matching the prose. Aged-higher-than-unaged claim is robustly supported by the non-overlapping lines."}
+    },
+    {
+      "id": "c10",
+      "text": "Experimental XNBR gloves (K834, NL129, NL117) at 55 um show lower modulus than the commercial Glove A, and modulus increases with thickness from 55 to 90 um.",
+      "quote": "All three XNBR grades (K834, NL129, and NL117) with a thickness of 55 μm show lower modulus values (both at 100% and 300%) compared to the commercial Glove A ... As thickness increases from 55 to 90 μm, both 100% and 300% modulus values generally increase.",
+      "section": "4.2.1 / Figure 4",
+      "page": 11,
+      "epistemic_tier": "T2",
+      "predicate": "Read Figure 4 stacked bars (modulus 100% + 300%) by thickness group and compare experimental vs commercial bars, and check the increasing-with-thickness trend.",
+      "evidence": [
+        {"id": "e15", "kind": "figure", "location": "Figure 4 (Modulus 100%/300%, y-axis 0-20 MPa, grouped by 55/70/90 um)", "quote": "Within each thickness group, experimental K834/NL129/NL117 stacked bars are below the commercial Glove (A/B/C); overall heights rise from 55 to 90 um group", "extracted_values": {"y_axis_max_mpa": 20}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "grouped bar comparison (experimental vs commercial) + monotonic trend across thickness", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.72, "rationale": "Figure 4 visually supports both sub-claims: experimental bars sit below the commercial reference bar within each thickness cluster, and modulus rises with thickness. Read precision is lower for a stacked bar chart; the comparison to 'Glove A' specifically (the 55 um commercial) holds in the 55 um group. Exact values in SI."}
+    },
+    {
+      "id": "c11",
+      "text": "Aged swelling index is consistently lower than unaged across all latex grades and curing temperatures, and this reduction is statistically significant (p < 0.05).",
+      "quote": "the swelling index of aged samples is consistently lower than that of unaged samples across all latex grades and curing temperatures. This reduction was found to be statistically significant (p < 0.05)",
+      "section": "4.1.2",
+      "page": 8,
+      "epistemic_tier": "T4",
+      "predicate": "Check direction (aged < unaged) in Figure 3, and assess whether the claimed p<0.05 is supported (test name, n, and dispersion required).",
+      "evidence": [
+        {"id": "e16", "kind": "figure", "location": "Figure 3 (*p < 0.05 in caption)", "quote": "Aged (orange) bars below unaged (teal) for every group; caption '*p < 0.05'", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "direction check (deterministic) + statistical-test reconstruction (requires raw replicate values + named test)", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.55, "rationale": "The DIRECTION (aged < unaged) is visually supported in Figure 3 and is deterministic. The p<0.05 SIGNIFICANCE claim cannot be recomputed: no test statistic, degrees of freedom, exact p-value, or per-group SD/n is reported in the main text (swelling raw data is only in SI). statcheck does not apply (no t/F/p triples reported). Verdict on significance is inconclusive pending SI replicate data."}
+    },
+    {
+      "id": "c12",
+      "text": "An independent t test confirmed no significant differences (p > 0.05) in elongation at break among the different latex grades and curing temperatures.",
+      "quote": "Statistical analysis using an independent t test confirmed that there were no significant differences (p > 0.05) in elongation at break among the different latex grades and curing temperatures.",
+      "section": "4.3.1",
+      "page": 13,
+      "epistemic_tier": "T3",
+      "predicate": "Assess method appropriateness: an 'independent t test' compares two groups, but the claim spans 3 latex grades x 3 temperatures (a multi-group / multi-factor comparison that conventionally calls for ANOVA).",
+      "evidence": [
+        {"id": "e17", "kind": "text", "location": "Section 4.3.1", "quote": "Statistical analysis using an independent t test confirmed that there were no significant differences (p > 0.05) ... among the different latex grades and curing temperatures", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "statistical-method-appropriateness review (t test vs ANOVA for >2 groups / factorial design)", "verifier_exists": false, "candidate_verdict": "suspect", "confidence": 0.6, "rationale": "Using an 'independent t test' to assert no difference 'among' 3+ grades and 3 temperatures is a method mismatch: pairwise t tests across a 3x3 design without correction (or omission of ANOVA) is statistically inappropriate and conflates multiple comparisons. The claim direction (overlapping elongation, all >500%) is plausible from Figure 7, but the inferential procedure as described is suspect. No p-values reported, so statcheck cannot run; this is a design-appropriateness (T3) flag, not an arithmetic error."}
+    },
+    {
+      "id": "c13",
+      "text": "Aging caused a statistically significant increase in tensile strength (p < 0.05) for all latex grades at 65 C, while no significant differences (p > 0.05) were observed between latex grades within the same aging condition.",
+      "quote": "Statistical analysis (t test) confirmed that aging resulted in a significant increase in tensile strength (p < 0.05) for all latex grades, while no significant differences (p > 0.05) were observed between the different latex grades within the same aging condition.",
+      "section": "4.3.1 / Figure 8",
+      "page": 13,
+      "epistemic_tier": "T4",
+      "predicate": "Check direction (aged tensile > unaged) in Figure 8 and whether p<0.05 / p>0.05 claims can be reconstructed.",
+      "evidence": [
+        {"id": "e18", "kind": "figure", "location": "Figure 8 (Tensile strength unaged vs aged, 55 um, 65 C; *p<0.05)", "quote": "aged tensile strength bars exceed unaged for all latex grades", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "direction check + statistical-test reconstruction (raw n=5 replicate tensile values + test type)", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.5, "rationale": "Direction (aging increases tensile strength at 65 C) is supported by Figure 8. Significance claims cannot be recomputed: no test statistic/p-value/SD reported in main text. Also the same t-test-for-multiple-groups concern as c12 applies to the 'no difference between grades' clause. statcheck inapplicable. Inconclusive on significance."}
+    },
+    {
+      "id": "c14",
+      "text": "FTIR spectra across latex grades show retained characteristic XNBR bands (nitrile ~2230-2240, C-H ~2850-2950, O-H ~2500-3300, C=O ~1700-1725 cm-1) with no substantial shifts; expected new urea/urethane carbonyl (~1630-1680), N-H (~3300-3500) and reduced carbodiimide (~2100-2140 cm-1) bands were NOT distinctly resolved.",
+      "quote": "these bands are retained with no substantial shifts or intensity changes across all samples ... However, in the present study, these changes were not distinctly resolved in the spectra.",
+      "section": "4.1.1 / Figure 2",
+      "page": 8,
+      "epistemic_tier": "T2",
+      "predicate": "Check whether the FTIR figure (Figure 2) and the quoted band assignments are internally consistent, and whether the authors' own admission (cross-linking bands not resolved) is consistent with their cross-linking claims elsewhere.",
+      "evidence": [
+        {"id": "e19", "kind": "figure", "location": "Figure 2 (IR spectra of XNBR-PCDI films, different grades)", "quote": "spectra overlaid; characteristic bands annotated in text, no new resolved cross-link peaks", "extracted_values": {"nitrile_cm1_low": 2230, "nitrile_cm1_high": 2240, "carbodiimide_cm1_low": 2100, "carbodiimide_cm1_high": 2140}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "band-assignment plausibility check vs standard IR tables + internal consistency (FTIR does not directly evidence the cross-linking the paper claims)", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.7, "rationale": "Quoted wavenumber assignments match standard IR group-frequency tables (nitrile ~2230-2240, carbonyl ~1700-1725, carbodiimide ~2100-2140 cm-1 are all correct). The paper is candidly honest that FTIR did NOT resolve the urea/urethane formation, attributing cross-linking evidence instead to swelling/CLD; this is an internally consistent (if weak) evidentiary position rather than an error. Band-assignment correctness is checkable; the negative-result interpretation is reasonable."}
+    },
+    {
+      "id": "c15",
+      "text": "FTIR was performed over 550-4000 cm-1 at a resolution of 0.5 cm-1 on a PerkinElmer Spectrum One.",
+      "quote": "FTIR analysis was performed using a PerkinElmer Spectrum One spectrometer (Shelton, USA) over a wavenumber range of 550–4000 cm−1, with a resolution of 0.5 cm−1.",
+      "section": "3.4",
+      "page": 7,
+      "epistemic_tier": "T1",
+      "predicate": "Check the stated instrument and parameters against known PerkinElmer Spectrum One specifications (0.5 cm-1 is the finest selectable resolution for that bench; plausible but at the instrument's limit).",
+      "evidence": [
+        {"id": "e20", "kind": "text", "location": "Section 3.4", "quote": "wavenumber range of 550–4000 cm−1, with a resolution of 0.5 cm−1", "extracted_values": {"range_low_cm1": 550, "range_high_cm1": 4000, "resolution_cm1": 0.5}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "instrument-spec lookup (PerkinElmer Spectrum One best resolution)", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.4, "rationale": "0.5 cm-1 is the best resolution the Spectrum One offers, which is unusually fine for routine polymer FTIR (most XNBR work uses 2-4 cm-1) but not impossible; the lower limit of 550 cm-1 is slightly above the typical 450 cm-1 KBr-window floor. Cannot be settled without the instrument datasheet; flagged as a low-priority external-fact (T1) check, not an obvious error."}
+    },
+    {
+      "id": "c16",
+      "text": "Cross-link density was calculated via the Flory-Rehner equation using the molar volume of toluene Vs = 105.91 cm3/mol and Flory-Huggins parameter chi = 0.39; toluene density rho_s = 0.862 g/cm3.",
+      "quote": "Vs is the molar volume of toluene (105.91 cm3/mol), and χ is the Flory−Huggins polymer−solvent interaction parameter, taken as 0.39 ... ρs is the density of toluene (0.862 g/cm3).",
+      "section": "3.5 / eq 3",
+      "page": 7,
+      "epistemic_tier": "T1",
+      "predicate": "Check the literature/physical constants for toluene against reference values: molar volume ~106.3 cm3/mol, density 0.8623 g/cm3 at 25 C; chi(XNBR-toluene) ~0.39.",
+      "evidence": [
+        {"id": "e21", "kind": "number", "location": "Section 3.5 / eq 3", "quote": "Vs = 105.91 cm3/mol; chi = 0.39; toluene density 0.862 g/cm3", "extracted_values": {"Vs_cm3_mol": 105.91, "chi": 0.39, "toluene_density_g_cm3": 0.862}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "physical-constant lookup (toluene molar volume = MW 92.14 / density 0.8623 = ~106.9 cm3/mol; literature commonly cites 105.9-106.3)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.78, "rationale": "Toluene density 0.862 g/cm3 is correct (25 C). Molar volume: 92.14/0.8623 = 106.9 cm3/mol; the cited 105.91 is the commonly tabulated literature value (slight discrepancy from naive MW/density is normal due to reference-temperature conventions) and is widely used in XNBR Flory-Rehner studies. chi = 0.39 matches published XNBR-toluene interaction parameters (e.g. their ref 11). Constants are reasonable; off-the-shelf unit/constant check supports them."}
+    },
+    {
+      "id": "c17",
+      "text": "Latex grades: K834 ~27% ACN, NL129 ~20% ACN, NL117 ~45% ACN (supplier-stated, Materials section).",
+      "quote": "The XNBR latexes K834 (∼27% ACN content), NL129 (∼20% ACN content), and NL117 (∼45% ACN content) were supplied by Kumho Petrochemical Co., Ltd. (Seoul, Korea) and LG Chem (Seoul, Korea).",
+      "section": "3.1",
+      "page": 7,
+      "epistemic_tier": "T2",
+      "predicate": "Check internal consistency of ACN values: the Materials section gives definite specs (27/20/45%), but the Discussion hedges with different ranges ('NL117 likely contains ~35-45%'; 'K834 and NL129 likely contain ~18-27%'). Compare for coherence.",
+      "evidence": [
+        {"id": "e22", "kind": "text", "location": "Section 3.1", "quote": "K834 (~27% ACN), NL129 (~20% ACN), NL117 (~45% ACN)", "extracted_values": {"K834_acn_pct": 27, "NL129_acn_pct": 20, "NL117_acn_pct": 45}},
+        {"id": "e23", "kind": "text", "location": "Section 4.1.2", "quote": "NL117 likely contains a high-ACN content (∼35−45%) ... K834 and NL129 likely contain lower ACN content (∼18−27%)", "extracted_values": {"NL117_disc_low": 35, "NL117_disc_high": 45, "K834NL129_disc_low": 18, "K834NL129_disc_high": 27}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-prose internal consistency (Methods stated value vs Discussion hedged range)", "verifier_exists": false, "candidate_verdict": "suspect", "confidence": 0.55, "rationale": "Mild internal inconsistency: the Materials section reports ACN as known supplier specs (27/20/45%), yet the Discussion treats the same quantities as unknown and 'likely' within ranges (35-45% for NL117, 18-27% for K834/NL129). NL117's 45% sits at the top edge of its hedged 35-45% band and K834's 27% sits exactly at the top of the 18-27% band, so the ranges are technically not contradicted, but the rhetorical inconsistency (definite in Methods, speculative in Discussion) is a coherence flag. Not a numeric error; flagged suspect for prose consistency only."}
+    },
+    {
+      "id": "c18",
+      "text": "K834 latex shows crotch durability retention of ~36-57% (lower), NL129 ~68-93% (moderate-high), and NL117 approaching or exceeding 100% (best).",
+      "quote": "K834 latex shows lower retention after aging (crotch retention: ∼ 36−57%) ... NL129 latex has moderate-to-high retention (68−93%) ... NL117 latex performs the best, with retention values approaching or exceeding 100%.",
+      "section": "4.1.3 / Table 6",
+      "page": 10,
+      "epistemic_tier": "T2",
+      "predicate": "Check that the prose ranges match the crotch-retention column of Table 6 for each latex grade.",
+      "evidence": [
+        {"id": "e24", "kind": "table", "location": "Table 6 crotch retention column", "quote": "K834: 35.8/45.8/56.7; NL129: 68.3/75.0/92.5; NL117: 95.8/100.0/102.6", "extracted_values": {"K834_min": 35.8, "K834_max": 56.7, "NL129_min": 68.3, "NL129_max": 92.5, "NL117_min": 95.8, "NL117_max": 102.6}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-range vs table-column consistency (min/max bracketing)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.93, "rationale": "Table 6 crotch values: K834 35.8-56.7 (prose '36-57' rounds correctly), NL129 68.3-92.5 (prose '68-93' rounds correctly), NL117 95.8-102.6 (prose 'approaching or exceeding 100%' correct). All three prose ranges faithfully summarize the table. Deterministic rounding/range check."}
+    },
+    {
+      "id": "c19",
+      "text": "The XNBR cross-link formulation (Table 2) is XNBR 100 phr, KOH 2, ZnO 1, antioxidant 0.2, TiO2 2, PCDI 0.5 (phr = parts per hundred rubber); dispersion solid contents 45/5/50/50/70/40%.",
+      "quote": "phr: XNBR 100, KOH 2, ZnO 1, antioxidant 0.2, TiO2 2, PCDI 0.5; (header) 45% XNBR, 5% KOH, 50% ZnO, 50% antioxidant, 70% TiO2, 40% PCDI",
+      "section": "3.2 / Table 2",
+      "page": 7,
+      "epistemic_tier": "T1",
+      "predicate": "Check plausibility/consistency of the formulation: PCDI loading of 0.5 phr is the cross-linker level the paper repeatedly cites as 'relatively low'; verify the two header rows (solids % and phr) are internally coherent.",
+      "evidence": [
+        {"id": "e25", "kind": "table", "location": "Table 2 (Formulation of XNBR Cross-Link System)", "quote": "component XNBR/KOH/ZnO/antioxidant/TiO2/PCDI; phr 100/2/1/0.2/2/0.5; solids 45/5/50/50/70/40%", "extracted_values": {"XNBR_phr": 100, "KOH_phr": 2, "ZnO_phr": 1, "antiox_phr": 0.2, "TiO2_phr": 2, "PCDI_phr": 0.5}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "formulation plausibility / phr-vs-solids coherence check", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.7, "rationale": "phr values are physically reasonable for an XNBR glove dip formulation (cross-linker PCDI 0.5 phr matches the 'low concentration of PCDI' explanation given for the weak FTIR signal). The two header rows encode different quantities (dispersion solids % vs dry phr), which is standard latex-compounding notation and not contradictory. No mass-balance violation; supported."}
+    },
+    {
+      "id": "c20",
+      "text": "Artificial sweat solution (durability test) was made from 1 L deionized water with 20 g NaCl, 17.05 g lactic acid, 5.01 g acetic acid, 17.5 g NH4Cl, and 2 N NaOH.",
+      "quote": "One liter of deionized water is used to create an artificial sweat solution ... 20 g of sodium chloride, 17.05 g of lactic acid, 5.01 g of acetic acid, 17.5 g of ammonium chloride, and 2 N sodium hydroxide solution.",
+      "section": "3.6",
+      "page": 7,
+      "epistemic_tier": "T1",
+      "predicate": "Check the artificial-sweat recipe against the referenced standard (JIS/ISO artificial perspiration); odd precision (17.05 g, 5.01 g) suggests a specific source.",
+      "evidence": [
+        {"id": "e26", "kind": "text", "location": "Section 3.6", "quote": "20 g NaCl, 17.05 g lactic acid, 5.01 g acetic acid, 17.5 g NH4Cl, 2 N NaOH per 1 L", "extracted_values": {"NaCl_g": 20, "lactic_g": 17.05, "acetic_g": 5.01, "NH4Cl_g": 17.5}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "recipe-vs-standard lookup (artificial perspiration composition)", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.45, "rationale": "Composition is plausible for an acidic artificial-sweat formulation but does not exactly match the most common ISO 105-E04 acidic perspiration recipe; the unusual precision (17.05, 5.01 g) implies a specific internal Midori Anzen protocol. Cannot confirm/refute without the cited internal standard. Low-priority T1 check."}
+    },
+    {
+      "id": "c21",
+      "text": "Cross-linking XNBR latex with multifunctional epoxides can reduce thermal load by up to 30%.",
+      "quote": "energy-efficient curing strategies such as cross-linking XNBR latex with multifunctional epoxides not only maintain glove performance but can also reduce thermal load by up to 30%.",
+      "section": "4.3.1 (ESG discussion)",
+      "page": 14,
+      "epistemic_tier": "T5",
+      "predicate": "Check whether the cited reference (ref 18, Grabmayer et al., multifunctional epoxides) actually supports a 'up to 30% thermal load reduction' figure.",
+      "evidence": [
+        {"id": "e27", "kind": "text", "location": "Section 4.3.1", "quote": "reduce thermal load by up to 30%. Studies from institutions such as Montanuniversität Leoben and industry sources like Ruico Global support these findings", "extracted_values": {"thermal_load_reduction_pct": 30}},
+        {"id": "e28", "kind": "text", "location": "Reference 18", "quote": "Grabmayer, T.; ... Crosslinking of XNBR latex with multifunctional epoxides: An energy-efficient curing strategy ... J. Appl. Polym. Sci. 2023, 140 (25), No. e53973.", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "literature claim verification (retrieve ref 18 and confirm the 30% figure)", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.4, "rationale": "The '30%' is about a DIFFERENT cross-linking system (epoxides, ref 18), imported into this PCDI paper's sustainability discussion. Whether ref 18 states 'up to 30% thermal load reduction' requires retrieving that paper; this is an external-literature (T5) check beyond the deterministic frontier. Flagged inconclusive."}
+    },
+    {
+      "id": "c22",
+      "text": "Reference 27 reports virgin XNBR films exhibit elongation at break of approximately 530%, and reference 28 reports increasing XNBR content improved elongation at break by up to 46%.",
+      "quote": "ref 27, where this study reports that virgin XNBR films exhibit an elongation at break of approximately 530% ... ref 28 explains that ... increasing the XNBR content in the composite led to a significant improvement in the elongation at break, with enhancements up to 46%.",
+      "section": "4.3.1",
+      "page": 13,
+      "epistemic_tier": "T5",
+      "predicate": "Verify the two externally attributed numbers (530% elongation in ref 27; +46% enhancement in ref 28) against those sources.",
+      "evidence": [
+        {"id": "e29", "kind": "text", "location": "Section 4.3.1", "quote": "virgin XNBR films exhibit an elongation at break of approximately 530% ... enhancements up to 46%", "extracted_values": {"ref27_elong_pct": 530, "ref28_enhancement_pct": 46}},
+        {"id": "e30", "kind": "text", "location": "References 27, 28", "quote": "(27) Glove, Eco Innovative Technologies ... ecogloves.co blog; (28) Saberian, M. ... epoxy/graphene nano-platelets/XNBR ternary nanocomposites, Nanomaterials and Nanotechnology 2019, 9, 1-12.", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "literature claim verification (retrieve refs 27 & 28)", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.4, "rationale": "Both numbers are externally sourced. Note ref 27 is a non-peer-reviewed industry blog (ecogloves.co), a weak citation for a quantitative '530%' claim; ref 28 is a peer-reviewed nanocomposite paper. Confirming the exact figures requires retrieving the sources (T5). Flagged inconclusive; the ecogloves.co provenance is a minor quality concern (T7-adjacent)."}
+    },
+    {
+      "id": "c23",
+      "text": "The mechanical-property thresholds used are ASTM D6319 minimum tensile strength 14 MPa and minimum elongation at break 500% for nitrile examination gloves; the durability target is at least 42 min (Midori Anzen internal standard).",
+      "quote": "ASTM D6319-19, 2023, which specifies a minimum tensile strength of 14 MPa and a minimum elongation at break of 500% ... the durability time must be at least 42 min.",
+      "section": "3.6, 3.7",
+      "page": 7,
+      "epistemic_tier": "T1",
+      "predicate": "Check the cited standard thresholds (ASTM D6319 nitrile exam glove minimums) against the actual standard values.",
+      "evidence": [
+        {"id": "e31", "kind": "text", "location": "Sections 3.6 & 3.7", "quote": "minimum tensile strength of 14 MPa and a minimum elongation at break of 500% ... durability time must be at least 42 min", "extracted_values": {"min_tensile_mpa": 14, "min_elong_pct": 500, "durability_target_min": 42}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "standards lookup (ASTM D6319 unaged tensile/elongation minimums for nitrile exam gloves)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "ASTM D6319 for nitrile examination gloves does specify a 14 MPa minimum tensile strength and 500% minimum elongation at break (before aging), so the quoted thresholds are correct. The 42-min durability target is an internal Midori Anzen standard (the funder), not an external public standard, so it is self-asserted but plausibly stated. Standard-value check supports the ASTM numbers."}
+    },
+    {
+      "id": "c24",
+      "text": "DSC and DMA were not performed due to instrument unavailability; the authors state their absence does not affect the observed trends.",
+      "quote": "DSC and DMA were not included in this study due to instrument unavailability during the experimental period ... the absence of DSC/DMA data does not affect the overall trends observed, but it represents a limitation of the current work.",
+      "section": "4.1.1",
+      "page": 8,
+      "epistemic_tier": "T8",
+      "predicate": "Assess the subjective claim that missing DSC/DMA does not affect the conclusions (a judgment about evidentiary sufficiency).",
+      "evidence": [
+        {"id": "e32", "kind": "text", "location": "Section 4.1.1", "quote": "the absence of DSC/DMA data does not affect the overall trends observed, but it represents a limitation of the current work", "extracted_values": {}}
+      ],
+      "verification": {"possible": false, "verifier_needed": "expert judgment on evidentiary sufficiency (no deterministic check)", "verifier_exists": false, "candidate_verdict": "not_checkable", "confidence": 0.3, "rationale": "This is a subjective self-assessment (T8). It is commendably transparent disclosure (the paper openly states the limitation and that FTIR also failed to resolve cross-linking). Whether the trends truly stand without thermal/dynamic-mechanical data is a matter of expert judgment, not a computable check. Not checkable deterministically."}
+    },
+    {
+      "id": "c25",
+      "text": "PCDI-cured AF-XNBR gloves achieve ASTM-compliant performance even under low-temperature (65 C) curing, challenging the assumption that high thermal input is essential.",
+      "quote": "the results demonstrate that AF-XNBR gloves can achieve compliant performance even under low-temperature curing conditions, challenging the prevailing assumption that high thermal input is essential.",
+      "section": "Abstract / Conclusions",
+      "page": 1,
+      "epistemic_tier": "T4",
+      "predicate": "Check whether the 65 C data (tensile >=14 MPa, elongation >=500%, durability >=42 min after aging) actually clear all ASTM D6319 / target thresholds, supporting the central claim.",
+      "evidence": [
+        {"id": "e33", "kind": "figure", "location": "Figures 6,7,8,9 + Tables 5,6 (65 C, 55 um)", "quote": "65 C tensile ~28-30 MPa (>14), elongation >500%, aged durability e.g. NL117/65 crotch 115 min (>42); K834/65 aged crotch 43 min (>42)", "extracted_values": {"tensile_at_65_approx_mpa": 30, "elong_at_65_approx_pct": 525, "K834_65_aged_crotch_min": 43, "min_durability_target": 42}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "threshold-compliance aggregation across all 65 C results (claim<->evidence support)", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.72, "rationale": "At 65 C the supporting data clear the thresholds: tensile ~30 MPa > 14 MPa, elongation >500%, and aged crotch durability >=42 min for all grades (K834/65 aged crotch is 43 min, the tightest margin, but still passes). So the central low-temperature-compliance claim is supported by the paper's own numbers. The caveat: K834/65 aged crotch retention is only 35.8% and the 43-min pass is marginal, making 'compliant' true but borderline for the weakest grade. Supported with moderate confidence."}
+    },
+    {
+      "id": "c26",
+      "text": "Particle sizes: ZnO average 0.5026 um and TiO2 average 0.614 um.",
+      "quote": "zinc oxide (ZnO) with an average particle size of 0.5026 μm, titanium dioxide (TiO2) with an average particle size of 0.614 μm",
+      "section": "3.1",
+      "page": 7,
+      "epistemic_tier": "T7",
+      "predicate": "Note the anomalous 4-significant-figure precision on ZnO (0.5026 um) versus 3 sig figs on TiO2 (0.614 um); assess whether reported precision is plausible for a supplier-stated average particle size.",
+      "evidence": [
+        {"id": "e34", "kind": "number", "location": "Section 3.1", "quote": "ZnO 0.5026 um; TiO2 0.614 um", "extracted_values": {"ZnO_um": 0.5026, "TiO2_um": 0.614}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "significant-figures / precision-plausibility review (integrity signal)", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.35, "rationale": "0.5026 um implies sub-nm precision on a dispersion's average particle size, which is implausibly precise (likely a single instrument readout reported verbatim rather than a meaningful figure). This is a minor integrity/precision signal (T7), not evidence of misconduct. Cannot be adjudicated further without the supplier's PSD data; flagged inconclusive."}
+    },
+    {
+      "id": "c27",
+      "text": "The HIGHLIGHTS and Conclusions claim PCDI yields gloves with durability, swelling resistance and aging performance 'comparable to or better than accelerator-cured systems', but the study contains no accelerator-cured (sulfur) experimental control group.",
+      "quote": "produces XNBR gloves with durability, swelling resistance, and aging performance comparable to or better than accelerator-cured systems.",
+      "section": "Conclusions / Highlights",
+      "page": 14,
+      "epistemic_tier": "T4",
+      "predicate": "Check whether any direct head-to-head accelerator-cured (sulfur) sample was tested in this study to substantiate the 'comparable to or better than accelerator-cured' comparison; the only comparators (commercial Gloves A/B/C in Figs 4-5) are not characterized as sulfur-cured with controlled formulation.",
+      "evidence": [
+        {"id": "e35", "kind": "text", "location": "Experimental Designs Table 3 + Figures 4-5", "quote": "Experimental matrix is 3 grades x 3 temperatures of PCDI-cured gloves; commercial 'Glove A/B/C' appear only in modulus/tear figures without curing-system disclosure", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "claim<->evidence support audit (does the data include the comparator the conclusion invokes?)", "verifier_exists": false, "candidate_verdict": "suspect", "confidence": 0.6, "rationale": "The comparative claim ('comparable to or better than accelerator-cured systems') is broader than the data support: no sulfur/accelerator-cured sample was made and tested under matched conditions. The commercial Glove A/B/C comparators (Figs 4-5) are not stated to be sulfur-cured nor formulation-matched, and they appear only for modulus/tear, not swelling/durability/aging. The comparison thus rests on general literature rather than an internal control. Flagged suspect for overreach of claim vs in-study evidence (T4)."}
+    },
+    {
+      "id": "c28",
+      "text": "Retention values above 100% (NL117) indicate that postcuring cross-linking strengthens the glove over time.",
+      "quote": "Retention above 100% (as seen in NL117) suggests postcuring cross-linking may actually strengthen the glove over time",
+      "section": "4.1.3",
+      "page": 10,
+      "epistemic_tier": "T2",
+      "predicate": "Check the arithmetic origin of the single >100% retention value (NL117/110 crotch = 102.6%): it arises because that one cell has unaged 117 min < aged 120 min in Table 5.",
+      "evidence": [
+        {"id": "e36", "kind": "table", "location": "Table 5 + Table 6 (NL117/110 crotch)", "quote": "NL117/110 crotch unaged 117, aged 120 -> 120/117 = 102.6%", "extracted_values": {"unaged": 117, "aged": 120, "retention": 102.6}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "single-cell ratio recompute (120/117) explaining the >100% value", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.88, "rationale": "120/117 = 102.56 ~ 102.6%, so the >100% figure is arithmetically explained: the unaged crotch (117) was itself below the 120-min ceiling while the aged hit 120. Mechanistically the 'postcuring strengthens' interpretation is plausible but the numeric value is largely a ceiling artifact (aged capped at 120, unaged happened to be 117). Arithmetic supported; the mechanistic gloss is a softer claim."}
+    },
+    {
+      "id": "c29",
+      "text": "Aged samples show higher tear strength than unaged because postcuring/continued PCDI reaction forms additional urethane linkages.",
+      "quote": "This suggests that thermal aging leads to additional cross-linking, strengthening the network ... PCDI may continue reacting postcure, forming more stable urethane linkages, which increase tear resistance over time.",
+      "section": "4.2.2",
+      "page": 11,
+      "epistemic_tier": "T3",
+      "predicate": "Assess mechanistic appropriateness: is post-cure cross-linking a reasonable explanation for higher aged tear strength, and is it consistent with the FTIR result (which could not resolve new urethane bands)?",
+      "evidence": [
+        {"id": "e37", "kind": "text", "location": "Sections 4.2.2 & 4.1.1", "quote": "additional cross-linking ... forming more stable urethane linkages (4.2.2) vs FTIR 'changes were not distinctly resolved' (4.1.1)", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "mechanistic-consistency review (post-cure cross-linking vs unresolved FTIR evidence)", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.45, "rationale": "Post-cure cross-linking is a standard, plausible explanation for aged-strength increase and is corroborated by the rising cross-link density in Table 4 (an independent measure). However, the paper's own FTIR could not detect the urethane formation it invokes, so the direct spectroscopic evidence for 'more urethane linkages' is absent; the claim leans on swelling/CLD rather than direct bond evidence. Mechanistically reasonable but not independently confirmed - inconclusive."}
+    },
+    {
+      "id": "c30",
+      "text": "Low-temperature curing supports UN SDGs 7, 12, and 13 and reduces CO2 emissions / carbon footprint of glove production.",
+      "quote": "Using lower curing temperatures in glove production contributes significantly to several United Nations Sustainable Development Goals (SDGs) ... SDG 7 ... SDG 12 ... SDG 13 (Climate Action) ... lowers ... greenhouse gas emissions.",
+      "section": "4.3.1 (SDG/ESG discussion)",
+      "page": 13,
+      "epistemic_tier": "T8",
+      "predicate": "Assess the subjective/qualitative sustainability framing (energy savings -> SDG alignment); no quantitative energy or emissions data is provided in this study.",
+      "evidence": [
+        {"id": "e38", "kind": "text", "location": "Section 4.3.1", "quote": "supports SDG 7 (Affordable and Clean Energy) by reducing energy consumption ... SDG 13 ... lower greenhouse gas emissions", "extracted_values": {}}
+      ],
+      "verification": {"possible": false, "verifier_needed": "none (qualitative policy framing, no measured energy/emissions data in-study)", "verifier_exists": false, "candidate_verdict": "not_checkable", "confidence": 0.25, "rationale": "Directionally reasonable (lower curing temperature -> less energy) but entirely qualitative; this study reports no energy-consumption or CO2 measurements, so the SDG/ESG claims are framing rather than evidenced results. Subjective (T8), not checkable against in-study data."}
+    },
+    {
+      "id": "c31",
+      "text": "Glove dipping/curing process parameters: coagulant 12 wt% calcium nitrate at 50 C for 3 s; dwell/withdraw 5 s each; pregelling 2 min at 50 C; curing 15 min at the Table 3 temperature; postleach 1.5 min at 50 C; 10 s neutralization; 20 s chlorination; aging 70 C for 7 days.",
+      "quote": "dipped into a 12 wt % calcium nitrate coagulant solution at 50 °C for 3 s ... pregelling for 2 min at 50 °C and was then cured for 15 min at the temperatures specified in Table 3 ... postleaching ... in water at 50 °C for 1.5 min, followed by a 10 s neutralization and a 20 s chlorination ... For aging analysis, the gloves were conditioned at 70 °C for 7 days",
+      "section": "3.3 / Table 3",
+      "page": 7,
+      "epistemic_tier": "T2",
+      "predicate": "Check internal consistency of process description vs Table 3 (Experimental Designs: 3 grades x 3 cure temps 65/90/110 C) and the aging condition cited consistently (70 C/7 days, ASTM D573).",
+      "evidence": [
+        {"id": "e39", "kind": "table", "location": "Table 3 (Experimental Designs)", "quote": "K834/NL129/NL117 each at 65, 90, 110 C", "extracted_values": {"n_grades": 3, "cure_temps": 65}},
+        {"id": "e40", "kind": "text", "location": "Section 3.3", "quote": "cured for 15 min at the temperatures specified in Table 3 ... conditioned at 70 °C for 7 days, in accordance with ASTM D573", "extracted_values": {"cure_min": 15, "aging_temp_c": 70, "aging_days": 7}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "internal-consistency check (process params vs Table 3 design vs aging conditions cited throughout)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.8, "rationale": "The experimental matrix (Table 3: 3 grades x 3 cure temperatures = 9 conditions) is internally consistent with all downstream tables (Tables 4-6 each list exactly those 9 rows). The 70 C/7-day aging condition is cited consistently across Sections 3.3, 3.5, 3.7, 4.x. No contradictions found; deterministic cross-reference check passes."}
+    }
+  ],
+  "paper_level_notes": "ACS Omega 2026, 11, 33005-33015, CC-BY 4.0, DOI 10.1021/acsomega.6c02669. 11 pages read in full (text via pdftotext -layout; all figures inspected by rendering pages to PNG at 130/220 DPI with poppler, then cropping/enlarging Figs 3-7 with PIL). Funded by Midori Anzen Co., Ltd. (Japan; Grant 304/PBAHAN/6050529/M197); four co-authors are Midori Anzen PPE-department employees and the durability target (42 min) is a Midori Anzen internal standard - a notable conflict-of-interest / self-set-benchmark context, though authors declare 'no competing financial interest.' DETERMINISTIC FRONTIER (strongest checks): (1) c1/c28 - durability retention eq 4 (aged/unaged*100) recomputes EXACTLY for all 9x2 cells of Table 6 vs Table 5, including the lone >100% value (120/117=102.6%); a clean T0 win and the single most reliable check in the paper. (2) c3/c4/c18 - cross-link-density table internal consistency (aged>unaged all rows; NL117 highest; prose ranges bracket table columns) all pass deterministically. (3) c6/c7/c8/c9/c10 - prose-vs-figure numeric reads (swelling ~250-275/~140-150%, elongation >500%, tensile ~30 MPa, tear aged>unaged) all visually confirmed against rendered charts. Exact bar values are NOT in the main text - they live in the SI ('swelling index analysis data', 'tensile/elongation data', 'modulus/tear data' tables referenced in Associated Content); main-text reads are approximate (confidence 0.7-0.85). SUSPECT / WEAKER claims worth a verifier: c12/c13 (T3 - 'independent t test' used to compare a 3-grade x 3-temperature design where ANOVA is the appropriate test; no p-values reported so statcheck cannot run); c17 (T2 - ACN content stated definitively in Methods 27/20/45% but hedged as 'likely 35-45% / 18-27%' in Discussion, a coherence inconsistency); c27 (T4 - central 'comparable to or better than accelerator-cured systems' claim has NO matched sulfur-cured control in-study; commercial Gloves A/B/C are uncharacterized comparators appearing only in modulus/tear figures); c26 (T7 - ZnO particle size reported to implausible 4-sig-fig precision 0.5026 um). HONESTY SIGNALS (favorable): the paper openly discloses that FTIR did NOT resolve the urea/urethane cross-link bands (c14) and that DSC/DMA were omitted (c24) - candid about its own evidentiary gaps. EXTERNAL-LIT (T5, beyond deterministic frontier): c21 (30% thermal-load figure imported from ref 18, a different epoxide system), c22 (ref 27 '530% elongation' sourced to a non-peer-reviewed industry blog ecogloves.co - weak citation; ref 28 '+46%' from a peer-reviewed nanocomposite paper). Statistical reporting is generally thin: significance is asserted (p<0.05 / p>0.05, t test) without any test statistics, exact p-values, n, or dispersion in the main text, so statcheck/GRIM/GRIMMER find no extractable test triples to audit - the statistics claims are largely inconclusive pending SI replicate data (n=5 stated for tensile/tear). No raw dataset or repository link; reproducibility (T6) limited to the SI PDF. Off-the-shelf checks that DO apply and pass: percent-ratio recompute (retention), table-column comparison (CLD), prose-vs-table range bracketing (retention/swelling), threshold compliance (14 MPa / 500% / 42 min). No fabricated numbers detected; the one arithmetic-heavy claim (retention) is fully correct."
+}

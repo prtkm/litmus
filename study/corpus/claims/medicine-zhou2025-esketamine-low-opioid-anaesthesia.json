@@ -1,0 +1,1144 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "medicine-zhou2025-esketamine-low-opioid-anaesthesia",
+  "meta": {
+    "trial_registration": "ChiCTR2100051000",
+    "design": "single-center randomized controlled trial",
+    "primary_outcome": "QoR-15 score on POD3",
+    "groups": [
+      "K group (esketamine multimodal low-opioid)",
+      "C group (conventional opioid-based)"
+    ],
+    "note": "Abstract reports POD3 C-group IQR as 111.75-118.25; page 6 body text reports 110-118.25 — minor internal discrepancy noted but not judged.",
+    "extractor": "litmus.extract",
+    "model": "claude-opus-4-8",
+    "source": "opus-native-pdf"
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The K group had significantly higher QoR-15 scores on postoperative day 3 than the C group (121 [117.75–124] vs. 115 [111.75–118.25], p < 0.001).",
+      "location": {
+        "section": "3.1 / Table 2",
+        "page": 7,
+        "char_span": null,
+        "quote": "POD-3 QoR-15 scores 121 (117.75–124) 115 (111.75–118.25) <0.001"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "K_POD3_QoR15_median > C_POD3_QoR15_median; reported p<0.001 consistent with Mann-Whitney U on the two distributions",
+      "strength": "comparative",
+      "scope": "Table 2, POD3, n=70 per group",
+      "evidence_refs": [
+        "ev1"
+      ],
+      "confidence": 0.97
+    },
+    {
+      "id": "c2",
+      "text": "On POD3 the K group had significantly higher physical comfort subscale scores than the C group (40 [39–41] vs. 38 [37–40]; P < 0.001).",
+      "location": {
+        "section": "3.1 / Table 2",
+        "page": 7,
+        "char_span": null,
+        "quote": "Physical comfort 40 (39–41) 38 (37–40) <0.001"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "K_phys_comfort_median > C_phys_comfort_median; reported p<0.001",
+      "strength": "comparative",
+      "scope": "Table 2, POD3",
+      "evidence_refs": [
+        "ev2"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "id": "c3",
+      "text": "On POD3 the K group had significantly higher emotional state subscale scores than the C group (32 [30–33] vs. 29 [27.75–31]; P < 0.001).",
+      "location": {
+        "section": "3.1 / Table 2",
+        "page": 7,
+        "char_span": null,
+        "quote": "Emotional state 32 (30–33) 29 (27.75–31) <0.001"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "K_emotional_median > C_emotional_median; reported p<0.001",
+      "strength": "comparative",
+      "scope": "Table 2, POD3",
+      "evidence_refs": [
+        "ev3"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "id": "c4",
+      "text": "On POD3 the K group had significantly higher pain subscale scores than the C group (18 [18–20] vs. 18 [16.75–19]; P < 0.001).",
+      "location": {
+        "section": "3.1 / Table 2",
+        "page": 7,
+        "char_span": null,
+        "quote": "Pain 18 (18–20) 18 (16.75–19) <0.001"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "K_pain_median vs C_pain_median; reported p<0.001",
+      "strength": "comparative",
+      "scope": "Table 2, POD3",
+      "evidence_refs": [
+        "ev4"
+      ],
+      "confidence": 0.93
+    },
+    {
+      "id": "c5",
+      "text": "Statistically significant differences in QoR-15 scores between the K and C groups were observed on postoperative days 1 and 2 (P < 0.01).",
+      "location": {
+        "section": "3.1 / Table 3",
+        "page": 7,
+        "char_span": null,
+        "quote": "Statistically significant differences in QoR-15 scores between \nthe K and C groups were also observed on postoperative days 1 and 2 \n(P < 0.01)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "POD1 and POD2 QoR-15 between-group p < 0.01",
+      "strength": "comparative",
+      "scope": "Table 3, POD1 and POD2",
+      "evidence_refs": [
+        "ev5",
+        "ev6"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c6",
+      "text": "On POD3 the rest NRS score was 2 (2–2) in the K group versus 2 (2–3) in the C group (P = 0.006).",
+      "location": {
+        "section": "3.2 / Table 4",
+        "page": 7,
+        "char_span": null,
+        "quote": "POD-3 2 (2–2) 2 (2–3) 0.006"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "K_restNRS_POD3 vs C_restNRS_POD3; reported p=0.006",
+      "strength": "comparative",
+      "scope": "Table 4, rest NRS POD3",
+      "evidence_refs": [
+        "ev7"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c7",
+      "text": "On POD3 the dynamic (movement) NRS score was 3 (3–4) in the K group versus 4 (3–4) in the C group (P = 0.02).",
+      "location": {
+        "section": "3.2 / Table 4",
+        "page": 7,
+        "char_span": null,
+        "quote": "POD-3 3 (3–4) 4 (3–4) 0.02"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "K_dynamicNRS_POD3 vs C_dynamicNRS_POD3; reported p=0.02",
+      "strength": "comparative",
+      "scope": "Table 4, movement NRS POD3",
+      "evidence_refs": [
+        "ev8"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "c8",
+      "text": "The K group had fewer PCIA demand frequencies than the C group (12.5 [9–15] vs. 15 [12–17], P = 0.002).",
+      "location": {
+        "section": "3.2 / Table 4",
+        "page": 7,
+        "char_span": null,
+        "quote": "PCIA demand frequency 12.5 (9–15) 15 (12–17) 0.002"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "K_PCIA_demand < C_PCIA_demand; reported p=0.002",
+      "strength": "comparative",
+      "scope": "Table 4",
+      "evidence_refs": [
+        "ev9"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c9",
+      "text": "The K group had a lower rescue analgesia rate than the C group (14.3% vs. 32.9%, P = 0.01).",
+      "location": {
+        "section": "3.2 / Table 4",
+        "page": 7,
+        "char_span": null,
+        "quote": "Rescue analgesia, n (%) 10 (14.3) 23 (32.9) 0.01"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "K_rescue_rate < C_rescue_rate; 10/70=14.3%, 23/70=32.9%; reported p=0.01",
+      "strength": "comparative",
+      "scope": "Table 4",
+      "evidence_refs": [
+        "ev10"
+      ],
+      "confidence": 0.93
+    },
+    {
+      "id": "c10",
+      "text": "Rescue analgesic consumption per patient was lower in the K group (0 [0–0] mg) than C group (0 [0–100] mg, P = 0.008).",
+      "location": {
+        "section": "3.2 / Table 4",
+        "page": 7,
+        "char_span": null,
+        "quote": "Rescue analgesic consumption per patient (mg) 0 (0–0) 0 (0–100) 0.008"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "K_rescue_consumption vs C_rescue_consumption; reported p=0.008",
+      "strength": "comparative",
+      "scope": "Table 4",
+      "evidence_refs": [
+        "ev11"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c11",
+      "text": "Propofol consumption was significantly lower in the K group than the C group (866.56 ± 76.44 mg vs. 968.36 ± 68.87 mg, P < 0.001).",
+      "location": {
+        "section": "3.4",
+        "page": 6,
+        "char_span": null,
+        "quote": "reduced usage of propofol (866.56 ± 76.44 mg vs. \n968.36 ± 68.87 mg, P < 0.05)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "K_propofol_mean < C_propofol_mean; reported p<0.001 (abstract) / p<0.05 (results)",
+      "strength": "comparative",
+      "scope": "Figure 3A",
+      "evidence_refs": [
+        "ev12"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "c12",
+      "text": "Sufentanil consumption was significantly lower in the K group than C group (25 ± 4.62 ug vs. 38 ± 8.60 ug, P < 0.001).",
+      "location": {
+        "section": "3.4",
+        "page": 6,
+        "char_span": null,
+        "quote": "sufentanil (25 ± \n4.62 ug vs. 38 ± 8.60 ug, P < 0.001)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "K_sufentanil_mean < C_sufentanil_mean; reported p<0.001",
+      "strength": "comparative",
+      "scope": "Figure 3B",
+      "evidence_refs": [
+        "ev13"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c13",
+      "text": "Remifentanil consumption was significantly lower in the K group than C group (2.1 ± 0.35 mg vs. 2.5 ± 0.72 mg, P < 0.001).",
+      "location": {
+        "section": "3.4",
+        "page": 6,
+        "char_span": null,
+        "quote": "remifentanil (2.1 ± 0.35 mg vs. 2.5 ± 0.72 mg, P < 0.001)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "K_remifentanil_mean < C_remifentanil_mean; reported p<0.001",
+      "strength": "comparative",
+      "scope": "Figure 3C",
+      "evidence_refs": [
+        "ev14"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c14",
+      "text": "Extubation time was significantly shorter in the K group than C group (35.8 ± 13.02 min vs. 40.8 ± 15.5 min, P < 0.05).",
+      "location": {
+        "section": "3.5",
+        "page": 6,
+        "char_span": null,
+        "quote": "extubation time \n(35.8 ± 13.02 min vs. 40.8 ± 15.5 min, P < 0.05; Figure 4A)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "K_extubation_mean < C_extubation_mean; reported p<0.05",
+      "strength": "comparative",
+      "scope": "Figure 4A",
+      "evidence_refs": [
+        "ev15"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "c15",
+      "text": "PACU stay duration was significantly shorter in the K group than C group (107.2 ± 27.4 min vs. 118.9 ± 27.2 min, P < 0.05).",
+      "location": {
+        "section": "3.5",
+        "page": 6,
+        "char_span": null,
+        "quote": "PACU stay duration (107.2 ± 27.4 min vs. 118.9 ± 27.2 min, P < 0.05;"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "K_PACU_mean < C_PACU_mean; reported p<0.05",
+      "strength": "comparative",
+      "scope": "Figure 4B",
+      "evidence_refs": [
+        "ev16"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "c16",
+      "text": "The incidence of nausea and vomiting was significantly lower in the K group than C group (10.0% vs. 21.4%, P < 0.05).",
+      "location": {
+        "section": "3.6",
+        "page": 6,
+        "char_span": null,
+        "quote": "the incidence \nof nausea and vomiting was significantly lower in the K group than \nin the C group (10.0% vs. 21.4%, P < 0.05)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "K_PONV_rate < C_PONV_rate; 7/70=10.0%, 15/70=21.4%; reported p<0.05",
+      "strength": "comparative",
+      "scope": "Table 5",
+      "evidence_refs": [
+        "ev17"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c17",
+      "text": "No significant differences between groups in dizziness, headache, drowsiness, or restlessness (P > 0.05).",
+      "location": {
+        "section": "3.6",
+        "page": 6,
+        "char_span": null,
+        "quote": "No other significant \ndifferences were observed between the two groups in the incidence \nof dizziness, headache, drowsiness, or restlessness (P > \n0.05)"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "between-group adverse event differences (dizziness/headache/etc) p>0.05",
+      "strength": "qualitative",
+      "scope": "Table 5",
+      "evidence_refs": [
+        "ev18"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "c18",
+      "text": "In multivariable regression adjusting for norepinephrine use, the intervention was associated with higher POD3 QoR-15 (B = 5.52, 95% CI 3.97 to 7.06, P < 0.001).",
+      "location": {
+        "section": "3.7",
+        "page": 6,
+        "char_span": null,
+        "quote": "higher QoR-15 score on postoperative day 3 (B = 5.52, 95% CI \n3.97 to 7.06, P < 0.001)"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "B=5.52 with 95% CI [3.97,7.06] consistent (CI excludes 0); reported p<0.001",
+      "strength": "exact",
+      "scope": "Supplementary Table S1, adjusted model",
+      "evidence_refs": [
+        "ev19"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c19",
+      "text": "In adjusted regression, the intervention was associated with lower sufentanil consumption (B = −12.61, 95% CI −15.02 to −10.19, P < 0.001).",
+      "location": {
+        "section": "3.7",
+        "page": 6,
+        "char_span": null,
+        "quote": "sufentanil (B = −12.61, 95% CI \n-15.02 to −10.19, P < 0.001)"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "B=-12.61 with 95% CI [-15.02,-10.19]; reported p<0.001",
+      "strength": "exact",
+      "scope": "adjusted model",
+      "evidence_refs": [
+        "ev20"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c20",
+      "text": "In adjusted regression, the intervention was associated with lower remifentanil consumption (B = −0.39, 95% CI −0.58 to −0.19, P < 0.001).",
+      "location": {
+        "section": "3.7",
+        "page": 6,
+        "char_span": null,
+        "quote": "remifentanil (B = −0.39, 95% CI \n-0.58 to −0.19, P < 0.001)"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "B=-0.39 with 95% CI [-0.58,-0.19]; reported p<0.001",
+      "strength": "exact",
+      "scope": "adjusted model",
+      "evidence_refs": [
+        "ev21"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c21",
+      "text": "In adjusted regression, intervention associated with lower heart rate variability (B = −0.027, 95% CI −0.042 to −0.012, P < 0.001).",
+      "location": {
+        "section": "3.7",
+        "page": 6,
+        "char_span": null,
+        "quote": "lower heart rate variability (B = −0.027, 95% CI \n-0.042 to −0.012, P < 0.001)"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "B=-0.027 with 95% CI [-0.042,-0.012]; reported p<0.001",
+      "strength": "exact",
+      "scope": "adjusted model, CV of mean HR",
+      "evidence_refs": [
+        "ev22"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c22",
+      "text": "In adjusted regression, intervention associated with slightly higher MAP variability (B = 0.018, 95% CI 0.001 to 0.034, P = 0.033).",
+      "location": {
+        "section": "3.7",
+        "page": 6,
+        "char_span": null,
+        "quote": "higher mean arterial \npressure variability (B = 0.018, 95% CI 0.001 to 0.034, P = 0.033)"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "B=0.018 with 95% CI [0.001,0.034]; reported p=0.033",
+      "strength": "exact",
+      "scope": "adjusted model, CV of MAP",
+      "evidence_refs": [
+        "ev23"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c23",
+      "text": "Norepinephrine use was significantly imbalanced between groups at baseline (9 [12.9%] vs. 28 [40%], P < 0.01).",
+      "location": {
+        "section": "3 / Table 1",
+        "page": 5,
+        "char_span": null,
+        "quote": "Norepinephrine 9 (12.9) 28 (40) <0.01"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "9/70=12.9%, 28/70=40%; between-group p<0.01",
+      "strength": "comparative",
+      "scope": "Table 1",
+      "evidence_refs": [
+        "ev24"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c24",
+      "text": "Sample size calculation: with 90% power, alpha 0.05, MCID of 6 and SD 10.37, 64 patients per group required; with 10% dropout, 72 per group enrolled, totaling 144.",
+      "location": {
+        "section": "2.5",
+        "page": 4,
+        "char_span": null,
+        "quote": "calculations indicated \n64 patients per group were required. Accounting for a 10% \ndropout rate, the final actual enrollment per group was \n72 patients, totaling 144 patients."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "power-based n=64/group; 64/(1-0.10)≈71.1 → 72/group; 72*2=144",
+      "strength": "exact",
+      "scope": "Section 2.5, PASS 2023",
+      "evidence_refs": [
+        "ev25"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c25",
+      "text": "Of 208 patients assessed for eligibility, 64 were excluded (37 not meeting inclusion, 27 declined), leaving 144 randomized; 4 lost to follow-up (2 per group), yielding 140 analyzed.",
+      "location": {
+        "section": "3 / Figure 1",
+        "page": 5,
+        "char_span": null,
+        "quote": "208 patients were \nassessed for eligibility, and 64 were excluded. The resulting \n144 eligible patients"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "208-64=144; 37+27=64; 144-4=140; 72-2=70 per group",
+      "strength": "exact",
+      "scope": "Figure 1 flow diagram",
+      "evidence_refs": [
+        "ev26"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c26",
+      "text": "The six-point higher median QoR-15 in the K group at POD3 meets the MCID of 6 points for the QoR-15 scale.",
+      "location": {
+        "section": "4 Discussion",
+        "page": 6,
+        "char_span": null,
+        "quote": "A statistically significant, six-point higher median QoR-15 score was \nobserved in the K group compared to the C group on POD3, which \nmeets the threshold for the established minimal clinically important \ndifference (MCID) of six points"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "121-115=6 equals stated MCID of 6",
+      "strength": "comparative",
+      "scope": "POD3, MCID comparison",
+      "evidence_refs": [
+        "ev1",
+        "ev27"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "c27",
+      "text": "Esketamine-based multimodal low-opioid anaesthesia effectively improves quality of postoperative recovery in elderly patients undergoing thoracoscopic radical lung cancer resection.",
+      "location": {
+        "section": "5 Conclusion",
+        "page": 10,
+        "char_span": null,
+        "quote": "an esketamine-based multimodal low-opioid anaesthesia \nregimen significantly enhances recovery quality on postoperative \nday 3 in elderly patients undergoing thoracoscopic radical lung \ncancer surgery."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "conclusion of improved recovery supported by primary outcome data",
+      "strength": "causal",
+      "scope": "overall trial",
+      "evidence_refs": [
+        "ev1"
+      ],
+      "confidence": 0.8
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev1",
+      "kind": "table",
+      "location": {
+        "section": "Table 2",
+        "page": 7,
+        "char_span": null,
+        "quote": "POD-3 QoR-15 scores 121 (117.75–124) 115 (111.75–118.25) <0.001"
+      },
+      "extracted_values": {
+        "K_median": 121,
+        "K_iqr": [
+          117.75,
+          124
+        ],
+        "C_median": 115,
+        "C_iqr": [
+          111.75,
+          118.25
+        ],
+        "p_upper_bound": 0.001,
+        "n_per_group": 70
+      },
+      "confidence": 0.96
+    },
+    {
+      "id": "ev2",
+      "kind": "table",
+      "location": {
+        "section": "Table 2",
+        "page": 7,
+        "char_span": null,
+        "quote": "Physical comfort 40 (39–41) 38 (37–40) <0.001"
+      },
+      "extracted_values": {
+        "K_median": 40,
+        "C_median": 38,
+        "p_upper_bound": 0.001
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev3",
+      "kind": "table",
+      "location": {
+        "section": "Table 2",
+        "page": 7,
+        "char_span": null,
+        "quote": "Emotional state 32 (30–33) 29 (27.75–31) <0.001"
+      },
+      "extracted_values": {
+        "K_median": 32,
+        "C_median": 29,
+        "p_upper_bound": 0.001
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev4",
+      "kind": "table",
+      "location": {
+        "section": "Table 2",
+        "page": 7,
+        "char_span": null,
+        "quote": "Pain 18 (18–20) 18 (16.75–19) <0.001"
+      },
+      "extracted_values": {
+        "K_median": 18,
+        "C_median": 18,
+        "p_upper_bound": 0.001
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev5",
+      "kind": "table",
+      "location": {
+        "section": "Table 3 POD-1",
+        "page": 7,
+        "char_span": null,
+        "quote": "QoR-15 scores 106 (102.75–108) 103 (101–105) 0.002"
+      },
+      "extracted_values": {
+        "K_median": 106,
+        "C_median": 103,
+        "reported_p": 0.002
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev6",
+      "kind": "table",
+      "location": {
+        "section": "Table 3 POD-2",
+        "page": 7,
+        "char_span": null,
+        "quote": "QoR-15 scores 110 (107–113) 107 (105–109) <0.001"
+      },
+      "extracted_values": {
+        "K_median": 110,
+        "C_median": 107,
+        "p_upper_bound": 0.001
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev7",
+      "kind": "table",
+      "location": {
+        "section": "Table 4 NRS score at rest",
+        "page": 7,
+        "char_span": null,
+        "quote": "POD-3 2 (2–2) 2 (2–3) 0.006"
+      },
+      "extracted_values": {
+        "K_median": 2,
+        "C_median": 2,
+        "reported_p": 0.006
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev8",
+      "kind": "table",
+      "location": {
+        "section": "Table 4 NRS score on movement",
+        "page": 7,
+        "char_span": null,
+        "quote": "POD-3 3 (3–4) 4 (3–4) 0.02"
+      },
+      "extracted_values": {
+        "K_median": 3,
+        "C_median": 4,
+        "reported_p": 0.02
+      },
+      "confidence": 0.88
+    },
+    {
+      "id": "ev9",
+      "kind": "table",
+      "location": {
+        "section": "Table 4",
+        "page": 7,
+        "char_span": null,
+        "quote": "PCIA demand frequency 12.5 (9–15) 15 (12–17) 0.002"
+      },
+      "extracted_values": {
+        "K_median": 12.5,
+        "C_median": 15,
+        "reported_p": 0.002
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev10",
+      "kind": "table",
+      "location": {
+        "section": "Table 4",
+        "page": 7,
+        "char_span": null,
+        "quote": "Rescue analgesia, n (%) 10 (14.3) 23 (32.9) 0.01"
+      },
+      "extracted_values": {
+        "K_n": 10,
+        "K_pct": 14.3,
+        "C_n": 23,
+        "C_pct": 32.9,
+        "n_per_group": 70,
+        "reported_p": 0.01
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev11",
+      "kind": "table",
+      "location": {
+        "section": "Table 4",
+        "page": 7,
+        "char_span": null,
+        "quote": "Rescue analgesic consumption per patient (mg) 0 (0–0) 0 (0–100) 0.008"
+      },
+      "extracted_values": {
+        "K_median": 0,
+        "C_median": 0,
+        "reported_p": 0.008
+      },
+      "confidence": 0.88
+    },
+    {
+      "id": "ev12",
+      "kind": "statistic",
+      "location": {
+        "section": "3.4 / Figure 3A",
+        "page": 6,
+        "char_span": null,
+        "quote": "reduced usage of propofol (866.56 ± 76.44 mg vs. \n968.36 ± 68.87 mg, P < 0.05)"
+      },
+      "extracted_values": {
+        "K_mean": 866.56,
+        "K_sd": 76.44,
+        "C_mean": 968.36,
+        "C_sd": 68.87,
+        "unit": "mg",
+        "p_upper_bound": 0.05,
+        "p_upper_bound_abstract": 0.001
+      },
+      "confidence": 0.88
+    },
+    {
+      "id": "ev13",
+      "kind": "statistic",
+      "location": {
+        "section": "3.4 / Figure 3B",
+        "page": 6,
+        "char_span": null,
+        "quote": "sufentanil (25 ± \n4.62 ug vs. 38 ± 8.60 ug, P < 0.001)"
+      },
+      "extracted_values": {
+        "K_mean": 25,
+        "K_sd": 4.62,
+        "C_mean": 38,
+        "C_sd": 8.6,
+        "unit": "ug",
+        "p_upper_bound": 0.001
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev14",
+      "kind": "statistic",
+      "location": {
+        "section": "3.4 / Figure 3C",
+        "page": 6,
+        "char_span": null,
+        "quote": "remifentanil (2.1 ± 0.35 mg vs. 2.5 ± 0.72 mg, P < 0.001)"
+      },
+      "extracted_values": {
+        "K_mean": 2.1,
+        "K_sd": 0.35,
+        "C_mean": 2.5,
+        "C_sd": 0.72,
+        "unit": "mg",
+        "p_upper_bound": 0.001
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev15",
+      "kind": "statistic",
+      "location": {
+        "section": "3.5 / Figure 4A",
+        "page": 6,
+        "char_span": null,
+        "quote": "extubation time \n(35.8 ± 13.02 min vs. 40.8 ± 15.5 min, P < 0.05; Figure 4A)"
+      },
+      "extracted_values": {
+        "K_mean": 35.8,
+        "K_sd": 13.02,
+        "C_mean": 40.8,
+        "C_sd": 15.5,
+        "unit": "min",
+        "p_upper_bound": 0.05
+      },
+      "confidence": 0.88
+    },
+    {
+      "id": "ev16",
+      "kind": "statistic",
+      "location": {
+        "section": "3.5 / Figure 4B",
+        "page": 6,
+        "char_span": null,
+        "quote": "PACU stay duration (107.2 ± 27.4 min vs. 118.9 ± 27.2 min, P < 0.05;"
+      },
+      "extracted_values": {
+        "K_mean": 107.2,
+        "K_sd": 27.4,
+        "C_mean": 118.9,
+        "C_sd": 27.2,
+        "unit": "min",
+        "p_upper_bound": 0.05
+      },
+      "confidence": 0.88
+    },
+    {
+      "id": "ev17",
+      "kind": "statistic",
+      "location": {
+        "section": "3.6 / Table 5",
+        "page": 6,
+        "char_span": null,
+        "quote": "the incidence \nof nausea and vomiting was significantly lower in the K group than \nin the C group (10.0% vs. 21.4%, P < 0.05)"
+      },
+      "extracted_values": {
+        "K_pct": 10.0,
+        "C_pct": 21.4,
+        "K_n": 7,
+        "C_n": 15,
+        "n_per_group": 70,
+        "p_upper_bound": 0.05
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev18",
+      "kind": "table",
+      "location": {
+        "section": "Table 5",
+        "page": 9,
+        "char_span": null,
+        "quote": "Dizziness 1 2"
+      },
+      "extracted_values": {
+        "dizziness_K": 1,
+        "dizziness_C": 2,
+        "headache_K": 2,
+        "headache_C": 3,
+        "p_lower_bound": 0.05
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev19",
+      "kind": "statistic",
+      "location": {
+        "section": "3.7",
+        "page": 6,
+        "char_span": null,
+        "quote": "higher QoR-15 score on postoperative day 3 (B = 5.52, 95% CI \n3.97 to 7.06, P < 0.001)"
+      },
+      "extracted_values": {
+        "B": 5.52,
+        "ci_low": 3.97,
+        "ci_high": 7.06,
+        "p_upper_bound": 0.001
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev20",
+      "kind": "statistic",
+      "location": {
+        "section": "3.7",
+        "page": 6,
+        "char_span": null,
+        "quote": "sufentanil (B = −12.61, 95% CI \n-15.02 to −10.19, P < 0.001)"
+      },
+      "extracted_values": {
+        "B": -12.61,
+        "ci_low": -15.02,
+        "ci_high": -10.19,
+        "p_upper_bound": 0.001
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev21",
+      "kind": "statistic",
+      "location": {
+        "section": "3.7",
+        "page": 6,
+        "char_span": null,
+        "quote": "remifentanil (B = −0.39, 95% CI \n-0.58 to −0.19, P < 0.001)"
+      },
+      "extracted_values": {
+        "B": -0.39,
+        "ci_low": -0.58,
+        "ci_high": -0.19,
+        "p_upper_bound": 0.001
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev22",
+      "kind": "statistic",
+      "location": {
+        "section": "3.7",
+        "page": 6,
+        "char_span": null,
+        "quote": "lower heart rate variability (B = −0.027, 95% CI \n-0.042 to −0.012, P < 0.001)"
+      },
+      "extracted_values": {
+        "B": -0.027,
+        "ci_low": -0.042,
+        "ci_high": -0.012,
+        "p_upper_bound": 0.001
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev23",
+      "kind": "statistic",
+      "location": {
+        "section": "3.7",
+        "page": 6,
+        "char_span": null,
+        "quote": "higher mean arterial \npressure variability (B = 0.018, 95% CI 0.001 to 0.034, P = 0.033)"
+      },
+      "extracted_values": {
+        "B": 0.018,
+        "ci_low": 0.001,
+        "ci_high": 0.034,
+        "reported_p": 0.033
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev24",
+      "kind": "table",
+      "location": {
+        "section": "Table 1",
+        "page": 5,
+        "char_span": null,
+        "quote": "Norepinephrine 9 (12.9) 28 (40) <0.01"
+      },
+      "extracted_values": {
+        "K_n": 9,
+        "K_pct": 12.9,
+        "C_n": 28,
+        "C_pct": 40,
+        "n_per_group": 70,
+        "p_upper_bound": 0.01
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev25",
+      "kind": "text",
+      "location": {
+        "section": "2.5",
+        "page": 4,
+        "char_span": null,
+        "quote": "64 patients per group were required. Accounting for a 10% \ndropout rate, the final actual enrollment per group was \n72 patients, totaling 144 patients."
+      },
+      "extracted_values": {
+        "required_per_group": 64,
+        "dropout_rate": 0.1,
+        "enrolled_per_group": 72,
+        "total": 144,
+        "power": 0.9,
+        "alpha": 0.05,
+        "mcid": 6,
+        "sd": 10.37,
+        "baseline_mean": 113.6
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev26",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 1",
+        "page": 4,
+        "char_span": null,
+        "quote": "Excluded (n=64)"
+      },
+      "extracted_values": {
+        "assessed": 208,
+        "excluded": 64,
+        "not_meeting_criteria": 37,
+        "declined": 27,
+        "randomized": 144,
+        "allocated_per_group": 72,
+        "lost_per_group": 2,
+        "analysed_per_group": 70,
+        "parts": [
+          37,
+          27
+        ],
+        "reported_total": 64
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev27",
+      "kind": "text",
+      "location": {
+        "section": "2.5",
+        "page": 4,
+        "char_span": null,
+        "quote": "the \nminimum clinically important difference (MCID) for QoR-15 is 6"
+      },
+      "extracted_values": {
+        "mcid": 6,
+        "K_C_difference": 6
+      },
+      "confidence": 0.85
+    }
+  ],
+  "bindings": [
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c4",
+      "evidence_id": "ev4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c5",
+      "evidence_id": "ev5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c5",
+      "evidence_id": "ev6",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c6",
+      "evidence_id": "ev7",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c7",
+      "evidence_id": "ev8",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c8",
+      "evidence_id": "ev9",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c9",
+      "evidence_id": "ev10",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c10",
+      "evidence_id": "ev11",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c11",
+      "evidence_id": "ev12",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c12",
+      "evidence_id": "ev13",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c13",
+      "evidence_id": "ev14",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c14",
+      "evidence_id": "ev15",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c15",
+      "evidence_id": "ev16",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c16",
+      "evidence_id": "ev17",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c17",
+      "evidence_id": "ev18",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c18",
+      "evidence_id": "ev19",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c19",
+      "evidence_id": "ev20",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c20",
+      "evidence_id": "ev21",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c21",
+      "evidence_id": "ev22",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c22",
+      "evidence_id": "ev23",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c23",
+      "evidence_id": "ev24",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c24",
+      "evidence_id": "ev25",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c25",
+      "evidence_id": "ev26",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c26",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c26",
+      "evidence_id": "ev27",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c27",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    }
+  ]
+}

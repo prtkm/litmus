@@ -1,0 +1,330 @@
+{
+  "paper_id": "chemistry-arxiv-2606.12999-pem-fuelcell-cathode-impedance",
+  "title": "The effect of in-phase current and temperature oscillations on the impedance of the cathode catalyst layer in a PEM fuel cell",
+  "doi": null,
+  "domain": "Electrochemistry / PEM fuel cell modeling (physics.chem-ph)",
+  "n_pages_read": 4,
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The steady-state cell temperature is T0 = 273 + 80 = 353 K.",
+      "quote": "Cell temperature T 0 , K  273 + 80",
+      "section": "Table I / III. Results",
+      "page": 3,
+      "epistemic_tier": "T0",
+      "predicate": "Evaluate 273 + 80 and compare to the 353 K used in the kappa estimate and in Eq.(2)'s reference temperature.",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table I", "quote": "Cell temperature T 0 , K  273 + 80", "extracted_values": {"offset_C": 80, "kelvin_offset": 273, "sum_K": 353}},
+        {"id": "e2", "kind": "text", "location": "III. Results, kappa estimate", "quote": "T 0 = 353 K", "extracted_values": {"T0_K": 353}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Integer addition 273+80, check equals 353 and matches the value reused downstream.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.99, "rationale": "273 + 80 = 353 exactly; the text's kappa estimate uses T0 = 353 K, internally consistent. Off-the-shelf arithmetic check (table/number) covers it."}
+    },
+    {
+      "id": "c2",
+      "text": "The dimensionless parameter beta_T = T*/T_sigma is approximately 6.95.",
+      "quote": "βT = T∗ / Tσ ≃ 6.95.",
+      "section": "II. Model, Eq.(15)",
+      "page": 2,
+      "epistemic_tier": "T0",
+      "predicate": "Compute 8807/1268 (T* and T_sigma from Eq.(2)) and compare to 6.95.",
+      "evidence": [
+        {"id": "e3", "kind": "equation", "location": "Eq.(15)", "quote": "βT = T∗/Tσ ≃ 6.95", "extracted_values": {"beta_T_stated": 6.95}},
+        {"id": "e4", "kind": "equation", "location": "Eq.(2)", "quote": "Tσ = 1268 K ... T∗ = 8807 K", "extracted_values": {"T_star_K": 8807, "T_sigma_K": 1268}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Division 8807/1268, compare to 6.95 within rounding.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.99, "rationale": "8807/1268 = 6.9456, rounds to 6.95. Definitional ratio of the two Arrhenius constants in Eq.(2). Off-the-shelf percent/ratio recompute covers it."}
+    },
+    {
+      "id": "c3",
+      "text": "For the stated illustrative parameters (T1 = 0.1 K, j0 = 1 A cm-2, j1 = 0.01 A cm-2, T0 = 353 K, T_sigma = 1268 K) the temperature control parameter kappa is approximately 0.1.",
+      "quote": "we take T 1 = 0.1 K, j0 = 1 A cm2 , j 1 = 0.01 A cm−2 and T 0 = 353 K. With these parameters and Tσ = 1268 K, we get κ ≃ 0.1.",
+      "section": "III. Results, after Eq.(19)",
+      "page": 3,
+      "epistemic_tier": "T0",
+      "predicate": "Compute kappa = Lambda1 * j0/j1 with Lambda1 = Te1/(Te0)^2 = T1*T_sigma/T0^2 (Eq.14 dimensionless form), and compare to 0.1.",
+      "evidence": [
+        {"id": "e5", "kind": "equation", "location": "Eqs.(14),(19)", "quote": "Λ1 = Te1/(Te0)2 ; κ = Λ1 j̃0 / j̃1", "extracted_values": {}},
+        {"id": "e6", "kind": "text", "location": "III. Results", "quote": "κ ≃ 0.1", "extracted_values": {"T1_K": 0.1, "j0_A_cm2": 1, "j1_A_cm2": 0.01, "T0_K": 353, "T_sigma_K": 1268, "kappa_stated": 0.1}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Recompute kappa = (T1*T_sigma/T0^2)*(j0/j1); check ~0.1.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "Lambda1 = 0.1*1268/353^2 = 1.018e-3; kappa = 1.018e-3 * (1/0.01) = 0.1018 ~ 0.1. Reproduces. Requires binding Eq.(14) Te = T/T_sigma definition to Lambda1; T_sigma cancels j*-scaling so the ratio is well-posed. Minor unit typo 'A cm2' for j0 (should be A cm-2) but value unambiguous."}
+    },
+    {
+      "id": "c4",
+      "text": "At small j0, coth(sqrt(j0_tilde)) is approximately 1/sqrt(j0_tilde) + sqrt(j0_tilde)/3, used to obtain Eq.(24) from Eq.(23).",
+      "quote": "At small j̃0 , coth √j̃0 ≃ 1/√j̃0 + √j̃0 /3, and we get",
+      "section": "IV. (static resistivity), before Eq.(24)",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "Compare the stated small-argument series of coth(x) to its Laurent expansion coth(x) = 1/x + x/3 - x^3/45 + ...",
+      "evidence": [
+        {"id": "e7", "kind": "equation", "location": "text before Eq.(24)", "quote": "coth √j̃0 ≃ 1/√j̃0 + √j̃0 /3", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Symbolic series expansion of coth(x) about 0 (sympy), compare leading two terms.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.98, "rationale": "coth(x) = 1/x + x/3 - x^3/45 + O(x^4); with x = sqrt(j0_tilde) the leading two terms match exactly. Deterministic symbolic check."}
+    },
+    {
+      "id": "c5",
+      "text": "Eq.(24) (dimensionless static resistivity at small current) follows from Eq.(23) via the coth expansion and equals 1/j0_tilde + 1/3 + (1-kappa)*beta_T/j0_tilde - kappa/3.",
+      "quote": "Re = 1/j̃0 + 1/3 + (1−κ)βT/j̃0 − κ/3",
+      "section": "IV., Eq.(24)",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "Substitute coth(sqrt(j0t))/sqrt(j0t) ~ 1/j0t + 1/3 into Eq.(23) Re = (1-kappa)*coth(sqrt(j0t))/sqrt(j0t) + kappa*(1-betaT)/j0t and verify the algebraic result equals the printed Eq.(24).",
+      "evidence": [
+        {"id": "e8", "kind": "equation", "location": "Eq.(23)", "quote": "Re = (1−κ) coth√j̃0 / √j̃0 + κ(1−βT)/j̃0", "extracted_values": {}},
+        {"id": "e9", "kind": "equation", "location": "Eq.(24)", "quote": "Re = 1/j̃0 + 1/3 + (1−κ)βT/j̃0 − κ/3", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Symbolic algebra (sympy): expand (1-kappa)*(1/j0t+1/3) + kappa*(1-betaT)/j0t and check equality to Eq.(24).", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.93, "rationale": "Expansion gives (1-kappa*betaT)/j0t + (1-kappa)/3, which is algebraically identical to the printed 1/j0t + 1/3 + (1-kappa)*betaT/j0t - kappa/3 (residual = 0 in sympy). Equation-recompute check, exact once the printed form is OCR-bound correctly."}
+    },
+    {
+      "id": "c6",
+      "text": "Setting beta_T = 0 and kappa = 1 in Eq.(18) reduces the CCL impedance to Eq.(21), Z_RC = 1/(j0_tilde + i*omega_tilde/eps^2), an ideal RC semicircle.",
+      "quote": "With κ = 1, Eq.(18) reduces to ... ZeRC = 1/(j̃0 + iω̃/ε2 ) ... an ideal semicircle representing the parallel RC-circuit impedance",
+      "section": "III., Eq.(21)",
+      "page": 3,
+      "epistemic_tier": "T0",
+      "predicate": "Substitute kappa=1, betaT=0 into Eq.(18) and verify it simplifies to 1/(j0_tilde + i*omega_tilde/eps^2).",
+      "evidence": [
+        {"id": "e10", "kind": "equation", "location": "Eq.(18)", "quote": "Ze = (1−κ) coth(√(j̃0+iω̃/ε2))/√(j̃0+iω̃/ε2) + κ(1−βT)/(j̃0+iω̃/ε2)", "extracted_values": {}},
+        {"id": "e11", "kind": "equation", "location": "Eq.(21)", "quote": "ZeRC = 1/(j̃0 + iω̃/ε2)", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Symbolic substitution kappa=1, betaT=0 in Eq.(18); check equals 1/arg.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.95, "rationale": "At kappa=1 the coth term has prefactor (1-kappa)=0; remaining term kappa*(1-betaT)/arg = 1/arg with betaT=0. Sympy confirms residual 0. Equation-reduction check."}
+    },
+    {
+      "id": "c7",
+      "text": "The Arrhenius slope of i* with temperature is nearly seven times larger than the proton conductivity slope.",
+      "quote": "The Arrhenius slope of i∗ variation with temperature is nearly seven times larger than the proton conductivity slope",
+      "section": "III. Results",
+      "page": 3,
+      "epistemic_tier": "T0",
+      "predicate": "Compare the ratio of Arrhenius activation parameters T*/T_sigma = 8807/1268 to 'nearly seven'.",
+      "evidence": [
+        {"id": "e12", "kind": "equation", "location": "Eq.(2)", "quote": "Tσ = 1268 K ; T∗ = 8807 K", "extracted_values": {"T_star_K": 8807, "T_sigma_K": 1268}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Ratio 8807/1268, check it is 'nearly seven' (~6.95).", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.95, "rationale": "8807/1268 = 6.95, which is 'nearly seven'. This equals beta_T; consistent with the framing that i* oscillations dominate. Off-the-shelf ratio check."}
+    },
+    {
+      "id": "c8",
+      "text": "Two parameters in the model (CCL proton conductivity sigma_p and ORR exchange current density i*) change exponentially (Arrhenius) with temperature, per Eq.(2).",
+      "quote": "Two parameters in Eq.(1) exponentially change with the temperature: the CCL proton conductivity σp and the ORR exchange current density i∗ .",
+      "section": "II. Model",
+      "page": 1,
+      "epistemic_tier": "T3",
+      "predicate": "Assess whether modeling sigma_p(T) and i*(T) via Arrhenius laws is the appropriate constitutive choice for a Nafion/Pt-C CCL.",
+      "evidence": [
+        {"id": "e13", "kind": "equation", "location": "Eq.(2)", "quote": "σp(T) = σp∗ exp(Tσ(1/303 − 1/T)) ; i∗(T) = i∗,0 exp(T∗(1/353 − 1/T))", "extracted_values": {"T_sigma_ref_K": 303, "T_star_ref_K": 353}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Method-appropriateness review: Arrhenius temperature dependence cited to Springer-Zawodzinski-Gottesfeld (sigma_p) and Parthasarathy-Srinivasan-Appleby (i*); confirm functional form and reference-temperature anchoring (303 K, 353 K) are standard.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.7, "rationale": "Arrhenius form for both quantities is standard practice and the parameters are attributed to named literature; appropriate for this regime. Method judgment with deterministic anchor (constitutive form matches cited sources), not a single-number recompute."}
+    },
+    {
+      "id": "c9",
+      "text": "In Figure 1a (100 mA cm-2, beta_T = 6.95) the static cell resistivity (rightmost point of the Nyquist spectrum) decreases as kappa increases (0 -> 0.05 -> 0.1).",
+      "quote": "The most striking feature of the curves in Figure 1a is that the static cell resistivity (the rightmost point of the Nyquist spectrum) decreases with κ.",
+      "section": "III., Fig.1",
+      "page": 3,
+      "epistemic_tier": "T2",
+      "predicate": "Read the rightmost Re(Z) intercept of each curve in Fig.1a and confirm monotonic decrease with kappa; cross-check against Eq.(23) static resistivity.",
+      "evidence": [
+        {"id": "e14", "kind": "figure", "location": "Figure 1a", "quote": "100 mA cm-2, βT=6.95; curves κ=0,0.05,0.1", "extracted_values": {"Re_intercept_kappa0_mOhmcm2": 333, "Re_intercept_kappa0p05_mOhmcm2": 228, "Re_intercept_kappa0p1_mOhmcm2": 122}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Figure value extraction (rightmost intercept per curve) + monotonicity check; optional recompute via Eq.(23) at omega=0 with Table I parameters.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "Read intercepts ~333 (kappa=0), ~228 (0.05), ~122 (0.1) decrease monotonically, matching the prose. Prose-vs-figure T2 check; values read from high-DPI render, so intercepts are approximate (+/- a few mOhm cm2)."}
+    },
+    {
+      "id": "c10",
+      "text": "In Figure 1b (beta_T = 0, exchange-current oscillation switched off) the reduction of impedance from proton-conductivity oscillations at small kappa (0.05, 0.1) is marginal: those curves nearly coincide with kappa = 0.",
+      "quote": "at small κ the reduction of impedance due to proton conductivity oscillations is rather marginal.",
+      "section": "III., Fig.1b",
+      "page": 3,
+      "epistemic_tier": "T2",
+      "predicate": "Compare the kappa=0, 0.05, 0.1 curves in Fig.1b; confirm they nearly overlap (rightmost intercepts ~equal) and only kappa=1 visibly differs.",
+      "evidence": [
+        {"id": "e15", "kind": "figure", "location": "Figure 1b", "quote": "βT=0; κ=0,0.05,0.1 overlap; κ=1.0 dotted magenta inside", "extracted_values": {"Re_intercept_kappa0_to_0p1_mOhmcm2": 333, "Re_intercept_kappa1_mOhmcm2": 300}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Figure value extraction; check kappa=0/0.05/0.1 intercepts coincide (~333) while kappa=1 differs (~300).", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.8, "rationale": "kappa=0,0.05,0.1 curves are visually coincident with intercept ~333; only kappa=1 shifts to ~300. Supports 'marginal' at small kappa. T2 prose-vs-figure; intercepts approximate."}
+    },
+    {
+      "id": "c11",
+      "text": "Comparison of Figures 1a and 1b shows the dominant CCL impedance reduction is due to the oscillating exchange current density i* (beta_T=6.95 case), not the proton conductivity (beta_T=0 case).",
+      "quote": "A comparison of Figures 1a and b shows that the main effect of the CCL impedance reduction is due to the oscillating exchange current density i∗ .",
+      "section": "III. Results",
+      "page": 3,
+      "epistemic_tier": "T2",
+      "predicate": "Contrast the kappa-driven intercept reduction in Fig.1a (beta_T=6.95) vs Fig.1b (beta_T=0) at matched kappa; confirm the reduction is far larger when i* oscillations are on.",
+      "evidence": [
+        {"id": "e16", "kind": "figure", "location": "Figures 1a, 1b", "quote": "1a: κ=0.1 intercept ~122 vs κ=0 ~333; 1b: κ=0.1 ~333 vs κ=0 ~333", "extracted_values": {"fig1a_drop_kappa0p1": 211, "fig1b_drop_kappa0p1": 0}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Figure extraction of intercepts in both panels at kappa=0.1; compare the reduction magnitudes (333->122 vs 333->333).", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.83, "rationale": "At kappa=0.1, Fig.1a intercept drops ~333->122 (large) while Fig.1b stays ~333 (no drop). Reduction is overwhelmingly from i* oscillations, matching the prose and the 7x Arrhenius-slope argument (c7). Cross-figure T2 check."}
+    },
+    {
+      "id": "c12",
+      "text": "In Figure 2 (413 mA cm-2, beta_T=6.95) both the high-frequency proton transport line and the main faradaic arc decrease in size with positive kappa.",
+      "quote": "With positive κ, both the high-frequency proton transport line, and the main faradaic arc decrease in size (Figure 2).",
+      "section": "IV., Fig.2",
+      "page": 4,
+      "epistemic_tier": "T2",
+      "predicate": "Read Fig.2 curves for kappa=0,0.05,0.1; confirm both the low-Re proton-transport region and the arc shrink and the rightmost intercept decreases with kappa.",
+      "evidence": [
+        {"id": "e17", "kind": "figure", "location": "Figure 2", "quote": "413 mA cm-2, βT=6.95; κ=0,0.05,0.1", "extracted_values": {"Re_intercept_kappa0_mOhmcm2": 99, "Re_intercept_kappa0p05_mOhmcm2": 72, "Re_intercept_kappa0p1_mOhmcm2": 46}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Figure value extraction; check intercept and arc height both decrease with kappa (0->0.05->0.1).", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.82, "rationale": "Read intercepts ~99 (kappa=0), ~72 (0.05), ~46 (0.1) and peak -Im(Z) ~36/24/11 respectively: both shrink with kappa, matching the prose. T2 prose-vs-figure; values approximate from render."}
+    },
+    {
+      "id": "c13",
+      "text": "Without temperature control (kappa=0) the spectrum resembles a Warburg finite-length impedance.",
+      "quote": "Without temperature control, the spectrum resembles a Warburg finite-length impedance (the solid blue curve in Figure 2).",
+      "section": "IV., Fig.2",
+      "page": 4,
+      "epistemic_tier": "T2",
+      "predicate": "Check that the kappa=0 curve has the characteristic ~45-degree high-frequency line transitioning into a finite arc (Warburg finite-length shape); cross-check with Eq.(20) Z_fp definition.",
+      "evidence": [
+        {"id": "e18", "kind": "figure", "location": "Figure 2 / Eq.(20)", "quote": "Z_fp = coth√(j̃0+iω̃/ε2)/√(j̃0+iω̃/ε2)", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Qualitative shape recognition + Eq.(20) is the finite-length (coth) Warburg form; confirm kappa=0 limit of Eq.(18) equals Eq.(20).", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.78, "rationale": "At kappa=0, Eq.(18) reduces to Eq.(20) coth(sqrt(arg))/sqrt(arg), the standard finite-length-Warburg (porous-electrode) form, whose Nyquist trace is the 45-degree-line-into-arc shape shown. Shape claim is qualitative; the equation reduction is exact (deterministic)."}
+    },
+    {
+      "id": "c14",
+      "text": "At kappa=0 (zero temperature perturbation, Lambda1=0) Eq.(18) reduces to the Warburg-like CCL impedance Eq.(20) with finite proton transport rate.",
+      "quote": "At zero temperature perturbation, Λ1 = 0, κ = 0, and Eq.(18) reduces to the Warburg-like impedance of the CCL with the finite rate of proton transport",
+      "section": "III., Eq.(20)",
+      "page": 3,
+      "epistemic_tier": "T0",
+      "predicate": "Substitute kappa=0 into Eq.(18) and verify it equals Eq.(20).",
+      "evidence": [
+        {"id": "e19", "kind": "equation", "location": "Eqs.(18),(20)", "quote": "Zfp = coth√(j̃0+iω̃/ε2)/√(j̃0+iω̃/ε2)", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Symbolic substitution kappa=0 in Eq.(18); check equals Eq.(20).", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.95, "rationale": "kappa=0 kills the second term of Eq.(18) and sets the first prefactor (1-kappa)=1, leaving coth(sqrt(arg))/sqrt(arg) = Eq.(20) exactly. Equation-reduction check."}
+    },
+    {
+      "id": "c15",
+      "text": "A realistic value of the temperature control parameter can be set in the range kappa in [0,1] by selecting amplitudes j1_tilde and Lambda1.",
+      "quote": "by selecting appropriate values of the amplitudes j̃1 and Λ1 , the control parameter κ can be set to a value in the range κ ∈ [0, 1], which is considered below.",
+      "section": "III. Results",
+      "page": 3,
+      "epistemic_tier": "T4",
+      "predicate": "Assess whether the claimed achievable kappa range [0,1] is consistent with the kappa~0.1 estimate from realistic amplitudes and the physical interpretation (kappa<=1 means sigma_p oscillation does not over-cancel the current gradient).",
+      "evidence": [
+        {"id": "e20", "kind": "text", "location": "III. Results", "quote": "κ ∈ [0, 1]", "extracted_values": {"kappa_min": 0, "kappa_max": 1}},
+        {"id": "e21", "kind": "text", "location": "III. Results", "quote": "we get κ ≃ 0.1", "extracted_values": {"kappa_realistic": 0.1}}
+      ],
+      "verification": {"possible": false, "verifier_needed": "Scope/feasibility judgment: kappa=Lambda1*j0_tilde/j1_tilde is a tunable ratio so [0,1] is mathematically attainable, but whether the required temperature amplitudes are experimentally realizable is not settled in the paper.", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.55, "rationale": "Mathematically kappa is a free ratio so [0,1] is reachable; the realistic estimate gives ~0.1, and kappa=1 requires much larger Lambda1 (temperature amplitude). The claim is a modeling scope statement, not a recomputable number; experimental attainability is acknowledged as an open question ('we leave aside how the high-frequency temperature perturbation could be produced')."}
+    },
+    {
+      "id": "c16",
+      "text": "When sigma_p1*j0/sigma_p0 = j1 (equivalent to kappa=1), the right side of the linearized Ohm's law Eq.(22) is zero, giving d(eta1)/dx = 0 and hence no proton transport losses.",
+      "quote": "when σp1 j0 /σp0 = j 1 , which is equivalent to κ = 1, the right side of Eq.(22) is zero and we get ∂η1 /∂x = 0.",
+      "section": "III. Results",
+      "page": 3,
+      "epistemic_tier": "T0",
+      "predicate": "Verify that in Eq.(22) the condition sigma_p1*j0/sigma_p0 = j1 sets the RHS (j1 - sigma_p1*j0/sigma_p0) to zero, and that this corresponds to kappa=1 via Eqs.(3),(19).",
+      "evidence": [
+        {"id": "e22", "kind": "equation", "location": "Eq.(22)", "quote": "−σp0 ∂η1/∂x = j1 − (σp1/σp0) j0", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Algebraic substitution: set sigma_p1*j0/sigma_p0 = j1 in Eq.(22) RHS -> 0; verify equivalence to kappa=1 via the conductivity perturbation relation Eq.(3) and kappa definition Eq.(19).", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.8, "rationale": "RHS of Eq.(22) is j1 - (sigma_p1/sigma_p0)*j0; setting sigma_p1*j0/sigma_p0 = j1 makes it exactly 0, so d(eta1)/dx=0 (uniform overpotential, no proton loss). The kappa=1 equivalence follows from Lambda1*j0_tilde = j1_tilde (Eq.19) combined with the linear sigma_p1/sigma_p0 = T_sigma*T1/T0^2 relation (Eq.3). Algebraic identity check; the kappa=1 mapping requires binding Eqs.(3),(19)."}
+    },
+    {
+      "id": "c17",
+      "text": "Reducing the perturbation frequency omega while keeping kappa constant transfers the CCL to a steady state whose static resistivity is given by Eq.(25).",
+      "quote": "Reducing ω while keeping κ constant transfers the CCL to the steady state, where the static resistivity is given by Eq.(25).",
+      "section": "IV. (static resistivity)",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "Set omega_tilde=0 in Eq.(18)/Eq.(23) and verify the dimensional static resistivity is Eq.(25): R = b/j0 + lt/(3 sigma_p) - kappa*beta_T*b/j0 - kappa*lt/(3 sigma_p).",
+      "evidence": [
+        {"id": "e23", "kind": "equation", "location": "Eq.(25)", "quote": "R = b/j0 + lt/(3σp) − κβT b/j0 − κ lt/(3σp)", "extracted_values": {}},
+        {"id": "e24", "kind": "equation", "location": "Eq.(23)", "quote": "Re = (1−κ)coth√j̃0/√j̃0 + κ(1−βT)/j̃0", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Set omega=0 (so arg=j0_tilde) and redimensionalize Eq.(24) using j*=sigma_p0*b/lt and Ze=Z*sigma_p/lt; verify it yields Eq.(25) term-by-term.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.75, "rationale": "Eq.(24) dimensionless form 1/j0t + 1/3 + (1-kappa)*betaT/j0t - kappa/3 maps to Eq.(25) under the scalings in Eqs.(10),(11): 1/j0t -> b/j0, 1/3 -> lt/(3 sigma_p), betaT-term -> kappa*betaT*b/j0, etc. Sign structure (two reduction terms) matches. Redimensionalization is multi-step but deterministic; confidence reflects unread dimensional algebra rather than doubt."}
+    },
+    {
+      "id": "c18",
+      "text": "In dimensional form Eq.(21) (kappa=1, beta_T=0) contains no proton conductivity, i.e., the in-phase temperature and current oscillations fully eliminate proton transport losses in the CCL at kappa=1.",
+      "quote": "In dimensional form, Eq.(21) does not contain proton conductivity, i.e., at κ = 1, the in-phase temperature and current density oscillations fully eliminate proton transport losses in the CCL.",
+      "section": "III. Results",
+      "page": 3,
+      "epistemic_tier": "T0",
+      "predicate": "Redimensionalize Eq.(21) Z_RC = 1/(j0_tilde+i*omega_tilde/eps^2) and confirm sigma_p does not appear in the resulting dimensional impedance.",
+      "evidence": [
+        {"id": "e25", "kind": "equation", "location": "Eq.(21), Eqs.(10),(11),(15)", "quote": "ZeRC = 1/(j̃0 + iω̃/ε2) ; ε² = σp0 b/(i0∗ lt²) ; j∗ = σp0 b/lt", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Symbolic redimensionalization of Eq.(21): substitute j0_tilde=j0/j*, eps^2, Ze=Z*sigma_p0/lt and check sigma_p0 cancels.", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.6, "rationale": "Plausible: the dimensional faradaic RC time constant is C_dl*b/i0_star and the resistance b/j0, neither of which obviously retains sigma_p once Ze and j0_tilde are expanded; but eps^2 and j* both contain sigma_p0, so full cancellation needs explicit redimensionalization that I did not complete symbolically. Marking inconclusive pending the dimensional algebra rather than asserting supported."}
+    },
+    {
+      "id": "c19",
+      "text": "A positive kappa means T1 is in phase with j1, so the proton conductivity oscillations sigma_p1 are also in phase with j1 (per Eq.(3)).",
+      "quote": "A real and positive κ means that T 1 is in phase with j 1 . According to Eq.(3), the resulting proton conductivity oscillations are also in phase with the j 1 oscillations.",
+      "section": "III. Results",
+      "page": 3,
+      "epistemic_tier": "T2",
+      "predicate": "Check internal consistency: Eq.(3) gives sigma_p1/sigma_p0 proportional to T1 with a positive coefficient (T_sigma>0), so sigma_p1 has the same phase as T1, which has the same phase as j1 when kappa>0.",
+      "evidence": [
+        {"id": "e26", "kind": "equation", "location": "Eq.(3)", "quote": "σp1/σp0 = Tσ T1/(T0)²", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Sign/phase consistency: T_sigma>0 and (T0)^2>0 make sigma_p1 in phase with T1; kappa>0 (real positive) ties T1 phase to j1.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.78, "rationale": "Eq.(3) coefficient T_sigma/(T0)^2 = 1268/353^2 > 0, so sigma_p1 tracks T1's phase; kappa = Lambda1*j0_tilde/j1_tilde real-positive requires Lambda1 (hence T1) in phase with j1. Internally consistent. T2 prose-vs-equation phase check."}
+    },
+    {
+      "id": "c20",
+      "text": "Low-frequency CCL temperature oscillations can be created by attaching a heating pad to the external surface of the cathode flow field, with the controller set to eliminate the phase shift between cell current and CCL temperature.",
+      "quote": "Low-frequency CCL temperature oscillations can be created by attaching the heating pad to the external surface of the cathode flow field. The temperature controller of the heating pad should be set to eliminate the phase shift between the cell current and CCL temperature oscillations.",
+      "section": "IV. (closing)",
+      "page": 4,
+      "epistemic_tier": "T8",
+      "predicate": "Assess experimental feasibility of generating in-phase low-frequency CCL temperature oscillations via an external heating pad.",
+      "evidence": [
+        {"id": "e27", "kind": "text", "location": "IV.", "quote": "attaching the heating pad to the external surface of the cathode flow field", "extracted_values": {}}
+      ],
+      "verification": {"possible": false, "verifier_needed": "Experimental-design plausibility (thermal time constants, achievable in-phase modulation at relevant frequencies) — requires domain judgment / experiment, not recompute.", "verifier_exists": false, "candidate_verdict": "not_checkable", "confidence": 0.4, "rationale": "Speculative implementation proposal; not bound to any datum in the paper. The model itself notes it ignores finite relaxation times of sigma_p and i*, so the practical bandwidth is uncertain. Route to human / experimentalist; not numerically verifiable."}
+    },
+    {
+      "id": "c21",
+      "text": "The model neglects oxygen transport losses in the CCL and (for the low-current case) the variation of ORR overpotential through the CCL depth.",
+      "quote": "To simplify the analytical model, we will neglect the oxygen transport losses in the CCL. ... we can neglect the variation of the ORR overpotential through the CCL depth and set η̃0 = η0 .",
+      "section": "II. Model / III. Results",
+      "page": 1,
+      "epistemic_tier": "T3",
+      "predicate": "Assess whether neglecting O2 transport and assuming uniform overpotential at low current are valid simplifying assumptions for the analytic Eqs.(18)-(25); note the paper itself relaxes the uniform-overpotential assumption numerically (Eq.12, Fig.2) at higher current.",
+      "evidence": [
+        {"id": "e28", "kind": "text", "location": "II/III", "quote": "neglect the oxygen transport losses ... set η̃0 = η0", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Method-appropriateness: low-current uniform-overpotential approximation is standard for analytic CCL impedance; O2-transport neglect bounds applicability to low/moderate current.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.65, "rationale": "These are explicitly stated, conventional simplifications for analytic CCL impedance models; the paper is self-aware (relaxes the uniform-eta assumption numerically in Fig.2 at 413 mA/cm2). Appropriate given the stated scope. Method judgment, not a recompute; FPR risk is low because the assumptions are disclosed."}
+    },
+    {
+      "id": "c22",
+      "text": "This work demonstrates the CCL impedance is lowered much more than in the prior model (ref 8), the dominating contribution being the oscillating exchange current density i*.",
+      "quote": "we demonstrate that in-phase oscillations of the cell current density and temperature decrease the impedance of the CCL much more than was shown in8 . ... The dominating contribution to the impedance reduction gives the oscillating i∗ .",
+      "section": "I. Introduction",
+      "page": 1,
+      "epistemic_tier": "T5",
+      "predicate": "Compare the magnitude of impedance reduction here vs the prior model in ref 8 (Kulikovsky, Electrochem. Comm. 188:108169, 2026); confirm the present model adds the i* oscillation channel that ref 8 (kappa=1 reduces to Eq.21, the proton-transport-only result) omitted.",
+      "evidence": [
+        {"id": "e29", "kind": "text", "location": "I/III", "quote": "Eq.(18) reduces to8 ... ZeRC = 1/(j̃0+iω̃/ε2)", "extracted_values": {}},
+        {"id": "e30", "kind": "text", "location": "References", "quote": "8 Andrei Kulikovsky. In-phase current and temperature oscillations reduce PEM fuel cell resistivity: A modeling study. Electrochem. Comm., 188:108169, 2026.", "extracted_values": {}}
+      ],
+      "verification": {"possible": false, "verifier_needed": "External-literature comparison: read ref 8 and confirm it captured only the proton-conductivity (beta_T=0) channel while the present paper adds the i*(T) (beta_T=6.95) channel, accounting for the larger reduction.", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.55, "rationale": "Internally consistent and plausible: the paper shows the beta_T=0 (proton-only, = ref 8 regime, Eq.21) reduction is marginal while beta_T=6.95 (adding i* oscillations) is large, which supports 'much more than ref 8'. But the quantitative comparison requires reading ref 8. T5 retrieval+entailment; abstain on exact magnitude."}
+    },
+    {
+      "id": "c23",
+      "text": "Table I parameter set: i* = 1e-4 A cm-3, Cdl = 20 F cm-3, b = 30 mV/exp, sigma_p0 = 0.01 Ohm-1 cm-1, lt = 10 um, p = 1.0 bar, T0 = 273+80 K, j0 = 0.1 and 0.413 A cm-2.",
+      "quote": "ORR exchange current density i∗ , A cm−3  10−4 ; Double layer capacitance Cdl , F cm−3  20 ; ORR Tafel slope b, mV/exp  30 ; CCL proton conductivity σp0 , Ω−1 cm−1  0.01 ; CCL thickness lt , µm  10 ; Cathode pressure p, bar  1.0 ; Cell temperature T 0 , K  273 + 80 ; Cell current density j0 , A cm−2  0.1, 0.413",
+      "section": "Table I",
+      "page": 3,
+      "epistemic_tier": "T1",
+      "predicate": "Sanity-check each Table I parameter for physical plausibility / unit consistency for a Pt/C-Nafion CCL (e.g., b~30 mV implies a Tafel slope ~69 mV/decade; sigma_p ~ 0.01 S/cm; lt ~ 10 um are typical).",
+      "evidence": [
+        {"id": "e31", "kind": "table", "location": "Table I", "quote": "i∗=10−4 A cm−3; Cdl=20 F cm−3; b=30 mV/exp; σp0=0.01 Ω−1cm−1; lt=10 µm; p=1.0 bar; T0=273+80 K; j0=0.1,0.413 A cm−2", "extracted_values": {"i_star_A_cm3": 1e-4, "Cdl_F_cm3": 20, "b_mV_per_exp": 30, "sigma_p0_S_cm": 0.01, "lt_um": 10, "p_bar": 1.0, "j0_A_cm2": [0.1, 0.413]}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Unit-consistency + physical-plausibility lookup: confirm each value is within the normal range for a PEMFC cathode CCL and that volumetric units (A cm-3, F cm-3, Ohm-1 cm-1) are dimensionally consistent with Eqs.(1),(11),(15).", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.7, "rationale": "All values are typical for a Pt/C-Nafion CCL: b=30 mV/exp (natural-log Tafel slope; ~69 mV/decade), sigma_p~0.01 S/cm, lt~10 um, Cdl~20 F/cm3 volumetric, i* ~1e-4 A/cm3 volumetric exchange current. Units (volumetric) match the governing equations. T1 plausibility/units check; no external DB needed beyond standard ranges."}
+    },
+    {
+      "id": "c24",
+      "text": "The static limit of the resistivity is given by Eq.(25) even though the model ignores finite relaxation times of sigma_p and i*, provided perturbation frequencies are small enough that relaxation times are much shorter than the AC period.",
+      "quote": "The model above ignores the finite relaxation times of σp and i∗ ... at sufficiently small frequencies of the applied perturbation, the relaxation times are much shorter than the AC signal period, and Eqs.(2) can be used. While the finite relaxation times ... could alter the shape of the Nyquist spectrum, the static limit would still be given by Eq.(25).",
+      "section": "IV. (closing)",
+      "page": 4,
+      "epistemic_tier": "T3",
+      "predicate": "Assess the validity of the quasi-static argument: in the omega->0 limit, finite relaxation times become negligible relative to the AC period, so the static resistivity Eq.(25) is unaffected by them.",
+      "evidence": [
+        {"id": "e32", "kind": "text", "location": "IV.", "quote": "the static limit would still be given by Eq.(25)", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Method/limit-argument review: at omega->0 (static), any finite relaxation time tau gives omega*tau->0, so the instantaneous (Eq.2) constitutive relations hold and Eq.(25) is recovered.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.7, "rationale": "The limiting argument is physically sound: as omega->0 the dimensionless omega*tau->0 for any finite tau, so relaxation lags vanish and the static (instantaneous-Arrhenius) resistivity Eq.(25) is exact in that limit, independent of spectrum-shape distortion at finite omega. Method/limit judgment with a deterministic anchor (the omega=0 reduction)."}
+    }
+  ],
+  "paper_level_notes": "Single-author analytic modeling paper (Andrei Kulikovsky, FZ Julich) on arXiv (2606.12999v1, physics.chem-ph), 4 pages, no SI, no associated dataset or code (none expected for a closed-form impedance model). DOI: none assigned (arXiv preprint); listed references all carry DOIs. This is the third in a series by the same author (refs 6,7,8 are his prior PEMFC oscillation models); ref 8 is the immediate predecessor whose result the paper extends. The work is overwhelmingly DERIVATION-driven: nearly all numerical content is (a) two Arrhenius constants (T_sigma=1268 K, T*=8807 K) feeding beta_T=6.95, (b) a kappa~0.1 order-of-magnitude estimate, and (c) a handful of equation reductions/limits (Eq.18->20,21; Eq.23->24; static omega=0; redimensionalization to Eq.25). I independently recomputed the strongest T0/T1 items in sympy/python and ALL passed: 273+80=353; 8807/1268=6.9456~6.95; kappa=(0.1*1268/353^2)*(1/0.01)=0.102~0.1; coth(x)=1/x+x/3-...; Eq.18(kappa=1,betaT=0)=Eq.21 exactly; Eq.18(kappa=0)=Eq.20 exactly; Eq.23 small-j expansion = printed Eq.24 exactly (residual 0); T*/T_sigma=6.95 ('nearly seven'). No arithmetic, unit, or internal-consistency error was found; prose claims about Figures 1-2 (resistivity decreases with kappa; i* oscillation dominant over sigma_p; marginal effect at small kappa with beta_T=0) all match values read off high-DPI figure renders. The richest CHECKABLE frontier here is T0 equation-recompute (algebraic reductions and the two derived dimensionless numbers) plus T2 prose-vs-figure binding on the Nyquist intercepts; figure-extracted intercepts are approximate (+/- a few mOhm cm2) since no underlying data table is provided. A couple of redimensionalization claims (c17,c18) and the ref-8 magnitude comparison (c22) are marked inconclusive because settling them exactly needs multi-step dimensional algebra I did not fully carry out, or reading the cited prior paper. One trivial typo noted (j0 '1 A cm2' should read 'A cm-2' in the kappa estimate) with no effect on any result. Integrity signals: none triggered (no images/blots; single derived dataset-free model; numbers self-consistent). Reproducibility (T6): the model is fully reproducible by re-deriving/coding the closed-form Eqs.(18)-(25); no external data/code to rerun. Overall this reads as a clean, internally consistent control-quality paper."
+}

@@ -1,0 +1,345 @@
+{
+  "paper_id": "medicine-zhou2025-esketamine-low-opioid-anaesthesia",
+  "title": "The esketamine-based multimodal low-opioid anaesthesia improves quality of recovery in elderly patients undergoing radical lung cancer surgery: a randomized controlled trial",
+  "doi": "10.3389/fphar.2026.1769225",
+  "domain": "medicine (anesthesiology / perioperative clinical RCT)",
+  "n_pages_read": 12,
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Primary outcome: the K (esketamine) group had a significantly higher QoR-15 score on postoperative day 3 than the C (conventional) group: 121 [117.75-124] vs 115 [111.75-118.25], p < 0.001.",
+      "quote": "POD-3 QoR-15 scores  121 (117.75-124)  115 (111.75-118.25)  <0.001",
+      "section": "3.1 QoR-15 scores / Table 2",
+      "page": 7,
+      "epistemic_tier": "T2",
+      "predicate": "Check that the abstract/body prose values, the Table 2 values, and the stated direction/significance are mutually consistent; verify the reported median difference (6) and that K>C.",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 2 (Primary outcomes)", "quote": "POD-3 QoR-15 scores 121 (117.75-124) 115 (111.75-118.25) <0.001", "extracted_values": {"K_median": 121, "K_iqr_low": 117.75, "K_iqr_high": 124, "C_median": 115, "C_iqr_low": 111.75, "C_iqr_high": 118.25, "median_diff": 6}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-table consistency check binding abstract/body/Table-2 QoR-15 POD3 triples and comparing medians/IQRs/direction", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.86, "rationale": "Direction (K>C) and median difference (121-115=6) are internally consistent across abstract, body, and Table 2. p<0.001 is consistent with a clear separation. The raw values themselves cannot be recomputed without patient-level data (Mann-Whitney on non-normal data), so the underlying p is not independently checkable here; only internal consistency is. See c2 for an IQR transcription discrepancy in the same comparison."}
+    },
+    {
+      "id": "c2",
+      "text": "The C-group POD3 QoR-15 lower IQR bound is reported inconsistently: the body Results text gives '115 [110-118.25]' whereas both the abstract and Table 2 give '115 [111.75-118.25]'.",
+      "quote": "group (121 [117.75-124] vs. 115 [110-118.25], P < 0.001)",
+      "section": "3.1 QoR-15 scores (body) vs Abstract vs Table 2",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Compare the C-group POD3 QoR-15 lower IQR bound across the three locations (abstract p.1, body Results p.6, Table 2 p.7); flag the disagreement (110 vs 111.75).",
+      "evidence": [
+        {"id": "e2a", "kind": "text", "location": "Abstract (p.1)", "quote": "115 [111.75-118.25]", "extracted_values": {"C_iqr_low": 111.75}},
+        {"id": "e2b", "kind": "text", "location": "Results 3.1 body (p.6)", "quote": "115 [110-118.25]", "extracted_values": {"C_iqr_low": 110}},
+        {"id": "e2c", "kind": "table", "location": "Table 2 (p.7)", "quote": "115 (111.75-118.25)", "extracted_values": {"C_iqr_low": 111.75}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "string/number-level prose-vs-table reconciliation across abstract, body, and Table 2 for the same statistic", "verifier_exists": false, "candidate_verdict": "suspect", "confidence": 0.9, "rationale": "Direct transcription conflict confirmed from the PDF text layer: body says lower bound 110, abstract and Table 2 say 111.75. Two of three agree, so the body value is most likely a typo. Severity C (does not change the verdict K>C, p<0.001), but it is a genuine, deterministic internal inconsistency of exactly the prose-vs-table class."}
+    },
+    {
+      "id": "c3",
+      "text": "QoR-15 POD3 component subscores: physical comfort 40 [39-41] vs 38 [37-40] (p<0.001); physical independence 11 [10-12] vs 11 [10-11] (p=0.375); psychologic support 20 [19-20] vs 20 [18-20] (p=0.103); emotional state 32 [30-33] vs 29 [27.75-31] (p<0.001); pain 18 [18-20] vs 18 [16.75-19] (p<0.001).",
+      "quote": "Physical comfort 40 (39-41) 38 (37-40) <0.001 ... Emotional state 32 (30-33) 29 (27.75-31) <0.001 ... Pain 18 (18-20) 18 (16.75-19) <0.001",
+      "section": "Table 2 (Primary outcomes)",
+      "page": 7,
+      "epistemic_tier": "T2",
+      "predicate": "Check each component median is within its QoR-15 dimension max range and that prose subscores (p.6) match Table 2; verify which components were claimed 'significant'.",
+      "evidence": [
+        {"id": "e3", "kind": "table", "location": "Table 2", "quote": "physical comfort 40/38; physical independence 11/11; psychologic support 20/20; emotional state 32/29; pain 18/18", "extracted_values": {"PC_K": 40, "PC_C": 38, "PI_K": 11, "PI_C": 11, "PS_K": 20, "PS_C": 20, "ES_K": 32, "ES_C": 29, "Pain_K": 18, "Pain_C": 18}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "QoR-15 dimension-range bound check (PC<=50, ES<=40, pain<=20, PI<=20, PS<=20) + prose-vs-table binding", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.82, "rationale": "All component medians and IQR bounds lie within the per-dimension maxima derived from the stated QoR-15 structure (5/2/2/4/2 items, each 0-10). Significant components (PC, ES, pain) are consistent with the abstract's 'physiological comfort, emotional state, and pain'. NOTE two minor prose-vs-table transcription diffs in the body text (c12): C emotional '29 [27-31]' body vs '29 [27.75-31]' table; C pain '18 [16-19]' body vs '18 [16.75-19]' table."}
+    },
+    {
+      "id": "c4",
+      "text": "The POD3 median QoR-15 difference of 6 points reaches the established minimal clinically important difference (MCID) of 6 for the QoR-15 scale, whereas the POD1 and POD2 differences (3 points each) do not.",
+      "quote": "A statistically significant, six-point higher median QoR-15 score was observed in the K group ... meets the threshold for the established minimal clinically important difference (MCID) of six points",
+      "section": "4 Discussion",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Recompute the raw median differences (POD3 121-115=6; POD1 106-103=3; POD2 110-107=3) and compare to the stated MCID=6.",
+      "evidence": [
+        {"id": "e4a", "kind": "statistic", "location": "Table 2 + Table 3", "quote": "POD3 121 vs 115; POD1 106 vs 103; POD2 110 vs 107", "extracted_values": {"POD3_diff": 6, "POD1_diff": 3, "POD2_diff": 3, "MCID": 6}},
+        {"id": "e4b", "kind": "text", "location": "2.5 Sample size calculation", "quote": "the minimum clinically important difference (MCID) for QoR-15 is 6", "extracted_values": {"MCID": 6}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "percent/delta + threshold-comparison check on median differences vs a stated MCID constant", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "Deterministic: 121-115=6 = MCID exactly; 106-103=3 and 110-107=3 < 6, consistent with the paper's claim that POD1-2 'do not reach the MCID'. The paper appropriately hedges that the point estimate exactly equals the MCID (borderline). Difference-of-medians is the right quantity here."}
+    },
+    {
+      "id": "c5",
+      "text": "POD1-2 QoR-15 scores were also significantly higher in the K group (POD1 106 [102.75-108] vs 103 [101-105], p=0.002; POD2 110 [107-113] vs 107 [105-109], p<0.001), described in prose as P<0.01.",
+      "quote": "Statistically significant differences in QoR-15 scores between the K and C groups were also observed on postoperative days 1 and 2 (P < 0.01)",
+      "section": "3.1 / Table 3",
+      "page": 7,
+      "epistemic_tier": "T2",
+      "predicate": "Check the prose 'P<0.01' summary against the per-day table p-values (0.002 and <0.001); both are <0.01, so consistent.",
+      "evidence": [
+        {"id": "e5", "kind": "table", "location": "Table 3 (QoR-15 on POD1-2)", "quote": "POD-1 QoR-15 106 (102.75-108) 103 (101-105) 0.002 ; POD-2 QoR-15 110 (107-113) 107 (105-109) <0.001", "extracted_values": {"POD1_K": 106, "POD1_C": 103, "POD1_p": 0.002, "POD2_K": 110, "POD2_C": 107, "POD2_p_lt": 0.001}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-significance-threshold vs table p-value consistency check (claimed P<0.01 implied by max table p=0.002)", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.83, "rationale": "Both per-day p-values (0.002, <0.001) are < 0.01, so the prose 'P<0.01' summary is internally consistent. Underlying p-values not independently recomputable without raw data."}
+    },
+    {
+      "id": "c6",
+      "text": "Perioperative opioid consumption was significantly lower in the K group: sufentanil 25 +/- 4.62 ug vs 38 +/- 8.60 ug and remifentanil 2.1 +/- 0.35 mg vs 2.5 +/- 0.72 mg (p<0.001).",
+      "quote": "perioperative opioid requirement (sufentanil plus remifentanil: 25 +/- 4.62 ug vs. 38 +/- 8.60 ug; 2.1 +/- 0.35 mg vs. 2.5 +/- 0.72 mg, p < 0.001)",
+      "section": "Abstract / 3.4 / Figure 3B,C",
+      "page": 8,
+      "epistemic_tier": "T2",
+      "predicate": "Check that the prose/abstract numeric means are consistent with the bar heights and error bars plotted in Figure 3B (sufentanil) and 3C (remifentanil); verify direction K<C.",
+      "evidence": [
+        {"id": "e6a", "kind": "statistic", "location": "Abstract / body 3.4", "quote": "sufentanil 25 +/- 4.62 ug vs 38 +/- 8.60 ug; remifentanil 2.1 +/- 0.35 mg vs 2.5 +/- 0.72 mg", "extracted_values": {"suf_K": 25, "suf_K_sd": 4.62, "suf_C": 38, "suf_C_sd": 8.60, "remi_K": 2.1, "remi_K_sd": 0.35, "remi_C": 2.5, "remi_C_sd": 0.72}},
+        {"id": "e6b", "kind": "figure", "location": "Figure 3B,C", "quote": "Sufentanil(ug): K~25, C~38; Remifentanil(mg): K~2.1, C~2.5; both *** ", "extracted_values": {"suf_K_plot": 25, "suf_C_plot": 38, "remi_K_plot": 2.1, "remi_C_plot": 2.5}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "figure-value-extraction vs prose/abstract numeric consistency for bar means and error bars", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.78, "rationale": "Read off Figure 3: sufentanil bars ~25 (K) and ~38 (C) with error bars consistent with SD 4.62/8.60; remifentanil ~2.1/2.5 consistent with SD 0.35/0.72; *** matches p<0.001. Figure and prose agree to reading precision. Underlying p not independently recomputable without raw consumption data; the SDs make a t-test plausible (large effect) but unverifiable here."}
+    },
+    {
+      "id": "c7",
+      "text": "Propofol consumption was significantly lower in the K group: 866.56 +/- 76.44 mg vs 968.36 +/- 68.87 mg (p<0.001), an ~10.5% reduction.",
+      "quote": "propofol consumption (866.56 +/- 76.44 mg vs. 968.36 +/- 68.87 mg, p < 0.001)",
+      "section": "Abstract / 3.4 / Figure 3A",
+      "page": 8,
+      "epistemic_tier": "T2",
+      "predicate": "Recompute the percent reduction (968.36-866.56)/968.36 and check the means are consistent with Figure 3A bar heights (~870 vs ~970, axis 0-1500); verify direction.",
+      "evidence": [
+        {"id": "e7a", "kind": "statistic", "location": "body 3.4", "quote": "866.56 +/- 76.44 mg vs. 968.36 +/- 68.87 mg", "extracted_values": {"prop_K": 866.56, "prop_K_sd": 76.44, "prop_C": 968.36, "prop_C_sd": 68.87, "pct_reduction": 10.5}},
+        {"id": "e7b", "kind": "figure", "location": "Figure 3A (Propofol Dosage mg)", "quote": "K bar ~870, C bar ~970, axis 0-1500, ***", "extracted_values": {"prop_K_plot": 870, "prop_C_plot": 970}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "percent-change recompute + figure-bar value-extraction vs prose mean consistency", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.8, "rationale": "(968.36-866.56)/968.36 = 10.5% reduction; Figure 3A bar heights (~870 vs ~970 on a 0-1500 axis) match the prose means to reading precision; *** matches p<0.001. Means/SDs plausible for a between-group t-test but the p itself is not recomputable without raw data."}
+    },
+    {
+      "id": "c8",
+      "text": "The incidence of postoperative nausea and vomiting (PONV) was significantly lower in the K group: 10.0% vs 21.4% (p<0.05).",
+      "quote": "a significantly lower incidence of postoperative nausea and vomiting in the multimodal low-opioid strategy incorporating esketamine group (10.0% vs. 21.4%, p < 0.05)",
+      "section": "Abstract / 3.6 / Table 5",
+      "page": 9,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute percentages from Table 5 counts: 7/70 and 15/70, and confirm they equal the reported 10.0% and 21.4%.",
+      "evidence": [
+        {"id": "e8a", "kind": "table", "location": "Table 5 (Adverse event)", "quote": "Nausea and vomiting  K 7  C 15", "extracted_values": {"PONV_K_n": 7, "PONV_C_n": 15, "group_n": 70}},
+        {"id": "e8b", "kind": "statistic", "location": "Abstract/3.6", "quote": "10.0% vs. 21.4%", "extracted_values": {"PONV_K_pct": 10.0, "PONV_C_pct": 21.4}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "percent-from-count recompute (n/N*100) for two-by-two adverse-event rates; optionally a chi-square/Fisher recompute on the 2x2", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.95, "rationale": "Deterministic and exact: 7/70 = 10.00%, 15/70 = 21.43% ~ 21.4%. Matches reported values precisely. The 2x2 (7/70 vs 15/70) is independently testable by Fisher/chi-square (off-the-shelf) to confirm p<0.05; the recompute confirms the rates, the test would confirm significance."}
+    },
+    {
+      "id": "c9",
+      "text": "Rescue analgesia rate was lower in the K group: 10 (14.3%) vs 23 (32.9%), p=0.01.",
+      "quote": "Rescue analgesia, n (%)  10 (14.3)  23 (32.9)  0.01",
+      "section": "Table 4 (NRS / Analgesic data)",
+      "page": 7,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute 10/70 and 23/70 and confirm they equal 14.3% and 32.9%.",
+      "evidence": [
+        {"id": "e9", "kind": "table", "location": "Table 4", "quote": "Rescue analgesia, n (%) 10 (14.3) 23 (32.9) 0.01", "extracted_values": {"rescue_K_n": 10, "rescue_C_n": 23, "rescue_K_pct": 14.3, "rescue_C_pct": 32.9, "group_n": 70}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "percent-from-count recompute + optional Fisher/chi-square on 10/70 vs 23/70", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.95, "rationale": "Exact: 10/70 = 14.29% ~ 14.3%; 23/70 = 32.86% ~ 32.9%. Both match. The 2x2 test for p=0.01 is recomputable off-the-shelf."}
+    },
+    {
+      "id": "c10",
+      "text": "Baseline sex distribution: K group Female 36 (51.4%) / Male 34 (48.6%); C group Female 30 (42.9%) / Male 40 (57.1%), with each group totaling 70.",
+      "quote": "Female 36 (51.4) 30 (42.9) ; Male 34 (48.6) 40 (57.1)",
+      "section": "Table 1 (Baseline characteristics)",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute each percentage as count/70 and verify female+male counts sum to the group N (70) in each arm.",
+      "evidence": [
+        {"id": "e10", "kind": "table", "location": "Table 1", "quote": "Female 36 (51.4) / 30 (42.9); Male 34 (48.6) / 40 (57.1)", "extracted_values": {"K_F": 36, "K_M": 34, "C_F": 30, "C_M": 40, "group_n": 70}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "percent-from-count + per-row total reconciliation against the column header N", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.97, "rationale": "Exact: 36/70=51.4%, 34/70=48.6% (sum 70); 30/70=42.9%, 40/70=57.1% (sum 70). All percentages and category totals reconcile to N=70 per group."}
+    },
+    {
+      "id": "c11",
+      "text": "Baseline categorical percentages across smoking, ASA status, and comorbidities all reconcile to N=70 per group (e.g., ASA II 65 (92.9%)/64 (91.4%), ASA III 5 (7.1%)/6 (8.6%); smoker 22 (31.4%)/19 (27.1%); hypertension 17 (24.3%)/21 (30.0%); diabetes 11 (15.7%)/13 (18.6%)).",
+      "quote": "II 65 (92.9) 64 (91.4) ; III 5 (7.1) 6 (8.6)",
+      "section": "Table 1 (Baseline characteristics)",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "For each categorical row recompute count/70*100 and (for ASA) check II+III counts = 70 per group.",
+      "evidence": [
+        {"id": "e11", "kind": "table", "location": "Table 1", "quote": "Current smoker 22 (31.4)/19 (27.1); ASA II 65 (92.9)/64 (91.4), III 5 (7.1)/6 (8.6); Hypertension 17 (24.3)/21 (30.0); Diabetes 11 (15.7)/13 (18.6); CVD 5 (7.1)/7 (10.0); COPD 2 (2.9)/3 (4.3); Cerebral infarction 4 (5.7)/6 (8.6)", "extracted_values": {"smoker_K": 22, "smoker_C": 19, "ASA2_K": 65, "ASA3_K": 5, "ASA2_C": 64, "ASA3_C": 6, "HTN_K": 17, "HTN_C": 21, "DM_K": 11, "DM_C": 13}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "batch percent-from-count recompute across all categorical Table-1 rows + ASA II+III=N reconciliation", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.95, "rationale": "All recomputes match to one decimal: 22/70=31.4, 19/70=27.1, 65/70=92.9, 5/70=7.1, 64/70=91.4, 6/70=8.6, 17/70=24.3, 21/70=30.0, 11/70=15.7, 13/70=18.6, 5/70=7.1, 7/70=10.0, 2/70=2.9, 3/70=4.3, 4/70=5.7, 6/70=8.6. ASA II+III = 70 in both arms. Clean."}
+    },
+    {
+      "id": "c12",
+      "text": "The Results body text reports two QoR-15 component IQRs that disagree with Table 2: C-group emotional state '29 [27-31]' (body) vs '29 [27.75-31]' (table), and C-group pain '18 [16-19]' (body) vs '18 [16.75-19]' (table).",
+      "quote": "emotional state (32 [30-33] vs. 29 [27-31]; P < 0.001) ... pain (18 [18-20] vs. 18 [16-19]; P < 0.001)",
+      "section": "3.1 (body) vs Table 2",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Compare body-text component IQR lower bounds to Table 2 values for C-group emotional state and pain; flag mismatches (27 vs 27.75; 16 vs 16.75).",
+      "evidence": [
+        {"id": "e12a", "kind": "text", "location": "Results 3.1 body (p.6)", "quote": "29 [27-31] ... 18 [16-19]", "extracted_values": {"ES_C_low_body": 27, "Pain_C_low_body": 16}},
+        {"id": "e12b", "kind": "table", "location": "Table 2 (p.7)", "quote": "29 (27.75-31) ... 18 (16.75-19)", "extracted_values": {"ES_C_low_table": 27.75, "Pain_C_low_table": 16.75}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-table numeric reconciliation of IQR bounds for matched component rows", "verifier_exists": false, "candidate_verdict": "suspect", "confidence": 0.8, "rationale": "Confirmed from PDF text/table: the body rounds/mis-states the lower IQR bounds (27 vs 27.75, 16 vs 16.75) relative to Table 2. Severity C (decimals dropped, direction/significance unaffected), but a genuine deterministic prose-vs-table inconsistency, same archetype as c2. Could be intentional rounding in prose, but it is internally inconsistent."}
+    },
+    {
+      "id": "c13",
+      "text": "CONSORT flow: 208 patients assessed for eligibility, 64 excluded (37 not meeting inclusion criteria, 27 declined), 144 randomized 1:1, 72 allocated per arm, 2 lost to follow-up per arm, 70 analyzed per arm (140 retained).",
+      "quote": "208 patients were assessed for eligibility, and 64 were excluded. The resulting 144 eligible patients were randomly allocated ... two patients in each group were lost, which yielded 140 patients who were retained",
+      "section": "Figure 1 (flow diagram) / 3 Results",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "Check flow arithmetic: 208-64=144; 37+27=64; 72+72=144; 72-2=70 per arm; 70+70=140.",
+      "evidence": [
+        {"id": "e13a", "kind": "figure", "location": "Figure 1 (flow diagram)", "quote": "Assessed for eligibility (n=208); Excluded (n=64): Not meeting inclusion criteria (n=37), Declined to participate (n=27); Randomized (n=144); Allocated to intervention (n=72)/(n=72); Lost to follow-up (n=2)/(n=2); Analyzed (n=70)/(n=70)", "extracted_values": {"assessed": 208, "excluded": 64, "excl_criteria": 37, "excl_declined": 27, "randomized": 144, "alloc_K": 72, "alloc_C": 72, "lost_K": 2, "lost_C": 2, "analyzed_K": 70, "analyzed_C": 70}},
+        {"id": "e13b", "kind": "text", "location": "Results para 1 (p.10)", "quote": "208 patients were assessed ... 64 were excluded ... 144 eligible patients ... two patients in each group were lost ... 140 patients", "extracted_values": {"assessed": 208, "excluded": 64, "randomized": 144, "retained": 140}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "CONSORT flow-arithmetic checker (assessed - excluded = randomized; exclusion-reason sum = total excluded; allocated sum = randomized; allocated - lost = analyzed)", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.94, "rationale": "All flow arithmetic balances: 208-64=144; 37+27=64; 72+72=144; 72-2=70 each; 70+70=140. Figure 1 and the Results text agree. Clean."}
+    },
+    {
+      "id": "c14",
+      "text": "Sample size: with QoR-15 SD 10.37, MCID 6, 90% power, alpha 0.05, 1:1 allocation, 64 patients per group were required; accounting for a 10% dropout, final enrollment was 72 per group (144 total).",
+      "quote": "calculations indicated 64 patients per group were required. Accounting for a 10% dropout rate, the final actual enrollment per group was 72 patients, totaling 144 patients.",
+      "section": "2.5 Sample size calculation",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "Check the dropout inflation: 64 / (1 - 0.10) = 71.1 -> 72 per group; verify 72*2 = 144. Optionally recompute n per group for the two-sample comparison given effect=6, SD=10.37, power=0.90, alpha=0.05.",
+      "evidence": [
+        {"id": "e14", "kind": "text", "location": "2.5", "quote": "QoR-15 ... 113.6 +/- 10.37 ... MCID ... 6 ... power as 90% ... level as 0.05 ... 1:1 ... 64 patients per group ... 10% dropout ... 72 patients", "extracted_values": {"sd": 10.37, "mcid": 6, "power": 0.90, "alpha": 0.05, "n_required": 64, "dropout": 0.10, "n_final": 72}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "sample-size / power recompute (two-sample t or Mann-Whitney approximation) + dropout-inflation arithmetic", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.8, "rationale": "Dropout inflation is exact: 64/0.9 = 71.1 -> ceil 72 per group; 72*2=144. A two-sample t-test n for effect=6, SD=10.37, power=0.90, alpha=0.05 gives ~63-64/group (n per group ~ 2*(z_a/2+z_b)^2*SD^2/diff^2 = 2*(1.96+1.2816)^2*10.37^2/6^2 ~ 62.7 -> 63), consistent with the reported 64 (they likely used a slightly more conservative formula / nonparametric inflation). Arithmetic checks out; exact n depends on their PASS settings."}
+    },
+    {
+      "id": "c15",
+      "text": "Multivariable linear regression adjusting for intraoperative norepinephrine use: the treatment group remained an independent predictor of higher QoR-15 on POD3 (B = 5.52, 95% CI 3.97 to 7.06, p<0.001).",
+      "quote": "the intervention was associated with a significantly higher QoR-15 score on postoperative day 3 (B = 5.52, 95% CI 3.97 to 7.06, p < 0.001)",
+      "section": "3.7 Multivariable regression adjustment",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "Check internal coherence of the regression statistic: CI midpoint = (3.97+7.06)/2 should equal B (5.52); CI excludes 0 consistent with p<0.001; and the adjusted B (5.52) is close to the raw median diff (6).",
+      "evidence": [
+        {"id": "e15", "kind": "statistic", "location": "3.7", "quote": "B = 5.52, 95% CI 3.97 to 7.06, p < 0.001", "extracted_values": {"B": 5.52, "CI_low": 3.97, "CI_high": 7.06, "CI_midpoint": 5.515}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "regression-coefficient internal-consistency check (CI symmetry vs point estimate; CI-excludes-null vs reported p)", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "CI midpoint (3.97+7.06)/2 = 5.515 ~ B=5.52 (consistent to rounding); CI (3.97-7.06) excludes 0, consistent with p<0.001; adjusted B 5.52 is close to the unadjusted median diff of 6, indicating the norepinephrine imbalance did not drive the effect. Internally coherent. Full recompute would need the design matrix (not provided)."}
+    },
+    {
+      "id": "c16",
+      "text": "A baseline imbalance in intraoperative vasopressor use was present (norepinephrine 9 (12.9%) K vs 28 (40.0%) C, p<0.01) and was handled by forcing 'Intraoperative Norepinephrine Use' as a covariate in multivariable models for the key outcomes.",
+      "quote": "Norepinephrine 9 (12.9) 28 (40) <0.01 ... 'Intraoperative Norepinephrine Use' (yes/no) was forced into ... the models as a covariate",
+      "section": "Table 1 / 2.6 Statistical analysis",
+      "page": 5,
+      "epistemic_tier": "T3",
+      "predicate": "Assess method appropriateness: was the disclosed baseline imbalance in a prognostic variable handled correctly (adjustment via regression rather than ignored)?",
+      "evidence": [
+        {"id": "e16", "kind": "table", "location": "Table 1 / 2.6", "quote": "Norepinephrine 9 (12.9) / 28 (40), p<0.01; covariate forced into models", "extracted_values": {"norepi_K_n": 9, "norepi_C_n": 28, "norepi_K_pct": 12.9, "norepi_C_pct": 40.0}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "method-appropriateness review (pre-specified vs post-hoc covariate adjustment for a baseline imbalance; whether adjustment direction/inclusion is defensible)", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.6, "rationale": "Recognizing a baseline imbalance in a vasopressor (prognostic for hemodynamics) and adjusting via forced-entry covariate regression is methodologically appropriate and transparently reported. 12.9% and 40.0% recompute exactly from 9/70 and 28/70. Caveat: the adjustment appears post-hoc (responding to an observed imbalance) rather than pre-registered; whether this is fully principled is a judgment (hence T3, moderate confidence). Not a deterministic verdict."}
+    },
+    {
+      "id": "c17",
+      "text": "The same vasopressor is labeled inconsistently: Table 1 and the regression name it 'Norepinephrine'/'Intraoperative Norepinephrine Use', but the Results narrative describes the single imbalanced baseline variable as 'epinephrine usage'.",
+      "quote": "the groups were balanced on all baseline and surgical variables except for epinephrine usage, for which a significant intergroup difference was observed (P < 0.01)",
+      "section": "3 Results (para 1) vs Table 1 / 2.6 / 4 Discussion",
+      "page": 10,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check the drug name attached to the single imbalanced baseline row: Table 1 row = 'Norepinephrine'; Results text = 'epinephrine'. Flag the entity mismatch (epinephrine vs norepinephrine are different drugs).",
+      "evidence": [
+        {"id": "e17a", "kind": "text", "location": "Results para 1 (p.10)", "quote": "except for epinephrine usage", "extracted_values": {}},
+        {"id": "e17b", "kind": "table", "location": "Table 1 row + 2.6 + 4 Discussion", "quote": "Norepinephrine 9 (12.9)/28 (40); 'Intraoperative Norepinephrine Use'", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "entity/term-consistency check binding the imbalanced baseline-table row name to how the same variable is named in prose and in the regression covariate list", "verifier_exists": false, "candidate_verdict": "suspect", "confidence": 0.72, "rationale": "Only one baseline vasopressor row exists in Table 1 (Norepinephrine, the only row with p<0.01), and the regression/Discussion consistently call it norepinephrine; the Results narrative calls the same imbalanced variable 'epinephrine'. Epinephrine and norepinephrine are distinct drugs, so this is a genuine internal naming inconsistency (severity C). Most likely a sloppy-wording typo, not a data error, but it is checkable and inconsistent."}
+    },
+    {
+      "id": "c18",
+      "text": "Postoperative NRS pain scores (rest and movement) were significantly lower in the K group across POD1-3, with prose summarizing rest 'P<0.05' over POD1-3 (table per-day p: rest 0.001/0.01/0.006; movement 0.013/0.001/0.02).",
+      "quote": "NRS score at rest POD-1 3 (3-3) 3 (3-4) <0.001 ... NRS score on movement POD-1 4 (4-5) 5 (4-5) 0.013",
+      "section": "3.2 / Table 4",
+      "page": 7,
+      "epistemic_tier": "T2",
+      "predicate": "Check prose claim of significantly lower NRS (all P<0.05) against per-day table p-values; confirm all are <0.05 and the K medians are <= C medians.",
+      "evidence": [
+        {"id": "e18", "kind": "table", "location": "Table 4 (NRS at rest / on movement)", "quote": "rest POD1 3/3 p<0.001; POD2 3/3 p0.01; POD3 2/2 p0.006; movement POD1 4/5 p0.013; POD2 4/4 p<0.001; POD3 3/3 p0.02", "extracted_values": {"rest_p1": 0.001, "rest_p2": 0.01, "rest_p3": 0.006, "move_p1": 0.013, "move_p2": 0.001, "move_p3": 0.02}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-table significance consistency + median-ordering check (K <= C) for ordinal pain scores", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.7, "rationale": "All six per-day p-values are < 0.05, consistent with the prose 'all P<0.05'. NOTE: for several rows the medians are identical between groups (rest POD1 3 vs 3, POD2 3 vs 3, POD3 2 vs 2; movement POD2 4 vs 4, POD3 3 vs 3); the significant p-values then rest entirely on IQR/distribution shifts via Mann-Whitney. This is internally possible but not independently verifiable without raw data; the 'significantly lower' phrasing is weakly supported by equal medians (the difference is in the upper IQR). Recorded supported-with-caveat."}
+    },
+    {
+      "id": "c19",
+      "text": "Length of tracheal tube removal (extubation time) and PACU stay were significantly shorter in the K group: 35.8 +/- 13.02 vs 40.8 +/- 15.5 min (P<0.05) and 107.2 +/- 27.4 vs 118.9 +/- 27.2 min (P<0.05).",
+      "quote": "extubation time (35.8 +/- 13.02 min vs. 40.8 +/- 15.5 min, P < 0.05; Figure 4A) and the PACU stay duration (107.2 +/- 27.4 min vs. 118.9 +/- 27.2 min, P < 0.05; Figure 4B)",
+      "section": "3.5 Recovery metrics / Figure 4",
+      "page": 8,
+      "epistemic_tier": "T2",
+      "predicate": "Check that the prose means are consistent with Figure 4 bar heights (extubation ~36 vs ~41 on 0-60 axis; PACU ~107 vs ~119 on 0-150 axis) and direction K<C.",
+      "evidence": [
+        {"id": "e19a", "kind": "statistic", "location": "3.5", "quote": "35.8 +/- 13.02 vs 40.8 +/- 15.5 min; 107.2 +/- 27.4 vs 118.9 +/- 27.2 min", "extracted_values": {"ext_K": 35.8, "ext_C": 40.8, "pacu_K": 107.2, "pacu_C": 118.9}},
+        {"id": "e19b", "kind": "figure", "location": "Figure 4A,B", "quote": "tube removal K~36/C~41; PACU K~107/C~119; both *", "extracted_values": {"ext_K_plot": 36, "ext_C_plot": 41, "pacu_K_plot": 107, "pacu_C_plot": 119}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "figure-bar value extraction vs prose mean consistency; significance-marker (*) vs P<0.05 consistency", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.72, "rationale": "Figure 4 bars match prose means to reading precision (~36/41 min; ~107/119 min) and carry single-* (P<0.05) markers consistent with the prose. Note the SDs are large relative to the ~5 min / ~12 min differences, so the effect is modest; significance is plausible but not independently recomputable without raw data."}
+    },
+    {
+      "id": "c20",
+      "text": "Esketamine provided 'dynamic and bidirectional regulation of blood pressure throughout different surgical phases' - the K group had significantly higher SBP/DBP/MAP at hypotension-prone phases (T2,T4) and lower SBP/MAP at later phases (T5,T6).",
+      "quote": "Esketamine provides dynamic and bidirectional regulation of blood pressure throughout different surgical phases in elderly patients",
+      "section": "Abstract / 3.3 / Figure 2",
+      "page": 8,
+      "epistemic_tier": "T4",
+      "predicate": "Check whether the figure-level significance markers in Figure 2 (A SBP, B DBP, C MAP, D HR) at the stated timepoints support the directional 'bidirectional' interpretation, and whether the claim over-reaches the data.",
+      "evidence": [
+        {"id": "e20", "kind": "figure", "location": "Figure 2 (A-D hemodynamics over T0-T6)", "quote": "SBP/DBP/MAP show K>C significance at T2/T4 and K<C at T5/T6 (asterisks); HR with markers at T4,T6", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "claim<->evidence support review: does the per-timepoint figure pattern (sign of significant differences) justify a 'bidirectional regulation' causal/mechanistic statement", "verifier_exists": false, "candidate_verdict": "inconclusive", "candidate_verdict_note": "leans supported-but-interpretive", "confidence": 0.45, "rationale": "Figure 2 does show direction-reversing significant differences across phases (higher early, lower late), which loosely supports 'bidirectional'. But 'dynamic and bidirectional regulation' is an interpretive/mechanistic framing of associative within-trial BP differences; the exact significant timepoints and their directions cannot be fully bound from the figure without the underlying values/CV indices (referenced in Supplementary Table S1, not in the PDF). Cannot deterministically settle; route the over-claim judgment to human. T4."}
+    },
+    {
+      "id": "c21",
+      "text": "Other adverse events (dizziness, headache, drowsiness/nightmares, restlessness, etc.) were comparable between groups (P>0.05); Table 5 lists low counts per arm (e.g., dizziness 1 vs 2, headache 2 vs 3, nightmares 2 vs 2).",
+      "quote": "the two groups showed comparable rates of other adverse effects, such as dizziness, headache, drowsiness, and restlessness (p > 0.05)",
+      "section": "Abstract / 3.6 / Table 5",
+      "page": 9,
+      "epistemic_tier": "T2",
+      "predicate": "Check that the small per-arm adverse-event counts in Table 5 are consistent with a non-significant between-group difference and that the listed events appear in Table 5.",
+      "evidence": [
+        {"id": "e21", "kind": "table", "location": "Table 5", "quote": "Dizziness 1/2; Headache 2/3; Nightmares 2/2; Hallucination 0/0; Hypersomnia 1/1; Dysphoria 0/1; Pruritus 1/1; Respiratory depression 2/3; Arrhythmia 0/1; Delirium 1/0; Infection 2/2; Pneumothorax 1/1; Bronchopleural fistula 0/1; Pulmonary embolism 0/0", "extracted_values": {"dizz_K": 1, "dizz_C": 2, "head_K": 2, "head_C": 3, "night_K": 2, "night_C": 2}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Fisher's exact recompute per adverse-event row to confirm none reach p<0.05 (off-the-shelf 2x2 test)", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.7, "rationale": "All non-PONV adverse-event counts are very small and near-equal between arms (max difference ~1-2 events), wholly consistent with the claimed non-significance. A per-row Fisher's exact test (recomputable from Table 5 counts and N=70) would confirm p>0.05 for each; the small counts make significance essentially impossible. The body text mentions 'drowsiness' which is not a literal Table 5 row label (closest: hypersomnia/nightmares) - minor wording mismatch, not material."}
+    },
+    {
+      "id": "c22",
+      "text": "QoR-15 is described as ranging 0-150 across five dimensions (physical comfort 5 items, physical independence 2, psychological support 2, emotional state 4, pain 2), with higher scores indicating better recovery.",
+      "quote": "physical comfort (5 items), physical independence (2 items), psychological support (2 items), emotional state (4 items), and pain (2 items). The total score ranges from 0 to 150, with higher scores indicating better recovery.",
+      "section": "2.4 (Outcomes) ",
+      "page": 4,
+      "epistemic_tier": "T1",
+      "predicate": "Check against the known QoR-15 instrument definition: 15 items, each 0-10, total 0-150, with the stated 5-dimension breakdown summing to 15 items.",
+      "evidence": [
+        {"id": "e22", "kind": "text", "location": "2.4", "quote": "physical comfort (5 items) ... pain (2 items). The total score ranges from 0 to 150", "extracted_values": {"items_PC": 5, "items_PI": 2, "items_PS": 2, "items_ES": 4, "items_pain": 2, "total_items": 15, "max_score": 150}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "fixed-instrument lookup (QoR-15: 15 items x 0-10 = 0-150) + item-count sum check (5+2+2+4+2=15)", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "Item counts sum to 15 (5+2+2+4+2) and 15 items x 10 = 150, matching the established QoR-15 instrument (Myles 2013/2016). The dimension breakdown is the standard one. Verifiable against fixed external knowledge of the scale (T1)."}
+    },
+    {
+      "id": "c23",
+      "text": "Trial design and registration: single-center, prospective RCT, 1:1 computer-generated randomization with allocation concealed in sealed, opaque, sequentially numbered envelopes; outcome assessors and ward nurse blinded; registered as ChiCTR2100051000.",
+      "quote": "a 1:1 ratio using a computer-generated random sequence. The allocation was concealed in sealed, opaque, sequentially ... outcome assessors were fully blinded to group allocation ... (ChiCTR2100051000)",
+      "section": "2.1 / 2.2 / Abstract",
+      "page": 3,
+      "epistemic_tier": "T7",
+      "predicate": "Check trial-registration existence and whether registration was prospective relative to the Sept 2022-July 2023 enrolment; assess blinding/allocation-concealment adequacy.",
+      "evidence": [
+        {"id": "e23", "kind": "text", "location": "2.1/2.2", "quote": "computer-generated random sequence; sealed, opaque, sequentially numbered; outcome assessors blinded; ChiCTR2100051000", "extracted_values": {"reg_id_year_prefix": 2100051000}}
+      ],
+      "verification": {"possible": false, "verifier_needed": "trial-registry lookup (ChiCTR API) to confirm the registration exists, its registration date precedes enrolment, and the registered primary outcome matches the reported one (QoR-15 POD3)", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.5, "rationale": "Registration ID (ChiCTR2100051000) is internally consistent between abstract and body and its 2021-style prefix is plausibly prior to the Sept-2022 enrolment start (prospective). Allocation concealment and blinding described are methodologically adequate. But existence, registration date, and outcome-switching can only be settled by an online registry lookup (network), which is out of scope here - hence inconclusive / route to a T5/T7 registry verifier."}
+    },
+    {
+      "id": "c24",
+      "text": "Data availability: 'The raw data supporting the conclusions of this article will be made available by the authors, without undue reservation' - i.e., no public data repository or accession is provided.",
+      "quote": "The raw data supporting the conclusions of this article will be made available by the authors, without undue reservation.",
+      "section": "Data availability statement",
+      "page": 10,
+      "epistemic_tier": "T6",
+      "predicate": "Determine whether raw/patient-level data or analysis code are openly available for reproduction; check for any repository link or accession.",
+      "evidence": [
+        {"id": "e24", "kind": "text", "location": "Data availability statement", "quote": "will be made available by the authors, without undue reservation", "extracted_values": {}}
+      ],
+      "verification": {"possible": false, "verifier_needed": "T6 reproducibility container: obtain the patient-level dataset and re-derive the reported summary statistics / p-values", "verifier_exists": false, "candidate_verdict": "not_checkable", "confidence": 0.55, "rationale": "No public dataset, repository DOI, or code is provided (data available 'on request' only). Therefore none of the inferential claims (QoR-15, opioid consumption, NRS, regression) can be reproduced from provided data in this audit. The arithmetic/percentage and prose-vs-table checks (c8-c14) are the deterministic frontier available without raw data; everything inferential is T6-blocked here. Supplementary Table S1 (CV-of-MAP/HR indices) is referenced but not present in this PDF."}
+    },
+    {
+      "id": "c25",
+      "text": "Overall conclusion: esketamine-based multimodal low-opioid anaesthesia effectively improves quality of postoperative recovery in elderly patients undergoing thoracoscopic radical lung cancer resection.",
+      "quote": "esketamine-based multimodal low-opioid anaesthesia effectively improves the quality of postoperative recovery in elderly patients undergoing thoracoscopic radical lung cancer resection",
+      "section": "Conclusion / Abstract",
+      "page": 10,
+      "epistemic_tier": "T4",
+      "predicate": "Assess whether the headline causal/efficacy conclusion is proportionate to the evidence (single-center RCT, n=140, primary endpoint met at exactly the MCID, multimodal bundle that confounds esketamine-specific effect).",
+      "evidence": [
+        {"id": "e25", "kind": "text", "location": "Conclusion", "quote": "effectively improves the quality of postoperative recovery", "extracted_values": {"n_analyzed": 140, "primary_effect": 6, "MCID": 6}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "claim<->evidence scope/strength review: single-center generalizability, bundle-vs-single-agent attribution, primary effect == MCID (borderline), multiplicity across many secondary outcomes", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.4, "rationale": "The primary endpoint was met (p<0.001) but the median difference equals the MCID exactly (borderline clinical relevance, which the authors commendably acknowledge), and the intervention is a multimodal bundle (esketamine + intercostal block + modified PCIA) so the conclusion attributing benefit to esketamine partially over-reaches single-agent attribution. Single-center design limits generalizability. Bonferroni was applied to secondary outcomes (good). This is a strength/scope judgment (T4) to route to human, not a deterministic flag; no fabricated error."}
+    }
+  ],
+  "paper_level_notes": "Frontiers in Pharmacology Original Research, single-center prospective RCT (ChiCTR2100051000), n=140 analyzed (70/arm). Methodology is generally sound and transparently reported: 1:1 computer-generated randomization, sealed opaque sequentially-numbered allocation concealment, blinded outcome assessors/ward nurse, opaque-bagged infusion pumps, PASS-based a priori sample size, Bonferroni correction for secondary outcomes, and a multivariable regression sensitivity analysis that adjusts for a disclosed baseline norepinephrine imbalance. DETERMINISTIC FRONTIER (T0-T2) IS RICH AND CLEAN: every checkable percentage in Tables 1, 4, 5 recomputes exactly (sex, smoking, ASA, comorbidities, PONV 7/70=10.0% & 15/70=21.4%, rescue analgesia 10/70=14.3% & 23/70=32.9%); the CONSORT flow (208-64=144; 37+27=64; 72-2=70; 70+70=140) balances; the sample-size dropout inflation (64/0.9->72) and the regression CI symmetry (midpoint 5.515 ~ B=5.52) check out; QoR-15 item structure (5+2+2+4+2=15 items, 0-150) is consistent with the instrument; POD3 median diff=6=MCID and POD1-2 diffs=3 are arithmetically correct. THREE GENUINE (MINOR, severity-C) INTERNAL INCONSISTENCIES, all of the prose-vs-table/entity-consistency archetype: (1) c2 - C-group POD3 QoR-15 lower IQR is 110 in the body Results but 111.75 in both the abstract and Table 2 (likely body typo); (2) c12 - body-text C-group emotional-state and pain IQR lower bounds (27, 16) drop the decimals shown in Table 2 (27.75, 16.75); (3) c17 - the single imbalanced baseline vasopressor is named 'Norepinephrine' in Table 1 and the regression but called 'epinephrine' in the Results narrative (epinephrine != norepinephrine). None change any verdict; they are exactly the kind of deterministic prose-vs-table/term-consistency flags LITMUS targets. REPRODUCIBILITY: no public data or code (raw data 'available on request'); Supplementary Table S1 (coefficient-of-variation hemodynamic indices) is referenced but not included in this PDF, so the regression hemodynamic-variability claims and all inferential p-values are not independently reproducible here (T6-blocked). HIGHER-TIER ITEMS routed to human (not scored): the 'dynamic and bidirectional BP regulation' framing (T4 interpretive over-claim of within-trial associations), the multimodal-bundle-vs-esketamine attribution in the headline conclusion (T4 scope), and the post-hoc-flavored covariate adjustment (T3). No integrity red flags observed; values are internally coherent and not too-perfect (component medians do NOT trivially sum to totals for the C group, as expected for medians). This paper reads as a competently conducted, honestly reported real RCT with only minor transcription/wording inconsistencies - no manufactured errors."
+}

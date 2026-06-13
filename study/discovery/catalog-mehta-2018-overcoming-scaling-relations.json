@@ -1,0 +1,719 @@
+{
+  "paper_id": "mehta-2018-overcoming-scaling-relations",
+  "title": "Overcoming Ammonia Synthesis Scaling Relations with Plasma-enabled Catalysis",
+  "doi": null,
+  "domain": "chemistry / heterogeneous catalysis (DFT microkinetic modeling + non-thermal plasma catalysis; ammonia synthesis; vibrational excitation of N2)",
+  "n_pages_read": 24,
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The N2 dissociation rate-constant expression (Eq 6) reduces the forward barrier by alpha*Ev and is gated by a Heaviside step function H(Ea^(f) - alpha*Ev), so the barrier reduction can never exceed the barrier itself (k>0 only when alpha*Ev <= Ea^(f)).",
+      "quote": "k_v^(f) = A exp( -(E_a^(f) - alpha E_v)/(k_B T) ) H(E_a^(f) - alpha E_v)",
+      "section": "Microkinetic modeling / Eq (6)-(7)",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "Check the rate expression is self-consistent: the Heaviside argument (Ea^(f) - alpha*Ev) and the exponent numerator (Ea^(f) - alpha*Ev) are identical, so for alpha*Ev > Ea^(f) the prefactor H=0 and the rate is forced to zero rather than the exponent becoming spuriously large (negative effective barrier). Dimensional check: exponent argument is an energy / (kB*T) = dimensionless.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "equation",
+          "location": "Eq (6) and Eq (7), page 6",
+          "quote": "H(x) = 0, x<0; 1, x>=0",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "symbolic/dimensional equation-consistency check: confirm Heaviside argument == exponent-numerator and that the construction caps barrier reduction at the barrier (no negative effective barrier).",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.88,
+        "rationale": "By inspection Eq (6) is internally consistent: the same quantity (Ea^(f) - alpha*Ev) gates the Heaviside and enters the exponent, so the rate is zeroed exactly when the barrier would go negative. Units are consistent (energy/kBT). A unit/symbolic-consistency verifier (no off-the-shelf one fits exactly) settles it; cannot recompute a numeric value because A, Ea^(f) are symbolic here."
+      }
+    },
+    {
+      "id": "c2",
+      "text": "The Fridman-Macheret alpha definition (Eq 8), alpha = Ea^(f) / (Ea^(f) + Ea^(b)), is bounded in [0,1] for non-negative forward and backward barriers and increases as the forward barrier grows relative to the backward barrier (so endothermic-dissociation metals get larger alpha).",
+      "quote": "alpha = E_a^(f) / ( E_a^(f) + E_a^(b) )",
+      "section": "Microkinetic modeling / Eq (8)",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "Algebraic range check: for Ea^(f),Ea^(b) >= 0, alpha = x/(x+y) lies in [0,1]; d(alpha)/d(Ea^(f)) > 0. Confirms the qualitative monotonic claim used to explain Figure 2b.",
+      "evidence": [
+        {
+          "id": "e2",
+          "kind": "equation",
+          "location": "Eq (8), page 6",
+          "quote": null,
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "algebraic bound + monotonicity check on the closed-form ratio.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.9,
+        "rationale": "x/(x+y) with x,y>=0 is provably in [0,1] and monotone increasing in x; this matches the text's claim that alpha is larger where forward (dissociation) barriers are larger. Elementary symbolic check; no standard verifier fits but trivially synthesizable."
+      }
+    },
+    {
+      "id": "c3",
+      "text": "In Figure 2b the Fridman alpha vanishes (alpha = 0) for nitrogen binding energies EN < -1 eV on steps, consistent with the caption claim that alpha vanishes when dissociation is non-activated.",
+      "quote": "alpha vanishes in the limit that dissociation is non-activated, as occurs at EN < -1 on steps.",
+      "section": "Figure 2b + caption",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Read alpha from Figure 2b at the Fe point (EN ~ -1.3 eV, step curve) and confirm it is ~0; confirm the step curve reaches 0 for EN < -1. Cross-check prose vs plotted curve.",
+      "evidence": [
+        {
+          "id": "e3",
+          "kind": "figure",
+          "location": "Figure 2b (page 6 in render; bbox detected p6)",
+          "quote": "Variation of the Fridman alpha factor as a function of nitrogen binding energy on steps and terraces.",
+          "extracted_values": {"alpha_Fe_step": 0.0, "EN_Fe": -1.3, "alpha_Ru_step": 0.32, "alpha_Pt_step": 0.6}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "figure-value extraction: read alpha at Fe (EN~-1.3) on the step curve and confirm ~0; prose-vs-figure binding.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "Vision read of Fig 2b: the step (orange) curve sits at alpha=0 for the Fe point near EN=-1.3 and rises to ~0.6 by EN=+0.6; matches the caption. T2 prose-vs-figure; a figure-reading + threshold verifier settles it. Exact crossover (EN=-1) cannot be pinned to better than +/-0.1 eV by eye."
+      }
+    },
+    {
+      "id": "c4",
+      "text": "The Treanor distribution at Tvib=3000 K, Tgas=473 K predicts only ~63.2% of N2 in the ground vibrational state.",
+      "quote": "We find that the Treanor distribution predicts that only about 63.2 % of N2 remains in the ground vibrational state.",
+      "section": "Plasma-induced vibrational excitation / Eq (9)",
+      "page": 7,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute the normalized Treanor population p0 from Eq (9) using N2 spectroscopic constants (we=2358.57, wexe=14.324 cm^-1), Tvib=3000 K, Tgas=473 K, truncated at the Treanor minimum / first 10 excited states; compare p0 to 63.2%.",
+      "evidence": [
+        {
+          "id": "e4a",
+          "kind": "equation",
+          "location": "Eq (9) Treanor formula, page 8",
+          "quote": "p_v(v,Tvib,Tgas) = B exp( -hw*v/Tvib + xe*hw*v^2/Tgas )",
+          "extracted_values": {"Tvib": 3000, "Tgas": 473, "p0_claimed_pct": 63.2}
+        },
+        {
+          "id": "e4b",
+          "kind": "figure",
+          "location": "Figure 3b (page 9 render)",
+          "quote": "Treanor (orange) and Boltzmann (blue) vibrational distribution functions (VDF) for N2",
+          "extracted_values": {"p0_fig_read": 0.63, "p1_fig_read": 0.21, "tail_v8_v10_fig": 0.0018}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Treanor-distribution recompute with declared N2 constants + truncation rule; compare normalized p0 to printed 63.2%.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.78,
+        "rationale": "Independent recompute with literature N2 constants gives p0 ~ 64.2% (v^2 convention) to ~66% (v(v-1) convention), within ~1-3% of the stated 63.2%; the exact value depends on the spectroscopic constants from Ref [52] (Heijkers 2015) and the truncation. Figure 3b ground-state point reads ~0.63 consistently. Note: 63.2% = 1 - 1/e numerically, but the Treanor recompute genuinely lands near this value, so it is a real computed number, not a placeholder. Settled by a Treanor recompute verifier; needs the paper's exact constants for an exact match (hence <0.8)."
+      }
+    },
+    {
+      "id": "c5",
+      "text": "The first vibrationally excited state of N2 has a Treanor population of 21.4% at Tvib=3000 K, Tgas=473 K.",
+      "quote": "The first vibrationally excited state has a population of 21.4 %",
+      "section": "Plasma-induced vibrational excitation",
+      "page": 7,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute p1 from the normalized Treanor distribution (same inputs as c4) and compare to 21.4%; also read v=1 point (~0.29 eV) from Fig 3b.",
+      "evidence": [
+        {
+          "id": "e5",
+          "kind": "figure",
+          "location": "Figure 3b, page 9",
+          "quote": null,
+          "extracted_values": {"p1_claimed_pct": 21.4, "p1_fig_read": 0.21}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Treanor recompute of p1; figure cross-read.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.82,
+        "rationale": "Recompute gives p1 ~ 21.3-21.7%, matching 21.4% to within 0.3%; Fig 3b v=1 marker reads ~0.21 on the log axis. Strong agreement. Same Treanor verifier as c4."
+      }
+    },
+    {
+      "id": "c6",
+      "text": "States in the tail of the Treanor distribution (v8 to v10) have populations of around 0.2%.",
+      "quote": "the states in the tail of the distribution (v8 - v10) have probabilites of around 0.2 %",
+      "section": "Plasma-induced vibrational excitation",
+      "page": 7,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute p8..p10 from the truncated normalized Treanor distribution and compare to ~0.2%; cross-read the Treanor tail plateau in Fig 3b.",
+      "evidence": [
+        {
+          "id": "e6",
+          "kind": "figure",
+          "location": "Figure 3b Treanor tail, page 9",
+          "quote": null,
+          "extracted_values": {"tail_claimed_pct": 0.2, "treanor_tail_fig_read": 0.0018}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Treanor recompute of high-v tail under the stated truncation; figure plateau read.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.6,
+        "rationale": "Figure 3b Treanor tail plateaus near 1.8e-3 (~0.18%), consistent with the stated ~0.2%. My recompute of the high-v tail is sensitive to convention (0.04-0.12% with v(v-1); the v^2 convention plus exact truncation can raise it toward 0.2%). The figure read supports ~0.2% but my analytic tail is below it, so I mark inconclusive pending the paper's exact constants/truncation code (provided in Zenodo SI). Not an error signal."
+      }
+    },
+    {
+      "id": "c7",
+      "text": "The Treanor distribution is truncated at the Treanor minimum, which includes the first 10 vibrationally excited states.",
+      "quote": "we truncate the distribution at the Treanor min- imum (which includes the first 10 vibrationally excited states)",
+      "section": "Plasma-induced vibrational excitation",
+      "page": 7,
+      "epistemic_tier": "T0",
+      "predicate": "Locate the Treanor minimum v* = argmin of the parabolic-exponential exponent for N2 at Tvib=3000 K, Tgas=473 K; check it falls at v ~ 10-13 so that 'first 10 excited states' is consistent.",
+      "evidence": [
+        {
+          "id": "e7",
+          "kind": "text",
+          "location": "page 8, lines 158-160",
+          "quote": null,
+          "extracted_values": {"claimed_levels_included": 10}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Treanor-minimum location: v* = round to where d(ln p)/dv = 0; compare to the claimed truncation level.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.7,
+        "rationale": "Computed Treanor minimum is at v* ~ 13 with literature constants (v^2 convention); the paper truncates 'at the Treanor minimum (first 10 excited states)'. v*~10-13 brackets the claim depending on exact constants; the order of magnitude is right. Consistent but not exact without the paper's xe; a Treanor-minimum verifier settles it."
+      }
+    },
+    {
+      "id": "c8",
+      "text": "The N2 vibrational spacing is relatively large at ~0.3 eV.",
+      "quote": "N2, which has a single, extended vibrational ladder and a relatively large vibrational spacing (~ 0.3 eV)",
+      "section": "Figure 2 discussion",
+      "page": 5,
+      "epistemic_tier": "T1",
+      "predicate": "Convert the known N2 harmonic constant we=2358.57 cm^-1 to eV (divide by 8065.54 cm^-1/eV) and confirm ~0.29-0.30 eV.",
+      "evidence": [
+        {
+          "id": "e8",
+          "kind": "number",
+          "location": "page 5, line 112",
+          "quote": null,
+          "extracted_values": {"claimed_eV": 0.3}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "constant lookup + unit conversion (NIST CCCBDB N2 we) to eV.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.97,
+        "rationale": "2358.57 cm^-1 / 8065.54 = 0.292 eV; anharmonic 0->1 spacing 0.289 eV. Both round to ~0.3 eV. Off-the-shelf unit-conversion + constants-DB check covers this (T1)."
+      }
+    },
+    {
+      "id": "c9",
+      "text": "The bulk gas temperature measured by in situ thermocouple was 398.5 +/- 5 K.",
+      "quote": "the bulk gas temperature (Tgas), measured using an in situ thermocouple, was 398.5 +/- 5 K.",
+      "section": "Plasma-induced vibrational excitation",
+      "page": 7,
+      "epistemic_tier": "T7",
+      "predicate": "No recompute possible (a measured value); record for terminal-digit / precision plausibility only. The +/-5 K interval and one-decimal mean are internally plausible for a thermocouple reading.",
+      "evidence": [
+        {
+          "id": "e9",
+          "kind": "statistic",
+          "location": "page 7, line 143",
+          "quote": null,
+          "extracted_values": {"Tgas_K": 398.5, "uncertainty_K": 5}
+        }
+      ],
+      "verification": {
+        "possible": false,
+        "verifier_needed": "none (primary measurement); at most a precision/terminal-digit sanity screen.",
+        "verifier_exists": false,
+        "candidate_verdict": "not_checkable",
+        "confidence": 0.5,
+        "rationale": "A directly measured temperature with a stated uncertainty; nothing to recompute. Reported precision (0.1 K mean, +/-5 K band) is reasonable. Recorded as context, not a flag."
+      }
+    },
+    {
+      "id": "c10",
+      "text": "An average value of Tvib = 3000 K was used in the model, justified by a weak dependence of measured Tvib on gas composition (Figure 3a).",
+      "quote": "the estimated N2 vibrational temperature had a weak dependence on the gas composition ... An average value of Tvib = 3000 K was used in our model.",
+      "section": "Plasma-induced vibrational excitation",
+      "page": 7,
+      "epistemic_tier": "T2",
+      "predicate": "Read the six Tvib points in Figure 3a across N2:H2 = 0.33-5; compute spread and mean; confirm spread is small (weak dependence) and mean ~3000 K.",
+      "evidence": [
+        {
+          "id": "e10",
+          "kind": "figure",
+          "location": "Figure 3a, page 9",
+          "quote": "Vibrational temperature of N2 versus N2:H2 ratio as determined by optical emission spectroscopy.",
+          "extracted_values": {"Tvib_min_K": 2870, "Tvib_max_K": 3170, "spread_K": 300, "mean_K": 3003}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "figure-value extraction of the 6 Tvib points; compute mean and relative spread; compare to 'average 3000 K' and 'weak dependence'.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.8,
+        "rationale": "Vision read of Fig 3a gives Tvib ~ 2870-3170 K (spread ~300 K, ~10% of 3000 K), mean ~3000 K, matching both the 'average 3000 K' choice and the 'weak dependence' description. Error bars overlap across all ratios. Figure-reading + mean/spread verifier settles it; point reads are +/-50 K by eye."
+      }
+    },
+    {
+      "id": "c11",
+      "text": "The measured site-time-yield activity trend across catalysts is Co > Ni = Ru > Pt > Fe (Figure 5).",
+      "quote": "the observed activity trend of Co > Ni = Ru > Pt > Fe tracks remarkably well with model predictions.",
+      "section": "Plasma-catalytic kinetics / Figure 5",
+      "page": 13,
+      "epistemic_tier": "T2",
+      "predicate": "Read the five STY values and error bars from Figure 5; verify the rank ordering Co > {Ni ~ Ru} > Pt > Fe and that Ni and Ru overlap within error (justifying '=').",
+      "evidence": [
+        {
+          "id": "e11",
+          "kind": "figure",
+          "location": "Figure 5, page 14 render",
+          "quote": "Measured ammonia site-time yields ... as a function of the DFT-calculated nitrogen adsorption energy.",
+          "extracted_values": {"Co": 0.063, "Ni": 0.0278, "Ru": 0.0275, "Pt": 0.016, "Fe": 0.010}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "figure-value extraction + ordered-comparison verifier (rank check with error-bar overlap test for the '=' claim).",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "Vision read of Fig 5: Co ~0.063 (highest), Ni ~0.028 and Ru ~0.0275 essentially coincident (overlapping error bars -> 'Ni = Ru' is fair), Pt ~0.016, Fe ~0.010. The stated ordering Co > Ni = Ru > Pt > Fe matches the plot. A figure-read + rank/overlap verifier settles it deterministically once values are extracted."
+      }
+    },
+    {
+      "id": "c12",
+      "text": "In Figure 1, Ru and Fe are the optimal monometallic catalysts for ammonia synthesis at high T and P (steps, 673 K, 100 atm).",
+      "quote": "Our results recover the volcano curve predicted by literature models [7, 8] and indicate that Ru and Fe are the optimal mono-metallic cat- alysts at high T and P.",
+      "section": "Microkinetic modeling / Figure 1",
+      "page": 4,
+      "epistemic_tier": "T2",
+      "predicate": "Read the blue (673 K, 100 atm) volcano in Figure 1; confirm its peak lies between Fe and Ru (EN ~ -0.8 eV) so Fe (left leg) and Ru (right leg) flank the maximum and are the highest-rate labeled metals.",
+      "evidence": [
+        {
+          "id": "e12",
+          "kind": "figure",
+          "location": "Figure 1, page 5 render",
+          "quote": "Rates on metal step sites under representative Haber-Bosch conditions are shown in blue.",
+          "extracted_values": {"peak_EN_eV": -0.82, "logTOF_peak": -1.0, "logTOF_Fe": -4.3, "logTOF_Ru": -3.7}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "figure-value extraction: locate the volcano peak and the highest labeled metals on the blue curve.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.75,
+        "rationale": "Vision read: blue volcano peaks near EN~-0.8 between Fe (~-4.3) and Ru (~-3.7); Fe and Ru are the closest labeled metals to the maximum, consistent with 'Ru and Fe optimal'. This is a standard ammonia-synthesis volcano result (matches refs [7,8]). Figure-peak verifier settles it; 'optimal' is partly a near-peak judgement, hence <0.8."
+      }
+    },
+    {
+      "id": "c13",
+      "text": "At reduced T and P (473 K, 1 atm), rates on the same stepped surfaces are several orders of magnitude lower than the Haber-Bosch rates, and terrace-site rates are a further few orders lower (Figure 1).",
+      "quote": "At reduced temperature and pressure, rates on the same stepped surfaces are several orders of magnitude lower than the corresponding Haber-Bosch rates. Rates on terrace sites are a further few orders of magnitude lower.",
+      "section": "Microkinetic modeling / Figure 1",
+      "page": 4,
+      "epistemic_tier": "T2",
+      "predicate": "From Figure 1 read peak log10(TOF) for blue (673K/100atm steps), orange (473K/1atm steps), green (473K/1atm terraces); confirm orange peak is 'several' orders below blue, and green peak a 'few' more below orange.",
+      "evidence": [
+        {
+          "id": "e13",
+          "kind": "figure",
+          "location": "Figure 1, page 5",
+          "quote": null,
+          "extracted_values": {"logTOF_peak_blue": -1.0, "logTOF_peak_orange": -7.5, "logTOF_peak_green": -13.7, "blue_minus_orange": 6.5, "orange_minus_green": 6.2}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "figure-peak extraction + order-of-magnitude gap comparison vs the qualitative descriptors 'several' / 'a few'.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.7,
+        "rationale": "Read peaks: blue ~-1, orange ~-7.5 (gap ~6.5 = 'several orders'), green ~-13.7 (further ~6 orders). 'A further few orders' is a loose descriptor for ~6 orders, but directionally and roughly correct; the vague quantifiers make this T2-soft. A figure-gap verifier confirms the gaps; exact wording-vs-gap mapping is the soft part."
+      }
+    },
+    {
+      "id": "c14",
+      "text": "With plasma on (473 K, 1 atm), the optimal step-site volcano peak shifts toward weaker nitrogen binding, placing Co and Ni near the peak (Figure 4a), versus Ru at the plasma-off peak.",
+      "quote": "the peak of the plasma-on volcano curve shows a distinct shift towards weaker nitrogen binding energies, predicting Co and Ni to be near the volcano peak.",
+      "section": "Rate enhancements / Figure 4a",
+      "page": 10,
+      "epistemic_tier": "T2",
+      "predicate": "In Figure 4a, locate the plasma-on (blue) peak EN and the plasma-off (orange) peak EN; confirm the plasma-on peak is at weaker binding (less negative EN, near Co/Ni ~ -0.1 eV) than plasma-off (near Ru ~ -0.6 eV).",
+      "evidence": [
+        {
+          "id": "e14",
+          "kind": "figure",
+          "location": "Figure 4a, page 11 render",
+          "quote": "For step sites (Figure 4a), the peak of the plasma-on volcano curve shows a distinct shift towards weaker nitrogen binding energies.",
+          "extracted_values": {"plasma_on_peak_EN": -0.1, "plasma_off_peak_EN": -0.6, "logTOF_on_peak": -3.5, "logTOF_off_Ru": -9.5}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "figure-peak extraction of both curves; compare peak abscissae to confirm rightward (weaker-binding) shift.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.82,
+        "rationale": "Vision read of Fig 4a: plasma-on (blue) peak sits near Co/Ni (~-0.1 eV) at logTOF~-3.5; plasma-off (orange) peaks near Ru (~-0.6 eV). The peak clearly shifts to weaker binding, Co/Ni nearest the plasma-on maximum, as claimed. Figure-peak verifier settles it."
+      }
+    },
+    {
+      "id": "c15",
+      "text": "The optimal plasma-on low-T/P rate is comparable to the optimal thermal Haber-Bosch rate on Ru steps at 673 K, 100 atm.",
+      "quote": "we find that rates on the optimal plasma-on catalyst are comparable to those on the optimal thermal catalyst at 673 K and 100 atm, Ru steps.",
+      "section": "Rate enhancements / Figures 1 & 4",
+      "page": 10,
+      "epistemic_tier": "T2",
+      "predicate": "Compare the plasma-on step-volcano peak in Fig 4a (~log10 TOF -3.5) to the Haber-Bosch blue-volcano peak in Fig 1 (~-1). Check whether 'comparable' (within ~2-3 orders) is defensible.",
+      "evidence": [
+        {
+          "id": "e15",
+          "kind": "figure",
+          "location": "Figures 1 and 4a",
+          "quote": null,
+          "extracted_values": {"plasma_on_peak_logTOF": -3.5, "HB_peak_logTOF": -1.0, "gap_orders": 2.5}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "cross-figure peak comparison; map gap to the qualitative claim 'comparable'.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.55,
+        "rationale": "Plasma-on step peak ~-3.5 vs Haber-Bosch peak ~-1 -> ~2.5 orders apart by figure read. Whether 2-3 orders counts as 'comparable' is a soft judgement (the paper means same low-rate-regime / orders-of-magnitude bridge relative to the 6+ order thermal-on-thermal deficit at low T/P). Defensible but not a crisp numeric match; raw TOF JSON in Zenodo would pin the peaks. Marked inconclusive at the figure-reading level."
+      }
+    },
+    {
+      "id": "c16",
+      "text": "The plasma-on TOF on Ru terrace sites is of the same order of magnitude as on Ru steps, despite their plasma-off TOFs being five orders of magnitude apart (Figure 4).",
+      "quote": "the plasma-on TOF on Ru terrace sites is of the same order of magnitude of that on Ru steps, despite the fact that their plasma-off TOFs are five orders of magnitude apart.",
+      "section": "Rate enhancements / Figure 4",
+      "page": 11,
+      "epistemic_tier": "T2",
+      "predicate": "From Fig 4a (steps) and 4b (terraces) read Ru plasma-on and Ru plasma-off log10(TOF) on each; check (i) |Ru_on_terrace - Ru_on_step| ~ <=1 order and (ii) |Ru_off_step - Ru_off_terrace| ~ 5 orders.",
+      "evidence": [
+        {
+          "id": "e16",
+          "kind": "figure",
+          "location": "Figure 4a + 4b, page 11 render",
+          "quote": null,
+          "extracted_values": {"Ru_on_step_logTOF": -5.2, "Ru_on_terrace_logTOF": -6.0, "Ru_off_step_logTOF": -9.5, "Ru_off_terrace_logTOF": -13.5, "on_gap": 0.8, "off_gap": 4.0}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "figure-value extraction of four Ru points across two panels + two order-of-magnitude difference checks; prose-vs-figure binding.",
+        "verifier_exists": false,
+        "candidate_verdict": "suspect",
+        "confidence": 0.45,
+        "rationale": "Part (i) holds cleanly: Ru plasma-on terrace ~-6 vs step ~-5.2 -> ~0.8 order ('same order of magnitude', supported). Part (ii) is borderline: my figure read gives Ru plasma-off step ~-9.5 and Ru plasma-off terrace ~-13.5, a ~4-order gap, whereas the text says 'five orders'. This is a candidate prose-vs-figure mismatch (off by ~1 order) but well within figure-reading error (+/-0.5 order each point => +/-1 order on the difference). Needs the raw TOF JSON (Zenodo SI, json files) to settle deterministically; flagged suspect at low confidence, not asserted as an error."
+      }
+    },
+    {
+      "id": "c17",
+      "text": "On terraces, the plasma-on TOF is predicted to be two orders of magnitude lower than on Co steps (Figure 4).",
+      "quote": "the TOF on these sites are predicted to be two orders of magnitude lower than those on Co steps.",
+      "section": "Rate enhancements / Figure 4",
+      "page": 11,
+      "epistemic_tier": "T2",
+      "predicate": "Read plasma-on Co-step log10(TOF) from Fig 4a and the plasma-on terrace peak (Ru) from Fig 4b; confirm the gap is ~2 orders.",
+      "evidence": [
+        {
+          "id": "e17",
+          "kind": "figure",
+          "location": "Figure 4a (Co step) + 4b (terrace peak)",
+          "quote": null,
+          "extracted_values": {"Co_on_step_logTOF": -3.5, "terrace_on_peak_logTOF": -6.0, "gap_orders": 2.5}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "cross-panel figure-peak comparison vs the '~two orders' claim.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.65,
+        "rationale": "Co step plasma-on ~-3.5 (near the step peak); terrace plasma-on peak ~-6. Gap ~2.5 orders, rounding to 'two orders of magnitude lower' is reasonable. Figure-read verifier settles it; +/-0.5 order reading tolerance keeps confidence moderate."
+      }
+    },
+    {
+      "id": "c18",
+      "text": "The kinetics-reactor discharge gap is 1.75 mm, geometrically consistent with a 5 mm inner-diameter quartz tube and a 1.5 mm tungsten center rod.",
+      "quote": "a quartz tube (7 mm outer diameter, 5 mm inner diameter) with a tungsten rod (1.5 mm diameter) inserted through the center ... This configuration yields a discharge gap of 1.75 mm",
+      "section": "Methods / Experimental Kinetics",
+      "page": 17,
+      "epistemic_tier": "T0",
+      "predicate": "Compute the annular gap (ID - rod_diameter)/2 = (5.0 - 1.5)/2 and compare to the stated 1.75 mm.",
+      "evidence": [
+        {
+          "id": "e18",
+          "kind": "number",
+          "location": "page 17, lines 361-365",
+          "quote": null,
+          "extracted_values": {"tube_ID_mm": 5.0, "rod_diameter_mm": 1.5, "stated_gap_mm": 1.75}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "geometry recompute (annular gap from diameters); exact-equality check.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.97,
+        "rationale": "(5.0 - 1.5)/2 = 1.75 mm exactly matches the stated discharge gap. Elementary arithmetic/geometry check (covered by a units/geometry verifier). Clean T0 pass."
+      }
+    },
+    {
+      "id": "c19",
+      "text": "The kinetics-reactor discharge volume is approximately 0.18 mL.",
+      "quote": "This configuration yields a discharge gap of 1.75 mm and a discharge volume of ~ 0.18 mL.",
+      "section": "Methods / Experimental Kinetics",
+      "page": 17,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute the annular discharge volume V = pi*(R_out^2 - R_in^2)*L with R_out=2.5 mm, R_in=0.75 mm; determine the effective length L implied by 0.18 mL and check whether it corresponds to the packed/active discharge region rather than the full 6 cm electrode.",
+      "evidence": [
+        {
+          "id": "e19",
+          "kind": "number",
+          "location": "page 17, line 365 + line 363 (6 cm mesh electrode)",
+          "quote": null,
+          "extracted_values": {"R_out_mm": 2.5, "R_in_mm": 0.75, "annulus_area_mm2": 17.87, "stated_volume_mL": 0.18, "implied_length_mm": 10.1, "electrode_length_mm": 60}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "annular-volume recompute; reconcile implied active length with the packed-bed length (100 mg catalyst) vs the 6 cm electrode.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.5,
+        "rationale": "Annulus cross-section = pi*(2.5^2 - 0.75^2) = 17.87 mm^2. For the full 6 cm mesh electrode the geometric annulus volume would be ~1.07 mL, NOT 0.18 mL; 0.18 mL implies only ~1.0 cm of active length. This is plausibly the actual packed/active discharge region (100 mg catalyst bed held by a silica frit), which is shorter than the 6 cm outer electrode, so 0.18 mL is likely correct as the active discharge volume rather than the electrode-defined annulus. Under-determined by the text (active length not given); marked inconclusive, NOT a flag. A geometry verifier needs the packed-bed length to settle it."
+      }
+    },
+    {
+      "id": "c20",
+      "text": "The instantaneous plasma power is computed as P(t) = V(t)i(t) - i^2(t)R with the current obtained from the voltage drop across a series test resistor R = 100 ohm.",
+      "quote": "The average plasma power was found by averaging the instantaneous power (P(t) = V(t)i(t) - i^2(t)R) over one cycle.",
+      "section": "Methods / Plasma Characterization",
+      "page": 16,
+      "epistemic_tier": "T0",
+      "predicate": "Dimensional/physical consistency: P_plasma = supply power (V*i) minus resistive dissipation in the series test resistor (i^2*R); units W - W = W; subtraction direction is physically correct (removes the test-resistor loss).",
+      "evidence": [
+        {
+          "id": "e20",
+          "kind": "equation",
+          "location": "page 16, lines 332-334",
+          "quote": "The current was obtained by measuring the voltage drop across a test resistor (R = 100 Ohm) placed in series with the plasma.",
+          "extracted_values": {"R_ohm": 100}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "dimensional + circuit-consistency check on the power expression.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.8,
+        "rationale": "Units consistent (V*A - A^2*ohm = W). Physically, subtracting i^2 R removes the known dissipation in the series sense resistor, leaving the plasma power, which is the standard series-resistor method. Dimensional/circuit verifier settles it; cannot recompute a number without the waveform (provided as raw OES/kinetics xlsx in Zenodo)."
+      }
+    },
+    {
+      "id": "c21",
+      "text": "The N2 second positive system used to monitor the plasma produces emission lines from approximately 300-385 nm.",
+      "quote": "The second positive system of N2, which produces emission lines from approximately 300-385 nm, was used to monitor the plasma",
+      "section": "Methods / Plasma Characterization",
+      "page": 16,
+      "epistemic_tier": "T1",
+      "predicate": "Spectroscopy lookup: the N2 second positive system (C3Piu -> B3Pig) has strong bands in the ~290-440 nm region, with the 300-385 nm window a well-known sub-range; confirm the stated range is consistent with the known band system.",
+      "evidence": [
+        {
+          "id": "e21",
+          "kind": "text",
+          "location": "page 16, lines 344-345",
+          "quote": null,
+          "extracted_values": {"range_nm_low": 300, "range_nm_high": 385}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "spectroscopic-knowledge lookup (band-system wavelength range).",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "The N2 second positive system (C->B) emits strongly between ~290-440 nm; 300-385 nm is a standard window used for Tvib/Trot fitting. Consistent with established plasma-spectroscopy knowledge (T1). A literature/known-value verifier confirms it."
+      }
+    },
+    {
+      "id": "c22",
+      "text": "The Sabatier maximum hydrogenation rate is RSab = min[(1/2)r3_max, (1/3)r4_max, (1/2)r5_max], bounding achievable rate enhancement by vibrational excitation.",
+      "quote": "RSab = min( (1/2) r3_max, (1/3) r4_max, (1/2) r5_max ).",
+      "section": "Rate enhancements / Eq (11)",
+      "page": 10,
+      "epistemic_tier": "T3",
+      "predicate": "Check the stoichiometric coefficients in Eq (11) against reactions (3)-(5): each NHx hydrogenation step consumes H; the prefactors (1/2, 1/3, 1/2) should reflect the H-atom / site stoichiometry needed to form one NH3 from the overall N2 + 3H2 -> 2NH3 balance. Assess whether the Sabatier construction is the appropriate upper bound.",
+      "evidence": [
+        {
+          "id": "e22",
+          "kind": "equation",
+          "location": "Eq (11), page 10; reactions (3)-(5), page 4",
+          "quote": null,
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "method-appropriateness + stoichiometric-coefficient check of the Sabatier rate construction.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.5,
+        "rationale": "The coefficients (1/2, 1/3, 1/2) plausibly normalize each hydrogenation step's max rate to the overall NH3 formation stoichiometry (3 H2 per N2; the 1/3 on r4 vs 1/2 on r3,r5 reflects the per-step contribution), and the min() correctly bounds the slowest step. Verifying the exact coefficient derivation requires the model's site/turnover bookkeeping (in mkm.py, Zenodo SI). Method choice (Sabatier upper bound) is standard for these analyses. Marked inconclusive: the construction is reasonable but the coefficient values need the code to confirm; not an error signal. This is the kind of bespoke check that would be synthesized."
+      }
+    },
+    {
+      "id": "c23",
+      "text": "The site-time yield is defined as STY = (r0_{M/Al2O3+DBD} - r0_{Al2O3+DBD}) / n_sites, subtracting the background (support+plasma) initial rate to isolate the metal contribution.",
+      "quote": "STY = ( r0_{M/Al2O3+DBD} - r0_{Al2O3+DBD} ) / nsites",
+      "section": "Plasma-catalytic kinetics / Eq (12)",
+      "page": 12,
+      "epistemic_tier": "T3",
+      "predicate": "Method-appropriateness: confirm the background-subtraction (metal+support+plasma minus support+plasma) correctly isolates the metal-intrinsic rate, and that normalizing by CO-chemisorption n_sites yields a per-site turnover (with the stated caveat that it is a lower bound because CO probes both steps and terraces).",
+      "evidence": [
+        {
+          "id": "e23",
+          "kind": "equation",
+          "location": "Eq (12), page 13; lines 251-257",
+          "quote": "We subtracted the initial rates of the background reaction to ensure that only rate contributions intrinsic to the metal were compared.",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "method/definition-consistency check (units of STY = (mol/s)/mol_sites = 1/s; background subtraction logic).",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.7,
+        "rationale": "STY has units of (rate)/(moles sites) = s^-1, matching Figure 5's s^-1 axis. Background subtraction (M/Al2O3+DBD minus Al2O3+DBD) is the appropriate way to remove support+plasma contributions; the lower-bound caveat (CO probes steps+terraces) is acknowledged and is the conservative direction. Method is sound; a definition/units verifier confirms dimensional consistency. T3 appropriateness is reasoned, not fully deterministic, hence 0.7."
+      }
+    },
+    {
+      "id": "c24",
+      "text": "Non-stoichiometric N2:H2 feed ratios (1:1 to 3:1) produced higher ammonia yields than the stoichiometric 1:3 ratio, and a 2:1 ratio was used for catalyst comparison.",
+      "quote": "non-stoichiometric ratios in the range of 1:1 to 3:1 produced higher ammonia yields than the stoichiometric 1:3 ratio, similar to previous reports [12, 14] ... we used a N2:H2 ratio of 2:1.",
+      "section": "Plasma-catalytic kinetics",
+      "page": 12,
+      "epistemic_tier": "T4",
+      "predicate": "Claim<->evidence support: the supporting data is in Supplementary Figure 10 (not in this PDF). Check that the chosen 2:1 ratio falls within the stated higher-yield window (1:1 to 3:1) and that the conclusion is bound to the SI evidence.",
+      "evidence": [
+        {
+          "id": "e24",
+          "kind": "text",
+          "location": "page 12, lines 237-241 (refers to Supplementary Figure 10)",
+          "quote": null,
+          "extracted_values": {"chosen_ratio_N2_H2": 2.0, "stated_window_low": 1.0, "stated_window_high": 3.0}
+        }
+      ],
+      "verification": {
+        "possible": false,
+        "verifier_needed": "claim<->evidence binding against Supplementary Figure 10 (SI not included in this PDF).",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.55,
+        "rationale": "Internally consistent: 2:1 lies within the claimed higher-yield 1:1-to-3:1 window. But the supporting yield-vs-ratio data is in Supplementary Figure 10, not in this main-text PDF, so the magnitude claim cannot be bound here. The choice is self-consistent and matches cited precedent [12,14]; marked inconclusive pending SI."
+      }
+    },
+    {
+      "id": "c25",
+      "text": "Ammonia was the only product observed (no hydrazine or other N-containing products) across all reactions.",
+      "quote": "For all reactions, ammonia was the only product observed (i.e. no hydrazine or other N-containing products).",
+      "section": "Methods / Experimental Kinetics",
+      "page": 18,
+      "epistemic_tier": "T4",
+      "predicate": "Scope/strength check: an absence-of-byproduct claim resting on GC-TCD detection. Note the caveat (same section) that H2 and N2 peaks overlap in the GC trace, so reaction progress is tracked via NH3 only; assess whether 'only product' is fully supported by the detection method.",
+      "evidence": [
+        {
+          "id": "e25",
+          "kind": "text",
+          "location": "page 18, lines 393-396",
+          "quote": "Reaction progress was monitored in terms of ammonia production due to the overlap of the hydrogen and nitrogen peaks in the GC trace.",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "claim-strength vs detection-capability check (does GC-TCD with a volamine column resolve hydrazine?); reasoned, not deterministic.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.45,
+        "rationale": "An absence claim (no hydrazine) is only as strong as the detector's ability to resolve it; the GC-TCD/volamine setup is plausibly adequate for NH3 but the text does not state hydrazine detection limits, and notes GC peak overlaps for H2/N2. Reasonable as written but not deterministically verifiable from the main text; an advisory claim-strength check at most. Not an error signal."
+      }
+    },
+    {
+      "id": "c26",
+      "text": "The catalysts were verified as thermally inactive (no ammonia from thermal catalysis) under the reactor conditions (438 K), so measured rates are attributable to the plasma-catalyst interaction.",
+      "quote": "the reactor temperature maintained at 438 K. The catalysts were verified as thermally inactive under these conditions.",
+      "section": "Plasma-catalytic kinetics",
+      "page": 12,
+      "epistemic_tier": "T4",
+      "predicate": "Claim<->evidence support: the 'thermally inactive' control underpins attribution of rate to plasma. Check whether the control data are presented; the verification is asserted in-text without a referenced figure in the main body.",
+      "evidence": [
+        {
+          "id": "e26",
+          "kind": "text",
+          "location": "page 12, lines 232-233",
+          "quote": null,
+          "extracted_values": {"reactor_T_K": 438}
+        }
+      ],
+      "verification": {
+        "possible": false,
+        "verifier_needed": "presence/binding of the thermal-control data (no main-text figure cited; likely SI / Supplementary Methods).",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.5,
+        "rationale": "The thermal-inactivity control is essential to the central attribution claim but is asserted without a main-text data reference (438 K is well below conventional thermal NH3 synthesis onset, so the claim is physically plausible). Cannot bind to evidence in this PDF; the supporting measurement would be in the SI. Marked inconclusive; physically reasonable, not flagged."
+      }
+    },
+    {
+      "id": "c27",
+      "text": "Average metal particle sizes are based on at least 300 particles from TEM images.",
+      "quote": "Average metal particle sizes are based on at least 300 particles.",
+      "section": "Methods / Experimental Kinetics",
+      "page": 17,
+      "epistemic_tier": "T7",
+      "predicate": "Reporting-completeness / integrity-signal: a stated sampling N for particle-size averaging. Nothing to recompute without the raw size distribution (Supplementary Table 1 / Figures 8-9, not in this PDF).",
+      "evidence": [
+        {
+          "id": "e27",
+          "kind": "text",
+          "location": "page 17, lines 373-375 (refers to Supplementary Table 1, Figures 8-9)",
+          "quote": null,
+          "extracted_values": {"min_particles": 300}
+        }
+      ],
+      "verification": {
+        "possible": false,
+        "verifier_needed": "none from main text; would need the SI size distributions to check particle-count/statistics.",
+        "verifier_exists": false,
+        "candidate_verdict": "not_checkable",
+        "confidence": 0.5,
+        "rationale": "A methodological reporting statement; the underlying distributions are in the SI (Supplementary Table 1, Figs 8-9), not this PDF. Recorded as a positive reporting-completeness signal, nothing to recompute here."
+      }
+    }
+  ],
+  "paper_level_notes": "Real published work (Nature Catalysis, 2018; arXiv/preprint LaTeX source dated Feb 2018) by Mehta et al., Notre Dame; combined DFT-microkinetic-model + DBD-plasma experimental study of ammonia synthesis. Lead author is the LITMUS repo owner. STRONG reproducibility signals: an external Zenodo repository (DOI 10.5281/zenodo.1067912, Ref [58]) hosts the microkinetic-model python module (mkm.py), utility functions (plasmautils.py), calculated TOFs as JSON files, raw OES and kinetics data as Excel spreadsheets (Raw_data_OES.xlsx, kinetic-expts.xlsx), and python scripts that regenerate every figure (Supporting Data pdf) -- this is a near-ideal T6 reproducibility target if the Zenodo archive is pulled. DFT energetics are literature-sourced (refs [8,31,33], CatApp [32]; RPBE/DACAPO), so most numeric values are not recomputed in-paper but inherited. The deterministic frontier here is mostly T0/T2: (a) Treanor-distribution population recompute (Eq 9: p0=63.2%, p1=21.4%, tail~0.2%) -- my independent recompute with literature N2 constants lands at p0~64%, p1~21.6%, within ~1-2% (exact match needs the constants from Ref [52]); (b) several prose-vs-figure order-of-magnitude consistency checks against the volcano plots (Figs 1,4) and the STY plot (Fig 5); (c) clean geometry/units checks (discharge gap 1.75 mm exact; N2 spacing 0.3 eV; power formula dimensionally sound). ONE borderline item worth follow-up (c16): the text says Ru plasma-off step vs terrace TOFs are 'five orders of magnitude apart', but figure-reading of Fig 4a/4b gives ~4 orders -- within figure-reading error (+/-1 order on a difference of two read points), so recorded as 'suspect' at low confidence, NOT asserted as an error; the raw TOF JSON in the Zenodo archive would settle it deterministically. No integrity red flags (no implausible yields, no obvious digit anomalies; 63.2% is numerically ~1-1/e but the Treanor recompute genuinely produces ~that value, so it is a real number not a placeholder). NOTE: the Supplementary Information (Supplementary Figures 1-11, Supplementary Table 1, Supplementary Methods) is NOT included in this 24-page PDF -- several claims (c24 SI Fig 10, c26 thermal control, c27 particle sizing) depend on it and are marked inconclusive/not_checkable pending the SI. PDF text-layer is clean and quote-verifiable; all five main-text figures were read via high-resolution vector renders (figures located on pages 5,6,9,11,14 of the render; pdftotext mis-placed some captions onto earlier pages). Total 27 claims; 20 are T0-T2 checkable (T0=9 arithmetic/geometry/equation-consistency, T1=2 external constants/spectroscopy, T2=9 prose-vs-figure consistency); the remaining 7 are T3 method (2), T4 claim-support (3), and T7 integrity/reporting (2) that route to deeper verifiers or depend on the SI."
+}

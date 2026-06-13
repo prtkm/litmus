@@ -1,0 +1,993 @@
+{
+  "paper_id": "mehta-2020-beyond-equilibrium",
+  "title": "Plasma-Catalytic Ammonia Synthesis Beyond the Equilibrium Limit",
+  "doi": null,
+  "domain": "Plasma catalysis / chemical engineering (heterogeneous catalysis, microkinetic modeling)",
+  "n_pages_read": 24,
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The discharge volume of the coaxial DBD reactor is 1.07 cm3, given a 5 mm internal-diameter quartz tube, a 1.5 mm tungsten center rod, a 1.75 mm discharge gap, and 6 cm of covered length.",
+      "quote": "The reactor consists of a quartz tube (5 mm internal diameter and 1 mm wall thickness) wrapped in a stainless steel mesh ... that covers 6 cm of the length of the tube and a 1.5 mm tungsten rod inserted through the center of the tube. Within this setup, the discharge gap is 1.75 mm, and the discharge volume is 1.07 cm3.",
+      "section": "Methods / Experimental details",
+      "page": 16,
+      "epistemic_tier": "T0",
+      "predicate": "Compute annular cylinder volume V = pi*(r_out^2 - r_rod^2)*L with r_out=2.5 mm, r_rod=0.75 mm, L=60 mm; compare to stated 1.07 cm3. Also check gap = r_out - r_rod = 1.75 mm.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "number",
+          "location": "Methods / Experimental details (reactor geometry)",
+          "quote": "discharge gap is 1.75 mm, and the discharge volume is 1.07 cm3",
+          "extracted_values": {"tube_ID_mm": 5.0, "rod_diameter_mm": 1.5, "discharge_gap_mm": 1.75, "covered_length_cm": 6.0, "stated_discharge_volume_cm3": 1.07}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Geometric volume recompute (annular cylinder) with unit consistency.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.97,
+        "rationale": "Recompute: gap = 2.5 - 0.75 = 1.75 mm (exact). V = pi*(2.5^2 - 0.75^2)*60 = pi*5.6875*60 = 1072.1 mm3 = 1.072 cm3, rounds to 1.07 cm3. Off-the-shelf geometry/unit check fully settles this; both the gap and the volume are internally self-consistent."
+      }
+    },
+    {
+      "id": "c2",
+      "text": "Plasma powers of 5, 10, and 15 W correspond to specific energy inputs of 7.5, 15, and 22.5 kJ/L at a total flow rate of 40 SCCM.",
+      "quote": "Reaction performance was evaluated at plasma powers of 5, 10, and 15 W, corresponding to specific energy inputs of 7.5, 15, and 22.5 kJ L-1.",
+      "section": "Results / Experimental",
+      "page": 11,
+      "epistemic_tier": "T0",
+      "predicate": "SEI = Power / volumetric flow. Convert 40 mL/min to L/s and divide each power (W=J/s); compare to stated values.",
+      "evidence": [
+        {
+          "id": "e2",
+          "kind": "number",
+          "location": "Experimental (power and SEI list); flow stated as 40 SCCM earlier in same section",
+          "quote": "plasma powers of 5, 10, and 15 W, corresponding to specific energy inputs of 7.5, 15, and 22.5 kJ L-1",
+          "extracted_values": {"power_W": [5, 10, 15], "SEI_kJ_per_L": [7.5, 15, 22.5], "flow_SCCM": 40}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Percent/ratio arithmetic with unit conversion (power/flow).",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.97,
+        "rationale": "40 mL/min = 0.040 L / 60 s. 5 J/s / (0.040/60 L/s) = 7500 J/L = 7.5 kJ/L; 10 W -> 15.0; 15 W -> 22.5. All three exact. Off-the-shelf arithmetic check settles it; confirms the 40 SCCM flow used for SEI matches the stated experimental flow."
+      }
+    },
+    {
+      "id": "c3",
+      "text": "The ammonia synthesis reaction is exergonic at near-ambient conditions with dG0(298 K) = -32.8 kJ/mol.",
+      "quote": "This reaction is exergonic at near-ambient conditions (dG0 (298 K) = -32.8 kJ mol-1 )",
+      "section": "Introduction",
+      "page": 2,
+      "epistemic_tier": "T1",
+      "predicate": "Compare stated dG0(298) for N2+3H2->2NH3 to standard thermodynamic tables (NIST/textbook ~ -32.9 kJ/mol).",
+      "evidence": [
+        {
+          "id": "e3",
+          "kind": "statistic",
+          "location": "Introduction (thermodynamics of NH3 synthesis)",
+          "quote": "dG0 (298 K) = -32.8 kJ mol-1",
+          "extracted_values": {"dG0_298_kJ_per_mol": -32.8}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Lookup of standard Gibbs free energy of reaction against reference thermochemistry.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.9,
+        "rationale": "Textbook standard value for N2+3H2->2NH3 is dG0(298) ~ -32.9 kJ/mol; -32.8 is within rounding. Fixed external-knowledge check (T1). Note sign convention is per reaction (2 NH3 formed)."
+      }
+    },
+    {
+      "id": "c4",
+      "text": "The ammonia synthesis reaction was modeled with dH(298 K) = -91.8 kJ/mol.",
+      "quote": "The ammonia synthesis reaction was modeled with dH (298 K) = -91.8 kJ/mol.",
+      "section": "Methods / Computational details",
+      "page": 15,
+      "epistemic_tier": "T1",
+      "predicate": "Compare modeled dH(298) for N2+3H2->2NH3 to reference value (~ -92.2 kJ/mol). Also cross-check internal consistency with c3 via dS = (dH-dG)/T.",
+      "evidence": [
+        {
+          "id": "e4",
+          "kind": "statistic",
+          "location": "Computational details (reaction enthalpy)",
+          "quote": "dH (298 K) = -91.8 kJ/mol",
+          "extracted_values": {"dH_298_kJ_per_mol": -91.8}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Reference thermochemistry lookup plus internal Gibbs-Helmholtz cross-check against dG0 in c3.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.9,
+        "rationale": "Reference dH(298) for N2+3H2->2NH3 is ~ -92.2 kJ/mol; -91.8 within rounding/source variation. Internal cross-check: with dG0=-32.8, dS=(dH-dG)/T = (-91.8+32.8)/298 *1000 = -198.0 J/mol/K, matching textbook -198.8 J/K. Both T1 lookup and the implied dS are self-consistent."
+      }
+    },
+    {
+      "id": "c5",
+      "text": "Typical industrial-scale NH3 synthesis processes operate at temperatures of 700-800 K and pressures of 100-200 atm.",
+      "quote": "Typical industrial-scale NH3 synthesis processes thus operate at temperatures in the range of 700-800 K and pressures of 100-200 atm [1, 3, 4].",
+      "section": "Introduction",
+      "page": 3,
+      "epistemic_tier": "T1",
+      "predicate": "Compare stated industrial Haber-Bosch operating window to well-established literature ranges.",
+      "evidence": [
+        {
+          "id": "e5",
+          "kind": "text",
+          "location": "Introduction (industrial conditions, cited [1,3,4])",
+          "quote": "temperatures in the range of 700-800 K and pressures of 100-200 atm",
+          "extracted_values": {"T_low_K": 700, "T_high_K": 800, "P_low_atm": 100, "P_high_atm": 200}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Cross-reference to standard Haber-Bosch process parameters in cited handbooks.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "700-800 K (~430-530 C) and 100-200 atm are standard textbook Haber-Bosch ranges; consistent with refs [1,3,4]. Fixed external knowledge; no recompute, just literature concordance."
+      }
+    },
+    {
+      "id": "c6",
+      "text": "Plasma-assisted ammonia synthesis has been reported at milder conditions of ~473 K and 1 atm when catalysts are operated alongside non-thermal plasmas.",
+      "quote": "ammonia synthesis can be performed at milder temperatures and pressures (~473 K, 1 atm) when catalysts are operated alongside non-thermal plasmas [5-19]",
+      "section": "Introduction",
+      "page": 2,
+      "epistemic_tier": "T5",
+      "predicate": "Verify against the cited body of plasma-catalysis literature [5-19] that NH3 synthesis at ~473 K / 1 atm is reported.",
+      "evidence": [
+        {
+          "id": "e6",
+          "kind": "text",
+          "location": "Introduction (cites refs 5-19)",
+          "quote": "(~473 K, 1 atm)",
+          "extracted_values": {"T_K": 473, "P_atm": 1}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Literature corroboration across cited refs; spot-check representative papers report atmospheric-pressure, low-T plasma NH3 synthesis.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.75,
+        "rationale": "Atmospheric-pressure DBD NH3 synthesis at a few hundred K is well documented in the cited corpus (e.g. refs 5-19 from the same and adjacent groups). External-literature tier; cannot recompute, only corroborate."
+      }
+    },
+    {
+      "id": "c7",
+      "text": "The intermediate-binding catalyst (EN = -0.6 eV) sits at the top of the volcano curve and shows the highest modeled thermal NH3 yields of the three catalysts in Figure 2.",
+      "quote": "The catalyst that binds N with intermediate strength (EN = -0.6 eV), sits at the top of the volcano curve (see inset) ... This material thus displays the highest NH3 yields of the three catalysts in Figure 2 at the specified reactor conditions.",
+      "section": "Results / Kinetic model",
+      "page": 7,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check prose EN values against the Figure 2 caption (strong -1.2, intermediate -0.6, weak 0.0 eV) and that the -0.6 eV curve lies highest in the thermal-yield panel.",
+      "evidence": [
+        {
+          "id": "e7a",
+          "kind": "figure",
+          "location": "Figure 2 (caption)",
+          "quote": "Three catalysts are shown, characterized by strong (EN = -1.2 eV), intermediate (EN = -0.6 eV), and weak (EN = 0.0 eV) nitrogen binding energies.",
+          "extracted_values": {"EN_strong_eV": -1.2, "EN_intermediate_eV": -0.6, "EN_weak_eV": 0.0}
+        },
+        {
+          "id": "e7b",
+          "kind": "text",
+          "location": "Body prose (Kinetic model)",
+          "quote": "binds N with intermediate strength (EN = -0.6 eV), sits at the top of the volcano curve",
+          "extracted_values": {"EN_intermediate_eV": -0.6}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Prose-vs-figure-caption cross-consistency on EN values; visual check that intermediate curve is highest in thermal Fig 2.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "Prose EN = -0.6 eV exactly matches the Figure 2 caption's intermediate value; the volcano-top claim for the optimal thermal catalyst is internally consistent with the model framing. Prose-vs-figure check covers the numeric part; the 'highest yields' part requires reading the figure curves (cannot fully confirm from text alone, hence < 0.9)."
+      }
+    },
+    {
+      "id": "c8",
+      "text": "In Figure 3, the strong N-binding catalyst (EN = -1.2 eV) shows plasma-on product pressures that coincide with thermal-only results (no plasma enhancement).",
+      "quote": "The representative strong N-binding catalyst along the left leg of the thermal volcano curve (EN = -1.2 eV) is presented in Figure 3a. Because this catalyst readily activates N2, the reaction occurs via the thermal pathway, and no enhancements in NH3 production during plasma-driven operation are observed.",
+      "section": "Results / Kinetic model",
+      "page": 9,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check prose claim (plasma-on overlaps thermal for EN=-1.2 eV) against Figure 3a curves; verify EN label consistency with caption.",
+      "evidence": [
+        {
+          "id": "e8",
+          "kind": "figure",
+          "location": "Figure 3a (caption + panel)",
+          "quote": "(a-c) The subpanels show catalysts characterized by (a) strong (EN = -1.2 eV), (b) intermediate (EN = -0.6 eV) and (c) weak (EN = 0.0 eV) nitrogen binding energies.",
+          "extracted_values": {"EN_panel_a_eV": -1.2}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Prose-vs-figure visual consistency check on Fig 3a (overlap of plasma-on and thermal curves).",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.6,
+        "rationale": "EN label matches caption (T2 numeric part supported). The substantive claim (curves overlap, no enhancement) requires reading plotted curves in Fig 3a, which I cannot extract numerically from this text-only PDF; marked inconclusive on the curve-overlap portion. Note prose at one point writes 'EA = 0.0 eV' for the weak catalyst (page 9) where 'EN' is meant - a minor typographic inconsistency, not a data error."
+      }
+    },
+    {
+      "id": "c9",
+      "text": "For the optimal thermal catalyst (EN = -0.6 eV), modeled NH3 yields exceed equilibrium at ke*ne = 10^-1 s^-1 in the temperature window 475-600 K.",
+      "quote": "For the optimal thermal catalyst, NH3 yields exceeding equilibrium for the optimal thermal catalyst are observed at ke ne = 10-1 s-1 , in the temperature window of 475-600 K.",
+      "section": "Results / Kinetic model",
+      "page": 9,
+      "epistemic_tier": "T4",
+      "predicate": "Check that the claimed beyond-equilibrium window and ke*ne threshold are supported by the Figure 3b curves (claim<->evidence support).",
+      "evidence": [
+        {
+          "id": "e9",
+          "kind": "figure",
+          "location": "Figure 3b",
+          "quote": "in the temperature window of 475-600 K",
+          "extracted_values": {"kene_threshold_s-1": 0.1, "T_window_low_K": 475, "T_window_high_K": 600}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Re-read Fig 3b (or rerun the CSTR model from Zenodo code) to confirm the >equilibrium window and threshold.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.5,
+        "rationale": "Quantitative claim tied to a modeled figure. Settling it requires either reading Fig 3b curves or rerunning the published model (Zenodo [62]); neither is possible from this text-only PDF. Prose sentence is internally awkwardly worded (repeats 'for the optimal thermal catalyst') but not contradictory."
+      }
+    },
+    {
+      "id": "c10",
+      "text": "Beyond-equilibrium NH3 yields appear at a lower excitation threshold (ke*ne >= 10^-2 s^-1) and over a wider temperature range for the weak-binding catalyst (EN = 0.0 eV) than for the optimal one.",
+      "quote": "NH3 pressures are predicted to go beyond the equilibrium limit for ke ne >= 10-2 s-1 . Furthermore, the temperature range over which NH3 pressures exceed the bulk equilibrium limit is significantly wider for this material.",
+      "section": "Results / Kinetic model",
+      "page": 9,
+      "epistemic_tier": "T4",
+      "predicate": "Check Figure 3c supports a lower ke*ne threshold (10^-2 vs 10^-1) and wider beyond-equilibrium window for the weak-binding catalyst.",
+      "evidence": [
+        {
+          "id": "e10",
+          "kind": "figure",
+          "location": "Figure 3c vs 3b",
+          "quote": "predicted to go beyond the equilibrium limit for ke ne >= 10-2 s-1",
+          "extracted_values": {"kene_threshold_weak_s-1": 0.01, "kene_threshold_optimal_s-1": 0.1}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Compare Fig 3b vs 3c curves, or rerun model, to confirm relative thresholds and window widths.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.5,
+        "rationale": "Internally consistent with the paper's central mechanistic argument (weaker N binding -> larger beyond-equilibrium excursion). But the specific threshold ordering (10^-2 vs 10^-1) and 'wider window' are figure-dependent and not verifiable from text alone."
+      }
+    },
+    {
+      "id": "c11",
+      "text": "In plasma-on models, NH3 enhancements over thermal catalysis are predicted for the intermediate and weak catalysts when ke*ne >= 10^-2 s^-1.",
+      "quote": "the plasma-on models predict enhancements in NH3 produced over thermal catalysis for both materials if the rate of plasma-activation of N2 is sufficiently high (ke ne >= 10-2 s-1 ).",
+      "section": "Results / Kinetic model",
+      "page": 9,
+      "epistemic_tier": "T4",
+      "predicate": "Confirm Fig 3b/3c kinetic-regime enhancement onset at the stated ke*ne threshold.",
+      "evidence": [
+        {
+          "id": "e11",
+          "kind": "figure",
+          "location": "Figure 3b, 3c (kinetic regime)",
+          "quote": "enhancements in NH3 produced over thermal catalysis for both materials if the rate of plasma-activation of N2 is sufficiently high (ke ne >= 10-2 s-1 )",
+          "extracted_values": {"kene_enhancement_threshold_s-1": 0.01}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Read figure curves or rerun model to confirm enhancement threshold.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.5,
+        "rationale": "Claim<->figure support; not extractable from text-only PDF. Consistent with the ke*ne thresholds quoted elsewhere in the same section."
+      }
+    },
+    {
+      "id": "c12",
+      "text": "Upon excitation, the model assumes the N2 dissociation barrier is reduced by 1 eV, corresponding to roughly three N2 vibrational quanta.",
+      "quote": "we assume that upon excitation to this state, the N2 dissociation barrier is reduced by 1 eV, corresponding to roughly three N2 vibrational quanta.",
+      "section": "Results / Kinetic model",
+      "page": 8,
+      "epistemic_tier": "T1",
+      "predicate": "Check that 1 eV ~ 3 N2 vibrational quanta given the known N2 vibrational spacing (~0.29 eV, ~2330 cm-1).",
+      "evidence": [
+        {
+          "id": "e12",
+          "kind": "number",
+          "location": "Kinetic model (barrier reduction assumption)",
+          "quote": "the N2 dissociation barrier is reduced by 1 eV, corresponding to roughly three N2 vibrational quanta",
+          "extracted_values": {"barrier_reduction_eV": 1.0, "vibrational_quanta": 3}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Unit/physical-constant check: N2 vibrational quantum ~0.292 eV (2330 cm-1), so 3 quanta ~0.88 eV ~ 1 eV.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "N2 fundamental ~2330 cm-1 = 0.289 eV; 3 quanta ~ 0.87 eV, which the authors reasonably round to '~1 eV / roughly three quanta'. Off-the-shelf unit-conversion check supports the approximate equivalence (the word 'roughly' makes it loose)."
+      }
+    },
+    {
+      "id": "c13",
+      "text": "The electron impact rate coefficient ke typically ranges 10^-14 to 10^-9 cm3/s, and the electron density ne is typically 10^14 to 10^15 cm^-3, obtained by solving the Boltzmann equation for a N2 plasma at 100 Td.",
+      "quote": "ke typically ranges between 10-14 -10-9 cm3 s-1 depending on the type of excitation ... while ne is typically in the range of 1014 -1015 cm-3 .",
+      "section": "Methods / Computational details",
+      "page": 15,
+      "epistemic_tier": "T1",
+      "predicate": "Verify the quoted ke and ne ranges against standard N2 DBD plasma values / Boltzmann-solver (LXCat / BOLSIG+) outputs at ~100 Td.",
+      "evidence": [
+        {
+          "id": "e13",
+          "kind": "number",
+          "location": "Computational details (Boltzmann solution, 100 Td, lxcat.net)",
+          "quote": "ke typically ranges between 10-14 -10-9 cm3 s-1 ... ne is typically in the range of 1014 -1015 cm-3",
+          "extracted_values": {"ke_low_cm3_s": 1e-14, "ke_high_cm3_s": 1e-9, "ne_low_cm-3": 1e14, "ne_high_cm-3": 1e15, "reduced_field_Td": 100}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Reproduce a BOLSIG+/LXCat Boltzmann solution for N2 at 100 Td and compare electron-impact rate coefficients and density ranges.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.7,
+        "rationale": "Stated ranges are typical for atmospheric DBD N2 plasmas and consistent with standard Boltzmann-solver outputs; fully settling would require re-running the solver (T1/T6 boundary). Quoted as 'typical', so a broad order-of-magnitude check suffices and concords with the literature."
+      }
+    },
+    {
+      "id": "c14",
+      "text": "The product ke*ne values used in the CSTR model are chosen to be smaller than or at the lower limit of the product of the typical ke and ne values cited.",
+      "quote": "the ke ne values used here are chosen to be smaller than or at the lower limit of the product of the ke and ne typical of DBD microdischarges",
+      "section": "Results / Kinetic model and Methods",
+      "page": 8,
+      "epistemic_tier": "T0",
+      "predicate": "Compute the product range ke*ne from c13 (10^-14 * 10^14 to 10^-9 * 10^15 = 1 to 10^6 s^-1) and confirm the modeled ke*ne values (<= 10^-1 s^-1) are <= the lower limit (~1 s^-1).",
+      "evidence": [
+        {
+          "id": "e14",
+          "kind": "number",
+          "location": "Kinetic model (ke*ne scan values) vs Computational details (ke, ne ranges)",
+          "quote": "ke ne values used here are chosen to be smaller than or at the lower limit of the product of the ke and ne typical of DBD microdischarges",
+          "extracted_values": {"kene_modeled_max_s-1": 0.1, "kene_product_lower_limit_s-1": 1.0, "kene_product_upper_limit_s-1": 1000000.0}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Internal arithmetic: multiply the ke and ne range endpoints and compare to the scanned ke*ne values.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "Lower-limit product = 10^-14 cm3/s * 10^14 cm-3 = 1 s^-1. Modeled ke*ne values (low/intermediate/high, with high = 10^-1 s^-1 per Fig 3) are all <= 1 s^-1, consistent with the claim of being 'at or below the lower limit'. Internal cross-consistency (T0) holds; cannot see the exact 'low/intermediate' values without the figure, but the stated max (10^-1) satisfies the claim."
+      }
+    },
+    {
+      "id": "c15",
+      "text": "Background experiments (gamma-Al2O3 only) show NH3 yields that maximize at about 920 K at all plasma powers, after which they decrease.",
+      "quote": "At all plasma powers, NH3 yields maximized at about 920 K, after which they decreased.",
+      "section": "Results / Experimental",
+      "page": 11,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check prose '~920 K maximum' against the Figure 4 yield-vs-temperature curves for 5, 10, 15 W.",
+      "evidence": [
+        {
+          "id": "e15",
+          "kind": "figure",
+          "location": "Figure 4 (gamma-Al2O3 background, 5/10/15 W)",
+          "quote": "NH3 yields maximized at about 920 K",
+          "extracted_values": {"T_max_K": 920}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Prose-vs-figure consistency: locate yield maxima in Fig 4 and compare to ~920 K.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.55,
+        "rationale": "Stated maximum (~920 K) is a figure-read quantity; cannot extract the peak position from a text-only PDF. Underlying raw data is on Zenodo [62], so this is checkable in principle via the Excel/figure scripts. Hedged ('about') so a loose match would suffice."
+      }
+    },
+    {
+      "id": "c16",
+      "text": "On the Pt/gamma-Al2O3 catalyst, plasma-catalytic NH3 yields continue to exceed the background and the bulk equilibrium limit until about 1000 K, after which they converge with the background.",
+      "quote": "Pt continued to enhance NH3 production over the background at higher temperatures until about 1000 K, after which the yields converged.",
+      "section": "Results / Experimental",
+      "page": 12,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check the '~1000 K convergence' claim against Figure 5a (Pt vs Al2O3 background curves at 10 W).",
+      "evidence": [
+        {
+          "id": "e16",
+          "kind": "figure",
+          "location": "Figure 5a (Pt/Al2O3 vs Al2O3, 10 W)",
+          "quote": "Pt continued to enhance NH3 production over the background at higher temperatures until about 1000 K",
+          "extracted_values": {"T_convergence_K": 1000, "power_W": 10}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Prose-vs-figure check on Fig 5a (where Pt and background curves meet).",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.55,
+        "rationale": "Figure-read claim, not extractable from text. Raw data available on Zenodo for verification. Internally consistent with the narrative that weak-binding Pt resists re-equilibration."
+      }
+    },
+    {
+      "id": "c17",
+      "text": "In NH3 decomposition experiments, Ni/Al2O3 is the most active material, lighting off at around 750 K, while Pt/gamma-Al2O3 and metal-free gamma-Al2O3 have nearly identical decomposition curves lighting off at approximately 900 K.",
+      "quote": "Of the tested materials, Ni/Al2 O3 is the most active for NH3 decomposition, lighting off at around 750 K. The decomposition curves for Pt/gamma-Al2 O3 and metal-free gamma-Al2 O3 are nearly identical, lighting off at approximately 900 K.",
+      "section": "Results / Experimental",
+      "page": 13,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check the light-off temperatures (~750 K Ni, ~900 K Pt and Al2O3) against Figure 5b decomposition curves.",
+      "evidence": [
+        {
+          "id": "e17",
+          "kind": "figure",
+          "location": "Figure 5b (NH3 decomposition over Al2O3, Ni/Al2O3, Pt/Al2O3)",
+          "quote": "Ni/Al2 O3 is the most active for NH3 decomposition, lighting off at around 750 K ... Pt/gamma-Al2 O3 and metal-free gamma-Al2 O3 ... lighting off at approximately 900 K",
+          "extracted_values": {"Ni_lightoff_K": 750, "Pt_lightoff_K": 900, "Al2O3_lightoff_K": 900}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Prose-vs-figure consistency on light-off onsets in Fig 5b.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.55,
+        "rationale": "Light-off temperatures are read from Fig 5b curves; not extractable from text. Checkable via Zenodo data. The relative ordering (Ni earliest) is mechanistically consistent with N-binding strength argument."
+      }
+    },
+    {
+      "id": "c18",
+      "text": "The N-metal bond strength of the studied catalysts follows the order Ru > Ni > Pt, with Ru being the optimal thermal catalyst and both Ni and Pt binding N more weakly than Ru.",
+      "quote": "both bind N more weakly than the optimal thermal catalyst, Ru [2, 16, 53, 55, 58] (the N-metal bond strength follows the order Ru > Ni > Pt).",
+      "section": "Results / Experimental",
+      "page": 12,
+      "epistemic_tier": "T5",
+      "predicate": "Verify the N-binding-strength ordering Ru > Ni > Pt against the cited computational/experimental literature on transition-metal N binding energies.",
+      "evidence": [
+        {
+          "id": "e18",
+          "kind": "text",
+          "location": "Experimental (cites [2,16,53,55,58])",
+          "quote": "the N-metal bond strength follows the order Ru > Ni > Pt",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Literature lookup of N adsorption/binding energies for Ru, Ni, Pt (e.g. nitrogen volcano references) to confirm Ru > Ni > Pt.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.8,
+        "rationale": "The ordering Ru > Ni > Pt for N binding strength is well-established in the heterogeneous-catalysis volcano literature cited (Dahl, Bligaard, Vojvodic, and the authors' own ref [16]). External-literature tier; corroborable but not recomputable here."
+      }
+    },
+    {
+      "id": "c19",
+      "text": "Catalysts were 5 wt% Pt and Ni supported on gamma-Al2O3, obtained from Riogen Inc., with 100 mg of material packed for each experiment.",
+      "quote": "Ni and Pt catalysts supported on gamma-Al2 O3 (100 mg material, 5 wt% metal). ... Pt and Ni supported on gamma-Al2 O3 (5 wt%) were obtained from Riogen Inc. ... For each experiment 100 mg of material was packed into the reactor.",
+      "section": "Results/Methods",
+      "page": 12,
+      "epistemic_tier": "T2",
+      "predicate": "Check internal consistency of catalyst loading (5 wt%) and mass (100 mg) statements across the Experimental and Methods sections.",
+      "evidence": [
+        {
+          "id": "e19",
+          "kind": "text",
+          "location": "Experimental + Experimental details",
+          "quote": "100 mg material, 5 wt% metal ... For each experiment 100 mg of material was packed",
+          "extracted_values": {"mass_mg": 100, "metal_loading_wt_pct": 5}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Internal cross-consistency check across sections; no arithmetic required.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.9,
+        "rationale": "Catalyst mass (100 mg), loading (5 wt%), support (gamma-Al2O3), and source (Riogen Inc.) are stated identically in both the Results and Methods sections. Prose-vs-prose consistency holds. (Background was 100 mg bare gamma-Al2O3, also consistent.)"
+      }
+    },
+    {
+      "id": "c20",
+      "text": "Reactants N2 and H2 were introduced in a 2:1 ratio at a total flow rate of 40 SCCM (also stated as 40 mL/min).",
+      "quote": "We introduced N2 and H2 into the reactor in a 2:1 ratio at a total flow rate of 40 SCCM.",
+      "section": "Results / Experimental and Fig 4/5 captions",
+      "page": 11,
+      "epistemic_tier": "T2",
+      "predicate": "Check internal consistency of feed ratio (2:1) and total flow (40 SCCM = 40 mL/min) across body text and Figure 4/5 captions.",
+      "evidence": [
+        {
+          "id": "e20a",
+          "kind": "text",
+          "location": "Experimental body",
+          "quote": "N2 and H2 into the reactor in a 2:1 ratio at a total flow rate of 40 SCCM",
+          "extracted_values": {"N2_to_H2_ratio": 2, "total_flow_SCCM": 40}
+        },
+        {
+          "id": "e20b",
+          "kind": "figure",
+          "location": "Figure 4 and Figure 5a captions",
+          "quote": "total flow rate = 40 SSCM, inlet N2 :H2 = 2:1 ... total inlet flow rate = 40 mL min-1 , N2 :H2 = 2:1",
+          "extracted_values": {"total_flow_mL_min": 40, "N2_to_H2_ratio": 2}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Prose-vs-caption cross-consistency on feed ratio and flow; confirm 40 SCCM == 40 mL/min.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.9,
+        "rationale": "Feed 2:1 N2:H2 and 40 SCCM (= 40 mL/min at standard conditions) match between body and Fig 4/5 captions. Note Fig 4 caption has a typo 'SSCM' for 'SCCM' - typographic only, not a data inconsistency. Note also the model (CSTR) uses stoichiometric (3:1 implied by 'stoichiometric ratio', 10 mL/min) whereas experiments use 2:1 at 40 mL/min - intentional and stated, not an error."
+      }
+    },
+    {
+      "id": "c21",
+      "text": "The CSTR model uses a 1 mL reactor at atmospheric pressure with reactants fed in stoichiometric ratio at 10 mL/min, a single active-site type (metal steps) at total site density 10^-3 mol/mL.",
+      "quote": "We model the system as a continuously stirred tank reactor (CSTR) operating at atmospheric pressure and constant volume (1 mL). The reactants are introduced into the reactor in their stoichiometric ratio, at a flow rate of 10 mL min-1 . ... a total site density of 10-3 mol mL-1 .",
+      "section": "Results / Kinetic model",
+      "page": 7,
+      "epistemic_tier": "T3",
+      "predicate": "Assess whether the CSTR setup (1 mL, 10 mL/min, stoichiometric feed, single step-site type, transport neglected, N* as only surface species) is an appropriate/clearly-stated modeling choice for the claimed conclusions.",
+      "evidence": [
+        {
+          "id": "e21",
+          "kind": "text",
+          "location": "Kinetic model (CSTR parameters)",
+          "quote": "constant volume (1 mL) ... flow rate of 10 mL min-1 ... total site density of 10-3 mol mL-1 . Any potential transport effects are neglected.",
+          "extracted_values": {"reactor_volume_mL": 1, "flow_mL_min": 10, "site_density_mol_mL": 0.001}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Method-appropriateness judgment plus reproduction from Zenodo code to confirm parameters produce the reported trends.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.7,
+        "rationale": "Parameters are fully specified and the authors explicitly note simplifications (single site type, N* only in site balance -> rates overestimated, transport neglected) and argue these do not change qualitative conclusions. Appropriateness for the qualitative/trend-level claims is reasonable; quantitative fidelity is not claimed. T3 judgment; recomputation possible via Zenodo."
+      }
+    },
+    {
+      "id": "c22",
+      "text": "The model uses Bronsted-Evans-Polanyi (BEP) relationships to compute thermal activation energies for reactions (1) and (2) as a function of atomic nitrogen binding energy.",
+      "quote": "For the thermal reaction steps (reactions (1) and (2)), we use Bronsted-Evans-Polyani (BEP) relationships to calculate activation energies as a function of the atomic nitrogen binding energy relative to N2 [16, 52, 53].",
+      "section": "Results / Kinetic model",
+      "page": 7,
+      "epistemic_tier": "T3",
+      "predicate": "Assess whether BEP-based activation-energy estimation is an appropriate, standard methodology for this class of microkinetic volcano analysis.",
+      "evidence": [
+        {
+          "id": "e22",
+          "kind": "text",
+          "location": "Kinetic model (BEP relations, cites [16,52,53])",
+          "quote": "we use Bronsted-Evans-Polyani (BEP) relationships to calculate activation energies",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Method-appropriateness check against established BEP/volcano methodology (Bligaard 2004, Grabow 2013).",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "BEP relationships are the standard, well-cited approach for relating activation energies to binding energies in heterogeneous-catalysis volcano modeling (refs [52] Evans-Polanyi, [53] Bligaard, [54] Grabow). Method choice is appropriate and conventional. T3 judgment."
+      }
+    },
+    {
+      "id": "c23",
+      "text": "Modeled rates are overestimated because N* is the only species included in the surface site balance.",
+      "quote": "modeled rates are overestimated because N* is the only species included in the surface site balance.",
+      "section": "Results / Kinetic model",
+      "page": 7,
+      "epistemic_tier": "T3",
+      "predicate": "Assess the validity of the self-stated caveat that omitting other adsorbates from the site balance overestimates rates.",
+      "evidence": [
+        {
+          "id": "e23",
+          "kind": "text",
+          "location": "Kinetic model (site-balance simplification)",
+          "quote": "modeled rates are overestimated because N* is the only species included in the surface site balance",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Mechanistic reasoning check: omitting NHx*/H* coverage from the site balance frees up sites and inflates rates.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.8,
+        "rationale": "Physically correct: excluding other surface intermediates (H*, NHx*) from the site balance leaves more free sites than reality, raising computed rates. Self-consistent and standard caveat. T3 method-appropriateness judgment."
+      }
+    },
+    {
+      "id": "c24",
+      "text": "Because the forward (plasma-driven) and reverse (thermal desorption) processes are not connected by detailed balance, product yields are not constrained by thermal equilibrium limits.",
+      "quote": "because the forward and reverse processes are not connected by the principle of detailed balance, product yields will not be constrained by the equilibrium limitations characteristic of thermally driven reactions [51].",
+      "section": "Results / Kinetic model",
+      "page": 7,
+      "epistemic_tier": "T3",
+      "predicate": "Assess the theoretical claim that decoupled forward/reverse channels (violating detailed balance) permit beyond-equilibrium steady states.",
+      "evidence": [
+        {
+          "id": "e24",
+          "kind": "text",
+          "location": "Kinetic model (detailed-balance argument, cites [51])",
+          "quote": "because the forward and reverse processes are not connected by the principle of detailed balance, product yields will not be constrained by the equilibrium limitations",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Theoretical soundness check against non-equilibrium kinetics (a driven system with externally pumped forward channel can reach steady states beyond thermal equilibrium); cross-check ref [51] Hansen et al.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.8,
+        "rationale": "Sound: when an external energy source (plasma electrons) drives N2 activation via a channel not microscopically reversible to thermal desorption, detailed balance no longer pins the steady state to thermal equilibrium. This is the central, theoretically defensible premise of the paper, supported by ref [51]. T3 judgment, not numerically recomputed."
+      }
+    },
+    {
+      "id": "c25",
+      "text": "The correspondence between NH3-decomposition light-off temperatures (Fig 5b) and the collapse of NH3-synthesis yields (Fig 5a) provides evidence that the yield collapse is due to onset of reverse NH3 decomposition.",
+      "quote": "The correspondence between the temperatures that NH3 decomposition light off in Figure 5b and the collapse in the NH3 synthesis yields in Figure 5a provides strong evidence of the decoupling of the thermally and non-thermally driven processes.",
+      "section": "Results / Experimental",
+      "page": 13,
+      "epistemic_tier": "T4",
+      "predicate": "Verify that the synthesis-collapse temperatures in Fig 5a actually coincide with the decomposition light-off temperatures in Fig 5b (claim<->evidence support across two panels).",
+      "evidence": [
+        {
+          "id": "e25",
+          "kind": "figure",
+          "location": "Figure 5a and 5b (cross-panel comparison)",
+          "quote": "correspondence between the temperatures that NH3 decomposition light off in Figure 5b and the collapse in the NH3 synthesis yields in Figure 5a",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Read both Fig 5a (yield-collapse onset) and Fig 5b (decomposition light-off) and confirm temperature coincidence; or reanalyze Zenodo data.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.55,
+        "rationale": "The key supporting argument of the experimental section rests on a cross-panel temperature coincidence that must be read from the two figures. Not extractable from text-only PDF; checkable via Zenodo raw data. The qualifier 'strong evidence' is an interpretive overstatement risk, but the underlying logic is internally consistent."
+      }
+    },
+    {
+      "id": "c26",
+      "text": "NH3 decomposition experiments used a feed of 0.5% NH3, 9.5% He, and balance 2:1 N2:H2 at 40 mL/min, chosen to mimic the outlet of the 900 K background experiment.",
+      "quote": "we performed thermal NH3 decomposition experiments at feed compositions comparable to the outlet stream of the background experiment at 900 K ... A gas mixture of 0.5% NH3 and 9.5% He with a balance of N2 and H2 in a 2:1 ratio was fed into the reactor.",
+      "section": "Results / Experimental and Fig 5b caption",
+      "page": 12,
+      "epistemic_tier": "T2",
+      "predicate": "Check that the decomposition feed composition (0.5% NH3, 9.5% He, balance 2:1 N2:H2) is stated consistently between body text and the Figure 5b caption, and that fractions are internally coherent (sum to 100%).",
+      "evidence": [
+        {
+          "id": "e26a",
+          "kind": "text",
+          "location": "Experimental body",
+          "quote": "A gas mixture of 0.5% NH3 and 9.5% He with a balance of N2 and H2 in a 2:1 ratio",
+          "extracted_values": {"NH3_pct": 0.5, "He_pct": 9.5, "balance_N2_H2_pct": 90.0}
+        },
+        {
+          "id": "e26b",
+          "kind": "figure",
+          "location": "Figure 5b caption",
+          "quote": "Inlet gas composition: 0.5% NH3 , 9.5% He, and balance of 2:1 N2 and H2 .",
+          "extracted_values": {"NH3_pct": 0.5, "He_pct": 9.5}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Prose-vs-caption consistency + mole-fraction sum check (0.5 + 9.5 + 90 = 100; balance split 2:1 -> 60% N2, 30% H2).",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.92,
+        "rationale": "Body and caption give identical composition (0.5% NH3, 9.5% He, balance 2:1 N2:H2). Fractions sum to 100% with N2=60%, H2=30%. Internally consistent; off-the-shelf mass-balance/percent check passes."
+      }
+    },
+    {
+      "id": "c27",
+      "text": "Reaction (4), N2(act) + 2* -> 2N*, is treated as irreversible because N* primarily desorbs as ground-state N2.",
+      "quote": "Assuming that N* primarily desorbs as ground state N2 , reaction (4) becomes an irreversible step.",
+      "section": "Results / Kinetic model",
+      "page": 5,
+      "epistemic_tier": "T3",
+      "predicate": "Assess whether treating the plasma-activated chemisorption step as irreversible (since the reverse would produce excited N2, not the activated species) is a sound modeling assumption.",
+      "evidence": [
+        {
+          "id": "e27",
+          "kind": "equation",
+          "location": "Reaction (4)",
+          "quote": "N2 (act) + 2 * -> 2 N* ... reaction (4) becomes an irreversible step",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Mechanistic-consistency judgment: the reverse of (4) would require re-forming N2(act), but desorption yields ground-state N2, so forward-only treatment is justified.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.8,
+        "rationale": "Logically sound: because recombinative desorption produces ground-state (not activated) N2, the activated chemisorption channel is effectively one-way. This is exactly what enables the beyond-equilibrium behavior and is internally consistent with the detailed-balance argument (c24). T3 judgment."
+      }
+    },
+    {
+      "id": "c28",
+      "text": "Reaction (5), the homogeneous plasma-phase NH3 formation, is excluded from the CSTR model to isolate the catalytic consequences of N2 activation.",
+      "quote": "Reaction (5) is not included in the model for simplicity and to isolate the catalytic consequences of non-thermal stimulation of N2 on conversions.",
+      "section": "Results / Kinetic model",
+      "page": 7,
+      "epistemic_tier": "T3",
+      "predicate": "Assess whether excluding the homogeneous channel is a defensible scoping choice given the paper's focus on catalytic (heterogeneous) contributions.",
+      "evidence": [
+        {
+          "id": "e28",
+          "kind": "text",
+          "location": "Kinetic model (scope of model)",
+          "quote": "Reaction (5) is not included in the model for simplicity and to isolate the catalytic consequences",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Scoping-appropriateness judgment; consider whether neglecting homogeneous NH3 formation biases the catalyst-comparison conclusions.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.75,
+        "rationale": "Reasonable and explicitly justified: the model targets catalytic (heterogeneous) contributions, and the experiments separately include a plasma-only/background measurement to account for homogeneous chemistry. The exclusion is a transparent simplification, not a hidden one. T3 judgment."
+      }
+    },
+    {
+      "id": "c29",
+      "text": "An external Zenodo repository hosts the kinetic-model code, utility functions, model inputs/results (JSON), and raw plasma-catalysis experimental data (Excel), plus figure-generation scripts.",
+      "quote": "An external Zenodo repository hosts code and raw data [62]. The kinetic model and associated utility functions are included as Python files. Model input and calculated results are included in json format. Raw data for the plasma catalysis experiments is included in an Excel spreadsheet. Additional details and python scripts showing how these data files were used to create all the figures in the paper are provided in the Supporting Data pdf file.",
+      "section": "Methods / Data availability",
+      "page": 16,
+      "epistemic_tier": "T6",
+      "predicate": "Confirm the Zenodo DOI 10.5281/zenodo.3566833 resolves and contains the described code/data so figures can be regenerated.",
+      "evidence": [
+        {
+          "id": "e29",
+          "kind": "dataset",
+          "location": "Data availability + ref [62]",
+          "quote": "wfschneidergroup/SI-mehta-beyond-eq (2019). URL https://doi.org/10.5281/zenodo.3566833.",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Resolve the Zenodo DOI and inventory contents (Python model, JSON I/O, Excel raw data, figure scripts); attempt to regenerate a figure.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.6,
+        "rationale": "Strong reproducibility signal: a concrete archived DOI with code+data+figure scripts is named. Cannot confirm contents resolve/run without network access to Zenodo. If it resolves and regenerates the figures, most T4 figure-claims (c9-c11, c15-c17, c25) become directly checkable. T6 tier."
+      }
+    },
+    {
+      "id": "c30",
+      "text": "This work extends the authors' previously reported plasma-catalysis microkinetic model (ref [16], Nature Catalysis 2018) by replacing the steady-state vibrational-distribution approximation with an explicit kinetic treatment of plasma-excited-species generation.",
+      "quote": "here we propose an extension to the previously reported plasma catalysis microkinetic model [16] to predict trends in product yields ... We replace the steady-state approximation on plasma-generated non-thermal N2 vibrational distributions with an explicit kinetic treatment of the rate of plasma-stimulated generation of excited species.",
+      "section": "Introduction",
+      "page": 3,
+      "epistemic_tier": "T5",
+      "predicate": "Verify that ref [16] (Mehta et al., Nature Catalysis 1, 269-275, 2018) is correctly attributed as the prior model this work extends.",
+      "evidence": [
+        {
+          "id": "e30",
+          "kind": "text",
+          "location": "Introduction + ref [16]",
+          "quote": "Mehta, P. et al. Overcoming ammonia synthesis scaling relations with plasma-enabled catalysis. Nature Catalysis 1, 269-275 (2018). URL https://doi.org/10.1038/s41929-018-0045-1.",
+          "extracted_values": {"ref16_year": 2018, "ref16_volume": 1, "ref16_pages_start": 269, "ref16_pages_end": 275}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Citation/attribution check against ref [16] metadata (DOI 10.1038/s41929-018-0045-1).",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.9,
+        "rationale": "Ref [16] is the same authors' 2018 Nature Catalysis paper (also present in this corpus as mehta-2018-overcoming-scaling-relations.pdf). The lineage and the described methodological extension (steady-state -> explicit kinetic generation) are internally coherent. T5 external/literature attribution."
+      }
+    },
+    {
+      "id": "c31",
+      "text": "All TEM-based particle sizes were based on at least 300 particles, and accessible surface metal sites were measured by CO pulse chemisorption before and after the plasma reaction.",
+      "quote": "Metal particle sizes were determined by transmission electron microscopy imaging using a Jeol 2011 electron microscope. All particle sizes were based on at least 300 particles. ... the number of accessible surface metal sites were evaluated both before and after the plasma reaction via CO pulse chemisorption",
+      "section": "Methods / Experimental details",
+      "page": 16,
+      "epistemic_tier": "T7",
+      "predicate": "Integrity/rigor signal: adequate sampling (>=300 particles) and before/after site-count measurement; cross-check against Supplementary Table 1 (not in this PDF).",
+      "evidence": [
+        {
+          "id": "e31",
+          "kind": "text",
+          "location": "Experimental details (characterization)",
+          "quote": "All particle sizes were based on at least 300 particles ... CO pulse chemisorption ... both before and after the plasma reaction",
+          "extracted_values": {"min_particles_counted": 300}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Cross-check stated characterization against Supplementary Table 1 values (surface areas, particle sizes, site counts).",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.75,
+        "rationale": "Methodological rigor signals are present and reasonable (>=300-particle TEM statistics; pre/post site counting to check for sintering/deactivation). Full verification needs Supplementary Table 1, which is not contained in this 24-page main-text PDF. T7 integrity tier; nothing anomalous in the described protocol."
+      }
+    },
+    {
+      "id": "c32",
+      "text": "Each reported data point is the average of three GC injections with error bars equal to the standard deviation of those three measurements, taken after a 15-minute wait to reach steady state.",
+      "quote": "We waited 15 minutes upon reaching each temperature point measured before doing GC injections in order to ensure that the reactor was at steady state ... Each data point is based off of an average of three injections by the GC and the error bars shown correspond to the standard deviation of these three measurements.",
+      "section": "Methods / Experimental details",
+      "page": 16,
+      "epistemic_tier": "T7",
+      "predicate": "Integrity signal: error bars defined as SD of n=3 injections; check consistency with error bars shown in Figures 4-5.",
+      "evidence": [
+        {
+          "id": "e32",
+          "kind": "text",
+          "location": "Experimental details (measurement protocol)",
+          "quote": "average of three injections by the GC and the error bars shown correspond to the standard deviation of these three measurements",
+          "extracted_values": {"n_injections": 3, "steady_state_wait_min": 15}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Check that figure error bars correspond to SD of n=3, and that the error-bar definition is consistently applied (e.g. via Zenodo raw data).",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.75,
+        "rationale": "Error-bar definition is explicitly and conventionally stated (SD of triplicate GC injections). Verifiable against Zenodo raw data. Reasonable protocol; the n=3 sampling is modest but transparently reported. T7 tier."
+      }
+    },
+    {
+      "id": "c33",
+      "text": "Reactants in the model are introduced in their stoichiometric ratio and the overall volumetric flow rate decreases with reaction progression because the reaction proceeds with a decrease in the number of moles.",
+      "quote": "The reactants are introduced into the reactor in their stoichiometric ratio ... The overall volumetric flow rate decreases with reaction progression, because the reaction proceeds with a decrease in the number of moles.",
+      "section": "Results / Kinetic model",
+      "page": 7,
+      "epistemic_tier": "T1",
+      "predicate": "Check stoichiometric mole-change reasoning: N2 + 3H2 -> 2NH3 converts 4 mol reactant to 2 mol product, so total moles (and volumetric flow at constant P,T) decrease.",
+      "evidence": [
+        {
+          "id": "e33",
+          "kind": "text",
+          "location": "Kinetic model (flow behavior)",
+          "quote": "the overall volumetric flow rate decreases with reaction progression, because the reaction proceeds with a decrease in the number of moles",
+          "extracted_values": {"reactant_moles": 4, "product_moles": 2}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Stoichiometry/mole-balance check on N2+3H2->2NH3 (4 -> 2 mol).",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.95,
+        "rationale": "Correct: 1 mol N2 + 3 mol H2 -> 2 mol NH3 reduces gas moles from 4 to 2, so at constant T,P the volumetric flow must drop as conversion proceeds. Off-the-shelf stoichiometry/mole-balance check confirms the qualitative statement."
+      }
+    },
+    {
+      "id": "c34",
+      "text": "The model assumes a single activated N2 state, and the choice of barrier reduction (1 eV) is arbitrary and does not alter the qualitative conclusions, as shown in Supplementary Figures 1 and 2.",
+      "quote": "The extent to which the barrier is reduced is arbitrary and does not alter the qualitative conclusions of the work, as discussed in the Supplementary Information (Supplementary Figures 1 and 2).",
+      "section": "Results / Kinetic model",
+      "page": 8,
+      "epistemic_tier": "T4",
+      "predicate": "Verify (via Supplementary Figures 1-2) that varying the barrier reduction preserves the qualitative beyond-equilibrium conclusions.",
+      "evidence": [
+        {
+          "id": "e34",
+          "kind": "figure",
+          "location": "Supplementary Figures 1 and 2 (NOT in this PDF)",
+          "quote": "the extent to which the barrier is reduced is arbitrary and does not alter the qualitative conclusions",
+          "extracted_values": {"barrier_reduction_eV": 1.0}
+        }
+      ],
+      "verification": {
+        "possible": false,
+        "verifier_needed": "Inspect Supplementary Figures 1 and 2 (barrier-sensitivity analysis), which are not contained in this main-text PDF.",
+        "verifier_exists": false,
+        "candidate_verdict": "not_checkable",
+        "confidence": 0.4,
+        "rationale": "Robustness claim depends entirely on SI figures absent from this 24-page file. Cannot bind the claim to evidence here; would need the SI PDF or Zenodo code. Recorded as not_checkable from available content (null evidence values for the SI curves)."
+      }
+    },
+    {
+      "id": "c35",
+      "text": "The empty reactor behaves similarly to the gamma-Al2O3-packed reactor (justifying use of the packed background), as shown in Supplementary Figure 3.",
+      "quote": "We note, however, that the empty reactor behaves similarly to the gamma-Al2 O3 -packed reactor, as shown in Supplementary Figure 3.",
+      "section": "Results / Experimental",
+      "page": 11,
+      "epistemic_tier": "T4",
+      "predicate": "Verify (via Supplementary Figure 3) that empty-reactor and Al2O3-packed background yields are comparable.",
+      "evidence": [
+        {
+          "id": "e35",
+          "kind": "figure",
+          "location": "Supplementary Figure 3 (NOT in this PDF)",
+          "quote": "the empty reactor behaves similarly to the gamma-Al2 O3 -packed reactor, as shown in Supplementary Figure 3",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": false,
+        "verifier_needed": "Inspect Supplementary Figure 3 (empty vs packed comparison), not contained in this main-text PDF.",
+        "verifier_exists": false,
+        "candidate_verdict": "not_checkable",
+        "confidence": 0.4,
+        "rationale": "Supporting control claim relies on an SI figure absent from this file; cannot bind to evidence here. Checkable only with the SI/Zenodo materials. Recorded as not_checkable."
+      }
+    },
+    {
+      "id": "c36",
+      "text": "The claim that plasma-catalytic NH3 yields exceed the bulk thermodynamic equilibrium limit (the paper's central result) is shown by the experimental yields rising above the dashed equilibrium-conversion line in Figures 4 and 5a.",
+      "quote": "NH3 production increased with increasing reactor temperature, and yields well beyond the equilibrium limit were observed at high bulk temperatures. ... The dashed line shows the bulk thermodynamic equilibrium conversion at the specified reaction conditions.",
+      "section": "Results / Experimental (Fig 4, Fig 5a)",
+      "page": 11,
+      "epistemic_tier": "T4",
+      "predicate": "Verify the central claim: measured NH3 yield/conversion curves lie above the computed equilibrium-conversion dashed line over the stated temperature ranges, and that the equilibrium line itself is correctly computed for the 2:1 N2:H2, 1 atm conditions.",
+      "evidence": [
+        {
+          "id": "e36",
+          "kind": "figure",
+          "location": "Figure 4 and Figure 5a (measured yields vs dashed equilibrium line)",
+          "quote": "yields well beyond the equilibrium limit were observed at high bulk temperatures ... The dashed line shows the bulk thermodynamic equilibrium conversion",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "(a) Independently compute the equilibrium NH3 conversion vs T for 2:1 N2:H2 at 1 atm (Gibbs minimization with c4 dH and NIST entropies) to validate the dashed line; (b) confirm measured points exceed it. Requires Zenodo raw data + a thermodynamics recompute.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.6,
+        "rationale": "This is the load-bearing experimental claim. The equilibrium reference line is independently recomputable (T0/T1: Gibbs minimization from tabulated thermochemistry at the stated feed/P), which is a strong, settle-able check; but confirming the measured points lie above it requires the figure curves / Zenodo data not extractable here. High-value target for a thermodynamics-equilibrium verifier + figure/data reader."
+      }
+    },
+    {
+      "id": "c37",
+      "text": "Standard entropies of gas-phase N2, H2, and NH3 were obtained from the NIST Chemistry WebBook.",
+      "quote": "Standard entropies of the gas phase N2 , H2 , and NH3 were obtained from the National Institute of Standards and Technology (NIST) Chemistry WebBook (http://webbook.nist.gov/chemistry).",
+      "section": "Methods / Computational details",
+      "page": 15,
+      "epistemic_tier": "T1",
+      "predicate": "Confirm that the NIST WebBook provides standard entropies for these species and that using them with dH=-91.8 kJ/mol reproduces the dG0 in c3 (cross-check already done: implied dS=-198.0 J/mol/K).",
+      "evidence": [
+        {
+          "id": "e37",
+          "kind": "text",
+          "location": "Computational details (entropy source)",
+          "quote": "Standard entropies of the gas phase N2 , H2 , and NH3 were obtained from the ... NIST Chemistry WebBook",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Lookup NIST standard molar entropies (S0_298: N2 191.6, H2 130.7, NH3 192.8 J/mol/K) and recompute dS_rxn = 2*S(NH3) - S(N2) - 3*S(H2); compare to the -198.0 J/mol/K implied by c3/c4.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.88,
+        "rationale": "dS_rxn = 2(192.8) - 191.6 - 3(130.7) = 385.6 - 191.6 - 392.1 = -198.1 J/mol/K, matching the -198.0 J/mol/K implied by the paper's own dH (c4) and dG0 (c3). The thermodynamic inputs are mutually consistent and traceable to NIST. Off-the-shelf lookup + arithmetic settles it (T1)."
+      }
+    }
+  ],
+  "paper_level_notes": "Published main text only (24 pp). This is the journal article version of the Schneider/Hicks (Notre Dame) + Bogaerts (Antwerp) collaboration on plasma-catalytic NH3 synthesis; it is the explicit sequel to ref [16] (Mehta et al., Nature Catalysis 1:269-275, 2018), which is also in this corpus (mehta-2018-overcoming-scaling-relations.pdf). No paper DOI is printed in this PDF; the only DOI present is the Zenodo data archive [62] = 10.5281/zenodo.3566833 (wfschneidergroup/SI-mehta-beyond-eq), which is reported to contain the Python kinetic model, JSON model I/O, Excel raw experimental data, and figure-generation scripts -- a strong reproducibility signal. Supplementary Information (Supplementary Methods, Supplementary Figures 1-3, Supplementary Table 1) is referenced throughout but is NOT contained in this file; several robustness/control claims (c34, c35) and the full BEP rate expressions therefore cannot be checked from available content. The paper is predominantly a qualitative/trend-level modeling-plus-experiment study: most quantitative figures (Fig 2-5) are plotted curves with no embedded numeric data tables, so T4 claim<->figure checks (c9-c11, c15-c17, c25, c36) are largely inconclusive from text alone but become checkable if the Zenodo data resolves. The deterministic frontier is small but clean: four T0/T1 numeric checks pass cleanly on recompute -- discharge volume 1.07 cm3 (c1, geometry), specific energy inputs 7.5/15/22.5 kJ/L (c2, power/flow), thermo self-consistency dH=-91.8 & dG0=-32.8 kJ/mol implying dS=-198 J/mol/K matching NIST (c3/c4/c37), and the ke*ne-vs-(ke,ne)-range product bound (c14). Stoichiometric mole-decrease (c33) and the 1 eV ~ 3 N2 quanta conversion (c12) also check out. Minor typographic blemishes noted (not data errors): 'EA = 0.0 eV' on p.9 where 'EN' is meant; 'SSCM' for 'SCCM' in the Fig 4 caption. No integrity red flags: error bars defined (SD of n=3 GC injections), >=300-particle TEM statistics, pre/post CO-chemisorption site counting, explicit and transparent model simplifications, named funding (DOE DE-SC-0016543; AFOSR FA9550-18-1-0157), declared no competing interests, and equal-contribution authorship statement. Nothing in the available content suggests fabricated or internally contradictory numbers; the paper reads as a careful, self-consistent study whose central beyond-equilibrium claim hinges on figure/data evidence best verified against the Zenodo archive plus an independent equilibrium-conversion recompute (c36)."
+}

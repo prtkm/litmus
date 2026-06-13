@@ -1,0 +1,430 @@
+{
+  "paper_id": "chemistry-arxiv-2606.13664-chiral-2d-perovskite-magnetotransport",
+  "title": "Morphology control and low-temperature magnetotransport in chiral 2D perovskite R-(MBA)2PbI4",
+  "doi": null,
+  "domain": "condensed-matter chemistry / materials physics (chiral 2D hybrid lead-halide perovskite thin films; magnetotransport, Hall effect, FET)",
+  "n_pages_read": 29,
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Thickness alone (resistance inversely proportional to film thickness) would predict only an approximately threefold increase in resistance between the 1500 rpm and 4000 rpm films if resistivity were unchanged.",
+      "quote": "Because resistance is inversely proportional to film thickness, thickness alone would predict only an approximately threefold increase in resistance between the 1500 rpm and 4000 rpm films if the resistivity were unchanged.",
+      "section": "3.1 Spin-Speed Dependent ... characterization",
+      "page": 7,
+      "epistemic_tier": "T0",
+      "predicate": "Compute the ratio of quoted film thicknesses t(1500rpm)/t(4000rpm) and check it equals ~3 (since R proportional to 1/t at fixed resistivity and geometry).",
+      "evidence": [
+        {"id": "e1", "kind": "number", "location": "Sec 3.1 (Fig 1a-d thicknesses)", "quote": "an average thickness of ~300 nm ... (3000 rpm) (~165 nm) and 4000 rpm (~100 nm)", "extracted_values": {"t_1500_nm": 300, "t_4000_nm": 100, "ratio": 3.0}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "percent-change / ratio recompute: 300/100 = 3.0", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "300 nm / 100 nm = 3.0 exactly, matching 'approximately threefold'. Off-the-shelf arithmetic check confirms internal consistency. Thicknesses are rounded (~), but the claim is qualitative ('approximately')."}
+    },
+    {
+      "id": "c2",
+      "text": "The measured resistance ratio between 4000 rpm and 1500 rpm films at 1.5 V is approximately 850 (R4000rpm / R1500rpm ~ 850 at 1.5 V), far exceeding the ~3x geometric prediction.",
+      "quote": "the much larger observed increase (R4000rpm /R1500rpm ≈ 850 at 1.5V)",
+      "section": "3.1",
+      "page": 7,
+      "epistemic_tier": "T2",
+      "predicate": "Read I_SD at V=1.5 V from Fig 1f for 1500 rpm and 4000 rpm, correct the 4000 rpm trace for its stated x250 scaling, and compute R4000/R1500 = I_1500/(I_4000_plotted/250).",
+      "evidence": [
+        {"id": "e1", "kind": "figure", "location": "Figure 1f", "quote": "ISD was multiplied by a factor of 250 for spin speeds of 3000 rpm and 4000 rpm for legibility", "extracted_values": {"I_1500_uA_at_1p5V_approx": 0.05, "I_4000_plotted_uA_approx": 0.035, "scale_factor": 250, "ratio_from_graph_read_approx": 357}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-figure recompute of resistance ratio from Fig 1f traces with x250 correction; ideally the underlying I-V table/raw data", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.45, "rationale": "Coarse graph readout (I_1500~0.05 uA, I_4000_plotted~0.035 uA => true I_4000~1.4e-4 uA) yields R4000/R1500 ~ 357, the same order of magnitude as 850 but not a clean match. The figure y-resolution is too low to read I to better than ~2x, so this cannot be settled from the figure alone; needs the raw I-V data. Not flagged as an error, only as not-bindable from published figure."}
+    },
+    {
+      "id": "c3",
+      "text": "The Hall-bar geometry is expected to be approximately 500 times more resistive than the three-terminal FET channel for the same film thickness and resistivity.",
+      "quote": "the Hall-bar geometry is expected to be approximately 500 times more resistive than the three-terminal channel for the same film thickness and resistivity.",
+      "section": "3.3",
+      "page": 13,
+      "epistemic_tier": "T0",
+      "predicate": "Sheet-resistance scaling R = Rs*(L/W). Compute (L/W)_Hallbar / (L/W)_FET from the stated electrode/channel dimensions and check it equals ~500.",
+      "evidence": [
+        {"id": "e1", "kind": "number", "location": "Experimental Details (Sample Preparation)", "quote": "drain and source electrodes 500 µm wide separated by a 5 µm channel. For Hall-bar devices, 2 µm wide current electrodes were separated by a 10 µm channel", "extracted_values": {"FET_L_um": 5, "FET_W_um": 500, "Hall_L_um": 10, "Hall_W_um": 2, "ratio": 500.0}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "geometric aspect-ratio recompute: (10/2)/(5/500) = 5/0.01 = 500", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.88, "rationale": "(L/W)_Hall = 10/2 = 5; (L/W)_FET = 5/500 = 0.01; ratio = 500 exactly, matching the stated ~500x. Clean off-the-shelf unit/geometry check. Confidence < 1 only because it assumes identical sheet resistivity and ignores contact/fringing effects, which the claim itself stipulates."}
+    },
+    {
+      "id": "c4",
+      "text": "Through spin-speed tuning, the in-plane resistivity was reduced by more than three orders of magnitude, enabling reliable lateral device operation.",
+      "quote": "the in-plane resistivity was reduced by more than three orders of magnitude, enabling reliable lateral device operation.",
+      "section": "Conclusion",
+      "page": 18,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check the >1000x resistivity-reduction claim against the resistance values reported in Sec 3.1 (1500 rpm ~10 MOhm vs higher-spin GOhm and 1000 rpm 'beyond measurable limit'), accounting for thickness to convert R to resistivity.",
+      "evidence": [
+        {"id": "e1", "kind": "text", "location": "Sec 3.1", "quote": "the lowest measured resistance (~10 MΩ) ... leading to the highest resistance values (~GΩ)", "extracted_values": {"R_low_MOhm": 10, "R_high_GOhm_approx": 1, "R_ratio_orders": 2}},
+        {"id": "e2", "kind": "text", "location": "Sec 3.1", "quote": "the film exhibits extremely high resistance beyond the measurable limit, and this condition was excluded", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-prose consistency: convert quoted resistances to resistivities using thicknesses and check the reduction exceeds 1000x; requires the unmeasured 1000-rpm/4000-rpm endpoint", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.5, "rationale": "Quoted measured resistances span 10 MOhm (1500 rpm) to ~GOhm (4000 rpm) ~ 2 orders of magnitude for RESISTANCE. The claim is about RESISTIVITY 'reduced by more than three orders'. Resistivity = R*W*t/L; with thinner high-spin films, resistivity reduction is SMALLER than resistance reduction, not larger, so 3 orders for resistivity is not obviously supported by the measured endpoints. The >3-orders figure may instead reference the unmeasured 1000-rpm 'beyond measurable limit' baseline, which has no numeric value. Cannot bind to a number; flag as needing the resistivity endpoints, not as a confirmed error."}
+    },
+    {
+      "id": "c5",
+      "text": "At room temperature the FET MR is a large positive value of 10% at 3 T, while at 78.2 K a large negative MR of approximately -9% at 3 T is observed.",
+      "quote": "Large positive MR of 10% at 3T is observed at room-temperature, whereas large negative MR of approximately -9% at 3T is observed at 78.2 K.",
+      "section": "3.3 Temperature Dependent Magnetoresistance",
+      "page": 13,
+      "epistemic_tier": "T2",
+      "predicate": "Read the MR(%) value at B=3 T for the 303.9 K (red) and 78.2 K (green) traces in Fig 3a and check they reach ~+10% and ~-9% respectively.",
+      "evidence": [
+        {"id": "e1", "kind": "figure", "location": "Figure 3a", "quote": "MR measured in the three-terminal FET geometry at 303.9 K and 78.2 K", "extracted_values": {"MR_303p9K_at_3T_pct_approx": 10, "MR_78p2K_at_3T_pct_approx": -9}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-figure value extraction at B=3 T from Fig 3a", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.78, "rationale": "Fig 3a red (303.9 K) trace rises to ~+10% near 3 T and green (78.2 K) trace falls to roughly -9 to -10% near 3 T, consistent with prose. Graph readout is approximate but the magnitudes and signs match. Note the figure legend uses 303.9 K whereas prose says 'room-temperature'; consistent."}
+    },
+    {
+      "id": "c6",
+      "text": "The FET positive MR at room temperature changes to a negative MR of similar magnitude at 77 K.",
+      "quote": "The material exhibits a small positive MR at room temperature in FET devices, which changes to a negative MR of similar magnitude at 77 K.",
+      "section": "Conclusion",
+      "page": 18,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check the temperature stated in the Conclusion (77 K) against the temperature used in Sec 3.3 and the Fig 3a legend/caption (78.2 K) for the negative-MR measurement.",
+      "evidence": [
+        {"id": "e1", "kind": "text", "location": "Conclusion p18 vs Sec 3.3 p13 / Fig 3a caption p15", "quote": "negative MR ... at 77 K  [Conclusion]  vs  -9% at 3T ... at 78.2 K  [Sec 3.3]", "extracted_values": {"T_conclusion_K": 77, "T_section_and_figure_K": 78.2}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "internal cross-consistency of stated measurement temperature (77 K vs 78.2 K)", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.6, "rationale": "Minor internal inconsistency: the Conclusion states 77 K while Sec 3.3, the Fig 3a caption, and the Fig 3a legend all state 78.2 K for the same negative-MR measurement. Most likely loose rounding of 78.2 K to 77 K rather than a separate measurement, but it is an unreconciled numeric discrepancy. Low-severity prose-vs-figure tier."}
+    },
+    {
+      "id": "c7",
+      "text": "The room-temperature low-field MR magnitude in the devices (|dR|/R ~ 10% at |B| ~ 1 T) is comparable to that reported for other hybrid lead-halide perovskites.",
+      "quote": "the magnitude of the low-field MR in our devices (|∆R|/R ∼ 10% at |B|∼ 1 T) is comparable to that reported for other hybrid lead–halide perovskites",
+      "section": "3.3",
+      "page": 13,
+      "epistemic_tier": "T2",
+      "predicate": "Check internal consistency: does the FET MR reach ~10% at B=1 T in Fig 3a (text elsewhere quotes 10% at 3 T)? Read MR at B=1 T for the 303.9 K trace.",
+      "evidence": [
+        {"id": "e1", "kind": "figure", "location": "Figure 3a (303.9 K trace)", "quote": "|∆R|/R ∼ 10% at |B|∼ 1 T", "extracted_values": {"claimed_MR_pct_at_1T": 10}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-figure: MR at B=1 T from Fig 3a vs the 10% figure-of-merit", "verifier_exists": false, "candidate_verdict": "suspect", "confidence": 0.5, "rationale": "Sec 3.3 elsewhere states the positive FET MR reaches 10% at 3 T (c5). Here the same ~10% is attributed to |B|~1 T. If the MR is monotonic and ~10% at 3 T, it would be substantially less than 10% at 1 T, so the '10% at ~1 T' framing appears internally inconsistent with the '10% at 3 T' statement. Needs Fig 3a value at 1 T; graph resolution limits certainty. Flagged as tension, not confirmed error."}
+    },
+    {
+      "id": "c8",
+      "text": "Hall-bar current paths crossing the grain boundary exhibit much larger MR of 6-8%, while paths avoiding the boundary show much smaller MR in the range 0.05-0.2%.",
+      "quote": "measurement paths that traversed across the observed grain boundary exhibit a much larger MR of 6-8%, comparable with that observed in the FET sample. However, the low resistance current paths that avoided this boundary exhibited a much smaller MR in the range of 0.05-0.2%.",
+      "section": "3.3",
+      "page": 13,
+      "epistemic_tier": "T2",
+      "predicate": "Read peak MR(%) at high |B| from Fig 3d (purple, boundary-spanning) and Fig 3b/3c (green/blue, boundary-confined) and check the boundary-spanning paths reach ~6-8% and the confined paths ~0.05-0.2%.",
+      "evidence": [
+        {"id": "e1", "kind": "figure", "location": "Figure 3b (green), 3c (blue), 3d (purple)", "quote": "purple traces correspond to paths spanning the grain boundary ... boundary-spanning paths exhibit substantially larger MR", "extracted_values": {"MR_purple_d_max_pct_approx": 6, "MR_green_b_yaxis_top_approx": 0.4, "MR_avoiding_claimed_pct": "0.05-0.2"}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-figure extraction of MR magnitudes from Fig 3b/3c/3d, with explicit y-axis units (%)", "verifier_exists": false, "candidate_verdict": "suspect", "confidence": 0.45, "rationale": "Fig 3d (purple, boundary-spanning) reaches ~6% at high B, consistent with the 6-8% claim. However, Fig 3b (green, boundary-confined) y-axis appears to span ~0.0 to ~0.4, which (if the units are %) is ABOVE the quoted 0.05-0.2% range for boundary-avoiding paths. The y-axis units on 3b/3c are not explicitly visible, creating ambiguity. If 3b/3c are in % then the 0.05-0.2% claim understates the confined-path MR; if the y-axis units differ, the comparison is unclear. Needs labeled axis / raw data; flagged as quantitative tension."}
+    },
+    {
+      "id": "c9",
+      "text": "At 1 V, Hall-bar paths avoiding the grain boundary showed resistances of approximately 10-50 MOhm, whereas paths crossing the boundary showed approximately 1.5 GOhm, corresponding to an increase of roughly two orders of magnitude.",
+      "quote": "At 1V, paths avoiding the grain boundary showed resistances of approximately 10–50 MΩ, whereas paths crossing the boundary showed resistances of approximately 1.5 GΩ, corresponding to an increase of roughly two orders of magnitude.",
+      "section": "3.2",
+      "page": 12,
+      "epistemic_tier": "T0",
+      "predicate": "Compute the resistance ratio 1.5 GOhm / (10-50 MOhm) and check it equals roughly 10^2 ('two orders of magnitude').",
+      "evidence": [
+        {"id": "e1", "kind": "number", "location": "Sec 3.2", "quote": "10–50 MΩ ... 1.5 GΩ", "extracted_values": {"R_avoid_MOhm_low": 10, "R_avoid_MOhm_high": 50, "R_cross_GOhm": 1.5, "ratio_vs_50M": 30, "ratio_vs_10M": 150}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "order-of-magnitude recompute: 1500 MOhm / 10-50 MOhm = 30 to 150x", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.78, "rationale": "1.5 GOhm = 1500 MOhm; dividing by 10-50 MOhm gives 30x to 150x. 'Roughly two orders of magnitude' (100x) sits squarely inside this 30-150x band, so the characterization is reasonable. Confidence reflects the wide quoted ranges making 'two orders' an approximation rather than exact."}
+    },
+    {
+      "id": "c10",
+      "text": "Two Arrhenius transport regimes are observed with activation energies of 0.11 eV for T > 140 K and 0.015 eV for T < 70 K, extracted from R(T) = R0 exp(Ea/(kB T)).",
+      "quote": "at high temperatures (T > 140 K), the slope yields Ea ≈ 0.11 eV, whereas at low temperatures (T < 70 K), Ea ≈ 0.015 eV is extracted.",
+      "section": "3.2",
+      "page": 11,
+      "epistemic_tier": "T2",
+      "predicate": "From the Fig 2a inset ln(R) vs 1000/T, measure the slopes in the T>140 K and T<70 K windows and convert slope*kB to Ea; check 0.11 eV and 0.015 eV. Verify the figure annotations '0.11 eV' and '0.015 eV' match the prose.",
+      "evidence": [
+        {"id": "e1", "kind": "figure", "location": "Figure 2a inset", "quote": "two Arrhenius regimes with activation energies of 0.11 eV for T > 140 K and 0.015 eV for T < 70 K", "extracted_values": {"Ea_high_eV": 0.11, "Ea_low_eV": 0.015, "axis": "ln(R) vs 1000/T(K^-1)"}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Arrhenius slope recompute from the ln(R) vs 1000/T inset (Ea = kB * slope), and prose-vs-figure label match", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.7, "rationale": "Figure 2a inset is annotated directly with '0.11 eV' and '0.015 eV' on the two slope regimes, matching the prose exactly (prose-vs-figure consistent). A full slope recompute (Ea = kB*d ln R/d(1/T)) would require digitizing the inset; sanity-wise a ~7x slope ratio between regimes is plausible for the visibly steeper high-T branch. Internal label consistency is confirmed."}
+    },
+    {
+      "id": "c11",
+      "text": "The low-temperature activation energy reported in the comparison study (Ref. 24) is slightly larger than the 0.015 eV measured here.",
+      "quote": "The low-temperature activation energy reported in Ref.[22] is indeed slightly larger than the 0.015 eV measured here.",
+      "section": "3.2",
+      "page": 11,
+      "epistemic_tier": "T7",
+      "predicate": "Resolve the citation: the sentence says 'Ref.[22]' but the comparison study described (quasi-2D mixed-n chiral perovskite FET, resistivity to 78 K) is Ref. 24 (Hu et al. 2024). Check whether the bracket number is a mislabel.",
+      "evidence": [
+        {"id": "e1", "kind": "text", "location": "Sec 3.2", "quote": "The only comparable experimental study 24 measured resistivity down to 78 K ... The low-temperature activation energy reported in Ref.[22] is indeed slightly larger", "extracted_values": {"cited_as_text_ref": 24, "cited_as_bracket": 22}},
+        {"id": "e2", "kind": "text", "location": "References", "quote": "(22) Bornside ... Spin coating: One-dimensional model.   (24) Hu, S. ... Temperature Dependence of Charge Transport ... Quasi-2D Chiral Perovskite ... FETs", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "citation-target consistency check: does Ref [22] (Bornside, spin-coating model) match the described comparison (Hu et al. quasi-2D chiral FET = Ref 24)?", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.8, "rationale": "Internal citation mismatch: the text repeatedly identifies the comparison transport study as Ref 24 (Hu et al. 2024, quasi-2D chiral perovskite FET, resistivity to 78 K), but the activation-energy sentence cites 'Ref.[22]', which is Bornside et al., a spin-coating fluid-dynamics model unrelated to activation energies. The [22] is almost certainly a typo for [24]. Off-the-shelf reference cross-check confirms the mismatch."}
+    },
+    {
+      "id": "c12",
+      "text": "At room temperature the Hall measurement yields a Hall mobility of 0.207 cm2/V.s and a sheet carrier density of 3.29 x 10^14 cm^-2.",
+      "quote": "the measured Hall coefficient corresponds to a mobility µH = 0.207 cm2 /V·s and a sheet carrier density p = 3.29 × 1014 cm−2 .",
+      "section": "3.4 Hall Transport in a Lateral Geometry",
+      "page": 16,
+      "epistemic_tier": "T0",
+      "predicate": "Given p2D and mu, verify the relations p2D = 1/(q*RH) and mu = |RH|*sigma_sheet are self-consistent, and that the implied sheet conductivity/resistance is physically plausible for the quoted device.",
+      "evidence": [
+        {"id": "e1", "kind": "equation", "location": "Sec 3.4", "quote": "p2D = 1/(qRH) ... µH = |RH| σ ... µH = 0.207 cm2 /V·s and ... p = 3.29 × 1014 cm−2", "extracted_values": {"mu_cm2Vs": 0.207, "p2D_cm2": 3.29e14, "RH_2D_cm2_per_C_implied": 18971, "sheet_R_ohm_per_sq_implied": 91648}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Hall-relation recompute: RH = 1/(q*p2D); mu = RH*sigma; check sigma_sheet = q*p2D*mu is self-consistent", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.72, "rationale": "The trio (p2D=3.29e14 cm^-2, mu=0.207 cm2/Vs, RH) is internally self-consistent: RH=1/(q*p2D)=1.90e4 cm2/C, and sigma_sheet=q*p2D*mu=1.09e-5 S/sq => sheet resistance ~92 kOhm/sq, a physically plausible value. NOTE: full closure also requires the Hall slope dVH/dB and the applied current I (not numerically reported); without I, RH cannot be independently re-derived from Fig 4, so the check confirms only mutual consistency of the three reported quantities, not the absolute extraction. See c14 for the slope/current cross-check."}
+    },
+    {
+      "id": "c13",
+      "text": "Reported Hall mobility (~0.2 cm2/V.s) and carrier density (~3 x 10^14 cm^-2) in the abstract are consistent with the precise values 0.207 cm2/V.s and 3.29 x 10^14 cm^-2 in Sec 3.4.",
+      "quote": "a Hall mobility of ∼ 0.2cm2 V−1 s−1 and a carrier density of ∼ 3 × 1014 cm−2",
+      "section": "Abstract",
+      "page": 1,
+      "epistemic_tier": "T2",
+      "predicate": "Check the abstract's rounded Hall parameters round-trip to the Sec 3.4 / Conclusion exact values (0.207 -> ~0.2; 3.29e14 -> ~3e14).",
+      "evidence": [
+        {"id": "e1", "kind": "number", "location": "Abstract vs Sec 3.4 vs Conclusion", "quote": "∼ 0.2 cm2 V−1 s−1 ... ∼ 3 × 1014 cm−2  /  0.207 cm2/V·s ... 3.29 × 1014 cm−2", "extracted_values": {"abstract_mu": 0.2, "exact_mu": 0.207, "abstract_p": 3e14, "exact_p": 3.29e14}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "rounding consistency (prose-vs-prose) across Abstract, Results, Conclusion", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.95, "rationale": "0.207 rounds to ~0.2 and 3.29e14 rounds to ~3e14; the abstract, Sec 3.4, and Conclusion all agree. The carrier density is described as '~3e14 cm^-2' in abstract but appears as a SHEET (2D, cm^-2) density throughout, dimensionally consistent. No discrepancy."}
+    },
+    {
+      "id": "c14",
+      "text": "The Figure 4 Hall-voltage axis is labeled 'VH (V)' with values spanning roughly -25 to +25, but the physical Hall voltage for this low-mobility device must be on the order of microvolts, not volts.",
+      "quote": "The resulting Hall voltage (Fig 4) VH (B) varies linearly with B over the full range, and the positive slope of VH confirms p-type transport in the film.",
+      "section": "3.4 / Figure 4",
+      "page": 16,
+      "epistemic_tier": "T2",
+      "predicate": "Sanity-check the Fig 4 y-axis units against physics: with RH=1/(q*p2D)~1.9e4 cm2/C and a microamp-scale current, dVH/dB should be ~uV/T; a span of tens of VOLTS over +/-3 T would imply an impossible ~amp-scale current. Cross-check against the stated noise floor (~10 uV) and electrometer use.",
+      "evidence": [
+        {"id": "e1", "kind": "figure", "location": "Figure 4", "quote": "y-axis labeled 'VH (V)', tick values approximately -20, 0, 20; B from -3 to 3 T", "extracted_values": {"VH_axis_label_unit": "V", "VH_span_approx": 50, "implied_current_if_volts_A": 4.4, "implied_current_if_microvolts_A": 4.4e-6}},
+        {"id": "e2", "kind": "text", "location": "Characterization Techniques", "quote": "their noise levels (∼ 10 µV) are low enough to resolve small signals", "extracted_values": {"noise_uV": 10}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "unit-consistency check on Fig 4 axis: physically the Hall voltage must be in uV; a 'V' label is dimensionally inconsistent with the ~10 uV noise floor and uA currents", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.82, "rationale": "If the Fig 4 y-axis (span ~50 over +/-3 T) were truly in Volts, the implied current would be ~4.4 A (slope=RH_sheet*I), absurd for a GOhm-class device limited to <10 pA leakage with a uA source. In uV, the implied current is ~4.4 uA, exactly the right scale. The methods quote a ~10 uV noise floor and >100 TOhm electrometers used precisely because signals are tiny. The '(V)' axis label is therefore almost certainly a units error for 'uV'. The reported p2D/mu (c12) are unaffected if the underlying analysis used the correct uV values; this is a figure-labeling integrity flag."}
+    },
+    {
+      "id": "c15",
+      "text": "The Hall voltage varies linearly with B over the full -3 T to +3 T range and has a positive slope, confirming p-type transport.",
+      "quote": "The resulting Hall voltage (Fig 4) VH (B) varies linearly with B over the full range, and the positive slope of VH confirms p-type transport in the film.",
+      "section": "3.4",
+      "page": 16,
+      "epistemic_tier": "T4",
+      "predicate": "Inspect Fig 4: is VH(B) monotonic/linear with positive slope across +/-3 T? Does a positive Hall slope correspond to p-type (holes) given the measurement convention?",
+      "evidence": [
+        {"id": "e1", "kind": "figure", "location": "Figure 4", "quote": "VH increases from ~-25 (at -3 T) to ~+30 (at +3 T) through ~0 near B=0, approximately linear", "extracted_values": {"slope_sign": "positive", "linearity": "approx linear with scatter"}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "claim<->figure support: linear fit residuals + sign-of-slope-to-carrier-type convention check", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.7, "rationale": "Fig 4 shows a clearly positive, approximately linear VH(B) with moderate scatter and error bars, consistent with the linear/positive-slope claim. The sign->p-type assignment depends on the wiring/field convention (not independently verifiable from the figure), but it is corroborated by the independent gate-response p-type evidence (c16), so the conclusion is internally consistent. Linearity is qualitative; data scatter is non-trivial."}
+    },
+    {
+      "id": "c16",
+      "text": "Gate-dependent FET measurements show decreasing resistivity with increasing negative gate voltage (significant response only for VGS < 0), indicating p-type (hole-majority) conduction, with no significant hysteresis between forward and reverse sweeps.",
+      "quote": "The decreasing resistivity with increasing negative VGS suggests p-type semiconducting behavior with holes, as the majority carriers. ... No significant hysteresis was observed",
+      "section": "3.2 Gate-Tunable and Temperature-Dependent Longitudinal Transport",
+      "page": 9,
+      "epistemic_tier": "T4",
+      "predicate": "Check Fig 2a: do the output curves show enhanced current/lower resistance at more negative VGS (e.g., VGS=-150 V vs 0 V)? Is the gate response consistent with the p-type assignment and with the Hall result?",
+      "evidence": [
+        {"id": "e1", "kind": "figure", "location": "Figure 2a", "quote": "VGS = -150V, -100V, -50V, 0V output characteristics; strong gate response for negative bias", "extracted_values": {"VGS_values_V": [-150, -100, -50, 0]}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "claim<->figure support: monotonic current increase with more-negative VGS in Fig 2a", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.75, "rationale": "Fig 2a shows the VGS=-150 V trace with markedly higher slope (lower resistance) than 0 V, and the response strengthens with more negative bias, consistent with p-type accumulation. Agrees independently with the Hall p-type result (c12/c15), strengthening support. Hysteresis claim not separately quantified in figure but stated as checked in both sweep directions."}
+    },
+    {
+      "id": "c17",
+      "text": "Magnetoresistance is defined as MR(B) = [R(B) - R(0)] / R(B).",
+      "quote": "MR, where MR(B) = [R(B) − R(0)]/R(B), was measured for both the FET and Hall-bar devices",
+      "section": "3.3",
+      "page": 13,
+      "epistemic_tier": "T3",
+      "predicate": "Assess whether the MR definition with denominator R(B) (rather than the conventional R(0)) is standard/appropriate, and whether it is applied consistently when comparing % values to literature.",
+      "evidence": [
+        {"id": "e1", "kind": "equation", "location": "Sec 3.3", "quote": "MR(B) = [R(B) − R(0)]/R(B)", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "method-appropriateness review of MR normalization convention (R(B) vs R(0) denominator)", "verifier_exists": false, "candidate_verdict": "suspect", "confidence": 0.55, "rationale": "The conventional MR definition normalizes by the zero-field resistance R(0): MR = [R(B)-R(0)]/R(0). This paper normalizes by R(B). For small MR (~percent) the two are numerically close, so the quoted ~10% values are not materially affected, but the non-standard denominator can bias comparisons to literature (c7) and slightly distorts large-MR values. Worth a methods flag; not an arithmetic error in the small-MR regime."}
+    },
+    {
+      "id": "c18",
+      "text": "In-plane resistance measurements were obtained down to 38 K, which the authors state is the lowest temperature reported for in-plane transport in this material, versus prior chiral-HOIP FET studies reported down to 77-78 K.",
+      "quote": "In-plane resistance measurements were performed down to 38 K ... in prior temperature-dependent chiral-HOIP FET studies measurements were reported down to 77–78 K 24,25 .",
+      "section": "3.2 / Conclusion",
+      "page": 10,
+      "epistemic_tier": "T5",
+      "predicate": "Verify against the cited prior works (Refs 24, 25 = Hu et al. 2024, 2023) that their reported low-T limit is ~77-78 K, and that no prior in-plane study of R-(MBA)2PbI4 reached below 38 K.",
+      "evidence": [
+        {"id": "e1", "kind": "text", "location": "Sec 3.2", "quote": "the sample resistance exceeds 200 GΩ ... reliable resistance measurements could therefore not be obtained at lower temperatures [than 38 K]", "extracted_values": {"T_min_K": 38}},
+        {"id": "e2", "kind": "text", "location": "References 24, 25", "quote": "Hu, S. ... Temperature Dependence of Charge Transport ... Quasi-2D Chiral Perovskite ... FETs (2024); ... Photo-Field-Effect Transistors with Chiral Selectivity (2023)", "extracted_values": {"prior_Tmin_K_claimed": "77-78"}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "external literature check of the 77-78 K prior low-T limit in Refs 24/25 and a novelty/priority search for any lower-T in-plane R-(MBA)2PbI4 transport", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.4, "rationale": "The 38 K self-reported limit is internally supported by the 200 GOhm setup ceiling. The comparative novelty claim ('lowest reported') requires reading Refs 24/25 and a broader literature search to confirm no in-plane study went below 38 K; not resolvable from this PDF alone. T5 external check needed."}
+    },
+    {
+      "id": "c19",
+      "text": "Comparable Hall mobility values (~0.1-1 cm2/V.s) have been reported in related undoped 2D lead-iodide perovskites such as (PEA)2PbI4.",
+      "quote": "undoped 2D lead-iodide perovskites such as (PEA)2 PbI4 typically exhibit mobilities on the order of ∼0.1–1 cm2 /V·s 14 .",
+      "section": "3.4",
+      "page": 16,
+      "epistemic_tier": "T5",
+      "predicate": "Check the cited reference (Ref 14, Chen et al. Nat Commun 2016, Hall/photoconductivity) actually reports ~0.1-1 cm2/V.s mobilities for (PEA)2PbI4 or comparable 2D lead-iodide perovskites.",
+      "evidence": [
+        {"id": "e1", "kind": "text", "location": "Sec 3.4 + Ref 14", "quote": "(14) Chen, Y. ... Extended carrier lifetimes and diffusion in hybrid perovskites revealed by Hall effect and photoconductivity measurements. Nature Communications 2016, 7, 12253.", "extracted_values": {"mobility_range_cm2Vs": "0.1-1"}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "literature value check against Ref 14 for (PEA)2PbI4 / 2D lead-iodide perovskite Hall mobilities", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.4, "rationale": "Plausible range and an on-topic citation, but confirming the specific ~0.1-1 cm2/V.s for (PEA)2PbI4 requires reading Ref 14. The measured 0.207 cm2/V.s falls inside the cited band, so the comparison is at least self-consistent. T5 external verification needed."}
+    },
+    {
+      "id": "c20",
+      "text": "Cheng et al. demonstrated in related Pb-based hybrid perovskites that current parallel to the Pb-I plane is approximately two orders of magnitude larger than current perpendicular to the plane, with the perpendicular direction interpreted as tunneling through organic barriers.",
+      "quote": "Cheng et al. demonstrated this anisotropy directly ... current measured parallel to the Pb–I plane was approximately two orders of magnitude larger than current measured perpendicular to the plane; the perpendicular transport direction was further interpreted as tunneling through organic barriers",
+      "section": "3.3",
+      "page": 14,
+      "epistemic_tier": "T5",
+      "predicate": "Check Ref 36 (Cheng et al., Layer-edge device of 2D hybrid perovskites, Nat Commun 2018) for the stated ~100x parallel/perpendicular anisotropy and the tunneling interpretation.",
+      "evidence": [
+        {"id": "e1", "kind": "text", "location": "Sec 3.3 + Ref 36", "quote": "(36) Cheng, B. ... Layer-edge device of two-dimensional hybrid perovskites. Nature Communications 2018, 9, 5196.", "extracted_values": {"anisotropy_orders": 2}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "literature check of Ref 36 for the ~2-orders parallel-vs-perpendicular current anisotropy", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.4, "rationale": "Attribution is specific and citation is on-topic, but the ~100x figure must be confirmed against Ref 36. Not resolvable from this PDF."}
+    },
+    {
+      "id": "c21",
+      "text": "Percent-level positive room-temperature MR approaching 10% has been reported in out-of-plane MAPbI3 devices.",
+      "quote": "percent-level positive room-temperature MR approaching 10% has been reported in out-of-plane MAPbI3 devices. 30",
+      "section": "3.4",
+      "page": 17,
+      "epistemic_tier": "T5",
+      "predicate": "Check Ref 30 (Banerjee & Paul, Phys Rev Applied 2020, room-temperature MR in hybrid halide perovskites) reports ~10% positive room-temperature MR in MAPbI3.",
+      "evidence": [
+        {"id": "e1", "kind": "text", "location": "Sec 3.4 + Ref 30", "quote": "(30) Banerjee, A.; Paul, G. Room-temperature Magnetoresistance in Hybrid Halide Perovskites: Effect of Spin-Orbit Coupling. Physical Review Applied 2020, 14, 064018.", "extracted_values": {"MR_pct": 10}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "literature value check against Ref 30 for ~10% room-T MR in MAPbI3", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.4, "rationale": "On-topic citation; the ~10% MAPbI3 figure needs confirmation from Ref 30. Cannot resolve from this PDF."}
+    },
+    {
+      "id": "c22",
+      "text": "The contact resistance extracted from multi-terminal structures averaged ~50 kOhm and was negligible compared to the film resistance; three- and four-wire measurements showed contact resistance never exceeded 5% for any Hall-bar current path.",
+      "quote": "The contact resistance extracted from multi-terminal structures averaged ∼ 50 kΩ and was negligible compared to the film resistance. ... contact resistance never exceeded 5% for any current path",
+      "section": "3.1 / 3.2",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Check internal consistency: 50 kOhm contact resistance vs film resistances of 10 MOhm (1500 rpm) to GOhm; is 50 kOhm <5% of these? (50k/10M = 0.5%).",
+      "evidence": [
+        {"id": "e1", "kind": "number", "location": "Sec 3.1/3.2", "quote": "averaged ∼ 50 kΩ ... contact resistance never exceeded 5%", "extracted_values": {"Rc_kOhm": 50, "R_film_low_MOhm": 10, "fraction_pct": 0.5}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "ratio recompute: 50 kOhm / 10 MOhm = 0.5% < 5%", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "50 kOhm is 0.5% of the 10 MOhm lowest film resistance and far less for GOhm paths, fully consistent with 'negligible' and 'never exceeded 5%'. Clean internal arithmetic check. The 5% bound is the looser worst-case statement and is comfortably satisfied."}
+    },
+    {
+      "id": "c23",
+      "text": "Films prepared at spin speeds above 1000 rpm exhibit a strong (002) diffraction peak whose position is unchanged across all spin speeds, with the 1500 rpm film giving the highest (002) intensity; the 1000 rpm film shows very weak/poorly resolved (002).",
+      "quote": "The position of the main (002) diffraction peak remains unchanged across all spin speeds ... A slight enhancement in the (002) peak intensity is observed for the 1500 rpm film ... The film deposited at 1000 rpm shows very weak and poorly resolved (002) reflections.",
+      "section": "3.1",
+      "page": 8,
+      "epistemic_tier": "T2",
+      "predicate": "Inspect Fig 1e XRD: do all >1000 rpm films share the same (002) peak position (2theta)? Is the 1500 rpm trace the most intense? Are higher-order (004)/(006)/(008) reflections present?",
+      "evidence": [
+        {"id": "e1", "kind": "figure", "location": "Figure 1e", "quote": "XRD patterns ... (002), (004), (006), (008) reflections labeled; traces for 1500/2000/3000/4000 rpm", "extracted_values": {"reflections": ["002", "004", "006", "008"], "highest_intensity_rpm": 1500}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-figure: XRD peak-position invariance and 1500 rpm peak-intensity ranking from Fig 1e", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.6, "rationale": "Fig 1e shows a series of (00l) reflections at common 2theta positions across spin speeds, with the 1500 rpm trace (top) appearing most intense, consistent with the prose. The 1000 rpm trace is not in the main panel (caption notes films 'spun above 1000 rpm'), so the 'very weak 1000 rpm' sub-claim is only partly checkable from Fig 1e. Visual ranking of intensities from the stacked plot is approximate."}
+    },
+    {
+      "id": "c24",
+      "text": "At T < 38 K the sample resistance exceeds 200 GOhm, approaching the limits of the measurement setup, and the setup leakage current was verified to be < 10 pA using a 200 GOhm test load.",
+      "quote": "Using a 200 GΩ test load under the same measurement conditions, the leakage current of our setup was verified to be < 10 pA ... At T < 38 K, the sample resistance exceeds 200 GΩ",
+      "section": "3.2",
+      "page": 10,
+      "epistemic_tier": "T0",
+      "predicate": "Sanity-check Ohm's law: for a 200 GOhm load and the low excitation voltages used, is a leakage current <10 pA consistent (V = I*R => with I<10 pA and R=200 GOhm, V<2 V)?",
+      "evidence": [
+        {"id": "e1", "kind": "number", "location": "Sec 3.2", "quote": "200 GΩ test load ... leakage current ... < 10 pA", "extracted_values": {"R_load_GOhm": 200, "I_leak_pA": 10, "implied_V_max": 2.0}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Ohm's-law unit check: 10 pA * 200 GOhm = 2 V", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.8, "rationale": "10 pA x 200 GOhm = 2 V, consistent with the 'low excitation voltages' (sub-2 V) used and with measurements stated up to ~1.5 V. Internally coherent. The 200 GOhm setup ceiling also frames the 38 K limit (c18). Cannot confirm the actual leakage measurement, only its dimensional plausibility."}
+    },
+    {
+      "id": "c25",
+      "text": "Platinum contacts (40 nm Pt / 10 nm Ti) were used instead of gold because gold is known to diffuse into and chemically react with halide perovskites, damaging the film at the interface.",
+      "quote": "Gold contacts have been shown to diffuse into and chemically react with halide perovskites ... we employed platinum contacts ... using a 40 nm Pt layer with a 10 nm Ti adhesion layer for all devices.",
+      "section": "Experimental Details",
+      "page": 4,
+      "epistemic_tier": "T1",
+      "predicate": "Verify the fixed-knowledge claim that Au diffuses into/reacts with halide perovskites (cited Ref 21) and that Pt is a more stable contact; this is established materials-science background.",
+      "evidence": [
+        {"id": "e1", "kind": "text", "location": "Experimental Details + Ref 21", "quote": "(21) Lai, Z. ... Contact Engineering of Halide Perovskites: Gold is Not Good Enough; Metalloid is Better. Small Methods 2023.", "extracted_values": {"Pt_nm": 40, "Ti_nm": 10}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "fixed-knowledge / literature check that Au-perovskite interdiffusion is established and Pt is more stable (Ref 21)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.75, "rationale": "Au migration into halide perovskites is a well-documented degradation pathway in the literature, and the cited Ref 21 title directly supports the contention. Standard, low-risk background claim; confidence reflects not having independently re-read Ref 21."}
+    },
+    {
+      "id": "c26",
+      "text": "The S-shaped current-voltage characteristics of the FET devices indicate charge transport limited by Schottky barriers at the metal-semiconductor contacts.",
+      "quote": "The S-shaped current–voltage characteristics are indicative of charge transport limited by Schottky barriers at the metal–semiconductor contacts.",
+      "section": "3.2",
+      "page": 9,
+      "epistemic_tier": "T4",
+      "predicate": "Check Fig 1f / 2a: are the I-V curves genuinely S-shaped (sublinear near zero bias, saturating/steepening at higher |V|)? Is the Schottky-barrier interpretation supported by the shape?",
+      "evidence": [
+        {"id": "e1", "kind": "figure", "location": "Figure 1f", "quote": "I_SD vs V_SD curves with sigmoidal/S-shape; flat region near V=0 for 1500/2000 rpm and steepening at higher |V|", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "claim<->figure support: confirm S-shaped (non-ohmic) I-V morphology in Fig 1f/2a consistent with back-to-back Schottky contacts", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.6, "rationale": "Fig 1f traces (esp. 1500/2000 rpm) show a flattened low-bias region with steeper current at higher |V_SD|, an S/sigmoidal shape consistent with contact-limited (Schottky) transport. The interpretation is qualitative and one of several possible (space-charge-limited, grain-boundary) explanations, so moderate confidence."}
+    },
+    {
+      "id": "c27",
+      "text": "The high hole density (~3e14 cm^-2) suggests unintentional p-type doping likely from defect states, consistent with halide vacancies acting as shallow acceptors in lead-halide perovskites.",
+      "quote": "This relatively high hole density suggests potential unintentional p-type doping, likely associated with defect states, and is consistent with prior observations in lead–halide perovskites, where halide vacancies are known to act as shallow acceptors.",
+      "section": "3.4",
+      "page": 16,
+      "epistemic_tier": "T5",
+      "predicate": "Assess the literature-grounded mechanistic claim that halide vacancies act as shallow acceptors causing unintentional p-doping in lead-halide perovskites.",
+      "evidence": [
+        {"id": "e1", "kind": "text", "location": "Sec 3.4", "quote": "halide vacancies are known to act as shallow acceptors", "extracted_values": {"p_cm2": 3.29e14}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "literature/theory check on halide-vacancy shallow-acceptor behavior and unintentional p-doping in lead-halide perovskites", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.4, "rationale": "Mechanistic attribution is plausible and broadly consistent with defect-chemistry literature, but the specific 'halide vacancies = shallow acceptors' statement is debated (iodine vacancies are often donors; the doping sign depends on the dominant defect) and is not cited here to a specific reference. Requires external literature adjudication; recorded as inconclusive."}
+    },
+    {
+      "id": "c28",
+      "text": "The low Hall mobility implies a small classical orbital MR (tan(thetaH) ~ muB, orbital MR ~ (muB)^2), so the observed percent-level room-temperature MR cannot be a purely classical orbital effect and instead reflects path-dependent grain-boundary/anisotropic transport.",
+      "quote": "the low Hall mobility extracted here would normally imply a very small classical MR, making the observed percent-level room-temperature MR suggestive of an additional transport contribution.",
+      "section": "3.4",
+      "page": 17,
+      "epistemic_tier": "T0",
+      "predicate": "Estimate the classical orbital MR magnitude (muB)^2 using mu=0.207 cm2/Vs at B=3 T and check it is orders of magnitude below the observed ~10%, justifying the 'non-classical' inference.",
+      "evidence": [
+        {"id": "e1", "kind": "equation", "location": "Sec 3.4", "quote": "tan θH ∼ µB, while the ordinary orbital magnetoresistance is expected to scale approximately as (µB)2", "extracted_values": {"mu_SI_m2Vs": 2.07e-5, "B_T": 3, "muB": 6.21e-5, "muB_squared": 3.86e-9}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "order-of-magnitude recompute: (mu*B)^2 = (0.207e-4 m2/Vs * 3 T)^2 ~ 4e-9, i.e. ~1e-7 %, vs observed ~10%", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.8, "rationale": "(mu*B) = 2.07e-5 m2/Vs * 3 T = 6.2e-5, so (muB)^2 ~ 3.9e-9 (~4e-7 %), about 8 orders of magnitude below the observed ~10% MR. This strongly supports the paper's logic that the observed MR is not classical orbital MR. Clean physics recompute; the qualitative conclusion (additional mechanism needed) follows directly."}
+    },
+    {
+      "id": "c29",
+      "text": "This work demonstrates the first robust lateral device integration / first direct Hall response and Hall-effect characterization of R-(MBA)2PbI4 thin films under dark conditions.",
+      "quote": "enabling the first robust lateral device integration ... To the best of our knowledge, these measurements represent the first Hall-effect characterization of R-(MBA)2 PbI4 thin films under dark conditions.",
+      "section": "Abstract / Conclusion",
+      "page": 1,
+      "epistemic_tier": "T5",
+      "predicate": "Novelty/priority claim: search the literature for any prior in-plane Hall-effect or lateral device characterization of R-(MBA)2PbI4 (n=1) thin films under dark conditions.",
+      "evidence": [
+        {"id": "e1", "kind": "text", "location": "Abstract/Conclusion", "quote": "the first Hall-effect characterization of R-(MBA)2 PbI4 thin films under dark conditions", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "external priority search across literature for prior dark in-plane Hall / lateral transport of R-(MBA)2PbI4", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.35, "rationale": "A 'first/to the best of our knowledge' claim is only checkable via external literature search; not resolvable from the PDF. The paper qualifies it ('to the best of our knowledge'), and the prior-art it cites (photo-Hall, vertical spin valves, quasi-2D mixed-n FETs) is distinct, lending plausibility. Recorded inconclusive pending T5 search."}
+    },
+    {
+      "id": "c30",
+      "text": "Hall voltages showed minimal hysteresis and the raw Hall data (SI Fig S3 / Fig 7) exhibit the expected odd-in-field symmetry Vxy(B) ~ -Vxy(-B) with minimal sweep-direction hysteresis, indicating the reported Hall response is intrinsic and not a signal-mixing artifact.",
+      "quote": "The traces exhibit the expected odd-in-field symmetry, Vxy (B) ≈ −Vxy (−B), with minimal sweep-direction hysteresis ... This data confirms that the reported Hall response is intrinsic rather than an artifact of signal mixing.",
+      "section": "Supporting Information (Fig 7 / S3)",
+      "page": 29,
+      "epistemic_tier": "T2",
+      "predicate": "Inspect SI Fig 7 raw Vxy(B) for +I and -I: do the traces satisfy odd-in-field symmetry with small even-in-B background, and do sweep-up vs sweep-down overlap (minimal hysteresis)?",
+      "evidence": [
+        {"id": "e1", "kind": "figure", "location": "SI Figure 7 (and Fig S3 referenced)", "quote": "Raw Hall voltage Vxy versus magnetic field B for +I (left) and −I (right) ... Blue circles denote sweep up and orange squares denote sweep down", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-SI-figure check of odd-in-B symmetry and sweep-up/down overlap in Fig 7; also resolve SI cross-reference labeling", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.4, "rationale": "SI Fig 7 is described as raw Vxy(B) supporting odd-in-field symmetry; qualitatively the symmetrization/antisymmetrization procedure in Sec 3.4 is the correct standard treatment. NOTE a cross-reference inconsistency: the main text twice points the 'raw Hall data' AND the 'breakdown voltage vs thickness' to 'Supplementary Fig. S3', but the SI shows raw Hall as Fig 7 and breakdown-vs-thickness as Fig 5(D); the S-numbering vs Figure-numbering is inconsistent. Full symmetry verification needs the raw datapoints, which are only shown graphically."}
+    },
+    {
+      "id": "c31",
+      "text": "The 1500 rpm film had an average thickness of ~300 nm and the lowest measured resistance (~10 MOhm); higher spin speeds gave thinner films (2000 rpm ~225 nm, 3000 rpm ~165 nm, 4000 rpm ~100 nm) with monotonically increasing resistance into the GOhm range.",
+      "quote": "At 1500 rpm, the resulting film had an average thickness of ∼ 300 nm ... lowest measured resistance (∼ 10 MΩ) ... 2000 rpm ... (∼ 225 nm) ... 3000 rpm (∼ 165 nm) and 4000 rpm (∼ 100 nm) ... highest resistance values (∼ GΩ).",
+      "section": "3.1",
+      "page": 7,
+      "epistemic_tier": "T2",
+      "predicate": "Check monotonic thickness-vs-spin-speed trend (300 > 225 > 165 > 100 nm as rpm increases) and that resistance rises monotonically; cross-reference the thicknesses to Fig 1f legend ordering and Fig 1a-d SEM panels.",
+      "evidence": [
+        {"id": "e1", "kind": "number", "location": "Sec 3.1 / Fig 1", "quote": "~300 nm (1500), ~225 nm (2000), ~165 nm (3000), ~100 nm (4000)", "extracted_values": {"t_1500": 300, "t_2000": 225, "t_3000": 165, "t_4000": 100}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "monotonicity check of thickness vs spin speed and resistance vs spin speed (prose-vs-figure)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "Thicknesses decrease monotonically with increasing spin speed (300>225>165>100 nm), as physically expected, and resistance increases monotonically (10 MOhm -> GOhm). Internally consistent and consistent with Fig 1f trace magnitudes (1500 rpm most conductive). Thickness values are rounded but ordering is unambiguous."}
+    },
+    {
+      "id": "c32",
+      "text": "The Hall coefficient/mobility/density were extracted under dark conditions on a 1500 rpm morphology-optimized film, using symmetric field sweeps -3 T to +3 T with current-odd and field-antisymmetric post-processing and standard error propagation.",
+      "quote": "VH (B) = (1/4)[Vxy(+B,+I) - Vxy(+B,-I) - Vxy(-B,+I) + Vxy(-B,-I)]. Uncertainties in VH (B) were calculated by using standard error propagation and the measured standard deviation in Vxy.",
+      "section": "3.4",
+      "page": 16,
+      "epistemic_tier": "T3",
+      "predicate": "Assess method appropriateness: is the current-odd + field-antisymmetric extraction of VH the correct standard procedure to remove longitudinal/offset/even-in-B contamination from Hall data?",
+      "evidence": [
+        {"id": "e1", "kind": "equation", "location": "Sec 3.4", "quote": "Vxy_odd,I(B) = (1/2)[Vxy(B,+I) - Vxy(B,-I)] ... VH(B) = (1/4)[Vxy(+B,+I) - Vxy(+B,-I) - Vxy(-B,+I) + Vxy(-B,-I)]", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "method-appropriateness review of the symmetrization formula for Hall-voltage extraction", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "The (1/4)[...] current-odd, field-antisymmetric combination is the textbook-standard way to isolate the true Hall voltage and reject longitudinal mixing, thermal/offset (even-in-B), and contact-misalignment artifacts. The formula is algebraically correct (averages the odd-I component and antisymmetrizes in B). Appropriate, well-justified methodology."}
+    }
+  ],
+  "paper_level_notes": "arXiv:2606.13664v1 [cond-mat.mtrl-sci], 11 Jun 2026, 29 pages incl. Supporting Information. Authors: Aslam, Saiter, Lloyd, Kliewer (Colorado School of Mines), Hautzinger, Beard ('National Laboratory of the Rockies' - an apparently anonymized/pseudonymized stand-in for what is contextually NREL given CHOISE EFRC, Golden CO, and DOE contract DE-AC36-08GO28303 which is NREL's), corresponding author Singh (msingh@mines.edu). Funding: DOE BES Award SC0024115; CHOISE EFRC. The PDF is heavily figure-based; main quantitative results live in Figures 1-4 (raster images) and their captions; numerical tables are absent, so most numbers are read from plots or stated only in prose. DATA/REPRODUCIBILITY: no data-availability statement, no repository/DOI, no SI data files beyond plotted figures; raw Hall traces shown graphically (SI Fig 7) but not tabulated, so independent recompute of RH/mu/p2D is blocked by the missing Hall slope and applied-current values (T6 effectively not reproducible from the paper alone). KEY CHECKABLE FRONTIER (T0-T2): thickness ratio ~3x (c1, supported), Hall-bar 500x geometry (c3, supported), contact-resistance <5% (c22, supported), Hall parameter self-consistency (c12, supported), classical-MR order-of-magnitude (c28, supported), grain-boundary R ratio ~2 orders (c9, supported). FLAGS WORTH HUMAN/VERIFIER ATTENTION: (1) Figure 4 Hall-voltage y-axis labeled '(V)' but physically must be microvolts (c14) - units error, ~10 uV noise floor and uA currents confirm; (2) R4000/R1500~850 (c2) not reproducible from Fig 1f readout (~357), needs raw I-V; (3) >3 orders-of-magnitude RESISTIVITY reduction (c4) not supported by the ~2-orders RESISTANCE span actually quoted; (4) citation typo 'Ref.[22]' should be [24] (c11); (5) 77 K vs 78.2 K inconsistency (c6); (6) non-standard MR denominator R(B) vs conventional R(0) (c17); (7) boundary-avoiding MR 0.05-0.2% may conflict with Fig 3b/3c y-axis scale ~0.4 if those panels are in % (c8); (8) SI cross-reference mislabeling: 'Supplementary Fig. S3' cited for BOTH raw Hall data and breakdown-vs-thickness, but SI shows raw Hall as Fig 7 and breakdown as Fig 5D (c30). No fabrication/integrity red flags detected; discrepancies are consistent with typos and loose rounding rather than misconduct. Off-the-shelf checks that apply: unit-consistency (c14, c24), ratio/percent-change (c1, c3, c9, c22, c28), prose-vs-figure (c5, c8, c10, c23, c31), citation cross-check (c11). statcheck/GRIM/p-value tools do NOT apply (no NHST statistics). Judge each claim on its own merits; deterministic frontier is the strongest evidence here."
+}

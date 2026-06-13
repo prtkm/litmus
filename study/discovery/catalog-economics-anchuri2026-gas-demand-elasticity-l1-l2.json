@@ -1,0 +1,513 @@
+{
+  "paper_id": "economics-anchuri2026-gas-demand-elasticity-l1-l2",
+  "title": "Price Elasticity of Gas Demand on L1 and L2: Evidence from Ethereum and Arbitrum",
+  "doi": null,
+  "domain": "Econometrics / blockchain mechanism design (econ.EM); IV panel estimation of demand elasticity",
+  "n_pages_read": 30,
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The pooled IV elasticity on Ethereum L1 is -0.0059 (SE=0.0005), reported as -0.006 in the abstract/conclusion.",
+      "quote": "The pooled elasticity is −0.0059∗∗∗ (SE = 0.0005)",
+      "section": "6.2 IV Estimates / Table 6",
+      "page": 12,
+      "epistemic_tier": "T2",
+      "predicate": "Check that the abstract/intro/conclusion value -0.006 is the rounding of the Table 6 pooled L1 IV estimate -0.0059, consistent across abstract, Contributions, Sec 6.2, Table 6, and Conclusion.",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 6 (Pooled row)", "quote": "Pooled 44,449 (100%) −0.0074 −0.0059∗∗∗ 0.0005 11,873,625", "extracted_values": {"beta_IV": -0.0059, "beta_OLS": -0.0074, "SE": 0.0005, "partial_F": 11873625, "n_wallets": 44449}},
+        {"id": "e2", "kind": "number", "location": "Abstract", "quote": "the pooled IV elasticity is −0.006∗∗∗ , near-inelastic", "extracted_values": {"beta_abstract": -0.006}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Cross-consistency: round(-0.0059, 3) = -0.006 and confirm the same value is used in Abstract, Contributions, Sec 6.2, Table 6, Conclusion.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.96, "rationale": "round(-0.0059,3) = -0.006 exactly; the value is reported identically across all five locations. Off-the-shelf prose-vs-table / rounding-consistency check covers it."}
+    },
+    {
+      "id": "c2",
+      "text": "A 10% fee increase reduces total L1 gas demand by approximately 0.06%.",
+      "quote": "a 10% fee increase reduces total gas demand by approximately 0.06%",
+      "section": "Abstract / 6.2 / Sec 1 (contributions)",
+      "page": 1,
+      "epistemic_tier": "T0",
+      "predicate": "Compute |beta| * 10% in a log-log elasticity model: for a 10% price increase the predicted percentage change in demand is approximately beta*10 (small-change approximation). Check 0.006*10 = 0.06% (or 0.0059*10 = 0.059%).",
+      "evidence": [
+        {"id": "e3", "kind": "number", "location": "Abstract / Sec 6.2", "quote": "a 10% fee increase reduces total gas demand by approximately 0.06%", "extracted_values": {"beta": -0.006, "pct_fee_increase": 10, "claimed_pct_demand_drop": 0.06}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Percent-change recompute: 0.006*10 = 0.06 (log-log elasticity, small-change linearization).", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.95, "rationale": "In a log-log model beta is the elasticity, so dln(g)=beta*dln(p); for a 10% fee rise the demand change is approximately -0.006*10% = -0.06% (exact in the differential limit; -0.59% under the precise -0.0059). Matches the stated 0.06%. Standard percent-change / elasticity check."}
+    },
+    {
+      "id": "c3",
+      "text": "The pooled IV elasticity on Arbitrum L2 is -0.0359 (SE=0.0141), reported as -0.036 in the abstract/conclusion.",
+      "quote": "The pooled elasticity is −0.0359∗∗ (SE = 0.0141)",
+      "section": "7.2 IV Estimates / Table 7",
+      "page": 15,
+      "epistemic_tier": "T2",
+      "predicate": "Check the abstract value -0.036 is the rounding of the Table 7 pooled L2 IV estimate -0.0359, consistent across abstract, Sec 7.2, Table 7, Sec 9, and Conclusion.",
+      "evidence": [
+        {"id": "e4", "kind": "table", "location": "Table 7 (Pooled row)", "quote": "Pooled 23,119 (100%) −0.0161 −0.0359∗∗ 0.0141 118,405", "extracted_values": {"beta_IV": -0.0359, "beta_OLS": -0.0161, "SE": 0.0141, "partial_F": 118405, "n_wallets": 23119}},
+        {"id": "e5", "kind": "number", "location": "Abstract", "quote": "the pooled IV elasticity is −0.036∗∗", "extracted_values": {"beta_abstract": -0.036}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "round(-0.0359,3) = -0.036; confirm same value across abstract, Sec 7.2, Table 7, Sec 9, Conclusion.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.96, "rationale": "round(-0.0359,3) = -0.036 exactly; reported consistently everywhere. Off-the-shelf rounding / prose-vs-table check."}
+    },
+    {
+      "id": "c4",
+      "text": "The L2 pooled elasticity is six times larger in magnitude than the Ethereum (L1) estimate.",
+      "quote": "The pooled elasticity is −0.0359∗∗ (SE = 0.0141), six times larger in magnitude than the Ethereum estimate.",
+      "section": "7.2 IV Estimates",
+      "page": 15,
+      "epistemic_tier": "T0",
+      "predicate": "Compute the ratio of the two pooled magnitudes: |beta_L2|/|beta_L1| = 0.0359/0.0059 (or rounded 0.036/0.006) and compare to 'six times'.",
+      "evidence": [
+        {"id": "e6", "kind": "statistic", "location": "Tables 6 & 7 (pooled)", "quote": "−0.0059 (L1); −0.0359 (L2)", "extracted_values": {"beta_L1": -0.0059, "beta_L2": -0.0359}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Ratio recompute 0.0359/0.0059 = 6.08; and rounded 0.036/0.006 = 6.0; compare to 'six times larger'.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.95, "rationale": "0.0359/0.0059 = 6.08 (and the rounded values give exactly 6.0). 'Six times larger in magnitude' is accurate. Off-the-shelf ratio / percent-change check; this is the genuine source of the abstract's '6x'."}
+    },
+    {
+      "id": "c5",
+      "text": "A 10% fee increase on Arbitrum reduces total gas demand by an estimated 0.36%.",
+      "quote": "A 10% fee increase on Arbitrum reduces total gas demand by an estimated 0.36%",
+      "section": "7.2 / Abstract",
+      "page": 15,
+      "epistemic_tier": "T0",
+      "predicate": "Compute |beta_L2|*10 = 0.036*10 = 0.36% and compare to the stated 0.36%.",
+      "evidence": [
+        {"id": "e7", "kind": "number", "location": "Sec 7.2", "quote": "reduces total gas demand by an estimated 0.36%", "extracted_values": {"beta": -0.036, "pct_fee_increase": 10, "claimed_pct": 0.36}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Percent-change: 0.036*10 = 0.36.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.95, "rationale": "0.036*10 = 0.36% exactly (log-log elasticity differential). Matches. Standard percent-change check."}
+    },
+    {
+      "id": "c6",
+      "text": "Pooled IV estimates of -0.006 (L1) and -0.036 (L2) imply that a 10% fee increase reduces total demand by at most 0.4%.",
+      "quote": "pooled IV estimates of −0.006 (L1) and −0.036 (L2) imply that a 10% fee increase reduces total demand by at most 0.4%.",
+      "section": "12 Conclusion",
+      "page": 21,
+      "epistemic_tier": "T0",
+      "predicate": "Check the upper bound: the larger-magnitude pooled elasticity is L2 (-0.036); 0.036*10 = 0.36% <= 0.4%, so 'at most 0.4%' holds.",
+      "evidence": [
+        {"id": "e8", "kind": "number", "location": "Conclusion", "quote": "reduces total demand by at most 0.4%", "extracted_values": {"beta_L1": -0.006, "beta_L2": -0.036, "claimed_upper_bound_pct": 0.4}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Bound check: max(|beta|)*10 = 0.036*10 = 0.36 <= 0.4.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.93, "rationale": "The larger pooled magnitude (L2, 0.036) gives 0.36% per 10% fee rise, which is <= 0.4%; 'at most 0.4%' is a valid (slightly loose) upper bound across the two pooled estimates. Off-the-shelf bound/percent-change check."}
+    },
+    {
+      "id": "c7",
+      "text": "Cluster-level (behavioral) elasticities reach up to roughly 6x the pooled estimate.",
+      "quote": "with cluster-level elasticities up to roughly 6× the pooled estimate.",
+      "section": "Abstract",
+      "page": 1,
+      "epistemic_tier": "T2",
+      "predicate": "Bind 'cluster-level elasticities up to roughly 6x the pooled estimate' to a specific table (Table 6/7 behavioral clusters, or Tables 9/10/11 per-resource clusters) and check whether any VALID (identified, retained) cluster reaches ~6x the relevant pooled value.",
+      "evidence": [
+        {"id": "e9", "kind": "table", "location": "Table 7 (L2 clusters)", "quote": "C0 −1.163 n.i. (excluded); C1 −0.0782∗∗; pooled −0.0359", "extracted_values": {"L2_pooled": -0.0359, "L2_C1_identified": -0.0782, "ratio_C1_pooled": 2.18, "L2_C0_excluded": -1.163}},
+        {"id": "e10", "kind": "table", "location": "Table 6 (L1 clusters)", "quote": "C0 −0.0236∗∗∗; pooled −0.0059", "extracted_values": {"L1_pooled": -0.0059, "L1_C0": -0.0236, "ratio_C0_pooled": 4.0}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Per-cluster ratio recompute against the pooled estimate of the SAME chain/analysis; determine which table the '6x' refers to and whether the cluster is identified/retained.", "verifier_exists": false, "candidate_verdict": "suspect", "confidence": 0.55, "rationale": "Ambiguous binding. For behavioral clusters: L1 max valid ratio is C0 0.0236/0.0059 = 4.0x; L2 max IDENTIFIED ratio is C1 0.0782/0.0359 = 2.18x. The only ~6x+ magnitudes are unidentified/excluded clusters (L2 C0 -1.163 = 32x n.i.; L2 C4 -0.1272 = 3.5x n.s.). The literal '6x the pooled estimate' is not met by any valid behavioral cluster; the genuine 6x is the L1-vs-L2 pooled ratio (c4), so this looks like a conflation. If instead bound to per-resource clusters (Table 9/11: C3 refund -0.4157 = 11.6x L2 pooled; C2 historyGrowth -0.686 = 19x), it is exceeded, but those are not 'behavioral' clusters and the abstract sentence is about wallet clustering. Flag for human binding: likely an over-claim or imprecise referent in the abstract."}
+    },
+    {
+      "id": "c8",
+      "text": "Per-resource L2 elasticities range from modestly elastic computation (-0.027) to -0.27 for refunds, with storage growth (-0.15) and calldata (-0.06) in between.",
+      "quote": "elasticities ranging from modestly elastic computation (−0.027∗ ) to −0.27∗∗∗ for refunds, with storage growth (−0.15∗∗∗ ) and calldata (−0.06∗ ) in between.",
+      "section": "Abstract / Table 8",
+      "page": 1,
+      "epistemic_tier": "T2",
+      "predicate": "Check each abstract per-resource value is the rounding of the corresponding Table 8 pooled IV estimate: computation -0.0274->-0.027, refund -0.2688->-0.27, storageGrowth -0.1510->-0.15, l2Calldata -0.0575->-0.06.",
+      "evidence": [
+        {"id": "e11", "kind": "table", "location": "Table 8", "quote": "computation −0.0274∗; storageGrowth −0.1510∗∗∗; l2Calldata −0.0575∗; refund −0.2688∗∗∗", "extracted_values": {"computation": -0.0274, "storageGrowth": -0.1510, "l2Calldata": -0.0575, "refund": -0.2688}},
+        {"id": "e12", "kind": "number", "location": "Abstract", "quote": "computation (−0.027); ... −0.27 for refunds ... storage growth (−0.15) ... calldata (−0.06)", "extracted_values": {"computation_abs": -0.027, "refund_abs": -0.27, "storageGrowth_abs": -0.15, "l2Calldata_abs": -0.06}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Rounding consistency for each: round(-0.0274,3)=-0.027; round(-0.2688,2)=-0.27; round(-0.1510,2)=-0.15; round(-0.0575,2)=-0.06.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.93, "rationale": "All four round correctly: -0.0274->-0.027, -0.2688->-0.27, -0.1510->-0.15, -0.0575->-0.06. Ordering claim (computation least elastic, refund most) is consistent with the magnitudes. Off-the-shelf prose-vs-table rounding/ordering check. (Note: positive-elasticity dimensions read/write are correctly omitted from this 'range' statement.)"}
+    },
+    {
+      "id": "c9",
+      "text": "The pooled L1 IV estimate -0.0059 with SE=0.0005 is significant at p<0.001 (marked ***).",
+      "quote": "−0.0059∗∗∗ ... 0.0005 ... ∗∗∗ p < 0.001",
+      "section": "Table 6",
+      "page": 15,
+      "epistemic_tier": "T0",
+      "predicate": "statcheck-style: compute t = |beta/SE| = 0.0059/0.0005 = 11.8; the implied two-sided p (normal approx for clustered SE, large N) << 0.001, consistent with ***.",
+      "evidence": [
+        {"id": "e13", "kind": "statistic", "location": "Table 6 Pooled", "quote": "−0.0059∗∗∗ SE 0.0005", "extracted_values": {"beta": -0.0059, "SE": 0.0005, "t": 11.8}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "statcheck: t=beta/SE, p=2*(1-Phi(|t|)); confirm p<0.001 matches *** for a z-based clustered-SE test.", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "t = 0.0059/0.0005 = 11.8, p ~ 0 << 0.001, consistent with ***. statcheck-style p-from-estimate/SE check (a recognized off-the-shelf verifier); paper reports SE not p, so the star is the testable object. Exact threshold depends on z vs t, but with the stated huge df the normal approx is appropriate."}
+    },
+    {
+      "id": "c10",
+      "text": "The L1 C2 cluster estimate -0.0016 (SE=0.0006) is significant at p<0.01 (marked **).",
+      "quote": "C2 (low-intens.) 11,625 (26.1%) −0.0015 −0.0016∗∗ 0.0006 1,147,259",
+      "section": "Table 6",
+      "page": 15,
+      "epistemic_tier": "T0",
+      "predicate": "statcheck: t = 0.0016/0.0006 = 2.67; two-sided z p = 0.0077; check this is < 0.01 (**) but not < 0.001 (***), consistent with the printed **.",
+      "evidence": [
+        {"id": "e14", "kind": "statistic", "location": "Table 6 C2", "quote": "−0.0016∗∗ SE 0.0006", "extracted_values": {"beta": -0.0016, "SE": 0.0006, "t": 2.667, "p_two_sided_z": 0.0077}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "statcheck on (beta,SE)->p; confirm 0.001 < p < 0.01 matches ** under z-test.", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "t=2.667, z-based p=0.0077, which is < 0.01 and > 0.001, consistent with the ** mark. Tight case (would need exactly the paper's reference distribution), but under the large-sample normal approx it checks out. statcheck-style recompute."}
+    },
+    {
+      "id": "c11",
+      "text": "The L2 pooled estimate -0.0359 (SE=0.0141) is significant at p<0.01 (marked **).",
+      "quote": "−0.0359∗∗ ... 0.0141",
+      "section": "Table 7",
+      "page": 15,
+      "epistemic_tier": "T0",
+      "predicate": "statcheck: t = 0.0359/0.0141 = 2.546; two-sided z p = 0.0109. Marked ** (p<0.01). Check whether p actually < 0.01.",
+      "evidence": [
+        {"id": "e15", "kind": "statistic", "location": "Table 7 Pooled", "quote": "−0.0359∗∗ SE 0.0141", "extracted_values": {"beta": -0.0359, "SE": 0.0141, "t": 2.546, "p_two_sided_z": 0.0109}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "statcheck (beta,SE)->p; the ** claim asserts p<0.01, but z-based p = 0.0109 > 0.01.", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.5, "rationale": "Borderline: t=2.546 gives a two-sided NORMAL p = 0.0109, marginally ABOVE the 0.01 cutoff the ** denotes. Whether ** is justified depends on the reference distribution: with a t-distribution it would be even larger p, so the ** appears slightly generous under both z and t. This is a candidate statcheck inconsistency (reported significance stronger than (beta,SE) imply), but it hinges on rounding of beta/SE and the exact test; flag for confirmation rather than asserting an error. Severity low/borderline."}
+    },
+    {
+      "id": "c12",
+      "text": "Per-resource computation elasticity -0.0274 (SE=0.0123) is significant at p<0.05 (marked *).",
+      "quote": "computation 23,119 −0.0026 −0.0274∗ 0.0123 118,405",
+      "section": "Table 8",
+      "page": 16,
+      "epistemic_tier": "T0",
+      "predicate": "statcheck: t = 0.0274/0.0123 = 2.228; two-sided z p = 0.026; check < 0.05 (*) and not < 0.01, consistent with the single star.",
+      "evidence": [
+        {"id": "e16", "kind": "statistic", "location": "Table 8 computation", "quote": "−0.0274∗ SE 0.0123", "extracted_values": {"beta": -0.0274, "SE": 0.0123, "t": 2.228, "p_two_sided_z": 0.026}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "statcheck (beta,SE)->p; confirm 0.01 < p < 0.05 matches *.", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "t=2.228, z-p=0.026, within (0.01,0.05), consistent with *. statcheck-style recompute; passes."}
+    },
+    {
+      "id": "c13",
+      "text": "Per-resource refund elasticity -0.2688 (SE=0.0414) is significant at p<0.001 (marked ***).",
+      "quote": "refund 17,770 −0.0232 −0.2688∗∗∗ 0.0414 30,666",
+      "section": "Table 8",
+      "page": 16,
+      "epistemic_tier": "T0",
+      "predicate": "statcheck: t = 0.2688/0.0414 = 6.49; two-sided z p ~ 8.4e-11 << 0.001, consistent with ***.",
+      "evidence": [
+        {"id": "e17", "kind": "statistic", "location": "Table 8 refund", "quote": "−0.2688∗∗∗ SE 0.0414", "extracted_values": {"beta": -0.2688, "SE": 0.0414, "t": 6.493}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "statcheck (beta,SE)->p; confirm p<0.001 matches ***.", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "t=6.49, p~1e-10 << 0.001, consistent with ***. statcheck-style recompute; passes."}
+    },
+    {
+      "id": "c14",
+      "text": "The raw pooled OLS of log gas usage on log base fee on the Arbitrum L2 panel has slope beta_hat = +0.094, a positive coefficient contradicting the expected negative demand response.",
+      "quote": "log gas usage on log base fee across 16,939,781 Arbitrum wallet-hour observations yields β̂ = +0.094, a positive coefficient that contradicts the expected negative demand response.",
+      "section": "1 Introduction / Figure 1",
+      "page": 2,
+      "epistemic_tier": "T2",
+      "predicate": "Check the slope reported in prose (+0.094) matches the slope annotated in Figure 1 caption, and that the N (16,939,781) matches the L2 wallet-hour total used elsewhere (Table 1, Sec 3.2).",
+      "evidence": [
+        {"id": "e18", "kind": "figure", "location": "Figure 1", "quote": "Raw pooled OLS of log gas usage on log base fee, Arbitrum L2 panel (N = 16,939,781 ...). The positive slope (β̂ = +0.094)", "extracted_values": {"slope": 0.094, "N": 16939781}},
+        {"id": "e19", "kind": "text", "location": "Sec 3.2", "quote": "yielding a total of 16,939,781 wallet-hour observations", "extracted_values": {"N_L2": 16939781}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Prose-vs-figure: confirm +0.094 and N=16,939,781 are identical in the body text, Figure 1 caption, and the dataset description; (full recompute would require the raw panel).", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "The slope (+0.094) and N (16,939,781) are stated identically in the body, the Figure 1 caption, and Sec 3.2 / Table 1. Internally consistent prose-vs-figure-vs-data binding. The actual OLS slope value cannot be recomputed without the raw panel (T6), but the cross-reference is exact."}
+    },
+    {
+      "id": "c15",
+      "text": "Omitting log n_it from both stages reverses the sign of the estimate to +0.052 on Ethereum and +1.52 on Arbitrum.",
+      "quote": "Omitting log nit from both stages reverses the sign of the estimate (+0.052 on Ethereum, +1.52 on Arbitrum)",
+      "section": "Sec 4.2 footnote 3",
+      "page": 7,
+      "epistemic_tier": "T6",
+      "predicate": "Re-run the 2SLS without the transaction-count control on both panels and check the estimates equal +0.052 (L1) and +1.52 (L2); not recomputable from the paper alone.",
+      "evidence": [
+        {"id": "e20", "kind": "statistic", "location": "footnote 3", "quote": "(+0.052 on Ethereum, +1.52 on Arbitrum)", "extracted_values": {"L1_no_control": 0.052, "L2_no_control": 1.52}}
+      ],
+      "verification": {"possible": false, "verifier_needed": "Reproducibility: re-estimate Eq.(7)-(8) without n_it on the raw panels; requires the (non-public) datasets and code.", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.4, "rationale": "Directionally consistent with the paper's argument (uncontrolled n_it makes total gas co-move positively with fees), and the +1.52 vs +0.052 contrast is plausible given L2's stronger composition effect. But the specific magnitudes are a regression output that cannot be bound to any in-paper table; settling them needs the data/code (T6). Abstain."}
+    },
+    {
+      "id": "c16",
+      "text": "Standard errors are clustered at the wallet level for all IV estimates.",
+      "quote": "Standard errors clustered at the wallet level.",
+      "section": "Table 6/7/8 captions",
+      "page": 15,
+      "epistemic_tier": "T3",
+      "predicate": "Assess whether wallet-level clustering of SEs is the appropriate inference for a two-way (wallet x time) FE panel with serially correlated within-wallet shocks.",
+      "evidence": [
+        {"id": "e21", "kind": "text", "location": "Table 6/7 captions", "quote": "Standard errors clustered at the wallet level", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Method-appropriateness: clustering on the panel unit (wallet) is standard for within-wallet serial correlation; note time-clustering (or two-way clustering) is not used despite common time shocks, which time FE partly absorb.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.6, "rationale": "Wallet-level clustering is a standard and defensible choice for panel IV with autocorrelated within-wallet errors, and time fixed effects absorb common period shocks. One-way (not two-way) clustering is a minor conservativeness question given cross-wallet correlation within a period is removed by gamma_t; reasonable. Method judgment, not a recompute; low FPR because the choice is conventional and disclosed."}
+    },
+    {
+      "id": "c17",
+      "text": "Each wallet's own lagged base fee z_it = log p_{i,t-1} is a valid instrument because it is predetermined (a function of pre-t utilization) and relevant via EIP-1559 fee autocorrelation.",
+      "quote": "The lagged base fee is predetermined ... Under these conditions, the lagged fee affects the current usage only through its influence on the current base fee.",
+      "section": "4.3 Instrumental Variables (Relevance & Exclusion)",
+      "page": 8,
+      "epistemic_tier": "T3",
+      "predicate": "Assess whether the lagged-own-fee instrument satisfies relevance (autocorrelation of EIP-1559 base fee) and the exclusion restriction (predetermined; no direct path to current gas) for the LATE interpretation, given the model's own caveats.",
+      "evidence": [
+        {"id": "e22", "kind": "equation", "location": "Eq.(6)", "quote": "zit = log pi,t−1", "extracted_values": {}},
+        {"id": "e23", "kind": "text", "location": "Sec 4.3 / App C", "quote": "the exclusion restriction property is violated by wallets that strategically time their activity with congestion cycles", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Method-appropriateness review of IV identification: relevance is empirically supported (first-stage F, partial R2); exclusion is argued via predetermination + two-way FE, with the serial-correlation failure channel acknowledged and handled by excluding the high-fee-fraction cluster.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.6, "rationale": "The identification argument is coherent and self-aware: relevance is documented (F, partial R2), and the main exclusion threat (congestion-timing wallets with serially-correlated demand) is explicitly identified and mitigated by excluding C5/C0 and restricting to a LATE. Predetermination is a reasonable basis for exclusion. The lagged-OWN-fee (vs a purely external instrument) still leaves a residual within-period endogeneity that the paper concedes (cites Tiedemann et al. on exactly this). Defensible but not bulletproof; route the residual judgment to a human econometrician. Not a single-number recompute."}
+    },
+    {
+      "id": "c18",
+      "text": "The first-stage partial F-statistics far exceed the conventional threshold of 10 for reliable inference, but their magnitude is inflated by sample size.",
+      "quote": "Results reported in Sections 6 and 7 far exceed the conventional threshold of 10 for reliable inference. ... Although the partial F -statistics are inflated by the large sample size",
+      "section": "4.3 / 6.1 / 7.1",
+      "page": 8,
+      "epistemic_tier": "T4",
+      "predicate": "Check the reported partial F-statistics (e.g., L1 pooled 11,873,625; L2 pooled 118,405) exceed 10, and assess the paper's caveat that F scales with N so the headline number overstates instrument strength (cross-check with partial R2 = 0.252 on L1, 0.007 on L2).",
+      "evidence": [
+        {"id": "e24", "kind": "statistic", "location": "Tables 6,7 + Sec 6.1,7.1", "quote": "first-stage partial R2 is 0.252 (L1) ... only 0.007 (L2)", "extracted_values": {"L1_partial_F": 11873625, "L2_partial_F": 118405, "L1_partial_R2": 0.252, "L2_partial_R2": 0.007}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Bound check (F>>10 trivially true) + scope judgment: the partial R2 (0.007 on L2) corroborates the paper's own warning that the huge F reflects N, not strong identification; weak-instrument concern on L2 is real but disclosed.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.7, "rationale": "All reported F-stats trivially exceed 10. The paper is candid that F is inflated by sample size and reports partial R2 (0.252 L1 vs only 0.007 L2), which honestly flags weak identifying variation on L2. The claim is internally consistent and appropriately hedged; the F>10 numeric part is a deterministic bound check, the interpretive caveat is sound. The very low L2 partial R2 (0.007) is itself a limitation the authors acknowledge."}
+    },
+    {
+      "id": "c19",
+      "text": "Positive IV estimates for storage-access reads (+0.0344) and writes (+0.1186) are selection artefacts, not genuine demand responses; the negative dimensions are therefore conservative lower bounds.",
+      "quote": "The positive IV estimates for storage access reads (+0.034∗ ) and writes (+0.119∗∗∗ ) do not represent a genuine demand response. ... the true intensive-margin response is at least as large as the estimates reported here.",
+      "section": "8.2 Positive Elasticities",
+      "page": 16,
+      "epistemic_tier": "T4",
+      "predicate": "Assess the compositional-selection explanation: fee-driven exit of low-necessity wallets raises conditional storage-access among survivors; cross-check with the fee-decile share evidence (reads flat 0.951-0.956; writes decline 0.835->0.773).",
+      "evidence": [
+        {"id": "e25", "kind": "statistic", "location": "Sec 8.2 / Fig 15", "quote": "share of active wallet-hours using storage reads ... constant across base-fee deciles (0.951–0.956) ... Storage writes show a clearer decline (0.835 ... to 0.773)", "extracted_values": {"read_share_low": 0.951, "read_share_high": 0.956, "write_share_low": 0.835, "write_share_high": 0.773}},
+        {"id": "e26", "kind": "table", "location": "Table 8", "quote": "storageAccessRead +0.0344∗; storageAccessWrite +0.1186∗∗∗", "extracted_values": {"read_IV": 0.0344, "write_IV": 0.1186}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Claim<->evidence support: the selection story predicts read-shares stay high (survivors are read-intensive) and write-shares fall; the decile data (reads ~flat near 0.95, writes 0.835->0.773) qualitatively match; the 'conservative lower bound' direction follows IF selection is uniformly positive.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.6, "rationale": "The mechanism is internally coherent and supported by the fee-decile selection evidence (Fig 15 / the cited shares), and the inference that genuinely-negative dimensions are conservative follows logically if the selection bias is positive everywhere (which the paper argues). This is an interpretive (T4) over-/under-claim assessment with deterministic anchors (the decile shares), not a recompute; the lower-bound claim is plausible but rests on the unverified assumption that selection bias has a single sign across all dimensions. Reasonable; route residual judgment to a human."}
+    },
+    {
+      "id": "c20",
+      "text": "All three k-means analyses (L1 total-gas, L2 total-gas, L2 per-resource) exhibit a clear elbow/kink at k=6, justifying six clusters.",
+      "quote": "all three exhibit a clear kink at k = 6.",
+      "section": "5.1 / Appendix D (Figs 9-11)",
+      "page": 10,
+      "epistemic_tier": "T7",
+      "predicate": "Inspect the elbow plots (Figs 9-11) for an inertia kink at k=6; the elbow method is heuristic, so this is a screening/soft-judgment signal rather than a deterministic verdict.",
+      "evidence": [
+        {"id": "e27", "kind": "figure", "location": "Figures 9, 10, 11", "quote": "the inertia curve bends sharply at k = 6 before flattening", "extracted_values": {"k_chosen": 6, "k_range_tested": "2..12"}}
+      ],
+      "verification": {"possible": false, "verifier_needed": "Elbow-location judgment: the 'clear kink at k=6' is a visual/heuristic call; a deterministic version would require the raw inertia values to compute a kneedle/second-difference, which are plotted but not tabulated.", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.4, "rationale": "Elbow selection is inherently subjective; the figures are described as kinking at k=6 but the underlying inertia values are not tabulated, so a deterministic kneedle check cannot be run from the paper. The choice is reasonable and consistently applied, but 'clear kink' is a soft claim. Route to human / advisory; not a hard verdict."}
+    },
+    {
+      "id": "c21",
+      "text": "The two-way demeaning (alternating wallet/period demeaning) converges in fewer than 30 iterations on all panels; the post-estimation fixed-effects recovery converges within 500 iterations to tolerance 1e-8.",
+      "quote": "This process terminates in fewer than 30 iterations in all panel datasets ... converges within 500 iterations. ... converged (to a tolerance level of 10−8 ) within 500 iterations.",
+      "section": "4.2 / Appendix B",
+      "page": 7,
+      "epistemic_tier": "T6",
+      "predicate": "Re-run the alternating-projection demeaning/FE-recovery on the panels and check convergence within the stated iteration counts; requires the data/code.",
+      "evidence": [
+        {"id": "e28", "kind": "text", "location": "Sec 4.2 / App B", "quote": "fewer than 30 iterations ... within 500 iterations ... tolerance ... 10−8", "extracted_values": {"demean_iters": 30, "FE_recovery_iters": 500, "tolerance": 1e-08}}
+      ],
+      "verification": {"possible": false, "verifier_needed": "Reproducibility: execute Frisch-Waugh-Lovell alternating projections on the actual panels; not bound to any in-paper artefact.", "verifier_exists": false, "candidate_verdict": "not_checkable", "confidence": 0.35, "rationale": "Convergence-iteration counts are runtime properties of an algorithm on the (non-public) data; plausible for well-conditioned two-way FE demeaning (typically converges fast), but not verifiable without the code/data. T6, abstain."}
+    },
+    {
+      "id": "c22",
+      "text": "Arbitrum's base-fee floor was raised from 0.01 gwei to 0.02 gwei, which is the highest among compared rollups, roughly 4x Base's 0.005 gwei floor.",
+      "quote": "Arbitrum increased it from 0.01 gwei to 0.02 gwei ... Base Mainnet to 0.005 gwei ... Arbitrum’s 0.02 gwei floor is the highest among these rollups, roughly 4× Base’s",
+      "section": "2.2 L1 vs. L2 Fee Regimes",
+      "page": 4,
+      "epistemic_tier": "T1",
+      "predicate": "Arithmetic + external fact: check 0.02/0.005 = 4 ('roughly 4x'); and verify against external sources that OP=0 wei, Base=0.005 gwei (5,000,000 wei), Scroll~0.00012 gwei, Arbitrum floor=0.02 gwei.",
+      "evidence": [
+        {"id": "e29", "kind": "number", "location": "Sec 2.2", "quote": "OP Mainnet ... 0 wei ... Base Mainnet to 0.005 gwei (5,000,000 wei) ... Scroll to approximately 0.00012 gwei ... Arbitrum’s 0.02 gwei floor", "extracted_values": {"arbitrum_gwei": 0.02, "base_gwei": 0.005, "op_wei": 0, "scroll_gwei": 0.00012, "ratio_arb_base": 4.0}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "T0 part: 0.02/0.005 = 4 and 0.005 gwei = 5,000,000 wei are exact (unit-conversion + ratio). T1 part: the per-rollup floor values require an external lookup of each chain's config to confirm.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.75, "rationale": "Internal arithmetic checks exactly: 0.02/0.005 = 4 ('roughly 4x' holds, in fact exactly 4x), and 0.005 gwei = 5e6 wei (1 gwei = 1e9 wei) is correct. The claim that 0.02 gwei is the highest among {OP 0, Base 0.005, Scroll 0.00012, Arbitrum 0.02} is true given those values. The factual floor values themselves are external (T1) and would need a chain-config lookup to confirm; the arithmetic/unit parts are deterministic and pass."}
+    },
+    {
+      "id": "c23",
+      "text": "Arbitrum's 250 ms block time generates 48x more blocks per unit time than Ethereum's 12-second blocks.",
+      "quote": "Arbitrum’s 250 ms block time generates 48× more blocks per unit time than Ethereum’s 12-second blocks",
+      "section": "3.1 Ethereum L1",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "Compute 12 s / 0.250 s = 48; confirm the block-rate ratio equals 48x.",
+      "evidence": [
+        {"id": "e30", "kind": "number", "location": "Sec 3.1", "quote": "Arbitrum’s 250 ms block time ... Ethereum’s 12-second blocks", "extracted_values": {"arb_block_s": 0.25, "eth_block_s": 12, "ratio": 48}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Unit-conversion ratio: 12 / 0.250 = 48.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.97, "rationale": "12 s / 0.250 s = 48 exactly. The block-production-rate ratio is correct. Off-the-shelf unit/ratio check."}
+    },
+    {
+      "id": "c24",
+      "text": "On Ethereum the base fee adjusts by at most +/-12.5% per block (~12 seconds).",
+      "quote": "the base fee adjusts by at most ±12.5% per block (approximately 12 seconds)",
+      "section": "4.2.0.3 Time granularity",
+      "page": 7,
+      "epistemic_tier": "T1",
+      "predicate": "External-knowledge check: EIP-1559 caps the per-block base-fee change at 1/8 = 12.5%; confirm against the protocol spec.",
+      "evidence": [
+        {"id": "e31", "kind": "number", "location": "Sec 4.2.0.3", "quote": "at most ±12.5% per block", "extracted_values": {"max_pct_change": 12.5}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Fixed external fact (EIP-1559): BASE_FEE_MAX_CHANGE_DENOMINATOR = 8 -> 1/8 = 12.5% max per-block change.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "EIP-1559 sets the max base-fee change per block to 1/8 = 12.5% (BASE_FEE_MAX_CHANGE_DENOMINATOR=8); the stated +/-12.5% is the known protocol value. T1 known-value lookup; passes against the published EIP."}
+    },
+    {
+      "id": "c25",
+      "text": "The Ethereum gas target was raised by a factor of 2, from 15M to 30M.",
+      "quote": "the target has moved up by a factor of 2 on Ethereum, from 15M to 30M",
+      "section": "2.1 The EIP-1559 Fee Mechanism",
+      "page": 3,
+      "epistemic_tier": "T1",
+      "predicate": "Arithmetic: 30M/15M = 2 (factor-of-2 claim); plus external check that Ethereum's gas target moved from 15M to 30M.",
+      "evidence": [
+        {"id": "e32", "kind": "number", "location": "Sec 2.1", "quote": "from 15M to 30M ... a factor of 2", "extracted_values": {"old_target": 15000000, "new_target": 30000000, "factor": 2}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "T0: 30M/15M = 2 (exact). T1: confirm the 15M->30M gas-target change against Ethereum network history.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "30,000,000/15,000,000 = 2 exactly, so the 'factor of 2' arithmetic is correct; and the 15M->30M target increase matches Ethereum's documented gas-limit history (the block limit being 2x the target is also stated correctly). Arithmetic part deterministic; the historical fact is an external T1 lookup."}
+    },
+    {
+      "id": "c26",
+      "text": "Table 1 dimension coverages: computation 100.0%, historyGrowth 80.9%, storageAccessRead 95.2%, storageAccessWrite 79.6%, storageGrowth 51.8%, l2Calldata 93.2%, refund 47.8%, as fractions of 16,939,781 wallet-hours.",
+      "quote": "computation 23,119 16,939,781 100.0; historyGrowth 20,052 13,702,494 80.9; storageAccessRead 22,652 16,126,735 95.2; storageAccessWrite 20,883 13,475,351 79.6; storageGrowth 18,990 8,767,695 51.8; l2Calldata 20,799 15,782,132 93.2; refund 17,770 8,103,016 47.8",
+      "section": "Table 1",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute each Coverage % = wallet-hour obs / 16,939,781 * 100 and check it matches the printed value to one decimal.",
+      "evidence": [
+        {"id": "e33", "kind": "table", "location": "Table 1", "quote": "Coverage is the fraction of total wallet-hours (16,939,781) where the resource consumption is non-zero.", "extracted_values": {"total_wh": 16939781, "historyGrowth_obs": 13702494, "historyGrowth_cov": 80.9, "storageAccessRead_obs": 16126735, "storageAccessRead_cov": 95.2, "storageAccessWrite_obs": 13475351, "storageAccessWrite_cov": 79.6, "storageGrowth_obs": 8767695, "storageGrowth_cov": 51.8, "l2Calldata_obs": 15782132, "l2Calldata_cov": 93.2, "refund_obs": 8103016, "refund_cov": 47.8}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Table-totals / percent check: obs/16,939,781*100 for each row vs printed Coverage; e.g. 13,702,494/16,939,781 = 80.89%, 8,103,016/16,939,781 = 47.83%.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.95, "rationale": "Recomputed coverages match to one decimal: historyGrowth 13702494/16939781=80.89->80.9; storageRead 95.20; storageWrite 79.55->79.6; storageGrowth 51.76->51.8; l2Calldata 93.16->93.2; refund 47.83->47.8; computation 100.0. All consistent. Off-the-shelf percent/table-total recompute; a clean deterministic frontier item."}
+    },
+    {
+      "id": "c27",
+      "text": "The L1 panel has 44,449 wallets observed over 365 daily periods, totaling 35,276,914 wallet-day observations.",
+      "quote": "the panel data contains 44,449 wallets observed over 365 daily periods, yielding a total of 35,276,914 wallet-day observations.",
+      "section": "3.1 Ethereum L1",
+      "page": 4,
+      "epistemic_tier": "T2",
+      "predicate": "Sanity bound: an unbalanced panel total must satisfy obs <= wallets*periods, i.e. 35,276,914 <= 44,449*365 = 16,223,885. Check feasibility.",
+      "evidence": [
+        {"id": "e34", "kind": "number", "location": "Sec 3.1", "quote": "44,449 wallets observed over 365 daily periods, yielding a total of 35,276,914 wallet-day observations", "extracted_values": {"wallets": 44449, "periods": 365, "obs": 35276914, "max_balanced": 16223885}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Feasibility bound: wallet-day obs cannot exceed wallets*days = 44,449*365 = 16,223,885; check whether 35,276,914 <= that.", "verifier_exists": false, "candidate_verdict": "suspect", "confidence": 0.6, "rationale": "POTENTIAL INCONSISTENCY: 44,449 wallets x 365 days = 16,223,885 maximum possible wallet-DAY cells, but the text reports 35,276,914 wallet-day observations — 2.17x the ceiling, which is impossible for a (wallet,day) panel where each cell is at most one observation. Either (a) the 35,276,914 figure is a wallet-day count before aggregation / a transaction-ish count mislabeled, (b) more than 44,449 wallets actually enter (the 44,449 is the >=500-tx filtered count but obs counted pre-filter), or (c) a typo. The L2 analogue is internally consistent (23,119 x 5,087 = 117.6M >= 16.94M), which makes the L1 number stand out. Flag for human/author confirmation: as printed, obs > wallets*periods violates a hard panel-dimension bound. Deterministic bound check (wallets*periods) settles the feasibility; the resolution of WHICH number is wrong needs the data."}
+    },
+    {
+      "id": "c28",
+      "text": "The L2 panel has 23,119 wallets observed over 5,087 hourly periods, totaling 16,939,781 wallet-hour observations.",
+      "quote": "The resulting panel contains 23,119 wallets observed over 5,087 hourly periods, yielding a total of 16,939,781 wallet-hour observations.",
+      "section": "3.2 Arbitrum L2",
+      "page": 5,
+      "epistemic_tier": "T2",
+      "predicate": "Feasibility bound: 16,939,781 <= 23,119 * 5,087 = 117,606,353; also check 5,087 hours ~ 7 months (Oct 2025-Apr 2026).",
+      "evidence": [
+        {"id": "e35", "kind": "number", "location": "Sec 3.2", "quote": "23,119 wallets observed over 5,087 hourly periods, yielding a total of 16,939,781 wallet-hour observations", "extracted_values": {"wallets": 23119, "periods": 5087, "obs": 16939781, "max_balanced": 117606353}},
+        {"id": "e36", "kind": "number", "location": "Sec 3.2", "quote": "October 2025 through April 2026 (seven months)", "extracted_values": {"months": 7, "hours_in_7mo_approx": 5088}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Bound + duration sanity: obs(16,939,781) <= wallets*periods(117.6M) holds; 5,087 hours / 24 = 211.96 days ~ 7.06 months, consistent with Oct 2025-Apr 2026.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "Internally consistent: 16,939,781 <= 23,119*5,087 = 117,606,353 (a 14.4% fill rate, plausible for an unbalanced panel); and 5,087 hours = 211.96 days ~ 7 months matches the stated Oct 2025-Apr 2026 window (Oct1->Apr30 is ~212 days). Deterministic bound + duration check; passes (contrast with the L1 figure in c27)."}
+    },
+    {
+      "id": "c29",
+      "text": "L1 cluster sizes (Table 6/Table 3) sum to 100% of the 44,449 wallets: C0 34.0% + C1 8.1% + C2 26.1% + C3 9.3% + C4 2.9% + C5 19.5% = 99.9%.",
+      "quote": "C0 15,135 (34.0%) ... C1 3,609 (8.1%) ... C2 11,625 (26.1%) ... C3 4,123 (9.3%) ... C4 1,280 (2.9%) ... C5 8,685 (19.5%)",
+      "section": "Table 6 / Table 3",
+      "page": 15,
+      "epistemic_tier": "T0",
+      "predicate": "Sum the cluster wallet counts (15135+3609+11625+4123+1280+8685) and check it equals the pooled 44,449; sum the percentages and check ~100%.",
+      "evidence": [
+        {"id": "e37", "kind": "table", "location": "Table 6", "quote": "Pooled 44,449 (100%); C0 15,135 (34.0%); C1 3,609 (8.1%); C2 11,625 (26.1%); C3 4,123 (9.3%); C4 1,280 (2.9%); C5 8,685 (19.5%)", "extracted_values": {"C0": 15135, "C1": 3609, "C2": 11625, "C3": 4123, "C4": 1280, "C5": 8685, "pooled": 44449}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Table-totals: 15135+3609+11625+4123+1280+8685 = 44,457 vs pooled 44,449; and 34.0+8.1+26.1+9.3+2.9+19.5 = 99.9.", "verifier_exists": false, "candidate_verdict": "suspect", "confidence": 0.55, "rationale": "MINOR DISCREPANCY: the six cluster counts sum to 44,457, which is 8 MORE than the pooled 44,449. Percentages sum to 99.9% (consistent with rounding). The 8-wallet overage is small (likely a rounding/boundary or tie-assignment artefact in reporting), but as printed the cluster counts do not exactly partition the pooled total. Off-the-shelf table-total check flags it; severity C (cosmetic) pending author note. Flagged honestly rather than assumed benign."}
+    },
+    {
+      "id": "c30",
+      "text": "L2 total-gas cluster sizes (Table 4/Table 7) sum to the pooled 23,119 wallets: 2,608+3,279+5,818+4,253+697+6,466.",
+      "quote": "C0 2,608 (11.3%); C1 3,279 (14.2%); C2 5,818 (25.2%); C3 4,253 (18.4%); C4 697 (3.0%); C5 6,466 (28.0%)",
+      "section": "Table 4 / Table 7",
+      "page": 13,
+      "epistemic_tier": "T0",
+      "predicate": "Sum cluster counts and percentages; check against pooled 23,119 and 100%. Note Table 4 lists C0=2,608 while Table 7 lists C0=2,606.",
+      "evidence": [
+        {"id": "e38", "kind": "table", "location": "Table 4", "quote": "C0 2,608 (11.3%); C1 3,279 (14.2%); C2 5,818 (25.2%); C3 4,253 (18.4%); C4 697 (3.0%); C5 6,466 (28.0%)", "extracted_values": {"C0_tab4": 2608, "C0_tab7": 2606, "C1": 3279, "C2": 5818, "C3": 4253, "C4": 697, "C5": 6466, "pooled": 23119}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Table-totals + cross-table consistency: 2608+3279+5818+4253+697+6466 = 23,121 (vs 23,119); and check C0 = 2,608 (Table 4) vs 2,606 (Table 7).", "verifier_exists": false, "candidate_verdict": "suspect", "confidence": 0.55, "rationale": "TWO MINOR ISSUES: (1) Table 4 cluster counts sum to 23,121, 2 more than the pooled 23,119; percentages sum to 100.1%. (2) C0 is printed as 2,608 in Table 4 but 2,606 in Table 7 — a cross-table mismatch of 2 wallets. Both are tiny (rounding / off-by-two reporting), but they are genuine internal inconsistencies caught by table-total + cross-reference checks. Severity C. Flag for author confirmation."}
+    },
+    {
+      "id": "c31",
+      "text": "The L1 first stage has coefficient pi_hat = 0.480 and partial R2 = 0.252; the L2 first stage has pi_hat = 0.052 and partial R2 = only 0.007.",
+      "quote": "The overall first-stage coefficient is π̂ = 0.480. ... The first-stage partial R2 is 0.252 ... The pooled first-stage coefficient is π̂ = 0.052 ... the first-stage partial R2 is only 0.007",
+      "section": "6.1 / 7.1",
+      "page": 12,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-consistency: the much smaller L2 first-stage coefficient (0.052) and partial R2 (0.007) vs L1 (0.480, 0.252) should be consistent with the paper's explanation (Arbitrum base fee often at the floor -> compressed identifying variation).",
+      "evidence": [
+        {"id": "e39", "kind": "statistic", "location": "Sec 6.1, 7.1", "quote": "π̂ = 0.480 ... partial R2 ... 0.252 (L1); π̂ = 0.052 ... partial R2 ... 0.007 (L2)", "extracted_values": {"L1_pi": 0.480, "L1_partialR2": 0.252, "L2_pi": 0.052, "L2_partialR2": 0.007}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Internal-consistency narrative check: low L2 pi/R2 corroborates the floor-binding explanation and the wider L2 SEs; (exact pi/R2 not recomputable without the first-stage data).", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.7, "rationale": "Internally coherent: the L2 first stage is far weaker (pi 0.052, R2 0.007) than L1 (0.480, 0.252), consistent with Arbitrum's base fee resting at its floor (compressed identifying variation) and with the much larger L2 standard errors. The narrative ties together (c18, c28). Values themselves are regression outputs not recomputable from the paper; the cross-statistic consistency is what is checkable here and it holds."}
+    },
+    {
+      "id": "c32",
+      "text": "On L1, OLS and IV estimates are close in magnitude, while the IV correction is larger on L2 because hourly variation leaves more residual endogeneity.",
+      "quote": "On L1, the OLS and IV estimates are close in magnitude ... The correction is larger on L2 (Section 7), where hourly variation leaves more residual endogeneity.",
+      "section": "6.2",
+      "page": 13,
+      "epistemic_tier": "T2",
+      "predicate": "Compare |IV - OLS| on L1 (pooled -0.0059 vs -0.0074, |diff|=0.0015) vs L2 (-0.0359 vs -0.0161, |diff|=0.0198) and check the L2 correction is larger.",
+      "evidence": [
+        {"id": "e40", "kind": "statistic", "location": "Tables 6,7 pooled", "quote": "L1: OLS −0.0074, IV −0.0059; L2: OLS −0.0161, IV −0.0359", "extracted_values": {"L1_OLS": -0.0074, "L1_IV": -0.0059, "L1_diff": 0.0015, "L2_OLS": -0.0161, "L2_IV": -0.0359, "L2_diff": 0.0198}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Difference recompute: |(-0.0059)-(-0.0074)| = 0.0015 (L1) vs |(-0.0359)-(-0.0161)| = 0.0198 (L2); confirm L2 correction (0.0198) >> L1 (0.0015).", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "L1 OLS->IV moves only 0.0015 (and actually shrinks the magnitude, -0.0074 to -0.0059), while L2 moves 0.0198 and roughly doubles it (-0.0161 to -0.0359). The L2 correction is an order of magnitude larger, supporting the prose. Off-the-shelf table-arithmetic / prose-vs-table check. (One nuance: the L1 IV magnitude is SMALLER than OLS, i.e. instrumenting reduces |beta| on L1, which the paper notes 'the sign of the adjustment varies across clusters'.)"}
+    },
+    {
+      "id": "c33",
+      "text": "The median C5 (L2) wallet conducts 75.4% of its active hours in above-median-fee periods (IQR 40.0-87.9%), a four-fold elevation over other clusters' 27.0-48.1%.",
+      "quote": "The median C5 wallet conducts 75.4% of its active hours in above-median-fee periods (IQR: 40.0–87.9%), compared with 27.0–48.1% for all other clusters. This four-fold elevation",
+      "section": "Appendix C / Table 13",
+      "page": 26,
+      "epistemic_tier": "T2",
+      "predicate": "Bind prose to Table 13: C5 median = 0.754 (75.4%), P25=0.400, P75=0.879; other clusters' medians span 0.270-0.481 (27.0-48.1%); check the 'four-fold' descriptor (0.754/lowest-other?).",
+      "evidence": [
+        {"id": "e41", "kind": "table", "location": "Table 13", "quote": "C5 Cong-active 6,466 0.754 0.400 0.879; C0 0.367; C1 0.481; C2 0.270; C3 0.270; C4 0.302", "extracted_values": {"C5_med": 0.754, "C5_P25": 0.400, "C5_P75": 0.879, "other_min": 0.270, "other_max": 0.481}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Prose-vs-table: 75.4%, 40.0-87.9% IQR, and 27.0-48.1% other-cluster range all match Table 13; the 'four-fold' is loose (0.754 vs ~0.27 lowest = 2.8x; vs 'random baseline 0.50' = 1.5x).", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.75, "rationale": "Exact prose-vs-table match: C5 median 0.754, IQR [0.400,0.879], others 0.270-0.481, all transcribed correctly from Table 13. The 'four-fold elevation' is a loose characterization (0.754/0.270 = 2.79x against the lowest other cluster, or it may mean the share of activity at high fees is ~4x the deviation from baseline); the precise multiplier is imprecise but the directional/magnitude claim and all numbers are faithful. Numbers verified; 'four-fold' is mildly generous prose (note, not a hard error)."}
+    },
+    {
+      "id": "c34",
+      "text": "L2 storage-read selection: the share of active wallet-hours using storage reads is effectively constant across base-fee deciles (0.951-0.956), while storage writes decline from 0.835 (lowest decile) to 0.773 (highest).",
+      "quote": "effectively constant across base-fee deciles (0.951–0.956) ... Storage writes show a clearer decline (0.835 at the lowest fee decile to 0.773 at the highest)",
+      "section": "8.2 / Figure 15 (Appendix G)",
+      "page": 16,
+      "epistemic_tier": "T2",
+      "predicate": "Read the storage-read and storage-write share curves in Figure 15 by fee decile and confirm reads ~flat at 0.951-0.956 and writes fall 0.835->0.773, supporting the selection interpretation.",
+      "evidence": [
+        {"id": "e42", "kind": "figure", "location": "Figure 15", "quote": "Storage reads are flat (0.951–0.956). Storage writes, history growth, and calldata decline at higher fee levels. Storage growth and refunds are non-monotonic", "extracted_values": {"read_low": 0.951, "read_high": 0.956, "write_low": 0.835, "write_high": 0.773}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Figure value extraction by decile + monotonicity: confirm read shares within [0.951,0.956] (flat), write shares decline 0.835->0.773, and growth/refund non-monotonic.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.7, "rationale": "The Figure 15 caption and Sec 8.2 prose agree exactly (reads 0.951-0.956 flat; writes 0.835->0.773 declining; growth/refunds non-monotonic), and this pattern supports the selection argument in c19 (read-intensive wallets are last to exit). Prose-vs-figure T2 check; the precise decile values are read from the figure/caption (caption states them, so transcription is exact). Reproduces the selection narrative consistently."}
+    },
+    {
+      "id": "c35",
+      "text": "Cluster C1 (L2 total-gas) is the most adversarial cluster: 64.5% flagged ever, 34.2% currently, median revert ratio 2.9%, median adversarial-day fraction 10.8% (the only cluster with non-zero median adversarial days).",
+      "quote": "C1 (long-running) is the most adversarial cluster: 64.5% of wallets were flagged at some point, 34.2% remain flagged currently, with a median revert ratio of 2.9%. This is the only cluster with a non-zero median adversarial-day fraction (10.8%).",
+      "section": "Appendix E / Table 14",
+      "page": 27,
+      "epistemic_tier": "T2",
+      "predicate": "Bind to Table 14: C1 adversarial-ever=64.5, current=34.2, med revert=2.90, med adversarial days=10.8; confirm C1 is the row-wise max on adversarial-ever and the only non-zero median adversarial-days.",
+      "evidence": [
+        {"id": "e43", "kind": "table", "location": "Table 14", "quote": "C1 Long-running 64.5 34.2 2.90 10.8; C0 35.2 16.5 2.09 0.0; C5 43.8 0.8 0.87 0.0; C2 8.3 0.3 0.00 0.0; C3 6.8 1.7 0.12 0.0; C4 19.9 2.5 0.02 0.0", "extracted_values": {"C1_ever": 64.5, "C1_current": 34.2, "C1_revert": 2.90, "C1_advdays": 10.8, "max_other_ever": 43.8}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Prose-vs-table + argmax: confirm C1's 64.5 is the maximum adversarial-ever and 10.8 is the only non-zero median adversarial-days column entry.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "Table 14 confirms C1 has the highest adversarial-ever (64.5% > next 43.8% C5), highest current (34.2%), and the only non-zero median adversarial-days (10.8%; all others 0.0). All four numbers transcribed correctly and the 'most adversarial' / 'only non-zero' claims are true argmax/uniqueness statements over the table. Off-the-shelf prose-vs-table + argmax check; passes. (This corroborates excluding/flagging C1-type and the C5 exclusion for exclusion-restriction failure.)"}
+    },
+    {
+      "id": "c36",
+      "text": "Even small demand elasticities around -0.025 translate to substantial welfare gains under dynamic pricing (Borenstein), a range comparable to the L1 elasticity estimate.",
+      "quote": "Borenstein [5] establishes that even small demand elasticities (around −0.025, a range comparable to the L1 elasticity estimate) translate to substantial welfare gains under dynamic pricing.",
+      "section": "11.6 Demand Elasticity under Congestion Pricing",
+      "page": 21,
+      "epistemic_tier": "T5",
+      "predicate": "External-literature check: confirm Borenstein (2005, Energy Journal) uses ~-0.025 elasticity and finds substantial welfare gains; and assess 'comparable to the L1 elasticity estimate' (L1 pooled -0.006, or cluster C0 -0.0236).",
+      "evidence": [
+        {"id": "e44", "kind": "text", "location": "Sec 11.6 / Ref [5]", "quote": "even small demand elasticities (around −0.025 ...) ... Borenstein. The Long-Run Efficiency of Real-Time Electricity Pricing. The Energy Journal, 26(3):93–116, 2005.", "extracted_values": {"borenstein_elasticity": -0.025, "L1_pooled": -0.006, "L1_C0": -0.0236}}
+      ],
+      "verification": {"possible": false, "verifier_needed": "Retrieval + entailment: read Borenstein (2005) to confirm the ~-0.025 elasticity and welfare-gain claim, and judge the 'comparable to L1' framing.", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.45, "rationale": "Plausible citation: Borenstein (2005) is a well-known RTP-welfare paper and ~-0.025 is in its range. 'Comparable to the L1 elasticity estimate' is loose — the L1 POOLED is -0.006 (4x smaller than -0.025), though L1 cluster C0 is -0.0236 (close to -0.025); so the comparison fits the cluster, not the headline pooled value. T5 external check; abstain pending source read. Not an error per se, but the 'comparable' framing is generous w.r.t. the pooled L1 number."}
+    },
+    {
+      "id": "c37",
+      "text": "Figure 6 colors bars with negative pooled IV elasticity blue and positive red; this matches the Table 8 signs (computation/storageGrowth/l2Calldata/refund/historyGrowth negative; storageAccessRead/Write positive).",
+      "quote": "Blue bars have negative β̂ (demand response); red bars have positive β̂.",
+      "section": "Figure 6",
+      "page": 17,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check Figure 6 bar colors against Table 8 signs: reads/writes should be the only red (positive) dimensions; the other five blue (negative).",
+      "evidence": [
+        {"id": "e45", "kind": "figure", "location": "Figure 6", "quote": "Median gas usage by resource dimension ... Blue bars have negative β̂; red bars have positive β̂.", "extracted_values": {}},
+        {"id": "e46", "kind": "table", "location": "Table 8", "quote": "negative: computation, historyGrowth, storageGrowth, l2Calldata, refund; positive: storageAccessRead, storageAccessWrite", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Figure-vs-table sign consistency: the set of red (positive) bars in Fig 6 must equal {storageAccessRead, storageAccessWrite} per Table 8 signs.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.8, "rationale": "In the rendered Figure 6 the storage-access read/write bars are colored red and the other five (computation, historyGrowth, storageGrowth, l2Calldata, refund) blue, matching the Table 8 IV signs exactly. Prose/figure-vs-table sign-coding consistency check; passes on visual inspection of the high-DPI render. (historyGrowth IV -0.0109 is negative but n.s.; colored blue by sign, consistent with the caption rule.)"}
+    },
+    {
+      "id": "c38",
+      "text": "Figure 7's counterfactual simulation uses a fee sweep from 0.005 to 5 gwei for the average regime (alpha,gamma in [P40,P60], ntxs=3), with the observed median base fee marked at 0.02 gwei; the downward-sloping median reflects the pooled L2 elasticity -0.036.",
+      "quote": "a fee sweep from 0.005 to 5 gwei for the average regime (α̂ ∈ [P40 , P60 ], γ̂ ∈ [P40 , P60 ], ntxs = 3). The downward-sloping median response reflects the pooled L2 elasticity (β̂ = −0.036) ... Dotted vertical line: observed median base fee (0.02 gwei).",
+      "section": "9 Downstream applications / Figure 7",
+      "page": 17,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-consistency: the average-regime windows ([40,60] x [40,60]) match Table 12's 'average' row; the elasticity used (-0.036) matches the pooled L2 estimate; the 0.02 gwei median matches Arbitrum's current floor (c22).",
+      "evidence": [
+        {"id": "e47", "kind": "figure", "location": "Figure 7 / Table 12", "quote": "average 40 60 40 60; observed median base fee (0.02 gwei)", "extracted_values": {"a_low": 40, "a_high": 60, "g_low": 40, "g_high": 60, "ntxs": 3, "beta": -0.036, "median_fee_gwei": 0.02}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Prose-vs-figure/table: confirm 'average' regime [40,60]x[40,60] equals Table 12 row; beta=-0.036 = pooled L2; 0.02 gwei median = Arbitrum floor.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.75, "rationale": "Consistent: the average regime percentile windows in Fig 7 caption ([P40,P60] x [P40,P60]) match the 'average' row of Table 12 (40,60,40,60); the elasticity quoted (-0.036) is the pooled L2 value (c3); and the 0.02 gwei observed-median marker equals Arbitrum's raised floor (c22). The 'multiplicative shift' claim (bands move in parallel) is a qualitative read of the simulation figure. Cross-artefact T2 consistency; figure values match captions/tables."}
+    }
+  ],
+  "paper_level_notes": "arXiv:2606.13555v1 [econ.EM], 11 Jun 2026 (DOI: none assigned to the preprint; the bibliography carries DOIs). Authors Pranay Anchuri & Akaki Mamageishvili (Offchain Labs — the team behind Arbitrum). 30 pages incl. 7-page appendix (A–G), 15 figures, 15 tables. DATA/CODE AVAILABILITY: NONE STATED. The L1 dataset is 'all Ethereum mainnet transactions during 2025' and the L2 dataset is proprietary Arbitrum Nitro per-resource traces (Oct 2025–Apr 2026); no public repository, replication package, or data link is provided (the only title-page footnote is the EIP-8037/Monad note, not a companion-code link). This makes the T6 reproducibility tier (footnote-3 reversal estimates +0.052/+1.52, the convergence-iteration counts, and any first-stage/IV magnitude not in a table) NOT independently checkable from the paper alone — they are recorded as inconclusive/not_checkable rather than supported. The CHECKABLE FRONTIER here is rich and clean: (T0) percent-change/elasticity claims (10%->0.06%/0.36%/<=0.4%), the L2/L1 6x ratio, the 12s/0.25s=48x block-rate ratio, 30M/15M=2x target, 0.02/0.005=4x floor ratio, and Table 1 coverage percentages — ALL recompute correctly; (T0/statcheck) significance stars from (beta, SE) — an off-the-shelf statcheck verifier applies directly since the paper reports SEs not p-values; (T2) abstract<->table rounding consistency (all per-resource and pooled values round correctly), prose-vs-figure binding (Fig 1 slope +0.094 & N; Fig 6 sign-coloring; Fig 7 regime/elasticity), and cross-table consistency. SUSPECT / FLAGGED-FOR-HUMAN items (judged on the paper's own internal numbers, NOT manufactured): (1) c27 — the L1 panel reports 35,276,914 wallet-DAY observations, but 44,449 wallets x 365 days = 16,223,885 is the hard maximum number of (wallet,day) cells; the reported total is 2.17x that ceiling, which is impossible for a wallet-day panel (the L2 analogue, 16.94M <= 23,119*5,087=117.6M, is fine), so either the count, the wallet number, or the label is off — this is the single most material internal inconsistency and a clean deterministic-bound flag, though WHICH number is wrong needs the data; (2) c11 — the L2 pooled estimate -0.0359 (SE=0.0141) is marked ** (p<0.01) but a normal-approx two-sided p = 0.0109 sits just above 0.01 (a borderline statcheck overstatement, sensitive to rounding/reference distribution); (3) c29/c30 — cluster wallet counts over-sum the pooled totals by 8 (L1: 44,457 vs 44,449) and by 2 (L2: 23,121 vs 23,119), plus a C0 cross-table mismatch (2,608 in Table 4 vs 2,606 in Table 7) — small reporting/rounding partition errors (severity C); (4) c7 — the abstract's 'cluster-level elasticities up to roughly 6x the pooled estimate' is not met by any IDENTIFIED behavioral cluster (L1 max 4.0x; L2 max identified 2.18x; only the EXCLUDED/n.i. C0 reaches ~32x), so it reads as a conflation with the genuine L1-vs-L2 6x pooled ratio (or an imprecise reference to per-resource cluster tables) — a likely abstract over-claim to route to a human. Otherwise the econometrics is careful and self-aware: the paper openly flags weak L2 identification (first-stage partial R2 = 0.007), LATE-only interpretation, exclusion-restriction failure for congestion-timing wallets (C5 excluded, validated in App C/Table 13), positive per-resource estimates as selection artefacts (App G/Fig 15), and several limitations. Significance stars across Tables 6–8 are otherwise internally consistent with the reported (beta, SE) under a z-test. METHOD tiers (T3/T4: IV identification, wallet-level clustering, F>10 with the size-inflation caveat, conservative-lower-bound argument) are reasonable and disclosed; routed as supported-with-human-review. Integrity (T7): elbow-at-k=6 is a soft heuristic (inertia values not tabulated); no images/blots to screen; no terminal-digit/Benford concern given the small set of headline numbers. Overall this presents as a competent, transparent applied-econometrics paper whose deterministic frontier (T0 arithmetic/ratios/coverage %, statcheck stars, T2 abstract-vs-table and prose-vs-figure) is highly checkable; the one item that most warrants author confirmation is the L1 wallet-day observation count (c27), which violates a hard panel-dimension bound as printed."
+}

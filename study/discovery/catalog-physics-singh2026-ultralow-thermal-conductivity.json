@@ -1,0 +1,350 @@
+{
+  "paper_id": "physics-singh2026-ultralow-thermal-conductivity",
+  "title": "Lone-Pair–Induced Lattice Softness Enables Ultralow thermal conductivity in Hybrid Organic–Inorganic Perovskite GuaPbI3",
+  "doi": null,
+  "domain": "condensed-matter physics / materials science (thermoelectrics, hybrid perovskites)",
+  "n_pages_read": 32,
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Mechanochemical synthesis yields crystalline GuaPbI3 with an ultralow room-temperature thermal conductivity of kappa ~ 0.088 W m^-1 K^-1.",
+      "quote": "Mechanochemical synthesis yields crystalline GuaPbI₃ with an ultralow room-temperature thermal conductivity of κ ≈ 0.088 W m⁻¹ K⁻¹.",
+      "section": "Abstract / 3.3 Thermal Characterization",
+      "page": 1,
+      "epistemic_tier": "T4",
+      "predicate": "Check that the headline kappa value is the measured THB value and is used consistently throughout; the number itself is a single instrument measurement (one value, no error bar, no replicate statistics reported).",
+      "evidence": [
+        {"id": "e1", "kind": "number", "location": "Abstract; Sec 3.3 (p10); Discussion p20", "quote": "Transient thermal characterization of the GuaPbI₃ thin film at 32 °C yields a thermal conductivity of 0.088 W m⁻¹ K⁻¹.", "extracted_values": {"kappa_W_per_mK": 0.088, "measurement_temp_C": 32}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Raw THB transient trace + uncertainty/replicate analysis; cross-check the single reported value against any SI primary data.", "verifier_exists": false, "candidate_verdict": "inconclusive", "rationale": "The headline result rests on a single Transient Hot Bridge measurement with no reported uncertainty, no replicate count, and no SI data bundled with the PDF. Value cannot be recomputed; plausibility only. Note kappa is described as 'lattice' (kappa_l) in some places and 'total' (kappa_total) in others (eq context) without separating electronic contribution — see c3."},
+      "_": ""
+    },
+    {
+      "id": "c2",
+      "text": "The 0.088 W/mK value is more than an order of magnitude lower than benchmark Bi2Te3 (~1.2-1.6 W/mK).",
+      "quote": "This value is more than an order of magnitude lower than that of benchmark thermoelectric materials such as Bi₂Te₃ (≈ 1.2–1.6 W m⁻¹ K⁻¹)",
+      "section": "3.3 Thermal Characterization",
+      "page": 10,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute the ratio 1.2/0.088 and 1.6/0.088 and check whether 'more than an order of magnitude' (>10x) holds.",
+      "evidence": [
+        {"id": "e2", "kind": "number", "location": "Sec 3.3", "quote": "Bi₂Te₃ (≈ 1.2–1.6 W m⁻¹ K⁻¹)", "extracted_values": {"kappa_GuaPbI3": 0.088, "Bi2Te3_low": 1.2, "Bi2Te3_high": 1.6}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "percent-change / ratio recompute (off-the-shelf).", "verifier_exists": true, "candidate_verdict": "supported", "rationale": "1.2/0.088 = 13.6x and 1.6/0.088 = 18.2x, both > 10x, so 'more than an order of magnitude lower' is arithmetically correct. Bi2Te3 ~1.2-1.6 W/mK is an accepted literature value (T1)."}
+    },
+    {
+      "id": "c3",
+      "text": "GuaPbI3 is positioned on the Ashby chart (Fig 7) at a specific thermal conductivity and a specific Seebeck coefficient relative to other thermoelectric classes and MAPbI3.",
+      "quote": "Comparative transport-property positioning of GuaPbI₃ relative to representative thermoelectric material classes and MAPbI₃, which is from the same HIOP family",
+      "section": "Fig. 7 (Ashby Chart)",
+      "page": 18,
+      "epistemic_tier": "T2",
+      "predicate": "Read GuaPbI3's plotted (Seebeck, kappa) coordinates off Fig 7 and check consistency with (a) the measured kappa=0.088 and (b) the paper's own statement that Seebeck was NOT experimentally measured.",
+      "evidence": [
+        {"id": "e3", "kind": "figure", "location": "Fig. 7", "quote": "log-scaled y-axis 'Thermal Conductivity kappa [W m^-1 K^-1]' spanning ~0.4 to 10; x-axis 'Seebeck Coefficient |S| [uV K^-1]' 0 to ~1500; GuaPbI3 plotted bottom-right at |S| ~1300 uV/K, kappa ~0.4-0.5; MAPbI3 at |S| ~700, kappa ~0.8", "extracted_values": {"GuaPbI3_seebeck_uV_per_K_approx": 1300, "GuaPbI3_kappa_plotted_approx": 0.45, "kappa_axis_min_approx": 0.4}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "vision read-off of Fig 7 coordinates vs prose (kappa=0.088; 'Seebeck not measured'); prose-vs-figure consistency check.", "verifier_exists": false, "candidate_verdict": "suspect", "rationale": "Two internal inconsistencies. (1) The y-axis bottom is ~0.4 W/mK and GuaPbI3 is plotted near the axis floor (~0.4-0.5), NOT at the headline 0.088 W/mK — a point at 0.088 would fall below the visible axis, so the chart cannot be showing the measured value. (2) GuaPbI3 is placed at a definite Seebeck |S| ~1300 uV/K, yet Sec 4 (p22) explicitly states 'direct thermoelectric measurements such as Seebeck coefficient and ZT were not experimentally obtained'. Plotting an unmeasured Seebeck coordinate and a kappa inconsistent with the reported value is a prose-vs-figure contradiction."}
+    },
+    {
+      "id": "c4",
+      "text": "I-V data show a near-unity (Y=X) linear relationship between current and conductance, with fitted slope approximately unity.",
+      "quote": "The fitted slope is approximately unity, corresponding to a near Y=X relationship between current and conductance [Fig. 3(a)].",
+      "section": "3.4.1 I-V Characterization",
+      "page": 11,
+      "epistemic_tier": "T2",
+      "predicate": "Read the fitted slope annotation on Fig 3(a) and compare against the prose claim of 'slope approximately unity / near Y=X'.",
+      "evidence": [
+        {"id": "e4", "kind": "figure", "location": "Fig. 3(a) 'Current–Conductance Response'", "quote": "x-axis 'Conductance from resistivity, G_p (S)' (x10^-5), y-axis 'Current (A)' (x10^-2), in-panel legend 'm = 2.000e+03'", "extracted_values": {"plotted_slope": 2000.0, "claimed_slope": 1.0}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-figure slope check (read m off Fig 3a, compare to 'approximately unity').", "verifier_exists": false, "candidate_verdict": "suspect", "rationale": "Direct contradiction: the figure legend states the fitted slope m = 2.000e+03 (2000), while the text claims the slope is 'approximately unity / near Y=X'. 2000 is not approximately 1. Physically the slope equals the applied voltage (I = G*V, V = 2000 V), so a slope of 2000 is expected and the 'unity / Y=X' framing is wrong. The axis scaling (10^-2 vs 10^-5) further means the visual line is not at 45 degrees in true units."}
+    },
+    {
+      "id": "c5",
+      "text": "Conductance varies linearly with applied power with the same proportional (near Y=X / unity-slope) trend as the current-conductance data.",
+      "quote": "The conductance also varies linearly with applied power[Fig. 3 (b)], within the measured range. The conductance–power relationship follows the same proportional trend observed in the current–conductance data.",
+      "section": "3.4.1 I-V Characterization",
+      "page": 11,
+      "epistemic_tier": "T2",
+      "predicate": "Read fitted slope on Fig 3(b) and compare to the prose claim that it follows 'the same proportional trend' (i.e., unity-like) as Fig 3(a).",
+      "evidence": [
+        {"id": "e5", "kind": "figure", "location": "Fig. 3(b) 'Conductance–Power Relation'", "quote": "x-axis 'Power (W)' 0-~80, y-axis 'Conductance from resistivity, G_p (S)' (x10^-5), in-panel legend 'm = 2.500e-07'", "extracted_values": {"plotted_slope": 2.5e-07, "fig3a_slope": 2000.0}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-figure consistency (compare Fig 3b slope to Fig 3a slope and to 'same proportional trend' claim).", "verifier_exists": false, "candidate_verdict": "suspect", "rationale": "Fig 3(b) slope is 2.500e-07, while Fig 3(a) slope is 2.000e+03 — ten orders of magnitude apart. The claim that 3(b) 'follows the same proportional trend' as 3(a) and the umbrella 'slope approximately unity' framing are not supported by the figure annotations. Both panels are linear, but neither has unity slope."}
+    },
+    {
+      "id": "c6",
+      "text": "The lone-pair descriptor LZ shows a strong inverse relationship between log(LZ) and log(kappa_l) with R2 = 0.58.",
+      "quote": "analysis of the lone-pair descriptor reveals a strong inverse relationship between log 𝐿𝑍 and log 𝜅𝑙, with R2=0.58[Fig. 1(b)].",
+      "section": "3.1 Machine Learning Model",
+      "page": 8,
+      "epistemic_tier": "T2",
+      "predicate": "Read Fig 1(b) legend; confirm R2=0.58 and that it characterizes the inverse (LZ>=threshold) branch, not the whole dataset; check the stated R2 matches the plotted fit.",
+      "evidence": [
+        {"id": "e6", "kind": "figure", "location": "Fig. 1(b) 'Change-point in lone-pair influence on kappa_l'", "quote": "legend: 'LZ < 5.92 (m=0.26, R²=0.14)' [red line], 'LZ >= 5.92 (m=-1.06, R²=0.58)' [green line], 'Threshold ≈ 5.92'", "extracted_values": {"R2_inverse_branch": 0.58, "slope_inverse_branch": -1.06, "R2_low_branch": 0.14, "slope_low_branch": 0.26, "threshold": 5.92}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "vision read-off of Fig 1b legend vs prose; ideally refit the plotted scatter to verify R2=0.58 and slope=-1.06 (T0 if data extractable).", "verifier_exists": false, "candidate_verdict": "supported", "rationale": "R2=0.58 in the text matches the Fig 1(b) legend for the LZ>=5.92 (inverse, green) branch. Consistent. Caveat for c7: the 'inverse relationship ... R2=0.58' applies only to the high-LZ subset; the low-LZ branch is R2=0.14 with positive slope, so 'strong inverse relationship' is a partial characterization of a piecewise/change-point fit, and R2=0.58 on a small scatter (~13 points visible) is moderate, not strong."}
+    },
+    {
+      "id": "c7",
+      "text": "A regime transition occurs near LZ ~ 6, beyond which thermal conductivity decreases approximately inversely with LZ.",
+      "quote": "A transition is observed near 𝐿𝑍≈6, beyond which thermal conductivity decreases approximately inversely with 𝐿𝑍",
+      "section": "3.1 / 4 Discussion",
+      "page": 8,
+      "epistemic_tier": "T2",
+      "predicate": "Compare the prose threshold 'LZ ~ 6' to the figure's fitted change-point value.",
+      "evidence": [
+        {"id": "e7", "kind": "figure", "location": "Fig. 1(b)", "quote": "'Threshold ≈ 5.92'", "extracted_values": {"prose_threshold": 6, "figure_threshold": 5.92}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-figure numeric rounding check.", "verifier_exists": true, "candidate_verdict": "supported", "rationale": "Figure change-point is 5.92; text rounds to ~6. Consistent rounding, minor. The change-point itself is fit-dependent and the inverse branch rests on few points (see c6)."}
+    },
+    {
+      "id": "c8",
+      "text": "XRD diffraction peaks at 2theta ~ 7.5 deg, 12 deg, and 15 deg match the reference pattern of orthorhombic GuaPbI3, confirming phase formation without detectable secondary phases.",
+      "quote": "The diffraction peaks at 2θ ≈ 7.5°, 12°, and 15° match the reference pattern of orthorhombic GuaPbI₃, confirming successful phase formation without detectable secondary phases.",
+      "section": "3.2 Synthesis and XRD",
+      "page": 10,
+      "epistemic_tier": "T2",
+      "predicate": "Read the 2theta positions of the labeled/most-intense peaks in Fig 2 and compare to the prose-cited positions (7.5, 12, 15 deg).",
+      "evidence": [
+        {"id": "e8", "kind": "figure", "location": "Fig. 2 XRD pattern", "quote": "labeled peaks (with hkl): strongest (101) at 2theta ~ 9 deg; (102) ~ 14 deg; (200)/(203) ~ 19-20 deg; (204) ~ 23 deg; (213) ~ 26 deg; (206) ~ 28 deg; x-axis 6-49 deg", "extracted_values": {"prose_peaks_2theta": [7.5, 12, 15], "figure_strongest_101": 9, "figure_102": 14, "figure_204": 23}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "vision read-off of Fig 2 peak 2theta positions vs prose; ideally compare to a reference GuaPbI3 pattern (T1/T5).", "verifier_exists": false, "candidate_verdict": "suspect", "rationale": "Prose lists peaks at 2theta ~ 7.5, 12, 15 deg, but the three most prominent labeled peaks in Fig 2 sit at ~9 deg (101, strongest), ~14 deg (102), and ~23 deg (204). None of the three prose values cleanly matches a labeled peak; the strongest peak is at ~9 deg not 7.5 deg. Prose-vs-figure peak-position mismatch. (Phase-purity claim itself is a separate, unverifiable-from-figure assertion.)"}
+    },
+    {
+      "id": "c9",
+      "text": "GuaPbI3 was synthesized by milling PbI2 (922 mg) and guanidinium hydroiodide (374 mg), i.e. a 1:1 molar ratio matching GuaPbI3 stoichiometry.",
+      "quote": "PbI₂ (922 mg) and guanidinium hydroiodide (374 mg) were milled in a Retsch PM100 planetary mill",
+      "section": "2.2 Synthesis and XRD",
+      "page": 7,
+      "epistemic_tier": "T0",
+      "predicate": "Convert the two reactant masses to moles using formula weights and check the molar ratio against the 1:1 needed for GuaI + PbI2 -> GuaPbI3.",
+      "evidence": [
+        {"id": "e9", "kind": "number", "location": "Sec 2.2", "quote": "PbI₂ (922 mg) and guanidinium hydroiodide (374 mg)", "extracted_values": {"PbI2_mg": 922, "GuaHI_mg": 374, "MW_PbI2": 461.0, "MW_GuaHI": 186.98}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "stoichiometry / mass-to-mole recompute (off-the-shelf).", "verifier_exists": true, "candidate_verdict": "supported", "rationale": "922 mg PbI2 / 461.0 g/mol = 2.000 mmol; 374 mg guanidinium hydroiodide (CH6N3I, 186.98 g/mol) / = 2.000 mmol. Exactly 1:1, which is the correct stoichiometry for GuaPbI3 (GuaI + PbI2 -> GuaPbI3). Internally consistent."}
+    },
+    {
+      "id": "c10",
+      "text": "Milling used thirty 5 mm zirconia balls in an 80 mL zirconia jar, giving a ball-to-powder ratio of approximately 11:1.",
+      "quote": "using an 80 mL zirconia jar containing thirty 5 mm zirconia balls (ball-to-powder ratio ≈ 11:1)",
+      "section": "2.2 Synthesis and XRD",
+      "page": 7,
+      "epistemic_tier": "T0",
+      "predicate": "Estimate total ball mass (30 x volume x ZrO2 density) divided by total powder mass (922+374 mg) and compare to the stated 11:1.",
+      "evidence": [
+        {"id": "e10", "kind": "number", "location": "Sec 2.2", "quote": "thirty 5 mm zirconia balls ... ball-to-powder ratio ≈ 11:1", "extracted_values": {"n_balls": 30, "ball_diameter_mm": 5, "powder_total_mg": 1296, "stated_BPR": 11}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "mass-balance / BPR recompute (density-dependent).", "verifier_exists": true, "candidate_verdict": "inconclusive", "rationale": "30 balls of 5 mm dia at ZrO2 density 6.05 g/cm3 give ~11.9 g total; over 1.296 g powder that is BPR ~9.2:1. With density ~6.5-7.0 g/cm3 (denser YSZ grades) it rises to ~10-11:1. So 11:1 is plausible but sensitive to the assumed zirconia grade/density and ball-fill; within rounding tolerance, not flaggable as an error."}
+    },
+    {
+      "id": "c11",
+      "text": "The symbolic-regression ranking function converged to F(QM,GM,LZ) = (23.882 + GM + e^LZ - LZ*QM)^(1/3).",
+      "quote": "𝐹 𝑄𝑀, 𝐺𝑀, 𝐿𝑍 =  23.882 + 𝐺𝑀+ 𝑒𝐿𝑍− 𝐿𝑍∗𝑄𝑀 ^(1/3)  (eq 9)",
+      "section": "3.1 Machine Learning Model",
+      "page": 8,
+      "epistemic_tier": "T3",
+      "predicate": "Check whether the published functional form is dimensionally/physically coherent and whether e^LZ can dominate F such that the ranking reduces to ordering by LZ alone.",
+      "evidence": [
+        {"id": "e11", "kind": "equation", "location": "Eq. (9)", "quote": "F = (23.882 + GM + e^LZ - LZ*QM)^(1/3)", "extracted_values": {"constant": 23.882, "parsimony_coefficient": 0.015}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Symbolic recompute over the training/screening dataset (requires the 150-value dataset + the HIOP screening set, neither bundled) to reproduce the ranking and the F-vs-rank plot Fig 1(a).", "verifier_exists": false, "candidate_verdict": "inconclusive", "rationale": "Equation is transcribed but cannot be recomputed without the descriptor dataset. Physical note: the e^LZ term grows exponentially while the other terms are polynomial, so for moderate-to-large LZ the ranking F is dominated almost entirely by e^LZ (hence Fig 1a spans 10^13 to 10^97 on a log axis). This makes F effectively a monotonic function of LZ over much of the range, which is consistent with — but also somewhat circular relative to — the separately claimed LZ/kappa correlation (c6). Method-appropriateness flag, not an arithmetic error."}
+    },
+    {
+      "id": "c12",
+      "text": "A dataset of 150 lattice thermal conductivity values compiled from 65 studies on perovskite systems was used to construct the descriptors.",
+      "quote": "A dataset of 150 lattice thermal conductivity values compiled from 65 studies on perovskite systems was used to construct these descriptors[29–93].",
+      "section": "2.1 Machine Learning Model",
+      "page": 6,
+      "epistemic_tier": "T1",
+      "predicate": "Count the citation range [29-93] and check it spans ~65 studies; confirm the dataset/SI is available to verify the 150 values.",
+      "evidence": [
+        {"id": "e12", "kind": "text", "location": "Sec 2.1; refs [29-93]", "quote": "[29–93]", "extracted_values": {"n_values": 150, "n_studies_claimed": 65, "ref_range_start": 29, "ref_range_end": 93, "ref_range_count": 65}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "citation-count check (29..93 inclusive = 65 refs) + dataset availability check.", "verifier_exists": true, "candidate_verdict": "supported", "rationale": "Reference span [29-93] inclusive = 65 references, matching '65 studies'. The 150 kappa values themselves are not tabulated in the PDF and no SI/dataset is bundled, so the count of 150 cannot be independently verified — but the studies-count claim is internally consistent."}
+    },
+    {
+      "id": "c13",
+      "text": "The valence frontier consists of 24 bands with median bandwidth dE ~ 0.007 eV and maximum dE ~ 0.015 eV, all satisfying dE <= 0.02 eV.",
+      "quote": "The valence frontier consists of 24 bands with very low dispersion, with a median bandwidth of ΔE ≈ 0.007 eV and a maximum of ΔE ≈ 0.015 eV, with all bands satisfying ΔE ≤ 0.02 eV.",
+      "section": "3.5 Density Functional Theory",
+      "page": 14,
+      "epistemic_tier": "T2",
+      "predicate": "Internal consistency of the stated band statistics (median 0.007, max 0.015, all <= 0.02) and consistency with Fig 5(a); ideally recompute bandwidths from the band-structure data.",
+      "evidence": [
+        {"id": "e13", "kind": "figure", "location": "Sec 3.5 text; Fig. 5(a)", "quote": "24 valence bands, median dE 0.007 eV, max dE 0.015 eV, all dE <= 0.02 eV", "extracted_values": {"n_valence_bands": 24, "median_dE_eV": 0.007, "max_dE_eV": 0.015, "threshold_eV": 0.02}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Recompute per-band bandwidths from the DFT band structure (data not provided; Sec 2.5 DFT methodology is empty so even the computational setup is undocumented).", "verifier_exists": false, "candidate_verdict": "inconclusive", "rationale": "The three numbers are mutually consistent (0.007 < 0.015 < 0.02). But they cannot be verified: the band-structure data is in unprovided SI, Fig 5(a) is a 3D 'frontier band landscape' with no readable eV axis tick resolution at 0.007 eV, and crucially Section 2.5 'Density Functional Theory' methodology is entirely BLANK (no functional, k-mesh, code settings) despite refs to VASP/PBE — so the calculation is non-reproducible as documented."}
+    },
+    {
+      "id": "c14",
+      "text": "The conduction frontier contains 16 bands with median dE ~ 0.19 eV and maximum dE ~ 0.49 eV, with only ~25% satisfying dE <= 0.10 eV.",
+      "quote": "the conduction frontier contains 16 bands with significantly higher dispersion, with a median ΔE ≈ 0.19 eV and a maximum ΔE ≈ 0.49 eV, and only ~25% of bands satisfying ΔE ≤ 0.10 eV.",
+      "section": "3.5 Density Functional Theory",
+      "page": 14,
+      "epistemic_tier": "T2",
+      "predicate": "Check internal consistency: ~25% of 16 bands = 4 bands <= 0.10 eV; median 0.19 > 0.10 consistent with majority above 0.10.",
+      "evidence": [
+        {"id": "e14", "kind": "text", "location": "Sec 3.5", "quote": "16 bands, median dE 0.19 eV, max 0.49 eV, ~25% with dE <= 0.10 eV", "extracted_values": {"n_conduction_bands": 16, "median_dE_eV": 0.19, "max_dE_eV": 0.49, "frac_below_0p10": 0.25, "implied_count_below": 4}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "internal arithmetic (25% of 16 = 4) + DFT recompute (data not provided).", "verifier_exists": true, "candidate_verdict": "supported", "rationale": "Internally consistent: 25% of 16 = 4 bands <= 0.10 eV; a median of 0.19 eV (> 0.10) is consistent with ~75% of bands exceeding 0.10 eV. Numbers are coherent; the underlying DFT values remain unverifiable (empty methodology, no SI data)."}
+    },
+    {
+      "id": "c15",
+      "text": "At 300 K the undoped Lorenz-number ill-defined central window extends from -0.069 to +0.070 eV, narrowing at 373 K to about -0.069 to +0.063 eV.",
+      "quote": "At 300 K, this region extends approximately from −0.069 to +0.070 eV, and narrows slightly at 373 K to about −0.069 to +0.063 eV.",
+      "section": "3.5 DFT / 4 Discussion",
+      "page": 14,
+      "epistemic_tier": "T2",
+      "predicate": "Check internal consistency of the claim 'narrows slightly' against the two windows; cross-check Sec 3.5 vs Sec 4 (Discussion) which repeats the values.",
+      "evidence": [
+        {"id": "e15", "kind": "number", "location": "Sec 3.5 (p14) and Sec 4 (p23)", "quote": "300 K: -0.069 to +0.070 eV; 373 K: -0.069 to +0.063 eV", "extracted_values": {"win300_low": -0.069, "win300_high": 0.070, "win300_width": 0.139, "win373_low": -0.069, "win373_high": 0.063, "win373_width": 0.132}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "arithmetic width comparison + cross-section consistency (Sec 3.5 vs Sec 4).", "verifier_exists": true, "candidate_verdict": "supported", "rationale": "Width at 300 K = 0.139 eV, at 373 K = 0.132 eV, so the window does narrow slightly (by 0.007 eV, only on the +side), consistent with 'narrows slightly'. The values are repeated identically in Sec 3.5 and the Discussion (p23), so internally self-consistent. Underlying L(mu) curve not independently verifiable without transport data."}
+    },
+    {
+      "id": "c16",
+      "text": "The Seebeck profile shifts toward mu ~ 0 eV with increasing carrier concentration, approaching within ~0.5 eV of the Fermi level, with satellite features near mu ~ +/-0.1 eV.",
+      "quote": "The calculated Seebeck profiles shift toward μ ≈ 0 eV with increasing carrier concentration, approaching within ~0.5 eV of the Fermi level. Additional satellite features emerge near μ ≈ ±0.1 eV.",
+      "section": "3.5 Density Functional Theory",
+      "page": 14,
+      "epistemic_tier": "T2",
+      "predicate": "Compare the prose description of Seebeck(mu) features to the plotted curves in Fig 6(a),(b).",
+      "evidence": [
+        {"id": "e16", "kind": "figure", "location": "Fig. 6(a),(b) S(mu) at 300 K and 373 K", "quote": "S vs mu (-0.3 to 0.3 eV), sharp positive/negative excursions near mu=0 with satellite peaks", "extracted_values": {"mu_approach_eV": 0.5, "satellite_mu_eV": 0.1}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "vision read-off of Fig 6 feature positions vs prose (qualitative).", "verifier_exists": false, "candidate_verdict": "inconclusive", "rationale": "Fig 6(a),(b) plot S(mu) over mu in [-0.3,+0.3] eV with sharp near-mu=0 structure and side features, qualitatively consistent with the description. But '~0.5 eV of the Fermi level' is outside the plotted x-range (+/-0.3 eV), so that specific claim cannot be read off the figure as drawn. Mostly qualitative; not arithmetically checkable."}
+    },
+    {
+      "id": "c17",
+      "text": "Bipolar conduction effects are limited because the band gap is relatively large (~2.3 eV).",
+      "quote": "In the present system these effects remain limited because the relatively large band gap (~2.3 eV) suppresses thermal excitation of minority carriers",
+      "section": "4 Discussion",
+      "page": 22,
+      "epistemic_tier": "T2",
+      "predicate": "Check the ~2.3 eV band gap against the gap implied by DFT (Sec 3.5) and against other gap statements in the paper.",
+      "evidence": [
+        {"id": "e17", "kind": "number", "location": "Sec 4 (p22)", "quote": "relatively large band gap (~2.3 eV)", "extracted_values": {"band_gap_eV": 2.3}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "internal consistency: compare the 2.3 eV value to the DFT band gap (not stated numerically in Sec 3.5) and to any SI band structure; PBE typically underestimates gaps (T1/T3).", "verifier_exists": false, "candidate_verdict": "inconclusive", "rationale": "The 2.3 eV gap is asserted in the Discussion but never reported as a computed/measured number in Sec 3.5 (the DFT section gives band dispersions but no gap value, and the methodology is blank). Origin of 2.3 eV (DFT? literature? UV-vis not performed) is untraceable from the text, so it cannot be bound to evidence."},
+      "_": ""
+    },
+    {
+      "id": "c18",
+      "text": "Guanidinium has an effective radius r ~ 0.21 nm, electronic polarizability alpha ~ 4.44 x 10^-40 m^3, molar entropy S ~ 264 J K^-1 mol^-1, and Cp ~ 78 J K^-1 mol^-1 at 298 K.",
+      "quote": "large effective radius (r ≈ 0.21 nm) and high electronic polarizability (α ≈ 4.44 × 10⁻³⁹ m³) ... molar entropy of approximately S ≈ 264 J K⁻¹ mol⁻¹ and a constant-pressure heat capacity Cp ≈ 78 J K⁻¹ mol⁻¹ at 298 K.",
+      "section": "4 Discussion",
+      "page": 20,
+      "epistemic_tier": "T1",
+      "predicate": "Cross-check the four guanidinium property values against the cited literature source (Marcus 2012, ref [128]) and known physical-property tables.",
+      "evidence": [
+        {"id": "e18", "kind": "number", "location": "Sec 4; ref [128] Y. Marcus J. Chem. Thermodyn. 2012", "quote": "r ≈ 0.21 nm; alpha ≈ 4.44 x 10^-39/-40 m^3; S ≈ 264 J/K/mol; Cp ≈ 78 J/K/mol", "extracted_values": {"radius_nm": 0.21, "polarizability_m3": 4.44e-40, "entropy_J_per_K_mol": 264, "Cp_J_per_K_mol": 78}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "literature lookup against Marcus (2012) and standard ion-property tables (T1/T5).", "verifier_exists": false, "candidate_verdict": "inconclusive", "rationale": "Values are attributed to a specific source (Marcus 2012) and are physically plausible for a large organic cation. NOTE a likely unit transcription issue: the extracted text renders the polarizability exponent garbled ('4.44 x 10^-=:'), so the exponent (10^-39 vs 10^-40 m^3) cannot be read with certainty from the PDF text layer — record as ambiguous pending source check. Requires external reference to verify the four numbers."}
+    },
+    {
+      "id": "c19",
+      "text": "Thermal measurement used 5.0 mW applied power, 10 mA current, 70 s duration, ~1 mm sample thickness, with average temperature drift 0.0196 C/s.",
+      "quote": "Measurements were conducted using an applied power of 5.0 mW, a current of 10 mA and a measurement duration of 70 s ... average 0.0196 °C s⁻¹ ... sample thickness was approximately 1 mm.",
+      "section": "2.3 Thermal Characterization",
+      "page": 7,
+      "epistemic_tier": "T0",
+      "predicate": "Cross-check P = I^2*R / consistency of 5.0 mW power with 10 mA current (implies R ~ 50 Ohm for the heater) and whether 5.0 mW with 10 mA is self-consistent (P = V*I -> V = 0.5 V).",
+      "evidence": [
+        {"id": "e19", "kind": "number", "location": "Sec 2.3", "quote": "applied power of 5.0 mW, a current of 10 mA", "extracted_values": {"power_mW": 5.0, "current_mA": 10, "duration_s": 70, "thickness_mm": 1, "drift_C_per_s": 0.0196}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "unit/Ohm's-law consistency check on the THB heater settings (off-the-shelf unit-balance).", "verifier_exists": true, "candidate_verdict": "supported", "rationale": "P = V*I with P=5.0 mW and I=10 mA gives V=0.5 V and heater resistance R=V/I=50 Ohm — a physically reasonable THB sensor operating point. Values are internally self-consistent (these are instrument settings, not derived results)."}
+    },
+    {
+      "id": "c20",
+      "text": "Impedance / dielectric quantities (tan delta, tan Phi, polarization) peak at low frequency near ~0.05 Hz and increase with temperature, with highest values near 79.6 C.",
+      "quote": "Both quantities show strong variation in the low-frequency regime, particularly near ~0.05 Hz, where peak magnitudes are observed ... the highest values observed near 79.6 °C.",
+      "section": "3.4.2 Impedance Spectroscopy",
+      "page": 12,
+      "epistemic_tier": "T2",
+      "predicate": "Read Fig 4(a),(b),(c) and check that peaks occur at the lowest frequencies (~0.05 Hz) and grow with temperature up to the stated max temperature.",
+      "evidence": [
+        {"id": "e20", "kind": "figure", "location": "Fig. 4(a) tan delta vs frequency vs temperature (3D surface)", "quote": "frequency axis spans ~0.05 to 10^9 Hz; surface rises sharply toward low frequency and high temperature", "extracted_values": {"peak_freq_Hz": 0.05, "max_temp_C": 79.6}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "vision read-off of Fig 4 3D surfaces (qualitative).", "verifier_exists": false, "candidate_verdict": "supported", "rationale": "Fig 4(a) is a 3D surface (tan delta vs log frequency vs temperature) whose magnitude clearly rises toward the low-frequency edge (~0.05 Hz, the stated AC range floor of 0.03 Hz in Sec 2.4) and toward higher temperature. Qualitatively consistent with the prose. The specific 79.6 C max is plausible given the -99 to 80 C measurement range; not independently checkable beyond visual trend."}
+    },
+    {
+      "id": "c21",
+      "text": "Impedance spectroscopy confirms predominantly bulk-dominated (not surface-limited) transport.",
+      "quote": "Impedance spectroscopy further indicates that conduction remains predominantly bulk dominated rather than surface limited.",
+      "section": "Abstract / 3.4.2 / 4 Discussion",
+      "page": 12,
+      "epistemic_tier": "T4",
+      "predicate": "Check whether a Nyquist/Cole-Cole impedance analysis (single vs multiple semicircles, equivalent-circuit fit separating bulk vs grain-boundary vs electrode) is actually shown to support 'bulk-dominated'.",
+      "evidence": [
+        {"id": "e21", "kind": "figure", "location": "Fig. 4 (tan delta, tan Phi, polarization)", "quote": "no Nyquist (Z' vs Z'') plot or equivalent-circuit fit shown; only tan delta, tan Phi, polarization vs frequency/temperature", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Presence of a Nyquist plot / equivalent-circuit deconvolution that distinguishes bulk from interfacial contributions (claim-vs-evidence support).", "verifier_exists": false, "candidate_verdict": "suspect", "rationale": "The 'bulk-dominated' conclusion is a standard impedance-spectroscopy claim that normally requires a Nyquist (Z'-Z'') plot with resolved bulk vs grain-boundary/electrode semicircles. The paper shows only tan delta, tan Phi, and polarization vs frequency/temperature (Fig 4) — none of which directly separates bulk from surface contributions. The supporting analysis is stated to be 'in the supplementary' (not bundled), so the claim is not supported by the evidence presented in the main text."}
+    },
+    {
+      "id": "c22",
+      "text": "Electrical measurements reveal electronically active, bias-dependent bulk conduction pathways despite strong phonon suppression (coexistence claim).",
+      "quote": "Electrical measurements reveal electronically active, bias-dependent bulk conduction pathways despite strong phonon suppression",
+      "section": "Abstract / 3.4 / 4 Discussion",
+      "page": 1,
+      "epistemic_tier": "T4",
+      "predicate": "Check whether the I-V data (only 2000 V and 3000 V, two bias points; conductance computed from resistivity) actually demonstrate 'electronically active bulk conduction' as opposed to leakage/displacement current at very high bias.",
+      "evidence": [
+        {"id": "e22", "kind": "figure", "location": "Sec 3.4.1; Fig. 3; Sec 2.4 (3 V to 2 kV)", "quote": "Measurements were performed under applied voltages of 2000 V and 3000 V ... Conductance was calculated from the measured volume resistivity", "extracted_values": {"bias_points_V": [2000, 3000]}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Claim-vs-evidence support: does a 2-point high-voltage (2-3 kV) I-V on a ~1 mm pellet establish intrinsic bulk electronic conduction? (method appropriateness + support).", "verifier_exists": false, "candidate_verdict": "suspect", "rationale": "The central 'electronically active bulk transport' coexistence narrative rests on I-V data taken only at 2000 V and 3000 V (two bias conditions) on a ~1 mm sample, with conductance back-computed from resistivity rather than directly measured. Two points define a line trivially; such high fields can drive leakage/space-charge/displacement currents rather than intrinsic carrier transport. Combined with the contradicted 'unity slope' framing (c4), the evidentiary support for genuine bulk electronic conduction is weak. Over-claim relative to evidence."}
+    },
+    {
+      "id": "c23",
+      "text": "The symbolic functional form converged to the same motif across multiple randomized runs, indicating a stable compositional trend rather than a run-specific artifact.",
+      "quote": "the evolutionary search converged to the same symbolic functional motif across multiple randomized runs. This indicates that the resulting expression represents a stable compositional trend rather than a run-specific artifact.",
+      "section": "3.1 / 4 Discussion",
+      "page": 19,
+      "epistemic_tier": "T6",
+      "predicate": "Re-run the GP-SR pipeline (Gplearn, stated parsimony 0.015, 3-stage Spearman/Cosine/Wasserstein) on the dataset to check convergence reproducibility across seeds.",
+      "evidence": [
+        {"id": "e23", "kind": "text", "location": "Sec 3.1 / Sec 4", "quote": "converged to a stable analytical expression across multiple independent runs", "extracted_values": {"parsimony_coefficient": 0.015}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Reproducibility rerun of the GP-SR pipeline with provided data + seeds.", "verifier_exists": false, "candidate_verdict": "inconclusive", "rationale": "Reproducibility claim that requires the dataset, descriptor table, and code/seeds, none of which are provided (no SI, no repo link in the PDF). The number of runs is unspecified ('multiple'). Not verifiable as documented; the schematic is deferred to a supplementary that is not bundled."}
+    },
+    {
+      "id": "c24",
+      "text": "DFT calculations were performed (frontier-band analysis, potential/deformation-density/density-gradient maps, BoltzTraP-style transport) but Section 2.5 'Density Functional Theory' methodology contains no text.",
+      "quote": "2.5. Density Functional Theory\\n 3. Results",
+      "section": "2.5 Density Functional Theory (Methodology)",
+      "page": 8,
+      "epistemic_tier": "T7",
+      "predicate": "Check that the Methodology section documenting the DFT setup (code, functional, pseudopotentials, k-mesh, transport method) is actually present, since all of Sec 3.5 and Fig 5-6 depend on it.",
+      "evidence": [
+        {"id": "e24", "kind": "text", "location": "Sec 2.5 (p8)", "quote": "Section heading '2.5. Density Functional Theory' is immediately followed by '3. Results' with no methodology body text. (Refs [108-113] = Hohenberg-Kohn, Kohn-Sham, VASP, PAW, PBE, VESTA appear only in the reference list.)", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Structural completeness check: is the DFT methodology documented at all? (integrity/completeness signal).", "verifier_exists": false, "candidate_verdict": "suspect", "rationale": "Section 2.5 'Density Functional Theory' has a heading but NO body text — the entire computational methodology (code, xc-functional, pseudopotentials, k-point mesh, cutoff, relaxation, transport/relaxation-time settings) is missing, even though Sec 3.5, Fig 5, and Fig 6 (band counts, bandwidths, Lorenz numbers, Seebeck profiles) all depend on it. This makes every DFT-derived claim (c13-c17) non-reproducible as documented and is a manuscript-completeness/integrity red flag. (Also: section numbering jumps — Acknowledgement is '7', References '8', with no sections 5-6 in the body.)"}
+    },
+    {
+      "id": "c25",
+      "text": "Commercial thermoelectric materials typically exhibit ZT ~ 1, corresponding to roughly 10% of Carnot efficiency, and ZT ~ 4 would be required to approach conventional refrigeration.",
+      "quote": "commercial thermoelectric materials typically exhibit values of 𝑍𝑇≈1, corresponding to roughly 10% of Carnot efficiency in cooling devices. Theoretical analyses suggest that achieving 𝑍𝑇≈4 would be required",
+      "section": "1 Introduction",
+      "page": 4,
+      "epistemic_tier": "T1",
+      "predicate": "Check ZT~1 -> ~10% Carnot and ZT~4 thresholds against standard thermoelectric textbook relations.",
+      "evidence": [
+        {"id": "e25", "kind": "number", "location": "Sec 1", "quote": "ZT ≈ 1 ... roughly 10% of Carnot efficiency ... ZT ≈ 4", "extracted_values": {"ZT_commercial": 1, "carnot_fraction_pct": 10, "ZT_target": 4}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Literature/textbook lookup of ZT-vs-efficiency relations (T1).", "verifier_exists": false, "candidate_verdict": "supported", "rationale": "These are standard, widely-cited thermoelectric community statements (ZT~1 commercial, ZT~3-4 to rival mechanical refrigeration; ZT~1 corresponds to roughly 10-15% of Carnot depending on dT). Consistent with established knowledge; not a novel quantitative claim of this paper."}
+    },
+    {
+      "id": "c26",
+      "text": "Maximum cooling temperature gradient is approximated by dTmax = (1/2) Z Tc^2 (eq 4).",
+      "quote": "∆𝑇𝑚𝑎𝑥= 1/2 𝑍𝑇𝑐  (eq 4)",
+      "section": "1 Introduction",
+      "page": 4,
+      "epistemic_tier": "T1",
+      "predicate": "Check the standard thermoelectric relation dTmax = (1/2) Z Tc^2 and whether the typeset 'ZT_c' means Z*Tc^2 (correct) vs ZT*c (incorrect).",
+      "evidence": [
+        {"id": "e26", "kind": "equation", "location": "Eq. (4)", "quote": "dTmax = (1/2) Z Tc^2", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Equation-form lookup against the standard Peltier-cooler dTmax relation (T1).", "verifier_exists": false, "candidate_verdict": "supported", "rationale": "The standard textbook relation is dTmax = (1/2) Z Tc^2, which matches eq (4). The PDF typesetting ('1/2 ZTc') is ambiguous about Z vs ZT but the intended standard form is correct. Minor transcription ambiguity, not a substantive error."}
+    }
+  ],
+  "paper_level_notes": "No DOI present in the PDF; authors Rudra P. Singh, Shantanu Pathak, Saswata Bhattacharya, R. Lakshmi Narayan (acknowledges CRF IIT Delhi). 32 pages: ~24 pp body + Fig captions, ~7 pp references [1-128], last page blank. NO supplementary information / data / code is bundled despite the text deferring key material to 'the supplementary' in many places (ML schematic, I-V 'primary results', impedance 'primary physical quantities', full band structure/DOS, additional transport) — so all reproducibility-tier claims (T6) and the underlying datasets (150-value kappa dataset, DFT outputs, raw THB/I-V/impedance traces) are unverifiable as provided. Strong DETERMINISTIC-FRONTIER findings concentrated in the figures: (i) Fig 3(a) legend slope m=2.000e+03 directly contradicts the prose 'slope approximately unity / near Y=X' (c4); physically the slope equals the applied voltage V=2000, not 1. (ii) Fig 3(b) slope m=2.500e-07 is 10 orders of magnitude from 3(a), contradicting 'same proportional trend' (c5). (iii) Ashby chart Fig 7 plots GuaPbI3 at kappa ~0.4-0.5 (axis floor), NOT at the headline 0.088 W/mK, AND assigns it a Seebeck |S|~1300 uV/K even though Sec 4 states Seebeck was never measured (c3). (iv) Fig 2 XRD: the three most prominent labeled peaks (~9 deg (101), ~14 deg (102), ~23 deg (204)) do not match the prose-cited peaks at 7.5/12/15 deg (c8). MANUSCRIPT-COMPLETENESS RED FLAGS: Section 2.5 'Density Functional Theory' methodology is entirely BLANK (c24); body section numbering is broken (Acknowledgement '7', References '8'; no sections 5-6); the 'bulk-dominated' impedance conclusion (c21) is asserted without any Nyquist/equivalent-circuit plot in the main text. CLEAN/SUPPORTED arithmetic: synthesis stoichiometry is exactly 1:1 (c9, 2.000 mmol each), order-of-magnitude kappa claim holds (c2, 13.6-18.2x), DFT band-stat internal arithmetic is coherent (c14, c15), citation/study counts match (c12). Best off-the-shelf coverage: percent-change/ratio (c2), stoichiometry (c9), prose-vs-figure slope/peak/coordinate read-off (c3,c4,c5,c8) — the latter is the highest-value novel verifier need (a vision reasoner reading plotted slopes/positions and checking them against prose). Counts: 26 claims; T0-T2 deterministically-checkable = 20 (T0:4, T1:4, T2:12) = c2,c3,c4,c5,c6,c7,c8,c9,c10,c12,c13,c14,c15,c16,c17,c18,c19,c20,c25,c26; of which the figure-vs-prose contradictions c3,c4,c5,c8 are the load-bearing suspect flags. Verdict spread: 11 supported, 7 suspect, 8 inconclusive."
+}

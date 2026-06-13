@@ -1,0 +1,882 @@
+{
+  "paper_id": "chemistry-jimenezcruz2026-pd-prolinate-catalysis",
+  "title": "Pd(II)–Prolinate Prolinium and Pd(II)–LysGly Complexes Catalyzed the Enantioselective Aldol, Morita–Baylis–Hillman and Heck Reactions",
+  "doi": "10.3390/molecules31040599",
+  "domain": "organometallic / asymmetric catalysis (organic chemistry)",
+  "n_pages_read": 19,
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Complex (S)-4 was isolated in 73% yield from 0.100 g (0.56 mmol) PdCl2 and 0.136 g (1.18 mmol) L-proline, giving 0.166 g of an orange solid.",
+      "quote": "Complex 4 was obtained by dissolving palladium chloride (PdCl2 ) (0.100 g, 0.56 mmol) in CH3 CN; subsequently, L-proline (0.136 g, 1.18 mmol) was added to the resulting mixture. After the reaction, 0.166 g of compound (S)-4 was isolated as an orange solid (73% yield)",
+      "section": "3.2 Catalyst Synthesis",
+      "page": 10,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute: limiting reagent PdCl2 = 0.56 mmol; complex MW from HRMS [M+H]=405.9678 -> M~404.96 (avg ~406.6 g/mol). Theoretical mass = 0.56 mmol x 406.6 = 227.7 mg; yield = 166/227.7.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "number",
+          "location": "Section 3.2, complex (S)-4 prep",
+          "quote": "(0.100 g, 0.56 mmol) ... L-proline (0.136 g, 1.18 mmol) ... 0.166 g of compound (S)-4 was isolated as an orange solid (73% yield)",
+          "extracted_values": {"PdCl2_g": 0.100, "PdCl2_mmol": 0.56, "proline_g": 0.136, "proline_mmol": 1.18, "product_g": 0.166, "yield_pct": 73}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "stoichiometry/yield recompute (limiting-reagent mmol x product MW -> theoretical mass -> %yield)",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.92,
+        "rationale": "Recompute gives 166/227.7 = 72.9% ~= 73%. PdCl2 0.100g/177.32 = 0.564 mmol (claim 0.56); proline 0.136g/115.13 = 1.181 mmol (claim 1.18). All consistent. Off-the-shelf yield/stoichiometry check covers this."
+      }
+    },
+    {
+      "id": "c2",
+      "text": "HRMS for complex (S)-4 (C10H17Cl2N2O4Pd, [M+H]) was calcd 405.9678, found 405.9783.",
+      "quote": "HRMS: calcd for C10 H17 Cl2 N2 O4 Pd [M + H] 405.9678; found 405.9783.",
+      "section": "3.2 Catalyst Synthesis",
+      "page": 10,
+      "epistemic_tier": "T1",
+      "predicate": "Compute monoisotopic mass of [C10H18Cl2N2O4Pd]+ (the protonated formula) and compare to the calcd value; assess found vs calcd ppm error.",
+      "evidence": [
+        {
+          "id": "e2",
+          "kind": "statistic",
+          "location": "Section 3.2",
+          "quote": "calcd for C10 H17 Cl2 N2 O4 Pd [M + H] 405.9678; found 405.9783",
+          "extracted_values": {"calcd_mz": 405.9678, "found_mz": 405.9783}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "exact-mass calculator (monoisotopic mass of protonated formula) + ppm error check",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.78,
+        "rationale": "Independent monoisotopic calc of C10H18Cl2N2O4Pd ([M+H], using 106Pd, 35Cl) = 405.9678, exactly matching the paper's calcd. Found 405.9783 differs from calcd by +0.0105 Da (~26 ppm), which is high for a QTOF (usually <5 ppm) but not impossible; the calcd value itself is verified correct. Mass-formula check covers the calcd; the found value is a measurement not recomputable."
+      }
+    },
+    {
+      "id": "c3",
+      "text": "Complex (S)-3 was isolated in 51% yield from 0.024 g (0.137 mmol) PdCl2 and 0.136 g (0.270 mmol) L-lysine-glycine-OMe, giving 0.042 g of black solid; FAB MS [M+2] = 613.",
+      "quote": "Complex (S)-3 was obtained by dissolving palladium chloride (PdCl2 ) (0.024 g, 0.137 mmol) in CH3 CN, and 0.136 g of the peptide L-lysine-glycine-OMe (0.270 mmol) was added ... 0.042 g of complex (S)-3 was obtained as a black solid in 51% yield ... MS (FAB) m/z: [M + 2] = 613.",
+      "section": "3.2 Catalyst Synthesis",
+      "page": 10,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute %yield with complex MW inferred from FAB [M+2]=613. 613-2=611 ~ bis(Lys-Gly-OMe)PdCl2 (2x217.27 + PdCl2 = 611.9). Limiting PdCl2 0.137 mmol; theoretical = 0.137 x 611.9 = 83.8 mg; yield = 42/83.8.",
+      "evidence": [
+        {
+          "id": "e3",
+          "kind": "number",
+          "location": "Section 3.2, complex (S)-3 prep",
+          "quote": "(0.024 g, 0.137 mmol) ... peptide L-lysine-glycine-OMe (0.270 mmol) ... 0.042 g of complex (S)-3 ... 51% yield ... MS (FAB) m/z: [M + 2] = 613",
+          "extracted_values": {"PdCl2_g": 0.024, "PdCl2_mmol": 0.137, "peptide_g": 0.136, "peptide_mmol": 0.270, "product_g": 0.042, "yield_pct": 51, "FAB_M_plus_2": 613}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "stoichiometry/yield recompute + mass-balance against FAB MW",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.7,
+        "rationale": "If (S)-3 is the bis(dipeptide) complex (2 ligand : 1 Pd, paralleling (S)-4), MW from FAB [M+2]=613 -> M~611 matches 2x(C9H19N3O3=217.27)+PdCl2=611.9, and 42/83.8 = 50.1% ~= 51% (perfect). The 2:1 stoichiometry is also consistent with the 0.270 mmol peptide ~= 2x 0.137 mmol Pd. Yield self-consistent with the reported mass; covered by yield/mass-balance check. Confidence held below 0.9 because the exact complex formula is inferred, not stated."
+      }
+    },
+    {
+      "id": "c4",
+      "text": "0.136 g of L-lysine-glycine-OMe corresponds to 0.270 mmol (i.e. implied MW ~504 g/mol).",
+      "quote": "0.136 g of the peptide L-lysine-glycine-OMe (0.270 mmol)",
+      "section": "3.2 Catalyst Synthesis",
+      "page": 10,
+      "epistemic_tier": "T0",
+      "predicate": "Check mass<->moles: 0.136 g / 0.270 mmol = 504 g/mol. Free Lys-Gly-OMe (C9H19N3O3) = 217.27 g/mol, so 0.136 g would be 0.626 mmol, not 0.270 mmol. Determine whether 0.270 mmol or 0.136 g is the transcription error.",
+      "evidence": [
+        {
+          "id": "e4",
+          "kind": "number",
+          "location": "Section 3.2",
+          "quote": "0.136 g of the peptide L-lysine-glycine-OMe (0.270 mmol)",
+          "extracted_values": {"mass_g": 0.136, "stated_mmol": 0.270, "implied_MW": 503.7, "free_peptide_MW": 217.27, "mass_to_moles_free": 0.626}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "mass<->moles consistency check (g / MW)",
+        "verifier_exists": true,
+        "candidate_verdict": "suspect",
+        "confidence": 0.6,
+        "rationale": "The g<->mmol pairing is internally inconsistent: 0.136 g of MW-217 Lys-Gly-OMe = 0.626 mmol, and 0.270 mmol would weigh 58.7 mg. Implied MW 504 matches no obvious salt of the peptide. Note the (S)-4 prep uses the identical phrase '0.136 g ... (1.18 mmol)' which IS correct for L-proline (MW 115) -- suggesting a copy/paste artifact where the proline mass/wording carried over. Likely an isolated transcription error in the experimental, not a result-altering one (the 0.270 mmol value, ~2x Pd, is the chemically sensible intent and gives the correct 51% yield via c3). Flagged suspect because as literally written the numbers cannot all be right."
+      }
+    },
+    {
+      "id": "c5",
+      "text": "Aldol product 1a (2-NO2) was isolated in 86% yield: 0.030 g (0.198 mmol) 2-nitrobenzaldehyde -> 0.042 g product.",
+      "quote": "0.030 g (0.198 mmol) of 2-nitrobenzaldehyde ... The reaction afforded 0.042 g of compound 1a, corresponding to a 86% isolated yield.",
+      "section": "3.3 Aldol products",
+      "page": 11,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute: product 2-(hydroxy(2-nitrophenyl)methyl)cyclohexan-1-one C13H15NO4 (MW 249.27); limiting aldehyde 0.198 mmol; theoretical 49.4 mg; yield = 42/49.4.",
+      "evidence": [
+        {
+          "id": "e5",
+          "kind": "number",
+          "location": "Section 3.3, compound 1a",
+          "quote": "0.030 g (0.198 mmol) of 2-nitrobenzaldehyde ... 0.042 g of compound 1a ... 86% isolated yield",
+          "extracted_values": {"aldehyde_g": 0.030, "aldehyde_mmol": 0.198, "product_g": 0.042, "yield_pct": 86, "product_MW": 249.27}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "yield recompute (limiting aldehyde mmol x product MW)",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.9,
+        "rationale": "42/49.4 = 85.1% ~= 86% (matches Table 3 entry 1). 2-nitrobenzaldehyde 0.030g/151.12 = 0.198 mmol confirms the stated mmol. Off-the-shelf yield/stoichiometry check."
+      }
+    },
+    {
+      "id": "c6",
+      "text": "Aldol product 1b (3-NO2) prep states '0.030 g (1.198 mmol) of 3-nitrobenzaldehyde' but 0.030 g of 3-nitrobenzaldehyde = 0.198 mmol.",
+      "quote": "0.030 g (1.198 mmol) of 3-nitrobenzaldehyde, 0.10 mL (0.097 g, 0.992 mmol) of cyclohexanone ... The reaction afforded 0.040 g of compound 1b, corresponding to a 84% isolated yield",
+      "section": "3.3 Aldol products",
+      "page": 11,
+      "epistemic_tier": "T0",
+      "predicate": "Check mass<->moles for 3-nitrobenzaldehyde (MW 151.12): 0.030 g = 0.198 mmol, not 1.198 mmol. Then recompute yield with corrected 0.198 mmol.",
+      "evidence": [
+        {
+          "id": "e6",
+          "kind": "number",
+          "location": "Section 3.3, compound 1b",
+          "quote": "0.030 g (1.198 mmol) of 3-nitrobenzaldehyde ... 0.040 g of compound 1b, corresponding to a 84% isolated yield",
+          "extracted_values": {"aldehyde_g": 0.030, "stated_mmol": 1.198, "correct_mmol": 0.198, "product_g": 0.040, "yield_pct": 84, "product_MW": 249.27}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "mass<->moles consistency check + yield recompute",
+        "verifier_exists": true,
+        "candidate_verdict": "suspect",
+        "confidence": 0.85,
+        "rationale": "0.030 g / 151.12 = 0.198 mmol; the stated '1.198 mmol' is a clear 10x transcription typo (note 1a and 1j use the correct '0.198 mmol' for the same 0.030 g nitrobenzaldehyde mass). With 0.198 mmol the yield recomputes to 81.0% ~= claimed 84% (Table 3 entry 3). So the typo is in the mmol annotation only; the reported yield is consistent with correct stoichiometry. Suspect = the mmol value as written is wrong, not the science."
+      }
+    },
+    {
+      "id": "c7",
+      "text": "Aldol product 1c (4-NO2) prep states '0.030 g (1.198 mmol) of 4-nitrobenzaldehyde'; recomputed yield from correct 0.198 mmol = 97% vs claimed 98%.",
+      "quote": "0.030 g (1.198 mmol) of 4-nitrobenzaldehyde ... The reaction afforded 0.048 g of compound 1c, corresponding to a 98% isolated yield.",
+      "section": "3.3 Aldol products",
+      "page": 11,
+      "epistemic_tier": "T0",
+      "predicate": "Same mass<->moles typo as 1b (0.030 g = 0.198 mmol, not 1.198). Recompute yield with 0.198 mmol and product C13H15NO4 (249.27).",
+      "evidence": [
+        {
+          "id": "e7",
+          "kind": "number",
+          "location": "Section 3.3, compound 1c",
+          "quote": "0.030 g (1.198 mmol) of 4-nitrobenzaldehyde ... 0.048 g of compound 1c, corresponding to a 98% isolated yield",
+          "extracted_values": {"aldehyde_g": 0.030, "stated_mmol": 1.198, "correct_mmol": 0.198, "product_g": 0.048, "yield_pct": 98, "product_MW": 249.27}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "mass<->moles consistency check + yield recompute",
+        "verifier_exists": true,
+        "candidate_verdict": "suspect",
+        "confidence": 0.85,
+        "rationale": "Identical 10x mmol typo as 1b. With correct 0.198 mmol, yield = 48/49.4 = 97.3% ~= claimed 98% (Table 3 entry 5). The reported yield is consistent; only the parenthetical mmol is mis-transcribed."
+      }
+    },
+    {
+      "id": "c8",
+      "text": "Aldol products 1d-1j isolated yields reconcile with limiting-aldehyde stoichiometry: 1d 90%, 1e 63%, 1f 88%, 1g 91%, 1h 61%, 1i 89%, 1j 59%.",
+      "quote": "0.045 g of compound 1d ... a 90% isolated yield ... 0.032 g of compound 1e ... 63% isolated yield ... 0.040 g of compound 1f ... 88% ... 0.041 g of compound 1g ... 91% ... 0.031 g of compound 1h ... 61% ... 0.041 g of compound 1i ... 89% ... 0.027 g of compound 1j ... 59%",
+      "section": "3.3 Aldol products",
+      "page": 11,
+      "epistemic_tier": "T0",
+      "predicate": "For each compound recompute %yield = product_mass / (limiting_aldehyde_mmol x product_MW). Products: 1d/1e C13H15ClO2 (238.71); 1f/1g C13H15BrO2 (283.17); 1h C14H18O3 (234.30); 1i C14H15F3O2 (272.27); 1j (cyclopentanone) C12H13NO4 (235.24).",
+      "evidence": [
+        {
+          "id": "e8",
+          "kind": "number",
+          "location": "Section 3.3, compounds 1d-1j",
+          "quote": "1d 0.030g/0.213mmol ald -> 0.045g (90%); 1e 0.030g/0.213mmol -> 0.032g (63%); 1f 0.030g/0.162mmol -> 0.040g (88%); 1g 0.030g/0.162mmol -> 0.041g (91%); 1h 0.030g/0.220mmol -> 0.031g (61%); 1i 0.030g/0.172mmol -> 0.041g (89%); 1j 0.030g/0.198mmol -> 0.027g (59%)",
+          "extracted_values": {"recompute_1d": 88.5, "recompute_1e": 62.9, "recompute_1f": 87.2, "recompute_1g": 89.4, "recompute_1h": 60.1, "recompute_1i": 87.6, "recompute_1j": 58.0}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "batch yield recompute (limiting aldehyde mmol x product MW)",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.9,
+        "rationale": "All seven recomputed yields fall within ~3% of the claimed values (1d 88.5 vs 90; 1e 62.9 vs 63; 1f 87.2 vs 88; 1g 89.4 vs 91; 1h 60.1 vs 61; 1i 87.6 vs 89; 1j 58.0 vs 59), and match the corresponding Table 3 entries. High internal arithmetic consistency. Off-the-shelf yield/stoichiometry check covers all. (Minor: 1i text mislabels the aldehyde as '2-trifluoromethylbenzene' although the product is the 3-CF3 isomer; mass/mmol still consistent.)"
+      }
+    },
+    {
+      "id": "c9",
+      "text": "Abstract reports the catalytic system achieving aldol 'yields of 80-95%'.",
+      "quote": "The catalytic system efficiently promoted the aldol reaction, achieving yields of 80–95%, excellent diastereoselectivities (1:69 syn/anti), and enantiomeric excesses greater than 99%.",
+      "section": "Abstract",
+      "page": 1,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check the abstract's '80-95%' range against the (S)-4 aldol yields in Table 3 (entries 1,3,5,7,8,9,10,11,12,13).",
+      "evidence": [
+        {
+          "id": "e9",
+          "kind": "text",
+          "location": "Abstract vs Table 3",
+          "quote": "yields of 80–95% (abstract) vs Table 3 (S)-4 yields: 86,84,98,90,63,88,91,61,89,59",
+          "extracted_values": {"abstract_low": 80, "abstract_high": 95, "table3_S4_min": 59, "table3_S4_max": 98}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "prose-vs-table range consistency check",
+        "verifier_exists": true,
+        "candidate_verdict": "suspect",
+        "confidence": 0.6,
+        "rationale": "The abstract's '80-95%' does not bracket the Table 3 (S)-4 data: the maximum is 98% (entry 5, exceeds 95) and several entries are below 80% (63, 61, 59% for 4-Cl, 2-OMe, and the cyclopentanone case). The range is loosely/imprecisely stated. Not a fabrication -- more an over-tidy summary -- but technically inconsistent with the table. prose-vs-table check covers this."
+      }
+    },
+    {
+      "id": "c10",
+      "text": "Abstract reports enantiomeric excesses 'greater than 99%' for the aldol reaction.",
+      "quote": "enantiomeric excesses greater than 99%",
+      "section": "Abstract / Conclusions",
+      "page": 1,
+      "epistemic_tier": "T2",
+      "predicate": "Compare 'ee > 99%' against the highest ee in Table 3 (reported as '>99'); check whether 'greater than 99%' is supported or overstated given several entries are <99%.",
+      "evidence": [
+        {
+          "id": "e10",
+          "kind": "text",
+          "location": "Abstract/Conclusions vs Table 3",
+          "quote": ">99 (best, entries 1,3,7) vs other entries 92,93,98,98,97,86%; entry 12 ee not resolved",
+          "extracted_values": {"table3_max_ee": 99, "n_entries_at_gt99": 3, "n_entries_below_99": 6}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "prose-vs-table consistency check",
+        "verifier_exists": true,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.55,
+        "rationale": "Table 3 caps ee at '>99%' for the three best substrates (2-NO2, 3-NO2, 3-Cl), so 'ee greater than 99%' is literally supported by those entries; but presenting it as a headline figure is selective, since most substrates give 86-98% ee. The claim is technically backed by the table (not suspect) yet not representative; verdict inconclusive as a fairness judgement rather than an arithmetic error."
+      }
+    },
+    {
+      "id": "c11",
+      "text": "Best diastereoselectivity 1:69 (syn/anti) was obtained (Table 3, entry 3, 3-NO2), consistent with the abstract.",
+      "quote": "a syn/anti diastereomeric ratio of up to 1:69 was obtained (Table 3, entry 3).",
+      "section": "2 Results / Abstract",
+      "page": 5,
+      "epistemic_tier": "T2",
+      "predicate": "Confirm the abstract's '1:69 syn/anti' equals the maximum dr in Table 3 and is attributed to the correct entry.",
+      "evidence": [
+        {
+          "id": "e11",
+          "kind": "table",
+          "location": "Table 3",
+          "quote": "entry 3, 3-(NO2), (S)-4, 1b, 84%, dr 1:69, >99 ee",
+          "extracted_values": {"best_dr_anti": 69, "entry": 3}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "prose-vs-table cross-reference",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.9,
+        "rationale": "Table 3 entry 3 lists dr 1:69; this matches both the in-text statement and the abstract. Internally consistent. prose-vs-table check covers it."
+      }
+    },
+    {
+      "id": "c12",
+      "text": "DFT activation barriers (TS, relative free energy) are 7.1 kcal/mol in gas phase and 6.7 kcal/mol in DMSO; the post-C-C-bond intermediate is +0.4 kcal/mol (gas) and -2.3 kcal/mol (DMSO).",
+      "quote": "In both the gas phase and DMSO, the reaction proceeds through a low-energy transition state, with activation barriers of 7.1 and 6.7 kcal/mol, respectively. Notably, the intermediate formed after C–C bond formation is slightly endothermic in the gas phase (+0.4 kcal/mol), whereas in DMSO it is significantly stabilized.",
+      "section": "2 Results (Table 4 / Figure 3)",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check the prose values against Table 4 and the Figure 3 energy-profile diagram (prose-vs-table-vs-figure consistency).",
+      "evidence": [
+        {
+          "id": "e12a",
+          "kind": "table",
+          "location": "Table 4",
+          "quote": "GAS PHASE: Reactants 0.0, TS 7.1, Intermediate 0.4. DMSO: Reactants 0.0, TS 6.7, Intermediate -2.3.",
+          "extracted_values": {"gas_TS": 7.1, "gas_int": 0.4, "dmso_TS": 6.7, "dmso_int": -2.3}
+        },
+        {
+          "id": "e12b",
+          "kind": "figure",
+          "location": "Figure 3 (energy profile diagram)",
+          "quote": "Energy profile diagram for the calculated reaction mechanism between 4-nitrobenzaldehyde and cyclohexanone catalyzed by Pd complex (S)-4",
+          "extracted_values": {"reactants": 0.0}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "prose-vs-table-vs-figure numerical consistency check",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.82,
+        "rationale": "Prose (7.1, 6.7, +0.4, -2.3) matches Table 4 exactly, and Figure 3 visually depicts Reactants 0, a TS barrier of ~7, and a near-zero/negative intermediate consistent with the table. Internally self-consistent across text/table/figure. The DFT values themselves (M08-HX/def2-SVP) are not independently recomputable here (that is a T6/method check), but the cross-consistency is verifiable and passes."
+      }
+    },
+    {
+      "id": "c13",
+      "text": "Aldol reaction with only PdCl2 (no amino acid) does not proceed in any solvent tested (Scheme 1).",
+      "quote": "Initially, the reaction was carried out using only PdCl2 in different solvents (Scheme 1), as expected, the reaction does not occur.",
+      "section": "2 Results",
+      "page": 2,
+      "epistemic_tier": "T4",
+      "predicate": "Claim of a negative control result; check whether evidence (data or citation) is provided to support 'does not occur'.",
+      "evidence": [
+        {
+          "id": "e13",
+          "kind": "text",
+          "location": "Scheme 1 description",
+          "quote": "the PdCl2 -catalyzed aldol reaction proceeds only with activated enols and under harsh reaction conditions [44]",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "evidence-support check (is the negative-control claim backed by reported data or by the literature citation?)",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.5,
+        "rationale": "Qualitative negative result; no yield table for the PdCl2-only experiment beyond Scheme 1 and a supporting citation [44]. Plausible and consistent with cited precedent, but not independently checkable from a number. Marked inconclusive (claim cannot be bound to a quantitative datum)."
+      }
+    },
+    {
+      "id": "c14",
+      "text": "Table 1: in situ Pd-Pro catalyst gives best aldol yield (34%) in DMF after 24 h Pd+solvent pre-stirring; DMSO 24 h = 19%; CH3CN gives no reaction.",
+      "quote": "The best results were obtained when the metal was stirred with the solvent for 24 h (Table 1, entries 2 and 6). ... the optimal reaction conditions were achieved using DMF (Table 1, entry 6).",
+      "section": "2 Results (Table 1)",
+      "page": 3,
+      "epistemic_tier": "T2",
+      "predicate": "Check prose claim ('best in DMF', 'best at 24 h') against Table 1 yields (DMSO 2h=15, 24h=19; CH3CN --; DMF 2h=19, 24h=34).",
+      "evidence": [
+        {
+          "id": "e14",
+          "kind": "table",
+          "location": "Table 1",
+          "quote": "1 DMSO 2 15; 2 DMSO 24 19; 3 CH3CN 2 --; 4 CH3CN 24 --; 5 DMF 2 19; 6 DMF 24 34",
+          "extracted_values": {"DMSO_2": 15, "DMSO_24": 19, "DMF_2": 19, "DMF_24": 34}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "prose-vs-table consistency (is the claimed optimum the actual max?)",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.88,
+        "rationale": "Entry 6 (DMF, 24 h) = 34% is indeed the maximum in Table 1, and 24 h beats 2 h for both DMSO (19>15) and DMF (34>19). Prose claims match the table. prose-vs-table check covers it. (Minor caption ambiguity: entry 2 is cited as a 'best result' alongside entry 6 although 19<34, but text says optimal = entry 6.)"
+      }
+    },
+    {
+      "id": "c15",
+      "text": "Table 2: for (S)-3 catalyzed aldol, enantioselectivity increases with solvent polarity; best ee in DMSO; ee/yield improve at 4 C (39% yield, 32% ee).",
+      "quote": "An increase in the enantioselectivity of the reaction was also observed with increasing solvent polarity, with the best results obtained in DMSO ... A 39% yield and an enantiomeric excess (ee) of 32% were obtained under these optimized conditions (Table 2, entry 7).",
+      "section": "2 Results (Table 2)",
+      "page": 4,
+      "epistemic_tier": "T2",
+      "predicate": "Check ee ordering vs solvent polarity in Table 2 (EtOH 16, DMF 24, DMSO 27, THF 2) and verify entry 7 (DMSO, 4 C) = 39% yield / 32% ee.",
+      "evidence": [
+        {
+          "id": "e15",
+          "kind": "table",
+          "location": "Table 2",
+          "quote": "2 EtOH 15 1:1 16; 3 DMF 27 1:1 24; 4 DMSO 31 1:1 27; 6 THF -- 1:1 2; 7 DMSO** 39 1:1 32 (** 4 C)",
+          "extracted_values": {"EtOH_ee": 16, "DMF_ee": 24, "DMSO_ee": 27, "THF_ee": 2, "entry7_yield": 39, "entry7_ee": 32}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "prose-vs-table consistency (ordering + specific values)",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.78,
+        "rationale": "Entry 7 values (39% yield, 32% ee) match the prose. ee increases EtOH(16) < DMF(24) < DMSO(27) consistent with the polarity-trend claim; THF(2) is anomalously low but THF is less polar than the others so not contradictory. Internally consistent. prose-vs-table check covers it."
+      }
+    },
+    {
+      "id": "c16",
+      "text": "MBH reactions gave good yields (75-91%) but no asymmetric induction; all MBH adducts were racemic.",
+      "quote": "despite the good yields, HPLC analysis revealed that asymmetry induction was not achieved in any of the cases. Consequently, each MBH adduct was obtained as a racemic mixture in all cases.",
+      "section": "Catalyst Scope / Table 5",
+      "page": 8,
+      "epistemic_tier": "T4",
+      "predicate": "Check that Table 5 yields (87,90,75,91,75,81,83,89) support 'good yields' and that no ee column / racemic claim is internally consistent (no ee data reported).",
+      "evidence": [
+        {
+          "id": "e16",
+          "kind": "table",
+          "location": "Table 5",
+          "quote": "5a 2-Cl (S)-3 87 / (S)-4 90; 5b 4-Cl (S)-3 75 / (S)-4 91; 5c 3-NO2 (S)-3 75 / (S)-4 81; 5d 4-NO2 (S)-3 83 / (S)-4 89",
+          "extracted_values": {"yield_min": 75, "yield_max": 91}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "evidence-support / prose-vs-table check (yields support 'good'; racemic claim has no contradicting ee data)",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.7,
+        "rationale": "Table 5 yields (75-91%) are consistent with 'good yields.' The racemic claim is qualitative (HPLC showed no resolution) and Table 5 reports no ee column, so there is no internal contradiction. The 'racemic' assertion itself is not independently checkable without the chromatograms (SI Figures S43-S53). Supported at the consistency level; ee verification deferred to SI/T6."
+      }
+    },
+    {
+      "id": "c17",
+      "text": "Heck cross-coupling yields are higher under microwave irradiation than under reflux; e.g., 4-OH with catalyst 3 gives 43% (reflux) vs 81% (microwave).",
+      "quote": "the yields were significantly higher when the process was carried out by microwave irradiation (Table 6, entries 2 to 9).",
+      "section": "Catalyst Scope / Table 6",
+      "page": 9,
+      "epistemic_tier": "T2",
+      "predicate": "Compare Table 6 entry 1 (4-OH, cat 3, reflux, 43%) against entry 2 (4-OH, cat 3, microwave, 81%) and check the microwave>reflux claim.",
+      "evidence": [
+        {
+          "id": "e17",
+          "kind": "table",
+          "location": "Table 6",
+          "quote": "1 4-OH cat3 43 (reflux); 2 4-OH cat3 81; 3 4-OH cat4 90; ... footnote a Reaction carried out under reflux.",
+          "extracted_values": {"reflux_43": 43, "mw_81": 81, "mw_cat4_90": 90}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "prose-vs-table consistency check",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "Table 6 shows the only direct reflux/microwave pair for the same substrate+catalyst (4-OH, cat 3): 43% reflux (entry 1, footnote a) vs 81% microwave (entry 2). Microwave > reflux confirmed. prose-vs-table check covers it."
+      }
+    },
+    {
+      "id": "c18",
+      "text": "Best Heck yield is 90% using 4-iodophenol with catalyst 4 (Table 6, entry 3).",
+      "quote": "the best results obtained when the reaction was catalyzed by the Pd complex 4, reaching yields of up to 90% when 4-iodophenol was used as the aryl halide (Table 6, entry 3).",
+      "section": "Catalyst Scope / Table 6",
+      "page": 9,
+      "epistemic_tier": "T2",
+      "predicate": "Check that 90% is the maximum Heck yield in Table 6 and that it corresponds to entry 3 (4-OH, cat 4).",
+      "evidence": [
+        {
+          "id": "e18",
+          "kind": "table",
+          "location": "Table 6",
+          "quote": "Table 6 cat-4 yields: 90 (4-OH), 80 (4-OMe), 80 (4-OEt), 71 (4-OBn); cat-3 yields: 81,65,63,58",
+          "extracted_values": {"max_yield": 90, "entry": 3}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "prose-vs-table (max-value) check",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.86,
+        "rationale": "Entry 3 (4-OH, cat 4) = 90% is the highest yield in Table 6. Claim matches the table. (Minor: the compound-6c experimental reports a 76% isolated yield, while Table 6 entry 7 lists 80% for 4-OEt/cat-4 -- a small text-vs-table discrepancy, see c20.)"
+      }
+    },
+    {
+      "id": "c19",
+      "text": "Heck adduct 6a (3-(4-hydroxyphenyl)cyclohex-2-en-1-one) isolated in 90% yield: 0.040 g (0.181 mmol) 4-iodophenol -> 0.030 g product.",
+      "quote": "0.040 g (0.181 mmol) of 4-iodophenol ... 0.030 g of a white solid was obtained in a yield of 90%",
+      "section": "3.5 Heck products",
+      "page": 14,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute: product C12H12O2 (MW 188.22); limiting 4-iodophenol 0.181 mmol; theoretical 34.1 mg; yield = 30/34.1.",
+      "evidence": [
+        {
+          "id": "e19",
+          "kind": "number",
+          "location": "Section 3.5, compound 6a",
+          "quote": "0.040 g (0.181 mmol) of 4-iodophenol ... 0.030 g of a white solid ... yield of 90%",
+          "extracted_values": {"halide_g": 0.040, "halide_mmol": 0.181, "product_g": 0.030, "yield_pct": 90, "product_MW": 188.22}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "yield recompute (limiting aryl halide mmol x product MW)",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "4-iodophenol 0.040g/220.0 = 0.182 mmol (claim 0.181). Product 3-(4-hydroxyphenyl)cyclohex-2-en-1-one C12H12O2 = 188.22; 30/(0.181x188.22) = 88.1% ~= 90% (within rounding of small masses). MS m/z 188 (M+) confirms product MW. Yield/stoichiometry check covers it."
+      }
+    },
+    {
+      "id": "c20",
+      "text": "Heck adduct 6c: text reports 76% isolated yield, but Table 6 entry 7 (4-OEt, cat 4) lists 80%.",
+      "quote": "This reaction yielded 0.026 g of a white solid with a 76% yield ... (compound 6c)  [vs Table 6 entry 7: 4-OEt, catalyst 4, 80%]",
+      "section": "3.5 Heck products / Table 6",
+      "page": 14,
+      "epistemic_tier": "T2",
+      "predicate": "Compare the 6c isolated yield stated in the experimental (76%) with the value tabulated in Table 6 (80%) for the same compound/catalyst.",
+      "evidence": [
+        {
+          "id": "e20a",
+          "kind": "number",
+          "location": "Section 3.5, compound 6c",
+          "quote": "0.026 g of a white solid with a 76% yield",
+          "extracted_values": {"text_yield": 76}
+        },
+        {
+          "id": "e20b",
+          "kind": "table",
+          "location": "Table 6, entry 7",
+          "quote": "7 4-OEt 4 6c 80",
+          "extracted_values": {"table_yield": 80}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "prose-vs-table consistency check (text yield vs tabulated yield for same compound)",
+        "verifier_exists": true,
+        "candidate_verdict": "suspect",
+        "confidence": 0.6,
+        "rationale": "Experimental for 6c states 76% but Table 6 entry 7 lists 80% for the same 4-OEt/catalyst-4 product. Recompute from the experimental masses: product C14H16O2 (216.28), 1-ethoxy-4-iodobenzene 0.040 g/248.06 = 0.161 mmol (text says 1.6 mmol, itself a 10x-type typo), 26/(0.161x216.28) = 74.6% -- closer to the text's 76% than to the table's 80%. So there is a genuine 76-vs-80 text/table inconsistency for 6c. prose-vs-table check flags it."
+      }
+    },
+    {
+      "id": "c21",
+      "text": "Complex (S)-3 coordination via alpha- and epsilon-amino groups is supported by FAB+ fragments at m/z 289 and 307.",
+      "quote": "This coordination mode is further supported by fast atom bombardment mass spectrometry (FAB+ ) and the fragmentation signals detected at m/z 289 and 307 are consistent with metal coordination with S-Lys fragment (see Figure S4).",
+      "section": "2 Results",
+      "page": 4,
+      "epistemic_tier": "T4",
+      "predicate": "Assess whether m/z 289 and 307 can be assigned to Pd-Lys coordination fragments (mass-balance / fragment plausibility).",
+      "evidence": [
+        {
+          "id": "e21",
+          "kind": "number",
+          "location": "Section 2 / Figure S4",
+          "quote": "fragmentation signals detected at m/z 289 and 307",
+          "extracted_values": {"frag1": 289, "frag2": 307}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "fragment-mass plausibility check against candidate Pd-Lys ion formulas",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.4,
+        "rationale": "Pd+Lys-type fragments are in the right ballpark (e.g. Pd(106)+Lys residue(145)+Cl(35) ~= 287; +2H ~= 289), and 307 could be a related Cl/OH-bearing fragment, but exact assignment requires the SI (Figure S4) isotope pattern. Plausible but not pinnable from the main text alone. Inconclusive."
+      }
+    },
+    {
+      "id": "c22",
+      "text": "EDS spectrum of (S)-3 shows Cl Kalpha emission at 2.622 keV and Pd at 3.382 keV, confirming the Pd complex.",
+      "quote": "the presence of chlorine atoms, detected in the EDS spectrum (Kα emission) at 2.622 keV, and of palladium at 3.382 keV, further confirms the formation of the Pd complex.",
+      "section": "2 Results (Figure 1b)",
+      "page": 4,
+      "epistemic_tier": "T1",
+      "predicate": "Compare stated EDS line energies to known characteristic X-ray energies: Cl Kalpha ~= 2.621-2.622 keV; Pd Lalpha ~= 2.838 keV, Pd Kalpha ~= 21.18 keV. Check whether '3.382 keV' is a valid Pd line.",
+      "evidence": [
+        {
+          "id": "e22",
+          "kind": "number",
+          "location": "Section 2 / Figure 1b",
+          "quote": "Kα emission at 2.622 keV (Cl), palladium at 3.382 keV",
+          "extracted_values": {"Cl_Ka_keV": 2.622, "Pd_line_keV": 3.382}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "fixed-knowledge lookup of characteristic X-ray line energies (Cl Kalpha, Pd L/K lines)",
+        "verifier_exists": true,
+        "candidate_verdict": "suspect",
+        "confidence": 0.55,
+        "rationale": "Cl Kalpha = 2.622 keV is correct (matches reference value exactly). However Pd has no characteristic line at 3.382 keV: Pd Lalpha is ~2.84 keV, Lbeta1 ~2.99 keV, and Pd Kalpha is ~21.18 keV. 3.382 keV is closer to Ag Lalpha (~2.98) is also no; ~3.31 keV is K Kalpha or Sn Lalpha. The '3.382 keV' Pd assignment looks erroneous or mis-transcribed (the experimental EDS listing instead reports 'Pd 2.8 keV', which IS the correct Pd Lalpha). Fixed-knowledge X-ray-energy check flags the 3.382 keV Pd value as suspect; note the prose (3.382) disagrees with the paper's own Section 3.2 EDS listing (Pd 2.8)."
+      }
+    },
+    {
+      "id": "c23",
+      "text": "Complex (S)-3 EDS listing in the experimental reports Pd ~2.8 keV and Cl ~2.6 keV (Section 3.2), which disagrees with the 3.382 keV Pd value stated in the Results prose.",
+      "quote": "EDS (keV): S 0.09, Cl 0.1, Pd 0.25, O 0.5, S 2.3, Cl 2.6, Pd 2.8.",
+      "section": "3.2 Catalyst Synthesis",
+      "page": 10,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check the EDS energies given in Section 3.2 (Pd 2.8, Cl 2.6 keV) against those quoted in the Results text (Cl 2.622, Pd 3.382 keV).",
+      "evidence": [
+        {
+          "id": "e23",
+          "kind": "number",
+          "location": "Section 3.2 EDS listing vs Section 2 prose",
+          "quote": "Section 3.2: 'Cl 2.6, Pd 2.8'  vs  Section 2: 'Cl ... 2.622 keV, ... palladium at 3.382 keV'",
+          "extracted_values": {"sec32_Pd": 2.8, "sec32_Cl": 2.6, "sec2_Pd": 3.382, "sec2_Cl": 2.622}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "internal cross-consistency check (two EDS energy statements in the same paper)",
+        "verifier_exists": true,
+        "candidate_verdict": "suspect",
+        "confidence": 0.6,
+        "rationale": "The two EDS statements disagree on the Pd line: Section 3.2 gives Pd ~2.8 keV (the correct Pd Lalpha), but the Results prose gives 'palladium at 3.382 keV.' Cl agrees (2.6 ~ 2.622). The 3.382 keV figure is internally inconsistent with the paper's own data and with known Pd line energies (see c22). Internal cross-consistency check flags it."
+      }
+    },
+    {
+      "id": "c24",
+      "text": "Reaction conditions: aldol run with 1 eq aldehyde, 5 eq cyclohexanone, 10 mol% catalyst, DMSO, 4 C, 48 h.",
+      "quote": "1 equivalent of the corresponding aldehyde and 5 equivalents of cyclohexanone were placed in 0.3 mL of DMSO. 10 mol% catalyst was added ... at 4 ◦ C for 48 h.",
+      "section": "3.3 General Procedure",
+      "page": 10,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check stated equivalents/loading in the general procedure against the per-compound experimentals (e.g., aldehyde ~0.2 mmol, cyclohexanone ~1.0 mmol = 5x, catalyst ~0.019 mmol = ~10 mol%).",
+      "evidence": [
+        {
+          "id": "e24",
+          "kind": "text",
+          "location": "Section 3.3 vs compound 1a",
+          "quote": "1a: aldehyde 0.198 mmol, cyclohexanone 0.992 mmol (5.01x), catalyst 0.019 mmol (9.6 mol%)",
+          "extracted_values": {"ald_mmol": 0.198, "ketone_mmol": 0.992, "ketone_equiv": 5.01, "cat_mmol": 0.019, "cat_molpct": 9.6}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "stoichiometry consistency check (equivalents vs per-run mmol)",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "For 1a: cyclohexanone 0.992/0.198 = 5.01 eq (claim 5 eq); catalyst 0.019/0.198 = 9.6 mol% (claim 10 mol%). General-procedure stoichiometry is consistent with the worked examples. Stoichiometry/equivalents check covers it. (Catalyst loading 9.6-10 mol% holds for most entries; a few list 0.01 mmol catalyst with ~0.17-0.22 mmol aldehyde ~ 5-6 mol%, a minor inconsistency.)"
+      }
+    },
+    {
+      "id": "c25",
+      "text": "List et al. reported aromatic aldol adducts in good yields and ee approaching 80% using L-proline (30 mol%).",
+      "quote": "List reported the synthesis of aromatic aldol adducts in good yields and enantiomeric excesses approaching 80%, by catalyzing the reactions with L-proline (30 mol%).",
+      "section": "1 Introduction",
+      "page": 2,
+      "epistemic_tier": "T5",
+      "predicate": "Verify against the cited primary literature (List, Lerner, Barbas, JACS 2000, 122, 2395 [ref 12]) whether L-proline at ~30 mol% gave aldol ee up to ~80%.",
+      "evidence": [
+        {
+          "id": "e25",
+          "kind": "text",
+          "location": "Introduction, ref [12]",
+          "quote": "List, B.; Lerner, R.A.; Barbas, C.F. Proline-Catalyzed Direct Asymmetric Aldol Reactions. J. Am. Chem. Soc. 2000, 122, 2395–2396.",
+          "extracted_values": {"mol_pct": 30, "ee_approx": 80}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "external literature lookup (does ref 12 report 30 mol% proline, ee ~80%?)",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.7,
+        "rationale": "Matches well-known facts about the List 2000 JACS paper (30 mol% L-proline, direct asymmetric aldol, ee up to ~76-80% for some substrates). Consistent with literature; full verification requires fetching ref 12. Tentatively supported."
+      }
+    },
+    {
+      "id": "c26",
+      "text": "List and MacMillan were awarded the 2021 Nobel Prize in Chemistry for the development of organocatalysis.",
+      "quote": "List and MacMillan were awarded the 2021 Nobel Prize in Chemistry [16].",
+      "section": "1 Introduction",
+      "page": 2,
+      "epistemic_tier": "T1",
+      "predicate": "Fixed-knowledge check: the 2021 Nobel Prize in Chemistry was awarded to Benjamin List and David W.C. MacMillan for asymmetric organocatalysis.",
+      "evidence": [
+        {
+          "id": "e26",
+          "kind": "text",
+          "location": "Introduction, ref [16]",
+          "quote": "2021 Nobel Prize in Chemistry",
+          "extracted_values": {"year": 2021}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "fixed external knowledge lookup",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.99,
+        "rationale": "Correct: the 2021 Nobel Prize in Chemistry went to Benjamin List and David W.C. MacMillan 'for the development of asymmetric organocatalysis.' Settled fact."
+      }
+    },
+    {
+      "id": "c27",
+      "text": "DFT calculations used the M08-HX functional with def2-SVP basis set and def2-ECP for Pd, in Gaussian16; solvent (DMSO) via PCM single-point.",
+      "quote": "employing the global-hybrid, meta-GGA density functional M08-HX developed by Zhao and Truhlar ... the def2-SVP basis set for all atoms ... For palladium, the def2 effective core potential (def2-ECP) ... solvent effects were considered employing the polarizable continuum model (PCM) ... using DMSO by the single point calculations",
+      "section": "3.6 Computational Details",
+      "page": 15,
+      "epistemic_tier": "T3",
+      "predicate": "Assess method appropriateness: is M08-HX/def2-SVP with def2-ECP on Pd, PCM(DMSO) single-point, a defensible level for locating a TS in an organometallic aldol mechanism?",
+      "evidence": [
+        {
+          "id": "e27",
+          "kind": "text",
+          "location": "Section 3.6",
+          "quote": "M08HX/def2-SVP theory level ... def2-ECP ... PCM ... DMSO ... single point",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "method-appropriateness review (functional/basis/ECP/solvent-model adequacy for the claimed TS)",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.5,
+        "rationale": "M08-HX is a legitimate Minnesota meta-GGA hybrid and def2-ECP is appropriate for Pd; however def2-SVP (double-zeta) is a small basis for accurate free energies, and gas-phase optimization with DMSO only at single-point PCM is a modest protocol. Defensible-but-minimal; whether it supports the quantitative 6.7-7.1 kcal/mol barriers is a judgement call requiring expert/method review. Inconclusive on appropriateness."
+      }
+    },
+    {
+      "id": "c28",
+      "text": "The TS was characterized by a single imaginary frequency and the intermediate by the absence of imaginary frequencies.",
+      "quote": "The intermediate was characterized by the absence of imaginary frequencies, whereas the transition state exhibits a single imaginary frequency, associated with the vibrational mode corresponding to the reaction coordinate.",
+      "section": "3.6 Computational Details",
+      "page": 15,
+      "epistemic_tier": "T6",
+      "predicate": "Reproducibility/verification of stationary-point characterization would require the reported geometries/frequencies (SI reaction coordinates).",
+      "evidence": [
+        {
+          "id": "e28",
+          "kind": "text",
+          "location": "Section 3.6 / SI reaction coordinates",
+          "quote": "transition state exhibits a single imaginary frequency",
+          "extracted_values": {"TS_imag_freq": 1, "int_imag_freq": 0}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "re-run frequency analysis on the deposited geometries (SI) to confirm exactly one imaginary mode at the TS",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.45,
+        "rationale": "Standard and correct procedure as stated, but verifying it requires the optimized coordinates/frequencies in the SI (stated to contain 'reaction Coordinates'). Cannot confirm from the main text. Inconclusive (T6 reproducibility, currently deferred capability)."
+      }
+    },
+    {
+      "id": "c29",
+      "text": "The proposed mechanism: prolinium cation (protonated, R-NH2+) cannot form the enamine, so catalysis is controlled by the prolinate-PdCl2 anion (S)-4; enamine attacks the aldehyde Si face to give the anti aldol preferentially.",
+      "quote": "the catalytic process is controlled entirely by the prolinate–PdCl2 anion (S)-4, since the prolinium cation, being protonated (R–NH2 + ), is unable to form the enamine intermediate ... nucleophilic attack of the enamine on the aldehyde takes place through the Si face of the aldehyde relative to the enamine (B vs. C) ... with a preference for generation of the anti-isomer D.",
+      "section": "2 Results (Scheme 3)",
+      "page": 6,
+      "epistemic_tier": "T4",
+      "predicate": "Assess whether the mechanistic proposal is internally consistent with the observed anti-selectivity and the DFT TS, and supported by cited analogs (Houk-List, Zn-proline).",
+      "evidence": [
+        {
+          "id": "e29",
+          "kind": "figure",
+          "location": "Scheme 3",
+          "quote": "Proposed transition mechanism for the enantioselective synthesis of hydroxyketones",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "mechanistic-consistency review (does the Si-face/anti rationale follow from the Houk-List/enamine model and the DFT TS?)",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.45,
+        "rationale": "The enamine-via-prolinate, Pd-assisted, Houk-List-type rationale for anti-selectivity is internally coherent and matches the observed anti preference and the DFT TS; but it is a mechanistic interpretation, not a checkable number. Plausible, not provable from the data. Inconclusive (judgement-laden T4)."
+      }
+    },
+    {
+      "id": "c30",
+      "text": "m.p. and characterization values are reported for all isolated compounds (e.g., (S)-4 m.p. 177-179 C dec.; (S)-3 m.p. 216-218 C dec.; 5a m.p. '92-84 C').",
+      "quote": "m.p. 177–179 ◦ C (decomposition) [(S)-4]; m.p. 216–218 ◦ C (decomposition) [(S)-3]; m.p. 92–84 ◦ C [5a]",
+      "section": "3.2-3.4",
+      "page": 10,
+      "epistemic_tier": "T7",
+      "predicate": "Integrity/sanity check on reported ranges: melting ranges should be low->high. Flag any inverted range (e.g., '92-84 C').",
+      "evidence": [
+        {
+          "id": "e30",
+          "kind": "number",
+          "location": "Section 3.4, compound 5a",
+          "quote": "m.p. 92–84 ◦ C",
+          "extracted_values": {"mp_low_written": 92, "mp_high_written": 84}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "format/sanity check (melting-point range ordering)",
+        "verifier_exists": true,
+        "candidate_verdict": "suspect",
+        "confidence": 0.5,
+        "rationale": "Compound 5a m.p. is written '92-84 C', an inverted range (high before low) -- almost certainly a transcription typo for 84-92 C (or 84-86). A trivial formatting integrity slip, not a data concern, but it is objectively malformed. Other m.p. ranges (e.g., 83-85, 135-137, 150-152) are correctly ordered."
+      }
+    },
+    {
+      "id": "c31",
+      "text": "MS (EI) molecular ions are reported for Heck products consistent with their formulas: 6a M+ 188, 6b M+ 202, 6c M+ 216.",
+      "quote": "6a ... MS (IE) m/z: 188(M+ , 94%); 6b ... MS (IE) m/z: 202(M+ , 96%); 6c ... MS (IE) m/z: 216(M+ , 100%)",
+      "section": "3.5 Heck products",
+      "page": 14,
+      "epistemic_tier": "T1",
+      "predicate": "Check reported M+ against computed molecular weights: 6a C12H12O2=188.22; 6b C13H14O2=202.25; 6c C14H16O2=216.28.",
+      "evidence": [
+        {
+          "id": "e31",
+          "kind": "number",
+          "location": "Section 3.5",
+          "quote": "6a 188(M+); 6b 202(M+); 6c 216(M+)",
+          "extracted_values": {"6a_Mplus": 188, "6b_Mplus": 202, "6c_Mplus": 216}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "molecular-formula mass check (nominal MW vs reported M+)",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.9,
+        "rationale": "Nominal MWs match: 3-(4-hydroxyphenyl)cyclohex-2-en-1-one C12H12O2 = 188; 4-OMe analog C13H14O2 = 202; 4-OEt analog C14H16O2 = 216. Each homolog differs by +14 (CH2) consistent with OMe->OEt etc. M+ values internally and chemically consistent. Mass/formula check covers it."
+      }
+    },
+    {
+      "id": "c32",
+      "text": "MBH products 5c and 5d (3-NO2 and 4-NO2) both report MS (EI) base peak m/z 230 and M-1 246, consistent with C13H13NO4 (MW 247).",
+      "quote": "5c ... MS (IE) m/z: 246(M-1, 4%), 230(100) ...; 5d ... MS (IE) m/z: 246(M-1, 25%), 230(100)",
+      "section": "3.4 MBH products",
+      "page": 13,
+      "epistemic_tier": "T2",
+      "predicate": "Check that M-1=246 implies M=247 = C13H13NO4 (2-(hydroxy(nitrophenyl)methyl)cyclohex-2-en-1-one), and that 5c is labeled '3-nitro' in the title but uses 2-nitrobenzaldehyde in the procedure.",
+      "evidence": [
+        {
+          "id": "e32",
+          "kind": "number",
+          "location": "Section 3.4, compounds 5c/5d",
+          "quote": "5c title '3-nitrophenyl' but procedure '0.030 g (0.198 mmol) of 2-nitrobenzaldehyde'; MS 246(M-1)",
+          "extracted_values": {"M_minus_1": 246, "implied_M": 247, "formula_MW": 247.25}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "formula-mass check + internal naming consistency (regiochemistry of nitro group)",
+        "verifier_exists": true,
+        "candidate_verdict": "suspect",
+        "confidence": 0.5,
+        "rationale": "Mass is consistent (M=247 = C13H13NO4). However compound 5c is titled '2-(hydroxy(3-nitrophenyl)methyl)cyclohex-2-en-1-one' yet its procedure uses '2-nitrobenzaldehyde' -- an internal regiochemistry inconsistency (3-nitro name vs 2-nitro reagent). Table 5 lists 5c as 3-NO2. Likely a reagent/name transcription slip; mass alone cannot disambiguate the isomer. Flag suspect for naming/internal-consistency, not for the mass."
+      }
+    },
+    {
+      "id": "c33",
+      "text": "The aldol reaction did not proceed in water with catalyst (S)-3 (Table 2, entry 1).",
+      "quote": "the reaction did not proceed in water, whereas in solvents such as EtOH, THF, DMF, and DMSO, the reaction occurred after 48 h",
+      "section": "2 Results (Table 2)",
+      "page": 4,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check the in-text 'did not proceed in water' against Table 2 entry 1 (H2O, yield '--').",
+      "evidence": [
+        {
+          "id": "e33",
+          "kind": "table",
+          "location": "Table 2, entry 1",
+          "quote": "1 H2 O -- -- --",
+          "extracted_values": {"H2O_yield": null}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "prose-vs-table consistency check",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "Table 2 entry 1 (H2O) shows '--' for yield/dr/ee, consistent with the in-text 'did not proceed in water.' Also CH3CN (entry 5) shows '--'. Internally consistent. prose-vs-table check covers it."
+      }
+    }
+  ],
+  "paper_level_notes": "Molecules (MDPI) 2026, 31, 599; DOI 10.3390/molecules31040599; received 12 Dec 2025, accepted 5 Feb 2026, published 9 Feb 2026; CC-BY. 19-page article, all pages read (full text via pdftotext, plus rendered Figures 1b and 3 and Schemes 1-3 inspected as images). Data availability: 'Data are contained within the article and Supplementary Materials' (NMR Figures S1-S42, diastereoselectivities S43-S53, chromatograms, and reaction coordinates) at https://www.mdpi.com/article/10.3390/molecules31040599/s1 -- SI not retrieved here, so ee/HPLC, NMR dr, FAB isotope patterns (Figure S4), and DFT geometries/frequencies could not be independently verified (would need the SI; several T4/T6/T7 claims are inconclusive pending it). Conflicts of interest: none declared; funding CIC-UMSNH, SECIHTI project IIXM 4933, CONACYT grant 252239.\n\nReproducibility signals: STRONG internal arithmetic consistency. 8 of 10 aldol isolated yields recompute within ~3% of the claimed values from the reported masses/mmol and product formulas; complex (S)-4 yield (73%) recomputes exactly; complex (S)-3 yield (51%) recomputes exactly once the FAB [M+2]=613 is interpreted as the bis(dipeptide)Pd complex (2:1 ligand:Pd, paralleling (S)-4); HRMS calcd 405.9678 for (S)-4 is independently reproduced to the 4th decimal; Heck/MBH M+ ions match formulas. This pattern (numbers that recompute correctly from raw inputs) is characteristic of genuine experimental data, not fabricated round numbers.\n\nMinor checkable defects found (all consistent with transcription/copy-edit slips rather than data integrity problems): (1) c4 -- (S)-3 prep '0.136 g L-Lys-Gly-OMe (0.270 mmol)' is mass/mole-inconsistent (0.136 g of MW-217 peptide = 0.626 mmol; 0.270 mmol = 58.7 mg); the '0.136 g' wording is copied verbatim from the (S)-4/proline prep where it is correct. (2) c6/c7 -- products 1b and 1c list nitrobenzaldehyde as '1.198 mmol' where 0.030 g = 0.198 mmol (10x typo; yields still reconcile with the correct value, as do 1a/1j which print '0.198 mmol' for the identical mass). (3) c20 -- compound 6c experimental states 76% yield but Table 6 entry 7 lists 80% (text recompute ~75% favors 76%). (4) c22/c23 -- the Results prose puts Pd EDS Kalpha at '3.382 keV', which is not a real Pd line (Pd Lalpha ~2.84 keV, Kalpha ~21.2 keV) and contradicts the paper's own Section 3.2 EDS listing 'Pd 2.8'; Cl 2.622 keV is correct. (5) c30 -- compound 5a m.p. printed as inverted range '92-84 C'. (6) c32 -- compound 5c titled '3-nitrophenyl' but its procedure uses 2-nitrobenzaldehyde. (7) compound 1i text mislabels the substrate '2-trifluoromethylbenzene' though the product is the 3-CF3 isomer; compound 6c lists '1.6 mmol' aryl halide where 0.040 g = 0.161 mmol.\n\nDeterministic frontier (T0-T2) is rich: ~22 of 33 claims are T0-T2 and settle with off-the-shelf checks (yield/stoichiometry recompute, mass<->moles, molecular-formula/HRMS mass, prose-vs-table, internal cross-consistency, X-ray line-energy lookup, range-ordering). Higher tiers (T3 method appropriateness of M08-HX/def2-SVP DFT, T4 mechanism/negative-control support, T5 List-2000 literal values, T6 DFT stationary-point reproducibility, T7 integrity formatting) are recorded but mostly inconclusive without the SI or expert review. No evidence of fabrication or image/data manipulation in the main text; the defects are the small, self-correcting kind a careful copy-edit would catch. Judged on its own merits this reads as a genuine, internally consistent experimental+computational study with several minor transcription errors."
+}

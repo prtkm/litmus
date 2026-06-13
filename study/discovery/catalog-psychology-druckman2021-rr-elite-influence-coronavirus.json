@@ -1,0 +1,760 @@
+{
+  "paper_id": "psychology-druckman2021-rr-elite-influence-coronavirus",
+  "title": "How Bad is it? Elite Influence and the Perceived Seriousness of the Coronavirus Pandemic",
+  "doi": "10.1017/XPS.2020.45",
+  "domain": "Political science / political psychology (preregistered survey experiment; partisan motivated reasoning, elite influence)",
+  "n_pages_read": 9,
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The survey experiment had a sample of N = 1,615 Republican identifiers (including leaners), 46% female, recruited through Prolific, paid $1.15, fielded June 4-9, 2020.",
+      "quote": "Survey participants (N = 1,615, 46% female) were pre-screened Republican identifiers (including leaners) recruited through Prolific and were paid $1.15 to complete the survey between June 4 and 9, 2020.",
+      "section": "Procedure and measurement",
+      "page": 4,
+      "epistemic_tier": "T6",
+      "predicate": "Open the replication dataset (Harvard Dataverse doi:10.7910/DVN/JXPS9T) and confirm N=1615 rows, 46% female, party/leaner screen, and field dates. Cannot be confirmed from the PDF alone; it is a raw-data-vs-reported-summary check.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "number",
+          "location": "Procedure and measurement (sample description)",
+          "quote": "N = 1,615, 46% female",
+          "extracted_values": {
+            "N_total": 1615,
+            "pct_female": 46,
+            "pay_usd": 1.15,
+            "field_start": "2020-06-04",
+            "field_end": "2020-06-09"
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T6 raw-data-vs-summary reconciliation against the deposited Dataverse file (row count, female share, screening, dates).",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.3,
+        "rationale": "Data are publicly deposited (doi:10.7910/DVN/JXPS9T), so this is reproducible in principle, but nothing inside the PDF lets a deterministic check confirm the headcount or the 46% figure. Mark inconclusive pending the dataset; do not invent a verdict."
+      }
+    },
+    {
+      "id": "c2",
+      "text": "The design has four conditions (control plus three rhetoric presentations: Problem-Minimizing, Problem-Minimizing with Counterargument, Problem-Amplifying), so the average cell size is roughly N/4 ~ 404 if assignment is balanced.",
+      "quote": "subjects were randomly assigned to read one of the three presentations of President Trump's problem-manipulating rhetoric; the fourth, control group read that US deaths from COVID-19 had just passed 100,000.",
+      "section": "Procedure and measurement",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "Count conditions named in the design (4) and divide total N by number of arms: 1615/4 = 403.75. This only establishes the implied per-arm size; exact cell counts require the dataset (see c1). Off-the-shelf arithmetic confirms the implied average cell size and that 4 arms are described.",
+      "evidence": [
+        {
+          "id": "e2",
+          "kind": "text",
+          "location": "Procedure and measurement; conditions also named in Figure 1 axis labels (Control, Minimize, Amplify, Min. + Counter-Info)",
+          "quote": "one of the three presentations ... the fourth, control group",
+          "extracted_values": {
+            "n_conditions": 4,
+            "N_total": 1615,
+            "implied_mean_cell": 403.75
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Arithmetic: N/arms; consistency that the four arms named in prose equal the four bars per panel in Figure 1.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.95,
+        "rationale": "1615/4 = 403.75, a coherent average cell size for a Prolific study. The four prose conditions map one-to-one onto the four bars in every Figure 1 panel (Control/Minimize/Amplify/Min.+Counter-Info), so the design description is internally consistent. Exact per-cell N is not in the PDF (would need the dataset)."
+      }
+    },
+    {
+      "id": "c3",
+      "text": "The Bonferroni-corrected significance threshold is alpha = 0.0125.",
+      "quote": "it is not statistically significant at the Bonferroni-corrected alpha = 0.0125",
+      "section": "Results",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Bonferroni: alpha_family / m. 0.05/4 = 0.0125, implying correction across the 4 primary hypotheses/tests. Recompute 0.05/m for plausible m and confirm m=4 yields 0.0125.",
+      "evidence": [
+        {
+          "id": "e3",
+          "kind": "statistic",
+          "location": "Results (job-performance result)",
+          "quote": "Bonferroni-corrected alpha = 0.0125",
+          "extracted_values": {
+            "alpha_corrected": 0.0125,
+            "implied_family_alpha": 0.05,
+            "implied_m_tests": 4
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Bonferroni divisor recompute (alpha_family / number_of_tests).",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.99,
+        "rationale": "0.05 / 4 = 0.0125 exactly. With four preregistered hypotheses (H1-H4) the divisor m=4 is the natural family size, so the corrected threshold is internally consistent. Pure arithmetic settles it."
+      }
+    },
+    {
+      "id": "c4",
+      "text": "The figure's 98.75% confidence intervals correspond to the Bonferroni-corrected alpha = 0.0125 (1 - 0.0125 = 0.9875).",
+      "quote": "Brackets represent 98.75% confidence intervals.",
+      "section": "Figure 1 caption",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Confidence level = 1 - alpha. Check 1 - 0.0125 = 0.9875 = 98.75%. Confirms the plotted CIs match the corrected alpha used in the text.",
+      "evidence": [
+        {
+          "id": "e4",
+          "kind": "figure",
+          "location": "Figure 1 caption (read from rendered image at 600-900 DPI)",
+          "quote": "Brackets represent 98.75% confidence intervals.",
+          "extracted_values": {
+            "ci_level_pct": 98.75,
+            "implied_alpha": 0.0125
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Identity check 1 - alpha = CI level (figure caption vs reported corrected alpha).",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.98,
+        "rationale": "1 - 0.0125 = 0.9875. The 98.75% CI in the figure caption is exactly the complement of the Bonferroni-corrected alpha = 0.0125 used in the text, so figure and prose are internally consistent on the inference threshold."
+      }
+    },
+    {
+      "id": "c5",
+      "text": "In Panel A (Perceived Seriousness of COVID-19 Death Toll), the Problem-Minimizing-with-Counterargument condition is lower than the Control condition by approximately the 7.4 percentage points the text reports for the backfiring mediation effect.",
+      "quote": "decreasing the perceived seriousness of the death toll by 7.4% points (p < 0.001, two-tailed; BF10 = 0.298)",
+      "section": "Exploratory analyses",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Read bar heights off Panel A against the 0/0.2/0.4/0.6/0.8 gridlines; compute Control - (Min.+Counter) on the 0-1 scale and compare to 0.074. Prose-vs-figure cross-consistency.",
+      "evidence": [
+        {
+          "id": "e5",
+          "kind": "figure",
+          "location": "Figure 1 Panel A (read at 900 DPI): Control ~0.70, Minimize ~0.68, Amplify ~0.67, Min.+Counter ~0.62",
+          "quote": "Panel A: Perceived Seriousness of COVID-19 Death Toll",
+          "extracted_values": {
+            "control_mean_approx": 0.7,
+            "minimize_mean_approx": 0.68,
+            "amplify_mean_approx": 0.67,
+            "mincounter_mean_approx": 0.62,
+            "stated_decrease_pp": 7.4
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Vision figure-read of Panel A bar heights -> difference -> compare to reported 7.4 pp (T2 prose-vs-figure).",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.82,
+        "rationale": "Reading Panel A, Control ~0.70 and Min.+Counter ~0.62, a gap of ~8 percentage points on the 0-1 scale, consistent with the reported 7.4 pp decrease within figure-reading precision (gridlines at 0.2 intervals give roughly +/-2-3 pp). Direction and rough magnitude match; the exact 7.4 would need the dataset (c14)."
+      }
+    },
+    {
+      "id": "c6",
+      "text": "Perceived seriousness decreased more in the Problem-Amplifying condition than in the Problem-Minimizing condition (contrary to the directional expectation of H1).",
+      "quote": "The average perceived seriousness decreased slightly in the Problem-Minimizing condition (p = 0.18, one-tailed), and it actually decreased more in the Problem-Amplifying condition (p = 0.12, one-tailed), contrary to expectations.",
+      "section": "Results",
+      "page": 5,
+      "epistemic_tier": "T2",
+      "predicate": "From Panel A, check Amplify_mean < Minimize_mean (i.e., Amplify is the lower bar), and both < Control. Prose-vs-figure ordering check.",
+      "evidence": [
+        {
+          "id": "e6",
+          "kind": "figure",
+          "location": "Figure 1 Panel A bar ordering",
+          "quote": "decreased more in the Problem-Amplifying condition",
+          "extracted_values": {
+            "control_mean_approx": 0.7,
+            "minimize_mean_approx": 0.68,
+            "amplify_mean_approx": 0.67
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Vision ordering check on Panel A (Amplify bar below Minimize bar, both below Control).",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.72,
+        "rationale": "In Panel A the Amplify bar (~0.67) sits marginally below the Minimize bar (~0.68), and both below Control (~0.70). The ordering matches the prose claim that Amplify produced a slightly larger (still nonsignificant) decrease than Minimize, the unexpected direction the author flags. Differences are within overlapping CIs, consistent with the null framing."
+      }
+    },
+    {
+      "id": "c7",
+      "text": "The Problem-Minimizing condition raised the president's pandemic-specific job performance by 3.6 percentage points relative to control (p = 0.03, one-tailed), not significant at the Bonferroni-corrected alpha = 0.0125.",
+      "quote": "The Problem-Minimizing condition raised the president's pandemic-specific job performance by 3.6% points, but it is not statistically significant at the Bonferroni-corrected alpha = 0.0125 (p = 0.03, one-tailed), (BF10 = 0.19).",
+      "section": "Results",
+      "page": 5,
+      "epistemic_tier": "T2",
+      "predicate": "Two parts. (a) Internal logic: p = 0.03 > 0.0125, so 'not significant at corrected alpha' is correct (T0). (b) Magnitude: from Panel B, Minimize bar minus Control bar should be ~+0.036 on 0-1 scale (T2 figure-read, coarse).",
+      "evidence": [
+        {
+          "id": "e7",
+          "kind": "figure",
+          "location": "Figure 1 Panel B; also Results prose",
+          "quote": "raised ... by 3.6% points ... not statistically significant at the Bonferroni-corrected alpha = 0.0125 (p = 0.03, one-tailed)",
+          "extracted_values": {
+            "stated_increase_pp": 3.6,
+            "p_one_tailed": 0.03,
+            "alpha_corrected": 0.0125,
+            "bf10": 0.19
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "(a) threshold comparison p vs corrected alpha (T0); (b) Panel B figure-read of Minimize - Control difference (T2, coarse).",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "Internal-logic part is exact: 0.03 > 0.0125, so 'not significant at the corrected threshold' is correct. In Panel B the Minimize bar is slightly above Control, the right direction for a +3.6 pp shift, but a 3.6 pp difference is below figure-reading resolution, so the exact magnitude is only confirmable from the dataset (c14). The verdict reflects the deterministic threshold check plus directional figure agreement."
+      }
+    },
+    {
+      "id": "c8",
+      "text": "Subjects rated the president's job performance 4.7 percentage points better in the Problem-Minimizing-with-Counterargument condition than in control (p < 0.01, one-tailed).",
+      "quote": "subjects rated the president's job performance 4.7% points better in the Problem-Minimizing with Counterargument condition as compared to the control (p < 0.01, one-tailed).",
+      "section": "Results",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "From Panel B, Min.+Counter bar minus Control bar should be ~+0.047 and should be the largest (or near-largest) bar; check direction/ordering. Exact magnitude needs dataset.",
+      "evidence": [
+        {
+          "id": "e8",
+          "kind": "figure",
+          "location": "Figure 1 Panel B bar ordering (Control lowest; Min.+Counter among the highest)",
+          "quote": "4.7% points better ... as compared to the control",
+          "extracted_values": {
+            "stated_increase_pp": 4.7,
+            "p_one_tailed_bound": 0.01
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Panel B ordering/direction read (Min.+Counter > Control); exact 4.7 pp via dataset.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.78,
+        "rationale": "In Panel B the Control bar is visibly the lowest and the Min.+Counter bar is among the highest, consistent with a positive ~4.7 pp gap. Direction and ordering match the prose; the precise magnitude and p<0.01 require the deposited data (c14)."
+      }
+    },
+    {
+      "id": "c9",
+      "text": "The Bayes factor BF10 = 0.19 means the data are about five times more likely under the null than the alternative.",
+      "quote": "The Bayes factor in favor of the alternative hypothesis is fairly small (BF10 = 0.19), meaning that the evidence is about five times more likely under the null (Held and Ott 2018).",
+      "section": "Results",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Evidence ratio under null relative to alternative = 1/BF10 = 1/0.19. Check it is ~5.",
+      "evidence": [
+        {
+          "id": "e9",
+          "kind": "statistic",
+          "location": "Results (H1 Bayes factor)",
+          "quote": "BF10 = 0.19 ... about five times more likely under the null",
+          "extracted_values": {
+            "bf10": 0.19,
+            "stated_ratio_null_over_alt": 5
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Reciprocal check: BF01 = 1/BF10 ~ 5.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.97,
+        "rationale": "1/0.19 = 5.26 ~ 5. The verbal interpretation 'about five times more likely under the null' is the correct reading of BF10 = 0.19 (BF01 = 5.26). Pure reciprocal arithmetic confirms it."
+      }
+    },
+    {
+      "id": "c10",
+      "text": "The indirect (mediation) effect of the Problem-Minimizing-with-Counterargument treatment on Trump's job performance through perceived seriousness is 0.011 with a bootstrapped 95% CI of [0.005, 0.019], i.e., significant (CI excludes 0).",
+      "quote": "The backfiring effect was mediated by the seriousness with which subjects regarded the death toll (Indirect effect = 0.011, Boostrapped CI = [0.005, 0.019]).",
+      "section": "Exploratory analyses",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Check internal consistency: a CI of [0.005, 0.019] excludes 0, so the indirect effect is 'significant'/non-null, consistent with the 'strong backfiring effect' framing; point estimate 0.011 lies inside the interval and near its center. Also sign consistency with the 'product of two negative effects' explanation.",
+      "evidence": [
+        {
+          "id": "e10",
+          "kind": "statistic",
+          "location": "Exploratory mediation (PROCESS, Hayes 2018)",
+          "quote": "Indirect effect = 0.011, Boostrapped CI = [0.005, 0.019]",
+          "extracted_values": {
+            "indirect_effect": 0.011,
+            "ci_low": 0.005,
+            "ci_high": 0.019
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "CI-excludes-null check + point-estimate-within-CI consistency (T2 internal). Exact recompute is T6 (PROCESS bootstrap on the dataset).",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.9,
+        "rationale": "The interval [0.005, 0.019] excludes 0, so calling the indirect effect significant is internally consistent; 0.011 falls inside and roughly centers the interval. The positive sign is consistent with the stated 'product of two negative effects' logic (treatment lowers seriousness; higher seriousness lowers performance evaluation). Reproducing 0.011 exactly would need the PROCESS bootstrap on the data."
+      }
+    },
+    {
+      "id": "c11",
+      "text": "The positive indirect effect arises as the product of two negative effects (the treatment reduced perceived seriousness; higher perceived seriousness is associated with lower performance evaluation).",
+      "quote": "The positive indirect effect arises because it is the product of two negative effects: the treatment reduced perceived seriousness and higher perceived seriousness is associated with lower pandemic-specific performance evaluations for the president.",
+      "section": "Exploratory analyses",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "Sign algebra: (negative a-path) x (negative b-path) = positive ab. Check that a product of two negatives is positive and matches the reported positive indirect effect (0.011 > 0).",
+      "evidence": [
+        {
+          "id": "e11",
+          "kind": "text",
+          "location": "Exploratory analyses (mechanism explanation)",
+          "quote": "product of two negative effects ... positive indirect effect",
+          "extracted_values": {
+            "a_path_sign": -1,
+            "b_path_sign": -1,
+            "indirect_sign_expected": 1,
+            "indirect_effect_reported": 0.011
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Sign-of-product check (negative x negative = positive) against reported positive indirect effect.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.99,
+        "rationale": "(-) x (-) = (+). The reported indirect effect 0.011 is positive, consistent with the stated mechanism of two negative component paths. The internal sign logic holds exactly."
+      }
+    },
+    {
+      "id": "c12",
+      "text": "The mediation indirect effect is moderately robust to violations of sequential ignorability, losing significance only for sensitivity parameter rho < -0.3.",
+      "quote": "the effect loses significance at values of rho, the sensitivity parameter, greater than -0.3.",
+      "section": "Exploratory analyses",
+      "page": 7,
+      "epistemic_tier": "T6",
+      "predicate": "Re-run the Imai et al. (2011) sensitivity analysis (medsens) on the deposited data and confirm the significance-loss threshold near rho = -0.3. Cannot be verified from the PDF; note prose ambiguity 'greater than -0.3' vs the 'robust' framing.",
+      "evidence": [
+        {
+          "id": "e12",
+          "kind": "statistic",
+          "location": "Exploratory analyses (sensitivity analysis, Imai et al. 2011)",
+          "quote": "loses significance at values of rho ... greater than -0.3",
+          "extracted_values": {
+            "rho_threshold": -0.3
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T6 rerun of the mediation sensitivity analysis on the deposited data; plus a T2 prose-clarity note on the 'greater than -0.3' wording.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.25,
+        "rationale": "The robustness threshold is a property of the fitted model and the data, not recoverable from the text. The phrasing 'loses significance at values of rho ... greater than -0.3' is mildly ambiguous given that 'robust' usually means it survives a wide rho range; resolving it requires the sensitivity output from the dataset. Mark inconclusive."
+      }
+    },
+    {
+      "id": "c13",
+      "text": "Ideological identification and approval of Trump's pandemic job performance correlate at r = 0.34.",
+      "quote": "The omitted confounder would need to have correlate more strongly with the focal variables than ideological identification and approval of Trump's pandemic job performance (r = 0.34).",
+      "section": "Conclusion (footnote 4)",
+      "page": 8,
+      "epistemic_tier": "T6",
+      "predicate": "Compute the Pearson correlation between the ideology covariate and the Trump-approval scale in the deposited data; compare to 0.34. Range-validity (|r| <= 1) is the only PDF-checkable part.",
+      "evidence": [
+        {
+          "id": "e13",
+          "kind": "statistic",
+          "location": "Footnote 4 (sensitivity benchmark)",
+          "quote": "ideological identification and approval of Trump's pandemic job performance (r = 0.34)",
+          "extracted_values": {
+            "r": 0.34
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T6 correlation recompute from the deposited data; trivial T1 bound check |r| <= 1 (passes).",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.3,
+        "rationale": "r = 0.34 is a valid correlation magnitude (|r| <= 1), but confirming the specific value requires the dataset. Inconclusive from the PDF alone; flagged as a clean T6 recompute target."
+      }
+    },
+    {
+      "id": "c14",
+      "text": "All four reported treatment-vs-control mean differences (Panel A/B effects: -7.4 pp seriousness for Min.+Counter, +3.6 pp performance for Minimize, +4.7 pp performance for Min.+Counter, and the H1 seriousness decreases) are recomputable from the four condition means in the deposited data.",
+      "quote": "The data, code, and any additional materials required to replicate all analyses in this article are available at the Journal of Experimental Political Science Dataverse within the Harvard Dataverse Network, at: doi: 10.7910/DVN/JXPS9T.",
+      "section": "Footnote 1 / Procedure",
+      "page": 1,
+      "epistemic_tier": "T6",
+      "predicate": "Load deposited data; compute condition means of each 0-1 DV; form (treatment mean - control mean)*100; compare to 7.4, 3.6, 4.7 pp; recompute one-tailed p-values and BF10 with BayesFactor. This is the master reproducibility check that would upgrade the T2 figure-reads (c5, c7, c8) to exact.",
+      "evidence": [
+        {
+          "id": "e14",
+          "kind": "dataset",
+          "location": "Harvard Dataverse doi:10.7910/DVN/JXPS9T (replication data + R code; PROCESS 3.5, BayesFactor packages cited)",
+          "quote": "doi: 10.7910/DVN/JXPS9T",
+          "extracted_values": {
+            "seriousness_mincounter_pp": -7.4,
+            "performance_minimize_pp": 3.6,
+            "performance_mincounter_pp": 4.7
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T6 percent-point recompute (group means difference x 100) + p-value/BF recompute from the deposited data and code.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.35,
+        "rationale": "Data and code are publicly deposited and the analysis packages (PROCESS 3.5, BayesFactor) are named, so every reported effect is reproducible in principle, but the recompute is not runnable from the PDF. This is the highest-value confirmation target: it would turn c5/c7/c8 from coarse figure-reads into exact percent-point checks. Inconclusive until run."
+      }
+    },
+    {
+      "id": "c15",
+      "text": "Mediation 'simple mediation analyses' were estimated with assignment-to-treatment as the explanatory variable, perceived seriousness as the mediator, and Trump evaluation / policy support / behavioral intention as outcomes, with political ideology and political interest as covariates, using PROCESS 3.5.",
+      "quote": "I conducted a series of simple mediation analyses in which assignment-to-treatment is the explanatory variable; perceived seriousness of the coronavirus is the mediator; and evaluations of Trump, support for social distancing policies, and intentions to follow guidelines are the outcome variables. Political ideology and political interest are entered as covariates.",
+      "section": "Exploratory analyses (footnote 3)",
+      "page": 6,
+      "epistemic_tier": "T3",
+      "predicate": "Method-appropriateness: is bootstrap mediation (PROCESS / Hayes) with a single mediator and two covariates an appropriate analysis for a randomized treatment -> mediator -> outcome design? Check that it is labeled exploratory (not preregistered) and that causal-mediation caveats (sequential ignorability) are acknowledged.",
+      "evidence": [
+        {
+          "id": "e15",
+          "kind": "text",
+          "location": "Exploratory analyses; footnote 3 (PROCESS 3.5, Hayes 2018)",
+          "quote": "simple mediation analyses ... PROCESS 3.5 package provided by Hayes",
+          "extracted_values": {
+            "mediator_count": 1,
+            "covariates": 2,
+            "preregistered": 0
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Method-signature check: design-tag (randomized X, observational M) x analysis-tag (mediation) -> flag whether mediator-randomization / sequential-ignorability caveat is present.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.8,
+        "rationale": "Bootstrap mediation via PROCESS is a standard and appropriate choice for this X->M->Y structure. The author correctly (a) labels it exploratory rather than confirmatory, and (b) addresses the key threat (sequential ignorability) with an Imai et al. sensitivity analysis (c12). The main residual caveat - that the mediator is measured, not manipulated, so the b-path is observational - is acknowledged. Appropriately scoped; this is a method-judgment, advisory tier."
+      }
+    },
+    {
+      "id": "c16",
+      "text": "The pre-analysis plan specified one-tailed (directional) tests with Bonferroni correction across the confirmatory hypotheses, and the backfiring seriousness effect (7.4 pp) is reported two-tailed because it was not anticipated in the plan.",
+      "quote": "decreasing the perceived seriousness of the death toll by 7.4% points (p < 0.001, two-tailed; BF10 = 0.298). This result was not anticipated in the pre-analysis plan",
+      "section": "Exploratory analyses",
+      "page": 6,
+      "epistemic_tier": "T3",
+      "predicate": "Consistency of inferential framing: confirmatory H1-H4 use one-tailed tests at corrected alpha; the unanticipated backfire uses two-tailed and is framed as exploratory. Check that one-tailed is applied only to directional preregistered predictions and that exploratory results are not counted as confirmatory.",
+      "evidence": [
+        {
+          "id": "e16",
+          "kind": "text",
+          "location": "Results / Exploratory analyses (test-sidedness usage)",
+          "quote": "p < 0.001, two-tailed ... not anticipated in the pre-analysis plan",
+          "extracted_values": {
+            "confirmatory_tail": 1,
+            "exploratory_backfire_tail": 2,
+            "bf10_backfire": 0.298
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Preregistration-vs-reported analysis comparison (one-tailed confirmatory at corrected alpha vs two-tailed exploratory) against the OSF RR (https://osf.io/kjh9b).",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.8,
+        "rationale": "The inferential framing is internally coherent: directional preregistered hypotheses get one-tailed tests at the Bonferroni-corrected alpha, while the unanticipated backfiring effect is explicitly flagged as not in the plan and reported two-tailed. Full confirmation would compare against the deposited RR at osf.io/kjh9b (T5/T6); from the text the as-reported handling is consistent and transparently labeled."
+      }
+    },
+    {
+      "id": "c17",
+      "text": "The four dependent-variable scales have reliabilities of Cronbach's alpha = 0.97 (Trump job performance, 4 items), 0.92 (policy support, 8 items), and 0.90 (social-distancing intentions, 8 items); perceived seriousness is a single 5-point item.",
+      "quote": "averaging together four items ... into a scale (Cronbach's alpha = 0.97). Policy support ... is an 8-item scale (Cronbach's alpha = 0.92), and intentions to comply with social distancing ... is also an 8-item scale (Cronbach's alpha = 0.90).",
+      "section": "Procedure and measurement",
+      "page": 5,
+      "epistemic_tier": "T6",
+      "predicate": "Range-validity (0 <= alpha <= 1) is PDF-checkable (passes). Exact reliability recompute from the item-level deposited data is T6. Also a method note: a single-item DV (seriousness) has no internal-consistency estimate by construction.",
+      "evidence": [
+        {
+          "id": "e17",
+          "kind": "statistic",
+          "location": "Procedure and measurement (scale construction)",
+          "quote": "Cronbach's alpha = 0.97 ... alpha = 0.92 ... alpha = 0.90",
+          "extracted_values": {
+            "alpha_performance": 0.97,
+            "items_performance": 4,
+            "alpha_policy": 0.92,
+            "items_policy": 8,
+            "alpha_intentions": 0.9,
+            "items_intentions": 8
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T1 bound check 0<=alpha<=1 (passes); T6 reliability recompute on item-level data.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "All three reported alphas are in the valid [0,1] range and plausible for 4-8 item attitude scales (0.97 for a 4-item performance scale is high but unremarkable for tightly related job-approval items). The exact values are reproducible only from the item-level data; the PDF-checkable range constraint is satisfied."
+      }
+    },
+    {
+      "id": "c18",
+      "text": "All dependent variables were rescaled to the 0-1 interval, so reported effects in 'percentage points' are differences in these 0-1 scaled means multiplied by 100.",
+      "quote": "All dependent variables were scaled to take values between 0 and 1.",
+      "section": "Procedure and measurement",
+      "page": 5,
+      "epistemic_tier": "T2",
+      "predicate": "Unit/scale consistency: confirm the y-axes of all four Figure 1 panels span 0-1 (gridlines at 0.0/0.2/0.4/0.6/0.8) and that 'X% points' in prose equals a difference of X/100 on these axes, making c5/c7/c8 dimensionally coherent.",
+      "evidence": [
+        {
+          "id": "e18",
+          "kind": "figure",
+          "location": "Figure 1 (all panels share a 0-1 y-axis, ticks at 0.2 intervals)",
+          "quote": "scaled to take values between 0 and 1",
+          "extracted_values": {
+            "axis_min": 0.0,
+            "axis_max": 0.8,
+            "axis_tick_step": 0.2,
+            "scale_max": 1.0
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Axis-range / unit-consistency check: figure y-axis (0-1) matches the 'percentage points' interpretation of prose effects.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.95,
+        "rationale": "Every Figure 1 panel uses the same 0-1 mean-response axis (visible ticks 0.0-0.8 at 0.2 steps), so a '7.4% points' or '3.6% points' difference corresponds to 0.074 / 0.036 on the plotted scale. The prose's percentage-point language is dimensionally consistent with the figure; no axis truncation or dual-axis distortion is present."
+      }
+    },
+    {
+      "id": "c19",
+      "text": "On April 29 (with nearly 60,000 dead) Trump compared the toll to a 2.2 million projection, and as late as May 26 (over 100,000 dead) compared it with 1.5-2 million possible deaths; the control group was told US COVID-19 deaths had just passed 100,000, and the Minimizing stimulus said the toll could have been over 1.5 million.",
+      "quote": "On April 29, with nearly 60,000 dead, the president compared the death toll to the 2.2 million projection, and even as late as May 26, with over 100,000 dead, the president compared it with 1.5-2 million possible deaths.",
+      "section": "Trump performance evaluation / Procedure",
+      "page": 3,
+      "epistemic_tier": "T1",
+      "predicate": "External-fact check against historical US COVID-19 cumulative death records: ~60k by late April 2020 and ~100k by late May 2020 (e.g., CDC/JHU time series). Also internal consistency: control stimulus '100,000' and minimizing stimulus '1.5 million' lie within the quoted projection range.",
+      "evidence": [
+        {
+          "id": "e19",
+          "kind": "number",
+          "location": "Trump performance evaluation (benchmark framing) and Procedure (stimulus wording)",
+          "quote": "nearly 60,000 dead ... over 100,000 dead ... 2.2 million projection ... 1.5-2 million possible deaths",
+          "extracted_values": {
+            "deaths_apr29_approx": 60000,
+            "deaths_may26_approx": 100000,
+            "projection_high_million": 2.2,
+            "projection_range_low_million": 1.5,
+            "projection_range_high_million": 2.0
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T1 lookup against a versioned US COVID-19 cumulative-death time series; plus internal consistency of stimulus figures with the quoted projections.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "The cited cumulative US death milestones match the public record (roughly 60k by ~Apr 29, 2020 and ~100k by ~May 26, 2020), and the projection figures (2.2M; 1.5-2M) correspond to widely reported 2020 worst-case epidemiological projections. The stimulus numbers (100,000 control; >1.5M minimizing) are internally consistent with that range. A dated COVID death-toll reference table would settle the external part deterministically."
+      }
+    },
+    {
+      "id": "c20",
+      "text": "The effects of the rhetoric on social-distancing policy support and behavioral intentions were statistically nonsignificant (all p's > 0.50, all BF10's < 0.15).",
+      "quote": "The estimated effects of the president's rhetoric on citizens' support for and intention to comply with social-distancing guidelines were statistically nonsignificant (p's > 0.50, BF10's < 0.15).",
+      "section": "Results",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-consistency: Panels C and D should show near-flat bars across conditions with heavily overlapping CIs, consistent with p>0.50 and BF10<0.15 (evidence favoring the null). Exact p/BF recompute is T6.",
+      "evidence": [
+        {
+          "id": "e20",
+          "kind": "figure",
+          "location": "Figure 1 Panels C (Social Distancing Policy Support) and D (Risky Health Behavior Intentions)",
+          "quote": "statistically nonsignificant (p's > 0.50, BF10's < 0.15)",
+          "extracted_values": {
+            "p_threshold": 0.5,
+            "bf10_threshold": 0.15,
+            "panelC_means_approx": 0.62,
+            "panelD_means_approx": 0.5
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Vision check that Panels C/D bars are flat with overlapping CIs (T2); exact p>0.5, BF10<0.15 via dataset (T6).",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.84,
+        "rationale": "Panels C and D show essentially flat bars across the four conditions (~0.62 in C, ~0.50 in D) with strongly overlapping 98.75% CIs, visually consistent with the reported non-effects (p>0.50, BF10<0.15). The qualitative figure-vs-prose match holds; exact statistics need the deposited data."
+      }
+    },
+    {
+      "id": "c21",
+      "text": "Hypothesis 3 is defined relative to the Problem-Minimizing condition (not control), so testing it requires the counterargument condition to be compared against the Minimizing condition, and the paper reports no reduction there (p > 0.2, one-tailed).",
+      "quote": "The counterargument did not reduce the president's performance evaluations compared to the Problem-Minimizing treatment without counterargument (p > 0.2, one-tailed).",
+      "section": "Results / Hypotheses",
+      "page": 6,
+      "epistemic_tier": "T4",
+      "predicate": "Claim-evidence/logic consistency: H3 is operationalized as Min.+Counter vs Min. (the paper states the reference group is the Minimizing condition). Check that the reported test uses that contrast and that the conclusion ('no support for H3') matches p>0.2 at the directional threshold.",
+      "evidence": [
+        {
+          "id": "e21",
+          "kind": "text",
+          "location": "Hypotheses (H3 reference-group note, p.4) and Results (H3 test, p.6)",
+          "quote": "the reference group for Hypothesis 3 is the Problem-Minimizing condition ... did not reduce ... compared to the Problem-Minimizing treatment (p > 0.2)",
+          "extracted_values": {
+            "h3_reference": "Problem-Minimizing",
+            "p_bound": 0.2
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Logical-coherence check that the H3 contrast matches its stated reference group and that the conclusion follows from the reported p.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "The paper pre-defines H3's reference group as the Minimizing condition and then tests exactly the Min.+Counter vs Min. contrast, reporting p>0.2 and concluding no support. The contrast used matches the operationalization, and the 'no support' conclusion is consistent with the reported p at the directional threshold. Coherent claim-evidence linkage; reproducing the exact test is T6."
+      }
+    },
+    {
+      "id": "c22",
+      "text": "The paper interprets the overall pattern of null direct effects as evidence that Republicans' views had already 'crystallized' by early June 2020, rather than as a failure of the manipulation.",
+      "quote": "it is likely that I failed to reject the null hypothesis because the subjects had already shifted their perceptions in response to the elite messaging.",
+      "section": "Discussion",
+      "page": 7,
+      "epistemic_tier": "T4",
+      "predicate": "Strength/scope check: a null result is being given a substantive ('crystallized attitudes') rather than null/underpowered interpretation. Assess whether (a) the manipulation check is reported and (b) the 'crystallized' reading over-claims from a null. Note absence of a reported manipulation-check result in the body.",
+      "evidence": [
+        {
+          "id": "e22",
+          "kind": "text",
+          "location": "Discussion (interpretation of nulls); Procedure mentions a manipulation check was administered but no result is reported in the body",
+          "quote": "I failed to reject the null hypothesis because the subjects had already shifted their perceptions",
+          "extracted_values": {
+            "manipulation_check_administered": 1,
+            "manipulation_check_result_in_body": 0
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Over-claim / null-interpretation audit: does a substantive 'crystallization' reading of a null have support (manipulation-check pass, power), or is it interpreting absence of evidence as evidence?",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.45,
+        "rationale": "The 'already crystallized' explanation is a plausible but unfalsifiable post-hoc reading of null direct effects; the author appropriately uses Bayes factors (BF10 ~ 0.19) to argue the nulls are informative rather than merely underpowered, which strengthens the case. However, the body reports no manipulation-check result, so whether subjects actually received the intended treatment cannot be confirmed from the PDF. This is a calibrated T4 judgment - surface, do not score; partly resolvable via the SI/dataset."
+      }
+    },
+    {
+      "id": "c23",
+      "text": "The minimizing stimulus value ('over 1.5 million' averted deaths) is internally consistent with the projection range the paper attributes to Trump (1.5-2 million / 2.2 million).",
+      "quote": "the president says that the death toll could have been over 1.5 million had he not responded the way he did",
+      "section": "Procedure and measurement",
+      "page": 4,
+      "epistemic_tier": "T2",
+      "predicate": "Internal cross-consistency: the stimulus figure ('over 1.5 million') must fall within the projection range the paper itself cites elsewhere (1.5-2 million on p.3, and 2.2 million). Check 1.5M lies in [1.5M, 2.2M].",
+      "evidence": [
+        {
+          "id": "e23",
+          "kind": "number",
+          "location": "Procedure (stimulus wording) vs Trump performance evaluation (projection range, p.3)",
+          "quote": "over 1.5 million ... compared it with 1.5-2 million possible deaths",
+          "extracted_values": {
+            "stimulus_million": 1.5,
+            "range_low_million": 1.5,
+            "range_high_million": 2.2
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Interval-membership check (stimulus figure within the cited projection range).",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.96,
+        "rationale": "The minimizing-stimulus figure 'over 1.5 million' sits at the low end of, and inside, the 1.5-2 (and up to 2.2) million projection range the paper attributes to Trump elsewhere. The stimulus is internally consistent with the paper's own benchmark numbers."
+      }
+    },
+    {
+      "id": "c24",
+      "text": "The paper is a preregistered report whose hypotheses and analysis plan were deposited at OSF (osf.io/kjh9b) before data collection, with data and code at the Harvard Dataverse.",
+      "quote": "the plan in the registered report, which was deposited in a public repository before data collection. The registered report can be found at https://osf.io/kjh9b.",
+      "section": "Procedure and measurement",
+      "page": 5,
+      "epistemic_tier": "T7",
+      "predicate": "Provenance/integrity signal: confirm the OSF preregistration (osf.io/kjh9b) exists and predates the June 4-9, 2020 data collection, and that the Dataverse deposit (doi:10.7910/DVN/JXPS9T) is live. Compare preregistered hypotheses/analyses to the as-reported confirmatory tests.",
+      "evidence": [
+        {
+          "id": "e24",
+          "kind": "text",
+          "location": "Procedure (OSF link) and Footnote 1 (Dataverse DOI)",
+          "quote": "https://osf.io/kjh9b ... doi: 10.7910/DVN/JXPS9T",
+          "extracted_values": {
+            "field_start": "2020-06-04",
+            "preregistered": 1,
+            "data_deposited": 1
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T7/T5 registry checks: OSF registration exists and is timestamped pre-collection; Dataverse DOI resolves; prereg-vs-paper hypothesis diff.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "Strong positive provenance signals: a stated OSF registered report (osf.io/kjh9b), an open Dataverse data+code deposit (doi:10.7910/DVN/JXPS9T), open-access licensing, and explicit pre/post distinction between confirmatory (H1-H4) and exploratory (mediation/backfire) analyses. These are reproducibility-positive markers; deterministic confirmation requires resolving the OSF/Dataverse links and diffing the prereg against the reported tests."
+      }
+    },
+    {
+      "id": "c25",
+      "text": "The paper's substantive importance - that elite framing can degrade democratic accountability during a public-health crisis - is significant for representative democracy.",
+      "quote": "If politicians can influence how they are assessed, even if their performance is poor, then democratic accountability is seriously called into question.",
+      "section": "Introduction",
+      "page": 2,
+      "epistemic_tier": "T8",
+      "predicate": "Subjective importance/novelty-worth judgment; route to human, do not score.",
+      "evidence": [
+        {
+          "id": "e25",
+          "kind": "text",
+          "location": "Introduction (stakes framing)",
+          "quote": "democratic accountability is seriously called into question",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": false,
+        "verifier_needed": "None - irreducibly subjective (importance/significance).",
+        "verifier_exists": false,
+        "candidate_verdict": "not_checkable",
+        "confidence": 0.0,
+        "rationale": "Judgments about the importance and broader significance of the question are irreducibly subjective (DESIGN T8). Surface for a human reader; explicitly not scored."
+      }
+    }
+  ],
+  "paper_level_notes": "Authorship note: the corpus filename says 'druckman2021' but the sole author is Philip Moniz (Univ. of Texas, Austin); 'Druckman' appears only as a co-author of cited works (Bolsen, Druckman & Cook 2014; Baum et al. 2020). DOI 10.1017/XPS.2020.45; Journal of Experimental Political Science, 2021, open access (CC-BY). This is a strongly reproducibility-positive paper: a PREREGISTERED REPORT with an OSF registered report (osf.io/kjh9b) deposited before data collection, plus full data+code at the Harvard Dataverse (doi:10.7910/DVN/JXPS9T), and the analysis packages are named (R; PROCESS 3.5 by Hayes; BayesFactor). It is most plausibly a NEGATIVE/high-rigor control: null/backfire results are reported transparently, Bayes factors are used to argue the nulls are informative (BF10 ~ 0.19) rather than merely underpowered, one-tailed confirmatory tests are Bonferroni-corrected (alpha=0.0125), and the unanticipated backfiring effect is explicitly flagged as exploratory and reported two-tailed. No fabricated-error candidates were found; I did not manufacture any. CHECKABLE FRONTIER: the deterministic wins are internal-arithmetic/cross-consistency items - Bonferroni divisor 0.05/4=0.0125 (c3), CI level 1-alpha=98.75% (c4), Bayes-factor reciprocal 1/0.19~5 (c9), sign-of-product mediation logic (c11), CI-excludes-null mediation consistency (c10), scale/axis unit consistency (c18), and stimulus-vs-projection interval membership (c23). The single most valuable VISION check is reading Figure 1 (the only figure; 4 panels x 4 conditions, 98.75% CI brackets, shared 0-1 y-axis with 0.2 ticks): Panel A reads Control~0.70, Minimize~0.68, Amplify~0.67, Min.+Counter~0.62, which makes the prose's -7.4 pp backfire (c5) and the Amplify<Minimize ordering (c6) checkable and supported within ~+/-2-3 pp figure resolution; Panel B's ordering supports the +3.6/+4.7 pp directional claims (c7,c8); Panels C/D are flat with overlapping CIs, supporting the reported nulls (c20). The exact percentage-point magnitudes (7.4/3.6/4.7) and all p/BF values fall below figure-reading precision, so they are bound to T6 recompute targets against the deposited data (c14 is the master recompute; c12,c13,c17 are additional T6 targets). MINOR ISSUES (none are errors): (1) figure caption reads 'Brackets represent 98.75% confidence intervals' - internally consistent with the corrected alpha; (2) prose phrasing 'the effect loses significance at values of rho ... greater than -0.3' (c12) is mildly ambiguous against the 'robust' framing; (3) the body reports no manipulation-check result although one was administered (c22), so the 'attitudes already crystallized' interpretation of the nulls is a plausible-but-unverifiable post-hoc reading (T4, surfaced not scored); (4) several typographical slips ('read rhetoric President Trump's statements', 'Boostrapped', 'evoke similar a backlash') - cosmetic, not integrity signals. Verifier coverage: existing off-the-shelf checks already cover the T0/T1 arithmetic (Bonferroni divisor, reciprocal, CI-complement, sign algebra, interval membership, |r|<=1, axis/unit consistency); the figure-read T2 checks (c5,c6,c7,c8,c20) need the vision figure-value-extraction verifier (WS-E frontier, not yet built); the percent-point/p-value/BF/mediation/reliability/correlation recomputes (c12-c14,c17) need the T6 reproducibility container running the deposited R code; statcheck-style p-from-statistic does not apply because test statistics (t/F/df) are not reported in the body - only p-values, percent-point effects, and Bayes factors. Counts: 25 claims total; 14 carry a T0-T2 tier and are checkable now or with the figure-reader. By tier: T0=5 (c2 design arithmetic, c3 Bonferroni divisor, c4 CI-complement, c9 Bayes-factor reciprocal, c11 sign-of-product); T1=1 (c19 COVID death-toll milestones, external lookup); T2=8 (c5,c6 Panel-A figure reads, c7 mixed threshold+figure, c8 Panel-B ordering, c10 mediation CI-excludes-null, c18 axis/unit consistency, c20 Panels C/D flat-bar consistency, c23 stimulus-vs-projection interval). Of these, c3/c4/c9/c11 are fully deterministic today with off-the-shelf arithmetic; c10/c18/c23 are deterministic once the prose values are bound; c2/c7 have an exact arithmetic/threshold component; c5/c6/c8/c20 need the vision figure-value-extraction verifier; c19 needs a dated COVID-death reference table. The remaining 11 claims are T3 (c15,c16 method appropriateness), T4 (c21,c22 claim-evidence support), T6 (c1,c12,c13,c14,c17 reproducibility against the deposited data/code), T7 (c24 preregistration/provenance), and T8 (c25 subjective importance, not scored)."
+}

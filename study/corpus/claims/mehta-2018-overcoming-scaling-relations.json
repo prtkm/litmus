@@ -3,18 +3,7 @@
   "paper_id": "mehta-2018-overcoming-scaling-relations",
   "meta": {
     "title": "Overcoming Ammonia Synthesis Scaling Relations with Plasma-enabled Catalysis",
-    "authors": [
-      "Prateek Mehta",
-      "Patrick Barboun",
-      "Francisco A. Herrera",
-      "Jongsik Kim",
-      "Paul Rumbach",
-      "David B. Go",
-      "Jason C. Hicks",
-      "William F. Schneider"
-    ],
-    "date": "February 12, 2018",
-    "notes": "Figure-read values (STY in Fig 5, Fig 4 TOF comparisons) extracted at lower confidence. Author affiliation: University of Notre Dame.",
+    "note": "Numeric values read from Figure 5 (STY) are approximate plot reads; confidence lowered accordingly. Figure-based comparative claims (orders of magnitude) transcribed qualitatively.",
     "extractor": "litmus.extract",
     "model": "claude-opus-4-8",
     "source": "opus-native-pdf"
@@ -22,7 +11,7 @@
   "claims": [
     {
       "id": "c1",
-      "text": "Plasma-induced vibrational excitations in N2 decrease N2 dissociation barriers without influencing subsequent reaction steps; this circumvents ammonia synthesis scaling relations.",
+      "text": "Plasma-induced vibrational excitations in N2 decrease dissociation barriers without influencing subsequent reaction steps.",
       "location": {
         "section": "Abstract",
         "page": 1,
@@ -30,12 +19,10 @@
         "quote": "We postulate that plasma-induced vibrational\nexcitations in N2 decrease dissociation barriers without influencing subsequent reaction steps."
       },
       "epistemic_tier": "T4",
-      "predicate": "model assumes vibrational excitation reduces N2 dissociation barrier by alpha*Ev and leaves hydrogenation steps unchanged",
+      "predicate": "model assumption: alpha*Ev reduces N2 dissociation barrier (eq 6); rates for reactions (2)-(5) unchanged from thermal model",
       "strength": "causal",
-      "scope": "DFT-based microkinetic model of ammonia synthesis",
-      "evidence_refs": [
-        "ev1"
-      ],
+      "scope": "DFT microkinetic model of ammonia synthesis",
+      "evidence_refs": [],
       "confidence": 0.9
     },
     {
@@ -48,17 +35,17 @@
         "quote": "We predict plasma enhancement to be particularly great on metals that bind nitrogen too\nweakly to be active thermally."
       },
       "epistemic_tier": "T4",
-      "predicate": "predicted rate enhancement is largest for weak-N-binding metals (right leg of volcano)",
+      "predicate": "modeled plasma-on rate enhancement is largest for weak-N-binding metals (right leg of volcano)",
       "strength": "comparative",
-      "scope": "microkinetic model, Figure 4",
+      "scope": "Figure 4 step/terrace volcano curves",
       "evidence_refs": [
-        "ev6"
+        "ev_fig4"
       ],
       "confidence": 0.85
     },
     {
       "id": "c3",
-      "text": "Ammonia synthesis rates observed in a DBD plasma reactor are consistent with predicted enhancements and with predicted changes in the optimal metal catalyst.",
+      "text": "Ammonia synthesis rates observed in a DBD plasma reactor are consistent with predicted enhancements and predicted changes in the optimal metal catalyst.",
       "location": {
         "section": "Abstract",
         "page": 1,
@@ -66,17 +53,18 @@
         "quote": "Ammonia synthesis rates observed in a DBD plasma reactor are\nconsistent with predicted enhancements and with predicted changes in the optimal metal catalyst."
       },
       "epistemic_tier": "T4",
-      "predicate": "measured STY trend matches model-predicted volcano ordering/shift",
+      "predicate": "measured STY trend across metals matches modeled TOF trend ordering",
       "strength": "comparative",
-      "scope": "DBD plasma reactor experiments, Figure 5",
+      "scope": "DBD plasma reactor, Fe/Ru/Co/Ni/Pt at 438 K, 1 atm",
       "evidence_refs": [
-        "ev7"
+        "ev_fig5",
+        "ev_sty_trend"
       ],
       "confidence": 0.85
     },
     {
       "id": "c4",
-      "text": "Conventional Haber-Bosch ammonia synthesis operates at 100-200 atm and 600-800 K; practical rates on best thermal catalysts require ~700 K and ~100 atm.",
+      "text": "Conventional Haber-Bosch ammonia synthesis requires elevated temperatures (~700 K) and pressures (~100 atm).",
       "location": {
         "section": "Introduction",
         "page": 2,
@@ -84,49 +72,47 @@
         "quote": "practical rates are only attainable at elevated temperatures (∼ 700 K)\nand pressures (∼ 100 atm)"
       },
       "epistemic_tier": "T1",
-      "predicate": "stated Haber-Bosch conditions ~700 K, ~100 atm (and 100-200 atm, 600-800 K)",
+      "predicate": "stated_HB_temperature_K ≈ 700; stated_HB_pressure_atm ≈ 100",
       "strength": "approximate",
-      "scope": "conventional Haber-Bosch process",
+      "scope": "best identified thermal catalysts",
       "evidence_refs": [
-        "ev2"
+        "ev_hb_conditions"
       ],
-      "confidence": 0.85
+      "confidence": 0.92
     },
     {
       "id": "c5",
-      "text": "The microkinetic model recovers the volcano curve and indicates Ru and Fe are the optimal mono-metallic catalysts at high T and P (673 K, 100 atm).",
+      "text": "The conventional Haber-Bosch process operates at 100-200 atm and 600-800 K.",
       "location": {
-        "section": "Microkinetic modeling",
-        "page": 4,
+        "section": "Introduction",
+        "page": 3,
         "char_span": null,
-        "quote": "Our results recover the volcano curve predicted\nby literature models [7, 8] and indicate that Ru and Fe are the optimal mono-metallic cat-\nalysts at high T and P."
+        "quote": "rival that of the conventional Haber-Bosch process (100-200 atm, 600-800 K)"
       },
-      "epistemic_tier": "T2",
-      "predicate": "model volcano peak at high T/P corresponds to Ru and Fe",
-      "strength": "qualitative",
-      "scope": "Figure 1, 673 K, 100 atm, step sites",
+      "epistemic_tier": "T1",
+      "predicate": "stated_HB_pressure_atm in [100,200]; stated_HB_temperature_K in [600,800]",
+      "strength": "bound",
+      "scope": "conventional Haber-Bosch process",
       "evidence_refs": [
-        "ev3"
+        "ev_hb_conditions2"
       ],
-      "confidence": 0.85
+      "confidence": 0.92
     },
     {
       "id": "c6",
-      "text": "At reduced temperature and pressure, rates on the same stepped surfaces are several orders of magnitude lower than the corresponding Haber-Bosch rates, and terrace rates are a further few orders of magnitude lower.",
+      "text": "Promising yields of ammonia can be obtained at low temperature (400 to 500 K) and atmospheric pressure with a non-thermal plasma coupled to a catalyst.",
       "location": {
-        "section": "Microkinetic modeling",
-        "page": 4,
+        "section": "Introduction",
+        "page": 2,
         "char_span": null,
-        "quote": "rates on the same stepped\nsurfaces are several orders of magnitude lower than the corresponding Haber-Bosch rates.\nRates on terrace sites are a further few orders of magnitude lower."
+        "quote": "promising yields of ammonia can be obtained at low temperature (400 to 500\nK) and atmospheric pressure when a non-thermal plasma is operated in tandem with a"
       },
-      "epistemic_tier": "T2",
-      "predicate": "log10(TOF) difference between target-condition steps and Haber-Bosch is several orders; terraces further lower",
-      "strength": "comparative",
-      "scope": "Figure 1, 473 K, 1 atm vs 673 K, 100 atm",
-      "evidence_refs": [
-        "ev3"
-      ],
-      "confidence": 0.8
+      "epistemic_tier": "T5",
+      "predicate": "literature reports NH3 production at 400-500 K and atmospheric pressure with plasma+catalyst",
+      "strength": "qualitative",
+      "scope": "prior plasma-catalysis studies [10-19]",
+      "evidence_refs": [],
+      "confidence": 0.85
     },
     {
       "id": "c7",
@@ -138,16 +124,52 @@
         "quote": "relatively large vibrational spacing (∼ 0.3 eV)"
       },
       "epistemic_tier": "T1",
-      "predicate": "N2 vibrational spacing ≈ 0.3 eV",
+      "predicate": "stated_N2_vibrational_spacing_eV ≈ 0.3",
       "strength": "approximate",
-      "scope": "N2 molecule",
+      "scope": "N2 vibrational ladder",
       "evidence_refs": [
-        "ev4"
+        "ev_vib_spacing"
       ],
       "confidence": 0.9
     },
     {
       "id": "c8",
+      "text": "Calculated thermal rates were computed at Haber-Bosch conditions (673 K, 100 atm) and target low T/P conditions (473 K, 1 atm); Ru and Fe are optimal mono-metallic catalysts at high T and P.",
+      "location": {
+        "section": "Microkinetic modeling",
+        "page": 4,
+        "char_span": null,
+        "quote": "tative of of Haber-Bosch conditions (673 K, 100 atm) and target [9] low T and P conditions\n(473 K, 1 atm) are compared in Figure 1."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "modeled volcano peak at HB conditions falls at Ru and Fe; conditions 673 K/100 atm and 473 K/1 atm",
+      "strength": "comparative",
+      "scope": "Figure 1, N2:H2=1:3, N2 conversion=1%",
+      "evidence_refs": [
+        "ev_fig1"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c9",
+      "text": "At reduced temperature and pressure, rates on the same stepped surfaces are several orders of magnitude lower than the corresponding Haber-Bosch rates, and terrace rates are a further few orders of magnitude lower.",
+      "location": {
+        "section": "Microkinetic modeling",
+        "page": 4,
+        "char_span": null,
+        "quote": "rates on the same stepped\nsurfaces are several orders of magnitude lower than the corresponding Haber-Bosch rates.\nRates on terrace sites are a further few orders of magnitude lower."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "log10(TOF) at 473 K/1 atm steps << log10(TOF) at 673 K/100 atm steps by several orders",
+      "strength": "comparative",
+      "scope": "Figure 1",
+      "evidence_refs": [
+        "ev_fig1"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "c10",
       "text": "The bulk gas temperature measured by in situ thermocouple was 398.5 ± 5 K.",
       "location": {
         "section": "Microkinetic modeling",
@@ -155,109 +177,179 @@
         "char_span": null,
         "quote": "temperature (Tgas), measured using an in situ thermocouple, was 398.5 ± 5 K."
       },
-      "epistemic_tier": "T0",
-      "predicate": "Tgas = 398.5 ± 5 K (measured)",
+      "epistemic_tier": "T6",
+      "predicate": "measured_Tgas_K == 398.5 ± 5",
       "strength": "exact",
       "scope": "DBD reactor OES measurement",
       "evidence_refs": [
-        "ev5"
+        "ev_tgas"
       ],
       "confidence": 0.95
     },
     {
-      "id": "c9",
-      "text": "An average N2 vibrational temperature of Tvib = 3000 K was used in the model; Tvib had weak dependence on gas composition.",
+      "id": "c11",
+      "text": "An average value of Tvib = 3000 K was used in the model.",
       "location": {
         "section": "Microkinetic modeling",
         "page": 8,
         "char_span": null,
         "quote": "An average value of Tvib = 3000 K was used in our model."
       },
-      "epistemic_tier": "T0",
-      "predicate": "model uses Tvib = 3000 K",
+      "epistemic_tier": "T6",
+      "predicate": "model_Tvib_K == 3000",
       "strength": "exact",
-      "scope": "microkinetic model, Figure 3a",
+      "scope": "microkinetic model parameterization",
       "evidence_refs": [
-        "ev8"
+        "ev_tvib"
       ],
       "confidence": 0.95
     },
     {
-      "id": "c10",
-      "text": "The Treanor distribution at Tvib=3000 K, Tgas=473 K predicts ~63.2% of N2 in the ground state, 21.4% in the first excited state, and ~0.2% in tail states v8-v10.",
+      "id": "c12",
+      "text": "The Treanor distribution predicts that only about 63.2% of N2 remains in the ground vibrational state.",
       "location": {
         "section": "Microkinetic modeling",
         "page": 8,
         "char_span": null,
-        "quote": "only about 63.2 % of N2 remains in the ground vibrational state. The first vibrationally\nexcited state has a population of 21.4 %, while the states in the tail of the distribution (v8 -\nv10) have probabilites of around 0.2 %."
+        "quote": "only about 63.2 % of N2 remains in the ground vibrational state."
       },
       "epistemic_tier": "T0",
-      "predicate": "Treanor pv(0)=0.632, pv(1)=0.214, pv(8-10)~0.002 at Tvib=3000 K, Tgas=473 K",
+      "predicate": "Treanor_ground_state_population_pct == 63.2 at Tvib=3000 K, Tgas=473 K",
       "strength": "approximate",
-      "scope": "Figure 3b, Tvib=3000 K, Tgas=473 K, first 10 excited states",
+      "scope": "Treanor distribution, Tvib=3000 K, Tgas=473 K, Figure 3b",
       "evidence_refs": [
-        "ev9"
+        "ev_treanor"
       ],
       "confidence": 0.9
     },
     {
-      "id": "c11",
-      "text": "Rates on the optimal plasma-on catalyst are comparable to those on the optimal thermal catalyst (Ru steps) at 673 K and 100 atm.",
+      "id": "c13",
+      "text": "The first vibrationally excited state has a population of 21.4%, and the tail states (v8-v10) have probabilities of around 0.2%.",
+      "location": {
+        "section": "Microkinetic modeling",
+        "page": 8,
+        "char_span": null,
+        "quote": "The first vibrationally\nexcited state has a population of 21.4 %, while the states in the tail of the distribution (v8 -\nv10) have probabilites of around 0.2 %."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "Treanor_v1_population_pct == 21.4; Treanor_tail_population_pct ≈ 0.2",
+      "strength": "approximate",
+      "scope": "Treanor distribution, Tvib=3000 K, Tgas=473 K",
+      "evidence_refs": [
+        "ev_treanor"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "c14",
+      "text": "The truncated distribution at the Treanor minimum includes the first 10 vibrationally excited states.",
+      "location": {
+        "section": "Microkinetic modeling",
+        "page": 8,
+        "char_span": null,
+        "quote": "imum (which includes the first 10 vibrationally excited states) to compute the normalized"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "number_of_excited_states_included == 10",
+      "strength": "exact",
+      "scope": "Treanor truncation",
+      "evidence_refs": [],
+      "confidence": 0.9
+    },
+    {
+      "id": "c15",
+      "text": "For both step and terrace sites, optimal plasma-on reaction rates are several orders of magnitude higher than those for thermal catalysis.",
       "location": {
         "section": "Microkinetic modeling",
         "page": 10,
         "char_span": null,
-        "quote": "rates on the optimal plasma-on catalyst are\ncomparable to those on the optimal thermal catalyst at 673 K and 100 atm, Ru steps."
+        "quote": "the optimal plasma-on reaction rates\n(i.e. the peaks of the volcano curves) are several orders of magnitude higher than those for\nthermal catalysis."
       },
-      "epistemic_tier": "T2",
-      "predicate": "peak plasma-on TOF (473 K, 1 atm) ≈ peak Haber-Bosch TOF (Ru steps, 673 K, 100 atm)",
+      "epistemic_tier": "T4",
+      "predicate": "peak log10(plasma-on TOF) - peak log10(plasma-off TOF) >> several orders",
       "strength": "comparative",
-      "scope": "Figure 4a vs Figure 1, target conditions",
+      "scope": "Figure 4, 473 K, 1 atm, Tvib=3000 K",
       "evidence_refs": [
-        "ev6",
-        "ev3"
+        "ev_fig4"
       ],
-      "confidence": 0.8
+      "confidence": 0.82
     },
     {
-      "id": "c12",
-      "text": "For step sites the plasma-on volcano peak shifts towards weaker nitrogen binding, predicting Co and Ni near the peak.",
+      "id": "c16",
+      "text": "For step sites, the plasma-on volcano peak shifts toward weaker nitrogen binding, predicting Co and Ni near the peak.",
       "location": {
         "section": "Microkinetic modeling",
         "page": 10,
         "char_span": null,
         "quote": "the peak of the plasma-on volcano curve shows\na distinct shift towards weaker nitrogen binding energies, predicting Co and Ni to be near\nthe volcano peak."
       },
-      "epistemic_tier": "T2",
-      "predicate": "plasma-on step volcano peak located at Co/Ni binding energies",
-      "strength": "qualitative",
-      "scope": "Figure 4a, step sites",
+      "epistemic_tier": "T4",
+      "predicate": "plasma-on volcano peak (step) located at Co/Ni binding energies",
+      "strength": "comparative",
+      "scope": "Figure 4a steps",
       "evidence_refs": [
-        "ev6"
+        "ev_fig4"
       ],
       "confidence": 0.85
     },
     {
-      "id": "c13",
-      "text": "Plasma-on TOF on Ru terrace sites is the same order of magnitude as that on Ru steps, despite plasma-off TOFs five orders of magnitude apart; Ru terrace TOF predicted two orders of magnitude below Co steps.",
+      "id": "c17",
+      "text": "Rates on the optimal plasma-on catalyst are comparable to those on the optimal thermal catalyst (Ru steps) at 673 K and 100 atm.",
+      "location": {
+        "section": "Microkinetic modeling",
+        "page": 10,
+        "char_span": null,
+        "quote": "we find that rates on the optimal plasma-on catalyst are\ncomparable to those on the optimal thermal catalyst at 673 K and 100 atm, Ru steps."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "peak plasma-on TOF (473 K/1 atm) ≈ peak Haber-Bosch TOF (673 K/100 atm, Ru steps)",
+      "strength": "comparative",
+      "scope": "Figures 1 and 4",
+      "evidence_refs": [
+        "ev_fig1",
+        "ev_fig4"
+      ],
+      "confidence": 0.83
+    },
+    {
+      "id": "c18",
+      "text": "On terrace sites, the plasma-on TOF on Ru terraces is predicted to be two orders of magnitude lower than on Co steps.",
+      "location": {
+        "section": "Microkinetic modeling",
+        "page": 11,
+        "char_span": null,
+        "quote": "the TOF on these sites are predicted to be two orders of magnitude lower than those on Co\nsteps."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "log10(plasma-on TOF Ru terrace) ≈ log10(plasma-on TOF Co step) - 2",
+      "strength": "comparative",
+      "scope": "Figure 4",
+      "evidence_refs": [
+        "ev_fig4"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "c19",
+      "text": "The plasma-on TOF on Ru terrace sites is of the same order of magnitude as that on Ru steps, despite their plasma-off TOFs being five orders of magnitude apart.",
       "location": {
         "section": "Microkinetic modeling",
         "page": 11,
         "char_span": null,
         "quote": "the plasma-on TOF on Ru terrace sites is of the same order of magnitude of\nthat on Ru steps, despite the fact that their plasma-off TOFs are five orders of magnitude\napart."
       },
-      "epistemic_tier": "T2",
-      "predicate": "plasma-on TOF(Ru terrace) ~ plasma-on TOF(Ru step); plasma-off difference ~5 orders; Ru terrace ~2 orders below Co steps",
+      "epistemic_tier": "T4",
+      "predicate": "log10(plasma-on TOF Ru terrace) ≈ log10(plasma-on TOF Ru step); |log10(plasma-off Ru terrace) - log10(plasma-off Ru step)| ≈ 5",
       "strength": "comparative",
-      "scope": "Figure 4b, terrace and step sites",
+      "scope": "Figure 4",
       "evidence_refs": [
-        "ev6"
+        "ev_fig4"
       ],
       "confidence": 0.8
     },
     {
-      "id": "c14",
-      "text": "The observed experimental activity trend Co > Ni = Ru > Pt > Fe tracks well with model predictions.",
+      "id": "c20",
+      "text": "The observed activity trend Co > Ni = Ru > Pt > Fe tracks remarkably well with model predictions.",
       "location": {
         "section": "Plasma-catalytic kinetics",
         "page": 13,
@@ -265,88 +357,69 @@
         "quote": "the observed activity trend of Co > Ni = Ru > Pt\n> Fe tracks remarkably well with model predictions."
       },
       "epistemic_tier": "T2",
-      "predicate": "measured STY ordering Co > Ni = Ru > Pt > Fe consistent with model volcano ordering",
+      "predicate": "measured STY ordering == Co > Ni = Ru > Pt > Fe and matches modeled TOF ordering",
       "strength": "comparative",
-      "scope": "Figure 5, DBD reactor, N2:H2=2:1, 438 K",
+      "scope": "Figure 5, measured STY",
       "evidence_refs": [
-        "ev7"
+        "ev_fig5",
+        "ev_sty_trend"
       ],
       "confidence": 0.85
     },
     {
-      "id": "c15",
-      "text": "Measured ammonia site-time yields: Co ~0.063, Ru ~0.027, Ni ~0.027, Pt ~0.017, Fe ~0.010 s^-1.",
+      "id": "c21",
+      "text": "Measured site-time yields: Co ~0.063 s^-1, Ru ~0.027 s^-1, Ni ~0.027 s^-1, Pt ~0.016 s^-1, Fe ~0.011 s^-1.",
       "location": {
         "section": "Plasma-catalytic kinetics",
         "page": 14,
         "char_span": null,
         "quote": "Measured ammonia site-time yields in the di-\nelectric barrier discharge reactor on metal/Al2O3 catalysts as a function of the DFT-calculated\nnitrogen adsorption energy."
       },
-      "epistemic_tier": "T0",
-      "predicate": "STY values read from Figure 5: Co≈0.063, Ru≈0.027, Ni≈0.027, Pt≈0.017, Fe≈0.010 s^-1",
+      "epistemic_tier": "T2",
+      "predicate": "STY values read from Figure 5 for Co/Ru/Ni/Pt/Fe",
       "strength": "approximate",
-      "scope": "Figure 5, N2:H2=2:1, plasma power=10 W, 438 K",
+      "scope": "Figure 5, N2:H2=2:1, 10 W, 438 K",
       "evidence_refs": [
-        "ev7"
+        "ev_fig5"
       ],
       "confidence": 0.6
     },
     {
-      "id": "c16",
-      "text": "Non-stoichiometric N2:H2 ratios in the range 1:1 to 3:1 produced higher ammonia yields than the stoichiometric 1:3 ratio.",
+      "id": "c22",
+      "text": "The plasma power was maintained at 10 W and the reactor temperature at 438 K for all kinetic measurements.",
+      "location": {
+        "section": "Plasma-catalytic kinetics",
+        "page": 12,
+        "char_span": null,
+        "quote": "The DBD plasma was operated at 10 W and ∼ 20 kHz at atmospheric\npressure, and the reactor temperature maintained at 438 K."
+      },
+      "epistemic_tier": "T6",
+      "predicate": "plasma_power_W == 10; reactor_temperature_K == 438; frequency ≈ 20 kHz",
+      "strength": "exact",
+      "scope": "kinetic experiments",
+      "evidence_refs": [
+        "ev_reactor_conditions"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c23",
+      "text": "Non-stoichiometric N2:H2 ratios in the range of 1:1 to 3:1 produced higher ammonia yields than the stoichiometric 1:3 ratio.",
       "location": {
         "section": "Plasma-catalytic kinetics",
         "page": 12,
         "char_span": null,
         "quote": "non-stoichiometric ratios in the range of 1:1 to\n3:1 produced higher ammonia yields than the stoichiometric 1:3 ratio"
       },
-      "epistemic_tier": "T4",
-      "predicate": "ammonia yield at N2:H2 in [1:1,3:1] > yield at 1:3",
+      "epistemic_tier": "T6",
+      "predicate": "NH3 yield(N2:H2 in 1:1..3:1) > NH3 yield(N2:H2 = 1:3)",
       "strength": "comparative",
-      "scope": "Supplementary Figure 10, test experiments",
-      "evidence_refs": [
-        "ev10"
-      ],
+      "scope": "feed composition test experiments",
+      "evidence_refs": [],
       "confidence": 0.85
     },
     {
-      "id": "c17",
-      "text": "The DBD plasma was operated at 10 W and ~20 kHz at atmospheric pressure with reactor temperature maintained at 438 K; catalysts verified thermally inactive.",
-      "location": {
-        "section": "Plasma-catalytic kinetics",
-        "page": 12,
-        "char_span": null,
-        "quote": "The DBD plasma was operated at 10 W and ∼ 20 kHz at atmospheric\npressure, and the reactor temperature maintained at 438 K. The catalysts were verified as\nthermally inactive under these conditions."
-      },
-      "epistemic_tier": "T0",
-      "predicate": "plasma power=10 W, freq~20 kHz, T=438 K, atmospheric pressure",
-      "strength": "exact",
-      "scope": "kinetic experiments",
-      "evidence_refs": [
-        "ev11"
-      ],
-      "confidence": 0.95
-    },
-    {
-      "id": "c18",
-      "text": "Five metal catalysts (Fe, Ru, Co, Ni, Pt) supported on gamma-alumina with 5 wt.% metal loading were compared.",
-      "location": {
-        "section": "Plasma-catalytic kinetics",
-        "page": 12,
-        "char_span": null,
-        "quote": "We compared five different metal catalysts (Fe, Ru, Co, Ni, Pt)\nsupported on γ-alumina"
-      },
-      "epistemic_tier": "T0",
-      "predicate": "5 catalysts Fe,Ru,Co,Ni,Pt on gamma-alumina, 5 wt% metal",
-      "strength": "exact",
-      "scope": "kinetic experiments",
-      "evidence_refs": [
-        "ev11"
-      ],
-      "confidence": 0.95
-    },
-    {
-      "id": "c19",
+      "id": "c24",
       "text": "The reactor configuration yields a discharge gap of 1.75 mm and a discharge volume of ~0.18 mL.",
       "location": {
         "section": "Experimental Kinetics",
@@ -354,129 +427,121 @@
         "char_span": null,
         "quote": "configuration yields a discharge gap of 1.75 mm and a discharge volume of ∼ 0.18 mL."
       },
-      "epistemic_tier": "T0",
-      "predicate": "discharge gap = 1.75 mm, discharge volume ≈ 0.18 mL",
+      "epistemic_tier": "T6",
+      "predicate": "discharge_gap_mm == 1.75; discharge_volume_mL ≈ 0.18",
       "strength": "exact",
       "scope": "DBD reactor geometry",
       "evidence_refs": [
-        "ev12"
+        "ev_reactor_geom"
       ],
-      "confidence": 0.9
+      "confidence": 0.93
     },
     {
-      "id": "c20",
-      "text": "Vibrational excitation has significantly lower excitation energy thresholds than other forms of excitation and is the predominant excitation channel for N2 in non-thermal plasmas.",
+      "id": "c25",
+      "text": "The Fridman alpha factor vanishes in the limit that dissociation is non-activated, as occurs at EN < -1 on steps.",
       "location": {
-        "section": "Introduction",
-        "page": 3,
+        "section": "Microkinetic modeling",
+        "page": 6,
         "char_span": null,
-        "quote": "Vibrational excitation\nhas significantly lower excitation energy thresholds compared to other forms of excitation\n(e.g. electronic excitation, ionization, or dissociation), and is thus the predominant ex-\ncitation channel for N2 in non-thermal plasmas [21]."
+        "quote": "α vanishes in the limit that dissociation\nis non-activated, as occurs at EN < −1 on steps."
       },
-      "epistemic_tier": "T5",
-      "predicate": "vibrational excitation threshold < electronic/ionization/dissociation; dominant N2 channel",
+      "epistemic_tier": "T0",
+      "predicate": "alpha -> 0 when forward N2 dissociation barrier = 0 (eq 8); threshold at EN < -1 eV on steps",
       "strength": "qualitative",
-      "scope": "N2 in non-thermal plasmas",
-      "evidence_refs": [],
-      "confidence": 0.8
+      "scope": "Figure 2b, steps",
+      "evidence_refs": [
+        "ev_alpha"
+      ],
+      "confidence": 0.85
     },
     {
-      "id": "c21",
-      "text": "Ammonia was the only product observed (no hydrazine or other N-containing products).",
+      "id": "c26",
+      "text": "Catalysts were pretreated in hydrogen at 773 K for 30 min prior to measurement.",
       "location": {
         "section": "Experimental Kinetics",
         "page": 18,
         "char_span": null,
-        "quote": "ammonia was the only product observed (i.e. no hydrazine\nor other N-containing products)."
+        "quote": "pretreated in hydrogen at 773 K for 30 min to remove any oxide layers"
       },
-      "epistemic_tier": "T0",
-      "predicate": "only product detected by GC-TCD is NH3",
-      "strength": "qualitative",
-      "scope": "all kinetic reactions",
+      "epistemic_tier": "T6",
+      "predicate": "pretreatment_temperature_K == 773; pretreatment_time_min == 30",
+      "strength": "exact",
+      "scope": "catalyst pretreatment",
       "evidence_refs": [
-        "ev13"
+        "ev_pretreat"
       ],
-      "confidence": 0.9
+      "confidence": 0.93
     },
     {
-      "id": "c22",
-      "text": "The DFT calculations used the DACAPO code with the RPBE functional, Vanderbilt ultrasoft pseudopotentials, and a plane-wave cutoff of at least 340 eV.",
+      "id": "c27",
+      "text": "OES measurements used a 100 mg 5% Ni/Al2O3 catalyst under a 10 W DBD plasma.",
       "location": {
-        "section": "Computational Details",
-        "page": 15,
+        "section": "Microkinetic modeling",
+        "page": 7,
         "char_span": null,
-        "quote": "all calculations were performed using the DACAPO\ncode, with exchange and correlation effects described by the RPBE functional [47]. Core\nelectrons were described using Vanderbilt ultrasoft pseudopotentials. The plane-wave cutoff\nused was at least 340 eV."
+        "quote": "reactor was packed with\n100 mg of 5 % Ni/Al2O3 catalyst and operated under a 10 W DBD plasma."
       },
-      "epistemic_tier": "T0",
-      "predicate": "DFT: DACAPO, RPBE, ultrasoft PP, cutoff >= 340 eV",
+      "epistemic_tier": "T6",
+      "predicate": "catalyst_mass_mg == 100; Ni_loading_pct == 5; plasma_power_W == 10",
       "strength": "exact",
-      "scope": "literature-collected DFT energies",
+      "scope": "OES measurement Figure 3a",
       "evidence_refs": [
-        "ev14"
+        "ev_oes_conditions"
       ],
+      "confidence": 0.93
+    },
+    {
+      "id": "c28",
+      "text": "Average metal particle sizes are based on at least 300 particles.",
+      "location": {
+        "section": "Experimental Kinetics",
+        "page": 18,
+        "char_span": null,
+        "quote": "Average metal particle sizes are based on at least 300\nparticles."
+      },
+      "epistemic_tier": "T6",
+      "predicate": "particle_count >= 300",
+      "strength": "bound",
+      "scope": "TEM particle size analysis",
+      "evidence_refs": [],
       "confidence": 0.9
     }
   ],
   "evidence": [
     {
-      "id": "ev1",
-      "kind": "equation",
+      "id": "ev_hb_conditions",
+      "kind": "text",
       "location": {
-        "section": "Microkinetic modeling",
-        "page": 6,
+        "section": "Introduction",
+        "page": 2,
         "char_span": null,
-        "quote": "k\n(f)\nv = Aexp \n−\nE\n(f)\na − αEv\nkBT"
+        "quote": "practical rates are only attainable at elevated temperatures (∼ 700 K)\nand pressures (∼ 100 atm)"
       },
       "extracted_values": {
-        "form": "k_v^(f) = A*exp(-(Ea^(f) - alpha*Ev)/(kB*T))*H(Ea^(f)-alpha*Ev)"
+        "temperature_K": 700,
+        "pressure_atm": 100
       },
-      "confidence": 0.85
+      "confidence": 0.92
     },
     {
-      "id": "ev2",
+      "id": "ev_hb_conditions2",
       "kind": "text",
       "location": {
         "section": "Introduction",
         "page": 3,
         "char_span": null,
-        "quote": "the conventional Haber-Bosch process\n(100-200 atm, 600-800 K)"
+        "quote": "the conventional Haber-Bosch process (100-200 atm, 600-800 K)"
       },
       "extracted_values": {
-        "HB_pressure_atm": [
-          100,
-          200
-        ],
-        "HB_temperature_K": [
-          600,
-          800
-        ],
-        "stated_T_K": 700,
-        "stated_P_atm": 100
+        "pressure_atm_low": 100,
+        "pressure_atm_high": 200,
+        "temperature_K_low": 600,
+        "temperature_K_high": 800
       },
-      "confidence": 0.9
+      "confidence": 0.92
     },
     {
-      "id": "ev3",
-      "kind": "figure",
-      "location": {
-        "section": "Microkinetic modeling",
-        "page": 5,
-        "char_span": null,
-        "quote": "FIG. 1. Modeled ammonia synthesis rates during thermal catalysis."
-      },
-      "extracted_values": {
-        "HB_conditions": "673 K, 100 atm",
-        "target_conditions": "473 K, 1 atm",
-        "N2_H2_ratio": "1:3",
-        "N2_conversion_pct": 1,
-        "optimal_metals_high_TP": [
-          "Ru",
-          "Fe"
-        ]
-      },
-      "confidence": 0.8
-    },
-    {
-      "id": "ev4",
+      "id": "ev_vib_spacing",
       "kind": "number",
       "location": {
         "section": "Microkinetic modeling",
@@ -490,13 +555,47 @@
       "confidence": 0.9
     },
     {
-      "id": "ev5",
+      "id": "ev_fig1",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 1",
+        "page": 5,
+        "char_span": null,
+        "quote": "FIG. 1. Modeled ammonia synthesis rates during thermal catalysis."
+      },
+      "extracted_values": {
+        "HB_conditions": "673 K, 100 atm",
+        "target_conditions": "473 K, 1 atm",
+        "N2_H2_ratio": "1:3",
+        "N2_conversion_pct": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "ev_fig4",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 4",
+        "page": 11,
+        "char_span": null,
+        "quote": "FIG. 4. Rate enhancements with plasma-induced N2 vibrational excitation."
+      },
+      "extracted_values": {
+        "pressure_atm": 1,
+        "Tgas_K": 473,
+        "Tvib_K": 3000,
+        "conversion_pct": 1
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "ev_tgas",
       "kind": "statistic",
       "location": {
         "section": "Microkinetic modeling",
         "page": 7,
         "char_span": null,
-        "quote": "was 398.5 ± 5 K"
+        "quote": "temperature (Tgas), measured using an in situ thermocouple, was 398.5 ± 5 K."
       },
       "extracted_values": {
         "Tgas_K": 398.5,
@@ -505,101 +604,81 @@
       "confidence": 0.95
     },
     {
-      "id": "ev6",
-      "kind": "figure",
+      "id": "ev_tvib",
+      "kind": "number",
       "location": {
         "section": "Microkinetic modeling",
-        "page": 11,
+        "page": 8,
         "char_span": null,
-        "quote": "FIG. 4. Rate enhancements with plasma-induced N2 vibrational excitation."
+        "quote": "An average value of Tvib = 3000 K was used in our model."
       },
       "extracted_values": {
-        "conditions": "1 atm, Tgas=473 K, Tvib=3000 K, conversion=1%",
-        "step_peak_metals": [
-          "Co",
-          "Ni"
-        ],
-        "terrace_peak_metal": "Ru"
+        "Tvib_K": 3000
       },
-      "confidence": 0.8
+      "confidence": 0.95
     },
     {
-      "id": "ev7",
+      "id": "ev_treanor",
+      "kind": "number",
+      "location": {
+        "section": "Microkinetic modeling",
+        "page": 8,
+        "char_span": null,
+        "quote": "only about 63.2 % of N2 remains in the ground vibrational state."
+      },
+      "extracted_values": {
+        "ground_state_pct": 63.2,
+        "v1_pct": 21.4,
+        "tail_pct": 0.2,
+        "Tvib_K": 3000,
+        "Tgas_K": 473
+      },
+      "confidence": 0.88
+    },
+    {
+      "id": "ev_fig5",
       "kind": "figure",
       "location": {
-        "section": "Plasma-catalytic kinetics",
+        "section": "Figure 5",
         "page": 14,
         "char_span": null,
         "quote": "FIG. 5. Experimental plasma-catalytic kinetics."
       },
       "extracted_values": {
-        "conditions": "N2:H2=2:1, plasma power=10 W, reactor temperature=438 K",
         "STY_Co": 0.063,
         "STY_Ru": 0.027,
         "STY_Ni": 0.027,
-        "STY_Pt": 0.017,
-        "STY_Fe": 0.01,
-        "trend": "Co > Ni = Ru > Pt > Fe"
-      },
-      "confidence": 0.6
-    },
-    {
-      "id": "ev8",
-      "kind": "figure",
-      "location": {
-        "section": "Microkinetic modeling",
-        "page": 9,
-        "char_span": null,
-        "quote": "FIG. 3. Plasma-induced vibrational excitation of N2."
-      },
-      "extracted_values": {
-        "Tvib_K": 3000,
+        "STY_Pt": 0.016,
+        "STY_Fe": 0.011,
+        "units": "s^-1",
+        "N2_H2_ratio": "2:1",
         "plasma_power_W": 10,
-        "catalyst": "100 mg 5% Ni/Al2O3",
-        "N2_H2_range": [
-          0.33,
-          5
-        ]
+        "reactor_temperature_K": 438
       },
-      "confidence": 0.9
+      "confidence": 0.55
     },
     {
-      "id": "ev9",
-      "kind": "statistic",
-      "location": {
-        "section": "Microkinetic modeling",
-        "page": 8,
-        "char_span": null,
-        "quote": "only about 63.2 % of N2 remains in the ground vibrational state. The first vibrationally\nexcited state has a population of 21.4 %"
-      },
-      "extracted_values": {
-        "ground_state_pct": 63.2,
-        "first_excited_pct": 21.4,
-        "tail_v8_v10_pct": 0.2,
-        "Tvib_K": 3000,
-        "Tgas_K": 473,
-        "n_excited_states": 10
-      },
-      "confidence": 0.9
-    },
-    {
-      "id": "ev10",
+      "id": "ev_sty_trend",
       "kind": "text",
       "location": {
         "section": "Plasma-catalytic kinetics",
-        "page": 12,
+        "page": 13,
         "char_span": null,
-        "quote": "non-stoichiometric ratios in the range of 1:1 to\n3:1 produced higher ammonia yields than the stoichiometric 1:3 ratio"
+        "quote": "the observed activity trend of Co > Ni = Ru > Pt\n> Fe tracks remarkably well with model predictions."
       },
       "extracted_values": {
-        "better_ratio_range": "1:1 to 3:1",
-        "stoichiometric_ratio": "1:3",
-        "used_ratio": "2:1"
+        "activity_order": [
+          "Co",
+          "Ni",
+          "Ru",
+          "Pt",
+          "Fe"
+        ]
       },
-      "confidence": 0.85
+      "confidence": 0.88
     },
     {
-      "id": "ev11",
+      "id": "ev_reactor_conditions",
       "kind": "text",
       "location": {
         "section": "Plasma-catalytic kinetics",
@@ -610,176 +689,200 @@
       "extracted_values": {
         "plasma_power_W": 10,
         "frequency_kHz": 20,
-        "reactor_temperature_K": 438,
-        "catalysts": [
-          "Fe",
-          "Ru",
-          "Co",
-          "Ni",
-          "Pt"
-        ],
-        "metal_loading_wt_pct": 5
+        "reactor_temperature_K": 438
       },
-      "confidence": 0.9
+      "confidence": 0.95
     },
     {
-      "id": "ev12",
+      "id": "ev_reactor_geom",
       "kind": "number",
       "location": {
         "section": "Experimental Kinetics",
         "page": 17,
         "char_span": null,
-        "quote": "discharge gap of 1.75 mm and a discharge volume of ∼ 0.18 mL"
+        "quote": "configuration yields a discharge gap of 1.75 mm and a discharge volume of ∼ 0.18 mL."
       },
       "extracted_values": {
         "discharge_gap_mm": 1.75,
         "discharge_volume_mL": 0.18
       },
-      "confidence": 0.9
+      "confidence": 0.93
     },
     {
-      "id": "ev13",
+      "id": "ev_alpha",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 2",
+        "page": 6,
+        "char_span": null,
+        "quote": "α vanishes in the limit that dissociation\nis non-activated, as occurs at EN < −1 on steps."
+      },
+      "extracted_values": {
+        "EN_threshold_eV": -1
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev_pretreat",
       "kind": "text",
       "location": {
         "section": "Experimental Kinetics",
         "page": 18,
         "char_span": null,
-        "quote": "ammonia was the only product observed (i.e. no hydrazine\nor other N-containing products)"
+        "quote": "pretreated in hydrogen at 773 K for 30 min to remove any oxide layers"
       },
       "extracted_values": {
-        "products_observed": [
-          "NH3"
-        ]
+        "pretreatment_temperature_K": 773,
+        "pretreatment_time_min": 30
       },
-      "confidence": 0.9
+      "confidence": 0.93
     },
     {
-      "id": "ev14",
+      "id": "ev_oes_conditions",
       "kind": "text",
       "location": {
-        "section": "Computational Details",
-        "page": 15,
+        "section": "Microkinetic modeling",
+        "page": 7,
         "char_span": null,
-        "quote": "The plane-wave cutoff\nused was at least 340 eV."
+        "quote": "reactor was packed with\n100 mg of 5 % Ni/Al2O3 catalyst and operated under a 10 W DBD plasma."
       },
       "extracted_values": {
-        "code": "DACAPO",
-        "functional": "RPBE",
-        "pseudopotentials": "Vanderbilt ultrasoft",
-        "plane_wave_cutoff_eV": 340
+        "catalyst_mass_mg": 100,
+        "Ni_loading_pct": 5,
+        "plasma_power_W": 10
       },
-      "confidence": 0.9
+      "confidence": 0.93
     }
   ],
   "bindings": [
     {
-      "claim_id": "c1",
-      "evidence_id": "ev1",
-      "relation": "rests_on"
-    },
-    {
       "claim_id": "c2",
-      "evidence_id": "ev6",
+      "evidence_id": "ev_fig4",
       "relation": "rests_on"
     },
     {
       "claim_id": "c3",
-      "evidence_id": "ev7",
+      "evidence_id": "ev_fig5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev_sty_trend",
       "relation": "rests_on"
     },
     {
       "claim_id": "c4",
-      "evidence_id": "ev2",
+      "evidence_id": "ev_hb_conditions",
       "relation": "rests_on"
     },
     {
       "claim_id": "c5",
-      "evidence_id": "ev3",
-      "relation": "rests_on"
-    },
-    {
-      "claim_id": "c6",
-      "evidence_id": "ev3",
+      "evidence_id": "ev_hb_conditions2",
       "relation": "rests_on"
     },
     {
       "claim_id": "c7",
-      "evidence_id": "ev4",
+      "evidence_id": "ev_vib_spacing",
       "relation": "rests_on"
     },
     {
       "claim_id": "c8",
-      "evidence_id": "ev5",
+      "evidence_id": "ev_fig1",
       "relation": "rests_on"
     },
     {
       "claim_id": "c9",
-      "evidence_id": "ev8",
+      "evidence_id": "ev_fig1",
       "relation": "rests_on"
     },
     {
       "claim_id": "c10",
-      "evidence_id": "ev9",
+      "evidence_id": "ev_tgas",
       "relation": "rests_on"
     },
     {
       "claim_id": "c11",
-      "evidence_id": "ev6",
-      "relation": "rests_on"
-    },
-    {
-      "claim_id": "c11",
-      "evidence_id": "ev3",
+      "evidence_id": "ev_tvib",
       "relation": "rests_on"
     },
     {
       "claim_id": "c12",
-      "evidence_id": "ev6",
+      "evidence_id": "ev_treanor",
       "relation": "rests_on"
     },
     {
       "claim_id": "c13",
-      "evidence_id": "ev6",
-      "relation": "rests_on"
-    },
-    {
-      "claim_id": "c14",
-      "evidence_id": "ev7",
+      "evidence_id": "ev_treanor",
       "relation": "rests_on"
     },
     {
       "claim_id": "c15",
-      "evidence_id": "ev7",
+      "evidence_id": "ev_fig4",
       "relation": "rests_on"
     },
     {
       "claim_id": "c16",
-      "evidence_id": "ev10",
+      "evidence_id": "ev_fig4",
       "relation": "rests_on"
     },
     {
       "claim_id": "c17",
-      "evidence_id": "ev11",
+      "evidence_id": "ev_fig1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c17",
+      "evidence_id": "ev_fig4",
       "relation": "rests_on"
     },
     {
       "claim_id": "c18",
-      "evidence_id": "ev11",
+      "evidence_id": "ev_fig4",
       "relation": "rests_on"
     },
     {
       "claim_id": "c19",
-      "evidence_id": "ev12",
+      "evidence_id": "ev_fig4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c20",
+      "evidence_id": "ev_fig5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c20",
+      "evidence_id": "ev_sty_trend",
       "relation": "rests_on"
     },
     {
       "claim_id": "c21",
-      "evidence_id": "ev13",
+      "evidence_id": "ev_fig5",
       "relation": "rests_on"
     },
     {
       "claim_id": "c22",
-      "evidence_id": "ev14",
+      "evidence_id": "ev_reactor_conditions",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c24",
+      "evidence_id": "ev_reactor_geom",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c25",
+      "evidence_id": "ev_alpha",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c26",
+      "evidence_id": "ev_pretreat",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c27",
+      "evidence_id": "ev_oes_conditions",
       "relation": "rests_on"
     }
   ]

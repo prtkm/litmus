@@ -1,0 +1,910 @@
+{
+  "paper_id": "chemistry-arxiv-2606.13399-pzt-pfn-multiferroic-photocurrent",
+  "title": "Enhanced Photocurrent Response in Epitaxial 0.5PZT-0.5PFN Multiferroic Thin Films",
+  "doi": null,
+  "domain": "materials chemistry / condensed-matter physics (epitaxial multiferroic thin films, ferroelectric photovoltaics)",
+  "n_pages_read": 28,
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The B-site nominal composition is described as 'Zr, Ti, Fe and Nb each constitute 5 at.% of the B-site cations', but for 0.5Pb(Zr0.52Ti0.48)O3-0.5Pb(Fe0.5Nb0.5)O3 the actual B-site fractions are Zr=26%, Ti=24%, Fe=25%, Nb=25%.",
+      "quote": "weighed to achieve a nominal composition where Zr, Ti, Fe and Nb each constitute 5 at.% of the B-site cations in the perovskite structure.",
+      "section": "II. Experimental",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "Compute B-site molar fractions from the stated formula 0.5(Zr0.52Ti0.48)-0.5(Fe0.5Nb0.5): Zr=0.5*0.52=0.26, Ti=0.5*0.48=0.24, Fe=0.5*0.5=0.25, Nb=0.5*0.5=0.25 (sum=1.00). Compare each to the asserted 5 at.%.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "text",
+          "location": "Experimental, target synthesis",
+          "quote": "Zr, Ti, Fe and Nb each constitute 5 at.% of the B-site cations",
+          "extracted_values": {"asserted_each_at_percent": 5, "computed_Zr_pct": 26, "computed_Ti_pct": 24, "computed_Fe_pct": 25, "computed_Nb_pct": 25}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "stoichiometry / B-site fraction recompute from the perovskite formula; compare computed fractions to the stated 5 at.%",
+        "verifier_exists": true,
+        "candidate_verdict": "suspect",
+        "confidence": 0.78,
+        "rationale": "Off-the-shelf stoichiometry check. Computed B-site fractions are ~24-26% each, not 5%. The '5 at.%' phrasing is internally contradicted by the title formula; most likely a writing slip (perhaps intending ~50 at.% per A/B grouping or per element of each end-member). A deterministic stoichiometry verifier flags the prose number as inconsistent with the formula. Marked suspect not supported because the literal statement is arithmetically wrong, though it is almost certainly a typo rather than a real composition error."
+      }
+    },
+    {
+      "id": "c2",
+      "text": "The film tetragonality is c/a = 1.018, computed from out-of-plane c=4.096 A and in-plane a=4.022 A.",
+      "quote": "The PZTFN0.5 film layer appears to grow completely relaxed with lattice parameters a = 4.022 A, c = 4.096 A, and c/a = 1.018.",
+      "section": "III.A Structural properties",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "Divide c by a: 4.096/4.022 and round to 3 decimals; compare to stated 1.018.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "number",
+          "location": "Results, RSM lattice parameters (Fig. 1b text)",
+          "quote": "a = 4.022 A, c = 4.096 A, and c/a = 1.018",
+          "extracted_values": {"a_A": 4.022, "c_A": 4.096, "c_over_a_stated": 1.018, "c_over_a_recomputed": 1.0184}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "arithmetic ratio recompute (c/a)",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.97,
+        "rationale": "4.096/4.022 = 1.01840, rounds to 1.018. Exact internal-arithmetic match. Trivial T0 ratio check."
+      }
+    },
+    {
+      "id": "c3",
+      "text": "The lattice mismatch between STO substrate and the film is around 3%, corresponding to compressive strain, using mu=(a_s-a_film)/a_s with a_s=3.905 A (STO) and a_film=4.022 A.",
+      "quote": "the mismatch between the substrate (STO) and the film gives a value of around 3%, corresponding to compressive strain.",
+      "section": "III.A Structural properties",
+      "page": 7,
+      "epistemic_tier": "T0",
+      "predicate": "Compute mu=(a_s-a_film)/a_s with a_s=3.905 (STO bulk; matches the SRO in-plane a=3.905 stated for the coherent layer) and a_film=4.022. Check magnitude ~3% and the sign/strain-type assignment.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "equation",
+          "location": "Eq. for mismatch (in-line), p7",
+          "quote": "mu = (as - afilm)/as",
+          "extracted_values": {"a_STO_A": 3.905, "a_film_A": 4.022, "mu_recomputed": -0.02996, "mu_magnitude_pct": 3.0}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "mismatch-formula recompute + sign/strain-type consistency (negative mu means film in-plane parameter exceeds substrate -> film would be under tensile, not compressive, if coherent)",
+        "verifier_exists": true,
+        "candidate_verdict": "suspect",
+        "confidence": 0.6,
+        "rationale": "Magnitude: (3.905-4.022)/3.905 = -0.0300 -> |3.0%|, exactly the stated 'around 3%' (SUPPORTED for magnitude). However the result is negative because the film's natural a (4.022) is larger than STO (3.905); a coherently-clamped film of larger natural parameter is forced INTO compression in-plane, so 'compressive' could be defended as the substrate's clamping action. The paper also states the film is 'completely relaxed', so a coherent-strain mismatch is somewhat moot. The sign-vs-label reasoning is a T0/T3 consistency point worth a verifier; magnitude is clean, strain-type label is ambiguous, hence suspect at moderate confidence."
+      }
+    },
+    {
+      "id": "c4",
+      "text": "The 403 nm illumination corresponds to a photon energy of 3.08 eV (Experimental) and 3.07 eV (Results); the abstract and body treat 403 nm as the excitation wavelength.",
+      "quote": "using a 403 +/- 8 nm (hnu = 3.08 eV) laser source ... [later] monochromatic laser excitation at lambda = 403 nm (3.07 eV, violet).",
+      "section": "II/III.C",
+      "page": 5,
+      "epistemic_tier": "T1",
+      "predicate": "Compute E=hc/lambda=1239.84/403 eV and compare to both stated values 3.08 and 3.07; check internal consistency of the two figures.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "number",
+          "location": "Experimental p5 and Results p12",
+          "quote": "(hnu = 3.08 eV) ... (3.07 eV, violet)",
+          "extracted_values": {"lambda_nm": 403, "E_recomputed_eV": 3.077, "E_stated_p5": 3.08, "E_stated_p12": 3.07}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "photon-energy recompute (E=hc/lambda) with CODATA hc=1239.84 eV.nm; check both stated values round-consistently",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.9,
+        "rationale": "1239.84/403 = 3.0765 eV. Rounds to 3.08 (2 dp) or 3.077; the paper quotes 3.08 once and 3.07 once. Both are within rounding of the true value; the 3.07 is a slightly looser round-down. Physically correct; the two-value inconsistency is cosmetic (T1 fixed-constant lookup, off-the-shelf unit check)."
+      }
+    },
+    {
+      "id": "c5",
+      "text": "The short-circuit photocurrent density: the abstract reports 'Jsc values between +/-20 uA/cm2', while the Conclusions report 'JSC = 23 uA/cm2' and Figure 4d shows a P-Up plateau of ~23-24 uA/cm2.",
+      "quote": "achieving Jsc values between +/-20 uA/cm2 [Abstract] ... the short-circuit photocurrent density (JSC = 23 uA/cm2) [Conclusions]",
+      "section": "Abstract vs Conclusions vs Fig. 4d",
+      "page": 18,
+      "epistemic_tier": "T2",
+      "predicate": "Bind the abstract value (+/-20), the conclusion value (23), and the Fig. 4d Jsc plateau (read off y-axis at most-negative poling). Check mutual consistency; note Fig. 4d is asymmetric (P-Up ~+23, P-Down ~-13), so '+/-20' mischaracterizes both branches.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "text",
+          "location": "Abstract",
+          "quote": "achieving Jsc values between +/-20 uA/cm2",
+          "extracted_values": {"abstract_Jsc_uA_per_cm2": 20}
+        },
+        {
+          "id": "e2",
+          "kind": "text",
+          "location": "Conclusions",
+          "quote": "the short-circuit photocurrent density (JSC = 23 uA/cm2) and open-circuit voltage (VOC = -0.07 V)",
+          "extracted_values": {"conclusion_Jsc_uA_per_cm2": 23, "conclusion_Voc_V": -0.07}
+        },
+        {
+          "id": "e3",
+          "kind": "figure",
+          "location": "Figure 4d",
+          "quote": "JSC and VOC values under different poling voltages",
+          "extracted_values": {"Jsc_PUp_plateau_uA_per_cm2": 23.5, "Jsc_PDown_min_uA_per_cm2": -13}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "prose-vs-prose-vs-figure consistency: extract Jsc plateau from Fig. 4d and compare abstract (20), conclusion (23); flag the abstract's symmetric +/-20 against the asymmetric figure",
+        "verifier_exists": false,
+        "candidate_verdict": "suspect",
+        "confidence": 0.7,
+        "rationale": "Figure 4d (read at 400 dpi) shows P-Up Jsc ~+23-24 and P-Down ~-13 uA/cm2; the Conclusions' 23 uA/cm2 matches the figure's positive plateau. The Abstract's 'between +/-20' both understates the positive peak (~23-24) and overstates the negative branch (~-13), and implies a symmetry the data lack. This is a genuine internal prose-vs-figure inconsistency (off by ~15-20% and mischaracterized as symmetric). Requires figure-value extraction (not fully off-the-shelf), hence verifier_exists=false; suspect at 0.7."
+      }
+    },
+    {
+      "id": "c6",
+      "text": "The Figure 4 caption states the J-E response is measured under illumination with '430 nm light', whereas the entire body, abstract, and the in-figure legend specify 403 nm.",
+      "quote": "(a) J-E response measured in the STO//SRO/PZTFN0.5/Au sample under dark conditions and under illumination with 430 nm light.",
+      "section": "Figure 4 caption",
+      "page": 14,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check the caption wavelength (430 nm) against the body wavelength (403 nm) and the in-panel legend text in Fig. 4a ('403nm light ON'). Flag the digit transposition.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "text",
+          "location": "Figure 4 caption",
+          "quote": "under illumination with 430 nm light",
+          "extracted_values": {"caption_wavelength_nm": 430}
+        },
+        {
+          "id": "e2",
+          "kind": "figure",
+          "location": "Figure 4a legend",
+          "quote": "403nm light ON",
+          "extracted_values": {"legend_wavelength_nm": 403}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "prose-vs-figure (caption-vs-legend/body) wavelength consistency check",
+        "verifier_exists": true,
+        "candidate_verdict": "suspect",
+        "confidence": 0.88,
+        "rationale": "Caption says 430 nm; the in-panel legend (read from Fig. 4a) says '403nm light ON' and every other mention in the paper is 403 nm. Clear 403<->430 digit transposition typo in the caption. A prose-vs-figure consistency verifier flags it deterministically once the legend text is OCR'd. Not a scientific error but a real internal inconsistency (T2 integrity-of-reporting / T7-adjacent)."
+      }
+    },
+    {
+      "id": "c7",
+      "text": "The saturation polarization of pure PZT is about 30% higher than that of the PZTFN0.5 sample (from the P-E loops in Fig. 3b).",
+      "quote": "the saturation polarization reached in PZT is about 30% higher than in the PZTFN0.5 sample.",
+      "section": "III.B Ferroelectric properties",
+      "page": 11,
+      "epistemic_tier": "T2",
+      "predicate": "Read maximum (saturation) polarization of PZT and PZTFN0.5 loops off Fig. 3b y-axis; compute percent difference (P_PZT - P_PZTFN)/P_PZTFN and compare to 30%.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "figure",
+          "location": "Figure 3b (P-E loops)",
+          "quote": "Polarization-Electric Field (P-E) loops for STO//SRO/PZT/Au and STO//SRO/PZTFN0.5/Au",
+          "extracted_values": {"Psat_PZT_uC_per_cm2": 55, "Psat_PZTFN_uC_per_cm2": 43, "pct_difference": 28}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "figure-value extraction of loop maxima + percent-change arithmetic",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.6,
+        "rationale": "From Fig. 3b the PZT loop saturates near +/-55 uC/cm2 and PZTFN0.5 near +/-42-45 uC/cm2. (55-43)/43 = 28%, (55-42)/42 = 31%. So 'about 30% higher' is consistent with the figure within reading error. Verdict supported but confidence moderate because it depends on reading loop tips off the plot (figure-value extraction, not off-the-shelf), and 'saturation polarization' from an unsaturated loop is itself somewhat ill-defined."
+      }
+    },
+    {
+      "id": "c8",
+      "text": "Illumination increases conductivity (current density) by about one order of magnitude relative to dark, in the J-E response of Fig. 4a.",
+      "quote": "A notable increase in conductivity (about one order of magnitude) occurs when the light is switched ON compared to the OFF state.",
+      "section": "III.C Photovoltaic response",
+      "page": 13,
+      "epistemic_tier": "T2",
+      "predicate": "On the log-scale J-E plot (Fig. 4a), compare light-ON vs dark current density at matched bias; check the vertical separation spans ~1 decade.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "figure",
+          "location": "Figure 4a (log J vs E)",
+          "quote": "403nm light ON vs Dark",
+          "extracted_values": {"approx_decades_separation": 1}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "figure-value extraction on log axis: ratio of ON/OFF current at fixed bias",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.62,
+        "rationale": "Fig. 4a (log J/cm2 axis, ~100n to ~10m) shows the magenta light-ON branch sitting roughly one decade above the black dark branch over much of the bias range. Qualitatively consistent with 'about one order of magnitude'. Requires reading a log plot, so figure-extraction; the ratio varies with bias so the single-number claim is approximate."
+      }
+    },
+    {
+      "id": "c9",
+      "text": "The two back-to-back Schottky junctions have barrier heights D1 (PZTFN0.5/Au)=1.2 eV and D2 (SRO/PZTFN0.5)=0.7 eV, consistent with the stated metal work-function values phi_SRO=4.6 eV, phi_Au=5.1 eV and Eg=3.0 eV under the n-type assumption.",
+      "quote": "two back-to-back Schottky junctions: D1 (PZTFN0.5/Au) with a barrier height of 1.2 eV, and D2 (SRO/PZTFN0.5) with a barrier height of 0.7 eV.",
+      "section": "III.C / Fig. 5",
+      "page": 16,
+      "epistemic_tier": "T1",
+      "predicate": "For an n-type semiconductor, Schottky barrier phi_B = phi_metal - chi_SC. Check phi_Au - phi_SRO = 5.1-4.6 = 0.5 eV equals D1-D2 = 1.2-0.7 = 0.5 eV, and that both junctions imply the same electron affinity chi_SC = phi_metal - phi_B.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "number",
+          "location": "Band-diagram parameters (text, Fig. 5)",
+          "quote": "ephi_SRO = 4.6 eV, ephi_Au = 5.1 eV, band gap Eg = 3.0 eV ... D1 barrier 1.2 eV, D2 barrier 0.7 eV",
+          "extracted_values": {"phi_SRO_eV": 4.6, "phi_Au_eV": 5.1, "Eg_eV": 3.0, "D1_eV": 1.2, "D2_eV": 0.7, "implied_chi_eV": 3.9, "phi_Au_minus_phi_SRO": 0.5, "D1_minus_D2": 0.5}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Schottky-barrier arithmetic (phi_B = phi_metal - chi) self-consistency across the two junctions",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.72,
+        "rationale": "phi_Au - phi_SRO = 0.5 eV exactly equals D1 - D2 = 0.5 eV; both junctions imply the same chi_SC = 5.1-1.2 = 4.6-0.7 = 3.9 eV. So the two barrier heights are internally consistent with the stated work functions under the n-type Schottky rule. The absolute values depend on an unstated chi=3.9 eV for PZTFN0.5 (not given/cited), so only the relative/self-consistency is verifiable; supported at 0.72. (Note terminology issue handled in c10.)"
+      }
+    },
+    {
+      "id": "c10",
+      "text": "The values ephi_SRO=4.6 eV and ephi_Au=5.1 eV are labeled 'electron affinities', but for metals (SRO, Au) these are work functions, not electron affinities.",
+      "quote": "The electron affinities involved are ephi_SRO = 4.6 eV [23] and ephi_Au = 5.1 eV [24].",
+      "section": "III.C model (Fig. 5)",
+      "page": 15,
+      "epistemic_tier": "T1",
+      "predicate": "Check the physical terminology: electron affinity (chi) is defined for semiconductors/insulators (conduction-band-minimum to vacuum); metals are characterized by work function (phi). The 5.1 eV figure for Au is the canonical Au work function.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "text",
+          "location": "Band-diagram parameter definition",
+          "quote": "The electron affinities involved are ephi_SRO = 4.6 eV and ephi_Au = 5.1 eV",
+          "extracted_values": {"Au_value_eV": 5.1, "Au_workfunction_literature_eV": 5.1}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "terminology / fixed-knowledge check: 5.1 eV is Au work function; metals lack a defined electron affinity",
+        "verifier_exists": false,
+        "candidate_verdict": "suspect",
+        "confidence": 0.55,
+        "rationale": "Au work function ~5.1 eV and SRO work function ~4.6 eV are standard; the paper calls them 'electron affinities', which is the wrong term for metals (the ephi notation actually denotes work function). This is a terminology slip, not a numerical error - the values and the Schottky arithmetic (c9) are fine. Flagged as a low-confidence T1 conceptual/terminology issue; an LLM-assisted check could catch it but it is not a deterministic off-the-shelf verifier."
+      }
+    },
+    {
+      "id": "c11",
+      "text": "The remanent polarization extracted by the PUND technique is 17 uC/cm2.",
+      "quote": "The Pr value obtained using this technique was 17 uC/cm2.",
+      "section": "III.B Ferroelectric properties",
+      "page": 11,
+      "epistemic_tier": "T2",
+      "predicate": "Bind the stated Pr=17 uC/cm2 to the PUND inset (Fig. 3b inset) vertical displacement and to the abstract value (~17 uC/cm2). Check abstract/body/conclusion agreement and rough figure consistency.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "figure",
+          "location": "Figure 3b PUND inset",
+          "quote": "square hysteresis loop ... vertical displacement corresponding to the remanent polarization (Pr)",
+          "extracted_values": {"Pr_PUND_uC_per_cm2": 17}
+        },
+        {
+          "id": "e2",
+          "kind": "text",
+          "location": "Abstract & Conclusions",
+          "quote": "remanent polarization ~ 17 uC/cm2, PUND",
+          "extracted_values": {"Pr_abstract_uC_per_cm2": 17, "Pr_conclusion_uC_per_cm2": 17}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "prose-vs-prose consistency (abstract/body/conclusion all 17) + rough figure check of PUND inset displacement",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.8,
+        "rationale": "Pr=17 uC/cm2 is stated identically in abstract, Results, and Conclusions; the PUND inset (Fig. 3b) shows a square loop with displacement of roughly +/-16-18 on its y-axis, consistent. Internal prose consistency is exact (off-the-shelf); figure binding is approximate. Supported at 0.8."
+      }
+    },
+    {
+      "id": "c12",
+      "text": "The coercive field is reported as ~150 kV/cm (abstract) and as 'exceeding 100 kV/cm' (Conclusions) for PZTFN0.5.",
+      "quote": "coercive field ~ 150 kV/cm [Abstract] ... high coercive fields exceeding 100 kV/cm [Conclusions]",
+      "section": "Abstract vs Conclusions",
+      "page": 18,
+      "epistemic_tier": "T2",
+      "predicate": "Check the abstract Ec (~150 kV/cm) is consistent with the Conclusions phrasing ('exceeding 100 kV/cm') and, if readable, with the P-E loop coercive crossings in Fig. 3b.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "text",
+          "location": "Abstract",
+          "quote": "coercive field ~ 150 kV/cm",
+          "extracted_values": {"Ec_abstract_kV_per_cm": 150}
+        },
+        {
+          "id": "e2",
+          "kind": "text",
+          "location": "Conclusions",
+          "quote": "high coercive fields exceeding 100 kV/cm",
+          "extracted_values": {"Ec_conclusion_lower_bound_kV_per_cm": 100}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "prose-vs-prose consistency + optional figure-extraction of E-axis loop crossings in Fig. 3b",
+        "verifier_exists": true,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.5,
+        "rationale": "150 kV/cm 'exceeds 100 kV/cm', so the two statements are not contradictory, but the abstract gives a specific ~150 while Conclusions give only a loose lower bound, and no single Ec value is stated in the Results body for PZTFN0.5 to anchor it. The Fig. 3b coercive crossing could in principle be read but the E-axis spans +/-600 kV/cm with broad loops, making a precise readout unreliable. Inconclusive - cannot tightly bind the 150 value to a figure number."
+      }
+    },
+    {
+      "id": "c13",
+      "text": "Room-temperature magnetic properties of the PZTFN0.5 epitaxial film: remanent magnetization Mr=1.3 emu/cm3 and coercive field Hc=90 Oe, with a magnetic saturation of 12 emu/cm3.",
+      "quote": "The magnetization and coercive field values measured for the PZTFN0.5 epitaxial film (Mr = 1.3 emu/cm3, Hc = 90 Oe) ... a magnetic saturation of 12 emu/cm3 is observed.",
+      "section": "III.B Magnetic properties",
+      "page": 12,
+      "epistemic_tier": "T2",
+      "predicate": "Bind Mr, Hc, and Ms to the M-H loop in Fig. 3d (read remanence at H=0, coercivity at M=0, saturation plateau). Check abstract (1.30 emu/cm3, 90 Oe) vs body (1.3 emu/cm3, 90 Oe) consistency and figure plausibility.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "figure",
+          "location": "Figure 3d (M-H loop)",
+          "quote": "M-H loop measured at room temperature for the STO//PZTFN0.5 thin film",
+          "extracted_values": {"Ms_plateau_emu_per_cm3": 12, "Mr_emu_per_cm3": 1.3, "Hc_Oe": 90}
+        },
+        {
+          "id": "e2",
+          "kind": "text",
+          "location": "Abstract",
+          "quote": "weak ferromagnetic behavior at room temperature (remanence 1.30 emu/cm3; coercive field 90 Oe)",
+          "extracted_values": {"Mr_abstract_emu_per_cm3": 1.30, "Hc_abstract_Oe": 90}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "prose-vs-figure binding: read Ms plateau (~12) and remanence/coercivity off Fig. 3d; check against abstract/body",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.7,
+        "rationale": "Fig. 3d M-H loop saturates at ~+/-12 emu/cm3, matching 'magnetic saturation of 12 emu/cm3'. Abstract (1.30 emu/cm3, 90 Oe) and body (1.3 emu/cm3, 90 Oe) agree. Mr=1.3 and Hc=90 are small relative to the loop scale so cannot be read precisely off the figure, but the saturation value is clearly consistent. Supported at 0.7 (figure-extraction, not off-the-shelf)."
+      }
+    },
+    {
+      "id": "c14",
+      "text": "The film thickness is around 80 nm at a growth rate of approximately 0.04 nm/pulse.",
+      "quote": "The final thickness of the samples was around 80 nm (growth rate ~ 0.04 nm/pulse).",
+      "section": "II. Experimental",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Internal consistency: thickness/rate = pulse count = 80/0.04 = 2000 pulses (a round, plausible number); also cross-check 80 nm against the TEM thickness labels in Fig. 2 (if legible).",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "number",
+          "location": "Experimental, deposition",
+          "quote": "around 80 nm (growth rate ~ 0.04 nm/pulse)",
+          "extracted_values": {"thickness_nm": 80, "growth_rate_nm_per_pulse": 0.04, "implied_pulses": 2000}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "arithmetic consistency of thickness vs rate; optional cross-check with TEM thickness label (Fig. 2)",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.6,
+        "rationale": "80 nm / 0.04 nm/pulse = 2000 pulses, an internally consistent and plausible deposition count. The two stated numbers are mutually consistent; cannot fully confirm 80 nm without reading the Fig. 2 thickness annotation (not transcribed). Supported on internal arithmetic at moderate confidence."
+      }
+    },
+    {
+      "id": "c15",
+      "text": "The SRO bottom-electrode layer thickness determined from the XRD layer-fringe period is approximately 20 nm for both samples.",
+      "quote": "The SRO layer thickness determined from the period of the oscillations is approximately 20 nm for both samples.",
+      "section": "III.A Structural properties",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "If the fringe spacing Delta(2theta) were given, t = lambda/(2*cos(theta)*Delta(theta)) (Laue/Kiessig-type). The paper gives only the result, not the fringe spacing, so only cross-check vs the TEM SRO thickness label in Fig. 2 is possible.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "number",
+          "location": "Results, XRD fringes",
+          "quote": "approximately 20 nm for both samples",
+          "extracted_values": {"SRO_thickness_nm": 20}
+        }
+      ],
+      "verification": {
+        "possible": false,
+        "verifier_needed": "Laue/Kiessig fringe-period -> thickness recompute (requires the fringe Delta(2theta), which is not reported); or TEM thickness cross-check",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.4,
+        "rationale": "The thickness-from-fringes claim is in principle a T0 recompute, but the paper reports only the 20 nm result, not the fringe spacing needed to recompute it. Cannot bind to a derivable number without the raw fringe data or a legible TEM SRO-layer measurement. Inconclusive."
+      }
+    },
+    {
+      "id": "c16",
+      "text": "PFM shows nearly complete ferroelectric domain alignment with +/-5 V and the measured surface roughness is approximately 0.82 nm.",
+      "quote": "Figure 3c reveals nearly complete ferroelectric domain alignment with +/-5 V ... The measured surface roughness was approximately 0.82 nm.",
+      "section": "III.B Ferroelectric properties",
+      "page": 12,
+      "epistemic_tier": "T2",
+      "predicate": "Bind the 'complete domain alignment' claim to the PFM phase image (Fig. 3c) showing distinct +5 V / -5 V poled regions with phase contrast. Roughness 0.82 nm is an AFM-derived scalar not independently recomputable from the paper.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "figure",
+          "location": "Figure 3c (PFM phase)",
+          "quote": "non-polarized / -5V / +5V regions with phase contrast",
+          "extracted_values": {"poling_voltage_V": 5, "roughness_nm": 0.82}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "prose-vs-figure binding of the poled-region phase contrast; roughness value is not recomputable (raw AFM map needed)",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.6,
+        "rationale": "Fig. 3c clearly shows the labeled -5V and +5V poled stripes with strong phase contrast against non-polarized regions, supporting the domain-alignment claim qualitatively. The 0.82 nm roughness is a single AFM scalar with no in-paper recompute path. Supported (qualitative) at 0.6; roughness portion is route-to-data."
+      }
+    },
+    {
+      "id": "c17",
+      "text": "The maximum capacitance values used to normalize the C-V curves are 690 pF for PZT and 960 pF for PZTFN0.5.",
+      "quote": "The C-V curves for both samples were normalized to their respective maximum capacitance values: 690 pF for PZT and 960 pF for PZTFN0.5.",
+      "section": "III.B Ferroelectric properties",
+      "page": 8,
+      "epistemic_tier": "T2",
+      "predicate": "These set the normalization of Fig. 3a (which plots C/Cmax, both peaking at 1.0). Internal-consistency check: the normalized curves should both reach 1.0 (they do); the absolute values themselves are measured, not recomputable. Cross-check the 960/690 ratio (1.39) with the higher permittivity narrative.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "number",
+          "location": "Results, C-V normalization",
+          "quote": "690 pF for PZT and 960 pF for PZTFN0.5",
+          "extracted_values": {"Cmax_PZT_pF": 690, "Cmax_PZTFN_pF": 960, "ratio": 1.39}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "consistency that Fig. 3a normalized curves both peak at 1.0 (figure check); ratio sanity vs permittivity claim",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.55,
+        "rationale": "Fig. 3a confirms both C/Cmax curves peak at 1.0, consistent with using these Cmax values for normalization. PZTFN0.5 (960 pF) > PZT (690 pF) is consistent with the paper's higher-permittivity framing for the substituted film. The absolute pF values are measurements (not recomputable); only the normalization self-consistency is checkable. Supported at modest confidence."
+      }
+    },
+    {
+      "id": "c18",
+      "text": "Devices underwent dielectric breakdown at applied voltages >= 4.0 V, while the reported J-E sweeps span -3 V to 3 V (+/-375 kV/cm) for an ~80 nm film.",
+      "quote": "The J-E response measured for applied voltages ranging from -3 V to 3 V (+/-375 kV/cm) is shown in Figure 4a. The devices underwent breakdown at applied voltages >= 4.0 V.",
+      "section": "III.C Photovoltaic response",
+      "page": 13,
+      "epistemic_tier": "T0",
+      "predicate": "Check unit conversion: E = V/d. For +/-3 V across ~80 nm, E = 3/8.0e-6 cm = 3.75e5 V/cm = 375 kV/cm. Confirm the stated +/-375 kV/cm is consistent with V and thickness.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "number",
+          "location": "Results, J-E bias range",
+          "quote": "-3 V to 3 V (+/-375 kV/cm)",
+          "extracted_values": {"V_max": 3, "thickness_nm": 80, "E_recomputed_kV_per_cm": 375}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "unit-consistency recompute E = V/d using stated thickness",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.9,
+        "rationale": "3 V / 80 nm = 3 / (80e-7 cm) = 3.75e5 V/cm = 375 kV/cm. Exact match to the stated +/-375 kV/cm, and consistent with the ~80 nm thickness. Clean T0 unit/field recompute. (Field-at-breakdown >= 4 V -> >= 500 kV/cm is a plausible breakdown field for an oxide ferroelectric.)"
+      }
+    },
+    {
+      "id": "c19",
+      "text": "The open-circuit voltage is VOC = -0.07 V (Conclusions), consistent with the Voc crossings in Fig. 4b/4d.",
+      "quote": "open-circuit voltage (VOC = -0.07 V)",
+      "section": "Conclusions vs Fig. 4b/4d",
+      "page": 18,
+      "epistemic_tier": "T2",
+      "predicate": "Read the J=0 crossing (Voc) of the P-Up light-ON curve in Fig. 4b and the Voc extremes in Fig. 4d; compare to -0.07 V.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "figure",
+          "location": "Figure 4b / 4d",
+          "quote": "Voc at I=0 ... VOC values under different poling voltages",
+          "extracted_values": {"Voc_conclusion_V": -0.07, "Voc_fig4d_range_V": 0.05}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "figure-value extraction of the J=0 voltage crossing vs the stated -0.07 V",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.45,
+        "rationale": "Fig. 4b P-Up light-ON crosses J=0 around V ~ -0.07 V (consistent), but Fig. 4d's Voc axis maxes near +/-0.05 V, slightly below the magnitude 0.07. The small numbers and axis-reading uncertainty make tight binding hard; the sign (negative Voc for P-Up) is consistent. Inconclusive on the exact magnitude."
+      }
+    },
+    {
+      "id": "c20",
+      "text": "The band gap of 0.5PZT-0.5PFN is reduced to 3.0 eV from 3.6 eV in pure PZT (attributed to Fe 3d midgap states), as established in the authors' prior work [14].",
+      "quote": "reducing the direct band gap energy from 3.6 eV in PZT to 3.0 eV in 0.5PZT-0.5PFN ... the reported direct band gap of ~3.6 eV [14] for PZT.",
+      "section": "Introduction / III.C",
+      "page": 3,
+      "epistemic_tier": "T5",
+      "predicate": "Verify against cited reference [14] (J. Alloys Compd. 977, 173428, 2024) that the 3.6 -> 3.0 eV reduction and the Fe-3d-midgap-state attribution are actually reported there; check the 3.0 eV value is internally used consistently (it is, with the 403 nm = 3.077 eV excitation being just above Eg).",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "text",
+          "location": "Introduction",
+          "quote": "reducing the direct band gap energy from 3.6 eV in PZT to 3.0 eV in 0.5PZT-0.5PFN",
+          "extracted_values": {"Eg_PZT_eV": 3.6, "Eg_PZTFN_eV": 3.0}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "literature/citation-entailment check against ref [14]; plus internal consistency that excitation (3.077 eV) > Eg (3.0 eV) so absorption is expected",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.5,
+        "rationale": "Internally self-consistent: 403 nm gives 3.077 eV, just above the claimed Eg=3.0 eV for PZTFN (absorption plausible) and below 3.6 eV for PZT (explaining no PZT response). The 3.6/3.0 values and Fe-3d attribution are sourced to the authors' own [14]; settling whether [14] actually reports these requires retrieving that paper (T5 external). Internal-consistency portion supports the narrative; external verification pending. Inconclusive."
+      }
+    },
+    {
+      "id": "c21",
+      "text": "For PZTFN0.5 the remanent polarization (17 uC/cm2) is comparable to PZTFT40/LSCO//MgO films (13 uC/cm2 [9]), but the present film's coercive field is higher (the cited film has Ec=40 kV/cm).",
+      "quote": "PZTFT40/LSCO//MgO(001) films exhibit a remanent polarization of 13 uC/cm2 [9]. However, the coercive field is significantly lower in this case (Ec = 40 kV/cm).",
+      "section": "III.B Ferroelectric properties",
+      "page": 11,
+      "epistemic_tier": "T5",
+      "predicate": "Verify the cited comparison values (Pr=13 uC/cm2, Ec=40 kV/cm for PZTFT40) against ref [9] (Appl. Phys. Lett. 97, 2010); check the comparative direction matches this paper's Pr=17, Ec>100 kV/cm.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "text",
+          "location": "Results, literature comparison",
+          "quote": "remanent polarization of 13 uC/cm2 [9] ... Ec = 40 kV/cm",
+          "extracted_values": {"Pr_ref9_uC_per_cm2": 13, "Ec_ref9_kV_per_cm": 40, "Pr_this_uC_per_cm2": 17, "Ec_this_lower_bound_kV_per_cm": 100}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "literature lookup/entailment against ref [9] for the quoted Pr and Ec",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.5,
+        "rationale": "The internal comparative logic is coherent (17 > 13 for Pr; Ec here >100 vs 40 there). Whether ref [9] actually reports Pr=13 uC/cm2 and Ec=40 kV/cm requires retrieving that paper (T5). The same ref [9] is also cited for magnetics (c22) with specific numbers, so it is a high-value citation to verify. Inconclusive pending external check."
+      }
+    },
+    {
+      "id": "c22",
+      "text": "The PZTFN0.5 magnetic values (Mr=1.3 emu/cm3, Hc=90 Oe) are similar to PZTFT0.4 epitaxial films (Mr=1.58 emu/cm3, Hc=108 Oe [9]); the present saturation (12 emu/cm3) exceeds PZTFT0.4 (7 emu/cm3).",
+      "quote": "quite similar to those reported for PZTFT0.4 epitaxial films (Mr = 1.58 emu/cm3, Hc = 108 Oe) [9]. Interestingly, a magnetic saturation of 12 emu/cm3 is observed, which is higher than that for PZTFT0.4 films (7 emu/cm3).",
+      "section": "III.B Magnetic properties",
+      "page": 12,
+      "epistemic_tier": "T5",
+      "predicate": "Verify the cited PZTFT0.4 values (Mr=1.58 emu/cm3, Hc=108 Oe, Ms=7 emu/cm3) against ref [9]; check the 'similar'/'higher' comparative claims hold given the present 1.3/90/12 values.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "text",
+          "location": "Results, magnetic comparison",
+          "quote": "PZTFT0.4 epitaxial films (Mr = 1.58 emu/cm3, Hc = 108 Oe) [9] ... higher than that for PZTFT0.4 films (7 emu/cm3)",
+          "extracted_values": {"Mr_ref_emu_per_cm3": 1.58, "Hc_ref_Oe": 108, "Ms_ref_emu_per_cm3": 7, "Mr_this": 1.3, "Hc_this": 90, "Ms_this": 12}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "literature lookup/entailment against ref [9] for the quoted magnetic values",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.48,
+        "rationale": "Comparative claims are internally consistent (1.3~1.58 'similar'; 12>7 'higher'). Confirming the cited PZTFT0.4 numbers requires ref [9]. Note a potential internal tension: 'similar' Mr (1.3 vs 1.58) yet 'much higher' Ms (12 vs 7) implies a very different loop squareness - plausible but worth scrutiny. Inconclusive pending external check."
+      }
+    },
+    {
+      "id": "c23",
+      "text": "The remanences of the PLD epitaxial PZTFN0.5 and the sol-gel polycrystalline films are similar (1.3 vs 1.8 emu/cm3), but the coercive fields differ greatly (90 Oe vs 1500 Oe).",
+      "quote": "the remanences are similar (1.3 emu/cm3 and 1.8 emu/cm3 [14]), but there is a significant difference in coercive field values (90 Oe versus 1500 Oe).",
+      "section": "III.B Magnetic properties",
+      "page": 12,
+      "epistemic_tier": "T5",
+      "predicate": "Verify the polycrystalline reference values (Mr=1.8 emu/cm3, Hc=1500 Oe) against ref [14]; note the Introduction cites the same sol-gel work as 'Mr ~ 2 emu/cm3, Hc ~ 1500 Oe for x=0.5' - check internal consistency of 1.8 vs ~2.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "text",
+          "location": "Results vs Introduction",
+          "quote": "1.3 emu/cm3 and 1.8 emu/cm3 [14] ... (90 Oe versus 1500 Oe) [vs Intro: Mr ~ 2 emu/cm3, Hc ~ 1500 Oe for x = 0.5]",
+          "extracted_values": {"Mr_polycryst_results_emu_per_cm3": 1.8, "Mr_polycryst_intro_emu_per_cm3": 2, "Hc_polycryst_Oe": 1500}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "internal cross-consistency (Intro ~2 vs Results 1.8 for the same sol-gel film) + literature check vs ref [14]",
+        "verifier_exists": true,
+        "candidate_verdict": "suspect",
+        "confidence": 0.5,
+        "rationale": "Minor internal inconsistency: the Introduction states the sol-gel x=0.5 film has Mr ~ 2 emu/cm3, while the Results comparison quotes 1.8 emu/cm3 for the same reference [14]. Hc=1500 Oe is consistent across both. The 2 vs 1.8 discrepancy is small and may reflect rounding in the abstract/intro; a prose-vs-prose consistency check flags it. Suspect (low) for the internal mismatch; the literature value itself needs ref [14]."
+      }
+    },
+    {
+      "id": "c24",
+      "text": "The film c/a tetragonality (1.018) closely aligns with bulk ceramics that exhibit c/a = 1.016 [8].",
+      "quote": "This tetragonality closely aligns with that observed in bulk ceramics, which exhibit a c/a ratio of 1.016 [8].",
+      "section": "III.A Structural properties",
+      "page": 6,
+      "epistemic_tier": "T5",
+      "predicate": "Check |1.018 - 1.016| = 0.002 is indeed 'closely aligned' (arithmetic, T0) and verify the bulk c/a=1.016 is reported in ref [8] (T5).",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "number",
+          "location": "Results, tetragonality comparison",
+          "quote": "c/a ratio of 1.016 [8]",
+          "extracted_values": {"c_over_a_film": 1.018, "c_over_a_bulk": 1.016, "abs_diff": 0.002}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "trivial arithmetic (difference 0.002) for 'closely aligns'; literature lookup vs ref [8] for the 1.016 bulk value",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.75,
+        "rationale": "1.018 vs 1.016 differ by 0.002 (~0.2%), genuinely 'closely aligned' - the qualitative claim is well supported by the numbers (off-the-shelf percent-difference). The bulk value 1.016 is sourced to the authors' own ref [8]; the within-paper comparison is sound. Supported at 0.75 (external value unverified)."
+      }
+    },
+    {
+      "id": "c25",
+      "text": "PZTFN0.5 photocurrents are smaller than BFO benchmarks: unpoled sputtered BFO (100 nm, ITO) gave Jsc=4.5 uA/cm2 (405 nm, 100 mW/cm2 [26]); graphene/BFO/Pt reached up to 25 uA/cm2 [27]; optimized PLD BFO reached ~mA/cm2 [28].",
+      "quote": "unpoled, sputter-deposited BFO films (100 nm thick) with ITO electrodes yielded JSC of 4.5 uA/cm2 under similar illumination conditions (lambda = 405 nm, 100 mW/cm2) [26]. ... higher values, up to 25 uA/cm2, ... for graphene/BFO/Pt heterojunctions [27] ... PLD BFO films have even reached ~ mA/cm2 values [28].",
+      "section": "III.C Photovoltaic response",
+      "page": 17,
+      "epistemic_tier": "T5",
+      "predicate": "Verify each cited BFO Jsc benchmark against refs [26], [27], [28]; check the internal comparative claim ('our PZTFN0.5 ... smaller photocurrents') given this paper's Jsc=23 uA/cm2 (which actually equals/exceeds the 4.5 [26] and approaches the 25 [27]).",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "text",
+          "location": "Results, BFO comparison",
+          "quote": "JSC of 4.5 uA/cm2 ... up to 25 uA/cm2 ... ~ mA/cm2",
+          "extracted_values": {"BFO_ITO_Jsc_uA_per_cm2": 4.5, "graphene_BFO_Jsc_uA_per_cm2": 25, "PLD_BFO_Jsc_mA_per_cm2_order": 1, "this_Jsc_uA_per_cm2": 23}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "literature lookup vs refs [26-28] + internal comparative-claim check",
+        "verifier_exists": false,
+        "candidate_verdict": "suspect",
+        "confidence": 0.5,
+        "rationale": "Internal tension worth flagging: the paper frames PZTFN0.5 as yielding 'smaller photocurrents' than BFO, yet its own Jsc=23 uA/cm2 is ~5x the unpoled BFO/ITO value (4.5 [26]) and essentially equal to the graphene/BFO/Pt value (25 [27]); only the optimized PLD BFO (~mA/cm2 [28]) is clearly larger. The blanket 'smaller' is only true vs the best BFO. Each numeric benchmark needs its cited source to confirm. Suspect (the comparative framing partly understates the result); confidence 0.5."
+      }
+    },
+    {
+      "id": "c26",
+      "text": "Films grown at 600 C developed secondary pyrochlore phases, so 550 C was chosen as the optimum; XRD (Fig. 1a) shows a single-phase perovskite with no secondary phases or misorientation.",
+      "quote": "traces of secondary pyrochlore phases appeared in PZTFN0.5 samples treated at higher temperatures (600 C) ... No signs of different crystalline orientations nor secondary phases are observed.",
+      "section": "II / III.A",
+      "page": 5,
+      "epistemic_tier": "T2",
+      "predicate": "Bind the 'single-phase, no secondary phases' claim to the XRD pattern in Fig. 1a (only (00l) perovskite + substrate/SRO peaks present, no pyrochlore reflections). Visual/figure consistency check.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "figure",
+          "location": "Figure 1a (XRD)",
+          "quote": "Room-temperature XRD patterns of the STO//SRO/PZTFN0.5 and STO//SRO/PZT thin films",
+          "extracted_values": {"two_theta_min_deg": 10, "two_theta_max_deg": 90}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "figure inspection: confirm only (00l) perovskite + STO/SRO peaks, no pyrochlore peaks in Fig. 1a",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.6,
+        "rationale": "Fig. 1a (10-90 deg) shows sharp (00l)-type peaks aligned with STO plus the SRO shoulders/fringes; no obvious extra reflections that would indicate pyrochlore or misoriented grains. Consistent with the single-phase claim. Confirming the absence of weak pyrochlore peaks requires careful peak-indexing of the figure (not off-the-shelf); supported at moderate confidence."
+      }
+    },
+    {
+      "id": "c27",
+      "text": "PZT is reported to exhibit negligible optical absorption / no photocurrent at 403 nm, consistent with its ~3.6 eV gap (SI Fig. S6b), whereas PZTFN0.5 shows a clear photoresponse at 403 nm but none under 515 nm green light (SI Fig. S6a).",
+      "quote": "our STO//SRO/PZT/Au reference system, which exhibits negligible optical absorption in this spectral range ... For the reference PZT film, no significant photocurrent response is observed under 403 nm illumination. ... no response is detected under green light illumination of 515 nm.",
+      "section": "III.C / SI Fig. S6",
+      "page": 13,
+      "epistemic_tier": "T2",
+      "predicate": "Bind the wavelength-selectivity claim to SI Fig. S6: PZTFN0.5 responds at 403 nm (3.077 eV > Eg 3.0) but not 515 nm (2.41 eV < Eg); PZT does not respond at 403 nm (3.077 eV < Eg 3.6). Check the energy ordering is self-consistent with the stated gaps.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "figure",
+          "location": "SI Figure S6",
+          "quote": "A clear increase in current density is observed when the PZTFN0.5 sample is illuminated with the violet light source of 403 nm. In contrast, no response is detected under green light illumination of 515 nm. For the reference PZT film, no significant photocurrent response is observed under 403 nm.",
+          "extracted_values": {"E_403nm_eV": 3.077, "E_515nm_eV": 2.408, "Eg_PZTFN_eV": 3.0, "Eg_PZT_eV": 3.6}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "energy-ordering consistency (hc/lambda vs Eg) + SI figure binding of the on/off responses",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.8,
+        "rationale": "The selectivity is internally consistent with the band gaps: 403 nm = 3.077 eV exceeds PZTFN Eg (3.0) -> absorption; is below PZT Eg (3.6) -> no PZT response; 515 nm = 2.408 eV is below PZTFN Eg (3.0) -> no green response. The energy-vs-gap ordering (a clean T0/T1 recompute) fully supports the qualitative claim; the on/off magnitudes themselves are in SI Fig. S6. Supported at 0.8."
+      }
+    },
+    {
+      "id": "c28",
+      "text": "Permittivity (eps'_r) is stable at low frequencies (20 Hz-10 kHz) but shows significant polarization-state-dependent variation above 10 kHz, interpreted as a transition from interface-dominated to bulk-dominated response (Fig. 4c).",
+      "quote": "While eps'_r remains stable at low frequencies (20 Hz-10 kHz), significant polarization-state-dependent variations emerge at higher frequencies (>10 kHz).",
+      "section": "III.C Photovoltaic response",
+      "page": 14,
+      "epistemic_tier": "T2",
+      "predicate": "Bind the frequency-dependence claim to Fig. 4c (eps'_r vs frequency on a log axis): check curves overlap below ~10 kHz and diverge by polarization state above it.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "figure",
+          "location": "Figure 4c (eps'_r vs frequency)",
+          "quote": "(ac) eps'_r variation under different polarization and illumination conditions",
+          "extracted_values": {"low_f_Hz": 20, "transition_f_Hz": 10000}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "figure-trend extraction: curve overlap below 10 kHz vs divergence above, from Fig. 4c",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.55,
+        "rationale": "Fig. 4c shows eps'_r curves clustered/flat at low frequency and spreading at the high-frequency end, qualitatively matching the described 20 Hz-10 kHz stable / >10 kHz divergent behavior. Confirming the exact 10 kHz crossover needs careful reading of the log-frequency axis (figure extraction). Supported at moderate confidence; the interface->bulk interpretation itself is T3/T4 (mechanistic)."
+      }
+    },
+    {
+      "id": "c29",
+      "text": "The PZTFN0.5 P-E loops are asymmetric with a positive imprinted polarization / built-in field, with an estimated imprint field of approximately 40 kV/cm.",
+      "quote": "The estimated imprint field for the PZTFN0.5 sample from P-E loops is approximately 40 kV/cm (Fig. 3b).",
+      "section": "III.B Ferroelectric properties",
+      "page": 8,
+      "epistemic_tier": "T2",
+      "predicate": "The imprint field is half the horizontal shift of the P-E loop center from zero; read the +E and -E coercive crossings in Fig. 3b for PZTFN0.5 and compute the offset; compare to ~40 kV/cm.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "figure",
+          "location": "Figure 3b (P-E loop offset)",
+          "quote": "Both C-V and P-E loops exhibit a positive imprinted polarization state ... approximately 40 kV/cm",
+          "extracted_values": {"imprint_field_kV_per_cm": 40}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "figure-value extraction of the loop horizontal offset (imprint = half the difference of +/-coercive crossings)",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.4,
+        "rationale": "The imprint field is in principle recomputable from the loop's horizontal asymmetry, but the PZTFN0.5 loop in Fig. 3b is broad and not fully saturated, and the E-axis spans +/-600 kV/cm, so reading a 40 kV/cm offset precisely is unreliable. The qualitative asymmetry (positive imprint) is visible; the specific 40 kV/cm cannot be tightly bound. Inconclusive."
+      }
+    },
+    {
+      "id": "c30",
+      "text": "Polarization retention (PUND) shows the Up and Down states remain clearly distinguishable up to 10^4 s, with a gradual Pr reduction over time (SI Fig. S5).",
+      "quote": "Fig. S5 shows that the Up and Down polarization states remain clearly distinguishable up to 104 s.",
+      "section": "III.B / SI Fig. S5",
+      "page": 11,
+      "epistemic_tier": "T2",
+      "predicate": "Bind the retention claim to SI Fig. S5: confirm Up and Down traces stay separated across the time axis out to 10^4 s and that Pr decreases monotonically.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "figure",
+          "location": "SI Figure S5 (retention)",
+          "quote": "Both polarization states remain clearly distinguishable up to 104 s, indicating stable ferroelectric retention behavior within the measured time window.",
+          "extracted_values": {"retention_time_s": 10000}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "SI figure binding: Up/Down separation maintained to 10^4 s",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.4,
+        "rationale": "The 10^4 s retention claim depends entirely on SI Fig. S5, whose data points were not transcribed in detail here. The text is internally consistent (retention supports the polarization-dependent photoresponse argument), but binding to specific S5 values is not done. Inconclusive (route to SI figure-extraction)."
+      }
+    },
+    {
+      "id": "c31",
+      "text": "The films are epitaxial, (001)-oriented, single perovskite phase, fully relaxed (a=4.022 A) beyond a thin clamped interfacial region, consistent between RSM (Fig. 1b) and GPA strain maps (Fig. 2c).",
+      "quote": "The relaxed state observed in the GPA strain map is consistent with the x-ray reciprocal space map (RSM) measurements previously discussed (Fig. 1b).",
+      "section": "III.A Structural properties",
+      "page": 7,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-consistency: RSM (Fig. 1b) places the PZTFN0.5 reciprocal-lattice point at the relaxed (bulk) position (a=4.022) rather than strained to STO; GPA eps_xx map (Fig. 2c) shows ~zero strain away from the interface. Check the two techniques agree.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "figure",
+          "location": "Figure 1b (RSM) + Figure 2c (GPA eps_xx)",
+          "quote": "completely relaxed with lattice parameters a = 4.022 A ... film grows in a fully relaxed state beyond a clamped region only a few nanometers thick",
+          "extracted_values": {"a_film_relaxed_A": 4.022, "a_SRO_coherent_A": 3.905}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "cross-technique consistency (RSM peak position vs GPA strain map) - both must indicate relaxation",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.65,
+        "rationale": "RSM (Fig. 1b) shows the PZTFN0.5 spot offset from the STO/SRO column at a larger a (relaxed), while SRO sits coherently at a=3.905; GPA (Fig. 2c) shows near-zero eps_xx beyond the few-nm clamped interface. The two independent structural probes corroborate the 'fully relaxed' claim - a sound internal cross-consistency. Supported at 0.65 (qualitative figure binding)."
+      }
+    },
+    {
+      "id": "c32",
+      "text": "The proposed switchable-photovoltaic mechanism (back-to-back Schottky diodes D1/D2 modulated by ferroelectric polarization and depolarization field) consistently explains the sign of Jsc/Voc for P-Up vs P-Down and the dark J-E asymmetry.",
+      "quote": "This comprehensive model successfully integrates the contributions of interface Schottky junctions and ferroelectric polarization dynamics, offering a consistent physical explanation for the observed switchable photovoltaic effect.",
+      "section": "III.C model (Fig. 5)",
+      "page": 17,
+      "epistemic_tier": "T3",
+      "predicate": "Method/mechanism appropriateness: check the band-diagram logic (forward/reverse bias of D1/D2 under each polarization state) consistently predicts the observed Jsc/Voc signs; look for internal contradictions in the figure-vs-text sign assignments.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "text",
+          "location": "Fig. 5 model discussion",
+          "quote": "the depolarization field oriented toward the top interface governs the electrical behavior, explaining the observed negative Jsc values in Figures 4b and 4d ... resulting in the positive Jsc shown in Figures 4b and 3d.",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "mechanistic-consistency reasoning over the band diagram + sign-bookkeeping (assisted, anchored to the Jsc/Voc signs in Fig. 4)",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.4,
+        "rationale": "Mechanistic model (T3) - largely qualitative and not deterministically falsifiable from the paper alone. The text has minor sloppy cross-references (e.g. 'Figures 4b and 3d' where Fig. 4d is meant) and a possible sign-attribution ambiguity between the P-Up/P-Down assignments in the narrative vs Fig. 4d, but disentangling these requires careful sign-bookkeeping that an assisted verifier could attempt only with low confidence. Inconclusive; flagged as a reasoning-consistency target, not a deterministic check."
+      }
+    },
+    {
+      "id": "c33",
+      "text": "This is the first comprehensive study of epitaxial Fe/Nb co-doped PZT (PZTFN) films; no previous reports exist on epitaxial Fe/Nb co-doped PZT.",
+      "quote": "there are no previous reports of studies conducted on epitaxial Fe/Nb co-doped PZT films. ... we report the first comprehensive study of epitaxial 0.5Pb(Zr0.52Ti0.48)O3-0.5Pb(Fe0.5Nb0.5)O3.",
+      "section": "Introduction",
+      "page": 3,
+      "epistemic_tier": "T5",
+      "predicate": "Novelty/prior-art claim: search the literature for prior epitaxial Fe/Nb-codoped PZT (PZTFN) thin-film studies to confirm the 'first' claim.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "text",
+          "location": "Introduction novelty statement",
+          "quote": "there are no previous reports of studies conducted on epitaxial Fe/Nb co-doped PZT films",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "prior-art literature search for epitaxial Fe/Nb-PZT films",
+        "verifier_exists": false,
+        "candidate_verdict": "not_checkable",
+        "confidence": 0.3,
+        "rationale": "A 'first report' novelty claim is a T5 prior-art assertion requiring an exhaustive literature search; it cannot be settled from the paper's own contents. The cited prior work [9-11] is on Fe/Ta (PZTFT), distinct from Fe/Nb, which is internally consistent with the novelty framing, but proving the negative (no prior epitaxial Fe/Nb-PZT study) is not deterministically checkable. Routed to literature/human."
+      }
+    }
+  ],
+  "paper_level_notes": "Data availability: 'available from the corresponding author upon reasonable request' - NO public dataset/SI data files, so T6 reproducibility (raw-data recompute) is not possible; only recomputes from reported numbers and figure-value extraction are feasible. SI present (Figures S1-S6) and read: STEM-EDS line profile (S1), reference-PZT TEM/GPA (S2), STO//PZTFN XRD+RSM (S3), STO//PZTFN STEM+SAED (S4), PUND retention to 1e4 s (S5), light-pulse photocurrent 403 vs 515 nm for PZTFN and reference PZT (S6). An explicit AI-use declaration is included (AI used for readability/writing, authors take responsibility) - relevant to T7 integrity context and plausibly the source of the several cosmetic text slips. STRONGEST DETERMINISTIC FRONTIER (T0-T2): (1) c1 - 'each constitute 5 at.%' B-site composition contradicts the formula (should be ~24-26%), a clean stoichiometry flag (likely typo); (2) c5 - Jsc abstract '+/-20' vs conclusion/figure '23' (asymmetric ~+23/-13 in Fig. 4d), genuine prose-vs-figure inconsistency; (3) c6 - Fig. 4 caption '430 nm' vs body/legend '403 nm' digit transposition; (4) c23 - sol-gel Mr '~2' (Intro) vs '1.8' (Results) minor internal mismatch. CLEAN SUPPORTING RECOMPUTES (all exact): c2 c/a=1.018, c3 mismatch |3%| (sign/strain-label arguable), c4 403 nm=3.077 eV, c9 Schottky barriers self-consistent (chi=3.9 eV), c18 unit check 3 V/80 nm=375 kV/cm, c27 energy-vs-gap selectivity ordering. NOTABLE FRAMING TENSION (c25): paper calls its 23 uA/cm2 'smaller' than BFO, but it is ~5x the unpoled BFO/ITO value (4.5) and equals the graphene/BFO value (25) it cites - only the optimized PLD BFO (~mA/cm2) is clearly larger. Several internal cross-references are mislabeled ('Figures 4b and 3d' for 4d; '430 nm'), consistent with light copyediting issues rather than data problems. No impossible values, no failed mass/charge balance, no statistical claims (no p-values/CIs -> statcheck/GRIM N/A). Overall this reads as a genuine, internally largely consistent experimental paper whose checkable issues are predominantly cosmetic/reporting (typos, abstract-vs-body rounding) plus several literature-comparison and novelty claims that need external sources."
+}

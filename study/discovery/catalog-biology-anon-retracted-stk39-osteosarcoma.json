@@ -1,0 +1,234 @@
+{
+  "paper_id": "biology-anon-retracted-stk39-osteosarcoma",
+  "title": "STK39, overexpressed in osteosarcoma, regulates osteosarcoma cell invasion and proliferation [RETRACTION notice]",
+  "doi": "10.3892/ol.2024.14510",
+  "domain": "biology / oncology (cancer cell biology) — retraction notice",
+  "n_pages_read": 1,
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The document at this path is a RETRACTION notice (published 2024), not the original research article it retracts; the original article is Huang et al., Oncol Lett 14: 4599-4604, 2017.",
+      "quote": "RETRACTION\nDOI: 10.3892/ol.2024.14510\nSTK39, overexpressed in osteosarcoma, regulates osteosarcoma cell invasion and proliferation\nTAO HUANG, YUAN ZHOU, YUN CAO, JIE TAO, ZHI-HUI ZHOU and DONG-HUA HANG\nOncol Lett 14: 4599-4604, 2017; DOI: 10.3892/ol.2017.6728",
+      "section": "header / masthead",
+      "page": 1,
+      "epistemic_tier": "T2",
+      "predicate": "Read the document type label and confirm it self-identifies as a retraction of a separately-cited original article; the corpus item is therefore the notice, not the underlying paper.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "text",
+          "location": "Title block, page 1",
+          "quote": "RETRACTION ... Oncol Lett 14: 4599-4604, 2017; DOI: 10.3892/ol.2017.6728",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "document-type classifier / corpus-provenance check that flags retraction notices vs. primary articles (so the auditor does not score the notice as if it were the research paper).",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.99,
+        "rationale": "The document explicitly carries the heading 'RETRACTION' and cites a distinct original article with its own DOI. This is the single most load-bearing fact about the artifact: only the notice's own assertions are auditable here; the original paper's scientific claims, figures, tables, and SI are NOT present in this PDF and must not be manufactured. Corpus/labeling note for the discovery study: this item is mislabeled-by-shape — the filename promises the STK39 paper but the bytes are the 1-page retraction."
+      }
+    },
+    {
+      "id": "c2",
+      "text": "The figure containing the contentious data (the Transwell invasion assay, Fig. 4B) appears on p. 4602 of the original article.",
+      "quote": "certain of the Transwell invasion assay data shown in Fig. 4B on p. 4602 were strikingly similar to data appearing in different form in other articles",
+      "section": "Body (statement of reason)",
+      "page": 1,
+      "epistemic_tier": "T0",
+      "predicate": "Check that the cited figure page (4602) lies within the original article's stated page range [4599, 4604]. Pure interval-membership arithmetic on the notice's own numbers.",
+      "evidence": [
+        {
+          "id": "e2",
+          "kind": "number",
+          "location": "Body text + citation line, page 1",
+          "quote": "Fig. 4B on p. 4602 ... Oncol Lett 14: 4599-4604, 2017",
+          "extracted_values": {
+            "fig4b_page": 4602,
+            "article_page_start": 4599,
+            "article_page_end": 4604
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "page-range internal-consistency check (interval membership: start <= cited_page <= end).",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.99,
+        "rationale": "Deterministic: 4599 <= 4602 <= 4604 holds (recompute confirms True). Off-the-shelf-adjacent (a trivial range/total check). Confirms the notice is internally consistent about where the disputed figure sits. Does NOT verify that Fig 4B actually contains duplicated data (that is c5, T7) — only that the page citation is coherent."
+      }
+    },
+    {
+      "id": "c3",
+      "text": "The retraction notice itself is published in Oncology Letters volume 28, article 377, year 2024.",
+      "quote": "ONCOLOGY LETTERS 28: 377, 2024",
+      "section": "Running header, page 1",
+      "page": 1,
+      "epistemic_tier": "T1",
+      "predicate": "Resolve DOI 10.3892/ol.2024.14510 via Crossref/DOI.org and confirm the bibliographic metadata (journal=Oncology Letters, volume=28, article/elocation=377, year=2024, type=retraction) matches the notice.",
+      "evidence": [
+        {
+          "id": "e3",
+          "kind": "number",
+          "location": "Running header + DOI line, page 1",
+          "quote": "ONCOLOGY LETTERS 28: 377, 2024 ... DOI: 10.3892/ol.2024.14510",
+          "extracted_values": {
+            "volume": 28,
+            "article_number": 377,
+            "year": 2024
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "citation-exists / DOI-resolution lookup (Crossref API) cross-checking volume/article/year/type.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.55,
+        "rationale": "Internally the header and DOI are mutually consistent (volume 28, article 377, 2024). Resolving the DOI to confirm the metadata is a T1 external lookup requiring network (offline here), so candidate_verdict is inconclusive pending a Crossref check. No off-the-shelf offline verifier covers DOI resolution."
+      }
+    },
+    {
+      "id": "c4",
+      "text": "The original (retracted) article is cited as Oncol Lett 14: 4599-4604, 2017, DOI 10.3892/ol.2017.6728, by authors Tao Huang, Yuan Zhou, Yun Cao, Jie Tao, Zhi-Hui Zhou and Dong-Hua Hang.",
+      "quote": "Oncol Lett 14: 4599-4604, 2017; DOI: 10.3892/ol.2017.6728",
+      "section": "Citation line, page 1",
+      "page": 1,
+      "epistemic_tier": "T1",
+      "predicate": "Resolve original DOI 10.3892/ol.2017.6728 and confirm it points to a now-retracted article with the stated title, authors, journal=Oncology Letters, volume=14, pages 4599-4604, year=2017; confirm the page span (4604-4599+1 = 6 pages) and that a retraction is linked.",
+      "evidence": [
+        {
+          "id": "e4",
+          "kind": "number",
+          "location": "Citation line, page 1",
+          "quote": "Oncol Lett 14: 4599-4604, 2017; DOI: 10.3892/ol.2017.6728",
+          "extracted_values": {
+            "volume": 14,
+            "page_start": 4599,
+            "page_end": 4604,
+            "computed_page_count": 6,
+            "year": 2017
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "DOI-resolution + retraction-status lookup (Crossref / Retraction Watch DB) on the original DOI.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.55,
+        "rationale": "T0 sub-part is supported: page span 4599-4604 is a coherent 6-page article (end > start, page_count = 6 > 0). T1 sub-part (does this DOI resolve to a retracted Oncology Letters 2017 article with these authors/title) needs an external lookup unavailable offline, so overall candidate_verdict is inconclusive. A retraction-status verifier against the Retraction Watch / Crossref retraction feed would settle it and is a strong candidate for the commons."
+      }
+    },
+    {
+      "id": "c5",
+      "text": "Certain Transwell invasion assay data in Fig. 4B were 'strikingly similar' to data appearing in different form in other articles written by different authors at different research institutes (i.e., image/data duplication across papers).",
+      "quote": "certain of the Transwell invasion assay data shown in Fig. 4B on p. 4602 were strikingly similar to data appearing in different form in other articles written by different authors at different research institutes",
+      "section": "Body (statement of reason)",
+      "page": 1,
+      "epistemic_tier": "T7",
+      "predicate": "Detect duplication/manipulation between Fig. 4B of the original article and the (unspecified) other articles via image-forensics (panel matching, ELA, copy-move). This is an integrity SIGNAL, not a deterministic verdict, and routes to human review.",
+      "evidence": [
+        {
+          "id": "e5",
+          "kind": "figure",
+          "location": "Original article Fig. 4B, p. 4602 (NOT present in this PDF)",
+          "quote": null,
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": false,
+        "verifier_needed": "image-duplication / panel-matching forensic verifier (e.g., ImageTwin/Proofig-style) comparing Fig 4B against named source images.",
+        "verifier_exists": false,
+        "candidate_verdict": "not_checkable",
+        "confidence": 0.2,
+        "rationale": "Not checkable from this document: the original Fig. 4B image is absent (only the notice is in the PDF), and the 'other articles' are not identified. The allegation is the stated retraction reason but is itself an integrity SIGNAL (T7) routed to human, never a deterministic A/B verdict (DESIGN §5/§16). I record it as not_checkable here and do NOT treat the duplication as confirmed; confirming it would require the source images, which I cannot bind."
+      }
+    },
+    {
+      "id": "c6",
+      "text": "The retraction was triggered by a concerned reader contacting the Editor, after the original publication.",
+      "quote": "Following the publication of this paper, it was drawn to the Editor's attention by a concerned reader that certain of the Transwell invasion assay data ...",
+      "section": "Body, page 1",
+      "page": 1,
+      "epistemic_tier": "T8",
+      "predicate": "Verify the editorial process narrative (who flagged it, sequence of events). This is an unverifiable procedural/historical assertion from the editor.",
+      "evidence": [
+        {
+          "id": "e6",
+          "kind": "text",
+          "location": "Body, page 1",
+          "quote": "it was drawn to the Editor's attention by a concerned reader",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": false,
+        "verifier_needed": "none — editorial-process attestation; route to human, do not score.",
+        "verifier_exists": false,
+        "candidate_verdict": "not_checkable",
+        "confidence": 0.1,
+        "rationale": "An uncorroborated narrative about the editorial workflow. There is no internal evidence and no external record an automated verifier could deterministically check; per DESIGN §3/§5 (T8) it is surfaced, not scored."
+      }
+    },
+    {
+      "id": "c7",
+      "text": "The reason given for retraction is that the contentious data had already been published prior to submission to Oncology Letters (prior-publication / duplication), and the authors did not reply to the Editorial Office's request for an explanation.",
+      "quote": "Owing to the fact that the contentious data in the above article had already been published prior to its submission to Oncology Letters, the Editor has decided that this paper should be retracted from the Journal. The authors were asked for an explanation to account for these concerns, but the Editorial Office did not receive a reply.",
+      "section": "Body, page 1",
+      "page": 1,
+      "epistemic_tier": "T8",
+      "predicate": "Verify the editorial rationale and the claim that authors did not respond. Procedural attestation, not machine-checkable.",
+      "evidence": [
+        {
+          "id": "e7",
+          "kind": "text",
+          "location": "Body, page 1",
+          "quote": "the Editor has decided that this paper should be retracted from the Journal. The authors were asked for an explanation ... but the Editorial Office did not receive a reply.",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": false,
+        "verifier_needed": "none — editorial attestation; route to human, do not score.",
+        "verifier_exists": false,
+        "candidate_verdict": "not_checkable",
+        "confidence": 0.1,
+        "rationale": "Editorial decision + author non-response are attestations internal to the journal's process; no deterministic verifier and no bindable evidence in-document. T8 route-to-human."
+      }
+    },
+    {
+      "id": "c8",
+      "text": "The retraction notice is licensed under CC BY 4.0, Copyright (c) 2024 Huang et al.",
+      "quote": "Copyright © 2024 Huang et al. This work is licensed under a Creative Commons Attribution 4.0 International (CC BY 4.0) License.",
+      "section": "Footer, page 1",
+      "page": 1,
+      "epistemic_tier": "T1",
+      "predicate": "Confirm the license string is a valid CC BY 4.0 attribution and the copyright year (2024) matches the notice's publication year.",
+      "evidence": [
+        {
+          "id": "e8",
+          "kind": "text",
+          "location": "Footer license block, page 1",
+          "quote": "Copyright © 2024 Huang et al. ... Creative Commons Attribution 4.0 International (CC BY 4.0) License.",
+          "extracted_values": {
+            "copyright_year": 2024
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "license-string validator + year cross-check against publication year (header says 2024).",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.9,
+        "rationale": "Internally consistent: license names a real, standard license (CC BY 4.0) and the copyright year 2024 matches the notice's stated publication year (header 'ONCOLOGY LETTERS 28: 377, 2024'). This is a low-stakes T1/T2 consistency check, supported on the document's own evidence; full external license validity is trivial."
+      }
+    }
+  ],
+  "paper_level_notes": "CRITICAL ARTIFACT NOTE: This PDF is the single-page 2024 RETRACTION NOTICE (Oncol Lett 28:377, 2024; DOI 10.3892/ol.2024.14510), NOT the original research article it retracts (Huang et al., 'STK39, overexpressed in osteosarcoma...', Oncol Lett 14:4599-4604, 2017; DOI 10.3892/ol.2017.6728). Verified two ways: pdftotext extracts ~25 lines of text and pdfinfo reports Pages: 1; the rendered page image shows only the Spandidos masthead, the retraction text, and a CC-BY badge. The two large embedded JPEGs (612 KB each) are duplicated logo/banner images that inflate the file to ~1.2 MB and contain no scientific content. NO figures, tables, equations, statistics, methods, or SI from the original paper are present. Consequently the original paper's substantive claims (STK39 overexpression, regulation of invasion/proliferation, the Transwell Fig 4B data) are NOT auditable from this file and have NOT been catalogued or scored (per DESIGN §3 abstain>guess, §16 never fabricate errors, §17 judge on own merits). What IS checkable: (a) provenance/metadata — DOIs, journal/volume/article/year, page ranges (T1, need Crossref/Retraction-Watch lookups offline-unavailable here, candidate_verdict inconclusive); (b) one genuine deterministic internal-consistency check (c2: Fig 4B p.4602 lies within the article's stated span 4599-4604 -> True; plus c4's 6-page-span coherence); (c) license/year consistency (c8, supported); (d) the duplication allegation itself, which is the stated retraction REASON but is a T7 integrity SIGNAL (route-to-human) and is not_checkable here because the source images and the 'other articles' are absent. DISCOVERY-STUDY SIGNALS: (1) corpus hygiene — retracted-paper items should carry the ORIGINAL article PDF (or original+notice), not the notice alone; this item is effectively empty of auditable science and would yield a near-zero claim graph for any auditor. (2) A 'document-type / retraction-notice detector' (c1) is a useful cheap pre-filter so the pipeline never scores a notice as a primary paper. (3) The recurring external verifier this paper motivates is retraction-status + DOI resolution (Retraction Watch / Crossref), a strong commons candidate (T1). (4) The retraction reason here is cross-paper image duplication (T7), reinforcing that integrity-signal verifiers must remain advisory/route-to-human and require the actual figure images as input. Total claims: 8; T0-T2 deterministically checkable now (offline, supported): c1, c2, c8 (3); c4 has a supported T0 sub-part (page-span coherence). T1 external-lookup claims pending network: c3, c4. Route-to-human / not-checkable: c5 (T7), c6, c7 (T8)."
+}

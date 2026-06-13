@@ -1,0 +1,1010 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "chemistry-roy2025-transfer-hydrogenation-furfural",
+  "meta": {
+    "journal": "ChemSusChem",
+    "year": 2026,
+    "doi": "10.1002/cssc.202502378",
+    "note": "Catalyst and acid screening yields read from Tables 1-3; reaction profile from Figure 5; DFT free energies from Figure 6. Many yields are GC-determined with dodecane internal standard.",
+    "extractor": "litmus.extract",
+    "model": "claude-opus-4-8",
+    "source": "opus-native-pdf"
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The harmonization of metal and Brønsted acid functions leads to a highly selective reaction toward IPL with complete conversion and 67% yield.",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "highly selective reaction toward IPL (complete conversion, 67% yield)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_ipl_yield_pct == 67 and reported_conversion_pct == 100 (Table 2, entry 11)",
+      "strength": "exact",
+      "scope": "Ru-MACHO-BH, 1 mol% MSA, IPA, 130°C, 21 h (Table 2 entry 11)",
+      "evidence_refs": [
+        "ev_t2_e11"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c2",
+      "text": "The reaction cascade can be directed until the final product γ-valerolactone (GVL) with 15% yield.",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "directed until the\nfinal product, γ-valerolactone (GVL) (15% yield)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_gvl_yield_pct == 15",
+      "strength": "exact",
+      "scope": "Ru-MACHO-BH, MSA, IPA, 130°C",
+      "evidence_refs": [
+        "ev_t2_e11"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c3",
+      "text": "The most active Ru-complex for IPL formation at 130°C after 21 h was Ru-MACHO-BH.",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "the most active Ru-complex in terms of isopropyl levulinate (IPL) formation at 130°C after 21 h was Ru-MACHO-BH"
+      },
+      "epistemic_tier": "T8",
+      "predicate": "Ru-MACHO-BH gives highest IPL yield among tested complexes",
+      "strength": "comparative",
+      "scope": "Table 1 catalyst screen, 130°C, 21 h",
+      "evidence_refs": [
+        "ev_t1"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c4",
+      "text": "Ru-MACHO-BH gave almost quantitative conversion (99%) and 50% of IPL (Table 1, entry 6).",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 3,
+        "char_span": null,
+        "quote": "The best activity and selectivity toward IPL were\nachieved with Ru-MACHO-BH (Table 1, entry 6), giving almost\nquantitative conversion and 50% of IPL"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_conversion_pct == 99 and reported_ipl_yield_pct == 50 (Table 1 entry 6)",
+      "strength": "exact",
+      "scope": "Ru-MACHO-BH, 1.5 mol% MSA, IPA, 130°C, 18 h",
+      "evidence_refs": [
+        "ev_t1_e6"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c5",
+      "text": "Ru-MACHO-BH further hydrogenated AL, yielding 15% GVL.",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 3,
+        "char_span": null,
+        "quote": "Ru-MACHO-BH is further hydrogenating AL and yielding 15% GVL"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_gvl_yield_pct == 15 (Table 1 entry 6)",
+      "strength": "exact",
+      "scope": "Ru-MACHO-BH, Table 1 entry 6",
+      "evidence_refs": [
+        "ev_t1_e6"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c6",
+      "text": "Increasing precatalyst loading to 1 mol% gave 52% yield of IPL, no significant increase.",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 3,
+        "char_span": null,
+        "quote": "52% yield\nof IPL"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported_ipl_yield_pct == 52 at 1 mol% loading",
+      "strength": "exact",
+      "scope": "Ru-MACHO-BH, 1 mol% loading",
+      "evidence_refs": [],
+      "confidence": 0.85
+    },
+    {
+      "id": "c7",
+      "text": "Ru-8 yielded IPL in 15%; Ru-MACHO yielded 30% IPL and 14% FE.",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 3,
+        "char_span": null,
+        "quote": "Ru-8 yielded IPL in 15%, indicating a higher\nactivity, however, humin formation could not be suppressed.\nRu-MACHO with Ph2P donor functions yielded 30% of IPL, while\nalso 14% of the corresponding furfuryl iso-propyl ether (FE) were\ndetected."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "Ru-8 IPL==15; Ru-MACHO IPL==30, FE==14 (Table 1)",
+      "strength": "exact",
+      "scope": "Table 1 entries 4 and 5",
+      "evidence_refs": [
+        "ev_t1_e4",
+        "ev_t1_e5"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c8",
+      "text": "MSA (1 mol%) gives 98% conversion with 59% yield in IPL (Table 2, entry 4).",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 3,
+        "char_span": null,
+        "quote": "MSA\n(1 mol%) (Table 2, entry 4), promisingly gives 98% conversion\nwith 59% yield in IPL"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_conversion_pct == 98 and reported_ipl_yield_pct == 59 (Table 2 entry 4)",
+      "strength": "exact",
+      "scope": "Ru-MACHO-BH, 1 mol% MSA, IPA, 130°C, 18 h",
+      "evidence_refs": [
+        "ev_t2_e4"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c9",
+      "text": "H2SO4 (1 mol%) gave 99% conversion with 47% IPL and 13% GVL (Table 2, entry 10).",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 3,
+        "char_span": null,
+        "quote": "99% conversion was noted, with moderate selectivity towards IPL (47%) and GVL (13%) (Table 2, entry 10)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_conversion_pct == 99, reported_ipl_yield_pct == 47, reported_gvl_yield_pct == 13 (Table 2 entry 10)",
+      "strength": "exact",
+      "scope": "Ru-MACHO-BH, 1 mol% H2SO4, IPA, 130°C",
+      "evidence_refs": [
+        "ev_t2_e10"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c10",
+      "text": "Decreasing MSA to 0.5 mol% suppresses IPL formation to 2%; FA (51%) and FE (28%) present (Table 2, entry 9).",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 3,
+        "char_span": null,
+        "quote": "suppresses the formation of IPL\nsignificantly (2%) (Table 2, entry 9). The presence of FA (51%)\nand FE (28%)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_ipl_yield_pct==2, FA==51, FE==28 (Table 2 entry 9)",
+      "strength": "exact",
+      "scope": "Ru-MACHO-BH, 0.5 mol% MSA",
+      "evidence_refs": [
+        "ev_t2_e9"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c11",
+      "text": "Excess H3PO4 (285.2 mol%) converted furfural 57% with 27% of AL as main product (Table 2, entry 7).",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 3,
+        "char_span": null,
+        "quote": "Excess amount of H3PO4 (285.2 mol%) converted furfural\n57% with 27% of AL as the main product (Table 2, entry 7)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_conversion_pct==57 and reported_al_yield_pct==27 (Table 2 entry 7)",
+      "strength": "exact",
+      "scope": "Ru-MACHO-BH, 285.2 mol% H3PO4",
+      "evidence_refs": [
+        "ev_t2_e7"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c12",
+      "text": "TFA additive gave 61% conversion with 30% yield of FA beside trace IPL and AL (Table 2, entry 5).",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 3,
+        "char_span": null,
+        "quote": "61% conversion with 30% yield of FA beside trace\namounts of IPL and AL were measured"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_conversion_pct==61 and reported_fa_yield_pct==30 (Table 2 entry 5)",
+      "strength": "exact",
+      "scope": "Ru-MACHO-BH, 1 mol% TFA",
+      "evidence_refs": [
+        "ev_t2_e5"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c13",
+      "text": "At 110°C complete conversion was measured with FA (75% yield) as main product, FE (15%) and IPL (5%).",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 3,
+        "char_span": null,
+        "quote": "complete conversion was measured with FA (75% yield)\nbeing the main product, besides FE (15%) and minimal amounts"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "FA yield==75, FE==15, IPL==5 at 110°C",
+      "strength": "exact",
+      "scope": "Ru-MACHO-BH, 1 mol% MSA, 110°C",
+      "evidence_refs": [
+        "ev_110c"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c14",
+      "text": "At 150°C full conversion of FF was achieved but IPL yield dropped to 45%.",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 3,
+        "char_span": null,
+        "quote": "At 150°C full conversion of\nFF was achieved, however, the yield of IPL (45%) dropped considerably"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_ipl_yield_pct==45 at 150°C",
+      "strength": "exact",
+      "scope": "Ru-MACHO-BH, 150°C",
+      "evidence_refs": [],
+      "confidence": 0.85
+    },
+    {
+      "id": "c15",
+      "text": "From 2 to 7 h the conversion of FF increased from 54% to 77%; after 9 h FF was almost fully converted (94%); after 21 h complete conversion.",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 4,
+        "char_span": null,
+        "quote": "From 2 to 7 h the conversion of FF increased from 54% to\n77%, respectively (Figure 5A,B). After 9 h, FF was almost fully\nconverted (94%), while after 21 h complete conversion was\nachieved"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "conversion at 2h==54, 7h==77, 9h==94, 21h==100",
+      "strength": "exact",
+      "scope": "Figure 5A,B, Ru-MACHO-BH, 1 mol% MSA",
+      "evidence_refs": [
+        "ev_fig5"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c16",
+      "text": "After 21 h reaction time, full conversion detected with 67% yield of IPL, 15% of GVL, and 12% of FE (Table 2, entry 11).",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 5,
+        "char_span": null,
+        "quote": "After 21 h reaction time, full conversion was detected, with\n67% yield of IPL, 15% of GVL, and 12% of FE as main products\n(Table 2, entry 11)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_ipl_yield_pct==67, reported_gvl_yield_pct==15, reported_fe_yield_pct==12 (Table 2 entry 11)",
+      "strength": "exact",
+      "scope": "Ru-MACHO-BH, 1 mol% MSA, 130°C, 21 h",
+      "evidence_refs": [
+        "ev_t2_e11"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c17",
+      "text": "On a 6 mmol scale, 61% of IPL were formed; after column chromatography IPL was isolated in 53% yield (Table 2, entry 12).",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 5,
+        "char_span": null,
+        "quote": "when conducted on a 6 mmol scale, 61% of IPL were\nformed. After purification by simple column chromatography,\nIPL was isolated in 53% yield (Table 2, entry 12)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_ipl_yield_pct==61 and isolated_yield_pct==53 (Table 2 entry 12)",
+      "strength": "exact",
+      "scope": "6 mmol scale, Ru-MACHO-BH, MSA",
+      "evidence_refs": [
+        "ev_t2_e12"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c18",
+      "text": "Catalyst poisoning with Hg(0) or PPh3 (2 mol%) did not change catalytic activity; IPL afforded in 65% yield in both cases, demonstrating homogeneous catalysis.",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 5,
+        "char_span": null,
+        "quote": "In both\ncases IPL was afforded in 65% yield. This observation conclusively demonstrates a homogenously catalyzed transformation"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "reported_ipl_yield_pct==65 with Hg(0) and with PPh3 poisoning",
+      "strength": "causal",
+      "scope": "Ru-MACHO-BH, 0.5 mol%, 1 mol% MSA, 2 mmol FF",
+      "evidence_refs": [],
+      "confidence": 0.85
+    },
+    {
+      "id": "c19",
+      "text": "Pressure tube optimization: 10 mL tube in 3 mL IPA gave ~100% conversion with IPL produced in 59% (Table S4, entry 11); 0.4 M FF in IPA is optimal.",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 4,
+        "char_span": null,
+        "quote": "the conversion\napproached 100% while IPL was produced in 59% (Table S4,\nentry 11), clearly showing that running the reaction at FF concentration of 0.4 M FF in IPA is optimal"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_ipl_yield_pct==59 at 0.4 M FF in 10 mL tube",
+      "strength": "exact",
+      "scope": "Table S4 entry 11",
+      "evidence_refs": [],
+      "confidence": 0.8
+    },
+    {
+      "id": "c20",
+      "text": "In absence of Ru-MACHO-BH, MSA or H2SO4 (1 mol%) fully converted FA to IPL with yields 80-99% (Table 3).",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 6,
+        "char_span": null,
+        "quote": "FA was fully converted to IPL with yields\nranging from 80% to 99% (Table 3, entry 4)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "MSA IPL==80, H2SO4 IPL==99, conversion==99 (Table 3 entries 4,5)",
+      "strength": "exact",
+      "scope": "Table 3, furfuryl alcohol 1 mmol, 130°C, 16 h",
+      "evidence_refs": [
+        "ev_t3_e4",
+        "ev_t3_e5"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c21",
+      "text": "Increasing MSA to 1.5 mol%, IPL was formed quantitatively (95%) (Table 3, entry 6).",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 6,
+        "char_span": null,
+        "quote": "When increasing the\namount of MSA to 1.5 mol%, IPL was formed quantitatively\n(Table 3, entry 6)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_ipl_yield_pct==95 (Table 3 entry 6)",
+      "strength": "exact",
+      "scope": "Table 3 entry 6, 1.5 mol% MSA",
+      "evidence_refs": [
+        "ev_t3_e6"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c22",
+      "text": "Two main HRMS peaks identified at molecular weights 236.27 and 178.18 g mol−1.",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 5,
+        "char_span": null,
+        "quote": "identify two\nmain peaks representing the molecular weights of 236.27 and\n178.18 g mol−1 (Figures S14 and S15)"
+      },
+      "epistemic_tier": "T1",
+      "predicate": "identified MW values == 236.27 and 178.18 g/mol",
+      "strength": "exact",
+      "scope": "HR-MS, Figures S14 and S15",
+      "evidence_refs": [
+        "ev_hrms"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c23",
+      "text": "Calculated ΔRG° for IntA formation: 26.1 kJ/mol (298 K) and 46.1 kJ/mol (403 K), endergonic.",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 6,
+        "char_span": null,
+        "quote": "ΔRG° (298 K) = 26.1 kJ mol−1\nΔRG° (403 K) = 46.1 kJ mol−1"
+      },
+      "epistemic_tier": "T6",
+      "predicate": "computed ΔRG°(298K)==26.1, ΔRG°(403K)==46.1 kJ/mol for IntA",
+      "strength": "exact",
+      "scope": "Figure 6, DLPNO-CCSD(T)/def2-TZVP, SMD=2-propanol",
+      "evidence_refs": [
+        "ev_fig6_inta"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c24",
+      "text": "Calculated ΔRG° for IntB formation: -14.9 kJ/mol (298 K) and -11.9 kJ/mol (403 K), exergonic.",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 6,
+        "char_span": null,
+        "quote": "ΔRG° (298 K) = -14.9 kJ mol−1\nΔRG° (403 K) = -11.9 kJ mol−1"
+      },
+      "epistemic_tier": "T6",
+      "predicate": "computed ΔRG°(298K)==-14.9, ΔRG°(403K)==-11.9 kJ/mol for IntB",
+      "strength": "exact",
+      "scope": "Figure 6 Model reaction 2",
+      "evidence_refs": [
+        "ev_fig6_intb"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c25",
+      "text": "In the initial 9 h, conversion of FF exceeds overall product yields by an average of 15%-20% (unidentified products).",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 5,
+        "char_span": null,
+        "quote": "With an average of\n15%–20% (Figure 5B, red arrows), the conversion curve shows\nthe presence of unidentified products"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "conversion - sum(yields) averages 15-20% in first 9h",
+      "strength": "approximate",
+      "scope": "Figure 5B",
+      "evidence_refs": [
+        "ev_fig5"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "c26",
+      "text": "This study achieves the highest reported selectivity and a yield of 67% for furfural to isopropyl levulinate.",
+      "location": {
+        "section": "Conclusion",
+        "page": 7,
+        "char_span": null,
+        "quote": "achieving the highest reported selectivity and a yield of\n67%"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "67% IPL yield is highest reported; compare to literature",
+      "strength": "comparative",
+      "scope": "homogeneous TH of FF to IPL",
+      "evidence_refs": [
+        "ev_t2_e11"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c27",
+      "text": "Literature: De Vries reported 0.1 mol% B for selective TH of FF to FA with 79% isolated yield.",
+      "location": {
+        "section": "Introduction",
+        "page": 2,
+        "char_span": null,
+        "quote": "at a\ncatalyst loading of 0.1 mol% for the selective TH of FF to FA using\niPrOH as a solvent with 79% isolated yield [16]"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "cited isolated yield FA == 79% at 0.1 mol% B (ref 16)",
+      "strength": "exact",
+      "scope": "reference [16], 2018",
+      "evidence_refs": [],
+      "confidence": 0.85
+    },
+    {
+      "id": "c28",
+      "text": "Literature: Lu(OTf)3 catalyzed TH of FF to IPL giving IPL in 53% yield with humin formation.",
+      "location": {
+        "section": "Introduction",
+        "page": 2,
+        "char_span": null,
+        "quote": "giving IPL in 53% yield, albeit considerable humin formation was\nobserved [40]"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "cited IPL yield == 53% for Lu(OTf)3 (ref 40)",
+      "strength": "exact",
+      "scope": "reference [40]",
+      "evidence_refs": [],
+      "confidence": 0.85
+    },
+    {
+      "id": "c29",
+      "text": "Literature: Zhang regenerated ZrO2 on SBA-15 increased IPL yield to 87% at 160°C for 18 h.",
+      "location": {
+        "section": "Introduction",
+        "page": 2,
+        "char_span": null,
+        "quote": "significantly\nincreased the IPL yield to 87% using furfural as substrate, at 160°C for 18 h [38]"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "cited IPL yield == 87% (ref 38)",
+      "strength": "exact",
+      "scope": "reference [38]",
+      "evidence_refs": [],
+      "confidence": 0.85
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev_t1",
+      "kind": "table",
+      "location": {
+        "section": "Table 1",
+        "page": 4,
+        "char_span": null,
+        "quote": "TABLE 1 | Transfer hydrogenation of furfural to small oxygenates using Ru complexes and MSA as Brønsted acid."
+      },
+      "extracted_values": {
+        "note": "Catalyst screen with conversion and yields of FA/FE/IPL/AL/GVL"
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev_t1_e4",
+      "kind": "table",
+      "location": {
+        "section": "Table 1, entry 4",
+        "page": 4,
+        "char_span": null,
+        "quote": "4 Ru-8 52 — 6 15 1 —"
+      },
+      "extracted_values": {
+        "catalyst": "Ru-8",
+        "reported_conversion_pct": 52,
+        "FA": null,
+        "FE": 6,
+        "reported_ipl_yield_pct": 15,
+        "AL": 1,
+        "GVL": null
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev_t1_e5",
+      "kind": "table",
+      "location": {
+        "section": "Table 1, entry 5",
+        "page": 4,
+        "char_span": null,
+        "quote": "5 Ru-MACHO 71 1 14 30 3 —"
+      },
+      "extracted_values": {
+        "catalyst": "Ru-MACHO",
+        "reported_conversion_pct": 71,
+        "FA": 1,
+        "FE": 14,
+        "reported_ipl_yield_pct": 30,
+        "AL": 3,
+        "GVL": null
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev_t1_e6",
+      "kind": "table",
+      "location": {
+        "section": "Table 1, entry 6",
+        "page": 4,
+        "char_span": null,
+        "quote": "6 Ru-MACHO-BHa 99 — 9 50 3 15"
+      },
+      "extracted_values": {
+        "catalyst": "Ru-MACHO-BH",
+        "reported_conversion_pct": 99,
+        "FA": null,
+        "FE": 9,
+        "reported_ipl_yield_pct": 50,
+        "AL": 3,
+        "reported_gvl_yield_pct": 15
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev_t2_e4",
+      "kind": "table",
+      "location": {
+        "section": "Table 2, entry 4",
+        "page": 4,
+        "char_span": null,
+        "quote": "4 MSA 98 — — 18 59 5 10"
+      },
+      "extracted_values": {
+        "acid": "MSA",
+        "reported_conversion_pct": 98,
+        "AC": null,
+        "FA": null,
+        "FE": 18,
+        "reported_ipl_yield_pct": 59,
+        "AL": 5,
+        "reported_gvl_yield_pct": 10
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev_t2_e5",
+      "kind": "table",
+      "location": {
+        "section": "Table 2, entry 5",
+        "page": 4,
+        "char_span": null,
+        "quote": "5 TFA 61 7 30 — <1 1 —"
+      },
+      "extracted_values": {
+        "acid": "TFA",
+        "reported_conversion_pct": 61,
+        "AC": 7,
+        "reported_fa_yield_pct": 30,
+        "FE": null,
+        "IPL": "<1",
+        "AL": 1,
+        "GVL": null
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev_t2_e7",
+      "kind": "table",
+      "location": {
+        "section": "Table 2, entry 7",
+        "page": 4,
+        "char_span": null,
+        "quote": "7 H3PO4\nb 57 — 9 — 1 27 1"
+      },
+      "extracted_values": {
+        "acid": "H3PO4",
+        "acid_loading_molpct": 285.2,
+        "reported_conversion_pct": 57,
+        "FA": 9,
+        "IPL": 1,
+        "reported_al_yield_pct": 27,
+        "GVL": 1
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev_t2_e9",
+      "kind": "table",
+      "location": {
+        "section": "Table 2, entry 9",
+        "page": 4,
+        "char_span": null,
+        "quote": "9 MSAd 99 — 51 28 2 1 —"
+      },
+      "extracted_values": {
+        "acid": "MSA",
+        "acid_loading_molpct": 0.5,
+        "reported_conversion_pct": 99,
+        "FA": 51,
+        "FE": 28,
+        "reported_ipl_yield_pct": 2,
+        "AL": 1,
+        "GVL": null
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev_t2_e10",
+      "kind": "table",
+      "location": {
+        "section": "Table 2, entry 10",
+        "page": 4,
+        "char_span": null,
+        "quote": "10 H2SO4 99 ——— 47 2 13"
+      },
+      "extracted_values": {
+        "acid": "H2SO4",
+        "reported_conversion_pct": 99,
+        "reported_ipl_yield_pct": 47,
+        "AL": 2,
+        "reported_gvl_yield_pct": 13
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev_t2_e11",
+      "kind": "table",
+      "location": {
+        "section": "Table 2, entry 11",
+        "page": 4,
+        "char_span": null,
+        "quote": "11 MSAe 99 — — 12 67 6 15"
+      },
+      "extracted_values": {
+        "acid": "MSA",
+        "reaction_time_h": 21,
+        "reported_conversion_pct": 99,
+        "FE": 12,
+        "reported_ipl_yield_pct": 67,
+        "AL": 6,
+        "reported_gvl_yield_pct": 15
+      },
+      "confidence": 0.93
+    },
+    {
+      "id": "ev_t2_e12",
+      "kind": "table",
+      "location": {
+        "section": "Table 2, entry 12",
+        "page": 4,
+        "char_span": null,
+        "quote": "12 MSAf 93 — — 5 61 (53) 5 7"
+      },
+      "extracted_values": {
+        "acid": "MSA",
+        "scale_mmol": 6,
+        "reported_conversion_pct": 93,
+        "FE": 5,
+        "reported_ipl_yield_pct": 61,
+        "isolated_ipl_yield_pct": 53,
+        "AL": 5,
+        "reported_gvl_yield_pct": 7
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev_110c",
+      "kind": "text",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 3,
+        "char_span": null,
+        "quote": "complete conversion was measured with FA (75% yield)\nbeing the main product, besides FE (15%) and minimal amounts"
+      },
+      "extracted_values": {
+        "temperature_C": 110,
+        "reported_fa_yield_pct": 75,
+        "FE": 15,
+        "IPL": 5
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev_fig5",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 5",
+        "page": 5,
+        "char_span": null,
+        "quote": "(A) Overall plot of the transfer hydrogenation of furfural to small oxygenates using IPA as reducing agent in the time frame of 21 h"
+      },
+      "extracted_values": {
+        "conversion_2h": 54,
+        "conversion_7h": 77,
+        "conversion_9h": 94,
+        "conversion_21h": 100,
+        "unidentified_gap_pct_range": [
+          15,
+          20
+        ]
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev_t3_e4",
+      "kind": "table",
+      "location": {
+        "section": "Table 3, entry 4",
+        "page": 6,
+        "char_span": null,
+        "quote": "4 MSA 99 11 80 5"
+      },
+      "extracted_values": {
+        "acid": "MSA",
+        "reported_conversion_pct": 99,
+        "FE": 11,
+        "reported_ipl_yield_pct": 80,
+        "AL": 5
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev_t3_e5",
+      "kind": "table",
+      "location": {
+        "section": "Table 3, entry 5",
+        "page": 6,
+        "char_span": null,
+        "quote": "5 H2SO4 99 – 99 1"
+      },
+      "extracted_values": {
+        "acid": "H2SO4",
+        "reported_conversion_pct": 99,
+        "FE": null,
+        "reported_ipl_yield_pct": 99,
+        "AL": 1
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev_t3_e6",
+      "kind": "table",
+      "location": {
+        "section": "Table 3, entry 6",
+        "page": 6,
+        "char_span": null,
+        "quote": "6 MSAa 99 <1 95 4"
+      },
+      "extracted_values": {
+        "acid": "MSA",
+        "acid_loading_molpct": 1.5,
+        "reported_conversion_pct": 99,
+        "FE": "<1",
+        "reported_ipl_yield_pct": 95,
+        "AL": 4
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev_hrms",
+      "kind": "statistic",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 5,
+        "char_span": null,
+        "quote": "the molecular weights of 236.27 and\n178.18 g mol−1"
+      },
+      "extracted_values": {
+        "mw_inta": 236.27,
+        "mw_intb": 178.18,
+        "unit": "g/mol"
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev_fig6_inta",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 6",
+        "page": 6,
+        "char_span": null,
+        "quote": "ΔRG° (298 K) = 26.1 kJ mol−1\nΔRG° (403 K) = 46.1 kJ mol−1"
+      },
+      "extracted_values": {
+        "intermediate": "IntA",
+        "value_a": 26.1,
+        "unit_a": "kJ/mol (298 K)",
+        "value_b": 46.1,
+        "unit_b": "kJ/mol (403 K)"
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev_fig6_intb",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 6",
+        "page": 6,
+        "char_span": null,
+        "quote": "ΔRG° (298 K) = -14.9 kJ mol−1\nΔRG° (403 K) = -11.9 kJ mol−1"
+      },
+      "extracted_values": {
+        "intermediate": "IntB",
+        "value_a": -14.9,
+        "unit_a": "kJ/mol (298 K)",
+        "value_b": -11.9,
+        "unit_b": "kJ/mol (403 K)"
+      },
+      "confidence": 0.85
+    }
+  ],
+  "bindings": [
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev_t2_e11",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev_t2_e11",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev_t1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c4",
+      "evidence_id": "ev_t1_e6",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c5",
+      "evidence_id": "ev_t1_e6",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c7",
+      "evidence_id": "ev_t1_e4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c7",
+      "evidence_id": "ev_t1_e5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c8",
+      "evidence_id": "ev_t2_e4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c9",
+      "evidence_id": "ev_t2_e10",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c10",
+      "evidence_id": "ev_t2_e9",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c11",
+      "evidence_id": "ev_t2_e7",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c12",
+      "evidence_id": "ev_t2_e5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c13",
+      "evidence_id": "ev_110c",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c15",
+      "evidence_id": "ev_fig5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c16",
+      "evidence_id": "ev_t2_e11",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c17",
+      "evidence_id": "ev_t2_e12",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c20",
+      "evidence_id": "ev_t3_e4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c20",
+      "evidence_id": "ev_t3_e5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c21",
+      "evidence_id": "ev_t3_e6",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c22",
+      "evidence_id": "ev_hrms",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c23",
+      "evidence_id": "ev_fig6_inta",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c24",
+      "evidence_id": "ev_fig6_intb",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c25",
+      "evidence_id": "ev_fig5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c26",
+      "evidence_id": "ev_t2_e11",
+      "relation": "rests_on"
+    }
+  ]
+}

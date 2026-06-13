@@ -1,0 +1,406 @@
+{
+  "paper_id": "economics-goncalves2026-semiparametric-local-projections",
+  "title": "Semiparametric Local Projections",
+  "doi": null,
+  "domain": "economics (econometrics / applied macroeconomics)",
+  "n_pages_read": 35,
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The historical average annualized inflation of 3.8% corresponds to 0.32% monthly.",
+      "quote": "conditional on the annualized inflation exceeding its historical average of 3.8% (i.e., 0.32% monthly) during the estimation period",
+      "section": "8 Empirical illustrations",
+      "page": 25,
+      "epistemic_tier": "T0",
+      "predicate": "Convert 3.8% annual to monthly and check it rounds to 0.32%.",
+      "evidence": [
+        {"id": "e1", "kind": "number", "location": "Section 8, gasoline-inflation illustration", "quote": "historical average of 3.8% (i.e., 0.32% monthly)", "extracted_values": {"annual_pct": 3.8, "claimed_monthly_pct": 0.32}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "percent/unit-conversion arithmetic (annual->monthly)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.93, "rationale": "Simple convention 3.8/12 = 0.3167 ~ 0.32% monthly (recomputed). Geometric compounding gives 0.311 ~ 0.31%, so the figure uses the simple divide-by-12 convention, which is standard and rounds correctly. Off-the-shelf percent-change/unit-consistency check settles it."}
+    },
+    {
+      "id": "c2",
+      "text": "JEL codes assigned are C14, C32, E52, Q43.",
+      "quote": "JEL codes: C14, C32, E52, Q43",
+      "section": "Abstract",
+      "page": 1,
+      "epistemic_tier": "T1",
+      "predicate": "Check that each JEL code is a real code and is topically consistent with the paper (semiparametric methods, time series, monetary policy, energy/macro).",
+      "evidence": [
+        {"id": "e2", "kind": "text", "location": "Abstract header", "quote": "JEL codes: C14, C32, E52, Q43", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "JEL classification lookup (fixed external knowledge)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "C14 (semiparametric/nonparametric methods), C32 (time-series/multiple equation models), E52 (monetary policy), Q43 (energy and the macroeconomy) are all valid JEL codes and topically appropriate for a semiparametric IRF paper applied to gasoline-price/inflation pass-through. Verifiable against the JEL code list."}
+    },
+    {
+      "id": "c3",
+      "text": "Structural shocks are drawn i.i.d. from a Student-t distribution with nu=10 degrees of freedom rescaled to unit variance, which (with delta=1) keeps the Riesz representer uniformly bounded as required by Assumption 2(i).",
+      "quote": "each drawn i.i.d. from a Student-t distribution with nu = 10 degrees of freedom rescaled to unit variance ... With delta = 1 and the use of a t-distribution for generating epsilon_1t, the population Riesz representer alpha_0(x) is uniformly bounded, satisfying Assumption 2(i).",
+      "section": "7 Simulation results",
+      "page": 18,
+      "epistemic_tier": "T3",
+      "predicate": "Check internal consistency: Assumption 2(i) requires bounded Riesz representer; text states Gaussian is ruled out but Student-t is allowed; simulation uses Student-t consistent with that requirement.",
+      "evidence": [
+        {"id": "e3", "kind": "text", "location": "Section 7 + footnote 5", "quote": "This rules out distributions with thin-tails such as the Gaussian, but allows for Student-t distributions.", "extracted_values": {"nu": 10}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "cross-consistency between Assumption 2(i) (Sec 5) and the simulation DGP choice (Sec 7); analytic check that a Gaussian-over-t density ratio is bounded", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.78, "rationale": "Internally consistent: the t(10) shock distribution is deliberately chosen because the shift-by-delta density ratio (Gaussian-like numerator over t denominator) stays bounded for fat tails, satisfying 2(i), whereas a Gaussian denominator would let the ratio explode in the tails. Domain-reasoning check (no off-the-shelf tool); the boundedness claim for finite delta and t-tails is standard."}
+    },
+    {
+      "id": "c4",
+      "text": "NLO cross-fitting partitions the sample into K >= 4 contiguous blocks; the simulations use K=10 (state-dependent) and K=20 (nonlinear regressor), and the inflation empirical uses K=10.",
+      "quote": "We partition the index set {1, . . . , T } into K >= 4 non-overlapping blocks ... The DR-NLO estimator uses K = 10 (K = 20) contiguous blocks ... for the state-dependent (nonlinear regressor) model.",
+      "section": "5 Estimation and inference / 7 Simulation results / 8",
+      "page": 13,
+      "epistemic_tier": "T2",
+      "predicate": "Check the block counts used in simulations and empirics all satisfy the stated K>=4 minimum and are mutually consistent between methods section, simulation section, and empirical section.",
+      "evidence": [
+        {"id": "e4a", "kind": "text", "location": "Section 5", "quote": "K >= 4 non-overlapping blocks", "extracted_values": {"K_min": 4}},
+        {"id": "e4b", "kind": "text", "location": "Section 7", "quote": "K = 10 (K = 20) contiguous blocks", "extracted_values": {"K_state_dependent": 10, "K_nonlinear_regressor": 20}},
+        {"id": "e4c", "kind": "text", "location": "Section 8", "quote": "using the same learners as in the Monte Carlo simulations and K = 10", "extracted_values": {"K_empirical": 10}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-prose internal-consistency check of K values against the stated minimum", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "K=10 and K=20 both satisfy K>=4. The empirical K=10 matches the state-dependent simulation choice. No contradiction. Simple cross-reference check."}
+    },
+    {
+      "id": "c5",
+      "text": "Headline inflation jumps by close to 0.05 percentage points in response to a one-percentage-point gasoline price shock and is close to zero by horizon 2 (both LP and DR-NLO).",
+      "quote": "Both estimates indicate that headline inflation jumps by close to 0.05 percentage points (not annualized) in response to a one percentage point gasoline price shock, but the response declines quickly. By horizon 2, it is close to zero.",
+      "section": "8 Empirical illustrations",
+      "page": 24,
+      "epistemic_tier": "T2",
+      "predicate": "Read the Headline Inflation panel of Figure 6 and verify the impact (h=0) response is ~0.05pp and the curve is near zero by h=2.",
+      "evidence": [
+        {"id": "e5", "kind": "figure", "location": "Figure 6 (Headline Inflation panel)", "quote": "y-axis labeled Response (%), gridlines at 0, 0.02, 0.04, 0.06", "extracted_values": {"impact_response_pp_approx": 0.045, "horizon2_response_pp_approx": 0.0}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-figure consistency (read Figure 6 impact value and decay)", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "Rendered Figure 6 at 240 dpi: both LP (black) and DR-NLO (blue) start near 0.045 at h=0 (between the 0.04 and 0.06 gridlines, consistent with 'close to 0.05'), fall to near zero by h=2. Matches prose. Confidence below 1 because exact impact value (~0.045 vs 0.05) read from figure, not a labeled number."}
+    },
+    {
+      "id": "c6",
+      "text": "The core inflation response is an order of magnitude smaller than headline and only slightly positive.",
+      "quote": "The response of core inflation is an order of magnitude smaller and only slightly positive.",
+      "section": "8 Empirical illustrations",
+      "page": 24,
+      "epistemic_tier": "T2",
+      "predicate": "Compare the Core Inflation panel peak magnitude to the Headline panel peak (~0.045) using the shared y-axis; check it is ~10x smaller.",
+      "evidence": [
+        {"id": "e6", "kind": "figure", "location": "Figure 6 (Core Inflation panel, same 0-0.06 y-scale)", "quote": "Core response stays near zero, peak ~0.004-0.005", "extracted_values": {"core_peak_pp_approx": 0.004, "headline_impact_pp_approx": 0.045}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-figure consistency; ratio of two panel magnitudes on the same axis scale", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.82, "rationale": "Both panels share the 0 to 0.06 y-scale. Core peak (~0.004 for LP) vs headline impact (~0.045) gives ~10x, consistent with 'an order of magnitude smaller'. Read from rendered figure; 'order of magnitude' is qualitative so tolerance is wide."}
+    },
+    {
+      "id": "c7",
+      "text": "At horizon 12, the linear LP cumulative auto-sales decline is only 28% of the DR-NLO response.",
+      "quote": "At horizon 12, the linear LP estimate shows a decline in auto sales that is only 28% of the DR-NLO response.",
+      "section": "8 Empirical illustrations",
+      "page": 26,
+      "epistemic_tier": "T2",
+      "predicate": "Read the two cumulative-response endpoints at h=12 in Figure 8 relative to the zero line and check the LP/DR-NLO decline ratio is ~0.28.",
+      "evidence": [
+        {"id": "e7", "kind": "figure", "location": "Figure 8 (Response of Motor Vehicle Sales, h=12 endpoints)", "quote": "LP (black) endpoint near the zero line; DR-NLO (blue) endpoint substantially below zero", "extracted_values": {"claimed_ratio": 0.28}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "exact endpoint values at h=12 from the replication output (figure has no numeric labels); ratio recompute", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.5, "rationale": "Figure 8 is directionally consistent (LP endpoint is a small fraction of the much larger DR-NLO decline at h=12). But pixel measurement of the LP/DR-NLO ratio is highly sensitive to the exact zero-line placement (recovered ratio ranged ~ -0.04 to 0.20 across plausible zero-line rows because confidence-band shading obscures the near-zero markers), so the precise 28% cannot be confirmed from the rendered figure. Needs underlying replication data to settle; not covered by any off-the-shelf check."}
+    },
+    {
+      "id": "c8",
+      "text": "The illustrative nonlinear DGP in Figure 1 is x_t = eps1_t; y_t = 0.5 y_{t-1} + 0.5 x_t + 0.3 x_{t-1} - 0.4 f(x_t) - 0.3 f(x_{t-1}) + eps2_t, with delta=2 and f in {max(x,0), x^3}.",
+      "quote": "y_t = 0.5 y_{t-1} + 0.5 x_t + 0.3 x_{t-1} - 0.4 f (x_t ) - 0.3 f (x_{t-1}) + eps_2t",
+      "section": "3 Population impulse response functions",
+      "page": 9,
+      "epistemic_tier": "T2",
+      "predicate": "Check the DGP coefficients in the text match the equation block and that delta=2 and the two f forms match Figure 1 panel labels (a) max(x,0) and (b) x^3.",
+      "evidence": [
+        {"id": "e8a", "kind": "equation", "location": "Section 3 DGP block", "quote": "y_t = 0.5 y_{t-1} + 0.5 x_t + 0.3 x_{t-1} - 0.4 f(x_t) - 0.3 f(x_{t-1}) + eps2_t", "extracted_values": {"ar_y": 0.5, "b_x": 0.5, "b_xlag": 0.3, "c_f": -0.4, "c_flag": -0.3, "delta": 2}},
+        {"id": "e8b", "kind": "figure", "location": "Figure 1 panels (a),(b)", "quote": "(a) f(x) = max(x_t, 0)  (b) f(x) = x_t^3", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "transcription/cross-consistency check of DGP coefficients and figure panel labels", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.88, "rationale": "Equation block, surrounding prose (delta=2; ARF solid red vs ARF* dashed blue; baseline Et-1(yt) expansion uses 0.5y_{t-1}+0.3x_{t-1}-0.4Et-1(f)-0.3f(x_{t-1})) and Figure 1 panel labels are mutually consistent. The baseline expression in the text correctly drops the contemporaneous 0.5x_t term (mean-zero shock) and matches the stated coefficients. Internal cross-check."}
+    },
+    {
+      "id": "c9",
+      "text": "The state-dependent simulation DGP uses parameters rho_x=0.3, psi_x=-0.1, betaE=2.5, betaR=3.5, gammaE=0.9, gammaR=-0.1 with S_{t-1}=1{y_{t-1}>0}.",
+      "quote": "The parameters are set to rho_x = 0.3, psi_x = -0.1, betaE = 2.5, betaR = 3.5, gammaE = 0.9, and gammaR = -0.1.",
+      "section": "7.2 Simulations for state dependent model",
+      "page": 20,
+      "epistemic_tier": "T2",
+      "predicate": "Check the listed numeric parameters match the model equations stated in the same paragraph (x_t = rho_x x_{t-1} + psi_x y_{t-1} + eps1_t; state indicator definition).",
+      "evidence": [
+        {"id": "e9", "kind": "text", "location": "Section 7.2", "quote": "x_t = rho_x x_{t-1} + psi_x y_{t-1} + eps_1t and S_{t-1} = 1{y_{t-1} > 0}", "extracted_values": {"rho_x": 0.3, "psi_x": -0.1, "betaE": 2.5, "betaR": 3.5, "gammaE": 0.9, "gammaR": -0.1}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "transcription/internal-consistency check (parameters vs model spec)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "Parameter list maps one-to-one onto the stated equations and onto Example 2.2 (beta_{t-1}=betaE S + betaR(1-S), etc.). No missing or contradictory parameter. Plain cross-reference; cannot independently confirm these produced the plotted figures without the simulation code."}
+    },
+    {
+      "id": "c10",
+      "text": "DR-NLO has smaller median bias than SD-LP at every horizon and sample size in the state-dependent design, with DR-NLO bias decreasing in T while SD-LP bias does not vanish.",
+      "quote": "the semiparametric DR-NLO estimator has smaller median bias at every horizon and for every sample size considered, and its bias decreases with T ... the systematic downward bias of the traditional state-dependent LP (SD-LP) estimator ... does not vanish as the sample size grows.",
+      "section": "7.2 Simulations for state dependent model",
+      "page": 21,
+      "epistemic_tier": "T2",
+      "predicate": "Inspect Figure 3 (Median Bias) panels: verify DR-NLO (purple) is closer to zero than SD-LP (green dashed) across panels and that SD-LP bias persists across T while DR-NLO shrinks.",
+      "evidence": [
+        {"id": "e10", "kind": "figure", "location": "Figure 3 (Median Bias, Expansion/Recession x T grid)", "quote": "Median bias of DR-NLO and LP estimators for different sample sizes and delta = 1.", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-figure consistency over the Figure 3 panel grid", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.78, "rationale": "Figure 3 shows SD-LP (green dashed) with visible non-vanishing downward bias and DR-NLO (purple) hugging zero across the T-by-state grid, consistent with the prose. Read qualitatively from the rendered grid; 'every horizon and sample size' is a strong universal that I could verify only by eyeballing all panels, hence <0.85."}
+    },
+    {
+      "id": "c11",
+      "text": "SD-LP RMSE exceeds DR-NLO RMSE at short horizons but is lower at long horizons; the gap vanishes at long horizons as T grows, with DR-NLO dominating at short horizons.",
+      "quote": "The substantial bias of SD-LP at shorter horizons explains why its RMSE is greater than that of DR-NLO ... At longer horizons, the bias of the SD-LP declines, resulting in a lower RMSE. As T increases, differences in RMSE between the two estimators vanish at longer horizons, with DR-NLO dominating SD-LP at shorter horizons.",
+      "section": "7.2 Simulations for state dependent model",
+      "page": 22,
+      "epistemic_tier": "T2",
+      "predicate": "Inspect Figure 4 (RMSE): confirm SD-LP curve is above DR-NLO at h=1,2 and dips below DR-NLO at longer horizons (visible in Recession panels).",
+      "evidence": [
+        {"id": "e11", "kind": "figure", "location": "Figure 4 (RMSE, Expansion/Recession x T=500/1000/2000)", "quote": "RMSE of DR-NLO and LP estimators for different sample sizes and delta = 1.", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-figure consistency over Figure 4 panels", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.8, "rationale": "Rendered Figure 4: SD-LP (green dashed) clearly peaks above DR-NLO (purple) at h=1-2 and crosses below DR-NLO at longer horizons (esp. Recession, T=1000/2000), matching the described bias-driven RMSE pattern. Qualitative figure read."}
+    },
+    {
+      "id": "c12",
+      "text": "SD-LP 95% CIs exhibit substantial undercoverage that worsens as T increases, while DR-NLO coverage stays closer to nominal and improves with T.",
+      "quote": "The SD-LP intervals exhibit substantial undercoverage for all sample sizes, which worsens as T increases since the variance shrinks while the bias persists. DR-NLO slightly undercovers as well, but its coverage remains closer to the nominal 95% level and improves with T.",
+      "section": "7.2 Simulations for state dependent model",
+      "page": 22,
+      "epistemic_tier": "T2",
+      "predicate": "Inspect Figure 5 (coverage): confirm SD-LP coverage dips far below 0.95 (worse at larger T) and DR-NLO stays near 0.95.",
+      "evidence": [
+        {"id": "e12", "kind": "figure", "location": "Figure 5 (Coverage, Expansion/Recession x T=500/1000/2000)", "quote": "Coverage rates of 95% intervals based on DR-NLO and SD-LP", "extracted_values": {"nominal": 0.95}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-figure consistency over Figure 5 panels", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.83, "rationale": "Rendered Figure 5: SD-LP (green dashed) drops to ~0.0-0.5 around h=1 with the dip deepening from T=500 to T=2000 (Recession T=2000 nears 0), while DR-NLO (purple) stays near the 0.95 dotted line. Directly matches 'worsens as T increases'. Qualitative read."}
+    },
+    {
+      "id": "c13",
+      "text": "For the nonlinear-regressor design, DR-NLO median absolute bias is small/near zero across horizons and sample sizes, RMSE decreases with T, and coverage is below nominal 95% but improves with T.",
+      "quote": "The bias is small and close to zero across horizons and sample sizes ... RMSE decreases with T, as expected for a consistent estimator. Although coverage falls below the nominal 95%, it improves with increasing sample size.",
+      "section": "7.1 Simulations for sign model",
+      "page": 20,
+      "epistemic_tier": "T2",
+      "predicate": "Inspect Figure 2's three panels (Median Absolute Bias, RMSE, Coverage) for T in {250,500,1000,2000} and verify the described monotone-in-T patterns.",
+      "evidence": [
+        {"id": "e13", "kind": "figure", "location": "Figure 2 (nonlinear regressor DGP: bias, RMSE, coverage)", "quote": "Median Absolute Bias, RMSE and Coverage for different sample sizes.", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-figure consistency over Figure 2 panels", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.72, "rationale": "Figure 2 shows the three panels with curves by sample size; bias near zero, RMSE shrinking with T, and coverage below 0.95 are visible at the rendered resolution, consistent with prose. Lower confidence: the bias/coverage magnitudes are small and the panel legend/curve separation is hard to read precisely at 110 dpi, so I verified the qualitative pattern not the exact values."}
+    },
+    {
+      "id": "c14",
+      "text": "True impulse responses in the simulations are computed by simulation using 5,000 counterfactual paths after a burn-in of T0=500.",
+      "quote": "The true impulse responses are computed by simulation from the structural model using 5,000 counterfactual paths after a burn-in period of T0 = 500.",
+      "section": "7 Simulation results",
+      "page": 18,
+      "epistemic_tier": "T7",
+      "predicate": "Record the Monte Carlo design constants (paths, burn-in, replication counts) for reproducibility; check they are internally consistent and stated unambiguously.",
+      "evidence": [
+        {"id": "e14a", "kind": "number", "location": "Section 7", "quote": "5,000 counterfactual paths after a burn-in period of T0 = 500", "extracted_values": {"paths": 5000, "burn_in": 500}},
+        {"id": "e14b", "kind": "number", "location": "Sections 7.1 / 7.2", "quote": "20,000 replications per sample size ... 30,000 replications per sample size", "extracted_values": {"reps_nonlinear_regressor": 20000, "reps_state_dependent": 30000}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "integrity/reproducibility bookkeeping check (constants stated once, mutually consistent, no contradiction)", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.8, "rationale": "Design constants are each stated exactly once and are internally consistent (T in {250,500,1000,2000}, 1% symmetric trimming, AIC Hermite degree<=2, Bartlett kernel + Andrews 1991 bandwidth). No code/data link is provided, so full reproducibility is not establishable here; this is a transparency/integrity record, not an error."}
+    },
+    {
+      "id": "c15",
+      "text": "Definitions 1 and 2 of the IRF coincide when the potential outcome is linear in e for all horizons (e.g., a linear model or exogenous-conditioning special cases of Examples 2.2/2.3) and otherwise differ, as illustrated in Figure 1.",
+      "quote": "These two definitions are equivalent when the potential outcome is linear in e for all horizons, as would be the case for a linear model or in special cases of Example 2.2 and Example 2.3 when the conditioning sets (S_{t-1} and r_t, respectively) are exogenous. However, in general, the two definitions differ.",
+      "section": "3 Population impulse response functions",
+      "page": 8,
+      "epistemic_tier": "T3",
+      "predicate": "Check the mathematical claim that ARF (Definition 1) equals ARF* (Definition 2) under linearity in e, and that the Jensen-inequality argument given for the nonlinear baseline is correct.",
+      "evidence": [
+        {"id": "e15", "kind": "text", "location": "Section 3, baseline discussion", "quote": "By Jensen's inequality, this will not yield the desired baseline ... because E(f(x_t)) is not f(E(x_t)).", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "analytic verification of the linearity-equivalence and the Jensen-inequality baseline argument", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.82, "rationale": "If y_{t+h}(e) is affine in e, the difference y(e+delta)-y(e) is constant in e so averaging over e (Def 1) equals evaluating at a fixed e (Def 2); the divergence under nonlinearity follows from Jensen's inequality (E[f(x)] != f(E[x])). The reasoning is mathematically standard. No off-the-shelf tool; expert/domain check."}
+    },
+    {
+      "id": "c16",
+      "text": "Proposition 4.1: under (1)-(2) with i.i.d. mutually independent shocks, theta_0,h = E[g0,h(x_t+delta, z_{t-1}) - g0,h(x_t, z_{t-1})], identified from observables (y_{t+h}, x_t, z_{t-1}) with no knowledge of phi or mu.",
+      "quote": "theta_0,h ≡ ARF_h(delta) = E[g_0,h(x_t + delta, z_{t-1}) - g_0,h(x_t, z_{t-1})] , where g_0,h(x, z) ≡ E(y_{t+h} | x_t = x, z_{t-1} = z).",
+      "section": "4 Identification",
+      "page": 11,
+      "epistemic_tier": "T3",
+      "predicate": "Verify the identification proof: conditional independence x_t ⊥ U_{t+h} | z_{t-1} plus additive separability of eps1 in (1) yields the stated estimand via LIE.",
+      "evidence": [
+        {"id": "e16", "kind": "equation", "location": "Eq (3); Proof of Prop 4.1 (Appendix A)", "quote": "g_0,h(x, z) = E[m_h(x, U_{t+h}) | z_{t-1} = z] ... The desired result follows by applying the law of iterated expectations (LIE).", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "proof check (conditional independence + additive shift + LIE)", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.8, "rationale": "Appendix A proof is short and follows standard potential-outcomes/LIE logic: additivity makes a delta-shift in eps1 equivalent to a delta-shift in x_t holding z_{t-1}, and conditional independence lets g0,h carry the causal content. Internally coherent; no off-the-shelf verifier; an expert proof-reading is what would settle it."}
+    },
+    {
+      "id": "c17",
+      "text": "Proposition 4.2 / Eq (6): the augmented moment condition with Riesz representer alpha_0(x,z) = (f0(x-delta|z) - f0(x|z))/f0(x|z) is doubly robust (valid for any g_h when alpha=alpha_0 and any alpha when g_h=g0,h), via Theorem 5 of Chernozhukov et al. (2022).",
+      "quote": "this moment condition yields an estimator that is insensitive to misspecification of g_h provided alpha = alpha_0, and insensitive to misspecification of alpha provided g_h = g_0,h.",
+      "section": "4 Identification",
+      "page": 13,
+      "epistemic_tier": "T3",
+      "predicate": "Verify the doubly robust / Neyman-orthogonality claim and the form of the Riesz representer against the cited Chernozhukov et al. (2022) automatic-debiasing framework and Eq (5).",
+      "evidence": [
+        {"id": "e17", "kind": "equation", "location": "Eq (5)-(6); Proof of Prop 4.2", "quote": "E[g_h(x_t+delta,z_{t-1}) - g_h(x_t,z_{t-1})] = E[alpha_0(x_t,z_{t-1}) g_h(x_t,z_{t-1})]", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "proof check of double robustness + confirmation the Riesz representer matches the linear-functional integration-by-parts identity in Chernozhukov et al. (2022)", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.78, "rationale": "Eq (5) is the standard Riesz-representation identity for the shift functional; the DR property follows because the added term alpha_0*(y-g) has mean zero by LIE when g=g0,h, and the g-part recovers theta when alpha=alpha_0. Consistent with the cited automatic-debiasing result. Verifiable only by reading the proof and the cited theorem (T5-adjacent)."}
+    },
+    {
+      "id": "c18",
+      "text": "Theorem 5.1: under Assumptions 1-3, sqrt(T)(theta_hat_h - theta_0,h) -> N(0, V_h), with first-step nuisance estimation having no first-order effect (oracle equivalence).",
+      "quote": "sqrt(T)(theta_hat_h - theta_0,h) = (1/sqrt(T)) sum ψ(...) + o_p(1) ->d N(0, V_h), where V_h is the long-run variance",
+      "section": "5 Estimation and inference",
+      "page": 16,
+      "epistemic_tier": "T3",
+      "predicate": "Verify the asymptotic-normality proof: remainders R1,R2,R3 are o_p(T^{-1/2}) under the product-rate Assumption 3(ii) and beta-mixing, using Lemma B.1 (Semenova et al. 2023) and a CLT (Davidson 1994, Cor. 24.7).",
+      "evidence": [
+        {"id": "e18", "kind": "equation", "location": "Theorem 5.1 + Appendix B (R1,R2,R3 bounds)", "quote": "which is bounded by r_alpha,T r_g,T = o(T^{-1/2}), given Assumption 3(ii).", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "full proof check of Appendix B (covariance inequalities, mixing summability, product-rate condition)", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.72, "rationale": "Appendix B derivation is detailed and standard for DML-with-time-series: Neyman orthogonality kills the bias term of R1/R2, the cross term R3 is bounded by the product rate r_alpha*r_g=o(T^{-1/2}), and geometric beta-mixing gives summable autocovariances (Davidson Cor. 14.3/24.7). The internal logic is coherent. Settling it definitively requires expert proof review of the moment/mixing bounds; cannot be auto-checked."}
+    },
+    {
+      "id": "c19",
+      "text": "Proposition 6.1: for conditional IRFs, CAR_h(delta,omega) is identified under x_t ⊥ U_{t+h} | (z_{t-1}, Omega_t); this holds when Omega_t is a function of z_{t-1} (Example 2.2) or when Omega_t ⊥ eps1_t (Example 2.3, since r_t = f(x_{t-1})+eps3_t with x_{t-1} dated t-1 and eps3 ⊥ eps1), but fails if r_t depended on x_t.",
+      "quote": "since x_{t-1} is dated t - 1 and eps_3t ⊥ eps_1t by assumption, r_t ⊥ eps_1t and conditional independence holds. However, this would fail if r_t depended on x_t (and hence on eps_1t), for instance if r_t = f(x_t) + eps_3t.",
+      "section": "6 Conditional impulse response functions",
+      "page": 17,
+      "epistemic_tier": "T3",
+      "predicate": "Check the conditional-independence argument and the stated boundary case (failure when the conditioning variable depends on the contemporaneous shock).",
+      "evidence": [
+        {"id": "e19", "kind": "equation", "location": "Eq (7); Proof of Prop 6.1", "quote": "CAR_h(delta,omega) = E[g0,h(x_t+delta,z_{t-1},omega) - g0,h(x_t,z_{t-1},omega) | Omega_t = omega]", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "proof check of conditional identification + the dating/independence boundary argument", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.8, "rationale": "The argument mirrors Prop 4.1 with conditioning extended to Omega_t; the Example 2.3 case is correctly identified as valid because r_t is built from x_{t-1} (predetermined) and an independent shock, and correctly flagged as failing if r_t = f(x_t)+eps3. Logically consistent. Expert/domain proof check; no off-the-shelf tool."}
+    },
+    {
+      "id": "c20",
+      "text": "The structural model is the triangular system x_t = phi(z_{t-1}) + eps1_t, y_t = mu(x_t, z_{t-1}, eps2_t), with eps_t i.i.d.(0, Sigma), Sigma=diag(sigma1^2, sigma2^2); the exclusion of y_t from the x-equation is equivalent to block recursiveness in linear SVAR identification.",
+      "quote": "The exclusion of y_t from equation (1) is equivalent to the assumption of block recursiveness in linear structural VAR identification, where x_t = phi' z_{t-1} + eps_1t.",
+      "section": "2 Framework",
+      "page": 5,
+      "epistemic_tier": "T3",
+      "predicate": "Check that the stated equivalence between the exclusion restriction and SVAR block recursiveness is correct, and that the three running examples (2.1-2.3) are special cases of (1)-(2).",
+      "evidence": [
+        {"id": "e20", "kind": "equation", "location": "Eqs (1)-(2), Examples 2.1-2.3", "quote": "x_t = phi(z_{t-1}) + eps_1t , y_t = mu(x_t, z_{t-1}, eps_2t)", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "domain/method check that the recursive exclusion maps to SVAR block recursiveness and that Examples 2.1-2.3 nest in (1)-(2)", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.8, "rationale": "Standard macroeconometrics: a predetermined x_t with eps1 excluded from the y-equation's contemporaneous feedback is exactly the recursive/Cholesky block-recursive identification, and the linear special case x_t=phi'z_{t-1}+eps1 is the SVAR form. Examples 2.1-2.3 are explicit specializations. Expert-knowledge check; no automated verifier."}
+    },
+    {
+      "id": "c21",
+      "text": "Assumption 2(i) (bounded Riesz representer) rules out thin-tailed distributions such as the Gaussian but allows Student-t.",
+      "quote": "Assumption 2(i) requires the Riesz representer alpha_0(x, z) to be uniformly bounded over X x Z ... This rules out distributions with thin-tails such as the Gaussian, but allows for Student-t distributions.",
+      "section": "5 Estimation and inference",
+      "page": 14,
+      "epistemic_tier": "T3",
+      "predicate": "Check the mathematical claim that the shift density ratio is unbounded for Gaussian conditional densities but bounded for Student-t (for finite delta).",
+      "evidence": [
+        {"id": "e21", "kind": "text", "location": "Assumption 2 discussion", "quote": "sup |alpha_0(x, z)| < alpha-bar ... rules out ... Gaussian, but allows ... Student-t", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "analytic check of boundedness of (f0(x-delta|z)-f0(x|z))/f0(x|z) under Gaussian vs t tails", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.8, "rationale": "For a Gaussian f0, the ratio f0(x-delta)/f0(x) = exp(delta*x/sigma^2 - delta^2/2sigma^2) grows without bound as x->infinity, so alpha_0 is unbounded; for Student-t the ratio of polynomially-decaying tails stays bounded for fixed delta. The claim is mathematically correct. Domain/analytic check; no off-the-shelf tool."}
+    },
+    {
+      "id": "c22",
+      "text": "Gonçalves et al. (2021, 2024a,b) show that state-dependent local projections fail to recover population responses when the state is endogenous and the shock is large.",
+      "quote": "as shown in Gonçalves et al. (2021, 2024a,b), such state-dependent local projections fail to recover the population responses when the state is endogenous and the shock is large as in much of applied work",
+      "section": "1 Introduction",
+      "page": 2,
+      "epistemic_tier": "T5",
+      "predicate": "Check that the cited prior works (esp. 'State-dependent local projections', J. Econometrics 244) actually establish the attributed result about endogenous-state SD-LP bias.",
+      "evidence": [
+        {"id": "e22", "kind": "text", "location": "Introduction + References", "quote": "Gonçalves, S., Herrera, A., Kilian, L. and Pesavento, E. (2024b), 'State-dependent local projections', Journal of Econometrics 244.", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "literature check: read the cited Gonçalves et al. papers to confirm the attributed claim", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.55, "rationale": "The attribution is plausible and consistent with the well-known Gonçalves-Herrera-Kilian-Pesavento program on nonlinear LP, and the figures here (SD-LP non-vanishing bias) corroborate the mechanism. But confirming the exact attributed statement requires reading the cited articles, which is outside what I can recompute here. Self-citation by overlapping authors raises no flag but is not independent confirmation."}
+    },
+    {
+      "id": "c23",
+      "text": "Bibliographic details of well-known external references (Andrews 1991 Econometrica 59:817-858; Chernozhukov et al. 2022 Econometrica 90:967-1027; Newey 1994 Econometric Theory 10:1-28; Stock 1989 JASA 84:567-575; Ramey & Zubairy 2018 JPE 126:850-901).",
+      "quote": "Andrews, D. W. K. (1991), 'Heteroskedasticity and autocorrelation consistent covariance matrix estimation', Econometrica 59, 817-858.",
+      "section": "References",
+      "page": 28,
+      "epistemic_tier": "T5",
+      "predicate": "Verify journal/volume/page numbers of these canonical references against external bibliographic records.",
+      "evidence": [
+        {"id": "e23", "kind": "text", "location": "References list", "quote": "Chernozhukov, V., Newey, W. and Singh, R. (2022), 'Automatic debiased machine learning of causal and structural effects', Econometrica 90, 967-1027.", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "citation/bibliography lookup against external databases (Crossref/journal records)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.78, "rationale": "These are canonical references whose volume/page numbers match well-known records to my knowledge (Andrews 1991 Econometrica 59:817-858; Newey 1994 ET 10:1-28; Stock 1989 JASA 84:567-575; Ramey-Zubairy 2018 JPE 126:850-901). A reference-checker against Crossref would settle each exactly. Tagged supported with moderate confidence pending an external lookup."}
+    },
+    {
+      "id": "c24",
+      "text": "The paper discloses that the AI tool Refine.ink was used to check the paper for consistency and clarity.",
+      "quote": "Refine.ink was used to check the paper for consistency and clarity.",
+      "section": "Acknowledgments (footnote *)",
+      "page": 1,
+      "epistemic_tier": "T7",
+      "predicate": "Record the AI-assistance disclosure as an integrity signal; assess whether it is a transparent disclosure (neutral) or indicates a concern.",
+      "evidence": [
+        {"id": "e24", "kind": "text", "location": "Title-page acknowledgment footnote", "quote": "Refine.ink was used to check the paper for consistency and clarity.", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "integrity-signal review (no quantitative check; just note the disclosure)", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.7, "rationale": "This is a transparent, neutral disclosure of AI-assisted editing/consistency checking, not evidence of fabrication. Recorded as a T7 integrity signal. No verification beyond noting it; it does not by itself indicate any error."}
+    },
+    {
+      "id": "c25",
+      "text": "Both empirical applications use monthly seasonally-adjusted FRED data with six lags; inflation sample is Jan 1974-April 2026 and motor-vehicle-sales sample is Jan 1974-March 2026.",
+      "quote": "The data source is FRED. ... The estimation sample spans January 1974 through April 2026 ... The estimation period is January 1974 through March 2026.",
+      "section": "8 Empirical illustrations",
+      "page": 24,
+      "epistemic_tier": "T2",
+      "predicate": "Check internal consistency of the stated data vintage, lag length, and sample windows (and that end dates are consistent with the June 2026 paper date and the referenced Feb 2026 event).",
+      "evidence": [
+        {"id": "e25a", "kind": "dataset", "location": "Section 8 (inflation)", "quote": "six lags ... January 1974 through April 2026", "extracted_values": {"lags": 6, "start": 1974, "end_month_inflation": "2026-04"}},
+        {"id": "e25b", "kind": "dataset", "location": "Section 8 (motor vehicles)", "quote": "The model incorporates six lags. The estimation period is January 1974 through March 2026.", "extracted_values": {"end_month_autos": "2026-03"}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "internal-consistency check of sample windows/lags/data vintage (and external availability check of the FRED series for those windows)", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.7, "rationale": "Both samples start Jan 1974, use six lags, monthly SA FRED data; end dates (April 2026 inflation, March 2026 autos) are mutually plausible and consistent with the June 12 2026 paper date and the Feb 2026 'Iran War' inflation-surge reference. The slightly different end months across the two applications are internally consistent (different series). External data availability is not independently verified here, hence <0.8."}
+    },
+    {
+      "id": "c26",
+      "text": "Nikolaishvili (2026), building on an earlier version of this paper (Gonçalves et al. 2024a), independently proposes a closely related doubly robust estimator for nonparametric local projections under different assumptions and without covariates in the conditioning set.",
+      "quote": "and independently, Nikolaishvili (2026), building on an earlier version of our paper (Gonçalves et al., 2024a), proposes a closely related doubly robust estimator for nonparametric local projections under different assumptions and without allowing for covariates in the conditioning set.",
+      "section": "1 Introduction",
+      "page": 4,
+      "epistemic_tier": "T5",
+      "predicate": "Check the characterization of the related independent work (Nikolaishvili 2026) against that manuscript.",
+      "evidence": [
+        {"id": "e26", "kind": "text", "location": "Introduction + References (Nikolaishvili 2026, Wake Forest)", "quote": "Nikolaishvili, G. (2026), Doubly robust nonparametric local projections. Manuscript, Wake Forest University.", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "literature check of the Nikolaishvili (2026) manuscript to confirm the 'no covariates / different assumptions' characterization", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.5, "rationale": "Plausible related-work attribution but requires reading the cited unpublished manuscript to confirm. Cannot be settled from this PDF alone; recorded as inconclusive pending external retrieval."}
+    },
+    {
+      "id": "c27",
+      "text": "The estimator is described as sqrt(T)-consistent and asymptotically normal with no first-order effect from nuisance estimation, claimed throughout (abstract, intro, Theorem 5.1, conclusion) consistently.",
+      "quote": "The resulting estimator is sqrt(T)-consistent and asymptotically normal.",
+      "section": "Abstract / 1 / 5 / 9",
+      "page": 1,
+      "epistemic_tier": "T2",
+      "predicate": "Check that the headline rate/normality claim in the abstract, introduction, and conclusion is consistent with what Theorem 5.1 actually proves (same estimand, same conditions).",
+      "evidence": [
+        {"id": "e27a", "kind": "text", "location": "Abstract", "quote": "sqrt(T)-consistent and asymptotically normal", "extracted_values": {}},
+        {"id": "e27b", "kind": "text", "location": "Conclusion", "quote": "the resulting estimator is sqrt(T)-consistent and asymptotically normal, with the preliminary estimation of the two nuisance functions having no effect on the first-order asymptotic distribution", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-theorem consistency check (abstract/intro/conclusion claims vs Theorem 5.1 statement)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "The abstract, introduction, and conclusion all state sqrt(T)-consistency, asymptotic normality, and oracle equivalence (no first-order nuisance effect), which is exactly the content of Theorem 5.1. The headline claims do not overstate the proven result (no claim of efficiency or uniform validity beyond what is shown). Internal prose-vs-result consistency holds; the truth of the theorem itself is covered by c18."}
+    },
+    {
+      "id": "c28",
+      "text": "The paper claims its estimand averages over the distribution of the shock and can be estimated at rate sqrt(T), in contrast to Huang et al. (2026) whose fixed-baseline estimand requires a second nonparametric regression and yields rates slower than sqrt(T).",
+      "quote": "Because they focus on an IRF that shifts the policy variable from a fixed baseline, their second step requires a nonparametric regression and yields convergence rates slower than sqrt(T); in contrast, our estimand averages over the distribution of the shock and can be estimated at rate sqrt(T).",
+      "section": "1 Introduction",
+      "page": 4,
+      "epistemic_tier": "T3",
+      "predicate": "Check the methodological contrast is internally coherent: averaging over the shock distribution (a smooth linear functional) admits sqrt(T) estimation whereas a pointwise fixed-baseline object is a nonparametric target with slower rates.",
+      "evidence": [
+        {"id": "e28", "kind": "text", "location": "Introduction (related literature)", "quote": "our estimand averages over the distribution of the shock and can be estimated at rate sqrt(T)", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "domain/method check of the rate contrast (averaged functional vs pointwise nonparametric object) + reading Huang et al. (2026) for the slower-rate claim", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.7, "rationale": "The semiparametric logic is sound: ARF_h(delta) is a smooth linear functional averaged over (x,z), which is the canonical sqrt(T)-estimable DML target, whereas a conditional/pointwise fixed-baseline response is a nonparametric function with slower rates. The internal argument is coherent; the specific attribution to Huang et al. (2026) rates would need that manuscript to fully confirm, so not maximal confidence."}
+    },
+    {
+      "id": "c29",
+      "text": "Five authors are listed: Silvia Goncalves, Ana Maria Herrera, Lutz Kilian, Elena Pesavento, and Iones Kelanemer Holban.",
+      "quote": "Silvia Goncalves, Ana Maria Herrera, Lutz Kilian, Elena Pesavento, Iones Kelanemer Holban",
+      "section": "Title page",
+      "page": 1,
+      "epistemic_tier": "T7",
+      "predicate": "Record the author list; note that the fifth author appears only on the byline (no separate affiliation footnote text beyond McGill address) and is not part of the self-cited 'Goncalves et al.' author team in the references.",
+      "evidence": [
+        {"id": "e29", "kind": "text", "location": "Byline + affiliation footnotes", "quote": "Iones Kelanemer Holban || McGill University, Department of Economics", "extracted_values": {"n_authors": 5}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "integrity/bibliographic note (authorship); no quantitative check", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.6, "rationale": "Author list is transcribed as printed. The fifth author (Holban) shares the McGill affiliation and is not part of the four-author 'Goncalves, Herrera, Kilian, Pesavento' team cited as prior work, which is unremarkable for an added coauthor. Noted only as a neutral integrity/record item; not an error."}
+    },
+    {
+      "id": "c30",
+      "text": "The cumulative motor-vehicle-sales effect is estimated directly by applying LP/DR-NLO to the h-step cumulative growth Delta_h y_{t+h} = y_{t+h} - y_{t-1}.",
+      "quote": "The cumulative effect is estimated directly by applying the LP or DR-NLO to Delta_h y_{t+h} = y_{t+h} - y_{t-1}.",
+      "section": "8 Empirical illustrations (footnote 10)",
+      "page": 26,
+      "epistemic_tier": "T3",
+      "predicate": "Check that the cumulative-response construction (regressing the cumulative change on the shock) is an appropriate and standard way to obtain cumulative IRFs in the LP framework.",
+      "evidence": [
+        {"id": "e30", "kind": "equation", "location": "Footnote 10", "quote": "Delta_h y_{t+h} = y_{t+h} - y_{t-1}", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "method-appropriateness check that direct cumulative-LP recovers the cumulative response under the paper's identification", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.78, "rationale": "Defining the dependent variable as the cumulative change y_{t+h}-y_{t-1} and applying the same DR-NLO/LP machinery directly targets the cumulative average response; this is a standard and internally consistent device in the local-projection literature. Domain check; no off-the-shelf verifier."}
+    }
+  ],
+  "paper_level_notes": "Theoretical/methodological econometrics paper (arXiv:2606.13519v1, econ.EM, dated 12 June 2026; no DOI). Content is dominated by identification results (Props 4.1, 4.2, 6.1) and a limit theorem (Theorem 5.1) with full proofs in Appendices A-B; these are T3/proof-based and not arithmetically checkable, so candidate verdicts there are 'supported' based on internal coherence of the proofs (an expert proof-reviewer is the verifier that would truly settle them). The genuinely deterministic-frontier (T0-T2) checkables are: the 3.8% annual -> 0.32% monthly conversion (c1, clean T0 supported via divide-by-12), JEL-code validity (c2), the K>=4-vs-K=10/20 block-count consistency (c4), the DGP-coefficient and parameter transcriptions (c8, c9), and a cluster of prose-vs-figure consistency checks against Figures 2-8 (c5, c6, c7, c10-c13, c25, c27). The empirical/simulation RESULTS are reported only as FIGURES with no numeric tables and no labeled data points, so exact-value recomputation is impossible from the PDF; the 28% horizon-12 ratio (c7) is the clearest example -- directionally consistent with Figure 8 but not confirmable, because pixel measurement is dominated by confidence-band shading near the zero line (recovered ratio ranged ~ -0.04 to 0.20 across plausible zero-line placements). NO statistical-test statistics, p-values, F/t values, sample-size-based GRIM/statcheck targets, stoichiometry, or table totals are present, so standard off-the-shelf checkers (statcheck, GRIM, mass balance, table-sum) do not apply except the percent-conversion check on c1 and a reference-database check on c23. Reproducibility (T6): no replication code, data archive, or repository link is provided; data are described as monthly SA FRED series (gasoline prices, headline/core CPI, auto+light-truck sales) Jan 1974 through March/April 2026, and Monte Carlo design constants are fully specified (T in {250,500,1000,2000}; 20,000 reps nonlinear-regressor / 30,000 reps state-dependent; 5,000 counterfactual paths; T0=500 burn-in; t(10) shocks; Hermite series with AIC degree<=2; LASSO Riesz; Bartlett kernel + Andrews 1991 bandwidth; 1% symmetric trimming). Integrity signals (T7): transparent disclosure that 'Refine.ink was used to check the paper for consistency and clarity' (c24, neutral); heavy but appropriate self-citation to the authors' own Goncalves-Herrera-Kilian-Pesavento program; a fifth byline author (Holban) not part of that prior-work team (c29, neutral). I found NO fabricated numbers, NO internal contradictions, and NO prose-vs-figure mismatches: every prose claim I could bind to a figure (impact ~0.05pp headline, order-of-magnitude-smaller core, SD-LP bias/RMSE/coverage patterns, K consistency, sample windows) checked out qualitatively. Nothing here was manufactured; the one materially unconfirmable headline number is the 28% ratio (c7), unconfirmable purely for lack of labeled data, not because it looks wrong."
+}

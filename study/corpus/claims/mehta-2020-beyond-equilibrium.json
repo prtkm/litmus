@@ -4,7 +4,6 @@
   "meta": {
     "title": "Plasma-Catalytic Ammonia Synthesis Beyond the Equilibrium Limit",
     "dated": "January 29, 2020",
-    "notes": "Figure-read values for Figs 3,4,5 are caption/text-derived; plotted point coordinates not transcribed individually. Char spans left null.",
     "extractor": "litmus.extract",
     "model": "claude-opus-4-8",
     "source": "opus-native-pdf"
@@ -12,17 +11,17 @@
   "claims": [
     {
       "id": "c1",
-      "text": "The ammonia synthesis reaction is exergonic at near-ambient conditions, with ΔG°(298 K) = −32.8 kJ mol−1.",
+      "text": "The ammonia synthesis reaction is exergonic at near-ambient conditions, with delta G(298 K) = -32.8 kJ/mol.",
       "location": {
-        "section": "Introduction",
+        "section": "INTRODUCTION",
         "page": 2,
         "char_span": null,
-        "quote": "This reaction is exergonic at near-ambient conditions\n(∆G◦(298 K) = −32.8 kJ mol−1)"
+        "quote": "(∆G◦(298 K) = −32.8 kJ mol−1)"
       },
       "epistemic_tier": "T1",
       "predicate": "reported_delta_G_298K_kJ_per_mol == -32.8",
       "strength": "exact",
-      "scope": "N2 + 3 H2 → 2 NH3, 298 K, near-ambient",
+      "scope": "298 K, near-ambient conditions",
       "evidence_refs": [
         "ev1"
       ],
@@ -30,15 +29,15 @@
     },
     {
       "id": "c2",
-      "text": "Typical industrial-scale NH3 synthesis operates at 700–800 K and 100–200 atm.",
+      "text": "Typical industrial-scale NH3 synthesis processes operate at temperatures of 700-800 K and pressures of 100-200 atm.",
       "location": {
-        "section": "Introduction",
+        "section": "INTRODUCTION",
         "page": 2,
         "char_span": null,
         "quote": "synthesis processes thus operate at temperatures in the range of 700–800 K and pressures of\n100–200 atm"
       },
       "epistemic_tier": "T1",
-      "predicate": "reported_industrial_T_range_K == [700,800] AND reported_industrial_P_range_atm == [100,200]",
+      "predicate": "industrial_T_range_K == [700,800] and industrial_P_range_atm == [100,200]",
       "strength": "approximate",
       "scope": "industrial Haber-Bosch",
       "evidence_refs": [
@@ -48,24 +47,42 @@
     },
     {
       "id": "c3",
-      "text": "Plasma-assisted ammonia synthesis can be performed at milder conditions of ~473 K and 1 atm.",
+      "text": "Ammonia synthesis can be performed at milder conditions (~473 K, 1 atm) when catalysts are operated alongside non-thermal plasmas.",
       "location": {
-        "section": "Introduction",
+        "section": "INTRODUCTION",
         "page": 2,
         "char_span": null,
         "quote": "ammonia synthesis can be performed at milder temperatures and pressures (∼473 K, 1 atm) when catalysts are operated alongside non-thermal plas-\nmas"
       },
       "epistemic_tier": "T5",
-      "predicate": "reported_plasma_T_K == 473 AND reported_plasma_P_atm == 1",
+      "predicate": "plasma_NH3_synthesis_conditions == {T_K: ~473, P_atm: 1}",
       "strength": "approximate",
-      "scope": "non-thermal plasma catalytic ammonia synthesis (literature)",
+      "scope": "non-thermal plasma catalysis literature",
       "evidence_refs": [
         "ev3"
       ],
-      "confidence": 0.93
+      "confidence": 0.9
     },
     {
       "id": "c4",
+      "text": "Prior plasma-catalytic kinetic experiments in a differential flow DBD reactor showed elevated site-time yields of NH3 at atmospheric pressure and 438 K, as well as a shift in optimal catalyst material.",
+      "location": {
+        "section": "RESULTS/INTRODUCTION",
+        "page": 3,
+        "char_span": null,
+        "quote": "showed elevated site-time yields of NH3 at atmospheric pressure\nand 438 K, as well as a shift in optimal catalyst material"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "prior_experiment_conditions == {P: atmospheric, T_K: 438}",
+      "strength": "comparative",
+      "scope": "previous work [16,18]",
+      "evidence_refs": [
+        "ev4"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "c5",
       "text": "NH3 yields are predicted to exceed bulk thermodynamic equilibrium limits on materials that are thermal-rate-limited by N2 dissociation.",
       "location": {
         "section": "Abstract",
@@ -74,194 +91,197 @@
         "quote": "NH3 yields are predicted\nto exceed bulk thermodynamic equilibrium limits on materials that are thermal-rate-limited by N2\ndissociation."
       },
       "epistemic_tier": "T4",
-      "predicate": "model_predicts NH3_yield > bulk_equilibrium_yield for N2-dissociation-limited materials",
-      "strength": "qualitative",
+      "predicate": "model_predicts NH3_pressure > equilibrium_NH3_pressure for weakly-N-binding materials",
+      "strength": "causal",
       "scope": "microkinetic model predictions",
-      "evidence_refs": [],
-      "confidence": 0.9
-    },
-    {
-      "id": "c5",
-      "text": "In all cases, yields revert to bulk equilibrium at temperatures at which thermal reaction rates exceed plasma-activated ones.",
-      "location": {
-        "section": "Abstract",
-        "page": 1,
-        "char_span": null,
-        "quote": "In all cases, yields revert to bulk equilibrium at temperatures at which thermal\nreaction rates exceed plasma-activated ones."
-      },
-      "epistemic_tier": "T4",
-      "predicate": "yields revert to equilibrium when r_thermal > r_plasma",
-      "strength": "qualitative",
-      "scope": "model and experiment",
-      "evidence_refs": [],
-      "confidence": 0.9
+      "evidence_refs": [
+        "ev9"
+      ],
+      "confidence": 0.85
     },
     {
       "id": "c6",
-      "text": "Beyond-equilibrium NH3 yields are observed experimentally in a packed bed DBD reactor and depend on catalyst material consistent with model predictions.",
+      "text": "The CSTR reactor model operates at atmospheric pressure and constant volume of 1 mL, with reactants introduced in stoichiometric ratio at a flow rate of 10 mL/min.",
       "location": {
-        "section": "Abstract",
-        "page": 1,
-        "char_span": null,
-        "quote": "Beyond-equilibrium NH3 yields are observed in a\npacked bed dielectric-barrier-discharge reactor and exhibit sensitivity to catalytic material choice\nin a way consistent with model predictions."
-      },
-      "epistemic_tier": "T4",
-      "predicate": "observed NH3_yield > bulk_equilibrium_yield in DBD reactor; material-dependent consistent with model",
-      "strength": "qualitative",
-      "scope": "DBD reactor experiments",
-      "evidence_refs": [
-        "ev9",
-        "ev10"
-      ],
-      "confidence": 0.9
-    },
-    {
-      "id": "c7",
-      "text": "The CSTR model operates at atmospheric pressure, constant volume of 1 mL, stoichiometric feed at a flow rate of 10 mL min−1, with catalyst site density of 10−3 mol mL−1.",
-      "location": {
-        "section": "Results — Kinetic model",
+        "section": "RESULTS/Kinetic model",
         "page": 7,
         "char_span": null,
         "quote": "continuously stirred tank reactor (CSTR) operating at atmospheric pressure and constant\nvolume (1 mL). The reactants are introduced into the reactor in their stoichiometric ratio,\nat a flow rate of 10 mL min−1."
       },
       "epistemic_tier": "T0",
-      "predicate": "model_volume_mL == 1 AND model_flow_mL_per_min == 10 AND site_density_mol_per_mL == 1e-3",
+      "predicate": "model_volume_mL == 1 and model_flow_rate_mL_min == 10 and P == atmospheric",
       "strength": "exact",
-      "scope": "CSTR model parameters",
+      "scope": "CSTR model",
       "evidence_refs": [
-        "ev4"
+        "ev5"
       ],
       "confidence": 0.95
     },
     {
-      "id": "c8",
-      "text": "The intermediate N-binding catalyst (EN = −0.6 eV) sits at the top of the volcano curve and gives the highest NH3 yields of the three modeled catalysts.",
+      "id": "c7",
+      "text": "The model reactor is packed with catalyst having one type of active site (metal steps) with a total site density of 10^-3 mol/mL.",
       "location": {
-        "section": "Results — Kinetic model",
+        "section": "RESULTS/Kinetic model",
         "page": 7,
         "char_span": null,
-        "quote": "The catalyst that binds\nN with intermediate strength (EN = −0.6 eV), sits at the top of the volcano curve (see inset)"
+        "quote": "with a total site density of 10−3 mol mL−1"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "total_site_density_mol_per_mL == 1e-3",
+      "strength": "exact",
+      "scope": "CSTR model",
+      "evidence_refs": [
+        "ev6"
+      ],
+      "confidence": 0.93
+    },
+    {
+      "id": "c8",
+      "text": "The intermediate N-binding catalyst (EN = -0.6 eV) sits at the top of the volcano curve and gives the highest NH3 yields of the three catalysts in Figure 2.",
+      "location": {
+        "section": "RESULTS/Kinetic model",
+        "page": 7,
+        "char_span": null,
+        "quote": "N with intermediate strength (EN = −0.6 eV), sits at the top of the volcano curve (see inset)\nand provides the optimal balance between N2 activation and its subsequent hydrogenation."
       },
       "epistemic_tier": "T2",
-      "predicate": "EN_intermediate_eV == -0.6 AND yields highest among three modeled catalysts (Fig 2)",
+      "predicate": "EN_intermediate_eV == -0.6 and intermediate_catalyst_yield > strong_catalyst_yield and > weak_catalyst_yield",
       "strength": "comparative",
-      "scope": "Figure 2, thermal catalysis model",
+      "scope": "Figure 2, thermal catalysis model, 473 K, 1 atm",
       "evidence_refs": [
-        "ev5"
+        "ev7"
       ],
-      "confidence": 0.92
+      "confidence": 0.9
     },
     {
       "id": "c9",
-      "text": "Three catalysts are modeled, characterized by strong (EN = −1.2 eV), intermediate (EN = −0.6 eV), and weak (EN = 0.0 eV) nitrogen binding energies; the volcano inset is calculated at 473 K, 1 atm, and 5% conversion of N2.",
+      "text": "Three catalysts are modeled with strong (EN = -1.2 eV), intermediate (EN = -0.6 eV), and weak (EN = 0.0 eV) nitrogen binding energies.",
       "location": {
         "section": "Figure 2 caption",
         "page": 8,
         "char_span": null,
-        "quote": "Three catalysts are shown, characterized by strong (EN = −1.2 eV),\nintermediate (EN = −0.6 eV), and weak (EN = 0.0 eV) nitrogen binding energies."
+        "quote": "characterized by strong (EN = −1.2 eV),\nintermediate (EN = −0.6 eV), and weak (EN = 0.0 eV) nitrogen binding energies."
       },
       "epistemic_tier": "T0",
-      "predicate": "EN_values_eV == [-1.2,-0.6,0.0] AND inset_conditions == {T_K:473, P_atm:1, conv_pct:5}",
+      "predicate": "EN_values_eV == [-1.2, -0.6, 0.0]",
       "strength": "exact",
-      "scope": "Figure 2",
+      "scope": "Figure 2, Figure 3",
       "evidence_refs": [
-        "ev5"
+        "ev7"
       ],
-      "confidence": 0.95
+      "confidence": 0.96
     },
     {
       "id": "c10",
-      "text": "Upon plasma excitation the N2 dissociation barrier is assumed reduced by 1 eV, corresponding to roughly three N2 vibrational quanta.",
+      "text": "The volcano curve inset in Figure 2 was calculated at 473 K, 1 atm, and 5% conversion of N2.",
       "location": {
-        "section": "Results — Kinetic model",
+        "section": "Figure 2 caption",
         "page": 8,
         "char_span": null,
-        "quote": "we assume that upon excitation to this state, the N2 dissociation\nbarrier is reduced by 1 eV, corresponding to roughly three N2 vibrational quanta."
+        "quote": "The inset shows the volcano curve for NH3 synthesis\ncalculated at 473 K, 1 atm, and 5% conversion of N2."
       },
       "epistemic_tier": "T0",
-      "predicate": "assumed_barrier_reduction_eV == 1 AND ~3 vibrational quanta",
+      "predicate": "volcano_conditions == {T_K: 473, P_atm: 1, N2_conversion_pct: 5}",
       "strength": "exact",
-      "scope": "plasma-on CSTR model assumption",
+      "scope": "Figure 2 inset",
       "evidence_refs": [
-        "ev6"
+        "ev7"
       ],
       "confidence": 0.95
     },
     {
       "id": "c11",
-      "text": "Plasma-on models predict enhancements in NH3 over thermal catalysis for the EN=−0.6 eV and EN=0.0 eV materials if kene ≥ 10−2 s−1.",
+      "text": "Upon excitation, the N2 dissociation barrier is assumed reduced by 1 eV, corresponding to roughly three N2 vibrational quanta.",
       "location": {
-        "section": "Results",
-        "page": 9,
+        "section": "RESULTS",
+        "page": 8,
         "char_span": null,
-        "quote": "the\nplasma-on models predict enhancements in NH3 produced over thermal catalysis for both\nmaterials if the rate of plasma-activation of N2 is sufficiently high (kene ≥ 10−2s\n−1\n)."
+        "quote": "the N2 dissociation\nbarrier is reduced by 1 eV, corresponding to roughly three N2 vibrational quanta."
       },
       "epistemic_tier": "T0",
-      "predicate": "enhancement predicted for materials when kene >= 1e-2 s^-1",
-      "strength": "bound",
-      "scope": "Figure 3b,c",
+      "predicate": "barrier_reduction_eV == 1 and approx vibrational_quanta == 3",
+      "strength": "approximate",
+      "scope": "plasma-on model assumption",
       "evidence_refs": [
-        "ev6"
+        "ev8"
       ],
-      "confidence": 0.9
+      "confidence": 0.93
     },
     {
       "id": "c12",
-      "text": "For the optimal thermal catalyst (EN=−0.6 eV), NH3 yields exceeding equilibrium are observed at kene = 10−1 s−1 in the temperature window 475–600 K.",
+      "text": "DBD microdischarges are short-lived (~10 ns), followed by an afterglow period on the order of 1 microsecond.",
       "location": {
-        "section": "Results",
+        "section": "RESULTS",
         "page": 9,
         "char_span": null,
-        "quote": "NH3 yields\nexceeding equilibrium for the optimal thermal catalyst are observed at kene = 10−1s\n−1\n, in\nthe temperature window of 475–600 K."
+        "quote": "electron impact reactions are only expected to occur during short-lived (∼ 10 ns) filamentary\nmicrodischarges, followed by an afterglow period on the order of 1 µs"
       },
-      "epistemic_tier": "T0",
-      "predicate": "beyond_eq for EN=-0.6 at kene==1e-1 s^-1 over T_K in [475,600]",
-      "strength": "exact",
-      "scope": "Figure 3b",
+      "epistemic_tier": "T1",
+      "predicate": "microdischarge_duration_ns == ~10 and afterglow_duration_us == ~1",
+      "strength": "approximate",
+      "scope": "DBD plasma",
       "evidence_refs": [
-        "ev6"
+        "ev10"
       ],
       "confidence": 0.92
     },
     {
       "id": "c13",
-      "text": "For the weaker-binding material, NH3 pressures are predicted to exceed the equilibrium limit for kene ≥ 10−2 s−1.",
+      "text": "For the optimal thermal catalyst, NH3 yields exceeding equilibrium are observed at kene = 10^-1 s^-1 in the temperature window 475-600 K.",
       "location": {
-        "section": "Results",
+        "section": "RESULTS",
         "page": 9,
         "char_span": null,
-        "quote": "NH3 pressures are\npredicted to go beyond the equilibrium limit for kene ≥ 10−2s\n−1\n."
+        "quote": "NH3 yields\nexceeding equilibrium for the optimal thermal catalyst are observed at kene = 10−1s\n−1\n, in\nthe temperature window of 475–600 K."
       },
-      "epistemic_tier": "T0",
-      "predicate": "beyond_eq for weaker-binding material when kene >= 1e-2 s^-1",
-      "strength": "bound",
-      "scope": "Figure 3c",
+      "epistemic_tier": "T2",
+      "predicate": "optimal_catalyst beyond_eq at kene == 1e-1 s-1 over T_window_K == [475,600]",
+      "strength": "comparative",
+      "scope": "Figure 3b, EN=-0.6 eV",
       "evidence_refs": [
-        "ev6"
-      ],
-      "confidence": 0.9
-    },
-    {
-      "id": "c14",
-      "text": "For the strong N-binding catalyst (EN=−1.2 eV) no enhancement in NH3 during plasma operation occurs; the surface remains covered with N up to ~600 K.",
-      "location": {
-        "section": "Results",
-        "page": 9,
-        "char_span": null,
-        "quote": "the surface remains cov-\nered with N up to temperatures as high as 600 K"
-      },
-      "epistemic_tier": "T0",
-      "predicate": "no plasma enhancement for EN=-1.2; N coverage persists up to ~600 K",
-      "strength": "qualitative",
-      "scope": "Figure 3a",
-      "evidence_refs": [
-        "ev6"
+        "ev11"
       ],
       "confidence": 0.88
     },
     {
+      "id": "c14",
+      "text": "Plasma-on models predict enhancements in NH3 over thermal catalysis for both materials if kene >= 10^-2 s^-1.",
+      "location": {
+        "section": "RESULTS",
+        "page": 9,
+        "char_span": null,
+        "quote": "plasma-on models predict enhancements in NH3 produced over thermal catalysis for both\nmaterials if the rate of plasma-activation of N2 is sufficiently high (kene ≥ 10−2s\n−1\n)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "enhancement_observed when kene >= 1e-2 s-1",
+      "strength": "comparative",
+      "scope": "Figure 3b,c; EN=-0.6 and 0.0 eV",
+      "evidence_refs": [
+        "ev12"
+      ],
+      "confidence": 0.87
+    },
+    {
       "id": "c15",
-      "text": "In the experiments N2 and H2 were introduced in a 2:1 ratio at a total flow rate of 40 SCCM, and bulk reactor temperature was varied between 423–1123 K.",
+      "text": "For the weaker-binding material, NH3 pressures are predicted to exceed the equilibrium limit for kene >= 10^-2 s^-1.",
+      "location": {
+        "section": "RESULTS",
+        "page": 9,
+        "char_span": null,
+        "quote": "NH3 pressures are\npredicted to go beyond the equilibrium limit for kene ≥ 10−2s\n−1\n."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "weak_catalyst beyond_eq when kene >= 1e-2 s-1",
+      "strength": "comparative",
+      "scope": "Figure 3c, EN=0.0 eV",
+      "evidence_refs": [
+        "ev12"
+      ],
+      "confidence": 0.87
+    },
+    {
+      "id": "c16",
+      "text": "In the experiments N2 and H2 were introduced into the reactor in a 2:1 ratio at a total flow rate of 40 SCCM.",
       "location": {
         "section": "Experimental",
         "page": 11,
@@ -269,36 +289,71 @@
         "quote": "We\nintroduced N2 and H2 into the reactor in a 2:1 ratio at a total flow rate of 40 SCCM."
       },
       "epistemic_tier": "T0",
-      "predicate": "N2:H2 == 2:1 AND total_flow_SCCM == 40 AND T_range_K == [423,1123]",
+      "predicate": "N2_H2_ratio == 2:1 and total_flow_SCCM == 40",
       "strength": "exact",
-      "scope": "DBD reactor experiments",
+      "scope": "DBD experiments",
       "evidence_refs": [
-        "ev7",
-        "ev8"
-      ],
-      "confidence": 0.95
-    },
-    {
-      "id": "c16",
-      "text": "Background experiments were run at plasma powers of 5, 10, and 15 W, corresponding to specific energy inputs of 7.5, 15, and 22.5 kJ L−1.",
-      "location": {
-        "section": "Experimental",
-        "page": 11,
-        "char_span": null,
-        "quote": "Reaction performance was evaluated at plasma powers of 5, 10, and 15W,\ncorresponding to specific energy inputs of 7.5, 15, and 22.5 kJ L−1."
-      },
-      "epistemic_tier": "T0",
-      "predicate": "powers_W == [5,10,15] AND SEI_kJ_per_L == [7.5,15,22.5] consistent with flow 40 SCCM",
-      "strength": "exact",
-      "scope": "Figure 4 background experiments",
-      "evidence_refs": [
-        "ev8"
+        "ev13"
       ],
       "confidence": 0.95
     },
     {
       "id": "c17",
-      "text": "In background experiments NH3 yields increased with plasma power and reactor temperature, exceeding the equilibrium limit, and maximized at about 920 K.",
+      "text": "Background measurements were made in a reactor packed with 100 mg gamma-Al2O3.",
+      "location": {
+        "section": "Experimental",
+        "page": 11,
+        "char_span": null,
+        "quote": "These background measurements were made in a reactor packed with bare support material\n(100 mg γ-Al2O3)"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "background_support_mass_mg == 100",
+      "strength": "exact",
+      "scope": "background experiments",
+      "evidence_refs": [
+        "ev14"
+      ],
+      "confidence": 0.93
+    },
+    {
+      "id": "c18",
+      "text": "The bulk reactor temperature was varied between 423-1123 K.",
+      "location": {
+        "section": "Experimental",
+        "page": 11,
+        "char_span": null,
+        "quote": "The bulk reactor temperature was varied between\n423–1123 K."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "T_range_K == [423,1123]",
+      "strength": "exact",
+      "scope": "DBD experiments",
+      "evidence_refs": [
+        "ev15"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c19",
+      "text": "Reaction performance was evaluated at plasma powers of 5, 10, and 15 W, corresponding to specific energy inputs of 7.5, 15, and 22.5 kJ/L.",
+      "location": {
+        "section": "Experimental",
+        "page": 11,
+        "char_span": null,
+        "quote": "Reaction performance was evaluated at plasma powers of 5, 10, and 15 W,\ncorresponding to specific energy inputs of 7.5, 15, and 22.5 kJ L−1."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "plasma_powers_W == [5,10,15] and specific_energy_inputs_kJ_per_L == [7.5,15,22.5]; SEI == power_W*1000/flow_L_per_s consistency",
+      "strength": "exact",
+      "scope": "DBD experiments, 40 SCCM",
+      "evidence_refs": [
+        "ev16"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c20",
+      "text": "At all plasma powers, background NH3 yields maximized at about 920 K, after which they decreased.",
       "location": {
         "section": "Experimental",
         "page": 11,
@@ -306,33 +361,72 @@
         "quote": "At all plasma powers, NH3 yields maximized at about 920 K, after which they\ndecreased."
       },
       "epistemic_tier": "T2",
-      "predicate": "max NH3 yield occurs at ~920 K (Fig 4); yields increase with power",
-      "strength": "qualitative",
-      "scope": "Figure 4",
+      "predicate": "background_yield_max_T_K == ~920",
+      "strength": "approximate",
+      "scope": "Figure 4, background experiments",
       "evidence_refs": [
-        "ev8"
+        "ev17",
+        "ev16"
       ],
       "confidence": 0.85
     },
     {
-      "id": "c18",
-      "text": "Ni and Pt catalysts both bind N more weakly than the optimal thermal catalyst Ru, with the N-metal bond strength order Ru > Ni > Pt.",
+      "id": "c21",
+      "text": "Ni and Pt catalysts supported on gamma-Al2O3 were used at 100 mg material and 5 wt% metal.",
+      "location": {
+        "section": "Experimental",
+        "page": 12,
+        "char_span": null,
+        "quote": "Ni and Pt catalysts supported on γ-Al2O3 (100 mg material, 5 wt% metal)."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "catalyst_mass_mg == 100 and metal_loading_wt_pct == 5",
+      "strength": "exact",
+      "scope": "Ni and Pt experiments",
+      "evidence_refs": [
+        "ev18"
+      ],
+      "confidence": 0.94
+    },
+    {
+      "id": "c22",
+      "text": "The N-metal bond strength follows the order Ru > Ni > Pt; both Ni and Pt bind N more weakly than the optimal thermal catalyst Ru.",
       "location": {
         "section": "Experimental",
         "page": 12,
         "char_span": null,
         "quote": "the N-metal bond strength follows the order Ru > Ni > Pt"
       },
-      "epistemic_tier": "T1",
-      "predicate": "N_metal_bond_strength_order == Ru > Ni > Pt",
+      "epistemic_tier": "T5",
+      "predicate": "N_binding_order: Ru > Ni > Pt",
       "strength": "comparative",
       "scope": "catalyst selection",
-      "evidence_refs": [],
+      "evidence_refs": [
+        "ev19"
+      ],
       "confidence": 0.9
     },
     {
-      "id": "c19",
-      "text": "On Pt catalyst, plasma-catalytic NH3 yields exceeded the bulk equilibrium limit and continued to enhance over background until about 1000 K, while on Ni yields fell below background and collapsed onto the equilibrium curve.",
+      "id": "c23",
+      "text": "Figure 5a plasma-catalytic NH3 yields on Ni and Pt were measured as a function of bulk gas temperature at 10 W plasma power.",
+      "location": {
+        "section": "Experimental",
+        "page": 12,
+        "char_span": null,
+        "quote": "we plot plasma-catalytic NH3 yields on these two catalysts as a function of\nbulk gas temperature at 10 W plasma power."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "Fig5a_plasma_power_W == 10",
+      "strength": "exact",
+      "scope": "Figure 5a",
+      "evidence_refs": [
+        "ev20"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c24",
+      "text": "On the Pt catalyst, NH3 yields continued to increase with temperature, significantly exceeding the bulk equilibrium limit, before decreasing; Pt enhanced NH3 over background until about 1000 K.",
       "location": {
         "section": "Experimental",
         "page": 12,
@@ -340,122 +434,195 @@
         "quote": "Pt continued to enhance NH3 production over the background\nat higher temperatures until about 1000 K, after which the yields converged."
       },
       "epistemic_tier": "T2",
-      "predicate": "Pt NH3_yield > equilibrium up to ~1000 K; Ni yields collapse to equilibrium (Fig 5a)",
+      "predicate": "Pt_enhancement_until_T_K == ~1000 and Pt_yield > equilibrium_yield in equilibrium-limited regime",
       "strength": "comparative",
-      "scope": "Figure 5a, 10 W plasma",
+      "scope": "Figure 5a, Pt/Al2O3, 10 W",
       "evidence_refs": [
-        "ev9"
+        "ev20"
       ],
-      "confidence": 0.85
+      "confidence": 0.83
     },
     {
-      "id": "c20",
-      "text": "NH3 decomposition experiments used a feed of 0.5% NH3, 9.5% He, balance 2:1 N2:H2, at 40 mL min−1; Ni/Al2O3 lit off at ~750 K, while Pt/Al2O3 and bare γ-Al2O3 lit off at ~900 K.",
+      "id": "c25",
+      "text": "Thermal NH3 decomposition experiments used a feed of 0.5% NH3, 9.5% He, balance 2:1 N2 and H2, at 40 mL/min inlet flow.",
+      "location": {
+        "section": "Experimental / Figure 5 caption",
+        "page": 13,
+        "char_span": null,
+        "quote": "Inlet gas composition: 0.5%\nNH3, 9.5% He, and balance of 2:1 N2 and H2."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "decomp_feed_pct == {NH3: 0.5, He: 9.5} and N2_H2_ratio == 2:1 and flow_mL_min == 40",
+      "strength": "exact",
+      "scope": "Figure 5b, decomposition experiments",
+      "evidence_refs": [
+        "ev21"
+      ],
+      "confidence": 0.93
+    },
+    {
+      "id": "c26",
+      "text": "Of the tested materials Ni/Al2O3 is the most active for NH3 decomposition, lighting off at around 750 K, while Pt/Al2O3 and metal-free gamma-Al2O3 light off at approximately 900 K.",
       "location": {
         "section": "Experimental",
         "page": 13,
         "char_span": null,
-        "quote": "Of the tested materials, Ni/Al2O3 is the most active for NH3\ndecomposition, lighting off at around 750 K. The decomposition curves for Pt/γ-Al2O3 and\nmetal-free γ-Al2O3 are nearly identical, lighting off at approximately 900 K."
+        "quote": "Ni/Al2O3 is the most active for NH3\ndecomposition, lighting off at around 750 K. The decomposition curves for Pt/γ-Al2O3 and\nmetal-free γ-Al2O3 are nearly identical, lighting off at approximately 900 K."
       },
       "epistemic_tier": "T2",
-      "predicate": "Ni lightoff_T_K ~750; Pt and bare Al2O3 lightoff_T_K ~900 (Fig 5b)",
-      "strength": "approximate",
-      "scope": "Figure 5b decomposition experiments",
+      "predicate": "Ni_lightoff_T_K == ~750 and Pt_lightoff_T_K == ~900 and Al2O3_lightoff_T_K == ~900",
+      "strength": "comparative",
+      "scope": "Figure 5b, decomposition experiments",
       "evidence_refs": [
-        "ev10",
-        "ev11"
+        "ev22"
       ],
-      "confidence": 0.88
+      "confidence": 0.85
     },
     {
-      "id": "c21",
-      "text": "The ammonia synthesis reaction was modeled with ΔH(298 K) = −91.8 kJ/mol.",
+      "id": "c27",
+      "text": "The ammonia synthesis reaction was modeled with delta H(298 K) = -91.8 kJ/mol.",
       "location": {
-        "section": "Methods — Computational details",
+        "section": "METHODS/Computational details",
         "page": 15,
         "char_span": null,
         "quote": "The ammonia synthesis reaction was modeled with ∆H (298 K) = −91.8 kJ/mol."
       },
       "epistemic_tier": "T1",
-      "predicate": "modeled_delta_H_298K_kJ_per_mol == -91.8",
+      "predicate": "reported_delta_H_298K_kJ_per_mol == -91.8",
       "strength": "exact",
       "scope": "computational model",
       "evidence_refs": [
-        "ev12"
+        "ev23"
       ],
-      "confidence": 0.96
+      "confidence": 0.95
     },
     {
-      "id": "c22",
-      "text": "The Boltzmann equation was solved for a N2 plasma at a reduced electric field of 100 Td; ke ranges 10−14–10−9 cm3 s−1 and ne is typically 1014–1015 cm−3.",
+      "id": "c28",
+      "text": "The Boltzmann equation was solved for an N2 plasma at a reduced electric field of 100 Td; ke typically ranges between 10^-14 and 10^-9 cm3/s, and ne is typically in the range 10^14-10^15 cm-3.",
       "location": {
-        "section": "Methods",
+        "section": "METHODS/Computational details",
         "page": 15,
         "char_span": null,
-        "quote": "we solved the Boltzmann equation for a N2 plasma at a reduced electric field of 100 Td [60] using the online solver at\nhttps://us.lxcat.net/. ke typically ranges between 10−14–10−9cm3s\n−1 depending on"
+        "quote": "for a N2 plasma at a reduced electric field of 100 Td"
       },
       "epistemic_tier": "T1",
-      "predicate": "reduced_E_field_Td == 100 AND ke_cm3_per_s in [1e-14,1e-9] AND ne_cm-3 in [1e14,1e15]",
-      "strength": "bound",
-      "scope": "plasma parameter estimation",
+      "predicate": "reduced_E_field_Td == 100 and ke_range_cm3_s == [1e-14,1e-9] and ne_range_cm3 == [1e14,1e15]",
+      "strength": "approximate",
+      "scope": "Boltzmann solver",
       "evidence_refs": [
-        "ev13"
+        "ev24",
+        "ev25"
       ],
       "confidence": 0.9
     },
     {
-      "id": "c23",
-      "text": "The plasma reactor has a quartz tube 5 mm internal diameter, mesh covering 6 cm, discharge gap 1.75 mm, and discharge volume 1.07 cm3.",
+      "id": "c29",
+      "text": "The reactor consists of a quartz tube (5 mm internal diameter, 1 mm wall thickness); the discharge gap is 1.75 mm and the discharge volume is 1.07 cm3.",
       "location": {
-        "section": "Methods — Experimental details",
+        "section": "METHODS/Experimental details",
         "page": 16,
         "char_span": null,
-        "quote": "the discharge gap\nis 1.75 mm, and the discharge volume is 1.07 cm3."
+        "quote": "Within this setup, the discharge gap\nis 1.75 mm, and the discharge volume is 1.07 cm3."
       },
       "epistemic_tier": "T0",
-      "predicate": "discharge_gap_mm == 1.75 AND discharge_volume_cm3 == 1.07 AND tube_id_mm == 5 AND mesh_length_cm == 6",
+      "predicate": "tube_ID_mm == 5 and wall_mm == 1 and discharge_gap_mm == 1.75 and discharge_volume_cm3 == 1.07",
       "strength": "exact",
-      "scope": "reactor geometry",
+      "scope": "plasma reactor",
       "evidence_refs": [
-        "ev14"
+        "ev26"
       ],
       "confidence": 0.93
     },
     {
-      "id": "c24",
-      "text": "Catalysts were Pt and Ni on γ-Al2O3 at 5 wt% metal, 100 mg per experiment; particle sizes based on at least 300 particles.",
+      "id": "c30",
+      "text": "Catalyst particle sizes were determined by TEM based on at least 300 particles.",
       "location": {
-        "section": "Methods — Experimental details",
+        "section": "METHODS/Experimental details",
         "page": 16,
         "char_span": null,
-        "quote": "Pt and Ni supported on γ-Al2O3 (5 wt%) were obtained from Riogen Inc."
+        "quote": "All particle sizes were based on at least 300 particles."
       },
       "epistemic_tier": "T0",
-      "predicate": "metal_loading_wt_pct == 5 AND material_mass_mg == 100 AND particles_counted >= 300",
-      "strength": "exact",
-      "scope": "catalyst characterization",
+      "predicate": "n_particles_min == 300",
+      "strength": "bound",
+      "scope": "TEM characterization",
       "evidence_refs": [
-        "ev15"
+        "ev27"
       ],
       "confidence": 0.92
     },
     {
-      "id": "c25",
-      "text": "Each data point is an average of three GC injections with error bars equal to the standard deviation of these three measurements; catalysts pretreated at 773 K for 30 min in 20 SCCM H2.",
+      "id": "c31",
+      "text": "Catalysts were pretreated in 20 SCCM H2 at 773 K for 30 min followed by 30 min in 20 SCCM He at 773 K.",
       "location": {
-        "section": "Methods — Experimental details",
+        "section": "METHODS/Experimental details",
+        "page": 16,
+        "char_span": null,
+        "quote": "Catalysts were pretreated in 20 SCCM (standard cubic centimeter per minute) H2 at 773 K\nfor 30 min followed by 30 min in 20 SCCM He at 773 K"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "pretreatment == {flow_SCCM: 20, T_K: 773, time_min: 30}",
+      "strength": "exact",
+      "scope": "catalyst pretreatment",
+      "evidence_refs": [
+        "ev28"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c32",
+      "text": "Each data point is based on an average of three GC injections, with error bars corresponding to the standard deviation of these three measurements.",
+      "location": {
+        "section": "METHODS/Experimental details",
         "page": 17,
         "char_span": null,
         "quote": "Each data point is based off\nof an average of three injections by the GC and the error bars shown correspond to the\nstandard deviation of these three measurements."
       },
       "epistemic_tier": "T3",
-      "predicate": "n_injections_per_point == 3 AND error_bars == std_dev",
+      "predicate": "n_replicate_injections == 3 and error_bars == std_dev",
       "strength": "exact",
-      "scope": "experimental methods",
+      "scope": "GC measurements",
       "evidence_refs": [
-        "ev16"
+        "ev29"
       ],
-      "confidence": 0.9
+      "confidence": 0.93
+    },
+    {
+      "id": "c33",
+      "text": "Beyond-equilibrium NH3 yields are observed experimentally and are greater on materials with weaker N binding (e.g. Pt) that are inactive for thermal ammonia synthesis.",
+      "location": {
+        "section": "RESULTS/INTRODUCTION",
+        "page": 4,
+        "char_span": null,
+        "quote": "NH3 yields exceeding the\nbulk equilibrium limit are observed and are greater on materials with weaker N binding en-\nergies (e.g. Pt) that are inactive for thermal ammonia synthesis."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "observed_NH3_yield > equilibrium_limit on weak-N-binding materials (Pt)",
+      "strength": "causal",
+      "scope": "DBD experiments",
+      "evidence_refs": [
+        "ev20"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c34",
+      "text": "Yields can be increased further past equilibrium by increasing plasma power, but re-equilibrate at high bulk temperatures where thermal pathways dominate.",
+      "location": {
+        "section": "CONCLUSIONS",
+        "page": 14,
+        "char_span": null,
+        "quote": "with increasing\nplasma power, ammonia yields extend further beyond the equilibrium limit, while yields\nre-equilibrate at temperatures at which thermal chemistry becomes dominant."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "NH3_yield increases with plasma_power; reverts to equilibrium at high T",
+      "strength": "causal",
+      "scope": "model and experiments",
+      "evidence_refs": [
+        "ev16",
+        "ev17"
+      ],
+      "confidence": 0.82
     }
   ],
   "evidence": [
@@ -463,7 +630,7 @@
       "id": "ev1",
       "kind": "number",
       "location": {
-        "section": "Introduction",
+        "section": "INTRODUCTION",
         "page": 2,
         "char_span": null,
         "quote": "(∆G◦(298 K) = −32.8 kJ mol−1)"
@@ -478,20 +645,16 @@
       "id": "ev2",
       "kind": "number",
       "location": {
-        "section": "Introduction",
+        "section": "INTRODUCTION",
         "page": 2,
         "char_span": null,
-        "quote": "temperatures in the range of 700–800 K and pressures of\n100–200 atm"
+        "quote": "operate at temperatures in the range of 700–800 K and pressures of\n100–200 atm"
       },
       "extracted_values": {
-        "T_range_K": [
-          700,
-          800
-        ],
-        "P_range_atm": [
-          100,
-          200
-        ]
+        "T_min_K": 700,
+        "T_max_K": 800,
+        "P_min_atm": 100,
+        "P_max_atm": 200
       },
       "confidence": 0.95
     },
@@ -499,7 +662,7 @@
       "id": "ev3",
       "kind": "number",
       "location": {
-        "section": "Introduction",
+        "section": "INTRODUCTION",
         "page": 2,
         "char_span": null,
         "quote": "(∼473 K, 1 atm)"
@@ -508,75 +671,155 @@
         "T_K": 473,
         "P_atm": 1
       },
-      "confidence": 0.93
+      "confidence": 0.92
     },
     {
       "id": "ev4",
       "kind": "number",
       "location": {
-        "section": "Results — Kinetic model",
+        "section": "INTRODUCTION",
+        "page": 3,
+        "char_span": null,
+        "quote": "elevated site-time yields of NH3 at atmospheric pressure\nand 438 K"
+      },
+      "extracted_values": {
+        "T_K": 438,
+        "P": "atmospheric"
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev5",
+      "kind": "number",
+      "location": {
+        "section": "RESULTS/Kinetic model",
         "page": 7,
         "char_span": null,
-        "quote": "constant\nvolume (1 mL). The reactants are introduced into the reactor in their stoichiometric ratio,\nat a flow rate of 10 mL min−1"
+        "quote": "constant\nvolume (1 mL). The reactants are introduced into the reactor in their stoichiometric ratio,\nat a flow rate of 10 mL min−1."
       },
       "extracted_values": {
         "volume_mL": 1,
-        "flow_mL_per_min": 10,
-        "site_density_mol_per_mL": 0.001
+        "flow_rate_mL_per_min": 10
       },
       "confidence": 0.95
     },
     {
-      "id": "ev5",
+      "id": "ev6",
+      "kind": "number",
+      "location": {
+        "section": "RESULTS/Kinetic model",
+        "page": 7,
+        "char_span": null,
+        "quote": "a total site density of 10−3 mol mL−1"
+      },
+      "extracted_values": {
+        "site_density_mol_per_mL": 0.001
+      },
+      "confidence": 0.93
+    },
+    {
+      "id": "ev7",
       "kind": "figure",
       "location": {
         "section": "Figure 2",
         "page": 8,
         "char_span": null,
-        "quote": "strong (EN = −1.2 eV),\nintermediate (EN = −0.6 eV), and weak (EN = 0.0 eV) nitrogen binding energies"
+        "quote": "strong (EN = −1.2 eV),\nintermediate (EN = −0.6 eV), and weak (EN = 0.0 eV) nitrogen binding energies."
       },
       "extracted_values": {
         "EN_strong_eV": -1.2,
         "EN_intermediate_eV": -0.6,
         "EN_weak_eV": 0.0,
-        "inset_T_K": 473,
-        "inset_P_atm": 1,
-        "inset_conv_pct": 5
+        "volcano_T_K": 473,
+        "volcano_P_atm": 1,
+        "N2_conversion_pct": 5
+      },
+      "confidence": 0.94
+    },
+    {
+      "id": "ev8",
+      "kind": "number",
+      "location": {
+        "section": "RESULTS",
+        "page": 8,
+        "char_span": null,
+        "quote": "barrier is reduced by 1 eV, corresponding to roughly three N2 vibrational quanta"
+      },
+      "extracted_values": {
+        "barrier_reduction_eV": 1,
+        "vibrational_quanta": 3
       },
       "confidence": 0.93
     },
     {
-      "id": "ev6",
-      "kind": "figure",
+      "id": "ev9",
+      "kind": "text",
       "location": {
-        "section": "Figure 3",
-        "page": 10,
+        "section": "Abstract",
+        "page": 1,
         "char_span": null,
-        "quote": "For each catalyst steady state\nthermal (plasma-off), and plasma-on (for three values of kene) partial pressures of NH3 are plotted.\nPlasma-excitation is assumed to reduce the barrier for N2 dissociation by 1 eV."
+        "quote": "NH3 yields are predicted\nto exceed bulk thermodynamic equilibrium limits on materials that are thermal-rate-limited by N2\ndissociation."
+      },
+      "extracted_values": {},
+      "confidence": 0.9
+    },
+    {
+      "id": "ev10",
+      "kind": "number",
+      "location": {
+        "section": "RESULTS",
+        "page": 9,
+        "char_span": null,
+        "quote": "short-lived (∼ 10 ns) filamentary\nmicrodischarges, followed by an afterglow period on the order of 1 µs"
       },
       "extracted_values": {
-        "kene_values_s-1": [
-          0.001,
-          0.01,
-          0.1
-        ],
-        "barrier_reduction_eV": 1,
-        "EN_eV": [
-          -1.2,
-          -0.6,
-          0.0
-        ]
+        "microdischarge_ns": 10,
+        "afterglow_us": 1,
+        "value_a": 10,
+        "unit_a": "ns",
+        "value_b": 1,
+        "unit_b": "us"
       },
       "confidence": 0.9
     },
     {
-      "id": "ev7",
-      "kind": "text",
+      "id": "ev11",
+      "kind": "figure",
+      "location": {
+        "section": "RESULTS",
+        "page": 9,
+        "char_span": null,
+        "quote": "observed at kene = 10−1s\n−1\n, in\nthe temperature window of 475–600 K"
+      },
+      "extracted_values": {
+        "kene_s-1": 0.1,
+        "T_window_min_K": 475,
+        "T_window_max_K": 600
+      },
+      "confidence": 0.87
+    },
+    {
+      "id": "ev12",
+      "kind": "figure",
+      "location": {
+        "section": "RESULTS",
+        "page": 9,
+        "char_span": null,
+        "quote": "sufficiently high (kene ≥ 10−2s\n−1\n)"
+      },
+      "extracted_values": {
+        "kene_threshold_s-1": 0.01
+      },
+      "confidence": 0.87
+    },
+    {
+      "id": "ev13",
+      "kind": "number",
       "location": {
         "section": "Experimental",
         "page": 11,
         "char_span": null,
-        "quote": "a 2:1 ratio at a total flow rate of 40 SCCM"
+        "quote": "N2 and H2 into the reactor in a 2:1 ratio at a total flow rate of 40 SCCM"
       },
       "extracted_values": {
         "N2_H2_ratio": "2:1",
@@ -585,35 +828,107 @@
       "confidence": 0.95
     },
     {
-      "id": "ev8",
+      "id": "ev14",
+      "kind": "number",
+      "location": {
+        "section": "Experimental",
+        "page": 11,
+        "char_span": null,
+        "quote": "(100 mg γ-Al2O3)"
+      },
+      "extracted_values": {
+        "support_mass_mg": 100
+      },
+      "confidence": 0.93
+    },
+    {
+      "id": "ev15",
+      "kind": "number",
+      "location": {
+        "section": "Experimental",
+        "page": 11,
+        "char_span": null,
+        "quote": "varied between\n423–1123 K"
+      },
+      "extracted_values": {
+        "T_min_K": 423,
+        "T_max_K": 1123
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev16",
+      "kind": "number",
+      "location": {
+        "section": "Experimental",
+        "page": 11,
+        "char_span": null,
+        "quote": "plasma powers of 5, 10, and 15 W,\ncorresponding to specific energy inputs of 7.5, 15, and 22.5 kJ L−1"
+      },
+      "extracted_values": {
+        "plasma_powers_W": [
+          5,
+          10,
+          15
+        ],
+        "specific_energy_inputs_kJ_per_L": [
+          7.5,
+          15,
+          22.5
+        ]
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev17",
       "kind": "figure",
       "location": {
         "section": "Figure 4",
         "page": 12,
         "char_span": null,
-        "quote": "Three powers, including 5, 10, and 15W, are shown.\nReaction conditions: total flow rate = 40 SSCM, inlet N2:H2 = 2:1."
+        "quote": "NH3 yields maximized at about 920 K"
       },
       "extracted_values": {
-        "powers_W": [
-          5,
-          10,
-          15
-        ],
-        "SEI_kJ_per_L": [
-          7.5,
-          15,
-          22.5
-        ],
-        "max_yield_T_K": 920,
-        "T_range_K": [
-          423,
-          1123
+        "yield_max_T_K": 920,
+        "yield_axis_max_pct": 4.0
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev18",
+      "kind": "number",
+      "location": {
+        "section": "Experimental",
+        "page": 12,
+        "char_span": null,
+        "quote": "(100 mg material, 5 wt% metal)"
+      },
+      "extracted_values": {
+        "material_mass_mg": 100,
+        "metal_loading_wt_pct": 5
+      },
+      "confidence": 0.94
+    },
+    {
+      "id": "ev19",
+      "kind": "text",
+      "location": {
+        "section": "Experimental",
+        "page": 12,
+        "char_span": null,
+        "quote": "(the N-metal bond strength follows the order Ru > Ni > Pt)"
+      },
+      "extracted_values": {
+        "order": [
+          "Ru",
+          "Ni",
+          "Pt"
         ]
       },
       "confidence": 0.9
     },
     {
-      "id": "ev9",
+      "id": "ev20",
       "kind": "figure",
       "location": {
         "section": "Figure 5a",
@@ -622,57 +937,52 @@
         "quote": "Plasma-catalytic ammonia yields in a DBD reactor packed with Al2O3, Ni/γ-Al2O3, and\nPt/γ-Al2O3. Reaction conditions: total inlet flow rate = 40 mL min−1, N2:H2 = 2:1."
       },
       "extracted_values": {
-        "materials": [
-          "Al2O3",
-          "Ni/Al2O3",
-          "Pt/Al2O3"
-        ],
         "plasma_power_W": 10,
         "flow_mL_per_min": 40,
-        "Pt_converge_T_K": 1000
+        "N2_H2_ratio": "2:1",
+        "Pt_converge_T_K": 1000,
+        "yield_axis_max_pct": 2.5
       },
       "confidence": 0.85
     },
     {
-      "id": "ev10",
-      "kind": "figure",
+      "id": "ev21",
+      "kind": "number",
       "location": {
-        "section": "Figure 5b",
+        "section": "Figure 5b caption",
         "page": 13,
         "char_span": null,
-        "quote": "NH3 conversion in thermal ammonia decomposition experiments over γ-Al2O3, Ni/γ-Al2O3, and\nPt/γ-Al2O3. Reaction conditions: Inlet flow rate = 40 mL min−1. Inlet gas composition: 0.5%\nNH3, 9.5% He, and balance of 2:1 N2 and H2."
+        "quote": "Inlet gas composition: 0.5%\nNH3, 9.5% He, and balance of 2:1 N2 and H2."
       },
       "extracted_values": {
         "NH3_pct": 0.5,
         "He_pct": 9.5,
         "N2_H2_ratio": "2:1",
-        "flow_mL_per_min": 40,
-        "Ni_lightoff_T_K": 750,
-        "Pt_Al2O3_lightoff_T_K": 900
+        "flow_mL_per_min": 40
       },
-      "confidence": 0.88
+      "confidence": 0.93
     },
     {
-      "id": "ev11",
-      "kind": "text",
+      "id": "ev22",
+      "kind": "figure",
       "location": {
-        "section": "Experimental",
+        "section": "Figure 5b / Experimental",
         "page": 13,
         "char_span": null,
-        "quote": "Ni/Al2O3 is the most active for NH3\ndecomposition, lighting off at around 750 K. The decomposition curves for Pt/γ-Al2O3 and\nmetal-free γ-Al2O3 are nearly identical, lighting off at approximately 900 K."
+        "quote": "lighting off at around 750 K. The decomposition curves for Pt/γ-Al2O3 and\nmetal-free γ-Al2O3 are nearly identical, lighting off at approximately 900 K."
       },
       "extracted_values": {
         "Ni_lightoff_T_K": 750,
         "Pt_lightoff_T_K": 900,
         "Al2O3_lightoff_T_K": 900
       },
-      "confidence": 0.88
+      "confidence": 0.83
     },
     {
-      "id": "ev12",
+      "id": "ev23",
       "kind": "number",
       "location": {
-        "section": "Methods — Computational details",
+        "section": "METHODS/Computational details",
         "page": 15,
         "char_span": null,
         "quote": "∆H (298 K) = −91.8 kJ/mol"
@@ -681,80 +991,102 @@
         "delta_H_298K_kJ_per_mol": -91.8,
         "temperature_K": 298
       },
-      "confidence": 0.96
+      "confidence": 0.95
     },
     {
-      "id": "ev13",
+      "id": "ev24",
       "kind": "number",
       "location": {
-        "section": "Methods",
+        "section": "METHODS/Computational details",
         "page": 15,
         "char_span": null,
         "quote": "a reduced electric field of 100 Td"
       },
       "extracted_values": {
-        "reduced_E_field_Td": 100,
-        "ke_range_cm3_per_s": [
-          1e-14,
-          1e-09
-        ],
-        "ne_range_cm-3": [
-          100000000000000.0,
-          1000000000000000.0
-        ]
-      },
-      "confidence": 0.9
-    },
-    {
-      "id": "ev14",
-      "kind": "number",
-      "location": {
-        "section": "Methods — Experimental details",
-        "page": 16,
-        "char_span": null,
-        "quote": "the discharge gap\nis 1.75 mm, and the discharge volume is 1.07 cm3"
-      },
-      "extracted_values": {
-        "discharge_gap_mm": 1.75,
-        "discharge_volume_cm3": 1.07,
-        "tube_id_mm": 5,
-        "wall_thickness_mm": 1,
-        "mesh_length_cm": 6,
-        "rod_diameter_mm": 1.5
+        "reduced_E_field_Td": 100
       },
       "confidence": 0.93
     },
     {
-      "id": "ev15",
-      "kind": "text",
+      "id": "ev25",
+      "kind": "number",
       "location": {
-        "section": "Methods — Experimental details",
-        "page": 16,
+        "section": "METHODS/Computational details",
+        "page": 15,
         "char_span": null,
-        "quote": "Pt and Ni supported on γ-Al2O3 (5 wt%) were obtained from Riogen Inc."
+        "quote": "ke typically ranges between 10−14–10−9cm3s"
       },
       "extracted_values": {
-        "metal_loading_wt_pct": 5,
-        "min_particles_counted": 300
+        "ke_min_cm3_s": 1e-14,
+        "ke_max_cm3_s": 1e-09,
+        "ne_min_cm-3": 100000000000000.0,
+        "ne_max_cm-3": 1000000000000000.0
+      },
+      "confidence": 0.88
+    },
+    {
+      "id": "ev26",
+      "kind": "number",
+      "location": {
+        "section": "METHODS/Experimental details",
+        "page": 16,
+        "char_span": null,
+        "quote": "a quartz tube (5 mm internal diameter and 1 mm wall thickness)"
+      },
+      "extracted_values": {
+        "tube_ID_mm": 5,
+        "wall_thickness_mm": 1,
+        "discharge_gap_mm": 1.75,
+        "discharge_volume_cm3": 1.07,
+        "mesh_length_cm": 6,
+        "tungsten_rod_mm": 1.5
       },
       "confidence": 0.92
     },
     {
-      "id": "ev16",
-      "kind": "text",
+      "id": "ev27",
+      "kind": "number",
       "location": {
-        "section": "Methods — Experimental details",
-        "page": 17,
+        "section": "METHODS/Experimental details",
+        "page": 16,
         "char_span": null,
-        "quote": "Each catalyst was pre-treated\nat 773 K for 30 min in 20 SCCM of H2 before data collection."
+        "quote": "based on at least 300 particles"
       },
       "extracted_values": {
-        "pretreat_T_K": 773,
-        "pretreat_time_min": 30,
-        "H2_flow_SCCM": 20,
-        "n_injections": 3
+        "n_particles_min": 300
       },
-      "confidence": 0.9
+      "confidence": 0.92
+    },
+    {
+      "id": "ev28",
+      "kind": "number",
+      "location": {
+        "section": "METHODS/Experimental details",
+        "page": 16,
+        "char_span": null,
+        "quote": "pretreated in 20 SCCM (standard cubic centimeter per minute) H2 at 773 K\nfor 30 min followed by 30 min in 20 SCCM He at 773 K"
+      },
+      "extracted_values": {
+        "flow_SCCM": 20,
+        "T_K": 773,
+        "time_min": 30
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev29",
+      "kind": "text",
+      "location": {
+        "section": "METHODS/Experimental details",
+        "page": 17,
+        "char_span": null,
+        "quote": "an average of three injections by the GC and the error bars shown correspond to the\nstandard deviation of these three measurements"
+      },
+      "extracted_values": {
+        "n_injections": 3,
+        "error_bar_type": "standard deviation"
+      },
+      "confidence": 0.93
     }
   ],
   "bindings": [
@@ -774,113 +1106,173 @@
       "relation": "rests_on"
     },
     {
-      "claim_id": "c6",
-      "evidence_id": "ev9",
-      "relation": "rests_on"
-    },
-    {
-      "claim_id": "c6",
-      "evidence_id": "ev10",
-      "relation": "rests_on"
-    },
-    {
-      "claim_id": "c7",
+      "claim_id": "c4",
       "evidence_id": "ev4",
       "relation": "rests_on"
     },
     {
-      "claim_id": "c8",
-      "evidence_id": "ev5",
-      "relation": "rests_on"
-    },
-    {
-      "claim_id": "c9",
-      "evidence_id": "ev5",
-      "relation": "rests_on"
-    },
-    {
-      "claim_id": "c10",
-      "evidence_id": "ev6",
-      "relation": "rests_on"
-    },
-    {
-      "claim_id": "c11",
-      "evidence_id": "ev6",
-      "relation": "rests_on"
-    },
-    {
-      "claim_id": "c12",
-      "evidence_id": "ev6",
-      "relation": "rests_on"
-    },
-    {
-      "claim_id": "c13",
-      "evidence_id": "ev6",
-      "relation": "rests_on"
-    },
-    {
-      "claim_id": "c14",
-      "evidence_id": "ev6",
-      "relation": "rests_on"
-    },
-    {
-      "claim_id": "c15",
-      "evidence_id": "ev7",
-      "relation": "rests_on"
-    },
-    {
-      "claim_id": "c15",
-      "evidence_id": "ev8",
-      "relation": "rests_on"
-    },
-    {
-      "claim_id": "c16",
-      "evidence_id": "ev8",
-      "relation": "rests_on"
-    },
-    {
-      "claim_id": "c17",
-      "evidence_id": "ev8",
-      "relation": "rests_on"
-    },
-    {
-      "claim_id": "c19",
+      "claim_id": "c5",
       "evidence_id": "ev9",
       "relation": "rests_on"
     },
     {
-      "claim_id": "c20",
+      "claim_id": "c6",
+      "evidence_id": "ev5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c7",
+      "evidence_id": "ev6",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c8",
+      "evidence_id": "ev7",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c9",
+      "evidence_id": "ev7",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c10",
+      "evidence_id": "ev7",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c11",
+      "evidence_id": "ev8",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c12",
       "evidence_id": "ev10",
       "relation": "rests_on"
     },
     {
-      "claim_id": "c20",
+      "claim_id": "c13",
       "evidence_id": "ev11",
       "relation": "rests_on"
     },
     {
-      "claim_id": "c21",
+      "claim_id": "c14",
       "evidence_id": "ev12",
       "relation": "rests_on"
     },
     {
-      "claim_id": "c22",
+      "claim_id": "c15",
+      "evidence_id": "ev12",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c16",
       "evidence_id": "ev13",
       "relation": "rests_on"
     },
     {
-      "claim_id": "c23",
+      "claim_id": "c17",
       "evidence_id": "ev14",
       "relation": "rests_on"
     },
     {
-      "claim_id": "c24",
+      "claim_id": "c18",
       "evidence_id": "ev15",
       "relation": "rests_on"
     },
     {
-      "claim_id": "c25",
+      "claim_id": "c19",
       "evidence_id": "ev16",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c20",
+      "evidence_id": "ev17",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c20",
+      "evidence_id": "ev16",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c21",
+      "evidence_id": "ev18",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c22",
+      "evidence_id": "ev19",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c23",
+      "evidence_id": "ev20",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c24",
+      "evidence_id": "ev20",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c25",
+      "evidence_id": "ev21",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c26",
+      "evidence_id": "ev22",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c27",
+      "evidence_id": "ev23",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c28",
+      "evidence_id": "ev24",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c28",
+      "evidence_id": "ev25",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c29",
+      "evidence_id": "ev26",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c30",
+      "evidence_id": "ev27",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c31",
+      "evidence_id": "ev28",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c32",
+      "evidence_id": "ev29",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c33",
+      "evidence_id": "ev20",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c34",
+      "evidence_id": "ev16",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c34",
+      "evidence_id": "ev17",
       "relation": "rests_on"
     }
   ]

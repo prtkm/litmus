@@ -1,0 +1,125 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "biology-anon-retracted-oblongifolin-gem-resistance",
+  "meta": {
+    "document_type": "retraction_notice",
+    "note": "Document is a retraction notice, not a research article; no original quantitative results are reported here.",
+    "extractor": "litmus.extract",
+    "model": "claude-opus-4-8",
+    "source": "opus-native-pdf"
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "text": "This is a retraction notice for the paper 'Oblongifolin C reverses GEM resistance via suppressing autophagy flux in bladder cancer cells' (Exp Ther Med 20: 1431-1440, 2020).",
+      "location": {
+        "section": "RETRACTION",
+        "page": 1,
+        "char_span": null,
+        "quote": "Oblongifolin C reverses GEM resistance via suppressing \nautophagy flux in bladder cancer cells"
+      },
+      "epistemic_tier": "T1",
+      "predicate": "retraction_notice_exists for DOI 10.3892/etm.2020.8856",
+      "strength": "qualitative",
+      "scope": "Exp Ther Med 20: 1431-1440, 2020",
+      "evidence_refs": [
+        "ev1"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "c2",
+      "text": "A concerned reader noted that the immunohistochemical image in Fig. 1C on p. 1434 and certain western blot data in Figs. 3B and 4B were strikingly similar to data previously published in articles by different authors at different research institutes.",
+      "location": {
+        "section": "RETRACTION",
+        "page": 1,
+        "char_span": null,
+        "quote": "the\nimmunohistochemical image shown in Fig. 1C on p. 1434 and \ncertain of the western blot data featured in Figs. 3B and 4B \nwere strikingly similar to data that had already appeared \npreviously in articles written by different authors at different \nresearch institutes."
+      },
+      "epistemic_tier": "T7",
+      "predicate": "image_duplication_alleged in Fig 1C, Fig 3B, Fig 4B versus prior publications",
+      "strength": "qualitative",
+      "scope": "Fig. 1C (p. 1434), Figs. 3B and 4B",
+      "evidence_refs": [
+        "ev2"
+      ],
+      "confidence": 0.97
+    },
+    {
+      "id": "c3",
+      "text": "The Editor decided the paper should be retracted; the authors were asked for an explanation but the Editorial Office did not receive a reply.",
+      "location": {
+        "section": "RETRACTION",
+        "page": 1,
+        "char_span": null,
+        "quote": "has decided that this \npaper should be retracted from the Journal. The authors were \nasked for an explanation to account for these concerns, but the \nEditorial Office did not receive a reply."
+      },
+      "epistemic_tier": "T1",
+      "predicate": "editorial_decision == retract; author_response_received == false",
+      "strength": "qualitative",
+      "scope": "Experimental and Therapeutic Medicine",
+      "evidence_refs": [
+        "ev1"
+      ],
+      "confidence": 0.97
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev1",
+      "kind": "text",
+      "location": {
+        "section": "RETRACTION",
+        "page": 1,
+        "char_span": null,
+        "quote": "Exp Ther Med20: 1431‑1440, 2020; DOI: 10.3892/etm.2020.8856"
+      },
+      "extracted_values": {
+        "original_journal": "Exp Ther Med",
+        "original_volume": 20,
+        "original_pages": "1431-1440",
+        "original_year": 2020,
+        "original_doi": "10.3892/etm.2020.8856",
+        "retraction_doi": "10.3892/etm.2026.13181",
+        "retraction_year": 2026
+      },
+      "confidence": 0.97
+    },
+    {
+      "id": "ev2",
+      "kind": "text",
+      "location": {
+        "section": "RETRACTION",
+        "page": 1,
+        "char_span": null,
+        "quote": "immunohistochemical image shown in Fig. 1C on p. 1434 and \ncertain of the western blot data featured in Figs. 3B and 4B"
+      },
+      "extracted_values": {
+        "figures_implicated": [
+          "Fig. 1C",
+          "Fig. 3B",
+          "Fig. 4B"
+        ],
+        "page_cited": 1434
+      },
+      "confidence": 0.95
+    }
+  ],
+  "bindings": [
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    }
+  ]
+}

@@ -1,0 +1,667 @@
+{
+  "paper_id": "chemistry-arxiv-2606.13420-fecconib-melt-quenched-alloy",
+  "title": "The phase composition and physical properties of melt-quenched multicomponent alloy FeCoNiB0.7Si0.3Be",
+  "doi": "10.15407/fm32.03.418",
+  "domain": "Materials science / metallurgy (high-entropy alloys, magnetic & mechanical properties)",
+  "n_pages_read": 12,
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The nominal composition FeCoNiB0.7Si0.3Be corresponds to 20 at.% Fe, 20 at.% Co, 20 at.% Ni, 14 at.% B, 6 at.% Si and 20 at.% Be, which sums to 100 at.%.",
+      "quote": "with a nominal composition of 20 at.% Fe, 20 at.% Co, 20 at.% Ni, 14 at.% B, 6 at.% Si and 20 at.% Be",
+      "section": "2. Experimental",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "Sum the six stated atomic percentages and confirm they total 100 at.%; also confirm the at.% map onto the formula FeCoNiB0.7Si0.3Be (B:Si = 14:6 = 0.7:0.3; the four 20 at.% elements are unit-stoichiometry).",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "text",
+          "location": "Section 2, composition sentence",
+          "quote": "20 at.% Fe, 20 at.% Co, 20 at.% Ni, 14 at.% B, 6 at.% Si and 20 at.% Be",
+          "extracted_values": {"Fe": 20, "Co": 20, "Ni": 20, "B": 14, "Si": 6, "Be": 20, "sum": 100}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "stoichiometry/composition-sum check (add at.% to 100; verify B/Si ratio = 0.7/0.3 and Fe=Co=Ni=Be=1)",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.97,
+        "rationale": "Recomputed: 20+20+20+14+6+20 = 100 at.% exactly. B:Si = 14:6 = 0.7:0.3 matches the B0.7Si0.3 subscript; Fe,Co,Ni,Be each 20 at.% matches unit stoichiometry. Off-the-shelf composition-sum/stoichiometry check fully covers this."
+      }
+    },
+    {
+      "id": "c2",
+      "text": "The configurational entropy of mixing of the alloy is ΔSmix = 14.4 J/(mol·K).",
+      "quote": "∆Smix, J/(mol·K) ... 14.4",
+      "section": "Tab. 1 / Eq. (2)",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Apply Eq.(2) ΔSmix = -R Σ c_i ln c_i with the nominal atomic fractions (Fe,Co,Ni,Be=0.20; B=0.14; Si=0.06) and R=8.314 J/(mol·K); compare to 14.4.",
+      "evidence": [
+        {
+          "id": "e2",
+          "kind": "table",
+          "location": "Table 1",
+          "quote": "14.4",
+          "extracted_values": {"dSmix_J_per_molK": 14.4}
+        },
+        {
+          "id": "e2b",
+          "kind": "equation",
+          "location": "Eq. (2)",
+          "quote": "ΔSmix = -R Σ c_i ln c_i",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T0 arithmetic recompute of Eq.(2) from the composition",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.96,
+        "rationale": "Independently recomputed ΔSmix = -R[4*(0.20 ln0.20)+0.14 ln0.14+0.06 ln0.06] = 14.397 J/(mol·K), rounds to 14.4. Equals 1.73R, internally consistent for a 6-component non-equimolar alloy. Deterministic; fully checkable."
+      }
+    },
+    {
+      "id": "c3",
+      "text": "The valence electron concentration of the alloy is VEC = 6.46.",
+      "quote": "VEC ... 6.46",
+      "section": "Tab. 1 / Eq. (6)",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Apply Eq.(6) VEC = Σ c_i (VEC)_i using standard per-element valence-electron counts (Fe 8, Co 9, Ni 10, B 3, Si 4, Be 2) and the nominal fractions; compare to 6.46.",
+      "evidence": [
+        {
+          "id": "e3",
+          "kind": "table",
+          "location": "Table 1",
+          "quote": "6.46",
+          "extracted_values": {"VEC": 6.46}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T0 weighted-average recompute of VEC; requires fixed reference per-element VEC (mild T1 dependency on convention)",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.93,
+        "rationale": "Recomputed VEC = 0.20*(8+9+10+2)+0.14*3+0.06*4 = 6.46 exactly using the standard HEA convention (s+d for transition metals; main-group valence for B,Si,Be). Matches the paper's own description 'concentration of valence (s+d orbital) electrons per atom'. Off-the-shelf weighted-average check covers it; only residual uncertainty is the per-element VEC convention."
+      }
+    },
+    {
+      "id": "c4",
+      "text": "The thermodynamic parameter is Ω = 1.5.",
+      "quote": "Ω ... 1.5",
+      "section": "Tab. 1 / Eq. (4)",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Apply Eq.(4) Ω = Tm*ΔSmix/|ΔHmix| with the alloy's average melting temperature Tm = Σ c_i (Tm)_i, ΔSmix = 14.4 J/(mol·K) and ΔHmix = -17.3 kJ/mol; confirm internal self-consistency of the three tabulated values.",
+      "evidence": [
+        {
+          "id": "e4",
+          "kind": "table",
+          "location": "Table 1",
+          "quote": "1.5",
+          "extracted_values": {"Omega": 1.5, "dHmix_kJ_per_mol": -17.3, "dSmix_J_per_molK": 14.4}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T0 recompute of Eq.(4) for internal consistency among Tm, ΔSmix, ΔHmix (Tm from element melting points is T1 reference data)",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "Using standard element melting points the composition-weighted Tm = 1803.5 K; then Ω = 1803.5*14.4 / 17300 = 1.501, rounds to 1.5. The trio (Tm, ΔSmix, ΔHmix=-17.3 kJ/mol with units in J) is internally self-consistent. ΔHmix itself (Eq.3, Miedema parameters) is T1/T5 and not independently recomputed here; the Ω relation given the tabulated inputs is confirmed."
+      }
+    },
+    {
+      "id": "c5",
+      "text": "The atomic-size mismatch parameter is δr = 12.47%.",
+      "quote": "𝛿𝑟, % ... 12.47",
+      "section": "Tab. 1 / Eq. (5)",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Apply Eq.(5) δr = sqrt(Σ c_i (1 - r_i/r̄)^2)*100 with tabulated atomic radii and the nominal fractions; compare to 12.47%.",
+      "evidence": [
+        {
+          "id": "e5",
+          "kind": "table",
+          "location": "Table 1",
+          "quote": "12.47",
+          "extracted_values": {"delta_r_percent": 12.47}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T0 recompute of Eq.(5); depends on the specific atomic-radius reference set (cited [3,20,21]) -> partly T1",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.72,
+        "rationale": "Recomputed with two common metallic-radius sets gives 12.70% and 11.07%, bracketing the paper's 12.47%. Value is plausible and in-range but radius-set-dependent (B and Si radii especially), so cannot be pinned to a single exact answer without the authors' exact radius table from refs [3,20,21]. Supported but radius-convention-sensitive."
+      }
+    },
+    {
+      "id": "c6",
+      "text": "The Allen-electronegativity difference parameter is δχ^A = 7.838%.",
+      "quote": "𝛿𝜒 𝐴 , % ... 7.838",
+      "section": "Tab. 1 / Eq. (7)",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Apply Eq.(7) δχ^A = sqrt(Σ c_i (1 - χ_i^A/χ̄)^2)*100 using Allen electronegativities (ref [19,21]) and the nominal fractions; compare to 7.838%.",
+      "evidence": [
+        {
+          "id": "e6",
+          "kind": "table",
+          "location": "Table 1",
+          "quote": "7.838",
+          "extracted_values": {"delta_chi_A_percent": 7.838}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T0 recompute of Eq.(7) using a fixed Allen-electronegativity table (T1 reference data from refs [19,21])",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.5,
+        "rationale": "Formula is well-defined and recomputable, but the result is sensitive to the exact Allen-electronegativity values adopted (the paper cites Tantardini-Oganov [21]); the unusual 4-significant-figure precision (7.838) suggests a specific table. Not recomputed here because the precise χ^A set was not transcribed; mark inconclusive pending the reference values."
+      }
+    },
+    {
+      "id": "c7",
+      "text": "Based on the calculated HEA criteria, the alloy is predicted to contain amorphous or intermetallic phases as well as a BCC-type solid solution.",
+      "quote": "the FeCoNiB0.7Si0.3Be alloy should contain amorphous or intermetallic phases as well as a BCC-type solid solution",
+      "section": "3. Results and Discussions",
+      "page": 5,
+      "epistemic_tier": "T3",
+      "predicate": "Check whether the tabulated parameter values, fed into the standard empirical phase-selection rules (e.g. δr, VEC, Ω, δχ^A thresholds in refs [1-3,22-24]), actually predict the stated phase outcome.",
+      "evidence": [
+        {
+          "id": "e7",
+          "kind": "table",
+          "location": "Table 1 + rules in refs [1-3,22-24]",
+          "quote": null,
+          "extracted_values": {"Omega": 1.5, "delta_r_percent": 12.47, "VEC": 6.46}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T3 method-appropriateness check applying the cited empirical solid-solution-vs-intermetallic/amorphous thresholds to the tabulated parameters",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.7,
+        "rationale": "The reasoning is qualitatively consistent with standard HEA rules: Ω=1.5 (<1.1 favours intermetallics; 1.5 is borderline), δr=12.47% (>6.6% disfavours simple solid solution, favouring amorphous/intermetallic), VEC=6.46 (<6.87 favours BCC). So predicting 'BCC + intermetallic/amorphous' is congruent with the criteria. Settling it precisely requires applying each cited threshold; tagged supported with moderate confidence."
+      }
+    },
+    {
+      "id": "c8",
+      "text": "XRD of the as-cast sample shows an ordered BCC solid solution of structural type B2 with lattice parameter a = 0.2655 nm.",
+      "quote": "The as-cast sample exhibited peaks corresponding to an ordered solid solution with a BCC lattice (structural type B2, lattice parameter a = 0.2655 nm).",
+      "section": "3. Results and Discussions",
+      "page": 6,
+      "epistemic_tier": "T4",
+      "predicate": "Verify that the B2/BCC peak positions in Fig.1 are consistent with a = 0.2655 nm (compute 2θ for (110),(200),(211) at Cu Kα and check against the diamond-marked peaks) and that B2 ordering peaks are identifiable.",
+      "evidence": [
+        {
+          "id": "e8",
+          "kind": "figure",
+          "location": "Fig. 1 (XRD, as-cast trace, B2 = diamond markers)",
+          "quote": "a = 0.2655 nm",
+          "extracted_values": {"a_nm": 0.2655}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T4 claim<->figure support: recompute BCC peak 2θ from a and compare to Fig.1 marker positions (Cu Kα, λ=0.15406 nm)",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.55,
+        "rationale": "For a=0.2655 nm BCC, (110) 2θ ≈ 48.7 deg, (200) ≈ 71.3 deg, (211) ≈ 90.5 deg at Cu Kα. Fig.1 diamond markers do fall in the high-2θ region broadly consistent with these, but the as-cast pattern is noisy and marker positions cannot be read precisely from the rendered figure; raw peak list not provided. Plausible but cannot be pinned without digitized peak positions -> inconclusive."
+      }
+    },
+    {
+      "id": "c9",
+      "text": "An intermetallic (Fe, Ni, Co)2B phase with a tetragonal lattice is present in both as-cast and melt-quenched samples.",
+      "quote": "the intermetallic phase (Fe, Ni, Co)2B with a tetragonal lattice was present. In the MQ sample, the same phases were observed",
+      "section": "3. Results and Discussions",
+      "page": 6,
+      "epistemic_tier": "T4",
+      "predicate": "Check that the V-marked peaks in Fig.1 (labelled (Fe,Co,Ni)2B) correspond to the known tetragonal M2B (Fe2B-type, I4/mcm) reflections and appear in both traces.",
+      "evidence": [
+        {
+          "id": "e9",
+          "kind": "figure",
+          "location": "Fig. 1 (V markers labelled (Fe,Co,Ni)2B)",
+          "quote": "V - (Fe,Co,Ni)2B",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T4 phase-identification cross-check of the V-marked peaks against the tetragonal Fe2B (I4/mcm) reference pattern in both traces",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.6,
+        "rationale": "Fig.1 legend explicitly assigns V markers to (Fe,Co,Ni)2B and they appear in both the as-cast and melt-quenched traces, consistent with the text. Fe2B-type tetragonal M2B is a standard, plausible boride phase for this chemistry. Full settlement requires matching marker 2θ to the I4/mcm reference; supported at moderate confidence from the figure legend."
+      }
+    },
+    {
+      "id": "c10",
+      "text": "In the melt-quenched sample the BCC ordered solid solution has lattice parameter a = 0.2653 nm (a slight decrease from 0.2655 nm in as-cast).",
+      "quote": "the lattice parameter of the ordered solid solution with a BCC lattice was a = 0.2653 nm",
+      "section": "3. Results and Discussions",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Confirm internal consistency: 0.2653 nm < 0.2655 nm (decrease of 0.0002 nm, ~0.08%) and that this magnitude is physically plausible for melt-quenching-induced lattice change; check prose vs the (absent) numeric figure data.",
+      "evidence": [
+        {
+          "id": "e10",
+          "kind": "number",
+          "location": "Section 3 (as-cast vs MQ lattice parameters)",
+          "quote": "a = 0.2653 nm",
+          "extracted_values": {"a_ac_nm": 0.2655, "a_mq_nm": 0.2653, "delta_nm": -0.0002}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T0 percent-change/internal-consistency check of the two lattice parameters",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.78,
+        "rationale": "Arithmetic: 0.2655 - 0.2653 = 0.0002 nm = 0.075% decrease, internally consistent and a physically reasonable small change. Caveat: a 0.0002 nm (0.08%) difference is at the resolution limit of a DRON-2.0 lab diffractometer with broad peaks, so the precision is generous; the relative claim (slight decrease) is supported."
+      }
+    },
+    {
+      "id": "c11",
+      "text": "The melt-quenched sample has a higher content of the B2 phase relative to the (Fe,Ni,Co)2B phase than the as-cast sample, i.e. rapid cooling increases the B2 fraction and reduces the intermetallic content.",
+      "quote": "The intensity of the corresponding peaks indicated that the MQ sample had a higher content of the B2 phase compared to the (Fe, Ni, Co)2B phase.",
+      "section": "3. Results and Discussions / Conclusions",
+      "page": 6,
+      "epistemic_tier": "T4",
+      "predicate": "Check whether the relative B2-vs-(Fe,Co,Ni)2B peak intensities in Fig.1 actually support a higher B2 fraction in the MQ trace than in the as-cast trace (qualitative phase-fraction inference from integrated intensities).",
+      "evidence": [
+        {
+          "id": "e11",
+          "kind": "figure",
+          "location": "Fig. 1 (relative B2 vs (Fe,Co,Ni)2B peak intensities, both traces)",
+          "quote": null,
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T4 claim<->figure support: compare integrated B2 vs boride peak intensities across the two traces (ideally quantitative Rietveld, here qualitative)",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.45,
+        "rationale": "The claim rests entirely on relative peak intensities in Fig.1. From the rendered figure both traces are noisy and no integrated intensities or phase-fraction quantification (e.g. Rietweld weight%) are reported, so the directional claim cannot be confirmed or refuted from the figure alone. No quantitative backing -> inconclusive."
+      }
+    },
+    {
+      "id": "c12",
+      "text": "The film thickness was ~40 μm and the corresponding cooling rate from Eq.(1) was ~10^6 K/s.",
+      "quote": "Given the obtained film thickness of ~40 μm, the calculated cooling rate was approximately ~106 K/s.",
+      "section": "2. Experimental / Eq. (1)",
+      "page": 4,
+      "epistemic_tier": "T3",
+      "predicate": "Apply Eq.(1) Vc = (α/(c ρ δ))*(T - T0) with representative thermophysical constants for the alloy and δ = 40 μm; check that the order of magnitude is ~10^6 K/s.",
+      "evidence": [
+        {
+          "id": "e12",
+          "kind": "equation",
+          "location": "Eq. (1)",
+          "quote": "Vc = (α/(cρδ))(T - T0)",
+          "extracted_values": {"film_thickness_um": 40, "cooling_rate_K_per_s": 1000000}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T3 order-of-magnitude recompute of Eq.(1) with literature thermophysical constants and δ=40 μm",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.6,
+        "rationale": "Order-of-magnitude is plausible: for a ~40 μm metallic film, splat-quenching cooling rates of 10^5-10^7 K/s are standard, and the paper's own framing (rapid solidification >10^4 K/s) is consistent. Exact value depends on unstated α,c,ρ,(T-T0); the ~10^6 K/s estimate is in the expected band. Supported at order-of-magnitude only."
+      }
+    },
+    {
+      "id": "c13",
+      "text": "The as-cast samples have a microhardness Hμ = 10400 ± 300 MPa, exceeding that of the melt-quenched samples at 8900 ± 300 MPa.",
+      "quote": "The as-cast samples exhibited a microhardness of Hμ = 10400±300 MPa, which exceeds the values of the MQ samples (8900±300 MPa).",
+      "section": "3. Results and Discussions",
+      "page": 7,
+      "epistemic_tier": "T2",
+      "predicate": "Confirm 10400 > 8900 and that the abstract/conclusions cite the same numbers (prose-vs-prose consistency) and that the stated uncertainties do not overlap into equality.",
+      "evidence": [
+        {
+          "id": "e13",
+          "kind": "number",
+          "location": "Section 3 (microhardness); also Abstract",
+          "quote": "10400±300 MPa ... 8900±300 MPa",
+          "extracted_values": {"H_ac_MPa": 10400, "H_ac_err": 300, "H_mq_MPa": 8900, "H_mq_err": 300, "diff_MPa": 1500}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T0/T2 internal-consistency and magnitude check (difference 1500 MPa >> combined error; matches Abstract numbers 10400 and 8900)",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.9,
+        "rationale": "10400 - 8900 = 1500 MPa, far larger than the combined ±300 MPa uncertainty, so the 'exceeds' claim is statistically meaningful as stated. The Abstract independently reports the same 10400/8900 MPa values, confirming prose-vs-prose consistency. Off-the-shelf comparison covers it."
+      }
+    },
+    {
+      "id": "c14",
+      "text": "The increased fraction of the B2 phase in melt-quenched samples leads to a decrease in microhardness (from 10400 MPa as-cast to 8900 MPa melt-quenched).",
+      "quote": "the fraction of the B2 phase increased, leading to a decrease in microhardness (from 10400 MPa in as-cast to 8900 MPa in melt-quenched samples)",
+      "section": "Abstract",
+      "page": 1,
+      "epistemic_tier": "T4",
+      "predicate": "Check the causal coupling: that the same direction (more B2, harder vs softer phases) is internally coherent and consistent between Abstract and the body; and that the body attributes hardness to B2+intermetallics (apparent tension: body says B2 AND intermetallics give high hardness, yet more B2 lowers hardness).",
+      "evidence": [
+        {
+          "id": "e14",
+          "kind": "text",
+          "location": "Abstract vs Section 3 hardness discussion",
+          "quote": "The high microhardness of the studied alloy is evidently due to the presence of an ordered solid solution B2 and intermetallic phases",
+          "extracted_values": {"H_ac_MPa": 10400, "H_mq_MPa": 8900}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T4/T2 internal-consistency check of the hardness-vs-phase causal narrative (Abstract attributes softening to increased B2; body attributes high hardness to B2 + intermetallics)",
+        "verifier_exists": false,
+        "candidate_verdict": "suspect",
+        "confidence": 0.45,
+        "rationale": "Mild internal tension: the Abstract says increasing the B2 fraction lowers microhardness, while Section 3 attributes the high hardness to 'an ordered solid solution B2 and intermetallic phases.' If both B2 and the boride are hard, increasing B2 at the expense of the (softer?) boride should not straightforwardly soften the alloy; the softening is more consistent with loss of the very hard boride or with structure refinement, not simply 'more B2.' The numbers are correct but the causal phrasing is loosely argued -> flagged suspect for a reviewer, low-to-moderate confidence."
+      }
+    },
+    {
+      "id": "c15",
+      "text": "The coercive field of melt-quenched samples (17500 A/m) is significantly higher than that of as-cast samples (5200 A/m).",
+      "quote": "MQ samples demonstrating significantly higher Hc values (17500 A/m) compared to as-cast samples (5200 A/m)",
+      "section": "3. Results and Discussions / Abstract",
+      "page": 8,
+      "epistemic_tier": "T2",
+      "predicate": "Confirm 17500 > 5200 (ratio ~3.4), confirm the Abstract reports the same two numbers, and check directionally against Fig.3 insets (MQ inset spans a wider field range than as-cast inset).",
+      "evidence": [
+        {
+          "id": "e15",
+          "kind": "number",
+          "location": "Section 3 / Abstract; Fig.3 insets",
+          "quote": "(17500 A/m) compared to as-cast samples (5200 A/m)",
+          "extracted_values": {"Hc_mq_A_per_m": 17500, "Hc_ac_A_per_m": 5200, "ratio": 3.37}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T0/T2 magnitude + prose-vs-figure consistency check (ratio 3.37; Fig.3 MQ inset field axis ~±20000 A/m wider than as-cast inset ~±5000-10000 A/m)",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "17500/5200 = 3.37, a clear increase, and the Abstract reports identical values. Fig.3 insets are directionally consistent: the MQ inset (b) field axis extends wider than the as-cast inset (a), matching a higher Hc. Magnitude and direction supported; exact inset coercivity readout not digitizable from the render but qualitatively confirmed."
+      }
+    },
+    {
+      "id": "c16",
+      "text": "The specific saturation magnetization is essentially unchanged with cooling rate: 71 A·m2/kg for as-cast and 73 A·m2/kg for melt-quenched.",
+      "quote": "specific saturation magnetization MS remains practically unchanged with varying cooling rates, being 71 A·m2/kg for as-cast and 73 A·m2/kg for MQ samples",
+      "section": "3. Results and Discussions",
+      "page": 9,
+      "epistemic_tier": "T2",
+      "predicate": "Confirm 71 vs 73 is ~2.8% (i.e. 'practically unchanged') and that Fig.3 y-axis saturation values for both loops match ~71-73 A·m2/kg (prose-vs-figure).",
+      "evidence": [
+        {
+          "id": "e16",
+          "kind": "figure",
+          "location": "Fig. 3 (a) and (b) saturation plateau on Magnetization (A·m2/kg) y-axis",
+          "quote": "71 A·m2/kg for as-cast and 73 A·m2/kg for MQ",
+          "extracted_values": {"Ms_ac": 71, "Ms_mq": 73, "rel_change_percent": 2.82}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T2 prose-vs-figure consistency: read Fig.3 saturation plateaus and confirm both ~71-73 A·m2/kg; percent-change check for 'practically unchanged'",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "Percent change = (73-71)/71 = 2.8%, consistent with 'practically unchanged.' Fig.3 (a) saturates near +71 and (b) near +73 on the A·m2/kg y-axis as read from the rendered plots, matching the prose values. Prose-vs-figure and percent-change checks both support the claim."
+      }
+    },
+    {
+      "id": "c17",
+      "text": "Both as-cast and melt-quenched FeCoNiB0.7Si0.3Be samples can be classified as hard magnetic materials on the basis of their coercive field.",
+      "quote": "Based on the coercive field Hc, both types of samples can be classified as hard magnetic materials",
+      "section": "3. Results and Discussions / Conclusions",
+      "page": 8,
+      "epistemic_tier": "T1",
+      "predicate": "Convert the stated Hc values (5200 and 17500 A/m) to Oe and compare against the conventional soft/semi-hard/hard magnet boundaries; check that 'hard magnetic material' is the correct category.",
+      "evidence": [
+        {
+          "id": "e17",
+          "kind": "number",
+          "location": "Section 3 / Fig.3 coercivity values",
+          "quote": "both types of samples can be classified as hard magnetic materials",
+          "extracted_values": {"Hc_ac_A_per_m": 5200, "Hc_mq_A_per_m": 17500, "Hc_ac_Oe": 65.3, "Hc_mq_Oe": 219.9}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T1 fixed-knowledge classification check against standard magnet hardness thresholds (hard: Hc > ~10 kOe / ~800 kA/m; semi-hard: ~10-1000 Oe; soft: < ~10 Oe)",
+        "verifier_exists": false,
+        "candidate_verdict": "suspect",
+        "confidence": 0.7,
+        "rationale": "Hc = 5200 A/m (65 Oe) and 17500 A/m (220 Oe). By conventional definitions these are SOFT-to-SEMI-HARD, not 'hard': hard magnets (e.g. ferrites, NdFeB) have Hc of several kOe to >10 kOe (hundreds of kA/m). The paper's blanket 'hard magnetic material' label appears to overstate the category by 1-2 orders of magnitude in Hc. Flagged suspect; this is a fixed-knowledge classification check a domain verifier can settle."
+      }
+    },
+    {
+      "id": "c18",
+      "text": "The higher coercive field in melt-quenched samples is attributed to structure refinement and an increased level of microstresses (and defects/nanoscale inclusions hindering domain-wall movement).",
+      "quote": "The high coercive field values in MQ samples can be attributed to the refinement of the alloy structure with increased cooling rates. Additionally, domain wall movement is hindered due to the increased level of microstresses",
+      "section": "3. Results and Discussions / Conclusions",
+      "page": 9,
+      "epistemic_tier": "T3",
+      "predicate": "Assess whether the proposed mechanism (refinement + microstress -> domain-wall pinning -> higher Hc) is an appropriate/established explanation given the data, and whether microstress was actually measured (the abstract claims an 'increase in the level of microstresses').",
+      "evidence": [
+        {
+          "id": "e18",
+          "kind": "text",
+          "location": "Section 3 mechanism discussion + Abstract",
+          "quote": "attributed to structure refinement and the increase in the level of microstresses",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T3 method/mechanism-appropriateness review + check whether microstress was quantified (e.g. via XRD peak broadening / Williamson-Hall) or merely asserted",
+        "verifier_exists": false,
+        "candidate_verdict": "suspect",
+        "confidence": 0.5,
+        "rationale": "The refinement/microstress -> domain-wall-pinning -> higher Hc mechanism is physically standard and qualitatively reasonable. However, the paper asserts an 'increase in the level of microstresses' without presenting any microstrain measurement (no Williamson-Hall, no quantified peak broadening, no lattice-strain table); the only XRD-derived quantity reported is the lattice parameter. The mechanism is plausible but the microstress claim is unsupported by reported evidence -> flagged suspect (unsubstantiated supporting claim)."
+      }
+    },
+    {
+      "id": "c19",
+      "text": "The as-cast alloy exhibits a dendritic structure with spinodal decomposition; the melt-quenched sample shows a finely dispersed conglomerate of phases.",
+      "quote": "the as-cast alloy is characterized by a dendritic structure with spinodal decomposition ... In MQ samples, a finely dispersed conglomerate of phases is formed",
+      "section": "3. Results and Discussions",
+      "page": 7,
+      "epistemic_tier": "T4",
+      "predicate": "Check whether Fig.2(a) optical micrograph supports a dendritic/spinodal morphology and Fig.2(b) SEM supports a fine, dispersed multiphase morphology; assess whether 'spinodal decomposition' is justified from a single micrograph.",
+      "evidence": [
+        {
+          "id": "e19",
+          "kind": "figure",
+          "location": "Fig. 2 (a) optical micrograph as-cast, (b) SEM melt-quenched",
+          "quote": "Optical micrograph of the as-cast (a) and SEM image of the melt-quenched (b)",
+          "extracted_values": {"scalebar_a_um": 20, "scalebar_b_um": 10}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T4 claim<->image support: confirm dendritic morphology in Fig.2(a) and fine dispersion in Fig.2(b); flag that 'spinodal decomposition' is a strong claim from morphology alone",
+        "verifier_exists": false,
+        "candidate_verdict": "suspect",
+        "confidence": 0.5,
+        "rationale": "Fig.2(a) does show a branched/dendritic-looking optical structure (20 μm scale bar) and Fig.2(b) shows a fine, densely speckled SEM morphology (10 μm scale bar), broadly consistent with the descriptions. But 'spinodal decomposition' is a specific phase-separation mechanism that cannot be established from one optical micrograph without composition mapping or finer-scale analysis; the term is likely over-attributed. Morphology claim supported, mechanism claim suspect."
+      }
+    },
+    {
+      "id": "c20",
+      "text": "The melt-quenched film cooling rate (~10^6 K/s) exceeds the as-cast copper-mold cooling rate (~10^2 K/s) by about four orders of magnitude.",
+      "quote": "The average cooling rate in the copper mold was approximately ~102 K/s. ... the calculated cooling rate was approximately ~106 K/s.",
+      "section": "2. Experimental",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "Confirm 10^6 / 10^2 = 10^4 (four orders of magnitude) and that this is internally consistent with the claim that melt-quenching is far faster than mold casting.",
+      "evidence": [
+        {
+          "id": "e20",
+          "kind": "number",
+          "location": "Section 2 (two cooling-rate estimates)",
+          "quote": "~102 K/s ... ~106 K/s",
+          "extracted_values": {"Vc_ascast_K_per_s": 100, "Vc_mq_K_per_s": 1000000, "orders_of_magnitude": 4}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T0 ratio/order-of-magnitude consistency check",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.9,
+        "rationale": "10^6 / 10^2 = 10^4, exactly four orders of magnitude faster, internally consistent and physically sensible (mold casting ~10^2 K/s vs splat-quenching ~10^6 K/s). Trivial deterministic ratio check."
+      }
+    },
+    {
+      "id": "c21",
+      "text": "The inner cylinder rotates at ~8000 RPM and the linear velocity of its inner surface reaches 110 m/s.",
+      "quote": "rapidly rotating (~8000 RPM) hollow cylinder of copper. The linear velocity of the inner surface of the cylinder reached 110 m/s.",
+      "section": "2. Experimental",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "Check consistency: v = ω r = 2π(RPM/60)*r; with v=110 m/s and 8000 RPM, solve for the implied inner radius/diameter and confirm it is a physically plausible cylinder size.",
+      "evidence": [
+        {
+          "id": "e21",
+          "kind": "number",
+          "location": "Section 2 (splat-quenching apparatus)",
+          "quote": "~8000 RPM ... 110 m/s",
+          "extracted_values": {"rpm": 8000, "linear_velocity_m_per_s": 110}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T0 kinematic consistency check (v = 2π f r -> implied radius)",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.82,
+        "rationale": "v = 2π*(8000/60)*r = 110 m/s -> r = 110/(2π*133.3) = 0.131 m, i.e. inner diameter ~0.26 m (26 cm). That is a plausible laboratory splat-quenching cylinder. The two numbers are mutually consistent for a reasonable cylinder size, so no contradiction; supported."
+      }
+    },
+    {
+      "id": "c22",
+      "text": "FeCoNiB0.7Si0.3 (without Be) is reported in the literature as a high-entropy metallic glass, and Be was added in this work for its high hardness, low density, and high glass-forming ability.",
+      "quote": "FeCoNiB0.7Si0.3 is a high-entropy metallic glass [15-17]. In this work, we added beryllium to this system, due to its advantageous physical characteristics such as high hardness and low density, as well as high glass-forming ability.",
+      "section": "1. Introduction",
+      "page": 3,
+      "epistemic_tier": "T5",
+      "predicate": "Verify against refs [15-17] that FeCoNiB0.7Si0.3 is described as a (high-entropy) metallic glass, and that Be's cited properties (hardness, low density) are accurate.",
+      "evidence": [
+        {
+          "id": "e22",
+          "kind": "text",
+          "location": "Introduction + refs [15-17]",
+          "quote": "FeCoNiB0.7Si0.3 is a high-entropy metallic glass [15-17]",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T5 literature check of refs [15-17] (Qi 2015, Xu 2018, Zhang 2024) for the metallic-glass attribution; T1 check on Be density (1.85 g/cm3, low) and hardness",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.6,
+        "rationale": "Be is indeed low-density (~1.85 g/cm3) and relatively hard, so that part is factually fine (T1). The metallic-glass attribution to FeCoNiB0.7Si0.3 is plausible and cited to three Intermetallics/JNCS papers, but verifying requires reading refs [15-17]; cannot confirm from this paper alone. Supported pending literature retrieval."
+      }
+    },
+    {
+      "id": "c23",
+      "text": "This is the first time the multicomponent high-entropy alloy FeCoNiB0.7Si0.3Be has been obtained.",
+      "quote": "For the first time, a multicomponent high-entropy alloy FeCoNiB0.7Si0.3Be with a multiphase structure has been obtained",
+      "section": "4. Conclusions",
+      "page": 9,
+      "epistemic_tier": "T5",
+      "predicate": "Novelty claim: search the literature to confirm no prior report of the Be-containing FeCoNiB0.7Si0.3Be composition.",
+      "evidence": [
+        {
+          "id": "e23",
+          "kind": "text",
+          "location": "Conclusions (novelty statement)",
+          "quote": "For the first time ... FeCoNiB0.7Si0.3Be ... has been obtained",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T5 priority/novelty literature search for the exact Be-bearing composition",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.4,
+        "rationale": "A 'for the first time' priority claim cannot be settled internally; it requires an exhaustive literature/database search. The base FeCoNiB0.7Si0.3 system is known (refs [15-17]); the Be addition is the novel element. Plausible but unverifiable from the paper -> inconclusive."
+      }
+    },
+    {
+      "id": "c24",
+      "text": "Rapid quenching suppresses but does not completely prevent the formation of complex intermetallics in the Fe-Co-Ni-B-Si-Be HEA system.",
+      "quote": "It has been confirmed that rapid quenching suppresses but does not completely prevent the formation of complex intermetallics in high-entropy alloys",
+      "section": "4. Conclusions",
+      "page": 9,
+      "epistemic_tier": "T4",
+      "predicate": "Check that the conclusion follows from Fig.1: the boride (Fe,Co,Ni)2B peaks persist in the MQ trace (not fully suppressed) while their relative intensity drops versus B2 (partial suppression).",
+      "evidence": [
+        {
+          "id": "e24",
+          "kind": "figure",
+          "location": "Fig. 1 (boride peaks present in both traces; relative intensity changes)",
+          "quote": null,
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T4 claim<->figure support: confirm boride peaks remain present in MQ trace (not eliminated) and decrease relative to B2",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.5,
+        "rationale": "Internally consistent with c11: the boride is still present in the MQ trace (so 'not completely prevented') while reportedly reduced relative to B2 ('suppressed'). However the supporting relative-intensity reduction is itself not quantified (see c11), so the 'suppresses' half rests on an unquantified figure reading. Direction is reasonable but the quantitative support is weak -> inconclusive."
+      }
+    },
+    {
+      "id": "c25",
+      "text": "Rapid solidification at cooling rates exceeding 10^4 K/s is what defines the melt-quenching regime used here.",
+      "quote": "rapid solidification (cooling rates exceeding 104 K/s) ... This method, known as melt quenching",
+      "section": "1. Introduction",
+      "page": 2,
+      "epistemic_tier": "T1",
+      "predicate": "Check that the >10^4 K/s threshold for rapid solidification / melt-quenching is an accurate, standard literature value and is consistent with the paper's own ~10^6 K/s film estimate.",
+      "evidence": [
+        {
+          "id": "e25",
+          "kind": "text",
+          "location": "Introduction (definition of rapid solidification)",
+          "quote": "rapid solidification (cooling rates exceeding 104 K/s)",
+          "extracted_values": {"threshold_K_per_s": 10000}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "T1 fixed-knowledge check that rapid solidification is conventionally defined as >~10^4 K/s",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.8,
+        "rationale": ">10^4 K/s is a commonly cited boundary for rapid solidification / melt-spinning-class processing, and the paper's ~10^6 K/s film estimate sits comfortably above it (internally consistent). Standard textbook value; supported."
+      }
+    }
+  ],
+  "paper_level_notes": "Short (12-page) accepted manuscript in Functional Materials 32(3) (2025) 418-422, DOI 10.15407/fm32.03.418; Ukrainian group (Kushnerov et al.), ORCIDs provided for all four authors. NO supporting information, NO data-availability statement, NO raw XRD peak lists, and NO numerical tables for the magnetic/XRD data beyond Table 1 (HEA parameters). Reproducibility (T6) is low: cooling-rate Eq.(1) inputs (c, ρ, α, T-T0) are not given; the atomic-radius and Allen-electronegativity reference sets behind Table 1 are cited [3,20,21] but not transcribed, so δr (12.47%) and δχ^A (7.838%) cannot be pinned to a single exact value. STRONGEST checkable frontier is T0/T2: ΔSmix=14.4 (recomputed 14.397, MATCH), VEC=6.46 (recomputed 6.46, MATCH), Ω=1.5 (recomputed 1.501 from internally consistent Tm/ΔSmix/ΔHmix, MATCH), composition sums to 100 at.% (MATCH), and the property-change directions (microhardness -14.4%, coercivity x3.37, Ms +2.8%, lattice -0.08%) are all internally consistent and echoed in the Abstract. MOST SUBSTANTIVE FLAG (c17, T1): both samples are labelled 'hard magnetic materials' on the basis of Hc = 5200 and 17500 A/m (~65 and ~220 Oe) — by standard definitions these are soft-to-semi-hard, off the hard-magnet range (Hc > ~10 kOe / ~800 kA/m) by 1-2 orders of magnitude; the figure insets also indicate near-zero remanence (inset M-axis maxes at 0.10 vs Ms~71-73 A·m2/kg), inconsistent with a 'hard' (high-squareness) magnet. Secondary flags: the Abstract's causal claim that 'more B2 -> lower hardness' sits in tension with the body attributing high hardness to B2 + intermetallics (c14); 'increase in microstresses' (c18) and 'spinodal decomposition' (c19) are asserted without quantitative microstrain or compositional-mapping evidence; and the relative B2-vs-boride phase-fraction change (c11) is claimed from un-quantified peak intensities (no Rietveld). No statistical tests are used, so statcheck/GRIM are N/A; the deterministic verifiers that fire here are composition-sum/stoichiometry, weighted-average recompute, percent-change, and prose-vs-table/figure consistency. No integrity red flags (T7) were observed; figures and prose are mutually consistent on the headline numbers."
+}

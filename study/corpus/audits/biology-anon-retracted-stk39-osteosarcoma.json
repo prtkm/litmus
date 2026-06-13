@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "biology-anon-retracted-stk39-osteosarcoma",
+  "meta": {
+    "executor": "local",
+    "n_claims": 4,
+    "n_verifiers": 9,
+    "synthesis_candidates": [],
+    "confirmation": "fresh-sandbox",
+    "registry_load_errors": []
+  },
+  "summary": {
+    "n_findings": 0,
+    "n_flags": 0,
+    "n_dropped": 0,
+    "n_routed_to_human": 4,
+    "n_abstained": 0,
+    "flags_by_trust_tier": {},
+    "flags_by_severity": {}
+  },
+  "findings": [],
+  "dropped_flags": [],
+  "routed_to_human": [
+    {
+      "claim_id": "c1",
+      "dimension": "tier:T7",
+      "note": "tier T7: subjective/integrity \u2014 surfaced, not scored (DESIGN \u00a73.5)",
+      "quote": "the Editor has decided that this paper \nshould be retracted from the Journal"
+    },
+    {
+      "claim_id": "c2",
+      "dimension": "tier:T7",
+      "note": "tier T7: subjective/integrity \u2014 surfaced, not scored (DESIGN \u00a73.5)",
+      "quote": "certain of the \nTranswell invasion assay data shown in Fig. 4B on p. 4602 \nwere strikingly similar to data appearing in different form in \nother articles written by different authors at different research \ninstitutes"
+    },
+    {
+      "claim_id": "c3",
+      "dimension": "tier:T7",
+      "note": "tier T7: subjective/integrity \u2014 surfaced, not scored (DESIGN \u00a73.5)",
+      "quote": "the contentious data in the \nabove article had already been published prior to its submission \nto"
+    },
+    {
+      "claim_id": "c4",
+      "dimension": "tier:T7",
+      "note": "tier T7: subjective/integrity \u2014 surfaced, not scored (DESIGN \u00a73.5)",
+      "quote": "The authors were asked \nfor an explanation to account for these concerns, but the \nEditorial Office did not receive a reply"
+    }
+  ],
+  "abstained": []
+}

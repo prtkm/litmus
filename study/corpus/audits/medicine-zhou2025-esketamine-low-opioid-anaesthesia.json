@@ -1,33 +1,81 @@
 {
   "schema_version": "1.0",
-  "paper_id": "mehta-2018-overcoming-scaling-relations",
+  "paper_id": "medicine-zhou2025-esketamine-low-opioid-anaesthesia",
   "meta": {
     "executor": "local",
-    "n_claims": 28,
+    "n_claims": 27,
     "n_verifiers": 9,
     "synthesis_candidates": [
+      "c1",
+      "c2",
+      "c3",
       "c4",
       "c5",
+      "c6",
       "c7",
+      "c8",
+      "c9",
+      "c10",
+      "c11",
       "c12",
       "c13",
+      "c14",
+      "c15",
+      "c16",
+      "c18",
+      "c19",
       "c20",
       "c21",
-      "c25"
+      "c22",
+      "c23",
+      "c24",
+      "c26"
     ],
     "confirmation": "fresh-sandbox",
     "registry_load_errors": []
   },
   "summary": {
-    "n_findings": 0,
+    "n_findings": 1,
     "n_flags": 0,
     "n_dropped": 0,
     "n_routed_to_human": 0,
-    "n_abstained": 28,
+    "n_abstained": 26,
     "flags_by_trust_tier": {},
     "flags_by_severity": {}
   },
-  "findings": [],
+  "findings": [
+    {
+      "verifier_id": "sum_check.v1",
+      "claim_id": "c25",
+      "status": "pass",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "reported total equals the sum of its parts",
+      "discrepancy": null,
+      "reported": 64,
+      "computed": 64,
+      "evidence": {
+        "quote": null,
+        "location": {
+          "section": null,
+          "page": null,
+          "char_span": null,
+          "quote": null
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {
+        "parts": [
+          37,
+          27
+        ],
+        "n_parts": 2
+      }
+    }
+  ],
   "dropped_flags": [],
   "routed_to_human": [],
   "abstained": [
@@ -38,17 +86,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no applicable verifier",
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "We postulate that plasma-induced vibrational\nexcitations in N2 decrease dissociation barriers without influencing subsequent reaction steps.",
+        "quote": "POD-3 QoR-15 scores 121 (117.75\u2013124) 115 (111.75\u2013118.25) <0.001",
         "location": {
-          "section": "Abstract",
-          "page": 1,
+          "section": "3.1 / Table 2",
+          "page": 7,
           "char_span": null,
-          "quote": "We postulate that plasma-induced vibrational\nexcitations in N2 decrease dissociation barriers without influencing subsequent reaction steps."
+          "quote": "POD-3 QoR-15 scores 121 (117.75\u2013124) 115 (111.75\u2013118.25) <0.001"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -63,17 +111,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no applicable verifier",
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "We predict plasma enhancement to be particularly great on metals that bind nitrogen too\nweakly to be active thermally.",
+        "quote": "Physical comfort 40 (39\u201341) 38 (37\u201340) <0.001",
         "location": {
-          "section": "Abstract",
-          "page": 1,
+          "section": "3.1 / Table 2",
+          "page": 7,
           "char_span": null,
-          "quote": "We predict plasma enhancement to be particularly great on metals that bind nitrogen too\nweakly to be active thermally."
+          "quote": "Physical comfort 40 (39\u201341) 38 (37\u201340) <0.001"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -88,17 +136,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no applicable verifier",
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Ammonia synthesis rates observed in a DBD plasma reactor are\nconsistent with predicted enhancements and with predicted changes in the optimal metal catalyst.",
+        "quote": "Emotional state 32 (30\u201333) 29 (27.75\u201331) <0.001",
         "location": {
-          "section": "Abstract",
-          "page": 1,
+          "section": "3.1 / Table 2",
+          "page": 7,
           "char_span": null,
-          "quote": "Ammonia synthesis rates observed in a DBD plasma reactor are\nconsistent with predicted enhancements and with predicted changes in the optimal metal catalyst."
+          "quote": "Emotional state 32 (30\u201333) 29 (27.75\u201331) <0.001"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -118,12 +166,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "practical rates are only attainable at elevated temperatures (\u223c 700 K)\nand pressures (\u223c 100 atm)",
+        "quote": "Pain 18 (18\u201320) 18 (16.75\u201319) <0.001",
         "location": {
-          "section": "Introduction",
-          "page": 2,
+          "section": "3.1 / Table 2",
+          "page": 7,
           "char_span": null,
-          "quote": "practical rates are only attainable at elevated temperatures (\u223c 700 K)\nand pressures (\u223c 100 atm)"
+          "quote": "Pain 18 (18\u201320) 18 (16.75\u201319) <0.001"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -143,12 +191,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "rival that of the conventional Haber-Bosch process (100-200 atm, 600-800 K)",
+        "quote": "Statistically significant differences in QoR-15 scores between \nthe K and C groups were also observed on postoperative days 1 and 2 \n(P < 0.01)",
         "location": {
-          "section": "Introduction",
-          "page": 3,
+          "section": "3.1 / Table 3",
+          "page": 7,
           "char_span": null,
-          "quote": "rival that of the conventional Haber-Bosch process (100-200 atm, 600-800 K)"
+          "quote": "Statistically significant differences in QoR-15 scores between \nthe K and C groups were also observed on postoperative days 1 and 2 \n(P < 0.01)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -163,17 +211,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no applicable verifier",
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "promising yields of ammonia can be obtained at low temperature (400 to 500\nK) and atmospheric pressure when a non-thermal plasma is operated in tandem with a",
+        "quote": "POD-3 2 (2\u20132) 2 (2\u20133) 0.006",
         "location": {
-          "section": "Introduction",
-          "page": 2,
+          "section": "3.2 / Table 4",
+          "page": 7,
           "char_span": null,
-          "quote": "promising yields of ammonia can be obtained at low temperature (400 to 500\nK) and atmospheric pressure when a non-thermal plasma is operated in tandem with a"
+          "quote": "POD-3 2 (2\u20132) 2 (2\u20133) 0.006"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -193,12 +241,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "relatively large vibrational spacing (\u223c 0.3 eV)",
+        "quote": "POD-3 3 (3\u20134) 4 (3\u20134) 0.02",
         "location": {
-          "section": "Microkinetic modeling",
-          "page": 5,
+          "section": "3.2 / Table 4",
+          "page": 7,
           "char_span": null,
-          "quote": "relatively large vibrational spacing (\u223c 0.3 eV)"
+          "quote": "POD-3 3 (3\u20134) 4 (3\u20134) 0.02"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -213,17 +261,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no applicable verifier",
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "tative of of Haber-Bosch conditions (673 K, 100 atm) and target [9] low T and P conditions\n(473 K, 1 atm) are compared in Figure 1.",
+        "quote": "PCIA demand frequency 12.5 (9\u201315) 15 (12\u201317) 0.002",
         "location": {
-          "section": "Microkinetic modeling",
-          "page": 4,
+          "section": "3.2 / Table 4",
+          "page": 7,
           "char_span": null,
-          "quote": "tative of of Haber-Bosch conditions (673 K, 100 atm) and target [9] low T and P conditions\n(473 K, 1 atm) are compared in Figure 1."
+          "quote": "PCIA demand frequency 12.5 (9\u201315) 15 (12\u201317) 0.002"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -238,17 +286,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no applicable verifier",
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "rates on the same stepped\nsurfaces are several orders of magnitude lower than the corresponding Haber-Bosch rates.\nRates on terrace sites are a further few orders of magnitude lower.",
+        "quote": "Rescue analgesia, n (%) 10 (14.3) 23 (32.9) 0.01",
         "location": {
-          "section": "Microkinetic modeling",
-          "page": 4,
+          "section": "3.2 / Table 4",
+          "page": 7,
           "char_span": null,
-          "quote": "rates on the same stepped\nsurfaces are several orders of magnitude lower than the corresponding Haber-Bosch rates.\nRates on terrace sites are a further few orders of magnitude lower."
+          "quote": "Rescue analgesia, n (%) 10 (14.3) 23 (32.9) 0.01"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -263,17 +311,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no applicable verifier",
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "temperature (Tgas), measured using an in situ thermocouple, was 398.5 \u00b1 5 K.",
+        "quote": "Rescue analgesic consumption per patient (mg) 0 (0\u20130) 0 (0\u2013100) 0.008",
         "location": {
-          "section": "Microkinetic modeling",
+          "section": "3.2 / Table 4",
           "page": 7,
           "char_span": null,
-          "quote": "temperature (Tgas), measured using an in situ thermocouple, was 398.5 \u00b1 5 K."
+          "quote": "Rescue analgesic consumption per patient (mg) 0 (0\u20130) 0 (0\u2013100) 0.008"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -288,17 +336,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no applicable verifier",
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "An average value of Tvib = 3000 K was used in our model.",
+        "quote": "reduced usage of propofol (866.56 \u00b1 76.44 mg vs. \n968.36 \u00b1 68.87 mg, P < 0.05)",
         "location": {
-          "section": "Microkinetic modeling",
-          "page": 8,
+          "section": "3.4",
+          "page": 6,
           "char_span": null,
-          "quote": "An average value of Tvib = 3000 K was used in our model."
+          "quote": "reduced usage of propofol (866.56 \u00b1 76.44 mg vs. \n968.36 \u00b1 68.87 mg, P < 0.05)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -318,12 +366,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "only about 63.2 % of N2 remains in the ground vibrational state.",
+        "quote": "sufentanil (25 \u00b1 \n4.62 ug vs. 38 \u00b1 8.60 ug, P < 0.001)",
         "location": {
-          "section": "Microkinetic modeling",
-          "page": 8,
+          "section": "3.4",
+          "page": 6,
           "char_span": null,
-          "quote": "only about 63.2 % of N2 remains in the ground vibrational state."
+          "quote": "sufentanil (25 \u00b1 \n4.62 ug vs. 38 \u00b1 8.60 ug, P < 0.001)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -343,12 +391,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "The first vibrationally\nexcited state has a population of 21.4 %, while the states in the tail of the distribution (v8 -\nv10) have probabilites of around 0.2 %.",
+        "quote": "remifentanil (2.1 \u00b1 0.35 mg vs. 2.5 \u00b1 0.72 mg, P < 0.001)",
         "location": {
-          "section": "Microkinetic modeling",
-          "page": 8,
+          "section": "3.4",
+          "page": 6,
           "char_span": null,
-          "quote": "The first vibrationally\nexcited state has a population of 21.4 %, while the states in the tail of the distribution (v8 -\nv10) have probabilites of around 0.2 %."
+          "quote": "remifentanil (2.1 \u00b1 0.35 mg vs. 2.5 \u00b1 0.72 mg, P < 0.001)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -363,17 +411,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no applicable verifier",
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "imum (which includes the first 10 vibrationally excited states) to compute the normalized",
+        "quote": "extubation time \n(35.8 \u00b1 13.02 min vs. 40.8 \u00b1 15.5 min, P < 0.05; Figure 4A)",
         "location": {
-          "section": "Microkinetic modeling",
-          "page": 8,
+          "section": "3.5",
+          "page": 6,
           "char_span": null,
-          "quote": "imum (which includes the first 10 vibrationally excited states) to compute the normalized"
+          "quote": "extubation time \n(35.8 \u00b1 13.02 min vs. 40.8 \u00b1 15.5 min, P < 0.05; Figure 4A)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -388,17 +436,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no applicable verifier",
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "the optimal plasma-on reaction rates\n(i.e. the peaks of the volcano curves) are several orders of magnitude higher than those for\nthermal catalysis.",
+        "quote": "PACU stay duration (107.2 \u00b1 27.4 min vs. 118.9 \u00b1 27.2 min, P < 0.05;",
         "location": {
-          "section": "Microkinetic modeling",
-          "page": 10,
+          "section": "3.5",
+          "page": 6,
           "char_span": null,
-          "quote": "the optimal plasma-on reaction rates\n(i.e. the peaks of the volcano curves) are several orders of magnitude higher than those for\nthermal catalysis."
+          "quote": "PACU stay duration (107.2 \u00b1 27.4 min vs. 118.9 \u00b1 27.2 min, P < 0.05;"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -413,17 +461,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no applicable verifier",
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "the peak of the plasma-on volcano curve shows\na distinct shift towards weaker nitrogen binding energies, predicting Co and Ni to be near\nthe volcano peak.",
+        "quote": "the incidence \nof nausea and vomiting was significantly lower in the K group than \nin the C group (10.0% vs. 21.4%, P < 0.05)",
         "location": {
-          "section": "Microkinetic modeling",
-          "page": 10,
+          "section": "3.6",
+          "page": 6,
           "char_span": null,
-          "quote": "the peak of the plasma-on volcano curve shows\na distinct shift towards weaker nitrogen binding energies, predicting Co and Ni to be near\nthe volcano peak."
+          "quote": "the incidence \nof nausea and vomiting was significantly lower in the K group than \nin the C group (10.0% vs. 21.4%, P < 0.05)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -443,12 +491,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "we find that rates on the optimal plasma-on catalyst are\ncomparable to those on the optimal thermal catalyst at 673 K and 100 atm, Ru steps.",
+        "quote": "No other significant \ndifferences were observed between the two groups in the incidence \nof dizziness, headache, drowsiness, or restlessness (P > \n0.05)",
         "location": {
-          "section": "Microkinetic modeling",
-          "page": 10,
+          "section": "3.6",
+          "page": 6,
           "char_span": null,
-          "quote": "we find that rates on the optimal plasma-on catalyst are\ncomparable to those on the optimal thermal catalyst at 673 K and 100 atm, Ru steps."
+          "quote": "No other significant \ndifferences were observed between the two groups in the incidence \nof dizziness, headache, drowsiness, or restlessness (P > \n0.05)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -463,17 +511,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no applicable verifier",
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "the TOF on these sites are predicted to be two orders of magnitude lower than those on Co\nsteps.",
+        "quote": "higher QoR-15 score on postoperative day 3 (B = 5.52, 95% CI \n3.97 to 7.06, P < 0.001)",
         "location": {
-          "section": "Microkinetic modeling",
-          "page": 11,
+          "section": "3.7",
+          "page": 6,
           "char_span": null,
-          "quote": "the TOF on these sites are predicted to be two orders of magnitude lower than those on Co\nsteps."
+          "quote": "higher QoR-15 score on postoperative day 3 (B = 5.52, 95% CI \n3.97 to 7.06, P < 0.001)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -488,17 +536,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no applicable verifier",
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "the plasma-on TOF on Ru terrace sites is of the same order of magnitude of\nthat on Ru steps, despite the fact that their plasma-off TOFs are five orders of magnitude\napart.",
+        "quote": "sufentanil (B = \u221212.61, 95% CI \n-15.02 to \u221210.19, P < 0.001)",
         "location": {
-          "section": "Microkinetic modeling",
-          "page": 11,
+          "section": "3.7",
+          "page": 6,
           "char_span": null,
-          "quote": "the plasma-on TOF on Ru terrace sites is of the same order of magnitude of\nthat on Ru steps, despite the fact that their plasma-off TOFs are five orders of magnitude\napart."
+          "quote": "sufentanil (B = \u221212.61, 95% CI \n-15.02 to \u221210.19, P < 0.001)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -518,12 +566,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "the observed activity trend of Co > Ni = Ru > Pt\n> Fe tracks remarkably well with model predictions.",
+        "quote": "remifentanil (B = \u22120.39, 95% CI \n-0.58 to \u22120.19, P < 0.001)",
         "location": {
-          "section": "Plasma-catalytic kinetics",
-          "page": 13,
+          "section": "3.7",
+          "page": 6,
           "char_span": null,
-          "quote": "the observed activity trend of Co > Ni = Ru > Pt\n> Fe tracks remarkably well with model predictions."
+          "quote": "remifentanil (B = \u22120.39, 95% CI \n-0.58 to \u22120.19, P < 0.001)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -543,12 +591,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Measured ammonia site-time yields in the di-\nelectric barrier discharge reactor on metal/Al2O3 catalysts as a function of the DFT-calculated\nnitrogen adsorption energy.",
+        "quote": "lower heart rate variability (B = \u22120.027, 95% CI \n-0.042 to \u22120.012, P < 0.001)",
         "location": {
-          "section": "Plasma-catalytic kinetics",
-          "page": 14,
+          "section": "3.7",
+          "page": 6,
           "char_span": null,
-          "quote": "Measured ammonia site-time yields in the di-\nelectric barrier discharge reactor on metal/Al2O3 catalysts as a function of the DFT-calculated\nnitrogen adsorption energy."
+          "quote": "lower heart rate variability (B = \u22120.027, 95% CI \n-0.042 to \u22120.012, P < 0.001)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -563,17 +611,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no applicable verifier",
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "The DBD plasma was operated at 10 W and \u223c 20 kHz at atmospheric\npressure, and the reactor temperature maintained at 438 K.",
+        "quote": "higher mean arterial \npressure variability (B = 0.018, 95% CI 0.001 to 0.034, P = 0.033)",
         "location": {
-          "section": "Plasma-catalytic kinetics",
-          "page": 12,
+          "section": "3.7",
+          "page": 6,
           "char_span": null,
-          "quote": "The DBD plasma was operated at 10 W and \u223c 20 kHz at atmospheric\npressure, and the reactor temperature maintained at 438 K."
+          "quote": "higher mean arterial \npressure variability (B = 0.018, 95% CI 0.001 to 0.034, P = 0.033)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -588,17 +636,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no applicable verifier",
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "non-stoichiometric ratios in the range of 1:1 to\n3:1 produced higher ammonia yields than the stoichiometric 1:3 ratio",
+        "quote": "Norepinephrine 9 (12.9) 28 (40) <0.01",
         "location": {
-          "section": "Plasma-catalytic kinetics",
-          "page": 12,
+          "section": "3 / Table 1",
+          "page": 5,
           "char_span": null,
-          "quote": "non-stoichiometric ratios in the range of 1:1 to\n3:1 produced higher ammonia yields than the stoichiometric 1:3 ratio"
+          "quote": "Norepinephrine 9 (12.9) 28 (40) <0.01"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -613,42 +661,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "configuration yields a discharge gap of 1.75 mm and a discharge volume of \u223c 0.18 mL.",
-        "location": {
-          "section": "Experimental Kinetics",
-          "page": 17,
-          "char_span": null,
-          "quote": "configuration yields a discharge gap of 1.75 mm and a discharge volume of \u223c 0.18 mL."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c25",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
       "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "\u03b1 vanishes in the limit that dissociation\nis non-activated, as occurs at EN < \u22121 on steps.",
+        "quote": "calculations indicated \n64 patients per group were required. Accounting for a 10% \ndropout rate, the final actual enrollment per group was \n72 patients, totaling 144 patients.",
         "location": {
-          "section": "Microkinetic modeling",
-          "page": 6,
+          "section": "2.5",
+          "page": 4,
           "char_span": null,
-          "quote": "\u03b1 vanishes in the limit that dissociation\nis non-activated, as occurs at EN < \u22121 on steps."
+          "quote": "calculations indicated \n64 patients per group were required. Accounting for a 10% \ndropout rate, the final actual enrollment per group was \n72 patients, totaling 144 patients."
         },
         "recompute_script": null,
         "expected_output": null,
@@ -663,17 +686,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no applicable verifier",
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "pretreated in hydrogen at 773 K for 30 min to remove any oxide layers",
+        "quote": "A statistically significant, six-point higher median QoR-15 score was \nobserved in the K group compared to the C group on POD3, which \nmeets the threshold for the established minimal clinically important \ndifference (MCID) of six points",
         "location": {
-          "section": "Experimental Kinetics",
-          "page": 18,
+          "section": "4 Discussion",
+          "page": 6,
           "char_span": null,
-          "quote": "pretreated in hydrogen at 773 K for 30 min to remove any oxide layers"
+          "quote": "A statistically significant, six-point higher median QoR-15 score was \nobserved in the K group compared to the C group on POD3, which \nmeets the threshold for the established minimal clinically important \ndifference (MCID) of six points"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -693,37 +716,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "reactor was packed with\n100 mg of 5 % Ni/Al2O3 catalyst and operated under a 10 W DBD plasma.",
+        "quote": "an esketamine-based multimodal low-opioid anaesthesia \nregimen significantly enhances recovery quality on postoperative \nday 3 in elderly patients undergoing thoracoscopic radical lung \ncancer surgery.",
         "location": {
-          "section": "Microkinetic modeling",
-          "page": 7,
+          "section": "5 Conclusion",
+          "page": 10,
           "char_span": null,
-          "quote": "reactor was packed with\n100 mg of 5 % Ni/Al2O3 catalyst and operated under a 10 W DBD plasma."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c28",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Average metal particle sizes are based on at least 300\nparticles.",
-        "location": {
-          "section": "Experimental Kinetics",
-          "page": 18,
-          "char_span": null,
-          "quote": "Average metal particle sizes are based on at least 300\nparticles."
+          "quote": "an esketamine-based multimodal low-opioid anaesthesia \nregimen significantly enhances recovery quality on postoperative \nday 3 in elderly patients undergoing thoracoscopic radical lung \ncancer surgery."
         },
         "recompute_script": null,
         "expected_output": null,

@@ -1,0 +1,353 @@
+{
+  "paper_id": "chemistry-roy2025-transfer-hydrogenation-furfural",
+  "title": "Selective Transfer Hydrogenation of Furfural to Isopropyl Levulinate: An In Situ One-Pot Cascade Approach",
+  "doi": "10.1002/cssc.202502378",
+  "domain": "chemistry / homogeneous catalysis / transfer hydrogenation / biomass valorization",
+  "n_pages_read": 9,
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Table 1: for each catalyst entry the reported product yields (FA, FE, IPL, AL, GVL) are individually <= the reported conversion (no product yield exceeds conversion).",
+      "quote": "Ru-MACHO entry: Conversion 71; FA 1, FE 14, IPL 30, AL 3, GVL -",
+      "section": "Table 1 (Transfer hydrogenation of furfural to small oxygenates using Ru complexes and MSA as Bronsted acid)",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "For every row, check each product yield <= conversion, and check the sum of detected product yields <= conversion (selectivity bookkeeping).",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 1, entries 1-7", "quote": "1 Ru-5 conv26 FE1 IPL3 ; 2 Ru-6 conv45 FE1 IPL4 ; 3 Ru-7 conv34 FE2 IPL6 ; 4 Ru-8 conv52 FE6 IPL15 AL1 ; 5 Ru-MACHO conv71 FA1 FE14 IPL30 AL3 ; 6 Ru-MACHO-BH conv99 FE9 IPL50 AL3 GVL15 ; 7 Ru-MACHO-BH(no acid) conv98 FA98", "extracted_values": {"e5_conv": 71, "e5_sum_yield": 51, "e6_conv": 99, "e6_sum_yield": 77, "e4_conv": 52, "e4_sum_yield": 22}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Per-row yield<=conversion and sum(yields)<=conversion arithmetic check.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "Every individual yield is well below its conversion and the summed detected yields never exceed conversion (e.g. entry6 50+9+3+15=77 < 99; the unaccounted ~22% is plausibly humins/unidentified). Standard yield/selectivity-vs-conversion bookkeeping check. Off-the-shelf yield-consistency verifier applies. Confidence <1 because unidentified products mean we cannot mass-close, only test the inequality."}
+    },
+    {
+      "id": "c2",
+      "text": "Table 2: for each acid entry the reported product yields (AC, FA, FE, IPL, AL, GVL) are individually <= the reported conversion.",
+      "quote": "MSA entry: Conversion 98; FE 18, IPL 59, AL 5, GVL 10",
+      "section": "Table 2 (Transfer hydrogenation of furfural using different Bronsted acids and Ru-MACHO-BH)",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "For every row check each yield <= conversion and sum(yields) <= conversion.",
+      "evidence": [
+        {"id": "e2", "kind": "table", "location": "Table 2, entries 1-14", "quote": "1 HFIP conv99 FA98 IPL1 ; 2 PTSA conv99 FA44 FE11 IPL3 ; 4 MSA conv98 FE18 IPL59 AL5 GVL10 ; 5 TFA conv61 AC7 FA30 IPL<1 AL1 ; 6 H3PO4 conv99 AC2 FA97 IPL<1 AL2 ; 7 H3PO4(285.2mol%) conv57 FE9 AL27 GVL1 ; 12 MSA(6mmol) conv93 FE5 IPL61(53) AL5 GVL7", "extracted_values": {"e4_conv": 98, "e4_sum_yield": 92, "e6_conv": 99, "e6_FA": 97, "e12_conv": 93, "e12_sum_yield": 78}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Per-row yield<=conversion and sum(yields)<=conversion check across all 14 rows.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.88, "rationale": "All printed yields are <= their conversion and summed yields stay below conversion in every row (e.g. entry4 18+59+5+10=92<98). Internally consistent yield bookkeeping. The '<1' entries and unidentified balance prevent exact mass closure, so this verifies the inequality, not a full balance."}
+    },
+    {
+      "id": "c3",
+      "text": "Table 3 (acid-catalyzed hydrolysis of furfuryl alcohol without Ru-MACHO-BH): each product yield <= conversion for every acid entry.",
+      "quote": "MSA entry: Conversion 99; FE 11, IPL 80, AL <1",
+      "section": "Table 3 (Acid-catalyzed hydrolysis of furfuryl alcohol in the absence of Ru-MACHO-BH at 130 C)",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "Per row, each yield <= conversion and sum(yields) <= conversion.",
+      "evidence": [
+        {"id": "e3", "kind": "table", "location": "Table 3, entries 1-6", "quote": "1 HFIP conv3 IPL<1 AL<1 ; 2 H3PO4 conv2 IPL<1 AL<1 ; 3 TFA conv7 IPL3 AL4 ; 4 MSA conv99 FE11 IPL80 AL<1 ; 5 H2SO4 conv99 IPL99 ; 6 MSA(1.5mol%) conv99 FE<1 IPL95 AL4", "extracted_values": {"e4_conv": 99, "e4_sum_yield": 91, "e5_conv": 99, "e5_IPL": 99, "e6_conv": 99, "e6_sum_yield": 99}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Per-row yield<=conversion check.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.86, "rationale": "Every yield <= conversion (entry5 IPL99=conv99; entry6 95+4+<1<=99). Consistent. Confidence below 1 because '<1' values and the FE/IPL/AL-only product set make full closure unverifiable; only the inequality is checked."}
+    },
+    {
+      "id": "c4",
+      "text": "The abstract states the harmonized Ru-MACHO-BH/Bronsted-acid system gives 'a highly selective reaction toward IPL (complete conversion, 67% yield)'.",
+      "quote": "the harmonization of these two functions leads to a highly selective reaction toward IPL (complete conversion, 67% yield)",
+      "section": "Abstract",
+      "page": 1,
+      "epistemic_tier": "T2",
+      "predicate": "Bind the abstract's '67% yield' IPL claim to a specific table/figure entry. The best IPL yield printed in Table 1 is 50% (entry 6) and in Table 2 is 61% (entry 12, GC) / 53% (isolated). 67% appears in no main-text table; check whether it is supported by SI Table S3/S4 or the Figure 5 overall plot peak.",
+      "evidence": [
+        {"id": "e4a", "kind": "text", "location": "Abstract", "quote": "complete conversion, 67% yield", "extracted_values": {"abstract_IPL_yield_pct": 67, "abstract_conversion": 100}},
+        {"id": "e4b", "kind": "table", "location": "Table 1 entry 6 / Table 2 entry 4 & 12", "quote": "Table1 e6 IPL 50 ; Table2 e4 (MSA) IPL 59 ; Table2 e12 (6mmol) IPL 61 (53 isolated)", "extracted_values": {"table1_best_IPL": 50, "table2_MSA_IPL": 59, "table2_6mmol_IPL_GC": 61, "table2_6mmol_IPL_isolated": 53}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Prose(abstract)-vs-table/figure binding: locate the data point that yields 67% IPL; if none exists, flag abstract overstatement.", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.5, "rationale": "No main-text table reports 67% IPL yield (max printed is 61% GC in Table 2 entry 12 / 59% MSA / 50% Table 1). 67% may be a peak value from the Figure 5 overall-plot time-course or SI Table S3 not transcribed numerically here, or a rounding/optimum quoted from the SI. Cannot bind to evidence from the main text, so inconclusive pending SI Table S3/S4 and Figure 5 digitization; the gap (67 vs best-printed 61) is worth confirming, not yet a confirmed contradiction."}
+    },
+    {
+      "id": "c5",
+      "text": "The abstract states the reaction cascade can be directed to the final product GVL with 15% yield.",
+      "quote": "the reaction cascade can be directed until the final product, gamma-valerolactone (GVL) (15% yield)",
+      "section": "Abstract",
+      "page": 1,
+      "epistemic_tier": "T2",
+      "predicate": "Check the abstract's 15% GVL yield against the table value. Table 1 entry 6 (Ru-MACHO-BH) reports GVL 15%.",
+      "evidence": [
+        {"id": "e5a", "kind": "text", "location": "Abstract", "quote": "gamma-valerolactone (GVL) (15% yield)", "extracted_values": {"abstract_GVL_yield": 15}},
+        {"id": "e5b", "kind": "table", "location": "Table 1 entry 6", "quote": "Ru-MACHO-BH: GVL 15", "extracted_values": {"table1_e6_GVL": 15}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Prose-vs-table exact-match of the 15% GVL figure.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.92, "rationale": "Abstract 15% GVL matches Table 1 entry 6 GVL=15 exactly. Clean prose-vs-table binding, off-the-shelf check. Confidence <1 only because GVL also appears at 15% in Table 2 entry 3 (MSA, 130C) so the binding is consistent across both tables."}
+    },
+    {
+      "id": "c6",
+      "text": "The higher-MW side product peak at 236.27 g/mol is identified as the mixed acetal 2-((furan-2-yl(isopropoxy)methoxy)methyl)furan.",
+      "quote": "two main peaks representing the molecular weights of 236.27 and 178.18 g mol-1 (Figures S14 and S15). The higher molecular weight component was identified as a mixed acetal, the 2-((furan-2-yl(isopropoxy)methoxy)methyl)furan",
+      "section": "2 Results and Discussion (mechanistic / side-product identification)",
+      "page": 5,
+      "epistemic_tier": "T1",
+      "predicate": "Recompute the average molecular weight of the named structure from its molecular formula and compare to 236.27. The IUPAC name parses to C13H16O4.",
+      "evidence": [
+        {"id": "e6", "kind": "number", "location": "p5 + Figures S14/S15", "quote": "molecular weights of 236.27 ... identified as a mixed acetal, the 2-((furan-2-yl(isopropoxy)methoxy)methyl)furan", "extracted_values": {"reported_MW": 236.27, "formula_C": 13, "formula_H": 16, "formula_O": 4, "computed_avg_MW": 236.27}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Molecular-formula -> average molecular weight recompute (T1 exact-mass/atomic-weight lookup) vs reported value.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.93, "rationale": "Parsed C13H16O4 (furan-2-yl-CH(OiPr)(OCH2-furan): C 4+1+3+1+4=13, H 3+1+7+2+3=16, O 1+1+1+1=4). Average MW = 13*12.011 + 16*1.008 + 4*15.999 = 236.27, matching the reported 236.27 exactly. Clean atomic-weight recompute. Confidence <1 only because the formula derivation depends on correctly parsing the IUPAC name (verified by hand)."}
+    },
+    {
+      "id": "c7",
+      "text": "The lower-MW side product peak at 178.18 g/mol is identified as the ether 2,2'-(oxybis(methylene))difuran (difurfuryl ether), formed from two molecules of furfuryl alcohol.",
+      "quote": "The smaller molecular weight component was recognized as an ether, derived from two molecules of FA, the 2,2'-(oxybis(methylene))difuran (Figure 6, IntB)",
+      "section": "2 Results and Discussion (side-product identification)",
+      "page": 5,
+      "epistemic_tier": "T1",
+      "predicate": "Recompute the average MW of 2,2'-(oxybis(methylene))difuran = C10H10O3 (= 2x furfuryl alcohol C5H6O2 minus H2O) and compare to 178.18.",
+      "evidence": [
+        {"id": "e7", "kind": "number", "location": "p5 + Figure 6 IntB + Figures S14/S15", "quote": "178.18 g mol-1 ... an ether, derived from two molecules of FA, the 2,2'-(oxybis(methylene))difuran", "extracted_values": {"reported_MW": 178.18, "formula_C": 10, "formula_H": 10, "formula_O": 3, "computed_avg_MW": 178.19}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Molecular-formula -> average MW recompute vs reported value.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.95, "rationale": "Difurfuryl ether = 2 x furfuryl alcohol (C5H6O2) - H2O = C10H10O3. Average MW = 10*12.011 + 10*1.008 + 3*15.999 = 178.19, matching reported 178.18 within rounding (0.01). Clean atomic-weight recompute; condensation stoichiometry (loss of one water from two C5H6O2) also checks out."}
+    },
+    {
+      "id": "c8",
+      "text": "DFT predicts mixed-acetal IntA formation is endergonic, with delta-r G* = 26.1 kJ/mol at 298 K and 46.1 kJ/mol at 403 K.",
+      "quote": "Model reaction 1 ... IntA ... delta_rG* (298 K) = 26.1 kJ mol-1 ; delta_rG* (403 K) = 46.1 kJ mol-1",
+      "section": "Figure 6 (Thermodynamic considerations of intermediate formation)",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Check internal consistency: text states IntA formation is endergonic (non-spontaneous); both DFT values are positive (26.1, 46.1 kJ/mol), consistent with 'endergonic'. Sign/label consistency between Figure 6 numbers, the prose, and SI Table S5.",
+      "evidence": [
+        {"id": "e8a", "kind": "figure", "location": "Figure 6, Model reaction 1 (IntA)", "quote": "delta_rG* (298 K) = 26.1 kJ mol-1 ; delta_rG* (403 K) = 46.1 kJ mol-1", "extracted_values": {"IntA_dG_298K": 26.1, "IntA_dG_403K": 46.1}},
+        {"id": "e8b", "kind": "text", "location": "p6", "quote": "formation of intermediate IntA at lower temperature (298 K) and at the reaction temperature (403 K) is endergonic, indicating the non-spontaneous nature of the reaction", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Sign-vs-claim consistency (positive dG <-> 'endergonic/non-spontaneous') and prose-vs-figure agreement; cross-check vs SI Table S5 electronic energies + thermal corrections.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.78, "rationale": "Both reported delta-G values are positive (26.1, 46.1 kJ/mol), correctly matching the prose 'endergonic / non-spontaneous'. Label/sign self-consistent. Cannot independently recompute the DFT free energy from the main text (requires SI Table S5 electronic energies + thermal corrections at DLPNO-CCSD(T)/PBE0-D3 level); a T6/recompute check would need SI numbers. Confidence reflects that only the sign/label consistency is verifiable here, not the DFT value itself."}
+    },
+    {
+      "id": "c9",
+      "text": "DFT predicts difurfuryl-ether IntB (dimerization) formation is exergonic, with delta-r G* = -14.9 kJ/mol at 298 K and -11.9 kJ/mol at 403 K.",
+      "quote": "Model reaction 2 ... IntB ... delta_rG* (298 K) = -14.9 kJ mol-1 ; delta_rG* (403 K) = -11.9 kJ mol-1",
+      "section": "Figure 6 (Thermodynamic considerations)",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Check that the negative DFT values for IntB are consistent with the prose describing dimerization as thermodynamically favorable (the text says IntB forms readily / dimerization is favored over mixed-acetal formation).",
+      "evidence": [
+        {"id": "e9a", "kind": "figure", "location": "Figure 6, Model reaction 2 (IntB)", "quote": "delta_rG* (298 K) = -14.9 kJ mol-1 ; delta_rG* (403 K) = -11.9 kJ mol-1", "extracted_values": {"IntB_dG_298K": -14.9, "IntB_dG_403K": -11.9}},
+        {"id": "e9b", "kind": "text", "location": "p6", "quote": "the formation of IntB is energetically more favorable... the formation of IntB should proceed readily under the reaction conditions. Both reactions are acid-catalyzed", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Sign-vs-claim consistency (negative dG <-> exergonic/favorable) and IntB-more-favorable-than-IntA comparison (-14.9 < +26.1).", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.8, "rationale": "IntB dG values are negative (-14.9, -11.9), consistent with the prose that dimerization is thermodynamically favorable and that IntB formation is more favorable than IntA (negative vs IntA positive 26.1/46.1). Internal sign/comparison consistency holds. The underlying DFT numbers themselves are not recomputable without SI Table S5."}
+    },
+    {
+      "id": "c10",
+      "text": "For the mixed acetal IntA, the free energy of formation becomes more endergonic on heating (46.1 kJ/mol at 403 K > 26.1 kJ/mol at 298 K), consistent with the stated need for constant water removal.",
+      "quote": "is endergonic, indicating the non-spontaneous nature of the reaction and the need of constant... [water removal]",
+      "section": "Figure 6 + p6 prose",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Check monotonic direction: delta-G(403K) > delta-G(298K) for IntA (acetal formation releasing water becomes less favorable / more positive with T), and the opposite mild trend for IntB. Verify the prose's temperature reasoning matches the two numbers.",
+      "evidence": [
+        {"id": "e10", "kind": "figure", "location": "Figure 6", "quote": "IntA: 26.1 (298K) -> 46.1 (403K); IntB: -14.9 (298K) -> -11.9 (403K)", "extracted_values": {"IntA_delta_with_T": 20.0, "IntB_delta_with_T": 3.0}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Trend/sign consistency of the two-temperature DFT free energies vs the prose's temperature argument.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.72, "rationale": "IntA becomes more positive with T (26.1 -> 46.1, +20.0), matching the claim that acetal formation is increasingly disfavored at reaction temperature (driving the need to remove water). IntB stays negative and shifts only +3.0. Directionally consistent with the narrative. Lower confidence because the exact T-dependence depends on entropy terms in SI Table S5 not independently recomputed."}
+    },
+    {
+      "id": "c11",
+      "text": "On 6 mmol scale, IPL was obtained in 61% GC yield, and after column-chromatography purification was isolated in 53% yield (Table 2, entry 12).",
+      "quote": "when conducted on a 6 mmol scale, 61% of IPL were formed. After purification by simple column chromatography, IPL was isolated in 53% yield (Table 2, entry 12)",
+      "section": "2 Results and Discussion (scale-up)",
+      "page": 5,
+      "epistemic_tier": "T2",
+      "predicate": "Bind the prose 61% GC / 53% isolated to Table 2 entry 12, which prints IPL '61 (53)'. Check prose-vs-table match and that isolated (53) <= GC (61).",
+      "evidence": [
+        {"id": "e11", "kind": "table", "location": "Table 2 entry 12 (MSA, 6 mmol scale)", "quote": "12 MSA conv93 ... IPL 61 (53) ...", "extracted_values": {"GC_yield": 61, "isolated_yield": 53}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Prose-vs-table exact match (61, 53) and sanity isolated<=GC.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.95, "rationale": "Table 2 entry 12 prints IPL '61 (53)', matching the prose 61% GC and 53% isolated exactly; isolated (53) < GC (61) as physically expected (purification losses). Clean prose-vs-table binding plus a sanity inequality. Footnote g confirms '53 represents isolated yield of IPL' for the 6 mmol experiment."}
+    },
+    {
+      "id": "c12",
+      "text": "Catalyst poisoning experiments (excess Hg(0) or 2 mol% PPh3 added to 0.5 mol% Ru-MACHO-BH / 1 mol% MSA / 2 mmol FF) caused no change in catalytic activity, with IPL afforded in 65% yield in both cases, demonstrating homogeneous catalysis.",
+      "quote": "Addition of an excess of Hg(0) or the addition of PPh3 (2 mol%), respectively... revealed no changes of the catalytic activity observed previously. In both cases IPL was afforded in 65% yield. This observation conclusively demonstrates a homogenously catalyzed transformation",
+      "section": "2 Results and Discussion (Hg/PPh3 poisoning test)",
+      "page": 5,
+      "epistemic_tier": "T3",
+      "predicate": "Assess method appropriateness: Hg(0) drop test and phosphine poisoning are standard homogeneous-vs-heterogeneous discriminators; check that 'no activity change' is the correct interpretation (poisons suppress heterogeneous/nanoparticle catalysis). Also a mild T2 consistency: 65% poisoned-yield vs the ~61% baseline 6mmol / 59% MSA values.",
+      "evidence": [
+        {"id": "e12a", "kind": "text", "location": "p5", "quote": "In both cases IPL was afforded in 65% yield", "extracted_values": {"poisoned_IPL_yield": 65}},
+        {"id": "e12b", "kind": "table", "location": "Table 2 entry 4 (MSA baseline)", "quote": "MSA conv98 IPL 59", "extracted_values": {"baseline_MSA_IPL": 59}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Method-appropriateness check (Hg drop test + phosphine poisoning correctly used as homogeneity diagnostics) + advisory note on the experimental logic.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.62, "rationale": "Hg(0) and excess-phosphine poisoning are accepted (if individually non-definitive) tests for homogeneous vs colloidal/heterogeneous catalysis; unchanged activity is consistent with a homogeneous mechanism. The 65% poisoned IPL yield is slightly higher than the 59% baseline (Table 2 e4) and the 61% 6mmol value, so 'no change' is qualitative. This is a T3 design-appropriateness judgment (not a deterministic recompute); the word 'conclusively' is a mild over-statement since single poisoning tests are suggestive, not definitive. Routed to advisory/human for the strength-of-claim nuance."}
+    },
+    {
+      "id": "c13",
+      "text": "Decreasing the MSA acid concentration from higher loading to 0.5 mol% suppresses IPL formation, giving 59% yield of IPL.",
+      "quote": "Decreasing the acid concentration of MSA to 0.5 mol% suppresses the formation of IPL with 59% yield in IPL",
+      "section": "2 Results and Discussion",
+      "page": 3,
+      "epistemic_tier": "T2",
+      "predicate": "Internal logic check: the prose says decreasing acid 'suppresses' IPL but then states 59% IPL yield (the highest IPL among the MSA entries in Table 2). Check whether 'suppresses' is consistent with the reported 59% being a high value (potential wording/logic inconsistency) and bind 59 to Table 2 entry 4 (MSA, 1 mol% per footnote vs 0.5 mol%).",
+      "evidence": [
+        {"id": "e13", "kind": "table", "location": "Table 2 entries 3,4 (MSA at 0.5 mol% / standard)", "quote": "3 MSA(1.5mol%) IPL 50 GVL 15 ; 4 MSA IPL 59 AL5 GVL10", "extracted_values": {"MSA_e3_IPL": 50, "MSA_e4_IPL": 59}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Prose-vs-table binding of the 59% value and internal-logic check on the word 'suppresses' vs a 59% (high) IPL yield.", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.45, "rationale": "59% IPL is the maximum IPL yield in Table 2 (entry 4), so calling 0.5 mol% MSA a condition that 'suppresses the formation of IPL' reads as awkward/possibly mis-worded (it appears to be the BEST IPL condition, not a suppressed one). The footnotes map MSA loadings ambiguously (entry3 1.5 mol%, entry4 unannotated, entry10/11 0.5/1 mol%), so the exact loading that gives 59% cannot be cleanly bound. Likely a phrasing issue ('suppresses humins/side-products' rather than IPL) but cannot resolve without disambiguating which MSA loading entry equals 0.5 mol%. Inconclusive."}
+    },
+    {
+      "id": "c14",
+      "text": "At 150 C, full conversion of FF was achieved but the IPL yield dropped to 45% (relative to the 130 C optimum).",
+      "quote": "At 150 C full conversion of FF was achieved, however, the yield of IPL (45%) dropped considerably",
+      "section": "2 Results and Discussion (temperature screen)",
+      "page": 3,
+      "epistemic_tier": "T4",
+      "predicate": "Check the comparative claim that 45% (150 C) is a 'considerable drop' vs the stated 130 C optimum. Needs the 130 C reference IPL value to evaluate the magnitude. If the 130C optimum is ~50-61%, a drop to 45% is modest-to-moderate, so 'considerably' may be an over-statement.",
+      "evidence": [
+        {"id": "e14", "kind": "text", "location": "p3", "quote": "the yield of IPL (45%) dropped considerably", "extracted_values": {"IPL_yield_150C": 45}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Percent-change/magnitude check of 45% vs the 130 C reference IPL value to test whether 'considerably' is warranted.", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.4, "rationale": "45% at 150 C is reported as a 'considerable' drop, but the 130 C reference IPL value to compare against is ambiguous (50% Table 1, 59% Table 2 MSA, 61% 6mmol). Against 50% the drop is 5 points (~10% rel, not 'considerable'); against 61% it is 16 points (~26% rel). The qualitative descriptor 'considerably' cannot be confirmed/refuted without fixing the baseline. Inconclusive; a percent-change verifier could settle it once the baseline is bound."}
+    },
+    {
+      "id": "c15",
+      "text": "Using excess H3PO4 (285.2 mol%) converted furfural with 57% conversion, giving FE 9%, AL 27%, GVL 1% and no/low IPL (Table 2, entry 7).",
+      "quote": "Excess amount of H3PO4 (285.2 mol%) converted furfural ... [Table 2, entry 7]",
+      "section": "2 Results and Discussion + Table 2 entry 7 (footnote b: 285.2 mol%)",
+      "page": 4,
+      "epistemic_tier": "T2",
+      "predicate": "Bind the prose 285.2 mol% H3PO4 statement to Table 2 entry 7 (footnote b = 285.2 mol%) and check the conversion/yield numbers are consistent and yields <= conversion (9+27+1 = 37 < 57).",
+      "evidence": [
+        {"id": "e15", "kind": "table", "location": "Table 2 entry 7 (H3PO4, footnote b 285.2 mol%)", "quote": "7 H3PO4(b) conv57 FE9 AL27 GVL1", "extracted_values": {"conversion": 57, "FE": 9, "AL": 27, "GVL": 1, "sum_yield": 37}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Prose-vs-table binding (285.2 mol% -> footnote b -> entry 7) + yield<=conversion arithmetic.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "Footnote b ('285.2 mol%') maps to Table 2 entry 7; conversion 57% with FE9+AL27+GVL1=37% detected (< 57, leaving ~20% as FA/unidentified). Yields consistent with conversion. Prose value 285.2 mol% matches footnote b exactly. Clean binding + bookkeeping check."}
+    },
+    {
+      "id": "c16",
+      "text": "Table 2 entry 13 reports a control (FFE/footnote) with 7% AC yield and entry 14 reports 10% (FE) at low conversion, included as comparison/control runs.",
+      "quote": "13 ... AC 7 ; 14 ... 10",
+      "section": "Table 2 entries 13-14 (footnotes g/h: 6 mmol scale / FFE solvent)",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "Verify entries 13-14 obey yield<=conversion. Entry 13 (conv not printed / footnote) AC 7; entry 14 conv 10 with FE 10 (yield = conversion edge case).",
+      "evidence": [
+        {"id": "e16", "kind": "table", "location": "Table 2 entries 13-14", "quote": "13(g) AC7 ; 14(h) conv10 FE10", "extracted_values": {"e14_conv": 10, "e14_FE": 10}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Yield<=conversion edge-case check on entries 13-14.", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.4, "rationale": "Entry 14 shows conversion 10 with FE 10 (yield equals conversion, an edge case that is permissible if FE is the sole product). Entry 13 prints AC 7 but the conversion column for it is not clearly legible in the rendering (footnote g/h govern solvent/scale). Cannot fully bind entry 13's conversion, so the yield<=conversion check is inconclusive for that row; entry 14 is borderline-consistent. Needs the SI/Table S4 for the FFE-solvent control definition."}
+    },
+    {
+      "id": "c17",
+      "text": "Reaction conditions are internally consistent: 'net acid loading of 1 mol% of MSA' is stated to correspond to 1.5 mol% MSA in the chloride-complex pre-activation case (0.5 mol% KOH base consumed).",
+      "quote": "in case of the chloride complexes 0.5 mol% of the base were used and 1.5 mol% of MSA (relating to a net acid loading of 1 mol%)",
+      "section": "2 Results and Discussion (pre-activation protocol)",
+      "page": 3,
+      "epistemic_tier": "T0",
+      "predicate": "Arithmetic: 1.5 mol% MSA - 0.5 mol% KOH (neutralized 1:1) = 1.0 mol% net acid. Check 1.5 - 0.5 = 1.0.",
+      "evidence": [
+        {"id": "e17", "kind": "text", "location": "p3 + Table 1 footnote", "quote": "1.5 mol% of MSA (relating to a net acid loading of 1 mol%) ... 0.006 M/1.5 mol% (MSA), 0.002 M/0.5mol% KOH", "extracted_values": {"MSA_mol_pct": 1.5, "KOH_mol_pct": 0.5, "stated_net_acid": 1.0, "computed_net_acid": 1.0}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Acid/base stoichiometry subtraction (MSA mol% - KOH mol% = net acid mol%).", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "MSA (monoprotic, 1.5 mol%) neutralized by KOH (monobasic, 0.5 mol%) 1:1 leaves 1.5 - 0.5 = 1.0 mol% net acid, exactly as stated. Also consistent with the Table 1 footnote concentrations (0.006 M MSA / 0.002 M KOH -> 0.004 M = 1 mol% net at the stated substrate concentration). Clean T0 stoichiometry/arithmetic check."}
+    },
+    {
+      "id": "c18",
+      "text": "Table 1 footnote concentration coherence: 0.006 M MSA at 1.5 mol% and 0.002 M KOH at 0.5 mol% imply a substrate molarity of 0.4 M (2 mmol in 5 mL).",
+      "quote": "furfural 2 mmol, 5 mL IPA, 0.5 mol% cat. 0.006 M/1.5 mol% (MSA), 0.002 M/0.5mol% KOH",
+      "section": "Table 1 footnote",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "Check unit/concentration coherence: substrate = 2 mmol / 5 mL = 0.4 M. MSA 1.5 mol% of 0.4 M = 0.006 M (matches). KOH 0.5 mol% of 0.4 M = 0.002 M (matches).",
+      "evidence": [
+        {"id": "e18", "kind": "text", "location": "Table 1 footnote", "quote": "furfural 2 mmol, 5 mL IPA ... 0.006 M/1.5 mol% (MSA), 0.002 M/0.5mol% KOH", "extracted_values": {"substrate_mmol": 2, "volume_mL": 5, "substrate_M": 0.4, "MSA_M": 0.006, "MSA_mol_pct": 1.5, "KOH_M": 0.002, "KOH_mol_pct": 0.5}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Concentration/mol% consistency: substrate molarity x mol% = molarity for both MSA and KOH.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.95, "rationale": "Substrate 2 mmol / 5 mL = 0.4 M. 1.5% of 0.4 M = 0.006 M MSA (exact). 0.5% of 0.4 M = 0.002 M KOH (exact). Both footnote molarities are internally consistent with the stated mol% and substrate loading. Clean T0 unit/concentration recompute."}
+    },
+    {
+      "id": "c19",
+      "text": "The catalysis remains homogeneous throughout the entire reaction coordinate (no oligomer/polymer / humin / high-MW products detected; only two low-MW side products at 236.27 and 178.18 g/mol).",
+      "quote": "Based on this investigation we could exclude the presence of oligomer/polymer like materials, and we could clearly identify two main peaks representing the molecular weights of 236.27 and 178.18 g mol-1",
+      "section": "2 Results and Discussion / Abstract",
+      "page": 5,
+      "epistemic_tier": "T4",
+      "predicate": "Claim<->evidence support: the 'no humins / homogeneous throughout' claim rests on MS detecting only the two named low-MW species (Figures S14/S15). Check that this evidence (absence of high-MW peaks) actually supports 'excluded oligomers/polymers', or whether it is an absence-of-evidence over-claim.",
+      "evidence": [
+        {"id": "e19", "kind": "text", "location": "p5 + Figures S14/S15", "quote": "we could exclude the presence of oligomer/polymer like materials ... two main peaks ... 236.27 and 178.18 g mol-1", "extracted_values": {"detected_peaks": 2, "max_detected_MW": 236.27}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Claim-strength/scope check: does 'no high-MW peaks detected by MS' justify 'excluded oligomers/polymers'? (absence-of-evidence vs evidence-of-absence; depends on MS mass range and detection limit).", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.45, "rationale": "Excluding oligomers from a single MS that shows two low-MW peaks is an absence-of-evidence argument; validity depends on the MS scan range and ionization efficiency for any humin/polymer (in SI Figures S14/S15, not numerically transcribed). The lower-than-100% mass balance in Tables 1-2 (e.g. ~22% unaccounted in Table 1 entry 6) is also consistent with some undetected/loss material, mildly tensioning the 'no humins' claim. T4 strength/scope judgment routed to advisory; cannot deterministically confirm 'homogeneous throughout the entire coordinate' from the main text."}
+    },
+    {
+      "id": "c20",
+      "text": "The two reported side-product structures (IntA mixed acetal, IntB difurfuryl ether) are chemically plausible condensation products of the proposed intermediates (furfural + furfuryl alcohol + iPrOH; two furfuryl alcohols), with correct condensation stoichiometry (loss of one H2O each).",
+      "quote": "the 2-((furan-2-yl(isopropoxy)methoxy)methyl)furan, which was formed from FF via acetal formation ... derived from two molecules of FA",
+      "section": "2 Results and Discussion + Figure 6",
+      "page": 5,
+      "epistemic_tier": "T1",
+      "predicate": "Mass-balance/atom-balance of the proposed condensations: IntA from FF (C5H4O2) + furfuryl alcohol (C5H6O2) + iPrOH (C3H8O) - H2O should give C13H16O4 (acetal). IntB from 2x C5H6O2 - H2O = C10H10O3. Check atom balance closes.",
+      "evidence": [
+        {"id": "e20", "kind": "text", "location": "p5 + Figure 6 (Model reactions 1 and 2)", "quote": "Model reaction 1 -> IntA + H2O ; Model reaction 2 -> IntB + H2O", "extracted_values": {"IntA_formula_C": 13, "IntA_formula_H": 16, "IntA_formula_O": 4, "IntB_formula_C": 10, "IntB_formula_H": 10, "IntB_formula_O": 3}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Atom/mass-balance closure of the two condensation reactions (reactant atoms - H2O = product atoms).", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.83, "rationale": "IntB: 2 x C5H6O2 (furfuryl alcohol) = C10H12O4; minus H2O = C10H10O3 (178.19), balances and matches the named ether. IntA: the mixed acetal C13H16O4 (236.27) is consistent with FF-derived acetal incorporating one iPrO and one furfuryloxy group with loss of water. Both Figure 6 model reactions correctly show '+ H2O' as the condensation byproduct. Atom balance closes. Confidence <1 because IntA's exact reactant set (which alcohols add) is inferred from the structure rather than an explicit balanced equation in the main text."}
+    },
+    {
+      "id": "c21",
+      "text": "Without acid (Ru-MACHO-BH alone, 30 min), furfural is converted 98% almost exclusively to furfuryl alcohol (FA 98%), establishing FA as the first intermediate (Table 1, entry 7).",
+      "quote": "Without acid, after 30 min reaction time [Ru-MACHO-BH] ... FA 98",
+      "section": "Table 1 entry 7 (footnote b: without acid, 30 min) + text",
+      "page": 4,
+      "epistemic_tier": "T2",
+      "predicate": "Bind prose 'Ru-MACHO-BH alone gives FA' to Table 1 entry 7 (conv 98, FA 98) and check FA yield ~ conversion (selective hydrogenation to alcohol, no further products).",
+      "evidence": [
+        {"id": "e21", "kind": "table", "location": "Table 1 entry 7 (footnote b)", "quote": "7 Ru-MACHO-BH(no acid) conv98 FA98", "extracted_values": {"conversion": 98, "FA": 98}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Prose-vs-table binding + yield~conversion sanity (FA 98 = conv 98).", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "Table 1 entry 7 (no acid, 30 min) shows conv 98 / FA 98, i.e. essentially 100% selectivity to furfuryl alcohol, consistent with the mechanistic claim that the metal hydrogenates FF->FA first and the Bronsted acid is required for the downstream FA->FE->IPL steps. FA yield equals conversion (edge case, single product) - internally consistent. Clean prose-vs-table binding."}
+    },
+    {
+      "id": "c22",
+      "text": "The introduction's literature comparisons cite specific prior yields/conditions (e.g., de Vries Ru complex: 79% isolated IPL in iPrOH at 130 C; a Lu(OTf)3 catalyst: 53% IPL with humin formation; an Ir(III) half-sandwich complex A: FA in high yield at 85 C, 30 min, 0.5 mol%).",
+      "quote": "iPrOH as a solvent with 79% isolated yield [16] ... Lu(OTf)3 was shown as a catalyst for ... IPL in 53% yield, albeit considerable humin formation ... Ir(III) half-sandwich complex A ... at 85 C for 30 min with a loading of A of 0.5 mol% to produce FA in high [yield]",
+      "section": "1 Introduction",
+      "page": 2,
+      "epistemic_tier": "T5",
+      "predicate": "Verify the cited literature values against the original references [16], [39], and the Ir complex source - do the cited yields/conditions match the source papers (citation-distortion check)?",
+      "evidence": [
+        {"id": "e22", "kind": "text", "location": "Introduction p2", "quote": "79% isolated yield [16] ... IPL in 53% yield, albeit considerable humin formation [39 / Lu(OTf)3]", "extracted_values": {"cited_deVries_IPL_isolated": 79, "cited_Lu_IPL": 53}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "External literature retrieval + entailment: confirm refs [16], [39] report the quoted yields/conditions.", "verifier_exists": false, "candidate_verdict": "not_checkable", "confidence": 0.3, "rationale": "These are T5 citation-fidelity claims requiring retrieval of the cited primary sources, which is outside the deterministic frontier and not resolvable from this PDF alone. Recorded for completeness; a retrieval+entailment verifier (higher FP) would be needed. Not checkable here."}
+    },
+    {
+      "id": "c23",
+      "text": "Ru-MACHO-BH is the most active precatalyst for IPL formation among the screened Ru complexes, giving 50% IPL (with acid) vs <=15% for the dichloride complexes Ru-5 to Ru-8 (Table 1).",
+      "quote": "the most active Ru-complex in terms of isopropyl levulinate (IPL) formation ... was Ru-MACHO-BH",
+      "section": "Abstract + Table 1",
+      "page": 4,
+      "epistemic_tier": "T2",
+      "predicate": "Check the ranking claim: is Ru-MACHO-BH's IPL yield (50%, entry 6) the maximum in Table 1's IPL column? Compare against Ru-5..Ru-8 (3,4,6,15) and Ru-MACHO (30).",
+      "evidence": [
+        {"id": "e23", "kind": "table", "location": "Table 1 IPL column", "quote": "Ru-5 3 ; Ru-6 4 ; Ru-7 6 ; Ru-8 15 ; Ru-MACHO 30 ; Ru-MACHO-BH 50", "extracted_values": {"Ru5_IPL": 3, "Ru6_IPL": 4, "Ru7_IPL": 6, "Ru8_IPL": 15, "RuMACHO_IPL": 30, "RuMACHOBH_IPL": 50}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Argmax check over the Table 1 IPL column vs the 'most active for IPL' ranking claim.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.92, "rationale": "Ru-MACHO-BH gives the highest IPL yield in Table 1 (50%), exceeding Ru-MACHO (30%) and the dichlorides Ru-5..Ru-8 (3,4,6,15). The 'most active for IPL formation' ranking claim is consistent with the table argmax. Clean T2 max-of-column check."}
+    },
+    {
+      "id": "c24",
+      "text": "Both candidate intermediate-forming reactions (mixed-acetal IntA, dimer IntB) are acid-catalyzed, and the DFT comparison shows dimerization (IntB) is thermodynamically preferred over mixed-acetal formation (IntA) at both temperatures.",
+      "quote": "the formation of IntB is energetically more favorable than... IntA ... Both reactions are acid-catalyzed",
+      "section": "Figure 6 + p6 prose",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Comparative consistency: delta-G(IntB) < delta-G(IntA) at both 298 K (-14.9 < 26.1) and 403 K (-11.9 < 46.1); verify the 'IntB more favorable' claim follows from the Figure 6 numbers.",
+      "evidence": [
+        {"id": "e24", "kind": "figure", "location": "Figure 6 Model reactions 1 & 2", "quote": "IntA 26.1/46.1 ; IntB -14.9/-11.9", "extracted_values": {"diff_298K": 41.0, "diff_403K": 58.0}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Pairwise comparison of the two free energies at each temperature vs the 'IntB more favorable' claim.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.82, "rationale": "At 298 K, IntB (-14.9) is 41.0 kJ/mol more favorable than IntA (+26.1); at 403 K, 58.0 kJ/mol more favorable (-11.9 vs +46.1). The comparative claim 'IntB energetically more favorable than IntA' follows directly from the Figure 6 values. Clean T2 numeric comparison; underlying DFT numbers not independently recomputed (SI Table S5)."}
+    },
+    {
+      "id": "c25",
+      "text": "The paper reports the computational method as DLPNO-CCSD(T)/def2-TZVP // PBE0-D3/def2-TZVPP with SMD(2-propanol) solvation for the Figure 6 free-energy estimates.",
+      "quote": "Calculated at: DLPNO-CCSD(T)/def2-TZVP PBE0-D3/def2-TZVPP SMD = 2-propanol",
+      "section": "Figure 6 (method annotation) + SI Table S5",
+      "page": 6,
+      "epistemic_tier": "T3",
+      "predicate": "Method appropriateness: assess whether DLPNO-CCSD(T) single-points on PBE0-D3 geometries with SMD(2-propanol) is a reasonable level of theory for these small organic condensation free energies (yes); not a numeric recompute.",
+      "evidence": [
+        {"id": "e25", "kind": "text", "location": "Figure 6 annotation", "quote": "DLPNO-CCSD(T)/def2-TZVP // PBE0-D3/def2-TZVPP, SMD = 2-propanol", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Method-appropriateness review of the DFT/DLPNO protocol for small-molecule reaction free energies in solution.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.6, "rationale": "DLPNO-CCSD(T)/def2-TZVP single points on PBE0-D3/def2-TZVPP geometries with implicit SMD(2-propanol) solvation is a standard, defensible composite level for organic reaction thermochemistry; the solvent model matches the experimental solvent (iPrOH). This is a T3 appropriateness judgment, not deterministic; routed to advisory. Confidence reflects that the protocol is reasonable but the actual energies/thermal corrections live in SI Table S5 and are not recomputed."}
+    },
+    {
+      "id": "c26",
+      "text": "Product identification and yields throughout were determined by GC(-MS) using dodecane as an internal standard.",
+      "quote": "Product identification/conversion (%)/yield (%) were determined by GC(-MS) analysis using dodecane as an internal standard",
+      "section": "Table footnotes (Tables 1-3)",
+      "page": 4,
+      "epistemic_tier": "T3",
+      "predicate": "Method appropriateness: GC-MS with an internal standard (dodecane) is an appropriate quantification method for these volatile oxygenates; check the internal standard is suitable (inert, non-overlapping). Not a recompute.",
+      "evidence": [
+        {"id": "e26", "kind": "text", "location": "Table 1/2/3 footnotes", "quote": "determined by GC(-MS) analysis using dodecane as an internal standard", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "Method-appropriateness check on GC-MS internal-standard quantification of the product set.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.6, "rationale": "GC(-MS) with dodecane as an inert internal standard is an appropriate and standard quantification method for these volatile furan-derived oxygenates (FF, FA, FE, IPL, AL, GVL); dodecane is non-reactive and typically well-resolved. T3 appropriateness judgment, routed to advisory. Confidence reflects that calibration/response-factor details would need the SI to fully validate quantification accuracy."}
+    }
+  ],
+  "paper_level_notes": "Real published ChemSusChem 2026 research article (DOI 10.1002/cssc.202502378, 19:e202502378), open access; authors Subramaniyan, Hering-Junghans, Barath (Leibniz-Institut fuer Katalyse / LIKAT Rostock). NOTE: the catalog filename says 'roy2025' but the actual authors are Subramaniyan/Hering-Junghans/Barath and publication year is 2026 - a corpus-id/metadata mismatch worth flagging. Deterministic frontier is rich: three yield/conversion tables (Tables 1-3) supporting clean T0 yield<=conversion and selectivity-bookkeeping checks; two molecular-weight assignments (236.27 -> C13H16O4 mixed acetal; 178.18 -> C10H10O3 difurfuryl ether) that recompute EXACTLY as T1 atomic-weight/atom-balance checks (both verified by hand here: 236.27 and 178.19); and concentration/mol% coherence checks (2 mmol/5 mL = 0.4 M; 1.5% MSA = 0.006 M; 0.5% KOH = 0.002 M; net acid 1.5-0.5 = 1.0 mol%) that all close. Several T2 prose-vs-table/figure bindings are checkable and mostly supported (15% GVL, 61(53)% IPL scale-up, Ru-MACHO-BH argmax for IPL, 285.2 mol% H3PO4 -> entry 7). The notable open item is the ABSTRACT's '67% IPL yield' which exceeds every IPL value printed in the main-text tables (max 61% GC / 59% MSA / 50% Table 1) and cannot be bound to a main-text figure/table - likely a peak from the Figure 5 time-course or SI Table S3/S4, flagged inconclusive (NOT manufactured as an error; needs SI). The word 'suppresses the formation of IPL with 59% yield' (c13) reads as a possible phrasing slip since 59% is the maximum IPL value. DFT free energies (Figure 6: IntA +26.1/+46.1; IntB -14.9/-11.9 kJ/mol) are sign/label/comparison-consistent with the prose but the values themselves require SI Table S5 (electronic energies + thermal corrections) to recompute - a T6/T2 boundary. SI is well-described: Supporting Tables S1-S5 (chemicals, dichloride-complex screening, exact overall-plot values S3, higher-FF-concentration S4, calculated DFT data S5) and Supporting Figures S1-S15 (NMR characterization, GC-MS chromatograms S9-S13, MS of the two side-products S14/S15). A formal Data Availability Statement is present ('data ... available in the supplementary material'). Mass balance never closes to 100% (unidentified/loss material, e.g. ~22% in Table 1 entry 6), which mildly tensions the 'no humins / homogeneous throughout' claim (c19, T4). No integrity-signal (T7) red flags observed in the rendered figures/tables. Overall this reads as a competent, internally consistent paper; the only genuine checkable tension is the 67% abstract IPL figure pending SI."
+}

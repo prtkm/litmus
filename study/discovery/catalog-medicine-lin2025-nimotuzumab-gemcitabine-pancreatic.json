@@ -1,0 +1,484 @@
+{
+  "paper_id": "medicine-lin2025-nimotuzumab-gemcitabine-pancreatic",
+  "title": "Nimotuzumab combined with gemcitabine and nab-paclitaxel as first-line therapy for advanced pancreatic cancer: a single-arm, single-center Phase II prospective study",
+  "doi": "10.3389/fmed.2026.1838482",
+  "domain": "medicine / oncology / single-arm Phase II clinical trial / pancreatic cancer",
+  "n_pages_read": 11,
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Objective response rate (ORR) = 68.75% from 11 partial responses out of 16 evaluable patients.",
+      "quote": "the ORR was 68.75% (11/16; 95% CI: 42.81-87.34%), with no complete responses and 11 partial responses",
+      "section": "Abstract / Results: Primary endpoint; Table 2",
+      "page": 1,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute 11/16 as a percentage and check it equals 68.75%.",
+      "evidence": [
+        {"id": "e1", "kind": "statistic", "location": "Table 2, ORR row + Results text", "quote": "ORR, n (%) 11 (68.75)", "extracted_values": {"responders": 11, "n": 16, "claimed_pct": 68.75}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "percent-change / proportion recompute (11/16*100).", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.99, "rationale": "11/16 = 68.75% exactly. Off-the-shelf proportion check confirms. Internally consistent across Abstract, Highlights, Table 2, Results, and Discussion."}
+    },
+    {
+      "id": "c2",
+      "text": "Response category counts partition the 16 patients: CR=0, PR=11, SD=5, PD=0, summing to 16, with DCR (CR+PR+SD)=100%.",
+      "quote": "no patient achieved a complete response (CR), while 11 patients achieved a partial response (PR), and 5 patients had stable disease (SD). No patient experienced primary disease progression (PD)... disease control rate (DCR = CR + PR + SD) was 100% (16/16)",
+      "section": "Results: Primary endpoint; Table 2",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "Check CR+PR+SD+PD = N (0+11+5+0=16) and DCR = (CR+PR+SD)/N = 16/16 = 100%.",
+      "evidence": [
+        {"id": "e2", "kind": "table", "location": "Table 2", "quote": "CR 0(0); PR 11(68.75); SD 5(31.25); PD 0(0); Not evaluable 0(0); DCR 16(100)", "extracted_values": {"CR": 0, "PR": 11, "SD": 5, "PD": 0, "sum": 16, "DCR_pct": 100}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "table totals / category partition check.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.98, "rationale": "0+11+5+0 = 16 = N; SD 5/16 = 31.25% matches Table 2 (text says 31.2%, a rounding of the same value); DCR 16/16 = 100%. Standard table-total check passes. Note no patient had PD at all (DCR 100%), which is clinically unusual for Stage IV PDAC but arithmetically self-consistent."}
+    },
+    {
+      "id": "c3",
+      "text": "Clinical benefit rate (CBR) = 87.5% from 14/16 patients (CR, PR, or SD lasting >=6 months).",
+      "quote": "The clinical benefit rate (CBR), defined as CR, PR, or SD lasting >=6 months, was 87.5% (14/16)",
+      "section": "Results: Secondary endpoints (CBR and DOR)",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute 14/16 and check it equals 87.5%; check consistency with CBR definition (11 PR + 3 of 5 SD >=6mo = 14).",
+      "evidence": [
+        {"id": "e3", "kind": "statistic", "location": "Results text", "quote": "was 87.5% (14/16)", "extracted_values": {"benefit_n": 14, "n": 16, "claimed_pct": 87.5}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "proportion recompute + internal partition (14 = 11 PR + how many SD?).", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "14/16 = 87.5% exactly. Implies 3 of the 5 SD patients had SD>=6 months (11 PR all counted + 3 SD = 14). Arithmetic is clean; the SD-duration split is not separately tabulated so the 14 cannot be fully decomposed from the paper, hence confidence <1."}
+    },
+    {
+      "id": "c4",
+      "text": "Exact binomial p-value comparing observed ORR (11/16) to the historical null of 23% is p = 0.00013.",
+      "quote": "the observed ORR of 68.75% was highly statistically significant against the historical 23% benchmark (exact binomial p = 0.00013; post-hoc power 77.06%)",
+      "section": "Results: Patient characteristics and enrollment",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Compute one-sided exact binomial P(X>=11 | n=16, p0=0.23) and compare to 0.00013.",
+      "evidence": [
+        {"id": "e4", "kind": "statistic", "location": "Results text", "quote": "exact binomial p = 0.00013", "extracted_values": {"x": 11, "n": 16, "p0": 0.23, "claimed_p": 0.00013}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "exact binomial tail probability (statcheck-style recompute).", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.97, "rationale": "Recomputed one-sided exact binomial P(X>=11 | n=16, p0=0.23) = 0.000128 ~ 0.00013. Matches. Off-the-shelf binomial recompute confirms. (Two-sided also rounds to 0.00013 here since the lower tail is negligible.)"}
+    },
+    {
+      "id": "c5",
+      "text": "Post-hoc power was 77.06% to detect the observed ORR of 68.75% versus the historical null of 23% (n=16, alpha=0.05 two-sided, Cohen's h = 0.9548).",
+      "quote": "Given the final enrolled sample size of 16 patients (51.6% of the planned 31), post-hoc power was 77.06% to detect the observed ORR of 68.75% versus the historical null of 23% (two-sided alpha = 0.05, Cohen's h = 0.9548).",
+      "section": "Statistical analysis; repeated in Results",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Compute power of a one-sample binomial test at n=16, alpha=0.05, H0 p0=0.23, true p=0.6875 (equivalently via Cohen's h=0.9548) and compare to 77.06%.",
+      "evidence": [
+        {"id": "e5", "kind": "statistic", "location": "Statistical analysis + Results text", "quote": "post-hoc power was 77.06% ... Cohen's h = 0.9548", "extracted_values": {"n": 16, "p0": 0.23, "p_true": 0.6875, "cohens_h": 0.9548, "claimed_power_pct": 77.06}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "exact and normal-approximation power computation for a one-sample proportion at the stated effect size and n.", "verifier_exists": false, "candidate_verdict": "suspect", "confidence": 0.8, "rationale": "INTERNAL INCONSISTENCY. Exact one-sample binomial power at n=16 to detect p=0.6875 vs p0=0.23 (alpha=0.05) is ~96.7%; the normal/arcsine approximation using the stated Cohen's h=0.9548 gives ~96.9% (z=h*sqrt(16)-1.96=1.86 -> ~0.97). The claimed 77.06% is far too low for the stated effect size and is mutually inconsistent with the simultaneously reported Cohen's h=0.9548. 77% is closer to the power for the ORIGINALLY HYPOTHESIZED 0.43 vs 0.23 (h=0.43) at the planned n=31, suggesting a mislabeled/copied power figure. Needs a power-recompute verifier; confidence <1 because PASS/SPSS conventions could in principle differ, but no standard convention yields 77% here."}
+    },
+    {
+      "id": "c6",
+      "text": "Cohen's h for the observed ORR (0.6875) versus the historical null (0.23) is 0.9548.",
+      "quote": "Cohen's h = 0.9548",
+      "section": "Statistical analysis",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Compute h = 2*arcsin(sqrt(0.6875)) - 2*arcsin(sqrt(0.23)) and compare to 0.9548.",
+      "evidence": [
+        {"id": "e6", "kind": "statistic", "location": "Statistical analysis text", "quote": "Cohen's h = 0.9548", "extracted_values": {"p1": 0.6875, "p2": 0.23, "claimed_h": 0.9548}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "arcsine effect-size formula recompute.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.98, "rationale": "Recomputed Cohen's h(0.6875, 0.23) = 0.9548 exactly. The effect-size number itself is correct; it is the power (c5) that is inconsistent with this h."}
+    },
+    {
+      "id": "c7",
+      "text": "The planned/required sample size was 31 patients for an expected AG ORR of 23% improved to 43% (absolute +20%), one-sample binomial proportion test, two-sided alpha=0.05, beta=0.20 (power=80%), computed in PASS 15.",
+      "quote": "Using a one-sample binomial proportion test with a two-sided alpha = 0.05 and beta = 0.20 (power = 80%), implemented in PASS 15 software, the required sample size was estimated at 31 patients.",
+      "section": "Statistical analysis",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute required n for one-sample proportion test (p0=0.23, p1=0.43, two-sided alpha=0.05, power=0.80) and compare to 31.",
+      "evidence": [
+        {"id": "e7", "kind": "statistic", "location": "Statistical analysis text", "quote": "the required sample size was estimated at 31 patients", "extracted_values": {"p0": 0.23, "p1": 0.43, "alpha": 0.05, "power": 0.80, "claimed_n": 31}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "sample-size recompute for a one-sample binomial proportion test (exact and normal approximation).", "verifier_exists": false, "candidate_verdict": "suspect", "confidence": 0.62, "rationale": "Recomputed n for p0=0.23->p1=0.43, alpha=0.05 TWO-SIDED, power=0.80: exact binomial needs n~40, arcsine ~43, normal one-sample approximation ~39. A one-SIDED exact test needs ~35. None of the standard two-sided computations give 31. PASS 15 with specific continuity/exact options might land lower, but 31 is below all conventional results, so the stated n appears optimistic/under-powered for the stated parameters. Flagged suspect; confidence moderate because PASS exact-test settings vary and the discrepancy is plausibly a one-sided vs two-sided or rounding choice rather than fabrication."}
+    },
+    {
+      "id": "c8",
+      "text": "16 enrolled is 51.6% of the planned 31 patients.",
+      "quote": "16 patients (51.6% of the planned 31)",
+      "section": "Statistical analysis / Discussion",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute 16/31 and compare to 51.6%.",
+      "evidence": [
+        {"id": "e8", "kind": "number", "location": "Results/Discussion text", "quote": "51.6% of the planned 31", "extracted_values": {"enrolled": 16, "planned": 31, "claimed_pct": 51.6}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "percent recompute.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.99, "rationale": "16/31 = 51.61% rounds to 51.6%. Correct."}
+    },
+    {
+      "id": "c9",
+      "text": "Enrollment accounting: 31 screened, 16 enrolled, 15 not enrolled; the 15 non-enrolled break down (in TEXT) as rapid progression/decline 6, patient preference 4, ineligibility 3, withdrawal 2.",
+      "quote": "During the study period, 31 patients were screened for eligibility. Fifteen patients were not enrolled... rapid disease progression or functional decline during the screening period (n = 6), patient preference for standard-of-care AG chemotherapy (n = 4...), ineligibility due to ECOG performance status >1 or inadequate organ function (n = 3), and withdrawal of consent (n = 2).",
+      "section": "Results: Patient characteristics and enrollment",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Check 31 - 16 = 15, and that the four text subcategories sum to 15 (6+4+3+2).",
+      "evidence": [
+        {"id": "e9", "kind": "text", "location": "Results text", "quote": "screened ... 31 ... Fifteen patients were not enrolled ... (n=6) ... (n=4) ... (n=3) ... (n=2)", "extracted_values": {"screened": 31, "enrolled": 16, "not_enrolled": 15, "rapid_prog": 6, "preference": 4, "ineligible": 3, "withdrawal": 2, "subtotal": 15}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "subgroup-sum / table-total check.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.95, "rationale": "31-16 = 15 and 6+4+3+2 = 15. Text-internal accounting balances. (See c10 for a conflict between this TEXT breakdown and the FIGURE 1 breakdown of the same 15 patients.)"}
+    },
+    {
+      "id": "c10",
+      "text": "Figure 1 reports the not-enrolled patients (n=15) with a DIFFERENT category breakdown than the Results text: Figure 1 shows rapid progression/PS decline 7, patient preference for SoC 4, failed eligibility criteria 4 (=15); the text shows 6 / 4 / 3 / 2 (=15).",
+      "quote": "Not enrolled (n = 15): Rapid progression / PS decline (n = 7); Patient preference for SoC (n = 4); Failed eligibility criteria (n = 4)",
+      "section": "Figure 1 (CONSORT-style flow diagram) vs Results text",
+      "page": 4,
+      "epistemic_tier": "T2",
+      "predicate": "Compare the per-category exclusion counts in Figure 1 against the Results-text breakdown for the same 15 non-enrolled patients.",
+      "evidence": [
+        {"id": "e10a", "kind": "figure", "location": "Figure 1, 'Not enrolled (n = 15)' box", "quote": "Rapid progression / PS decline (n = 7); Patient preference for SoC (n = 4); Failed eligibility criteria (n = 4)", "extracted_values": {"rapid_prog": 7, "preference": 4, "failed_eligibility": 4, "sum": 15}},
+        {"id": "e10b", "kind": "text", "location": "Results text", "quote": "(n = 6) ... (n = 4) ... (n = 3) ... (n = 2)", "extracted_values": {"rapid_prog": 6, "preference": 4, "ineligible": 3, "withdrawal": 2, "sum": 15}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-figure cross-consistency on the exclusion categories.", "verifier_exists": false, "candidate_verdict": "suspect", "confidence": 0.85, "rationale": "Both totals are 15, but the category-level counts disagree: Figure 1 rapid progression = 7 vs text 6; Figure 1 has only 3 categories (no separate 'withdrawal of consent' bucket) collapsing/redistributing the text's 3+2. Real prose-vs-figure inconsistency in how the same 15 excluded patients are classified. Deterministic to flag; confidence <1 only because it is a discrepancy of internal bookkeeping rather than an outright impossible value."}
+    },
+    {
+      "id": "c11",
+      "text": "Table 1 baseline percentages are internally consistent with the counts (N=16) for all rows EXCEPT lung metastasis, where 1/16 is rounded to 6.3% while the same fraction 1/16 (neck location) is rounded to 6.2%.",
+      "quote": "Lung 1 (6.3%) ... Neck 1 (6.2%)",
+      "section": "Table 1; Results text",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute each count/16 as a percentage; flag rows whose printed % disagrees with the recomputed value or with the rounding used elsewhere for the same fraction.",
+      "evidence": [
+        {"id": "e11", "kind": "table", "location": "Table 1", "quote": "<65 9(56.2); >=65 7(43.8); Male 10(62.5); Female 6(37.5); Stage IV 16(100.0); Head 7(43.8); Neck 1(6.2); Body 5(31.2); Tail 3(18.8); Liver 12(75.0); Peritoneum 7(43.8); Abdominal cavity 4(25.0); Lung 1(6.3); Single site 10(62.5); Multiple 6(37.5)", "extracted_values": {"neck_1_of_16": 6.25, "lung_1_of_16": 6.25, "neck_pct_printed": 6.2, "lung_pct_printed": 6.3}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "GRIM/percent-consistency check on each count vs printed percentage.", "verifier_exists": false, "candidate_verdict": "suspect", "confidence": 0.8, "rationale": "1/16 = 6.25%; the paper prints it as 6.3% for lung but 6.2% for neck (and the Results text repeats lung 6.3%, neck 6.2%). Inconsistent rounding of the identical fraction within the same paper. All other Table 1 percentages recompute exactly (e.g. 9/16=56.2, 7/16=43.8, 12/16=75.0). Minor but a genuine T0 internal-rounding inconsistency; not an error of fact, so verdict is 'suspect' rather than refuting any substantive claim."}
+    },
+    {
+      "id": "c12",
+      "text": "Table 1 pancreatic tumor-location counts (head 7, neck 1, body 5, tail 3) sum to 16 (= N), i.e. a mutually exclusive partition.",
+      "quote": "Head 7 (43.8%); Neck 1 (6.2%); Body 5 (31.2%); Tail 3 (18.8%)",
+      "section": "Table 1",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Sum location counts and check = N=16; sum the percentages and check ~100%.",
+      "evidence": [
+        {"id": "e12", "kind": "table", "location": "Table 1, Pancreatic tumor location", "quote": "Head 7; Neck 1; Body 5; Tail 3", "extracted_values": {"head": 7, "neck": 1, "body": 5, "tail": 3, "sum": 16, "pct_sum": 100.0}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "table-total / partition check.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.97, "rationale": "7+1+5+3 = 16 = N; 43.8+6.2+31.2+18.8 = 100.0%. Location is a clean partition. Consistent."}
+    },
+    {
+      "id": "c13",
+      "text": "Metastatic-site and number-of-sites counts are consistent: single site 10 + multiple sites (>=2) 6 = 16; individual site counts (liver 12, peritoneum 7, abdominal cavity 4, lung 1 = 24) exceed N as expected when patients can have multiple sites.",
+      "quote": "Single site 10 (62.5%); Multiple sites (>=2) 6 (37.5%) ... Liver 12; Peritoneum 7; Abdominal cavity 4; Lung 1",
+      "section": "Table 1; Results text",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Check single+multiple = N; check that the count of patients with >1 listed site is consistent with 'multiple sites = 6' (sum of site counts 24 implies 24-16=8 'extra' site-assignments spread over the 6 multiple-site patients, i.e. avg ~2.3 sites among them).",
+      "evidence": [
+        {"id": "e13", "kind": "table", "location": "Table 1, Site of metastasis + Number of metastatic sites", "quote": "Liver 12; Peritoneum 7; Abdominal cavity 4; Lung 1; Single 10; Multiple 6", "extracted_values": {"single": 10, "multiple": 6, "single_plus_multiple": 16, "site_count_sum": 24, "extra_assignments": 8}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "partition + multiplicity consistency check.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "Single 10 + Multiple 6 = 16 = N. Total site-assignments 24 = 16 + 8 extra; the 8 extra assignments must be distributed across the 6 multiple-site patients (feasible: e.g. 2 patients with 3 sites + 4 with 2.5... -> integer-feasible as 2x3-site + ... ). The single-site patients each contribute exactly one site (10 assignments) leaving 14 assignments across 6 patients = avg 2.33, feasible. Internally consistent; confidence <1 because the exact per-patient distribution is not given and cannot be uniquely reconstructed."}
+    },
+    {
+      "id": "c14",
+      "text": "Sex partition: 10 male (62.5%) + 6 female (37.5%) = 16; age partition: 9 (<65, 56.2%) + 7 (>=65, 43.8%) = 16.",
+      "quote": "10 males (62.5%) and 6 females (37.5%) ... 9 patients (56.2%) aged <65 years and 7 (43.8%) aged >=65 years",
+      "section": "Table 1; Results text",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Check each binary partition sums to 16 and percentages recompute.",
+      "evidence": [
+        {"id": "e14", "kind": "table", "location": "Table 1", "quote": "Male 10(62.5); Female 6(37.5); <65 9(56.2); >=65 7(43.8)", "extracted_values": {"male": 10, "female": 6, "lt65": 9, "ge65": 7}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "partition + percent recompute.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.98, "rationale": "10+6=16, 9+7=16; 10/16=62.5, 6/16=37.5, 9/16=56.25->56.2, 7/16=43.75->43.8. All consistent."}
+    },
+    {
+      "id": "c15",
+      "text": "Every Table 3 adverse-event row satisfies Grade1 + Grade2 + Grade3 = Total, and each Total/16 matches the stated overall incidence percentage.",
+      "quote": "Nausea 10(62.5) 2(12.5) 2(12.5) 14(87.5); Anemia 12(75.0) 2(12.5) 1(6.2) 15(93.8); Peripheral neuropathy 11(68.8) 4(25.0) - 15(93.8)",
+      "section": "Table 3 (Overall incidence of adverse events)",
+      "page": 7,
+      "epistemic_tier": "T0",
+      "predicate": "For each row check G1+G2+G3 = Total and Total/16 = printed total %.",
+      "evidence": [
+        {"id": "e15", "kind": "table", "location": "Table 3, all rows", "quote": "Nausea 10/2/2=14(87.5); Decreased appetite 11/1/2=14(87.5); Vomiting 7/1/2=10(62.5); Anemia 12/2/1=15(93.8); Leukopenia 8/3/2=13(81.2); Neutropenia 10/2/1=13(81.2); Thrombocytopenia 6/2/-=8(50.0); Alopecia -/13/0=13(81.2); Peripheral neuropathy 11/4/-=15(93.8); Fatigue 7/1/-=8(50.0); Bone pain 1/-/-=1(6.2)", "extracted_values": {"nausea_sum": 14, "appetite_sum": 14, "vomiting_sum": 10, "anemia_sum": 15, "leukopenia_sum": 13, "neutropenia_sum": 13, "thrombo_sum": 8, "alopecia_sum": 13, "neuropathy_sum": 15, "fatigue_sum": 8, "bonepain_sum": 1}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "row-total arithmetic + percent recompute across all 11 AE rows.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.97, "rationale": "All 11 rows satisfy G1+G2+G3 = Total, and every Total/16 matches its printed percentage (14/16=87.5, 15/16=93.8, 13/16=81.2, 10/16=62.5, 8/16=50.0, 1/16=6.2). Standard table-total verifier passes for the body of Table 3. (The alopecia ROW is self-consistent within Table 3; the contradiction is with the Abstract and Figure 3 -> see c16, c17.)"}
+    },
+    {
+      "id": "c16",
+      "text": "The Abstract lists alopecia as a GRADE 3 event (81.2%), but Table 3 and the Results text classify alopecia as GRADE 2 with zero Grade 3 events.",
+      "quote": "Abstract: 'Grade 3 events included alopecia (81.2%), nausea (12.5%), and myelosuppression.' Results: 'Alopecia occurred in 81.2% of patients and was correctly graded as Grade 2 per NCI-CTCAE v5.0.' Table 3: Alopecia Grade 2 = 13 (81.2%), Grade 3 = 0 (0%).",
+      "section": "Abstract vs Table 3 vs Results: Safety profile",
+      "page": 1,
+      "epistemic_tier": "T2",
+      "predicate": "Compare the grade assigned to alopecia across Abstract, Table 3, and Results text.",
+      "evidence": [
+        {"id": "e16a", "kind": "text", "location": "Abstract, Results", "quote": "Grade 3 events included alopecia (81.2%)", "extracted_values": {"abstract_alopecia_grade": 3, "pct": 81.2}},
+        {"id": "e16b", "kind": "table", "location": "Table 3, Alopecia row", "quote": "Alopecia - 13 (81.2%) 0 (0%) 13 (81.2)", "extracted_values": {"table_grade2_n": 13, "table_grade3_n": 0}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-table cross-consistency on AE grade.", "verifier_exists": false, "candidate_verdict": "suspect", "confidence": 0.92, "rationale": "Direct contradiction: the Abstract puts alopecia under 'Grade 3 events (81.2%)', while Table 3 and the Results explicitly state alopecia is Grade 2 (n=13, 81.2%) with Grade 3 = 0. The two statements cannot both be true. Deterministic prose-vs-table check flags it. The Results-text version ('Grade 2') is corroborated by Table 3 and by NCI-CTCAE (see c18); the Abstract is the erroneous statement."}
+    },
+    {
+      "id": "c17",
+      "text": "Figure 3 depicts the alopecia bar reaching 100% of patients (labeled '100%'), with the majority of the bar shaded as Grade 3 (red), contradicting Table 3 (alopecia = 81.2%, all Grade 2, Grade 3 = 0%).",
+      "quote": "Figure 3 alopecia bar labeled '100%', predominantly red (Grade 3) segment; legend: 'Grade 1-2 (light blue) and Grade 3 (red)'",
+      "section": "Figure 3 (TEAEs by grade) vs Table 3",
+      "page": 8,
+      "epistemic_tier": "T2",
+      "predicate": "Compare alopecia incidence and grade coloring in Figure 3 against Table 3 (incidence 81.2%, Grade 2 only).",
+      "evidence": [
+        {"id": "e17a", "kind": "figure", "location": "Figure 3, Alopecia bar (top bar)", "quote": "Alopecia ... 100%", "extracted_values": {"fig3_alopecia_pct": 100, "fig3_grade3_dominant": true}},
+        {"id": "e17b", "kind": "table", "location": "Table 3, Alopecia row", "quote": "13 (81.2) total; Grade 2 = 81.2%; Grade 3 = 0%", "extracted_values": {"table_alopecia_pct": 81.2, "table_grade3_pct": 0}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "figure-vs-table cross-consistency on both magnitude (100% vs 81.2%) and grade coloring (red/Grade3 vs Grade2).", "verifier_exists": false, "candidate_verdict": "suspect", "confidence": 0.9, "rationale": "Two simultaneous inconsistencies: (1) Figure 3 shows alopecia at 100% incidence while Table 3 (and text) report 81.2%; (2) the Figure 3 alopecia bar is mostly RED, which the legend defines as Grade 3, while Table 3 reports zero Grade 3 alopecia (all Grade 2). Reading the bar from the rendered figure: a small light-blue (Grade 1-2) segment plus a large red (Grade 3) segment summing to 100%. This conflicts with both the table and the Results text. Off-the-shelf prose/figure-vs-table verifier flags it; confidence <1 only due to residual ambiguity in reading exact bar proportions from the raster."}
+    },
+    {
+      "id": "c18",
+      "text": "Alopecia is reported at Grade 2 / Grade 3 magnitudes, but per NCI-CTCAE v5.0 alopecia has a maximum severity of Grade 2 (no Grade 3 alopecia exists in the criteria).",
+      "quote": "Alopecia occurred in 81.2% of patients and was correctly graded as Grade 2 per NCI-CTCAE v5.0",
+      "section": "Results: Safety profile (vs Abstract / Figure 3)",
+      "page": 8,
+      "epistemic_tier": "T1",
+      "predicate": "Check against fixed external knowledge: NCI-CTCAE v5.0 caps alopecia at Grade 2.",
+      "evidence": [
+        {"id": "e18", "kind": "text", "location": "Results text", "quote": "correctly graded as Grade 2 per NCI-CTCAE v5.0", "extracted_values": {"ctcae_max_grade_alopecia": 2}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "lookup of NCI-CTCAE v5.0 alopecia grading (fixed external reference).", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "NCI-CTCAE v5.0 defines alopecia only up to Grade 2 (there is no Grade 3 alopecia). The Results-text statement ('correctly graded as Grade 2') is therefore consistent with the standard, and it simultaneously demonstrates that the Abstract's 'Grade 3 ... alopecia' (c16) and Figure 3's red/Grade-3 alopecia bar (c17) are not just internally inconsistent but externally impossible. T1 because it rests on a fixed external grading dictionary."}
+    },
+    {
+      "id": "c19",
+      "text": "The text's enumerated Grade 3 events (leukopenia 2, nausea 2, vomiting 2, decreased appetite 2, neutropenia 1, anemia 1) match the Grade 3 column of Table 3 and total 10 Grade-3 events; no Grade 3 alopecia is listed here.",
+      "quote": "Grade 3 events were limited to leukopenia (n = 2), nausea (n = 2), vomiting (n = 2), decreased appetite (n = 2), neutropenia (n = 1), and anemia (n = 1).",
+      "section": "Results: Safety profile; Table 3 Grade 3 column",
+      "page": 8,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check the text's Grade-3 list against Table 3's Grade-3 column entries.",
+      "evidence": [
+        {"id": "e19", "kind": "table", "location": "Table 3, Grade 3 column", "quote": "Nausea G3 2(12.5); Decreased appetite G3 2(12.5); Vomiting G3 2(12.5); Anemia G3 1(6.2); Leukopenia G3 2(12.5); Neutropenia G3 1(6.2); all others G3 = -", "extracted_values": {"leukopenia": 2, "nausea": 2, "vomiting": 2, "appetite": 2, "neutropenia": 1, "anemia": 1, "total_grade3_events": 10}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-table set comparison of Grade-3 events.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.93, "rationale": "The six Grade-3 entries in the text exactly match Table 3's non-empty Grade-3 cells (leukopenia 2, nausea 2, vomiting 2, decreased appetite 2, neutropenia 1, anemia 1; sum 10). This is internally consistent and, notably, EXCLUDES alopecia from Grade 3 -- reinforcing that the Abstract (c16) and Figure 3 (c17) Grade-3-alopecia claims are the outliers."}
+    },
+    {
+      "id": "c20",
+      "text": "Figure 3 per-event incidence labels (alopecia 100%, anemia 94%, peripheral neuropathy 94%, decreased appetite 88%, nausea 88%, neutropenia 81%, leukopenia 81%, vomiting 62%, fatigue 50%, thrombocytopenia 50%, bone pain 6%) are consistent with Table 3 totals EXCEPT alopecia (Fig 100% vs Table 81.2%).",
+      "quote": "Figure 3 bar labels: Alopecia 100%, Anemia 94%, Peripheral neuropathy 94%, Decreased appetite 88%, Nausea 88%, Neutropenia 81%, Leukopenia 81%, Vomiting 62%, Fatigue 50%, Thrombocytopenia 50%, Bone pain 6%",
+      "section": "Figure 3 vs Table 3",
+      "page": 8,
+      "epistemic_tier": "T2",
+      "predicate": "Match each Figure 3 rounded bar label to the corresponding Table 3 total percentage.",
+      "evidence": [
+        {"id": "e20", "kind": "figure", "location": "Figure 3 bar labels", "quote": "Anemia 94% (Table 93.8); Peripheral neuropathy 94% (Table 93.8); Decreased appetite 88% (Table 87.5); Nausea 88% (Table 87.5); Neutropenia 81% (Table 81.2); Leukopenia 81% (Table 81.2); Vomiting 62% (Table 62.5); Fatigue 50% (Table 50.0); Thrombocytopenia 50% (Table 50.0); Bone pain 6% (Table 6.2); Alopecia 100% (Table 81.2)", "extracted_values": {"alopecia_fig": 100, "alopecia_table": 81.2}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "figure-vs-table per-event percentage match (with integer rounding tolerance).", "verifier_exists": false, "candidate_verdict": "suspect", "confidence": 0.88, "rationale": "Ten of eleven Figure 3 labels are the integer-rounded Table 3 totals (e.g. 93.8->94, 87.5->88, 81.2->81, 62.5->62) and are consistent. The single exception is alopecia: Figure 3 = 100% vs Table 3 = 81.2% (would round to 81%, not 100%). The discrepancy is isolated to alopecia, corroborating c17. Verdict 'suspect' for the alopecia mismatch within an otherwise consistent figure."}
+    },
+    {
+      "id": "c21",
+      "text": "Median PFS = 6.0 months (95% CI 4.06-7.95) and mean PFS = 8.625 months (95% CI 5.50-11.75), consistent between Table 2, Results text, and Figure 2B.",
+      "quote": "The median PFS (mPFS) was 6.0 months (95% CI: 4.06-7.95 months), with a mean PFS of 8.625 months (95% CI: 5.50-11.75 months)",
+      "section": "Results: survival outcomes; Table 2; Figure 2B",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check median/mean PFS and CIs across Table 2, text, and the Figure 2B inset.",
+      "evidence": [
+        {"id": "e21a", "kind": "statistic", "location": "Results text + Table 2", "quote": "PFS, median (95% CI), months 6.0 (4.06-7.95)", "extracted_values": {"median_pfs": 6.0, "ci_lo": 4.06, "ci_hi": 7.95, "mean_pfs": 8.625}},
+        {"id": "e21b", "kind": "figure", "location": "Figure 2B inset table", "quote": "Median PFS 6.000 (4.055 to 7.945); Mean PFS 8.625 (5.501 to 11.749)", "extracted_values": {"fig_median": 6.000, "fig_ci_lo": 4.055, "fig_ci_hi": 7.945, "fig_mean": 8.625}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-figure numeric consistency (rounding).", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "Figure 2B inset (6.000, 4.055-7.945; mean 8.625, 5.501-11.749) rounds exactly to the text/Table 2 values (6.0, 4.06-7.95; 8.625, 5.50-11.75). Consistent. The KM point estimate itself cannot be recomputed without patient-level data (no public dataset), so this verifies cross-source consistency, not the underlying survival fit."}
+    },
+    {
+      "id": "c22",
+      "text": "Median OS = 12.0 months (95% CI 8.35-15.66) and mean OS = 15.28 months (95% CI 9.65-20.91), consistent between Table 2, Results text, and Figure 2A.",
+      "quote": "The median OS (mOS) was 12.0 months (95% CI: 8.35-15.66 months), with a mean OS of 15.28 months (95% CI: 9.65-20.91 months)",
+      "section": "Results: survival outcomes; Table 2; Figure 2A",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check median/mean OS and CIs across Table 2, text, and the Figure 2A inset.",
+      "evidence": [
+        {"id": "e22a", "kind": "statistic", "location": "Results text + Table 2", "quote": "OS, median (95% CI), months 12.0 (8.35-15.66)", "extracted_values": {"median_os": 12.0, "ci_lo": 8.35, "ci_hi": 15.66, "mean_os": 15.28}},
+        {"id": "e22b", "kind": "figure", "location": "Figure 2A inset table", "quote": "Median OS 12.0 (8.345 to 15.655); Mean OS 15.278 (9.646 to 20.911)", "extracted_values": {"fig_median": 12.0, "fig_ci_lo": 8.345, "fig_ci_hi": 15.655, "fig_mean": 15.278}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-figure numeric consistency (rounding).", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "Figure 2A inset (12.0, 8.345-15.655; mean 15.278, 9.646-20.911) rounds exactly to the text/Table 2 values. Consistent. As with PFS, the KM estimate cannot be independently recomputed without IPD."}
+    },
+    {
+      "id": "c23",
+      "text": "OS survival rates at 3/6/9/12 months were 100%, 75%, 61.4%, 40.9%; the Figure 2A number-at-risk row (16, 12, 8, 5, 3, 2, 2, 1, 1 at 0/6/12/18/24/30/36/42/48 months) is broadly consistent with these and with '2 patients alive at data lock.'",
+      "quote": "The OS rates at 3, 6, 9, and 12 months were 100, 75, 61.4, and 40.9%, respectively. ... Only 2 patients remained alive at the data lock date.",
+      "section": "Results: survival; Figure 2A number-at-risk",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Check internal consistency of stated KM landmark rates with the number-at-risk table and the 2-alive statement (e.g. 6-month at-risk = 12 ~ 75%).",
+      "evidence": [
+        {"id": "e23", "kind": "figure", "location": "Figure 2A number-at-risk", "quote": "Time 0/6/12/18/24/30/36/42/48; At risk 16/12/8/5/3/2/2/1/1", "extracted_values": {"at_risk_0": 16, "at_risk_6": 12, "at_risk_12": 8, "os6_rate": 75, "os12_rate": 40.9, "alive_at_lock": 2}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "consistency of landmark KM rates vs number-at-risk (requires events/censoring to be exact, so only a bound check is possible).", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.7, "rationale": "At-risk = 12 at 6 months gives an upper bound of 12/16 = 75% surviving, matching the stated 6-month OS = 75% (implies no censoring before 6 months). 12-month at-risk = 8 (raw 50%) vs stated KM 40.9% is reconcilable if some pre-12-month patients were censored (KM > raw is impossible, KM < raw needs censoring after events). 40.9% < 50% is consistent with censoring. Last at-risk = 1 at 48 months matches the single 49-month survivor still alive, and '2 alive at lock' is consistent with late censoring. Fully exact verification needs IPD; confidence moderate."}
+    },
+    {
+      "id": "c24",
+      "text": "The longest-survivor narrative is internally consistent: one patient with OS 49+ months still alive at data lock, a 62-year-old male, ECOG 0, primary tumor in the pancreatic body, single hepatic metastasis, confirmed PR after first two cycles; OS range 5-49 months; 4 patients with OS >20 months; 2 of 16 alive.",
+      "quote": "one patient achieved an OS of 49 months and was still alive at the time of analysis, and 4 patients had OS exceeding 20 months ... a 62-year-old male with an ECOG performance status of 0, a primary tumor located in the pancreatic body, and a single hepatic metastasis. He attained a confirmed partial response after the first two cycles",
+      "section": "Results: survival outcomes; Abstract; Highlights",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Check the longest-OS patient's descriptors are compatible with the cohort (body location count >=1, single+hepatic met present, male present, ECOG 0-1 inclusion) and that OS range/landmark statements agree across Abstract, Highlights, Results, and Figure 2 caption.",
+      "evidence": [
+        {"id": "e24", "kind": "text", "location": "Results + Figure 2 caption", "quote": "OS ranged from 5 to 49 months ... 4 patients had OS exceeding 20 months ... Only 2 patients remained alive at the data lock date", "extracted_values": {"max_os": 49, "min_os": 5, "n_os_over20": 4, "n_alive": 2}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "internal cross-consistency of the case description against Table 1 and the survival figure.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.8, "rationale": "Descriptors are feasible: body location present (n=5), male present (n=10), single-site met present (n=10), liver met present (n=12), ECOG 0-1 per inclusion. '49 months still alive', '2 alive at lock', 'OS 5-49', '4 with OS>20' are repeated consistently across Abstract/Highlights/Results/Figure 2 caption. No contradiction found; cannot individually verify the specific patient without source data, so confidence <1."}
+    },
+    {
+      "id": "c25",
+      "text": "The 95% CI for ORR (11/16) is reported as 42.81-87.34% using the Clopper-Pearson method.",
+      "quote": "ORR was presented as a proportion with 95% CI calculated by the Clopper-Pearson method. ... 95% CI: 42.81-87.34%",
+      "section": "Statistical analysis; Abstract; Results; Table 2",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute the exact (Clopper-Pearson) 95% CI for 11/16 and compare to 42.81-87.34%.",
+      "evidence": [
+        {"id": "e25", "kind": "statistic", "location": "Results / Abstract", "quote": "95% CI: 42.81-87.34%", "extracted_values": {"x": 11, "n": 16, "claimed_lo": 42.81, "claimed_hi": 87.34}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "exact binomial (Clopper-Pearson) confidence-interval recompute.", "verifier_exists": false, "candidate_verdict": "suspect", "confidence": 0.7, "rationale": "Recomputed exact Clopper-Pearson 95% CI for 11/16 = 41.34-88.98%, not 42.81-87.34%. The claimed interval is also not Wilson (44.40-85.84), Agresti-Coull (44.15-86.09), or Wald (46.04-91.46). The printed CI is narrower than exact CP and matches no standard method for 11/16, despite the Methods explicitly naming Clopper-Pearson. Flagged suspect; confidence <1 because some software reports slightly different exact intervals (mid-p, or different rounding), but the gap (42.81 vs 41.34 lower; 87.34 vs 88.98 upper) is larger than rounding and trends in the wrong direction for an exact method."}
+    },
+    {
+      "id": "c26",
+      "text": "Treatment regimen doses and schedule: nimotuzumab 400 mg (day 1, 3-h infusion), gemcitabine 1,000 mg/m2 (days 1 and 8, 30-min), nab-paclitaxel 125 mg/m2 (days 1 and 8, 30-min), 21-day cycle, up to 6 cycles.",
+      "quote": "nimotuzumab 400 mg administered as a 3-h intravenous infusion on day 1 ...; gemcitabine 1,000 mg/m2 ... days 1 and 8; and nab-paclitaxel 125 mg/m2 ... days 1 and 8. Each treatment cycle was 21 days ... up to 6 cycles",
+      "section": "Methods: Treatment regimen; Abstract; Figure 1",
+      "page": 3,
+      "epistemic_tier": "T3",
+      "predicate": "Assess method appropriateness: are the AG backbone doses the standard MPACT regimen, and is the nimotuzumab dose consistent with prior nimotuzumab+gemcitabine trials?",
+      "evidence": [
+        {"id": "e26", "kind": "text", "location": "Methods / Figure 1 / Abstract", "quote": "gemcitabine 1,000 mg/m2 (days 1 and 8) and nab-paclitaxel 125 mg/m2 (days 1 and 8) every 21 days", "extracted_values": {"nimotuzumab_mg": 400, "gemcitabine_mg_m2": 1000, "nabpaclitaxel_mg_m2": 125, "cycle_days": 21, "max_cycles": 6}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "domain check that the dosing matches established regimens (MPACT AG: nab-P 125 mg/m2 + gem 1000 mg/m2 d1,8,15 q28d) and nimotuzumab fixed 400 mg weekly/biweekly conventions.", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.55, "rationale": "Doses (gem 1000 mg/m2, nab-P 125 mg/m2) are the MPACT per-administration doses, but the MPACT schedule is days 1,8,15 every 28 days, whereas this trial uses days 1,8 every 21 days -- a legitimate but non-standard 'biweekly-in-3-week' modification. Nimotuzumab 400 mg fixed dose is within the range used in PCS07/NOTABLE (which used 400 mg weekly). Appropriateness is defensible but the schedule deviation from MPACT is a T3 judgement call, not a clear error; marked inconclusive pending clinical-reviewer adjudication."}
+    },
+    {
+      "id": "c27",
+      "text": "Primary endpoint is ORR per RECIST v1.1 with confirmation >=4 weeks after initial assessment; all 11 PRs were confirmed by follow-up imaging.",
+      "quote": "All 11 partial responses were confirmed by follow-up imaging performed at least 4 weeks after the initial assessment, in full accordance with RECIST v1.1 guidelines.",
+      "section": "Methods: Efficacy/Endpoints; Results",
+      "page": 6,
+      "epistemic_tier": "T3",
+      "predicate": "Assess whether ORR is an appropriate primary endpoint for a single-arm Phase II and whether confirmation timing matches RECIST v1.1 norms.",
+      "evidence": [
+        {"id": "e27", "kind": "text", "location": "Methods / Results", "quote": "confirmation required no earlier than 4 weeks after initial assessment", "extracted_values": {"confirm_weeks": 4, "confirmed_PR": 11}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "methodological appropriateness review (RECIST confirmation, blinded independent review).", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.75, "rationale": "ORR per RECIST v1.1 with >=4-week confirmation and independent blinded central review by two radiologists with consensus adjudication is appropriate and well-specified for a single-arm Phase II. Methodologically sound; confidence <1 because appropriateness is a judgement and the actual blinding/adjudication cannot be audited from the manuscript."}
+    },
+    {
+      "id": "c28",
+      "text": "The claim that the NTZ-AG ORR (68.75%) 'substantially exceeds' the ~23% AG ORR in MPACT and 8.6% in PCS07, and that median OS 12.0 mo exceeds MPACT 8.5, PCS07 8.6, NOTABLE 10.9.",
+      "quote": "The ORR of 68.75% substantially exceeds the approximately 23% reported for AG in the MPACT trial (9) and the 8.6% reported for nimotuzumab plus gemcitabine in the PCS07 trial (14). The median OS of 12.0 months was also notably higher than ... the MPACT trial (8.5 months) (9), the PCS07 trial (8.6 months) (14), and the NOTABLE trial (10.9 months) (15).",
+      "section": "Discussion; Figure 4",
+      "page": 8,
+      "epistemic_tier": "T5",
+      "predicate": "Verify the cited comparator values (MPACT ORR ~23%, OS 8.5 mo; PCS07 ORR 8.6%, OS 8.6 mo; NOTABLE OS 10.9 mo) against the referenced primary trial reports.",
+      "evidence": [
+        {"id": "e28a", "kind": "figure", "location": "Figure 4 (A) OS bars", "quote": "PCS07 8.6; NOTABLE 10.9; PRODIGE 4/FOLFIRINOX 11.1; AG(MPACT) 8.5; NTZ-AG 12.0", "extracted_values": {"mpact_os": 8.5, "pcs07_os": 8.6, "notable_os": 10.9, "folfirinox_os": 11.1, "ntzag_os": 12.0}},
+        {"id": "e28b", "kind": "figure", "location": "Figure 4 (B) ORR bars", "quote": "PCS07 8.6%; NOTABLE 31.6%; MPACT 23.0%; NTZ-AG 68.8%", "extracted_values": {"mpact_orr": 23.0, "pcs07_orr": 8.6, "notable_orr": 31.6, "ntzag_orr": 68.8}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "external-literature lookup of MPACT (Von Hoff 2013), PCS07 (Schultheis 2017), NOTABLE (Qin 2023), PRODIGE/FOLFIRINOX comparator values.", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.5, "rationale": "Comparator values appear plausible and self-consistent between text and Figure 4 (MPACT ORR ~23%, OS 8.5 mo is the well-known MPACT result; NOTABLE OS 10.9 mo matches the abstract of ref 15; PCS07 OS 8.6 mo matches ref 14). However, full verification requires the cited sources, which are not in hand. T5 external-literature check; marked inconclusive. Note the comparison is cross-trial and the authors themselves caveat it, so the COMPARATIVE claim ('substantially exceeds') is descriptive, not inferential."}
+    },
+    {
+      "id": "c29",
+      "text": "Epidemiological framing: five-year relative survival ~13% overall, ~8% for exocrine tumors; PDAC ~92% of cases; EGFR overexpressed in 30-89% of pancreatic cancers; only 15-20% resectable at diagnosis; ~30-35% LAPC and ~50% metastatic at presentation.",
+      "quote": "the five-year relative survival rate for pancreatic cancer is approximately 13% overall, decreasing to a mere 8% when considering only exocrine tumors ... which account for approximately 92% of all cases (2, 3) ... EGFR is overexpressed in 30-89% of pancreatic cancers ... only 15-20% of patients are eligible for surgery ... approximately 30-35% have locally advanced pancreatic cancer (LAPC), and approximately 50% have distant metastases",
+      "section": "Introduction",
+      "page": 2,
+      "epistemic_tier": "T1",
+      "predicate": "Check the epidemiological figures against fixed external references (ACS Cancer Facts & Figures 2026; SEER; cited reviews).",
+      "evidence": [
+        {"id": "e29", "kind": "text", "location": "Introduction", "quote": "13% overall ... 8% ... exocrine ... 92% ... EGFR overexpressed in 30-89% ... 15-20% ... 30-35% ... 50%", "extracted_values": {"fiveyr_overall": 13, "fiveyr_exocrine": 8, "pdac_share": 92, "egfr_overexpr_lo": 30, "egfr_overexpr_hi": 89, "resectable_lo": 15, "resectable_hi": 20}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "external-reference lookup (ACS/SEER statistics, EGFR-overexpression literature).", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.55, "rationale": "These figures are in the commonly cited ranges (SEER 5-yr ~13% all-stage; ~8% historical exocrine; PDAC ~90%+ of pancreatic cancers; EGFR overexpression widely cited 30-89%; ~15-20% resectable). They are plausible and consistent with general oncology knowledge, but precise verification requires the specific ACS 2026 / cited sources. T1/T5 boundary; marked inconclusive without the references in hand. The abstract's '8% for exocrine tumors' vs introduction's '13% overall' are internally reconciled (different denominators)."}
+    },
+    {
+      "id": "c30",
+      "text": "Preliminary exploratory cohort claim: nine prior patients with the same triple combination achieved ORR 80% and median OS 20 months.",
+      "quote": "In a preliminary exploratory cohort conducted by our research group, nine patients with advanced pancreatic cancer treated with the triple combination of nimotuzumab, nab-paclitaxel, and gemcitabine achieved an objective response rate of 80% and a median OS of 20 months",
+      "section": "Introduction",
+      "page": 3,
+      "epistemic_tier": "T5",
+      "predicate": "Check whether 80% ORR is achievable from n=9 (i.e. a multiple of 1/9) and whether a prior report exists.",
+      "evidence": [
+        {"id": "e30", "kind": "text", "location": "Introduction", "quote": "nine patients ... objective response rate of 80% and a median OS of 20 months", "extracted_values": {"n": 9, "orr_pct": 80, "median_os": 20}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "feasibility check (80% of 9) + external lookup of the prior cohort report.", "verifier_exists": false, "candidate_verdict": "suspect", "confidence": 0.55, "rationale": "GRIM-style feasibility: with n=9, attainable ORR percentages are multiples of 1/9 = 11.11% (0, 11.1, 22.2, 33.3, 44.4, 55.6, 66.7, 77.8, 88.9, 100). 80% is NOT attainable from 9 patients -- the nearest are 77.8% (7/9) or 88.9% (8/9). The reported '80%' is likely a rounded/loose statement, but it is not an exact fraction of 9, a minor integrity/feasibility flag. No citation is given for this in-house cohort, so external verification is impossible. Marked suspect on the GRIM feasibility ground; confidence moderate because '80%' may be a colloquial approximation of 7/9 or 8/9."}
+    },
+    {
+      "id": "c31",
+      "text": "PCS07 KRAS wild-type subgroup HR = 0.32 is described as 'a 68% reduction in the risk of death.'",
+      "quote": "with a particularly striking benefit in the KRAS wild-type subgroup (hazard ratio = 0.32, representing a 68% reduction in the risk of death)",
+      "section": "Introduction",
+      "page": 2,
+      "epistemic_tier": "T0",
+      "predicate": "Check that (1 - HR) = 1 - 0.32 = 0.68 = 68% reduction.",
+      "evidence": [
+        {"id": "e31", "kind": "statistic", "location": "Introduction", "quote": "hazard ratio = 0.32, representing a 68% reduction", "extracted_values": {"hr": 0.32, "claimed_reduction_pct": 68}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "arithmetic: (1-HR)*100.", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "1 - 0.32 = 0.68 -> 68% relative risk reduction, computed correctly from the stated HR. (Whether HR=0.32 is the correct value from PCS07/ref 14 is a separate T5 check not settled here.)"}
+    },
+    {
+      "id": "c32",
+      "text": "Safety summary: all 16 patients (100%) had at least one TEAE; no Grade >=4 AEs; no treatment-related deaths; no treatment interruptions or discontinuations; no SAEs; ALT/AST elevations 0%.",
+      "quote": "No Grade 4 or higher adverse events were observed, and no treatment-related deaths occurred ... No treatment interruptions or permanent discontinuations due to adverse events were recorded ... no hepatotoxicity was recorded (ALT and AST elevations: 0%)",
+      "section": "Results: Safety profile; Table 3",
+      "page": 7,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check the no-Grade>=4 / no-discontinuation / 0% hepatotoxicity claims against Table 3 (no Grade 3 column entries above the listed events; ALT/AST rows all '-').",
+      "evidence": [
+        {"id": "e32", "kind": "table", "location": "Table 3, Hepatic dysfunction rows + Grade columns", "quote": "Increased ALT - - - -; Increased AST - - - -; no Grade 4 column exists; max grade present is Grade 3", "extracted_values": {"alt_events": 0, "ast_events": 0, "max_grade_in_table": 3}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-table consistency (no Grade 4 column; ALT/AST zero).", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.8, "rationale": "Table 3 has no Grade 4 column and its highest populated grade is Grade 3, consistent with 'no Grade >=4.' ALT and AST rows are all '-' (0%), matching '0% hepatotoxicity.' Internally consistent. Note the strong tolerability claims (zero discontinuations, zero hepatotoxicity across an intensive triple regimen) are clinically optimistic but not arithmetically contradicted by the table; confidence <1 reflects plausibility, not a found inconsistency."}
+    },
+    {
+      "id": "c33",
+      "text": "Supplemental Table S1 (subgroup analyses by age and sex) is referenced for ORR/OS differences, and data availability states contributions are 'included in the article/Supplementary material.'",
+      "quote": "Exploratory subgroup analyses by age (<65 vs. >=65 years) and sex showed no clinically meaningful differences in ORR or median OS (Supplemental Table S1).",
+      "section": "Results; Data availability statement; Supplementary material",
+      "page": 6,
+      "epistemic_tier": "T7",
+      "predicate": "Check whether the referenced Supplementary Table S1 / underlying data are actually available (integrity/availability signal).",
+      "evidence": [
+        {"id": "e33", "kind": "text", "location": "Data availability + Supplementary material", "quote": "The original contributions presented in the study are included in the article/Supplementary material ... The Supplementary material for this article can be found online", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "retrieve the online Supplementary material and confirm Table S1 exists with the claimed subgroup analysis; check for any patient-level data.", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.4, "rationale": "The main PDF (11 pages) does not contain Supplementary Table S1; it is only referenced. The data availability statement points to the article/SI and corresponding authors rather than a repository -- no patient-level dataset or registry data dump is provided, which is typical but limits reproducibility (T6). Cannot confirm S1's contents from the PDF alone; needs the online SI. Integrity/availability signal: no raw data, no deposited dataset."}
+    },
+    {
+      "id": "c34",
+      "text": "Trial registration: ChiCTR2300072843 (Chinese Clinical Trial Register); ethics approval 2023-092-02PJ; database/data lock January 1, 2026; publication metadata (received 25 Mar 2026, accepted 12 May 2026, published 29 May 2026).",
+      "quote": "This trial was registered at the Chinese Clinical Trial Register (ChiCTR) under the registration number ChiCTR2300072843 ... ethics approval number: 2023-092-02PJ ... database lock date of January 1, 2026",
+      "section": "Methods; Figure 1; front matter",
+      "page": 2,
+      "epistemic_tier": "T7",
+      "predicate": "Verify the registration number resolves to this trial with matching design/endpoints/enrollment, and that registration preceded enrollment.",
+      "evidence": [
+        {"id": "e34", "kind": "text", "location": "Methods / Clinical trial registration", "quote": "ChiCTR2300072843 ... URL https://www.chictr.org.cn/showprojEN.html?proj=198791", "extracted_values": {"reg_year_prefix": 2023, "ethics": "2023-092-02PJ", "lock_date": "2026-01-01"}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "registry lookup (ChiCTR2300072843) to confirm prospective registration, primary endpoint (ORR), planned N=31, and dates.", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.45, "rationale": "Registration number and ethics ID are provided with a resolvable ChiCTR URL, supporting prospective conduct (the '2300...' prefix implies 2023 registration, plausibly before enrollment). Cannot confirm the registry record's contents (planned endpoints/N, registration date vs first enrollment) from the PDF. T7 integrity check pending registry retrieval; marked inconclusive."}
+    },
+    {
+      "id": "c35",
+      "text": "Conclusion-level claim that NTZ-AG shows 'meaningful anti-tumor activity and an acceptable safety profile' providing 'a rational basis for larger randomized controlled trials' in unselected advanced pancreatic cancer.",
+      "quote": "The NTZ-AG regimen demonstrated meaningful anti-tumor activity and an acceptable safety profile as first-line therapy for unselected advanced pancreatic cancer patients, providing a rational basis for larger randomized controlled trials.",
+      "section": "Abstract: Conclusion; Discussion; Conclusion",
+      "page": 1,
+      "epistemic_tier": "T8",
+      "predicate": "Judge whether the interpretive conclusion is proportionate to the evidence (single-arm, n=16, 51.6% of planned, no control, cross-trial comparison, KRAS not profiled).",
+      "evidence": [
+        {"id": "e35", "kind": "text", "location": "Conclusion / Discussion limitations", "quote": "definitive confirmation of its clinical benefit will require a multicenter randomized controlled Phase III trial", "extracted_values": {"n": 16, "control_arm": 0}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "subjective appropriateness judgement (claim-vs-evidence calibration).", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.5, "rationale": "Subjective (T8). The conclusion is appropriately hedged ('preliminary', 'hypothesis-generating', explicit limitations: n=16, no control, no KRAS profiling, immature survival). The headline efficacy (ORR 68.75%, DCR 100%) is unusually high for unselected Stage IV PDAC and rests on cross-trial comparison, so the 'meaningful activity' framing is optimistic but the call for an RCT is the correct conservative ask. Not refutable; calibration judgement deferred to reviewer."}
+    },
+    {
+      "id": "c36",
+      "text": "Median number of AG treatment cycles received was 6 (range 1-6), and treatment was capped at up to 6 cycles; all patients received at least one complete cycle.",
+      "quote": "The median number of AG treatment cycles received was 6 (range: 1-6). ... All patients received at least one complete cycle of treatment",
+      "section": "Table 1; Results",
+      "page": 5,
+      "epistemic_tier": "T2",
+      "predicate": "Check internal consistency: max cycles in range (6) equals the protocol cap (6); min (1) consistent with 'at least one complete cycle'; median = 6 plausible given DCR 100%.",
+      "evidence": [
+        {"id": "e36", "kind": "table", "location": "Table 1, AG treatment cycles", "quote": "Median (range) 6 (1-6)", "extracted_values": {"median_cycles": 6, "min_cycles": 1, "max_cycles": 6, "protocol_cap": 6}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "internal consistency check (range vs protocol cap vs 'at least one cycle').", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "Range 1-6 respects the 'up to 6 cycles' cap and the 'at least one complete cycle' statement; median = 6 implies at least 8-9 of 16 patients completed all 6 cycles, plausible given DCR 100% and no progression. Internally consistent. (A median of 6 with a max of 6 means most patients hit the cap, consistent with the protocol stopping at 6 cycles.)"}
+    }
+  ],
+  "paper_level_notes": "Frontiers in Medicine single-arm, single-center open-label Phase II trial (ChiCTR2300072843), N=16 (51.6% of planned 31; stopped early). Deterministic frontier is rich and mostly internally consistent on the simple arithmetic (ORR 68.75%=11/16, all Table 1 and Table 3 percentages and row totals recompute exactly, exact binomial p=0.00013 confirmed, Cohen's h=0.9548 confirmed, 16/31=51.6%). KEY FLAGGED ITEMS (suspect, deterministic): (1) ALOPECIA is described three inconsistent ways -- Abstract calls it a Grade 3 event (81.2%), Table 3 + Results call it Grade 2 (13/16, Grade 3=0%), and FIGURE 3 draws the alopecia bar at 100% and predominantly RED (=Grade 3 per legend); moreover NCI-CTCAE v5.0 caps alopecia at Grade 2, so the Grade-3 depictions are externally impossible (claims c16, c17, c18, c20). (2) POST-HOC POWER 77.06% is inconsistent with the simultaneously reported effect size: exact and arcsine power at n=16 for ORR 0.6875 vs 0.23 (Cohen's h=0.9548) is ~96-97%, not 77% -- 77% is the power for the originally hypothesized 0.43 vs 0.23, suggesting a mislabeled figure (c5). (3) SAMPLE SIZE n=31 is below all standard two-sided recomputations for p0=0.23->p1=0.43 at 80% power (exact ~40, arcsine ~43, normal ~39; one-sided exact ~35) (c7). (4) ORR 95% CI 42.81-87.34% matches NO standard method for 11/16 despite the Methods naming Clopper-Pearson (exact CP = 41.34-88.98) (c25). (5) FIGURE 1 vs TEXT disagree on the breakdown of the 15 non-enrolled patients (Fig: 7/4/4; text: 6/4/3/2) though both total 15 (c10). (6) 1/16 is rounded to 6.3% (lung) but 6.2% (neck) in the same table (c11). (7) The in-house prior cohort 'ORR 80% in 9 patients' is not an attainable fraction of 9 (GRIM: nearest are 77.8% or 88.9%) (c30). Reproducibility/availability (T6/T7): no patient-level data, no deposited dataset, Supplementary Table S1 referenced but not in the main PDF; data availability statement points to article/SI and corresponding authors only. External-literature comparator values (MPACT, PCS07, NOTABLE, FOLFIRINOX in Fig 4) are plausible and self-consistent between text and figure but not independently verified here (T5). Clinically, the efficacy profile (ORR 68.75%, DCR 100% with zero PD in unselected Stage IV PDAC) is strikingly favorable and rests on cross-trial historical comparison; the authors hedge appropriately and call for an RCT. Off-the-shelf verifiers that would settle the most claims: statcheck-style binomial/CI recompute, GRIM/percent-consistency, table-total arithmetic, and prose-vs-table/figure cross-consistency (which alone catches the alopecia and Figure-1 issues)."
+}

@@ -1,0 +1,809 @@
+{
+  "paper_id": "chemistry-arxiv-2606.12779-qmc-orr-adsorption-pt111",
+  "title": "Molecular reference corrections for quantum Monte Carlo adsorption energies",
+  "doi": null,
+  "domain": "chemistry / computational electrocatalysis (quantum Monte Carlo surface thermochemistry; ORR on Pt(111), Cu(111))",
+  "n_pages_read": 34,
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Every signed error in Table I (calculated reaction energy minus experiment, in brackets) equals dHcalc - dHexp for all 10 methods across all 5 reaction columns (H2O, OH, OOH direct formation; OH(CHE), OOH(CHE)).",
+      "quote": "PBE  -2.305 [ 0.201]  0.662 [ 0.275]  0.132 [ 0.004]  2.967 [ 0.074]  4.743 [-0.397] ... Experiment  -2.506  0.387  0.128  2.893  5.140",
+      "section": "III.A / Table I",
+      "page": 7,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute each bracketed signed error as (tabulated calc value) - (Experiment row value) per Eq. (9); all 50 cells must match the printed bracket to the printed precision.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "table",
+          "location": "Table I (page 7)",
+          "quote": "Calculated reaction energies and signed errors [in brackets] for 298.15 K molecular thermochemistry, in eV.",
+          "extracted_values": {
+            "SD-FNDMC_H2O": -2.603, "SD-FNDMC_H2O_err": -0.097,
+            "SD-FNDMC_OOH": 0.102, "SD-FNDMC_OOH_err": -0.025,
+            "SD-FNDMC_OOHCHE": 5.308, "SD-FNDMC_OOHCHE_err": 0.168,
+            "exp_H2O": -2.506, "exp_OOH": 0.128, "exp_OOHCHE": 5.140
+          }
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "table column-difference recompute: for each row, calc_value - reference_row_value equals the bracketed error to printed precision.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.99,
+        "rationale": "Recomputed all 50 cells: every bracketed value equals (calc - Experiment) to 3 decimals, 0 mismatches. The off-the-shelf percent_change/sum_check family does not directly fit, but the operation is an elementary per-cell subtraction against the Experiment row, well within a simple table-difference verifier."
+      }
+    },
+    {
+      "id": "c2",
+      "text": "The complete Table I SD-FNDMC row (all five quantities: H2O -2.603, OH 0.322, OOH 0.102, OH(CHE) 2.925, OOH(CHE) 5.308) reproduces exactly from the SD-FNDMC total energies in Table S5 plus the ZPE+thermal corrections in Table S1, via the formation/CHE equations (4)-(8).",
+      "quote": "dHH2O = E~H2O - E~H2 - 1/2 E~O2 ... dHOOH,CHE = E~OOH - 2 E~H2O + 3/2 E~H2",
+      "section": "III.A + SI Tables S1, S5 / Eqs. (3)-(8)",
+      "page": 5,
+      "epistemic_tier": "T2",
+      "predicate": "Take SD-FNDMC electronic totals from Table S5 (H2 -1.175206, H2O -17.242057, O2 -31.926973, O -15.869936, OH -16.541035, OOHopt -32.514694 Eh), convert to eV (x 27.2114), add Table S1 corrections, apply Eqs. (4)-(8), and compare to Table I SD-FNDMC entries.",
+      "evidence": [
+        {
+          "id": "e2a",
+          "kind": "table",
+          "location": "Table S5 (page 21) SD-FNDMC column",
+          "quote": "H2 -1.175206; H2O -17.242057; O2 -31.926973; O -15.869936; OH -16.541035; OOHopt -32.514694 (Eh)",
+          "extracted_values": {"H2": -1.175206, "H2O": -17.242057, "O2": -31.926973, "O": -15.869936, "OH": -16.541035, "OOHopt": -32.514694}
+        },
+        {
+          "id": "e2b",
+          "kind": "table",
+          "location": "Table S1 (page 19) Total corrections (eV)",
+          "quote": "H2O 0.6610; H2 0.3580; O2 0.1865; OH 0.3208; OOH 0.4709",
+          "extracted_values": {"H2O": 0.6610, "H2": 0.3580, "O2": 0.1865, "OH": 0.3208, "OOH": 0.4709}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "equation-recompute verifier that evaluates the stated thermodynamic-cycle expressions from the SI total-energy + correction tables and matches the main-table values (cross-table internal consistency).",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.98,
+        "rationale": "End-to-end recompute reproduces all five SD-FNDMC entries to 3 decimals: dH(H2O)=-2.603, dH(OH)=0.322, dH(OOH)=0.102, dH(OH,CHE)=2.925, dH(OOH,CHE)=5.308. This is the central table of the paper and it ties out exactly from raw SI energies. No off-the-shelf verifier covers cycle recompute; needs a new bespoke equation-recompute template (high-value, recurring archetype)."
+      }
+    },
+    {
+      "id": "c3",
+      "text": "The Table I CCSD(T) row likewise reproduces exactly from the CCSD(T)/CBS total energies in Table S5/S4 plus Table S1 corrections (H2O -2.505, OH 0.383, OOH 0.114, OOH(CHE) 5.125).",
+      "quote": "CCSD(T)  -2.505 [ 0.001]  0.383 [-0.004]  0.114 [-0.013]  2.888 [-0.005]  5.125 [-0.015]",
+      "section": "III.A + SI Tables S4/S5 / Eqs. (4)-(8)",
+      "page": 7,
+      "epistemic_tier": "T2",
+      "predicate": "Use CCSD(T) all-electron CBS totals (H2 -1.176110, H2O -76.370683, O2 -150.189591, O -75.000988, OH -75.670555, OOH -150.777321 Eh) + Table S1 corrections in Eqs. (4)-(8); compare to Table I CCSD(T) row.",
+      "evidence": [
+        {
+          "id": "e3",
+          "kind": "table",
+          "location": "Table S5 (page 21) CCSD(T) column / Table S4 (page 20)",
+          "quote": "H2 -1.176110; H2O -76.370683; O2 -150.189591; O -75.000988; OH -75.670555; OOHopt -150.777321 (Eh)",
+          "extracted_values": {"H2": -1.176110, "H2O": -76.370683, "O2": -150.189591, "O": -75.000988, "OH": -75.670555, "OOH": -150.777321}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "same cross-table equation-recompute verifier as c2, applied to the CCSD(T) totals.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.98,
+        "rationale": "Recompute gives -2.505 / 0.383 / 0.114 / 5.125, matching Table I CCSD(T) exactly. Confirms the SI all-electron CC totals and the main-table CC row are mutually consistent."
+      }
+    },
+    {
+      "id": "c4",
+      "text": "The CCSD(T)/CBS reference energies in Table S4/S5 are the correct two-point CBS extrapolation of the cc-pVDZ and cc-pVTZ energies in Table S3 via Eq. (1), E_CBS = (3^3 E_VTZ - 2^3 E_VDZ)/(3^3 - 2^3).",
+      "quote": "ECBS = (3^3 EVTZ - 2^3 EVDZ)/(3^3 - 2^3)",
+      "section": "II.C + SI Tables S3, S4, S5 / Eq. (1)",
+      "page": 3,
+      "epistemic_tier": "T0",
+      "predicate": "Apply Eq. (1) to each species' (VDZ, VTZ) CCSD(T) pair in Table S3 and compare to the CBS values in Table S4/S5.",
+      "evidence": [
+        {
+          "id": "e4",
+          "kind": "table",
+          "location": "Table S3 (page 20) CCSD(T) columns",
+          "quote": "H2O VDZ -76.241215 VTZ -76.332322; O2 VDZ -149.985604 VTZ -150.129151; OH VDZ -75.559404 VTZ -75.637622; O VDZ -74.910020 VTZ -74.974035; OOHfrz VDZ -150.554042 VTZ -150.707090",
+          "extracted_values": {"H2O_VDZ": -76.241215, "H2O_VTZ": -76.332322, "O2_VDZ": -149.985604, "O2_VTZ": -150.129151, "O_VDZ": -74.910020, "O_VTZ": -74.974035, "OOHfrz_VDZ": -150.554042, "OOHfrz_VTZ": -150.707090}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "equation-recompute verifier evaluating the stated two-point CBS formula on the SI basis-set energies and matching the tabulated CBS values.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.99,
+        "rationale": "Recomputed CBS values match Table S4/S5 to 6 decimals (within last-digit rounding): H2O -76.370683, O2 -150.189592 (table -150.189591), OH -75.670556 (table -75.670555), O -75.000989 (S5 -75.000988), OOHfrz -150.771531 (S5 -150.771532). The extrapolation formula is applied correctly and the SI tables are mutually consistent. Pure arithmetic on the paper's own numbers (T0)."
+      }
+    },
+    {
+      "id": "c5",
+      "text": "Scheme 1 lowers the conventional SD-FNDMC Pt(111) adsorption energies by site-independent shifts delta_hyb = -0.091 eV (O), -0.037 eV (OH), -0.183 eV (OOH).",
+      "quote": "delta_hyb(O) = -0.091 eV, delta_hyb(OH) = -0.037 eV, delta_hyb(OOH) = -0.183 eV.",
+      "section": "III.C / Eq. (14)",
+      "page": 8,
+      "epistemic_tier": "T2",
+      "predicate": "Subtract the CHE-scheme column from the Scheme 1 column in Table II for each site; the difference must be constant per adsorbate and equal the quoted delta_hyb.",
+      "evidence": [
+        {
+          "id": "e5",
+          "kind": "table",
+          "location": "Table II (page 8)",
+          "quote": "Ofcc 1.258 -> 1.168; Ohcp 2.188 -> 2.098; Otop 3.737 -> 3.647; OHfcc 0.992 -> 0.955; OHtop 1.042 -> 1.006; OOHtop 4.557 -> 4.374",
+          "extracted_values": {"Ofcc_CHE": 1.258, "Ofcc_S1": 1.168, "OHfcc_CHE": 0.992, "OHfcc_S1": 0.955, "OOHtop_CHE": 4.557, "OOHtop_S1": 4.374}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "prose-vs-table consistency: a single stated shift equals the (Scheme1 - CHE) column difference at every site for that adsorbate.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.97,
+        "rationale": "Scheme1 - CHE = -0.090 (all three O sites), -0.037/-0.036 (OH), -0.183 (OOH), matching the quoted -0.091/-0.037/-0.183 to within last-digit rounding (the O shift rounds to -0.090 from the table's 3-dp values vs -0.091 quoted, consistent with full-precision rounding). prose_vs_table.v1 covers the form of this check."
+      }
+    },
+    {
+      "id": "c6",
+      "text": "For OOH on Pt(111), Scheme 2 = Scheme 1 + the geometry correction delta_geom = -0.041 eV, giving Scheme 2 adsorption energy 4.333 eV.",
+      "quote": "OOHtop  4.557  4.374  4.333 ... delta_geom(OOH) = ... = -0.041 +/- 0.007 eV.",
+      "section": "III.D / Table II / Eq. (17)",
+      "page": 9,
+      "epistemic_tier": "T0",
+      "predicate": "Check 4.374 + (-0.041) = 4.333 against Table II Scheme 2 entry for OOHtop.",
+      "evidence": [
+        {
+          "id": "e6",
+          "kind": "table",
+          "location": "Table II (page 8), OOHtop row",
+          "quote": "OOHtop  4.557(41)  4.374(44)  4.333(44)",
+          "extracted_values": {"S1": 4.374, "S2": 4.333, "delta_geom": -0.041}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "additive consistency: Scheme2 = Scheme1 + delta_geom (percent_change/sum-style difference check).",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.99,
+        "rationale": "4.374 - 0.041 = 4.333 exactly. Elementary subtraction; covered by the percent_change/sum_check arithmetic family."
+      }
+    },
+    {
+      "id": "c7",
+      "text": "delta_geom(OOH) = dErlx^HL(OOH) - dErlx^QMC(OOH) = 0.158 - 0.198 = -0.041 +/- 0.007 eV.",
+      "quote": "dErlx^QMC(OOH) = 0.198 +/- 0.007 eV, dErlx^HL(OOH) = 0.158 eV ... delta_geom(OOH) = -0.041 +/- 0.007 eV.",
+      "section": "III.D / Eqs. (17)-(20)",
+      "page": 9,
+      "epistemic_tier": "T0",
+      "predicate": "Compute 0.158 - 0.198 and compare to -0.041 (within stated +/-0.007).",
+      "evidence": [
+        {
+          "id": "e7",
+          "kind": "equation",
+          "location": "Eqs. (S18)-(S20) / main text page 9",
+          "quote": "0.158 - 0.198 -> -0.041",
+          "extracted_values": {"HL": 0.158, "QMC": 0.198, "delta_geom": -0.041}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "arithmetic difference check on the two relaxation energies.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.99,
+        "rationale": "0.158 - 0.198 = -0.040, which rounds to -0.041 only if full-precision inputs are used (see c8: HL=0.1575, QMC=0.1983 -> -0.0408 -> -0.041). Consistent. Trivial arithmetic."
+      }
+    },
+    {
+      "id": "c8",
+      "text": "The OOH relaxation energies (dErlx^HL = 0.158 eV, dErlx^QMC = 0.198 eV) equal the OOHfrz-minus-OOHopt energy differences in Table S5 for the CCSD(T) and SD-FNDMC columns respectively.",
+      "quote": "OOHopt -32.514694 / -150.777321 ; OOHfrz -32.507407 / -150.771532",
+      "section": "SI Table S5 / Eqs. (16),(S17)",
+      "page": 21,
+      "epistemic_tier": "T2",
+      "predicate": "Compute (E_OOHfrz - E_OOHopt) x 27.2114 for the CCSD(T) column (should give 0.158) and the SD-FNDMC column (should give 0.198).",
+      "evidence": [
+        {
+          "id": "e8",
+          "kind": "table",
+          "location": "Table S5 (page 21)",
+          "quote": "OOHopt SD-FNDMC -32.514694, CCSD(T) -150.777321; OOHfrz SD-FNDMC -32.507407, CCSD(T) -150.771532",
+          "extracted_values": {"OOHopt_QMC": -32.514694, "OOHfrz_QMC": -32.507407, "OOHopt_CC": -150.777321, "OOHfrz_CC": -150.771532}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "cross-table equation-recompute: relaxation energy from SI total energies matches the eV value quoted in the main text.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.98,
+        "rationale": "CCSD(T): (-150.771532 - (-150.777321)) x 27.2114 = 0.1575 eV -> 0.158. SD-FNDMC: (-32.507407 - (-32.514694)) x 27.2114 = 0.1983 eV -> 0.198. Both match the quoted relaxation energies exactly. Ties the main-text relaxation values to the SI totals."
+      }
+    },
+    {
+      "id": "c9",
+      "text": "On Cu(111), Scheme 1 corrections are delta_hyb(HCO) = +0.042 eV and delta_hyb(COH) = -0.063 eV, applied uniformly (site-independently) at every site.",
+      "quote": "delta_hyb(HCO) = +0.042 eV, delta_hyb(COH) = -0.063 eV ... these uniform site-independent shifts",
+      "section": "III.E / Table S14",
+      "page": 10,
+      "epistemic_tier": "T2",
+      "predicate": "Subtract the CHE column from the Scheme 1 column in Table S14 at all four sites for HCO and for COH; differences must be constant and equal the quoted shifts.",
+      "evidence": [
+        {
+          "id": "e9",
+          "kind": "table",
+          "location": "Table S14 (page 30)",
+          "quote": "HCO bridge 0.522->0.564, fcc 0.567->0.609, hcp 0.600->0.643, top 0.368->0.410; COH bridge 1.274->1.212, fcc 1.104->1.041, hcp 1.162->1.099, top 2.021->1.958",
+          "extracted_values": {"HCO_bridge_CHE": 0.522, "HCO_bridge_S1": 0.564, "COH_top_CHE": 2.021, "COH_top_S1": 1.958}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "prose-vs-table site-independence check: (Scheme1 - CHE) constant across sites and equal to the stated shift.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.98,
+        "rationale": "Scheme1 - CHE = +0.042 (HCO; +0.043 at hcp, rounding) and -0.062/-0.063 (COH) at every site, matching the quoted +0.042 / -0.063. prose_vs_table.v1 covers this form."
+      }
+    },
+    {
+      "id": "c10",
+      "text": "The Cu(111) Scheme 1 shifts delta_hyb(HCO) = +0.042 and delta_hyb(COH) = -0.063 equal (CCSD(T)/CBS - SD-FNDMC) electronic hydrogenation energies for CO + 1/2 H2 -> HCO and -> COH, derived from the SI total energies in Tables S10 and S11.",
+      "quote": "CO + 1/2 H2 -> HCO ... Using the CCSD(T)/CBS molecular reference values in Table III, the corresponding Scheme 1 reference corrections are ...",
+      "section": "III.E + SI Tables S10, S11",
+      "page": 26,
+      "epistemic_tier": "T2",
+      "predicate": "Compute dE = E(X) - E(CO) - 1/2 E(H2) for SD-FNDMC (Table S11) and CCSD(T)/CBS (Table S10), then delta_hyb = dE_CC - dE_SD; compare to +0.042 (HCO) and -0.063 (COH).",
+      "evidence": [
+        {
+          "id": "e10a",
+          "kind": "table",
+          "location": "Table S11 (page 27) SD-FNDMC totals (Eh)",
+          "quote": "CO -21.690191; H2 -1.175115; HCO -22.222606; COH -22.153373",
+          "extracted_values": {"CO": -21.690191, "H2": -1.175115, "HCO": -22.222606, "COH": -22.153373}
+        },
+        {
+          "id": "e10b",
+          "kind": "table",
+          "location": "Table S10 (page 26) CCSD(T)/CBS totals (Eh)",
+          "quote": "CO -113.198144; H2 -1.176110; HCO -113.729492; COH -113.664129",
+          "extracted_values": {"CO": -113.198144, "H2": -1.176110, "HCO": -113.729492, "COH": -113.664129}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "cross-table equation-recompute verifier deriving the hydrogenation energies and their CC-minus-QMC difference from SI totals.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.98,
+        "rationale": "Recompute: SD dE(HCO)=1.5005, CC dE(HCO)=1.5431 -> delta=+0.0426 -> +0.042. SD dE(COH)=3.3844, CC dE(COH)=3.3217 -> delta=-0.0627 -> -0.063. Both match exactly. Also confirms Table S12 SD-FNDMC entries (1.501, 3.384) and CCSD(T) (1.543, 3.322). Strong multi-table consistency."
+      }
+    },
+    {
+      "id": "c11",
+      "text": "Every signed error in Table III (HCO formation relative to experiment 1.578; COH electronic hydrogenation relative to CCSDT(Q) 3.318) equals dH/dE minus the stated reference for all 10 methods.",
+      "quote": "Method dH(HCO) dE(COH) ... CCSD(T) 1.579 [ 0.000] 3.322 [ 0.004] ... Exp./CCSDT(Q) 1.578 3.318",
+      "section": "III.E / Table III",
+      "page": 10,
+      "epistemic_tier": "T0",
+      "predicate": "For HCO, recompute error = dH - 1.578; for COH, error = dE - 3.318; compare to bracketed values for all 10 rows.",
+      "evidence": [
+        {
+          "id": "e11",
+          "kind": "table",
+          "location": "Table III (page 10)",
+          "quote": "PBE 1.152 [-0.427] 3.007 [-0.311]; SD-FNDMC 1.536 [-0.042] 3.385 [0.067]; Exp./CCSDT(Q) 1.578 3.318",
+          "extracted_values": {"HCO_ref": 1.578, "COH_ref": 3.318, "SDFNDMC_HCO": 1.536, "SDFNDMC_HCO_err": -0.042, "SDFNDMC_COH": 3.385, "SDFNDMC_COH_err": 0.067}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "per-cell table-difference recompute against the stated reference row.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.99,
+        "rationale": "All 20 bracketed errors reproduce exactly (0 mismatches): e.g. SD-FNDMC HCO 1.536-1.578=-0.042; COH 3.385-3.318=+0.067. Note COH column is dE referenced to CCSDT(Q), distinct from S12 (also vs CCSDT(Q)) -- both consistent."
+      }
+    },
+    {
+      "id": "c12",
+      "text": "Table S12 signed errors (HCO and COH electronic hydrogenation energies relative to the CCSDT(Q) reference) equal dE_calc - dE_CCSDT(Q) for all 10 methods.",
+      "quote": "epsilon = dE^calc - dE^CCSDT(Q) ... CCSDT(Q) 1.536 0.000 3.318 0.000; SD-FNDMC 1.501(5) -0.035 3.384(6) 0.066",
+      "section": "SI C.2 / Table S12",
+      "page": 28,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute error = dE - 1.536 (HCO) and dE - 3.318 (COH) for all rows; compare to bracketed errors.",
+      "evidence": [
+        {
+          "id": "e12",
+          "kind": "table",
+          "location": "Table S12 (page 28)",
+          "quote": "PBE 1.116 -0.420 3.007 -0.311; SD-FNDMC 1.501 -0.035 3.384 0.066",
+          "extracted_values": {"HCO_ref": 1.536, "COH_ref": 3.318, "SDFNDMC_HCO": 1.501, "SDFNDMC_HCO_err": -0.035, "SDFNDMC_COH": 3.384, "SDFNDMC_COH_err": 0.066}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "per-cell table-difference recompute against the CCSDT(Q) reference row.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.99,
+        "rationale": "All 20 errors reproduce exactly (0 mismatches). Internally consistent."
+      }
+    },
+    {
+      "id": "c13",
+      "text": "The Cu(111) Scheme 2 geometry corrections (Scheme2 - Scheme1) lie in the ranges -0.029 to +0.045 eV for HCO and 0.006-0.032 eV (lowering) for COH, as stated in the text.",
+      "quote": "for HCO it ranges from -0.029 eV at the bridge site to +0.045 eV at the top site ... lowers the Scheme 1 adsorption energies by only 0.006-0.032 eV depending on site",
+      "section": "III.E / Table S14",
+      "page": 10,
+      "epistemic_tier": "T2",
+      "predicate": "Compute Scheme2 - Scheme1 at each Cu site from Table S14; check the min/max bound the quoted ranges.",
+      "evidence": [
+        {
+          "id": "e13",
+          "kind": "table",
+          "location": "Table S14 (page 30)",
+          "quote": "HCO bridge 0.564->0.535, top 0.410->0.456; COH bridge 1.212->1.191, hcp 1.099->1.068",
+          "extracted_values": {"HCO_bridge_S2S1": -0.029, "HCO_top_S2S1": 0.046, "COH_bridge_S2S1": -0.021, "COH_hcp_S2S1": -0.031}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "prose-vs-table range check: stated min/max equals the extremal column differences.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.95,
+        "rationale": "Computed HCO range: -0.029 (bridge) to +0.046 (top) vs quoted -0.029 to +0.045 (top differs by 1 in last digit, 0.410->0.456 = +0.046; quoted +0.045 likely from full-precision). COH lowering 0.006 (top) to 0.031 (hcp) vs quoted 0.006-0.032; 0.032 vs computed 0.031 is last-digit rounding. Effectively supported; the single 1-in-last-digit slips are rounding, not errors."
+      }
+    },
+    {
+      "id": "c14",
+      "text": "Conventional SD-FNDMC gives a much larger residual error for the CHE-derived OOH quantity (+0.168 eV) than for direct OOH formation (-0.025 eV) -- the central qualitative claim of the paper.",
+      "quote": "the OOH formation enthalpy referenced directly to 1/2 H2 + O2 is close to experiment, whereas the CHE-derived OOH quantity shows a much larger deviation",
+      "section": "III.A / Table I / Fig. 1",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Compare |SD-FNDMC OOH direct error| = 0.025 against |SD-FNDMC OOH(CHE) error| = 0.168 in Table I; the prose 'much larger' must match the relative magnitudes.",
+      "evidence": [
+        {
+          "id": "e14",
+          "kind": "table",
+          "location": "Table I, SD-FNDMC row, OOH and OOH(CHE) columns",
+          "quote": "OOH 0.102 [-0.025] ... OOH(CHE) 5.308 [ 0.168]",
+          "extracted_values": {"OOH_direct_err": -0.025, "OOH_CHE_err": 0.168}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "prose-vs-table magnitude-comparison: a qualitative 'much larger' claim against the two tabulated signed errors.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.93,
+        "rationale": "0.168 vs 0.025 (a 6.7x ratio) supports 'much larger'. The directional/qualitative claim is consistent with the table. prose_vs_table.v1 covers the binding; the 'much larger' threshold is a soft judgment but unambiguous here."
+      }
+    },
+    {
+      "id": "c15",
+      "text": "The OOH O-O bond elongates from 1.35 Angstrom (optimized gas-phase) to 1.43 Angstrom (surface-extracted geometry); the O-H bond length is nearly unchanged; the H-O-O angle decreases from 105.0 to 102.1 degrees.",
+      "quote": "the O-O bond elongates from 1.35 A in the optimized gas-phase structure to 1.43 A in the surface-extracted geometry ... the H-O-O angle decreases from 105.0 to 102.1",
+      "section": "III.D",
+      "page": 9,
+      "epistemic_tier": "T1",
+      "predicate": "Geometric quantities of OOHopt vs OOHfrz; checkable against the deposited structures (Catalysis-Hub dataset) -- bond lengths/angle recomputable from coordinates.",
+      "evidence": [
+        {
+          "id": "e15",
+          "kind": "number",
+          "location": "Section III.D, page 9",
+          "quote": "O-O bond ... 1.35 A ... 1.43 A ... H-O-O angle ... 105.0 to 102.1",
+          "extracted_values": {"OO_opt": 1.35, "OO_frz": 1.43, "angle_opt": 105.0, "angle_frz": 102.1}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "geometry verifier that recomputes bond lengths/angles from the deposited OOHopt and OOHfrz coordinates and matches the stated values.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.4,
+        "rationale": "Plausible and physically reasonable (O-O elongation on adsorption is expected; 1.35 A is short for a peroxyl O-O which is typically ~1.33 A gas-phase, 1.43 A is single-bond-like), but the numbers cannot be bound to in-paper evidence without the deposited coordinates (Catalysis-Hub FantaQMCRefCorrection2026). Cannot recompute from the PDF alone -> inconclusive until the dataset is fetched (T6-adjacent)."
+      }
+    },
+    {
+      "id": "c16",
+      "text": "The fcc Pt lattice constant optimized at the PBE-D3(BJ) level was 3.93 Angstrom.",
+      "quote": "The fcc Pt lattice constant optimized at this level was 3.93 A using a 16 x 16 x 16 k-point mesh.",
+      "section": "II.A",
+      "page": 3,
+      "epistemic_tier": "T1",
+      "predicate": "Compare 3.93 A to the known experimental Pt lattice constant (3.92 A) and typical PBE values (~3.97 A); PBE-D3 typically contracts toward experiment.",
+      "evidence": [
+        {
+          "id": "e16",
+          "kind": "number",
+          "location": "Section II.A, page 3",
+          "quote": "fcc Pt lattice constant ... 3.93 A",
+          "extracted_values": {"a_Pt": 3.93}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "known-value lookup: bulk Pt lattice constant vs CODATA/experimental (3.9242 A) and method-typical range.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "3.93 A is consistent with experiment (3.924 A) and with PBE-D3(BJ), which contracts the over-bound plain-PBE value (~3.97 A) back toward experiment. Reasonable; a literature/known-value verifier (T1) would settle it. No deterministic in-paper recompute possible."
+      }
+    },
+    {
+      "id": "c17",
+      "text": "The Pt(111) slab is a three-layer slab containing 12 Pt atoms with cell dimensions 5.55, 5.55, 20.54 Angstrom and approximately 16 A of vacuum.",
+      "quote": "The Pt(111) slab was then constructed as a three-layer slab containing 12 Pt atoms in total, with cell dimensions of 5.55, 5.55, and 20.54 A ... approximately 16 A of vacuum",
+      "section": "II.A",
+      "page": 3,
+      "epistemic_tier": "T2",
+      "predicate": "Geometric self-consistency: 12 Pt over 3 layers = 4 Pt/layer (a 2x2 surface). In-plane 5.55 A vs a/sqrt(2)=3.93/1.414=2.78 A nearest-neighbor; 2x2 in-plane lattice = 2*2.78 = 5.56 A. Vacuum ~ 20.54 - slab thickness ~ 16 A.",
+      "evidence": [
+        {
+          "id": "e17",
+          "kind": "number",
+          "location": "Section II.A, page 3",
+          "quote": "three-layer slab containing 12 Pt atoms ... 5.55, 5.55, 20.54 A ... 16 A of vacuum",
+          "extracted_values": {"n_Pt": 12, "n_layers": 3, "a_xy": 5.55, "c": 20.54, "vacuum": 16}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "geometry self-consistency check: in-plane cell = (2x2) x nearest-neighbor spacing derived from the bulk lattice constant; slab thickness + vacuum = c.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.8,
+        "rationale": "Consistent: a/sqrt(2) = 3.93/1.4142 = 2.779 A NN spacing; a 2x2 fcc(111) in-plane cell = 2 x 2.779 = 5.558 A ~ 5.55 A. 12 Pt / 3 layers = 4 per layer = 2x2 surface. Two-layer interlayer spacing ~ 2 x 2.27 = 4.5 A, so 20.54 - 4.5 ~ 16 A vacuum. All internally coherent. (Note: the 1x1/2x2 nomenclature in QMC sections then refers to this base cell tiled, consistent with the SI bare-slab energies scaling ~4x.)"
+      }
+    },
+    {
+      "id": "c18",
+      "text": "The finite-size-extrapolated Pt(111) adsorption/binding energies (Table S8) are the two-point N^-5/4 extrapolation (Eq. 2) of the 1x1 and 2x2 values in Table S7.",
+      "quote": "Residual finite-size effects in adsorption energies were removed by N^-5/4 extrapolation between the 1x1 and 2x2 surface cells ... dE_inf = (N2^-5/4 dE1 - N1^-5/4 dE2)/(N2^-5/4 - N1^-5/4)",
+      "section": "II.E + SI B.1 / Eq. (2), Tables S7, S8",
+      "page": 22,
+      "epistemic_tier": "T0",
+      "predicate": "Apply Eq. (2) to each (1x1, 2x2) pair in Table S7 with the correct electron counts N1, N2 and compare to Table S8 extrapolated values.",
+      "evidence": [
+        {
+          "id": "e18",
+          "kind": "table",
+          "location": "Tables S7 (page 22) and S8 (page 23)",
+          "quote": "OOHtop ads 1x1 4.798, 2x2 4.632, extrap 4.557; Ofcc ads 1x1 2.172, 2x2 1.447, extrap 1.258; Ofcc bind 1x1 -3.186, 2x2 -3.911, extrap -4.100",
+          "extracted_values": {"OOHtop_ads_1x1": 4.798, "OOHtop_ads_2x2": 4.632, "OOHtop_ads_inf": 4.557, "Ofcc_ads_1x1": 2.172, "Ofcc_ads_2x2": 1.447, "Ofcc_ads_inf": 1.258}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "equation-recompute verifier for the N^-5/4 two-point extrapolation, requiring the per-cell electron counts N1, N2 (not printed in the table).",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.55,
+        "rationale": "The extrapolation direction and magnitude are consistent (recompute with inferred electron counts, Pt ccECP = 18 valence e, gives e.g. OOH ads 4.586 vs table 4.557, O fcc bind -4.086 vs -4.100 -- right ballpark, monotone-correct). But N1, N2 are not printed, so it is NOT bit-exact reproducible from the PDF; my inferred N gives close-but-not-equal values. Needs the explicit electron counts (recoverable from the deposited dataset) to settle -> inconclusive (cannot fully bind to printed evidence)."
+      }
+    },
+    {
+      "id": "c19",
+      "text": "Among the Pt(111) intermediates, OOH shows the largest geometry mismatch / largest Scheme 1 reference correction, and geometry matching (Scheme 2) is a secondary, smaller correction than the reference-state correction.",
+      "quote": "geometry matching produces a measurable but relatively small additional stabilization of OOH beyond the larger reference-state correction already captured by Scheme 1",
+      "section": "III.D",
+      "page": 9,
+      "epistemic_tier": "T2",
+      "predicate": "Compare |delta_hyb(OOH)| = 0.183 (Scheme 1 reference correction) to |delta_geom(OOH)| = 0.041 (Scheme 2 geometry correction); claim requires the former > latter.",
+      "evidence": [
+        {
+          "id": "e19",
+          "kind": "number",
+          "location": "Eqs. (14) and (17), pages 8-9",
+          "quote": "delta_hyb(OOH) = -0.183 eV ... delta_geom(OOH) = -0.041 eV",
+          "extracted_values": {"ref_corr": -0.183, "geom_corr": -0.041}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "magnitude-ordering check between two of the paper's own derived corrections.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.95,
+        "rationale": "0.183 > 0.041 (4.5x), so the reference-state correction dominates the geometry correction, supporting the 'secondary refinement' framing. Internally consistent magnitude comparison."
+      }
+    },
+    {
+      "id": "c20",
+      "text": "The opposite signs of the HCO (+0.042) and COH (-0.063) Scheme 1 corrections, for species of identical stoichiometry (CHO vs COH), show the correction is controlled by electronic structure rather than being a rigid stoichiometric offset.",
+      "quote": "Since HCO and COH have identical stoichiometry but distinct bonding motifs, this pair separates stoichiometric effects from electronic-structure effects ... The opposite signs ... show that the correction is not a stoichiometric offset",
+      "section": "III.E",
+      "page": 10,
+      "epistemic_tier": "T4",
+      "predicate": "Logical/support check: identical stoichiometry (both CHO-family, CO + 1/2 H2 -> X) yet opposite-sign corrections implies the offset is non-stoichiometric. Premise (identical stoichiometry, opposite signs) is verifiable; the inference is a reasoning claim.",
+      "evidence": [
+        {
+          "id": "e20",
+          "kind": "number",
+          "location": "Section III.E, page 10",
+          "quote": "delta_hyb(HCO) = +0.042 eV; delta_hyb(COH) = -0.063 eV",
+          "extracted_values": {"HCO": 0.042, "COH": -0.063}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "claim<->evidence support check: the stated reactions (Eq. 18 and the COH analogue) are isostoichiometric and the corrections have opposite sign, so the conclusion follows.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "The premises are deterministically verified: HCO and COH share the formation reaction CO + 1/2 H2 -> X (same stoichiometry) and have corrections of opposite sign (+0.042 vs -0.063). A purely stoichiometric offset would give the same shift, so the opposite signs do logically support 'controlled by electronic structure.' Sound argument given the verified numbers (T4 reasoning anchored by T0 facts)."
+      }
+    },
+    {
+      "id": "c21",
+      "text": "Across density functionals the gas-phase HCO formation error ranges from about -0.43 to -0.25 eV, whereas CCSD(T)/CBS reproduces experiment to within 0.000 eV and differs from CCSDT(Q) by only 0.006 eV.",
+      "quote": "with errors ranging from about -0.43 to -0.25 eV ... CCSD(T)/CBS reproduces the experimental value within numerical uncertainty, and the remaining difference to CCSDT(Q) is only 0.006 eV",
+      "section": "III.E / Table III",
+      "page": 10,
+      "epistemic_tier": "T2",
+      "predicate": "Check the DFT HCO error column min/max (PBE -0.427 to BEEF/B3LYP ~-0.25) bound the quoted range, CCSD(T) error = 0.000, and |CCSD(T) - CCSDT(Q)| = |1.579-1.572| = 0.007 (text says 0.006).",
+      "evidence": [
+        {
+          "id": "e21",
+          "kind": "table",
+          "location": "Table III dH(HCO) error column",
+          "quote": "PBE -0.427; B3LYP -0.253; BEEF-vdW -0.270; CCSD(T) 0.000; CCSDT(Q) -0.006",
+          "extracted_values": {"min_err": -0.427, "max_err": -0.253, "CCSDT_err": 0.000, "CCSDTQ_err": -0.006}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "prose-vs-table range and difference check.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.9,
+        "rationale": "DFT errors span -0.427 (PBE) to -0.253 (B3LYP), matching 'about -0.43 to -0.25'. CCSD(T) error 0.000. The 'remaining difference to CCSDT(Q) is 0.006 eV' matches the CCSDT(Q) error magnitude (-0.006) directly (the Table-III errors are referenced so CCSD(T)-CCSDT(Q) in error space = 0.000-(-0.006)=0.006); fully consistent."
+      }
+    },
+    {
+      "id": "c22",
+      "text": "Across the semilocal functionals, the H2O and OH formation enthalpies are typically higher than experiment, whereas the direct OOH formation error is often much smaller.",
+      "quote": "Across the semilocal functionals, the H2O and OH formation enthalpies are typically higher than experiment, whereas the direct OOH formation error is often much smaller.",
+      "section": "III.A",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Check sign of H2O and OH errors (positive = higher) for PBE/RPBE/BEEF/SCAN and compare |OOH direct error| to |H2O|,|OH| in Table I.",
+      "evidence": [
+        {
+          "id": "e22",
+          "kind": "table",
+          "location": "Table I, semilocal rows, direct-formation columns",
+          "quote": "PBE H2O +0.201 OH +0.275 OOH +0.004; RPBE H2O +0.342 OH +0.233 OOH +0.088; BEEF H2O +0.387 OH +0.164 OOH +0.082; SCAN H2O +0.172 OH +0.044 OOH +0.016",
+          "extracted_values": {"PBE_H2O": 0.201, "PBE_OH": 0.275, "PBE_OOH": 0.004, "BEEF_H2O": 0.387, "BEEF_OOH": 0.082}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "prose-vs-table sign and relative-magnitude check across a method subset.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.88,
+        "rationale": "All four semilocal functionals show positive (higher-than-experiment) H2O and OH errors. OOH direct errors (0.004, 0.088, 0.082, 0.016) are generally smaller than the H2O errors; PBE OOH 0.004 << 0.201. Broadly supported, with 'often much smaller' a hedge that the data bear out for PBE/SCAN especially."
+      }
+    },
+    {
+      "id": "c23",
+      "text": "H2 is almost exact in SD-FNDMC (SD-FNDMC H2 total energy -1.175206 +/- 0.000047 Eh vs CCSD(T) -1.176110 Eh).",
+      "quote": "Because H2 is almost exact in SD-FNDMC, the corresponding signed errors can be written approximately as ...",
+      "section": "III.A + SI Table S5",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Compare SD-FNDMC H2 total energy to the CCSD(T) (near-exact) value in Table S5; difference should be ~ mHa.",
+      "evidence": [
+        {
+          "id": "e23",
+          "kind": "table",
+          "location": "Table S5 (page 21), H2 row",
+          "quote": "H2  -1.175206 +/- 0.000047 (SD-FNDMC)   -1.176110 (CCSD(T))",
+          "extracted_values": {"H2_QMC": -1.175206, "H2_CC": -1.176110, "diff_Ha": 0.000904}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "cross-column difference check: |E_QMC(H2) - E_CC(H2)| within a small tolerance.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.8,
+        "rationale": "Difference is 0.000904 Eh ~ 0.025 eV ~ 19 K, i.e. sub-chemical-accuracy. Note the two H2 numbers use different basis/Hamiltonian (ccECP vs all-electron), so absolute comparison is only indicative -- but the claim 'almost exact' is supported by the tiny gap and the well-known near-exactness of 2-electron SD-FNDMC."
+      }
+    },
+    {
+      "id": "c24",
+      "text": "The supporting data (structures, molecular reference data, QMC total energies, adsorption energies) are openly available at Catalysis-Hub.org under dataset entry FantaQMCRefCorrection2026; reused Cu(111) data are from Ref. [24].",
+      "quote": "openly available at Catalysis-Hub.org [91] under the dataset entry FantaQMCRefCorrection2026. Previously published Cu(111) structures and adsorption data reused in this work are available from Ref. [24].",
+      "section": "Data Availability",
+      "page": 12,
+      "epistemic_tier": "T1",
+      "predicate": "Check that the named dataset entry resolves at Catalysis-Hub.org and that Ref. [24] (Fanta & Bajdich, J. Phys. Chem. Lett., 1494 (2025)) exists.",
+      "evidence": [
+        {
+          "id": "e24",
+          "kind": "text",
+          "location": "Data Availability statement, page 12",
+          "quote": "Catalysis-Hub.org [91] under the dataset entry FantaQMCRefCorrection2026",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "dataset/DOI resolver and citation-existence check (does the Catalysis-Hub entry and Ref. [24] resolve?).",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.5,
+        "rationale": "A concrete, named, resolvable-sounding data deposit and a specific prior reference are given -- a positive reproducibility signal. Existence cannot be confirmed offline; needs a network resolver (T1/T5). Recorded as a strong-availability signal, verdict inconclusive pending resolution."
+      }
+    },
+    {
+      "id": "c25",
+      "text": "Statistical uncertainties on adsorption/binding/hybrid-cycle energies are propagated from the SD-FNDMC stochastic contributions only; no uncertainty is assigned to the coupled cluster reference energies.",
+      "quote": "Uncertainties reported for adsorption, binding, and hybrid-cycle energies were propagated from the stochastic SD-FNDMC contributions only, so no statistical uncertainty was assigned to the coupled cluster reference energies.",
+      "section": "SI B.1",
+      "page": 22,
+      "epistemic_tier": "T2",
+      "predicate": "Check that Scheme 1/2 uncertainties in Table II equal the corresponding CHE-scheme (pure-QMC) uncertainties (since the HL term adds no error): e.g. OOHtop CHE 0.041 vs Scheme1 0.044 vs Scheme2 0.044.",
+      "evidence": [
+        {
+          "id": "e25",
+          "kind": "table",
+          "location": "Table II (page 8), parenthetical uncertainties",
+          "quote": "OOHtop 4.557(41) 4.374(44) 4.333(44); Ofcc 1.258(26) 1.168(30)",
+          "extracted_values": {"OOHtop_CHE_unc": 0.041, "OOHtop_S1_unc": 0.044, "OOHtop_S2_unc": 0.044, "Ofcc_CHE_unc": 0.026, "Ofcc_S1_unc": 0.030}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "uncertainty-propagation consistency check: hybrid-scheme uncertainty equals the QMC-binding-term uncertainty (CC term contributes zero).",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.45,
+        "rationale": "Stated methodology is sound (CC term is deterministic so adds no statistical error). But Scheme 1 uncertainties (0.044, 0.030) are slightly LARGER than the CHE-scheme ones (0.041, 0.026), implying the QMC binding term carries marginally more stochastic error than the full CHE cycle (the optimized-adsorbate QMC reference replaces the molecular-formation QMC term). Plausible but I cannot recompute the propagation without the per-term variances split (S5 gives molecular-ref sigmas but the exact combination is non-trivial) -> inconclusive."
+      }
+    },
+    {
+      "id": "c26",
+      "text": "No time-step extrapolation was performed; a single DMC time step of dtau = 0.005 a.u. was used, justified by prior benchmarks and high acceptance ratios.",
+      "quote": "The final energies were obtained from fixed-node diffusion Monte Carlo runs with a time step of dtau = 0.005 a.u. ... No time-step extrapolation was performed.",
+      "section": "II.E",
+      "page": 4,
+      "epistemic_tier": "T3",
+      "predicate": "Method-appropriateness: is a single dtau = 0.005 a.u. (no extrapolation) adequate for DMC adsorption-energy differences? Assess against community practice.",
+      "evidence": [
+        {
+          "id": "e26",
+          "kind": "text",
+          "location": "Section II.E, page 4",
+          "quote": "dtau = 0.005 a.u. ... No time-step extrapolation was performed.",
+          "extracted_values": {"dtau": 0.005}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "method-appropriateness reasoning with deterministic signature (single time step + T-moves; reliance on error cancellation in energy differences).",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.65,
+        "rationale": "dtau = 0.005 a.u. with T-moves is a common choice for heavy-element ccECP DMC, and time-step bias largely cancels in energy differences (adsorption/binding), which is the relevant quantity here. Defensible, though omitting any time-step extrapolation is a known soft spot; flag as a method-judgment (T3), not an error."
+      }
+    },
+    {
+      "id": "c27",
+      "text": "The Cu(111) bare-slab SD-FNDMC local energies are identical across the HCO (Table S18) and COH (Table S22) datasets, as expected for the same clean slab (1x1: -1765.470782; 2x2: -7061.777628 Eh).",
+      "quote": "Bare slab clean slab -1765.470782 +/- 0.000569 ... -7061.777628 +/- 0.001003",
+      "section": "SI D.2 / D.3, Tables S18, S22",
+      "page": 31,
+      "epistemic_tier": "T2",
+      "predicate": "Check the clean-slab and isolated CO/H2 reference local energies match between Table S18 and Table S22.",
+      "evidence": [
+        {
+          "id": "e27",
+          "kind": "table",
+          "location": "Tables S18 (page 32) and S22 (page 34)",
+          "quote": "Bare slab clean slab 1x1 -1765.470782; 2x2 -7061.777628; CO -21.690191; H2 -1.175115 (identical in both tables)",
+          "extracted_values": {"slab_1x1": -1765.470782, "slab_2x2": -7061.777628, "CO": -21.690191, "H2": -1.175115}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "cross-table identity check: shared reference rows must be byte-identical across the two SI tables.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.97,
+        "rationale": "The clean-slab energies (-1765.470782, -7061.777628) and the CO/H2 molecular references (-21.690191, -1.175115) appear identically in both Table S18 and Table S22, as they must (same slab, same isolated references). Internally consistent; a simple cross-table identity verifier covers it."
+      }
+    },
+    {
+      "id": "c28",
+      "text": "The plain-PBE Pt(111) adsorption energies are NOT reported, and BEEF-vdW was evaluated in VASP (not ORCA) because it is unavailable in ORCA -- a methods-transparency statement, not a numeric claim.",
+      "quote": "BEEF-vdW [1], which is not available in ORCA, was evaluated in VASP using the same computational settings as the PBE-D3(BJ) calculations.",
+      "section": "II.B",
+      "page": 3,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check: BEEF-vdW appears in the gas-phase Table I/III (a VASP-derived value) but the methods state it was computed differently from the ORCA functionals; verify BEEF-vdW Table S4 units are eV (VASP) while others are Eh (ORCA), confirming the stated provenance.",
+      "evidence": [
+        {
+          "id": "e28",
+          "kind": "table",
+          "location": "Table S4 (page 20) Unit column",
+          "quote": "BEEF-vdW  eV  -12.829902 ... (all other methods reported in Eh)",
+          "extracted_values": {"BEEF_unit_eV": 1}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "internal-consistency check that the stated code provenance (BEEF-vdW in VASP/eV vs ORCA/Eh) matches the SI table's unit annotation.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.8,
+        "rationale": "Table S4 reports BEEF-vdW in eV while every other method is in Eh, consistent with the methods statement that BEEF-vdW was evaluated in a different code (VASP). The provenance annotation is self-consistent."
+      }
+    },
+    {
+      "id": "c29",
+      "text": "The hybrid cycle reduces the bias 'without modifying the SD-FNDMC slab-binding contribution' -- i.e. the QMC binding term is identical between CHE and Scheme 1 by construction (Eq. 14 leaves dEbind^QMC unchanged).",
+      "quote": "reduces the corresponding bias without modifying the SD-FNDMC slab-binding contribution ... Because Scheme 1 replaces only the molecular formation term, while leaving the QMC slab-adsorbate binding contribution unchanged",
+      "section": "Abstract / III.C / Eq. (14)",
+      "page": 8,
+      "epistemic_tier": "T4",
+      "predicate": "Structural/algebraic check: Eq. (14) delta_hyb(X) = dEform^HL - dEform^QMC contains no binding term, so Scheme1 - CHE is purely a molecular-formation swap (the binding term cancels). The site-independence verified in c5/c9 is the empirical signature.",
+      "evidence": [
+        {
+          "id": "e29",
+          "kind": "equation",
+          "location": "Eq. (14), page 8",
+          "quote": "delta_hyb(X) = dEads^(1)(X) - dEads^(0)(X) = dEform^HL(X) - dEform^QMC(X)",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "claim<->evidence support: the algebraic form (Eq. 14) and the empirical site-independence of the shift jointly support 'binding term unchanged'.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.9,
+        "rationale": "Eq. (14) shows the binding term algebraically cancels in Scheme1 - CHE, and the empirically verified site-independence of delta_hyb (c5: constant -0.090/-0.037/-0.183 across sites; c9: constant on Cu) is exactly the expected signature of swapping only the (site-independent) molecular formation term. Claim is well-supported by both the algebra and the data."
+      }
+    },
+    {
+      "id": "c30",
+      "text": "The paper's headline framing -- molecular reference imbalance is a separable, independently diagnosable source of error in SD-FNDMC surface thermochemistry -- is a high-level interpretive claim.",
+      "quote": "This decomposition identifies molecular reference imbalance as a separable source of error in SD-FNDMC surface thermochemistry and reduces the corresponding bias without modifying the SD-FNDMC slab-binding contribution.",
+      "section": "Abstract / Conclusions",
+      "page": 1,
+      "epistemic_tier": "T8",
+      "predicate": "Judgment of whether the demonstrated corrections (a few hundredths to ~0.18 eV, sign-reversing between HCO/COH) justify the 'separable source of error' framing.",
+      "evidence": [
+        {
+          "id": "e30",
+          "kind": "text",
+          "location": "Abstract, page 1",
+          "quote": "identifies molecular reference imbalance as a separable source of error",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": false,
+        "verifier_needed": "expert judgment on significance/importance of the decomposition framing (route to human).",
+        "verifier_exists": false,
+        "candidate_verdict": "not_checkable",
+        "confidence": 0.3,
+        "rationale": "Irreducibly subjective (T8): whether the effect is 'separable' and worth a dedicated cycle is a matter of expert taste. The supporting numerics (c2-c20) are sound and the gas-phase diagnostic genuinely isolates a reference-construction-dependent error, so the framing is well-grounded -- but the importance judgment routes to a human, not a verifier."
+      }
+    }
+  ],
+  "paper_level_notes": "Two-author arXiv preprint (Fanta & Bajdich, SLAC/SUNCAT/Stanford; arXiv:2606.12779v1, cond-mat.mtrl-sci, 11 Jun 2026); no journal DOI yet. Title in PDF metadata/header is 'Molecular reference corrections for quantum Monte Carlo adsorption energies' -- the corpus filename slug ('qmc-orr-adsorption-pt111') is a paraphrase, not the title. This is an EXCEPTIONALLY data-complete and internally consistent paper for deterministic checking: the SI provides the full chain of total energies (Tables S3-S5, S10-S13) and ZPE/thermal corrections (S1-S2) needed to recompute the central results from scratch. Verified by recompute (all to <=3 dp, 0 substantive mismatches): (1) every signed-error bracket in Tables I, III, S12 (90 cells total); (2) the ENTIRE Table I SD-FNDMC and CCSD(T) rows reconstructed end-to-end from S5 totals + S1 corrections via Eqs. (4)-(8); (3) the two-point CBS extrapolation Eq. (1) on the S3 basis-set energies reproduces S4/S5 to 6 dp; (4) Scheme1-CHE = delta_hyb at every Pt and Cu site (Tables II, S14); (5) Scheme2 = Scheme1 + delta_geom; (6) OOH relaxation energies (0.158/0.198 eV) from S5 OOHopt/OOHfrz totals; (7) Cu delta_hyb(HCO)=+0.042, delta_hyb(COH)=-0.063 reconstructed from S10/S11 hydrogenation energies; (8) S1/S2 ZPE+thermal totals; (9) abstract/conclusion summary numbers match the body. The ONLY non-bit-exact items are: (a) the N^-5/4 finite-size extrapolation (Eq. 2) -- direction/magnitude correct (e.g. O fcc binding recompute -4.086 vs table -4.100) but the per-cell electron counts N1,N2 are not printed, so it is not fully reproducible from the PDF (c18, inconclusive); (b) one trivial last-digit rounding in Table S2 (HCO total 0.4373 vs 0.4337+... = 0.4372; CO 0.2227 vs 0.2228) from independently-rounded ZPE/thermal components -- NOT an error; (c) a handful of 1-in-last-digit slips in quoted ranges (delta_hyb O -0.090 table vs -0.091 quoted; HCO Scheme2 +0.046 vs +0.045 quoted) all attributable to full-precision rounding. NOTE the apparent COH 'discrepancy' delta_hyb=-0.063 vs Table III/S12 SD-FNDMC error +0.067 is NOT a contradiction: -0.063 is computed against CCSD(T)/CBS (the actual Scheme-1 reference), while +0.067 is the SD-FNDMC error against CCSDT(Q); recompute against CCSD(T)/CBS gives exactly -0.0627. Data availability is concrete and specific (Catalysis-Hub.org dataset FantaQMCRefCorrection2026; Cu(111) data reused from Ref. [24], Fanta & Bajdich JPCL 2025) -- a strong reproducibility signal, pending online resolution (c24). No integrity red flags (T7): no terminal-digit anomalies, no too-perfect agreement, internally cross-validated total energies, sensible statistical uncertainties. Frontier for LITMUS: most high-value claims (c2, c3, c4, c8, c10, c18) need a NEW bespoke 'equation/cycle recompute from SI total-energy tables' verifier template -- a recurring archetype in computational chemistry/physics; off-the-shelf prose_vs_table / percent_change / sum_check cover the simpler cross-consistency and per-cell difference claims (c1, c5, c6, c7, c9, c11-c14, c19, c21, c22, c27)."
+}

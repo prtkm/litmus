@@ -1,0 +1,326 @@
+{
+  "paper_id": "ml-xu2026-scllm-cross-modal-clustering",
+  "title": "scLLM-DSC: LLM-Knowledge Enhanced Cross-Modal Deep Structural Clustering for Single-Cell RNA Sequencing",
+  "doi": null,
+  "domain": "Machine Learning / Computational Biology (single-cell RNA-seq clustering)",
+  "n_pages_read": 9,
+  "claims": [
+    {
+      "id": "c1",
+      "text": "scLLM-DSC achieves average ACC=88.80%, NMI=85.35%, ARI=83.04% across the 6 datasets (best overall), as stated in the abstract and Section 4.2.",
+      "quote": "outperforming all baselines in both average metrics (ACC: 88.80%, NMI: 85.35%, ARI: 83.04%) and overall ranking.",
+      "section": "4.2 Overall Performance",
+      "page": 5,
+      "epistemic_tier": "T2",
+      "predicate": "Check that the prose AVG metrics equal the AVG-row OURS values in Table 2.",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 2 (AVG row, OURS column)", "quote": "AVG ACC 88.80±3.54 / NMI 85.35±5.51 / ARI 83.04±2.80", "extracted_values": {"ACC": 88.80, "NMI": 85.35, "ARI": 83.04}},
+        {"id": "e2", "kind": "text", "location": "Abstract / Section 4.2", "quote": "ACC: 88.80%, NMI: 85.35%, ARI: 83.04%", "extracted_values": {"ACC": 88.80, "NMI": 85.35, "ARI": 83.04}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-table string/number match", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.98, "rationale": "Prose values are an exact match to the Table 2 AVG OURS row; verified by direct comparison."}
+    },
+    {
+      "id": "c2",
+      "text": "The Table 2 AVG-row value for OURS equals the arithmetic mean of the six per-dataset OURS values, for each of ACC, NMI, ARI.",
+      "quote": "AVG  ACC 88.80±3.54  NMI 85.35±5.51  ARI 83.04±2.80",
+      "section": "Table 2",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute mean of the 6 dataset means (96.94,90.47,75.19,95.54,99.42,75.24 for ACC; etc.) and compare to AVG row.",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 2, OURS column", "quote": null, "extracted_values": {"ACC_mean_computed": 88.80, "NMI_mean_computed": 85.3483, "ARI_mean_computed": 83.04, "ACC_stated": 88.80, "NMI_stated": 85.35, "ARI_stated": 83.04}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "table-totals / column-mean recompute", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.97, "rationale": "Recomputed means match to within rounding (max |diff| 0.0017). Internal arithmetic consistent."}
+    },
+    {
+      "id": "c3",
+      "text": "scLLM-DSC (OURS) is the best method (bold) in every cell of Table 2, i.e. on all 6 datasets x 3 metrics and the AVG row (21/21 rows).",
+      "quote": "Tab. 2 shows that scLLM-DSC achieves SOTA performance, outperforming all baselines in both average metrics ... and overall ranking.",
+      "section": "Table 2 / 4.2",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "For each row, take the max over the 9 method means and check it is the OURS column (and matches the bold mark).",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 2 (all rows)", "quote": "Bold and underline denote best/runner-up", "extracted_values": {"rows_where_OURS_is_max": 21, "total_rows": 21}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "row-wise argmax vs bold annotation", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.95, "rationale": "Recomputed row-wise maxima confirm OURS is highest in all 21 rows; consistent with bold marks visually verified on the rendered page."}
+    },
+    {
+      "id": "c4",
+      "text": "scLLM-DSC overall RANK = 1; scSiameseClu = 2; scCDCG = 3; scMAE = 4; scNAME = 5; scDeepCluster and scziDesk tied = 6; scDSC = 8; scGNN = 9 (RANK row, Table 2).",
+      "quote": "RANK ALL: 6 4 5 6 9 8 2 3 1 ... (Rank: avg. of ACC/NMI/ARI; scDeepCluster and scziDesk tied for 6th)",
+      "section": "Table 2 (RANK row + caption)",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "Reconstruct the ranking from the AVG-row ACC/NMI/ARI values (rank each metric, average the three ranks) and compare the integer ranks.",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 2 RANK row", "quote": "RANK ALL 6 4 5 6 9 8 2 3 1", "extracted_values": {"scDeepCluster": 6, "scMAE": 4, "scNAME": 5, "scziDesk": 6, "scGNN": 9, "scDSC": 8, "scSiameseClu": 2, "scCDCG": 3, "OURS": 1}},
+        {"id": "e2", "kind": "statistic", "location": "recomputed from AVG row ranks", "quote": null, "extracted_values": {"scDeepCluster_recomputed": 8, "scMAE_recomputed": 4, "scNAME_recomputed": 5, "scziDesk_recomputed": 6, "scGNN_recomputed": 7, "scDSC_recomputed": 9, "scSiameseClu_recomputed": 2, "scCDCG_recomputed": 3, "OURS_recomputed": 1}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "rank recomputation from AVG metrics with stated tie-breaking", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.55, "rationale": "Top-5 ranks (OURS=1, scSiameseClu=2, scCDCG=3, scMAE=4, scNAME=5) reproduce exactly from AVG-row ranks, but the lower tail does not: paper gives scGNN=9, scDSC=8, scDeepCluster=tie6, while recomputation gives scDSC=9, scGNN=7, scDeepCluster=8. Discrepancy may reflect an undocumented ranking definition or an error; ranking method is underspecified, hence moderate confidence."}
+    },
+    {
+      "id": "c5",
+      "text": "For OURS on the Muris Liver dataset, Table 2 reports NMI = 88.38±6.54 while Table 3 reports NMI = 83.88±6.54 (cross-table inconsistency).",
+      "quote": "Muris Liver NMI: Table 2 = 88.38±6.54 ; Table 3 = 83.88±6.54",
+      "section": "Table 2 vs Table 3 (OURS, Muris Liver, NMI)",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Compare the OURS Muris-Liver NMI value between Table 2 and Table 3 (same model, same dataset, should be identical).",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 2, OURS column, Muris Liver NMI", "quote": "88.38±6.54", "extracted_values": {"NMI": 88.38, "std": 6.54}},
+        {"id": "e2", "kind": "table", "location": "Table 3, OURS column, Muris Liver NMI", "quote": "83.88±6.54", "extracted_values": {"NMI": 83.88, "std": 6.54}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "cross-table identical-cell consistency check", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.9, "rationale": "Same model and dataset must give the same NMI. Means differ (88.38 vs 83.88) while the standard deviation is identical (±6.54), strongly indicating a digit transposition / transcription error in one table. Both values visually re-verified on the rendered page. (The AVG NMI in Table 2 uses 88.38; with 83.88 the AVG would drop ~0.75, so the AVG-row arithmetic in c2 is consistent with the 88.38 reading.)"}
+    },
+    {
+      "id": "c6",
+      "text": "scLLM-DSC outperforms 11 state-of-the-art / mainstream baselines.",
+      "quote": "scLLM-DSC significantly outperforms eleven state-of-the-art baselines in clustering accuracy.",
+      "section": "Abstract / Intro / 4.1",
+      "page": 1,
+      "epistemic_tier": "T0",
+      "predicate": "Count the distinct baseline methods enumerated and tabulated; check it equals 11.",
+      "evidence": [
+        {"id": "e1", "kind": "text", "location": "Section 4.1 Baseline Methods + Tables 2 & 3", "quote": "We compare scLLM-DSC against 11 baselines across three categories", "extracted_values": {"deep_nonlinear": 4, "deep_structural": 4, "foundation_models": 3, "total": 11}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "enumeration count vs stated count", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.97, "rationale": "Table 2 lists 8 baselines (scDeepCluster, scMAE, scNAME, scziDesk, scGNN, scDSC, scSiameseClu, scCDCG) and Table 3 lists 3 (scGPT, Geneformer, GeneCompass); 8+3=11, matching the claim."}
+    },
+    {
+      "id": "c7",
+      "text": "In Table 3 (foundation-model comparison) the best results are bolded; OURS is best in 15/18 rows, but Geneformer and GeneCompass tie at 100.00 (best) on all three Sonya Liver metrics.",
+      "quote": "While Geneformer and GeneCompass show localized peaks on Sonya Liver, likely due to pre-training data overlap, scLLM-DSC demonstrates superior generalization elsewhere.",
+      "section": "Table 3 / 4.2",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Row-wise argmax over {scGPT, Geneformer, GeneCompass, OURS}; check bold marks match the maxima and that the prose hedge ('most datasets') is consistent.",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 3, Sonya Liver rows", "quote": "Geneformer 100.00±0.00, GeneCompass 100.00±0.00, OURS 90.47/91.92/92.01", "extracted_values": {"Geneformer_ACC": 100.00, "GeneCompass_ACC": 100.00, "OURS_ACC": 90.47, "rows_OURS_best": 15, "total_rows": 18}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "row-wise argmax vs bold annotation + prose-hedge consistency", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "Recomputed argmax: OURS best in 15/18 rows; Geneformer/GeneCompass tie at 100.00 on the 3 Sonya Liver rows (visually confirmed bolded there, not OURS). The caption 'bold = best' and the prose 'across most datasets' are mutually consistent and correctly hedged."}
+    },
+    {
+      "id": "c8",
+      "text": "Geneformer and GeneCompass each achieve exactly 100.00±0.00 on ACC, NMI, and ARI for the Sonya Liver dataset (perfect clustering).",
+      "quote": "Sonya Liver: Geneformer 100.00±0.00 ; GeneCompass 100.00±0.00 (ACC/NMI/ARI)",
+      "section": "Table 3",
+      "page": 6,
+      "epistemic_tier": "T3",
+      "predicate": "Assess plausibility of perfect (100.00, zero-variance) clustering scores for two distinct foundation models on a real 8,444-cell, 11-cluster dataset; the authors attribute it to 'pre-training data overlap'.",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 3, Sonya Liver, Geneformer & GeneCompass columns", "quote": "100.00±0.00", "extracted_values": {"Geneformer_ACC": 100.00, "Geneformer_NMI": 100.00, "Geneformer_ARI": 100.00, "GeneCompass_ACC": 100.00, "std": 0.00}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "method-appropriateness / data-leakage assessment; ideally rerun on the held-out dataset", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.4, "rationale": "Two independent FMs both scoring a perfect 100.00 with zero variance across 5 runs on an 11-cluster real dataset is a striking result. The paper itself flags 'pre-training data overlap' (leakage) as the likely cause, which is a reasonable explanation but unverifiable without knowing the pre-training corpora. Flag as a possible data-leakage/benchmark-contamination signal rather than a numerical error."}
+    },
+    {
+      "id": "c9",
+      "text": "Optimal clustering performance (ACC, NMI, ARI) on Mauro Pancreas is achieved at the fusion coefficient omega = 0.5, with degradation at omega in {0,1}.",
+      "quote": "Optimal results across all metrics are achieved at ω = 0.5 ... The performance decline at ω ∈ {0, 1} further proves that relying on a single semantic source is insufficient.",
+      "section": "4.6 Parameter Sensitivity / Fig 6",
+      "page": 7,
+      "epistemic_tier": "T2",
+      "predicate": "Read Fig 6 curves and confirm all three metric curves peak at omega=0.5 and are lower at the endpoints.",
+      "evidence": [
+        {"id": "e1", "kind": "figure", "location": "Figure 6", "quote": "Parameter Sensitivity of ω on Mauro Pancreas dataset (ACC/NMI/ARI vs Value 0.0-1.0)", "extracted_values": {"peak_omega": 0.5}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-figure peak-location check", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "On the rendered Fig 6 all three curves show a visible local maximum at x=0.5 and dip toward the endpoints, matching the text. Exact y-values are not legible, so support is on the qualitative peak location only."}
+    },
+    {
+      "id": "c10",
+      "text": "In the framework-component ablation (Fig 5a) on Mauro Pancreas, the full scLLM-DSC outperforms all four ablated variants (w/o NCut, w/o KL, w/o align, w/o MSE) on ACC, NMI, and ARI.",
+      "quote": "scLLM-DSC consistently outperforms all ablation variants across all metrics, confirming that each component is vital for optimal performance.",
+      "section": "4.4 Ablation Study / Fig 5a",
+      "page": 7,
+      "epistemic_tier": "T2",
+      "predicate": "On the Fig 5a radar plot, check the full-model trace is the outermost (highest) on all three axes.",
+      "evidence": [
+        {"id": "e1", "kind": "figure", "location": "Figure 5a (Framework Component Study)", "quote": "axis ticks ACC 89.70/92.28/94.86, ARI 88.01/90.87/93.72", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-figure dominance ordering", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.8, "rationale": "On the rendered radar, the red full-model triangle is the outermost on all three axes, consistent with the claim. Per-variant numeric values are not tabulated/legible, so individual margins are inconclusive but the ordering is clear."}
+    },
+    {
+      "id": "c11",
+      "text": "In the semantic-component ablation (Fig 5b), combining both semantic paths (full model) yields higher accuracy than w/o AW, w/o SC, or w/o align (either path alone).",
+      "quote": "while either path alone improves performance, their combination consistently yields the highest accuracy.",
+      "section": "4.4 Ablation Study / Fig 5b",
+      "page": 7,
+      "epistemic_tier": "T2",
+      "predicate": "On the Fig 5b radar, check the full-model trace dominates the three semantic-ablation variants on all axes.",
+      "evidence": [
+        {"id": "e1", "kind": "figure", "location": "Figure 5b (Semantic Component Study)", "quote": null, "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-figure dominance ordering", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.5, "rationale": "Fig 5b is a small radar with overlapping traces; at the available resolution the full-model trace appears outermost (consistent with the claim) but individual variant orderings cannot be read off reliably. No table backs these numbers, so binding is incomplete."}
+    },
+    {
+      "id": "c12",
+      "text": "scLLM-DSC is robust to the choice of LLM backbone: substituting text-embedding-3-small with five alternative embedding models yields negligible fluctuation on Mauro Pancreas (Table 4).",
+      "quote": "scLLM-DSC maintains remarkably stable performance across all evaluation metrics, with negligible fluctuations despite significant variations in the underlying embedding models.",
+      "section": "4.5 Robustness to LLM Variants / Table 4",
+      "page": 7,
+      "epistemic_tier": "T2",
+      "predicate": "Compute the spread (max-min) of ACC/NMI/ARI across the 6 LLM variants in Table 4 and check it is small.",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 4", "quote": "Jasper 96.27/91.63/95.70; granite-r2 96.36/91.53/95.71; Qwen3-0.6B 96.02/91.42/95.57; all-MiniLM-L6-v2 96.64/91.89/95.85; bge-m3 96.60/91.99/95.85; OURS(text-embedding-3-small) 96.94/92.43/96.08", "extracted_values": {"ACC_min": 96.02, "ACC_max": 96.94, "ACC_spread": 0.92, "NMI_spread": 1.01, "ARI_spread": 0.51}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "spread / variance recompute across variants", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.92, "rationale": "ACC ranges 96.02-96.94 (spread 0.92), NMI 91.42-92.43 (1.01), ARI 95.57-96.08 (0.51); all <1.1 points, supporting 'negligible fluctuations'. Default text-embedding-3-small is the highest in every column (bold), consistent with the table."}
+    },
+    {
+      "id": "c13",
+      "text": "Table 4's OURS (text-embedding-3-small) row on Mauro Pancreas (96.94/92.43/96.08) is identical to the Mauro Pancreas OURS values in Tables 2 and 3.",
+      "quote": "OURS (text-embedding-3-small) 96.94±1.00 92.43±1.49 96.08±0.67",
+      "section": "Table 4 vs Table 2/3",
+      "page": 7,
+      "epistemic_tier": "T2",
+      "predicate": "Compare the Mauro Pancreas OURS triplet across Tables 2, 3, and 4.",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 4 OURS row; Table 2 & Table 3 Mauro Pancreas OURS", "quote": null, "extracted_values": {"ACC": 96.94, "NMI": 92.43, "ARI": 96.08}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "cross-table identical-cell consistency check", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.96, "rationale": "All three tables report 96.94/92.43/96.08 (with matching stds) for OURS on Mauro Pancreas; fully consistent. (Contrast with the Muris-Liver-NMI inconsistency in c5.)"}
+    },
+    {
+      "id": "c14",
+      "text": "On Muris Brain (#Cell=13,417, #Cluster=2) several baselines reach high ACC but near-zero NMI/ARI (trivial majority-class partitions), whereas scLLM-DSC attains ACC=99.42, NMI=68.58, ARI=79.36.",
+      "quote": "While many baselines (e.g., scziDesk) achieve misleadingly high ACC by predicting majority classes, their near-zero NMI and ARI indicate a collapse into trivial partitions.",
+      "section": "4.2 / Table 2 (Muris Brain rows)",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Inspect Muris Brain rows: confirm baselines with high ACC have NMI/ARI near 0 while OURS has substantially higher NMI/ARI.",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 2, Muris Brain", "quote": "scMAE ACC 71.37 NMI 1.33 ARI -2.22; scNAME ACC 90.24 NMI 0.01 ARI 0.34; scGNN ACC 91.40 NMI 0.31; scDSC ACC 96.02 NMI 0.07 ARI -0.37; OURS ACC 99.42 NMI 68.58 ARI 79.36", "extracted_values": {"OURS_ACC": 99.42, "OURS_NMI": 68.58, "OURS_ARI": 79.36, "scNAME_NMI": 0.01, "scDSC_NMI": 0.07}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-table pattern check", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "Table values confirm the pattern: scNAME/scGNN/scDSC have ACC>=90 but NMI/ARI ~0 (trivial), while OURS NMI=68.58, ARI=79.36 are far higher. Note scziDesk is OOM on Muris Brain (not an example of high ACC here), a minor imprecision in the prose's 'e.g., scziDesk', but the substantive claim holds. (scDeepCluster shows ACC 85.36 NMI 59.48 ARI 60.11 with huge stds ~±44, an unstable outlier.)"}
+    },
+    {
+      "id": "c15",
+      "text": "Cell embeddings aggregate the top-2048 highly expressed genes (K=2048) weighted by expression value, consistently across Section 3.4 and Implementation Details.",
+      "quote": "we strictly select the top-K genes ranked by expression intensity (experimentally set to K = 2048) ... aggregate the top-2048 highly expressed genes (k = 2048) weighted by expression v_i: e_cell = sum_{i=1}^{k} v_i · e_genei.",
+      "section": "3.4 / 4.1 Implementation Details / Eq. 3",
+      "page": 3,
+      "epistemic_tier": "T2",
+      "predicate": "Check the top-K value and the abundance-weighted aggregation formula are stated consistently across method and implementation sections.",
+      "evidence": [
+        {"id": "e1", "kind": "equation", "location": "Eq. (3) and Implementation Details", "quote": "Z(1) = X̃ G̃ ; e_cell = sum_i v_i e_gene_i", "extracted_values": {"K": 2048}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "internal cross-consistency of hyperparameter and formula", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "K=2048 stated identically in 3 places; the abundance-weighted sum in Implementation Details matches Eq. (3) (X̃ G̃). Internally consistent. (Minor: Implementation text duplicates a sentence, writing both 'gene embeddings' and 'Cell embeddings are extracted from NCBI metadata via text-embedding-3-small' — a copy-paste artifact, not a numeric error.)"}
+    },
+    {
+      "id": "c16",
+      "text": "Key training hyperparameters: temperature tau=0.1, variance-reg weight lambda=1e-2, autoencoder [256,16] producing 16-dim latent, 128-dim projection head, Sinkhorn lambda=5 with 1k iterations, 200 epochs/stage, mean of 5 runs.",
+      "quote": "A 128-dimensional projection head aligns modalities via bi-directional InfoNCE loss (τ = 0.1) with variance regularization (λ = 10−2). Training spans 200 epochs/stage using Adam ... refined via Sinkhorn (λ = 5, 1k iters). We report the mean of 5 independent runs on an NVIDIA A800-80GB GPU.",
+      "section": "4.1 Implementation Details",
+      "page": 5,
+      "epistemic_tier": "T2",
+      "predicate": "Check the stated hyperparameter values match those used in equations (e.g. epsilon=1e-4 in Eq. 10, tau in Eq. 8) and are internally non-contradictory; cross-check lambda symbol reuse.",
+      "evidence": [
+        {"id": "e1", "kind": "text", "location": "Implementation Details + Eq. 8/10", "quote": "τ = 0.1; λ = 10−2; [256,16]; 16-dim latent; 128-dim head; Sinkhorn λ=5, 1k iters; 200 epochs/stage; 5 runs", "extracted_values": {"tau": 0.1, "lambda_var": 0.01, "latent_dim": 16, "proj_dim": 128, "sinkhorn_lambda": 5, "epochs_per_stage": 200, "n_runs": 5}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "internal hyperparameter consistency check", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "Values are internally consistent and match the equation-level definitions (tau in Eq. 8, lambda in Eq. 11). Note the symbol lambda is overloaded: variance-reg weight (1e-2) vs Sinkhorn entropic regularizer (5) — different quantities, not a contradiction. No way to confirm actual run settings without the code, but no internal conflict found."}
+    },
+    {
+      "id": "c17",
+      "text": "The 6 benchmark datasets have the stated cell/gene/cluster/sparsity properties (Table 1), e.g. Mauro Pancreas 2,122 cells / 19,046 genes / 9 clusters / 73.02% sparsity; Sapiens Liver 2,152 / 61,759 / 15 / 95.42%.",
+      "quote": "Mauro Pancreas 2,122 19,046 9 73.02 ; Sonya Liver 8,444 4,999 11 90.77 ; Sapiens Liver 2,152 61,759 15 95.42 ; Muris Brain 13,417 21,609 2 91.83 ; Muris Liver 2,859 21,609 11 88.20 ; Muris Limb Muscle 3,855 21,609 6 91.38",
+      "section": "Table 1",
+      "page": 5,
+      "epistemic_tier": "T1",
+      "predicate": "Cross-check dataset cell/gene/cluster counts and sparsity against the scCluBench source [Xu et al., 2025c] from which they were drawn.",
+      "evidence": [
+        {"id": "e1", "kind": "dataset", "location": "Table 1", "quote": null, "extracted_values": {"Mauro_cells": 2122, "Mauro_genes": 19046, "Mauro_clusters": 9, "Mauro_sparsity": 73.02, "Sapiens_genes": 61759, "SonyaLiver_genes": 4999}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "external lookup against scCluBench dataset metadata", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.5, "rationale": "Counts are internally plausible (the three Muris datasets share #Gene=21,609, consistent with a common Tabula Muris panel; sparsity values are in a realistic 73-95% range). Sapiens Liver #Gene=61,759 is high but possible for a full-length protocol. Cannot confirm exact values without querying the scCluBench benchmark; no off-the-shelf verifier binds this."}
+    },
+    {
+      "id": "c18",
+      "text": "Muris Brain has only #Cluster=2 (two cell types) among 13,417 cells, the lowest cluster count and highest cell count in the benchmark.",
+      "quote": "This robustness is further exemplified on the Muris Brain dataset (#Cell=13,417, #Cluster=2).",
+      "section": "4.2 / Table 1",
+      "page": 5,
+      "epistemic_tier": "T2",
+      "predicate": "Check the in-text #Cell and #Cluster for Muris Brain match Table 1.",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 1, Muris Brain row", "quote": "Muris Brain 13,417 21,609 2 91.83", "extracted_values": {"cells": 13417, "clusters": 2}},
+        {"id": "e2", "kind": "text", "location": "Section 4.2", "quote": "#Cell=13,417, #Cluster=2", "extracted_values": {"cells": 13417, "clusters": 2}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-table number match", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.97, "rationale": "In-text #Cell=13,417 and #Cluster=2 exactly match the Table 1 Muris Brain row."}
+    },
+    {
+      "id": "c19",
+      "text": "ARI can be negative if clustering performs worse than random; the tables contain negative ARI values (e.g. scMAE Muris Brain ARI = -2.22, scDSC = -0.37, GeneCompass Muris Brain ARI = -0.01).",
+      "quote": "ARI can be negative if clustering performs worse than random assignment.",
+      "section": "4.1 Evaluation Metrics / Tables 2-3",
+      "page": 5,
+      "epistemic_tier": "T1",
+      "predicate": "Confirm the metric-range statement is correct (ACC,NMI in [0,1]; ARI in [-0.5,1]) and that negative ARI entries appear where expected.",
+      "evidence": [
+        {"id": "e1", "kind": "table", "location": "Table 2 (scMAE/scDSC Muris Brain ARI) and Table 3 (GeneCompass Muris Brain ARI)", "quote": "scMAE ARI -2.22; scDSC ARI -0.37; GeneCompass ARI -0.01", "extracted_values": {"scMAE_MBrain_ARI": -2.22, "scDSC_MBrain_ARI": -0.37, "GeneCompass_MBrain_ARI": -0.01}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "metric-definition / range sanity check", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "Statement about metric ranges is correct. Negative ARI values are present and small in magnitude as expected, except scMAE Muris Brain ARI = -2.22 (in percent, i.e. -0.0222), which is within the valid ARI lower bound (~-0.5); fine. Values consistent with the metric definitions."}
+    },
+    {
+      "id": "c20",
+      "text": "The cross-modal alignment uses a symmetric/bidirectional InfoNCE loss with N positives (the paired (i,i)) and all other in-batch pairs as negatives (Eq. 9).",
+      "quote": "we minimize the symmetric InfoNCE loss ... considering the paired representations (i, i) as positives and all other pairs as negatives ... L_CL = -(1/2N) sum_i [ log exp(S_ii)/sum_k exp(S_ik) + log exp(S_ii)/sum_k exp(S_ki) ]",
+      "section": "3.6 / Eq. 9",
+      "page": 4,
+      "epistemic_tier": "T3",
+      "predicate": "Check the loss formula in Eq. 9 is a correct symmetric InfoNCE (both Text->Feature and Feature->Text directions, normalized by 2N).",
+      "evidence": [
+        {"id": "e1", "kind": "equation", "location": "Eq. (9)", "quote": "L_CL = -(1/2N) sum_{i=1}^{N} [ log(exp(S_ii)/sum_k exp(S_ik)) + log(exp(S_ii)/sum_k exp(S_ki)) ]", "extracted_values": {"normalizer": "2N"}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "equation-form / method-correctness check", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.8, "rationale": "Eq. 9 is a standard, correctly-formed symmetric InfoNCE/CLIP-style loss: two cross-entropy terms over rows (S_ik) and columns (S_ki) of the similarity matrix, averaged with 1/2N. Dimensions and normalization are consistent with the stated similarity S=Ẑtext(Ẑfeat)^T/τ (Eq. 8). Methodologically appropriate; no error."}
+    },
+    {
+      "id": "c21",
+      "text": "Variance regularization (Eq. 10) uses a hinge on per-dimension standard deviation with epsilon=1e-4 to prevent dimensional collapse.",
+      "quote": "L_var = sum_{V in {Ẑtext,Ẑfeat}} (1/d) sum_{k=1}^{d} max(0, 1 - sqrt(Var(V_:,k) + ε)) , where ... ε = 10−4.",
+      "section": "3.6 / Eq. 10",
+      "page": 4,
+      "epistemic_tier": "T3",
+      "predicate": "Check Eq. 10 is a well-formed variance/std hinge (VICReg-style) and epsilon value is stated.",
+      "evidence": [
+        {"id": "e1", "kind": "equation", "location": "Eq. (10)", "quote": "max(0, 1 - sqrt(Var(V_:,k)+ε))", "extracted_values": {"epsilon": 0.0001, "target_std": 1}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "equation-form / method-appropriateness check", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.8, "rationale": "Eq. 10 is a standard VICReg-style variance term (hinge pushing each feature-dim std toward 1), with a numerically-stabilizing epsilon=1e-4 inside the sqrt. Well-formed and appropriate for preventing dimensional collapse."}
+    },
+    {
+      "id": "c22",
+      "text": "All datasets and code for scLLM-DSC are publicly available at the stated GitHub repository.",
+      "quote": "All datasets and code for scLLM-DSC are available at the link: https://github.com/XPgogogo/scLLM-DSC.",
+      "section": "4.1 Implementation Details / Contribution Statement",
+      "page": 5,
+      "epistemic_tier": "T6",
+      "predicate": "Resolve the GitHub URL and confirm the repository exists and contains the code and datasets needed to reproduce Tables 2-4.",
+      "evidence": [
+        {"id": "e1", "kind": "text", "location": "Section 4.1", "quote": "https://github.com/XPgogogo/scLLM-DSC", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "URL resolution + repository contents/runnability audit", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.4, "rationale": "A code/data link is provided (positive reproducibility signal), and datasets come from the public scCluBench benchmark. Existence and completeness of the repo were not checked here (no network access in this pass). Default LLM is OpenAI text-embedding-3-small (a paid closed API), which complicates full reproducibility, though the LLM-variant study uses open models."}
+    },
+    {
+      "id": "c23",
+      "text": "scLLM-DSC outperforms baselines in both accuracy AND efficiency.",
+      "quote": "scLLM-DSC significantly outperforms 11 mainstream baselines in both accuracy and efficiency",
+      "section": "1 Introduction / Abstract",
+      "page": 2,
+      "epistemic_tier": "T4",
+      "predicate": "Locate quantitative evidence (runtime/memory/parameter counts) supporting the 'efficiency' claim; check it is backed by a table or figure.",
+      "evidence": [
+        {"id": "e1", "kind": "text", "location": "Introduction", "quote": "in both accuracy and efficiency", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "claim<->evidence support audit (find an efficiency/runtime table)", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.6, "rationale": "The accuracy claim is well-supported (Tables 2-4), but no runtime, wall-clock, memory, or parameter-count comparison is presented anywhere in the paper. The 'efficiency' half of this claim is unsupported by any reported evidence (only OOM markers for some baselines are shown). Overclaim relative to evidence."}
+    },
+    {
+      "id": "c24",
+      "text": "scLLM-DSC uniquely provides explicit biological attribution/interpretability, demonstrated via marker-overlap (MO) vs best-mapping (BM) annotation on Mauro Pancreas (e.g., cluster 1 mislabeled 'epsilon cell' by BM is correctly 'pancreatic ductal cell' under MO).",
+      "quote": "for cluster 1 in Fig. 4(b) mislabeled as 'epsilon cell' by BM, the MO strategy deliberately labels the cluster as 'pancreatic ductal cell' according to its highest overlap score ... ensuring higher fidelity cellular identification.",
+      "section": "4.3 Biological Analysis / Fig 4",
+      "page": 6,
+      "epistemic_tier": "T8",
+      "predicate": "Assess whether the biological-attribution case study substantiates the 'interpretable / biologically attributable' claim; partly a subjective/qualitative judgment requiring domain ground truth.",
+      "evidence": [
+        {"id": "e1", "kind": "figure", "location": "Figure 4 (a-c): tracksplot, marker-overlap, Sankey diagram", "quote": null, "extracted_values": {"n_cell_types": 9}}
+      ],
+      "verification": {"possible": false, "verifier_needed": "domain-expert evaluation of marker-gene -> cell-type assignment against a reference (would need the actual marker lists and gold-standard sets)", "verifier_exists": false, "candidate_verdict": "not_checkable", "confidence": 0.3, "rationale": "This is a qualitative interpretability case study; the specific relabeling (epsilon -> pancreatic ductal) cannot be adjudicated without the underlying marker-gene lists and a reference annotation, neither tabulated in the paper. Subjective/biology-expert tier; not settleable from the PDF alone."}
+    }
+  ],
+  "paper_level_notes": "arXiv:2606.13007v1 [cs.LG], 11 Jun 2026; IJCAI-style (anonymous-looking author block resolved: Ping Xu et al., Chinese Academy of Sciences / Great Bay University / Westlake). 9 pages incl. references; no separate SI. Code+data link given (https://github.com/XPgogogo/scLLM-DSC, not verified here); benchmark datasets from the public scCluBench [Xu et al., 2025c]. Results are means over 5 runs on an A800-80GB GPU. DETERMINISTIC FRONTIER FINDINGS: (1) Table 2 AVG rows reconcile to the column means within rounding (T0 supported). (2) OURS is the row-max in all 21/21 Table 2 cells, consistent with bold marks and the SOTA claim. (3) Abstract metrics (88.80/85.35/83.04) exactly match Table 2 AVG OURS. CROSS-CONSISTENCY ISSUES: (4) CLEAN INCONSISTENCY — OURS Muris-Liver NMI is 88.38 in Table 2 but 83.88 in Table 3 (identical std ±6.54), almost certainly a digit transposition; the Table 2 AVG uses 88.38. (5) The Table 2 RANK row reproduces the top-5 ordering from the AVG-row ranks but NOT the lower tail (paper: scGNN=9, scDSC=8; recomputed: scDSC=9, scGNN=7), and the ranking definition is underspecified — flagged suspect. SOFT SIGNALS: (6) Two distinct foundation models (Geneformer, GeneCompass) both score a perfect 100.00±0.00 on all three Sonya Liver metrics, which the authors attribute to pre-training data overlap — a possible benchmark-contamination/leakage signal (not the proposed method's result). (7) The 'efficiency' half of the accuracy-AND-efficiency claim has no supporting runtime/memory/param table (T4 overclaim). (8) Minor copy-paste artifact in Implementation Details (a duplicated sentence about embeddings 'extracted from NCBI metadata'). Best automated coverage: prose-vs-table and cross-table number matching, column-mean / table-total recompute, and row-wise argmax-vs-bold checks (claims c1-c7, c12-c14, c18). Figure-bound qualitative claims (c9-c11) need prose-vs-figure verifiers; biological-attribution (c24) and dataset-metadata (c17) need external/domain verifiers."
+}

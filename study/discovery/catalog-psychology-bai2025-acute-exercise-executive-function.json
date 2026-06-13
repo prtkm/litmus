@@ -1,0 +1,336 @@
+{
+  "paper_id": "psychology-bai2025-acute-exercise-executive-function",
+  "title": "The effects of an acute exercise on executive function in Chinese undergraduate students",
+  "doi": "10.3389/fpsyg.2026.1853294",
+  "domain": "psychology (exercise / cognitive psychology; randomized pre-post intervention)",
+  "n_pages_read": 12,
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Recruitment-to-analysis sample bookkeeping is internally consistent: 48 recruited (16 per group), 4 excluded post hoc, leaving 44 analyzed (HIIT 14, MIAE 14, Control 16).",
+      "quote": "A total of 48 participants were recruited (Figure 1). ... Participants were randomly assigned to one of three groups (16 per group) ... Based on the exclusion criteria, data from four participants were excluded from the analyses.",
+      "section": "Methods - Participants / Statistical analysis",
+      "page": 3,
+      "epistemic_tier": "T0",
+      "predicate": "Check 16*3 = 48 recruited; 48 - 4 excluded = 44; and Table 1 group Ns sum to 44; reconcile per-group exclusion counts.",
+      "evidence": [
+        {"id": "e1", "kind": "number", "location": "Methods (Participants) + Statistical analysis + Table 1", "quote": "16 per group; 48 recruited; data from four participants were excluded", "extracted_values": {"recruited_total": 48, "per_group_recruited": 16, "excluded": 4, "analyzed_total": 44, "HIIT_N": 14, "MIAE_N": 14, "Control_N": 16}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "integer table-totals / sample-flow reconciliation", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.97, "rationale": "Recomputed: 16*3=48; 48-4=44; 14+14+16=44. Exclusion breakdown also reconciles: HIIT 16-2=14 (1 discomfort + 1 accuracy<70%), MIAE 16-2=14 (two with 2-back accuracy<50%), Control 16-0=16. Fully internally consistent."}
+    },
+    {
+      "id": "c2",
+      "text": "The abstract states 'Forty-four undergraduate students were recruited and randomly assigned', but Methods states 48 were recruited and 44 is the analyzed (post-exclusion) sample.",
+      "quote": "Forty-four undergraduate students were recruited and randomly assigned to a high-intensity interval training (HIIT) group, a moderate-intensity exercise (MIAE) group, or a Control group.",
+      "section": "Abstract (Methods) vs Methods (Participants)",
+      "page": 1,
+      "epistemic_tier": "T2",
+      "predicate": "Compare the recruited-N figure in the abstract (44) against the recruited-N in Methods (48); 44 is the analyzed N, so the abstract conflates 'recruited' with 'analyzed'.",
+      "evidence": [
+        {"id": "e2", "kind": "text", "location": "Abstract Methods vs Methods Participants", "quote": "Abstract: 'Forty-four undergraduate students were recruited'; Methods: 'A total of 48 participants were recruited'", "extracted_values": {"abstract_recruited": 44, "methods_recruited": 48, "analyzed": 44}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-prose / prose-vs-methods cross-consistency", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.8, "rationale": "The abstract says 44 'recruited' while Methods says 48 recruited and 44 analyzed. Minor terminology inconsistency (44 = analyzed, not recruited). Recompute confirms 48 recruited - 4 excluded = 44; abstract should say 'analyzed' or '48 recruited'."}
+    },
+    {
+      "id": "c3",
+      "text": "A priori power analysis (G*Power 3.1.9.7) for a 3x2 mixed-design ANOVA with f=0.25, alpha=0.05, power=0.80 required a total sample of 42 (14 per group).",
+      "quote": "Assuming a medium effect size (f = 0.25), an alpha level of 0.05, and a statistical power of 0.80, the required total sample size was 42 participants (14 per group).",
+      "section": "Methods - Participants",
+      "page": 3,
+      "epistemic_tier": "T3",
+      "predicate": "Re-run G*Power / GPower-equivalent for f=0.25, alpha=0.05, power=0.80, groups=3, measurements=2 (within-between interaction) and confirm N=42; separately check 42/3 = 14 per group.",
+      "evidence": [
+        {"id": "e3", "kind": "statistic", "location": "Methods (Participants)", "quote": "f = 0.25, alpha 0.05, power 0.80; required total = 42 (14 per group)", "extracted_values": {"effect_size_f": 0.25, "alpha": 0.05, "power": 0.80, "groups": 3, "required_total": 42, "per_group": 14}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "G*Power recomputation (RM-ANOVA within-between interaction)", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.5, "rationale": "42/3 = 14 is internally consistent (T0 part supported). The exact N=42 depends on the chosen G*Power test family (RM-ANOVA within-between interaction) and the nonsphericity/correlation-among-measures settings, which are not reported; for the 'within-between interaction' option N can differ. Cannot confirm exact 42 without those assumptions; the per-group split is correct."}
+    },
+    {
+      "id": "c4",
+      "text": "All reported repeated-measures ANOVA F-statistics use degrees of freedom F(1,41) for the Time main effect and F(2,41) for Group and Time x Group, consistent with 3 groups and 44 analyzed participants.",
+      "quote": "F(1, 41) ... F(2, 41) ... (throughout Results)",
+      "section": "Results",
+      "page": 5,
+      "epistemic_tier": "T2",
+      "predicate": "Check that between-group df = k-1 = 2 and error df = N-k = 44-3 = 41 are consistent with the stated N=44 and 3 groups across every reported F-test.",
+      "evidence": [
+        {"id": "e4", "kind": "statistic", "location": "Results (all ANOVA lines)", "quote": "F(2, 41), F(1, 41)", "extracted_values": {"between_df": 2, "error_df": 41, "N_analyzed": 44, "groups": 3, "N_minus_k": 41}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "degrees-of-freedom consistency check", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "N-k = 44-3 = 41 matches the reported error df; k-1 = 2 matches between df. Note: a strict mixed-design within-subject error df would differ, but the reported (2,41)/(1,41) are internally consistent with an N=44, 3-group design and the same error stratum used throughout."}
+    },
+    {
+      "id": "c5",
+      "text": "The independent-samples t-test comparing exercise HR between HIIT and MIAE was reported as t(26), consistent with two groups of N=14 each.",
+      "quote": "the mean HR in the HIIT group was significantly higher than that in the MIAE group, t(26) = 14.90, p < 0.001, Cohen's d = 5.62.",
+      "section": "Results",
+      "page": 5,
+      "epistemic_tier": "T2",
+      "predicate": "Check df = n1 + n2 - 2 = 14 + 14 - 2 = 26.",
+      "evidence": [
+        {"id": "e5", "kind": "statistic", "location": "Results (HR comparison)", "quote": "t(26) = 14.90, p < 0.001, Cohen's d = 5.62", "extracted_values": {"df": 26, "t": 14.90, "n1": 14, "n2": 14}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "degrees-of-freedom consistency check", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.95, "rationale": "14+14-2 = 26 matches the reported df exactly (Control HR is missing/dash in Table 1, so only HIIT+MIAE enter the t-test)."}
+    },
+    {
+      "id": "c6",
+      "text": "Cohen's d for the HIIT-vs-MIAE HR difference is reported as 5.62 alongside t(26)=14.90.",
+      "quote": "t(26) = 14.90, p < 0.001, Cohen's d = 5.62.",
+      "section": "Results",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute Cohen's d for an independent t-test: d = t * sqrt(1/n1 + 1/n2) = 14.90 * sqrt(1/14 + 1/14).",
+      "evidence": [
+        {"id": "e6", "kind": "statistic", "location": "Results (HR comparison)", "quote": "t(26) = 14.90, Cohen's d = 5.62", "extracted_values": {"t": 14.90, "n1": 14, "n2": 14, "reported_d": 5.62}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "effect-size recomputation (t -> d)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.95, "rationale": "d = 14.90*sqrt(2/14) = 5.632, rounds to 5.62-5.63; matches reported 5.62. (Such a huge d simply reflects that exercise HR is near-deterministically separated by design.)"}
+    },
+    {
+      "id": "c7",
+      "text": "Every reported ANOVA F-statistic is consistent with its reported p-value (statcheck-style internal recomputation).",
+      "quote": "e.g., 'switch cost ... The Time x Group interaction was significant, F(2, 41) = 5.15, p = 0.010' ; 'Switch RT ... F(1, 41) = 44.30, p < 0.001'",
+      "section": "Results",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "For each (F, df1, df2, p) triple, recompute p = F-distribution survival function and compare to reported p (statcheck).",
+      "evidence": [
+        {"id": "e7", "kind": "statistic", "location": "Results (all 20 ANOVA F lines)", "quote": "F(2,41)=5.15 p=0.010; F(1,41)=44.30 p<0.001; F(1,41)=20.91 p<0.001; F(2,41)=0.58 p=0.564; F(1,41)=6.53 p=0.014", "extracted_values": {"switchcost_TxG_F": 5.15, "switchcost_TxG_p": 0.010, "recomputed_p": 0.0101, "switchRT_Time_F": 44.30, "congRT_Time_F": 6.53, "congRT_Time_p": 0.014}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "statcheck (F,df,p recomputation)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.95, "rationale": "All 20 F-tests recomputed; every reported p matches the recomputed p within rounding (e.g., F(2,41)=5.15 -> p=0.0101 vs reported 0.010; F(1,41)=6.53 -> 0.0144 vs 0.014). No statcheck inconsistencies found."}
+    },
+    {
+      "id": "c8",
+      "text": "Every reported paired/within-group t-statistic (Results prose) is consistent with its reported p-value (statcheck-style).",
+      "quote": "e.g., 'Switch cost ... t(41) = 4.16, p < 0.001' ; 'Reaction times ... t(41) = 6.66, p < 0.001' ; 'congruent ... t(41) = 2.56, p = 0.014'",
+      "section": "Results",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "For each (t, df, p) triple in the Results prose, recompute two-sided p = 2*t-survival and compare to reported p (statcheck).",
+      "evidence": [
+        {"id": "e8", "kind": "statistic", "location": "Results (within-group t-tests)", "quote": "t(41)=2.56 p=0.014; t(41)=3.72 p<0.001; t(41)=2.15 p=0.037; t(41)=6.66 p<0.001; t(41)=4.16 p<0.001", "extracted_values": {"cong_t": 2.56, "cong_p": 0.014, "recomputed_cong_p": 0.0142, "conflict_t": 2.15, "conflict_p": 0.037, "switchRT_t": 6.66}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "statcheck (t,df,p recomputation)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.92, "rationale": "Recomputed two-sided p for each prose t-test; all match reported within rounding (t(41)=2.56 -> 0.0142 vs 0.014; t(41)=2.15 -> 0.0375 vs 0.037). Note these prose t-tests use df=41 (pooled error) rather than the within-group paired df one might expect from Table 2 (df=13 or 15); see c9/c16."}
+    },
+    {
+      "id": "c9",
+      "text": "The Flanker 'Conflict Effect' values in Table 2 equal (Incongruent RT - Congruent RT) for each group and time point.",
+      "quote": "Table 2: HIIT Congruent 420/407, Incongruent 503/467, Conflict Effect 83.5/60.7; MIAE 415/399, 504/465, 88.6/66.2; Control 415/390, 485/464, 70.3/74.3",
+      "section": "Results - Table 2",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "For each cell compute Incongruent_RT - Congruent_RT and compare to the reported Conflict Effect (allowing sub-ms rounding because table means are rounded to whole ms).",
+      "evidence": [
+        {"id": "e9", "kind": "table", "location": "Table 2", "quote": "Congruent / Incongruent / Conflict Effect RT means", "extracted_values": {"HIIT_pre_calc": 83, "HIIT_pre_rep": 83.5, "HIIT_post_calc": 60, "HIIT_post_rep": 60.7, "MIAE_pre_calc": 89, "MIAE_pre_rep": 88.6, "Ctrl_post_calc": 74, "Ctrl_post_rep": 74.3}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "internal table arithmetic (derived column = difference of two columns)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.85, "rationale": "All 6 conflict-effect cells match the column difference within <=1 ms, fully explained by the underlying (unrounded) means being rounded to whole ms in the Congruent/Incongruent columns. Consistent."}
+    },
+    {
+      "id": "c10",
+      "text": "The 'Task-Switching Cost' values in Table 2 equal (Switch-trial RT - Non-switch-trial RT); this holds for 5 of 6 cells but the MIAE post-test cell is internally inconsistent.",
+      "quote": "Table 2: Non-switch 591/576, 603/581, 637/568; Switch 928/803, 947/802, 917/853; Task-Switching Cost 336/227, 344/234, 280/284",
+      "section": "Results - Table 2",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "For each cell compute Switch_RT - Nonswitch_RT and compare to reported Task-Switching Cost. MIAE post: 802 - 581 = 221, but Table reports 234 (off by 13 ms), exceeding rounding tolerance.",
+      "evidence": [
+        {"id": "e10", "kind": "table", "location": "Table 2", "quote": "MIAE Non-switch post 581(107.8); MIAE Switch post 802(151.9); MIAE Task-Switching Cost post 234(113.6)", "extracted_values": {"HIIT_pre_calc": 337, "HIIT_pre_rep": 336, "HIIT_post_calc": 227, "HIIT_post_rep": 227, "MIAE_pre_calc": 344, "MIAE_pre_rep": 344, "MIAE_post_calc": 221, "MIAE_post_rep": 234, "Ctrl_post_calc": 285, "Ctrl_post_rep": 284}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "internal table arithmetic (derived column = difference of two columns)", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.75, "rationale": "5 of 6 cells match within <=1 ms (rounding). MIAE post-test switch cost: 802-581=221 vs reported 234, a 13 ms discrepancy too large for rounding of whole-ms means. Either a typo in one of the three MIAE-post numbers, or switch cost was computed on a different (per-participant, then averaged) basis than the displayed group means. Recompute confirms the single-cell mismatch; the other 5 are consistent."}
+    },
+    {
+      "id": "c11",
+      "text": "Table 3 reports the HIIT Non-switch post-test accuracy as 0.96 with SD 0.97, an impossible standard deviation for an accuracy proportion bounded in [0,1].",
+      "quote": "Non-switch Trials in More-odd Switching | HIIT | 0.96(0.048) | 0.96(0.97)",
+      "section": "Results - Table 3",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Bounds/plausibility check: an SD of 0.97 on a mean accuracy of 0.96 (range [0,1]) is impossible; compare against all other accuracy SDs in Table 3 (0.024-0.120).",
+      "evidence": [
+        {"id": "e11", "kind": "table", "location": "Table 3 (Non-switch, HIIT, post-test)", "quote": "0.96(0.97)", "extracted_values": {"mean": 0.96, "reported_SD": 0.97, "other_acc_SD_range_low": 0.024, "other_acc_SD_range_high": 0.120}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "value bounds / plausibility check on a proportion's SD", "verifier_exists": true, "candidate_verdict": "suspect", "confidence": 0.9, "rationale": "SD=0.97 with mean 0.96 is mathematically impossible for accuracy in [0,1] (max possible SD given that mean is far below 0.97). Almost certainly a typographic error for 0.097 or 0.057 (matching the order of magnitude of all neighboring SDs). A transcription/typo flag, not a substantive analytic error, but unambiguously wrong as printed."}
+    },
+    {
+      "id": "c12",
+      "text": "The Time x Group interaction was significant for cognitive-flexibility switch cost, F(2,41)=5.15, p=0.010, eta_p^2=0.20, and simple effects show significant pre-post decreases in HIIT and MIAE but not Control.",
+      "quote": "The Time x Group interaction was significant, F(2, 41) = 5.15, p = 0.010, eta2p = 0.20. Follow-up simple effects ... switch cost significantly decreased ... in the HIIT group, t(41) = 3.60, p = 0.013, and in the MIAE group, t(41) = 3.61, p = 0.012, whereas no significant change was observed in the Control group (p > 0.05)",
+      "section": "Results",
+      "page": 5,
+      "epistemic_tier": "T4",
+      "predicate": "Check that the headline cognitive-flexibility claim (interaction significant; both exercise groups improve, control does not) is supported by the reported interaction F-test, simple-effects t-tests, and Table 2 switch-cost means.",
+      "evidence": [
+        {"id": "e12a", "kind": "statistic", "location": "Results (switch cost)", "quote": "F(2, 41) = 5.15, p = 0.010, eta2p = 0.20; HIIT t(41)=3.60 p=0.013; MIAE t(41)=3.61 p=0.012; Control p>0.05", "extracted_values": {"interaction_F": 5.15, "interaction_p": 0.010, "eta_p2": 0.20, "HIIT_simple_t": 3.60, "MIAE_simple_t": 3.61}},
+        {"id": "e12b", "kind": "table", "location": "Table 2 (Task-Switching Cost)", "quote": "HIIT 336->227; MIAE 344->234; Control 280->284", "extracted_values": {"HIIT_pre": 336, "HIIT_post": 227, "MIAE_pre": 344, "MIAE_post": 234, "Ctrl_pre": 280, "Ctrl_post": 284}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "claim<->evidence support: interaction F + simple effects + table direction", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.78, "rationale": "Direction matches: HIIT and MIAE switch cost fall substantially pre->post (336->227, 344->234) while Control is flat (280->284). The significant interaction and the divergent simple effects support the cognitive-flexibility conclusion. Caveat: the reported simple-effects p's (0.013/0.012) are ~15x the raw two-sided p of t(41)=3.60 (raw ~0.0009); a Bonferroni x3 (3 groups) would give ~0.003, so the exact multiple-comparison adjustment is opaque (see c13). Headline claim itself is internally supported."}
+    },
+    {
+      "id": "c13",
+      "text": "The Bonferroni-adjusted simple-effects p-values for switch cost (HIIT p=0.013, MIAE p=0.012) imply an adjustment multiplier of ~15 relative to the raw two-sided p of t(41)=3.60/3.61, not the x3 expected for 3 group comparisons.",
+      "quote": "Follow-up simple effects analyses (with Bonferroni-adjusted p-values) showed that switch cost significantly decreased from pre-test to post-test in the HIIT group, t(41) = 3.60, p = 0.013, and in the MIAE group, t(41) = 3.61, p = 0.012",
+      "section": "Results",
+      "page": 5,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute raw two-sided p for t(41)=3.60 (~0.00085) and divide reported adjusted p by raw p to infer the correction multiplier; compare against the plausible family size (3 simple effects -> x3).",
+      "evidence": [
+        {"id": "e13", "kind": "statistic", "location": "Results (switch cost simple effects)", "quote": "t(41) = 3.60, p = 0.013; t(41) = 3.61, p = 0.012", "extracted_values": {"HIIT_t": 3.60, "HIIT_raw_p": 0.00085, "HIIT_adj_p": 0.013, "implied_multiplier": 15.3, "MIAE_t": 3.61, "MIAE_adj_p": 0.012, "MIAE_implied_multiplier": 14.5}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "statcheck on adjusted p / multiple-comparison family-size reconstruction", "verifier_exists": true, "candidate_verdict": "inconclusive", "confidence": 0.5, "rationale": "Raw two-sided p(t(41)=3.60)=~0.00085; reported adjusted 0.013 implies x~15, far more than the x3 expected from 3 simple-effect contrasts. Possible the software corrected over all simple-effects comparisons in the family (more than 3), or used a different df/SE for the simple-effect contrast than the pooled 41. Cannot settle without the Jamovi simple-effects output / raw SDs; flag as needing the analysis file, not necessarily an error."}
+    },
+    {
+      "id": "c14",
+      "text": "No significant Time x Group interaction was found for any inhibitory-control (Flanker) or working-memory (2-back) measure; the only significant interaction across all DVs was switch cost.",
+      "quote": "Analysis revealed no significant Time x Group interaction effects for either inhibitory control or working memory. For cognitive flexibility, the Time x Group interaction was significant",
+      "section": "Abstract / Results",
+      "page": 1,
+      "epistemic_tier": "T2",
+      "predicate": "Cross-check the abstract/discussion summary against every reported interaction F-test: confirm all Flanker and 2-back interactions have p>0.05 and only switch-cost interaction has p<0.05.",
+      "evidence": [
+        {"id": "e14", "kind": "statistic", "location": "Results (all interaction lines)", "quote": "Flanker cong RT TxG F=0.26 p=0.768; incong RT TxG F=0.42 p=0.655; conflict TxG F=2.02 p=0.146; 2-back ACC TxG F=0.09 p=0.905; 2-back RT TxG F=0.09 p=0.912; switch RT TxG F=2.20 p=0.124; switch cost TxG F=5.15 p=0.010", "extracted_values": {"n_interactions_reported": 11, "n_significant": 1, "only_sig_DV": "switch_cost", "switch_cost_p": 0.010}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "prose-vs-results cross-consistency over all interaction tests", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.9, "rationale": "Enumerating all 11 reported Time x Group interactions: only switch cost reaches p<0.05 (0.010); all Flanker (cong/incong RT, accuracy, conflict) and both 2-back interactions have p>=0.124. The abstract/discussion summary matches the results table exactly."}
+    },
+    {
+      "id": "c15",
+      "text": "Measured exercise heart rates are consistent with the prescribed intensity zones: HIIT 173 bpm within 80-90% HRmax and MIAE 140 bpm within 60-70% HRmax for the stated age range (HRmax = 220 - age).",
+      "quote": "high-intensity interval exercise (80-90% HRmax) for 20 min ... 60-70% of HRmax ... HR (bpm): HIIT 173 (5.5), MIAE 140 (6.1)",
+      "section": "Methods (Procedure) + Table 1",
+      "page": 4,
+      "epistemic_tier": "T3",
+      "predicate": "For age 18-21, HRmax = 220-age (~199-202). Check HIIT mean HR 173 falls in 0.80-0.90*HRmax (161-181) and MIAE 140 in 0.60-0.70*HRmax (121-141).",
+      "evidence": [
+        {"id": "e15", "kind": "table", "location": "Table 1 (HR) + Methods", "quote": "HIIT HR 173(5.5); MIAE HR 140(6.1); Control HR '-' ; ages 18-21", "extracted_values": {"HIIT_HR": 173, "MIAE_HR": 140, "HRmax_age19": 201, "HIIT_zone_low": 161, "HIIT_zone_high": 181, "MIAE_zone_low": 121, "MIAE_zone_high": 141}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "method-appropriateness / range check against prescribed % HRmax", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.8, "rationale": "HIIT 173 bpm sits inside the 161-181 band (80-90% of HRmax~201); MIAE 140 bpm sits at the upper edge of the 121-141 band (60-70%). Both consistent with the protocol. Caveat: Table 1 HR for exercise groups likely reflects mean exercise HR, while the HR column convention is not fully specified; Control HR is a dash (no exercise). Directionally and quantitatively coherent."}
+    },
+    {
+      "id": "c16",
+      "text": "Table 2 pre-post within-group comparisons mix parametric t and Wilcoxon W statistics depending on normality, with df implied by group N (HIIT/MIAE N=14 -> df=13; Control N=16 -> df=15).",
+      "quote": "Due to non-normal distributions in some dependent variables, pre-post comparisons within the HIIT, MIAE, and Control groups were analyzed using the Wilcoxon signed-rank test. ... e.g., Conflict Effect MIAE W = 81.00, p = 0.014; 2-back Control W = 105.00, p = 0.058",
+      "section": "Results - Table 2/3 footnotes",
+      "page": 6,
+      "epistemic_tier": "T0",
+      "predicate": "Check that the Table-2/3 within-group t-tests are consistent with paired df = n-1 (13 or 15) and that the parametric t and reported p agree (statcheck); Wilcoxon W values require the raw data to verify.",
+      "evidence": [
+        {"id": "e16", "kind": "table", "location": "Table 2 (t and p columns)", "quote": "HIIT Switch Trials t=5.97 p<0.001; Control Non-switch t=3.96 p=0.001; HIIT Conflict t=2.04 p=0.062", "extracted_values": {"HIIT_switch_t": 5.97, "HIIT_switch_p": 0.001, "Ctrl_nonswitch_t": 3.96, "Ctrl_nonswitch_p": 0.001, "implied_HIIT_df": 13, "implied_Ctrl_df": 15}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "statcheck on Table 2/3 paired t (with df=n-1) + raw-data check for Wilcoxon W", "verifier_exists": true, "candidate_verdict": "inconclusive", "confidence": 0.55, "rationale": "Table 2/3 omit explicit df, so statcheck requires assuming paired df=n-1 (13 for HIIT/MIAE, 15 for Control). Under that assumption the parametric t/p pairs are roughly consistent (e.g., t(13)=5.97 -> p~0.00004, reported '<0.001'; t(15)=3.96 -> p~0.0012, reported 0.001). The Wilcoxon W values (e.g., W=81.00, W=105.00) cannot be checked without the raw per-participant data (available via Supplementary material). Partially checkable; mark inconclusive pending data."}
+    },
+    {
+      "id": "c17",
+      "text": "The dataset is stated to be available in an online repository via the Supplementary material, enabling reproducibility / raw-data verification.",
+      "quote": "The datasets presented in this study can be found in online repositories. The names of the repository/repositories and accession number(s) can be found in the article/Supplementary material.",
+      "section": "Data availability statement",
+      "page": 8,
+      "epistemic_tier": "T6",
+      "predicate": "Check whether a concrete repository name/accession or a working Supplementary-material link is actually provided; download and reproduce the ANOVAs/t-tests from raw data.",
+      "evidence": [
+        {"id": "e17", "kind": "text", "location": "Data availability statement + Supplementary material", "quote": "datasets ... can be found in online repositories ... can be found in the article/Supplementary material", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "data-availability resolution + full reanalysis from raw data", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.45, "rationale": "The statement is boilerplate and does not give a specific repository name or accession number in the main text; it defers to the Supplementary material. Whether raw data are truly retrievable cannot be confirmed from the PDF alone. If retrievable, the entire statistical pipeline (incl. the c10 switch-cost discrepancy and c13 Bonferroni multiplier) becomes directly checkable; until then, reproducibility is unverified."}
+    },
+    {
+      "id": "c18",
+      "text": "Cognitive-task trial bookkeeping is internally stated: Flanker = 60 trials (12 practice -> 48 experimental); More-Odd Switching = 164 trials (36 practice -> 128 experimental).",
+      "quote": "The task comprised 60 trials, including 12 practice trials. ... The task comprised a total of 164 trials, including 36 practice trials.",
+      "section": "Methods - Apparatus and tools",
+      "page": 4,
+      "epistemic_tier": "T0",
+      "predicate": "Subtract practice from total to get experimental trial counts; check plausibility and internal consistency (no contradiction elsewhere).",
+      "evidence": [
+        {"id": "e18", "kind": "number", "location": "Methods (Apparatus and tools)", "quote": "Flanker 60 trials incl 12 practice; More-Odd 164 trials incl 36 practice", "extracted_values": {"flanker_total": 60, "flanker_practice": 12, "flanker_experimental": 48, "moreodd_total": 164, "moreodd_practice": 36, "moreodd_experimental": 128}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "internal arithmetic / consistency of stated trial counts", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.7, "rationale": "60-12=48 and 164-36=128 are internally coherent and not contradicted elsewhere. Note the 2-back trial count is not stated, so cannot be cross-checked. Low-stakes bookkeeping; supported as written."}
+    },
+    {
+      "id": "c19",
+      "text": "Reaction-time data-screening removed trials <200 ms or >1500 ms and the original response window was extended by 1000 ms relative to stimulus durations (Flanker 2000 ms, 2-back/More-Odd 2500 ms).",
+      "quote": "Trials with reaction times below 200 ms or exceeding 1,500 ms were excluded. ... we extended the original response window for each task by 1,000 ms.",
+      "section": "Methods (Statistical analysis) + Discussion (limitations)",
+      "page": 5,
+      "epistemic_tier": "T3",
+      "predicate": "Check internal consistency of the RT exclusion window (200-1500 ms) against stated stimulus durations and the '+1000 ms' window extension; assess whether a 1500 ms cutoff is compatible with a 2000-2500 ms presentation window.",
+      "evidence": [
+        {"id": "e19", "kind": "text", "location": "Statistical analysis + Apparatus", "quote": "RT < 200 ms or > 1,500 ms excluded; stimulus 2,000 ms (Flanker) / 2,500 ms (2-back, More-Odd); window extended by 1,000 ms", "extracted_values": {"rt_low_cut": 200, "rt_high_cut": 1500, "flanker_stim_ms": 2000, "twoback_stim_ms": 2500, "window_extension_ms": 1000}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "method-appropriateness / internal consistency of timing parameters", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.45, "rationale": "Parameters are stated but the relationship between 'extended window by 1000 ms' and the 1500 ms upper RT cutoff is ambiguous (1500 < 2000/2500 ms stimulus duration, so the cutoff already truncates valid responses). The authors themselves flag this as possibly reducing task sensitivity (limitation). Method-judgment item; not arithmetically falsifiable without the analysis decisions, so inconclusive."}
+    },
+    {
+      "id": "c20",
+      "text": "Two participant-level SAS/SDS exclusion thresholds are stated (SAS standard score >=50 or SDS >=53 excluded) and Table 1 group-mean SAS/SDS values all fall below those thresholds.",
+      "quote": "Participants with a standard score of 50 or above on SAS or 53 or above on SDS were excluded ... Table 1: SAS HIIT 32, MIAE 27, Control 31; SDS HIIT 35, MIAE 32, Control 35",
+      "section": "Methods (Participants) + Table 1",
+      "page": 3,
+      "epistemic_tier": "T2",
+      "predicate": "Check that the reported group-mean SAS (<50) and SDS (<53) in Table 1 are consistent with the stated exclusion thresholds (means must be below cutoffs after screening).",
+      "evidence": [
+        {"id": "e20", "kind": "table", "location": "Table 1 (SAS, SDS)", "quote": "SAS: HIIT 32(5.7), MIAE 27(4.3), Control 31(7.7); SDS: HIIT 35(6.8), MIAE 32(6.3), Control 35(8.1)", "extracted_values": {"SAS_cut": 50, "SDS_cut": 53, "SAS_max_group_mean": 32, "SDS_max_group_mean": 35}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "threshold/consistency check (means below exclusion cutoffs)", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.8, "rationale": "All group-mean SAS (<=32) are well below the 50 cutoff and SDS (<=35) below the 53 cutoff, consistent with a sample screened to exclude high anxiety/depression. Note these are SAS/SDS raw means; the cutoffs are 'standard scores' (raw*1.25), but even so the means remain below the thresholds. Consistent; cannot verify individual-level exclusions without raw data."}
+    },
+    {
+      "id": "c21",
+      "text": "For working memory (2-back), accuracy increased significantly pre-to-post across all three groups (including Control), which the authors attribute to a practice effect rather than to exercise.",
+      "quote": "a significant increase in accuracy rate was observed across all three groups, potentially due to practice effect ... For accuracy rate in the 2-back task, the ANOVA revealed a significant main effect of Time, F(1, 41) = 20.91, p < 0.001 ... The Time x Group interaction was not significant, F(2, 41) = 0.09, p = 0.905",
+      "section": "Results / Discussion",
+      "page": 7,
+      "epistemic_tier": "T4",
+      "predicate": "Check that the 'accuracy improved in all 3 groups, no interaction' claim is consistent with Table 3 2-back accuracy means (all rising) and the reported significant Time main effect with null interaction.",
+      "evidence": [
+        {"id": "e21", "kind": "table", "location": "Table 3 (2-back accuracy) + Results", "quote": "2-back accuracy HIIT 0.82->0.88, MIAE 0.76->0.82, Control 0.79->0.87; Time F(1,41)=20.91 p<0.001; TxG F(2,41)=0.09 p=0.905", "extracted_values": {"HIIT_pre": 0.82, "HIIT_post": 0.88, "MIAE_pre": 0.76, "MIAE_post": 0.82, "Ctrl_pre": 0.79, "Ctrl_post": 0.87, "time_F": 20.91, "interaction_F": 0.09}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "claim<->evidence support (direction of all 3 group means + Time/interaction tests)", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.82, "rationale": "All three 2-back accuracy means rise pre->post (HIIT +0.06, MIAE +0.06, Control +0.08), the Time main effect is large/significant, and the interaction is null (F=0.09) - fully consistent with the 'general improvement = practice effect, not exercise-specific' interpretation. The Control group's gain being the largest reinforces the practice-effect reading."}
+    },
+    {
+      "id": "c22",
+      "text": "The study reports using G*Power 3.1.9.7, E-Prime 2.0, Jamovi 2.7.15, Polar H10 HR sensor, and a Keep K0103A ergometer; these are concrete, fixed-knowledge software/hardware identifiers.",
+      "quote": "G*Power (3.1.9.7) ... E-Prime 2.0 (PST, United States) ... Jamovi (version 2.7.15) ... Polar H10, Finland ... bicycle ergometer (Keep K0103A, China)",
+      "section": "Methods",
+      "page": 3,
+      "epistemic_tier": "T1",
+      "predicate": "Cross-check the named tool versions against fixed external knowledge (do these versions exist; is Polar made in Finland; is E-Prime from PST).",
+      "evidence": [
+        {"id": "e22", "kind": "text", "location": "Methods (Participants/Apparatus/Procedure)", "quote": "G*Power 3.1.9.7; E-Prime 2.0 (PST); Jamovi 2.7.15; Polar H10 (Finland); Keep K0103A", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "fixed-knowledge lookup of software versions / vendor facts", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.7, "rationale": "E-Prime is indeed by PST; Polar (H10) is a Finnish company; G*Power versions in the 3.1.9.x line exist; Jamovi versioning is plausible (2.7.x). Note: 'G*Power 3.1.9.7' is an unusually high patch number - the common public releases are 3.1.9.2/3.1.9.4/3.1.9.6; 3.1.9.7 may be a misremembered version. Low-stakes; mostly supported, the G*Power patch number is the one soft spot (would need an external check)."}
+    },
+    {
+      "id": "c23",
+      "text": "The manuscript discloses generative-AI use limited to language editing (ChatGPT) and AI-generated figure alt-text by the publisher.",
+      "quote": "The author(s) declared that Generative AI was used in the creation of this manuscript. ChatGPT was used only as a tool for language editing and enhancing readability.",
+      "section": "Generative AI statement",
+      "page": 8,
+      "epistemic_tier": "T7",
+      "predicate": "Integrity-signal scan: presence and scope of an AI-use disclosure; cross-check against any signs of AI-generated/garbled content (e.g., the odd phrase 'an acute exercise' used throughout).",
+      "evidence": [
+        {"id": "e23", "kind": "text", "location": "Generative AI statement", "quote": "ChatGPT was used only as a tool for language editing and enhancing readability.", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "integrity / disclosure presence check", "verifier_exists": true, "candidate_verdict": "supported", "confidence": 0.6, "rationale": "A generative-AI disclosure is present and scoped to language editing, satisfying the journal's transparency requirement. The recurring non-idiomatic phrasing ('the effects of an acute exercise') is consistent with non-native-English + light AI editing and is not itself an integrity problem. This is a presence/scope check, not a fabrication detector; no integrity red flags surface from the text alone."}
+    },
+    {
+      "id": "c24",
+      "text": "The conclusion's central claim is appropriately hedged: acute exercise's effect on executive function is 'selective and limited', driven by cognitive flexibility, with inhibitory-control and working-memory changes attributed to non-specific (practice/repeated-testing) factors given null interactions.",
+      "quote": "Overall, the effects of acute exercise in the present study appear to be selective and limited. ... Given that no significant Group x Time interactions were found for inhibitory control and working memory, the observed changes cannot be definitively attributed to the exercise intervention",
+      "section": "Conclusion",
+      "page": 8,
+      "epistemic_tier": "T8",
+      "predicate": "Judge whether the strength of the stated conclusion is calibrated to the evidence (only switch cost shows a significant interaction; everything else is a main-effect-of-Time/practice pattern).",
+      "evidence": [
+        {"id": "e24", "kind": "text", "location": "Conclusion + Discussion", "quote": "selective and limited ... cannot be definitively attributed to the exercise intervention ... may reflect non-specific factors such as repeated testing", "extracted_values": {}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "subjective calibration judgment of conclusion vs evidence", "verifier_exists": false, "candidate_verdict": "supported", "confidence": 0.7, "rationale": "Subjective (T8) but well-calibrated: the only significant Time x Group interaction is switch cost, and the authors explicitly down-weight the Flanker/2-back main-effect-of-Time changes as practice effects. The conclusion does not overclaim group-specific benefits, matching the c14 enumeration. A reviewer could still argue the cognitive-flexibility claim itself is fragile given the c10 table inconsistency and small N, but the hedging is appropriate."}
+    },
+    {
+      "id": "c25",
+      "text": "The cited meta-analytic effect sizes for acute exercise on executive function (e.g., d=0.24 for high-intensity exercise at >=77% HRmax; d=0.34 vs seated rest; d=0.24 for HIIT at 77-88% HRmax) are attributed to specific external sources.",
+      "quote": "an acute high-intensity exercise (>=77% HRmax) results in a small immediate improvement in executive function (d = 0.24) ... significant only relative to seated rest (d = 0.34). Furthermore, high-intensity interval training (HIIT) produces small acute gains ... (d = 0.24) at intensities of 77-88% HRmax ... (Moreau and Chou, 2019)",
+      "section": "Introduction",
+      "page": 2,
+      "epistemic_tier": "T5",
+      "predicate": "Verify the quoted effect sizes against the cited primary sources (Moreau & Chou 2019; others) to confirm the numbers and intensity thresholds are reported correctly.",
+      "evidence": [
+        {"id": "e25", "kind": "statistic", "location": "Introduction", "quote": "d = 0.24 (>=77% HRmax); d = 0.34 vs seated rest; d = 0.24 HIIT 77-88% HRmax, 5-15 min, within 30 min post (Moreau and Chou, 2019)", "extracted_values": {"d_highintensity": 0.24, "d_vs_seatedrest": 0.34, "d_HIIT": 0.24, "HRmax_threshold_low": 77, "HRmax_threshold_high": 88}}
+      ],
+      "verification": {"possible": true, "verifier_needed": "external literature lookup (citation-to-source value check)", "verifier_exists": false, "candidate_verdict": "inconclusive", "confidence": 0.4, "rationale": "These d-values and HRmax thresholds are attributable claims about external papers (notably Moreau & Chou, 2019, Perspect. Psychol. Sci.). They are checkable only by retrieving those sources; not verifiable from this PDF. Recording as inconclusive (requires literature access), not as an error."}
+    }
+  ],
+  "paper_level_notes": "Frontiers in Psychology 'Original Research' (Bai et al., 2026), DOI 10.3389/fpsyg.2026.1853294, 12 pp., 3x2 mixed pre-post design (HIIT/MIAE/Control x pre/post), N=44 analyzed (48 recruited, 4 excluded). EXTRACTION NOTE: the Read tool could not render the PDF (its bundled pdftoppm/poppler path is broken in this environment); full text + Tables 1-3 were extracted with `pdftotext -layout` and read in full. Figure 1 is a CONSORT-style inclusion flow chart (image only; no extractable numbers beyond the 48->44 flow described in prose). DETERMINISTIC FRONTIER is strong here: (1) statcheck - all ~20 ANOVA F-tests and ~12 within-group t-tests recompute to their reported p-values within rounding (NO statcheck inconsistencies); (2) sample bookkeeping fully reconciles (16x3=48-4=44=14+14+16; per-group exclusions check out); (3) df consistent with N (F(2,41)/F(1,41) <-> 44 in 3 groups; HR t(26) <-> 14+14-2); (4) Cohen's d=5.62 for HR recomputes to 5.63; (5) Table 2 conflict-effect column = incongruent-congruent within <=1 ms for all 6 cells. TWO CONCRETE ISSUES FOUND (recompute-confirmed, NOT manufactured): (a) Table 2 MIAE post-test Task-Switching Cost reads 234 but Switch(802)-Nonswitch(581)=221, a 13 ms internal inconsistency (one of the three MIAE-post numbers is likely a typo, or switch cost was averaged per-participant rather than from displayed means); (b) Table 3 HIIT Non-switch post-test accuracy '0.96(0.97)' has an impossible SD=0.97 for a [0,1] proportion (typo, likely 0.097/0.057). SOFT FLAG: the Bonferroni-adjusted switch-cost simple-effects p's (0.013/0.012) imply a x~15 correction vs the x3 expected for 3 group contrasts - opaque multiple-comparison family, needs the Jamovi output. Headline cognitive-flexibility claim (significant switch-cost interaction; HIIT & MIAE improve, Control flat) is internally supported (c12). Authors appropriately hedge ('selective and limited'; non-significant interactions for inhibitory control/working memory attributed to practice). Data availability is boilerplate (defers to Supplementary material; no concrete accession in main text), so full reproducibility (T6) and the Wilcoxon W statistics + Table 2/3 paired-t df remain unverified pending raw data. Conflict of interest: none; Funding: none declared; AI disclosure: ChatGPT for language editing only. The recurring non-idiomatic phrase 'an acute exercise' is a language-fluency artifact, not an integrity signal. Judged on its own merits, this reads as an honestly-reported underpowered exploratory study with two transcription-level table errors and one unresolved multiple-comparison-correction question; no fabrication signals detected from the text."
+}

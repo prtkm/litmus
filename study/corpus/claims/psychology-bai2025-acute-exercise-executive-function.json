@@ -1,0 +1,1461 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "psychology-bai2025-acute-exercise-executive-function",
+  "meta": {
+    "journal": "Frontiers in Psychology",
+    "doi": "10.3389/fpsyg.2026.1853294",
+    "design": "3x2 mixed-design ANOVA (Group: HIIT/MIAE/Control x Time: pre/post)",
+    "notes": "Many ANOVA results reported with F, p, partial eta-squared. Several p values reported as bounds (p<0.001) and recorded as p_upper_bound. Table 2 and Table 3 hold paired within-group pre/post statistics; some used Wilcoxon (W) instead of t.",
+    "extractor": "litmus.extract",
+    "model": "claude-opus-4-8",
+    "source": "opus-native-pdf"
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "text": "A priori power analysis (G*Power 3.1.9.7, 3x2 mixed ANOVA, f=0.25, alpha=0.05, power=0.80) indicated a required total sample of 42 participants (14 per group).",
+      "location": {
+        "section": "Methods - Participants",
+        "page": 3,
+        "char_span": null,
+        "quote": "Assuming a medium effect size \n(f = 0.25), an alpha level of 0.05, and a statistical power of 0.80, the \nrequired total sample size was 42 participants (14 per group)."
+      },
+      "epistemic_tier": "T3",
+      "predicate": "G*Power computation for 3x2 mixed ANOVA with f=0.25, alpha=0.05, power=0.80 yields required N == 42",
+      "strength": "exact",
+      "scope": "3x2 mixed-design ANOVA",
+      "evidence_refs": [
+        "ev1"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c2",
+      "text": "A total of 48 participants were recruited and randomly assigned to one of three groups (16 per group).",
+      "location": {
+        "section": "Methods - Participants",
+        "page": 3,
+        "char_span": null,
+        "quote": "A total of 48 participants were recruited (Figure 1)."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "recruited_total == 48 and groups_each == 16 sum to 48",
+      "strength": "exact",
+      "scope": "randomization",
+      "evidence_refs": [
+        "ev2"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c3",
+      "text": "After exclusions, the analyzed sample was HIIT n=14, MIAE n=14, Control n=16 (total 44).",
+      "location": {
+        "section": "Figure 1 / Table 1",
+        "page": 3,
+        "char_span": null,
+        "quote": "Analysed \n(n=14)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "analyzed_total == 14 + 14 + 16 == 44; consistent with 48 recruited minus 4 excluded",
+      "strength": "exact",
+      "scope": "final analyzed sample",
+      "evidence_refs": [
+        "ev2",
+        "ev3"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c4",
+      "text": "Data from four participants were excluded from the analyses.",
+      "location": {
+        "section": "Methods - Statistical analysis",
+        "page": 5,
+        "char_span": null,
+        "quote": "Based on the exclusion criteria, data from four \nparticipants were excluded from the analyses."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "excluded_count == 4; consistent with HIIT(-2) + MIAE(-2) = 4 from Figure 1",
+      "strength": "exact",
+      "scope": "exclusions",
+      "evidence_refs": [
+        "ev2"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c5",
+      "text": "Mean HR in the HIIT group was significantly higher than in the MIAE group, t(26)=14.90, p<0.001, Cohen's d=5.62.",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "the mean HR in the HIIT group was significantly higher \nthan that in the MIAE group, t(26) = 14.90, p < 0.001, Cohen’s \nd = 5.62."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "p_value consistent with t=14.90, df=26 (reported as p<0.001 bound)",
+      "strength": "exact",
+      "scope": "HIIT vs MIAE exercise HR",
+      "evidence_refs": [
+        "ev4"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c6",
+      "text": "For accuracy in congruent Flanker, no significant main effect of Time, F(1,41)=0.86, p=0.375, ηp2=0.02.",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "revealed no significant main effect of Time, F(1, 41) = 0.86, p = 0.375, \nη2ₚ  = 0.02,"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "p_value consistent with F(1,41)=0.86",
+      "strength": "exact",
+      "scope": "congruent Flanker accuracy, Time effect",
+      "evidence_refs": [
+        "ev5"
+      ],
+      "confidence": 0.93
+    },
+    {
+      "id": "c7",
+      "text": "For accuracy in congruent Flanker, no significant main effect of Group, F(2,41)=0.02, p=0.974, ηp2=0.00.",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "nor a main effect of Group, F(2, 41) = 0.02, p = 0.974, \nη2ₚ = 0.00."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "p_value consistent with F(2,41)=0.02",
+      "strength": "exact",
+      "scope": "congruent Flanker accuracy, Group effect",
+      "evidence_refs": [
+        "ev6"
+      ],
+      "confidence": 0.93
+    },
+    {
+      "id": "c8",
+      "text": "For accuracy in congruent Flanker, Time x Group interaction not significant, F(2,41)=0.58, p=0.564, ηp2=0.02.",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "The Time × Group interaction was not significant, F(2, \n41) = 0.58, p = 0.564, η2ₚ = 0.02."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "p_value consistent with F(2,41)=0.58",
+      "strength": "exact",
+      "scope": "congruent Flanker accuracy interaction",
+      "evidence_refs": [
+        "ev7"
+      ],
+      "confidence": 0.93
+    },
+    {
+      "id": "c9",
+      "text": "For RT in congruent Flanker, significant main effect of Time, F(1,41)=6.53, p=0.014, ηp2=0.13; t(41)=2.56, p=0.014.",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "revealed significant main effect of Time, F(1, 41) = 6.53, p = 0.014, \nη2ₚ  = 0.13,"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "p_value consistent with F(1,41)=6.53",
+      "strength": "exact",
+      "scope": "congruent Flanker RT, Time effect",
+      "evidence_refs": [
+        "ev8"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c10",
+      "text": "For RT in congruent Flanker, Time x Group interaction not significant, F(2,41)=0.26, p=0.768, ηp2=0.01.",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "The Time × Group interaction was not \nsignificant, F(2, 41) = 0.26, p = 0.768, η2ₚ = 0.01."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "p_value consistent with F(2,41)=0.26",
+      "strength": "exact",
+      "scope": "congruent Flanker RT interaction",
+      "evidence_refs": [
+        "ev9"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c11",
+      "text": "For RT in incongruent Flanker, significant main effect of Time, F(1,41)=13.85, p<0.001, ηp2=0.25; t(41)=3.72, p<0.001.",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "revealed a significant main effect of Time, F(1, 41) = 13.85, p < 0.001, \nη2ₚ  = 0.25,"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "p_value consistent with F(1,41)=13.85 (reported as bound p<0.001)",
+      "strength": "exact",
+      "scope": "incongruent Flanker RT, Time effect",
+      "evidence_refs": [
+        "ev10"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c12",
+      "text": "For RT in incongruent Flanker, Time x Group interaction not significant, F(2,41)=0.42, p=0.655, ηp2=0.02.",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "The Time \n× Group interaction was not significant, F(2, 41) = 0.42, p = 0.655, \nη2ₚ = 0.02."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "p_value consistent with F(2,41)=0.42",
+      "strength": "exact",
+      "scope": "incongruent Flanker RT interaction",
+      "evidence_refs": [
+        "ev11"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c13",
+      "text": "For Flanker conflict effect, significant main effect of Time, F(1,41)=4.63, p=0.037, ηp2=0.10; t(41)=2.15, p=0.037.",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "main effect of Time, F(1, 41) = 4.63, p = 0.037, η2ₚ = 0.10, but not \nGroup, F(2, 41) = 0.08, p = 0.923, η2ₚ = 0.00."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "p_value consistent with F(1,41)=4.63",
+      "strength": "exact",
+      "scope": "Flanker conflict effect, Time",
+      "evidence_refs": [
+        "ev12"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c14",
+      "text": "For Flanker conflict effect, Time x Group interaction not significant, F(2,41)=2.02, p=0.146, ηp2=0.09.",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "The Time × Group interaction was not significant, F(2, \n41) = 2.02, p = 0.146, η2ₚ = 0.09."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "p_value consistent with F(2,41)=2.02",
+      "strength": "exact",
+      "scope": "Flanker conflict effect interaction",
+      "evidence_refs": [
+        "ev13"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c15",
+      "text": "For accuracy in 2-back, significant main effect of Time, F(1,41)=20.91, p<0.001, ηp2=0.33; t(41)=-4.57, p<0.001.",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "nificant main effect of Time, F(1, 41) = 20.91, p < 0.001, η2\nₚ = 0.33, but \nnot Group, F(2, 41) = 2.54, p = 0.091, η2ₚ = 0.11."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "p_value consistent with F(1,41)=20.91 (bound p<0.001)",
+      "strength": "exact",
+      "scope": "2-back accuracy, Time effect",
+      "evidence_refs": [
+        "ev14"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c16",
+      "text": "For accuracy in 2-back, Time x Group interaction not significant, F(2,41)=0.09, p=0.905, ηp2=0.00.",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "The Time × Group interaction was not significant, F(2, \n41) = 0.09, p = 0.905, η2ₚ = 0.00."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "p_value consistent with F(2,41)=0.09",
+      "strength": "exact",
+      "scope": "2-back accuracy interaction",
+      "evidence_refs": [
+        "ev15"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c17",
+      "text": "For RT in 2-back, significant main effect of Time, F(1,41)=9.58, p=0.004, ηp2=0.18; t(41)=3.10, p=0.004.",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "nificant main effect of Time, F(1, 41) = 9.58, p = 0.004, η2\nₚ = 0.18, but \nnot Group, F(2, 41) = 1.76, p = 0.184, η2ₚ = 0.07."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "p_value consistent with F(1,41)=9.58",
+      "strength": "exact",
+      "scope": "2-back RT, Time effect",
+      "evidence_refs": [
+        "ev16"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c18",
+      "text": "For RT in 2-back, Time x Group interaction not significant, F(2,41)=0.09, p=0.912, ηp2=0.00.",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "The Time × Group interaction was not significant, F(2, \n41) = 0.09, p = 0.912, η2ₚ = 0.00."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "p_value consistent with F(2,41)=0.09",
+      "strength": "exact",
+      "scope": "2-back RT interaction",
+      "evidence_refs": [
+        "ev17"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c19",
+      "text": "For RT in non-switch trials (More-Odd Switching), significant main effect of Time, F(1,41)=13.25, p<0.001, ηp2=0.24; t(41)=3.64, p<0.001.",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "F(1, 41) = 13.25, p < 0.001, η2ₚ = 0.24, but not Group, F(2, 41) = 0.23,"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "p_value consistent with F(1,41)=13.25 (bound p<0.001)",
+      "strength": "exact",
+      "scope": "non-switch RT, Time effect",
+      "evidence_refs": [
+        "ev18"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c20",
+      "text": "For RT in non-switch trials, Time x Group interaction not significant, F(2,41)=2.10, p=0.136, ηp2=0.09.",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "Time  × Group interaction was not significant,  F(2,  41) = 2.10, \np = 0.136, η2ₚ = 0.09."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "p_value consistent with F(2,41)=2.10",
+      "strength": "exact",
+      "scope": "non-switch RT interaction",
+      "evidence_refs": [
+        "ev19"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c21",
+      "text": "For accuracy in switch trials, significant main effect of Time, F(1,41)=11.38, p=0.002, ηp2=0.21; t(41)=-3.37, p=0.002.",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "task, the ANOVA revealed a significant main effect of Time, F(1, \n41) = 11.38, p = 0.002, η2ₚ  = 0.21, but not Group, F(2, 41) = 0.44,"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "p_value consistent with F(1,41)=11.38",
+      "strength": "exact",
+      "scope": "switch accuracy, Time effect",
+      "evidence_refs": [
+        "ev20"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c22",
+      "text": "For accuracy in switch trials, Time x Group interaction not significant, F(2,41)=1.28, p=0.288, ηp2=0.05.",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "The Time \n× Group interaction was not significant, F(2, 41) = 1.28, p = 0.288, \nη2ₚ = 0.05."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "p_value consistent with F(2,41)=1.28",
+      "strength": "exact",
+      "scope": "switch accuracy interaction",
+      "evidence_refs": [
+        "ev21"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c23",
+      "text": "For RT in switch trials, significant main effect of Time, F(1,41)=44.30, p<0.001, ηp2=0.52; t(41)=6.66, p<0.001.",
+      "location": {
+        "section": "Results",
+        "page": 6,
+        "char_span": null,
+        "quote": "41) = 44.30, p < 0.001, η2ₚ  = 0.52, but not Group, F(2, 41) = 0.13,"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "p_value consistent with F(1,41)=44.30 (bound p<0.001)",
+      "strength": "exact",
+      "scope": "switch RT, Time effect",
+      "evidence_refs": [
+        "ev22"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c24",
+      "text": "For RT in switch trials, Time x Group interaction not significant, F(2,41)=2.20, p=0.124, ηp2=0.09.",
+      "location": {
+        "section": "Results",
+        "page": 6,
+        "char_span": null,
+        "quote": "The Time \n× Group interaction was not significant, F(2, 41) = 2.20, p = 0.124, \nη2ₚ = 0.09."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "p_value consistent with F(2,41)=2.20",
+      "strength": "exact",
+      "scope": "switch RT interaction",
+      "evidence_refs": [
+        "ev23"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c25",
+      "text": "For switch cost, significant main effect of Time, F(1,41)=17.33, p<0.001, ηp2=0.29; t(41)=4.16, p<0.001.",
+      "location": {
+        "section": "Results",
+        "page": 6,
+        "char_span": null,
+        "quote": "ANOVA revealed a significant main effect of Time, F(1, 41) = 17.33, \np < 0.001, η2ₚ  = 0.29, but not Group, F(2, 41) = 0.04, p = 0.956,"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "p_value consistent with F(1,41)=17.33 (bound p<0.001)",
+      "strength": "exact",
+      "scope": "switch cost, Time effect",
+      "evidence_refs": [
+        "ev24"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c26",
+      "text": "For switch cost, the Time x Group interaction was significant, F(2,41)=5.15, p=0.010, ηp2=0.20.",
+      "location": {
+        "section": "Results",
+        "page": 6,
+        "char_span": null,
+        "quote": "The Time × Group interaction was \nsignificant, F(2, 41) = 5.15, p = 0.010, η2ₚ = 0.20."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "p_value consistent with F(2,41)=5.15",
+      "strength": "exact",
+      "scope": "switch cost interaction",
+      "evidence_refs": [
+        "ev25"
+      ],
+      "confidence": 0.93
+    },
+    {
+      "id": "c27",
+      "text": "Follow-up simple effects (Bonferroni-adjusted) showed switch cost decreased pre-to-post in HIIT, t(41)=3.60, p=0.013, and in MIAE, t(41)=3.61, p=0.012; no significant change in Control (p>0.05).",
+      "location": {
+        "section": "Results",
+        "page": 6,
+        "char_span": null,
+        "quote": "switch cost significantly decreased from pre-test to post-test in the \nHIIT group, t(41) = 3.60, p = 0.013, and in the MIAE group, \nt(41) = 3.61, p = 0.012, whereas no significant change was observed in \nthe Control group (p > 0.05)"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "p_value consistent with t(41)=3.60 and t(41)=3.61 (Bonferroni-adjusted)",
+      "strength": "exact",
+      "scope": "switch cost simple effects by group",
+      "evidence_refs": [
+        "ev26",
+        "ev27"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c28",
+      "text": "No significant Time x Group interaction was found for inhibitory control or working memory, whereas the interaction was significant for cognitive flexibility.",
+      "location": {
+        "section": "Abstract / Results",
+        "page": 1,
+        "char_span": null,
+        "quote": "significant Group × Time interactions were observed \nonly for cognitive flexibility, while no significant interaction effects were found \nfor inhibitory control or working memory."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "interaction significant only for cognitive flexibility measures; consistent with reported interaction p-values",
+      "strength": "comparative",
+      "scope": "executive function subcomponents",
+      "evidence_refs": [
+        "ev25",
+        "ev15",
+        "ev7"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c29",
+      "text": "In the More-Odd Switching task, switch trials RT decreased pre-to-post in HIIT (928 to 803, t=5.97, p<0.001, d=1.59) and MIAE (947 to 802, t=4.83, p<0.001, d=1.29), but not significantly in Control (917 to 853, t=1.74, p=0.070).",
+      "location": {
+        "section": "Table 2",
+        "page": 6,
+        "char_span": null,
+        "quote": "Switch Trials in MoreOdd Switching\nHIIT 928(62.9) 803(92.1) 5.97 <0.001 1.59"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported t and p consistent with pre/post means and SDs in Table 2",
+      "strength": "exact",
+      "scope": "Table 2 switch trials RT",
+      "evidence_refs": [
+        "ev28"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "c30",
+      "text": "Task-switching cost decreased pre-to-post in HIIT (336 to 227, t=5.57, p<0.001, d=1.49) and MIAE (344 to 234, t=3.39, p=0.005, d=0.90), but not in Control (280 to 284, t=-0.14, p=0.889).",
+      "location": {
+        "section": "Table 2",
+        "page": 6,
+        "char_span": null,
+        "quote": "Task-Switching Cost in \nMore-Odd Switching\nHIIT 336(52.7) 227(74.2) 5.57 <0.001 1.49"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported t and p consistent with pre/post means in Table 2",
+      "strength": "exact",
+      "scope": "Table 2 task-switching cost",
+      "evidence_refs": [
+        "ev29"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "c31",
+      "text": "Participants in the exercise groups completed a single 20-min bout of exercise; HIIT at 80-90% HRmax and MIAE at 60-70% HRmax.",
+      "location": {
+        "section": "Methods - Procedure",
+        "page": 4,
+        "char_span": null,
+        "quote": "participants performed highintensity interval exercise (80–90% HRmax) for 20 min."
+      },
+      "epistemic_tier": "T1",
+      "predicate": "reported exercise intensity bands and duration as stated",
+      "strength": "qualitative",
+      "scope": "exercise protocol",
+      "evidence_refs": [
+        "ev30"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c32",
+      "text": "For HR, mean HR was HIIT 173(5.5) bpm and MIAE 140(6.1) bpm (Control HR not reported).",
+      "location": {
+        "section": "Table 1",
+        "page": 4,
+        "char_span": null,
+        "quote": "HIIT (N = 14) 19 (1.5) 9:5 22 (2.0) 32 (5.7) 35 (6.8) 173 (5.5)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "Table 1 HR values consistent with t(26)=14.90 reported HR difference",
+      "strength": "exact",
+      "scope": "Table 1 HR (bpm)",
+      "evidence_refs": [
+        "ev31"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c33",
+      "text": "For RT in the incongruent Flanker, HIIT showed significant pre-to-post reduction (503 to 467, t=3.29, p=0.006, d=0.88), MIAE non-significant (504 to 465, t=2.01, p=0.065), Control non-significant (485 to 464, t=1.56, p=0.138).",
+      "location": {
+        "section": "Table 2",
+        "page": 6,
+        "char_span": null,
+        "quote": "Incongruent Trials in \nFlanker\nHIIT 503(55.5) 467(55.1) 3.29 0.006 0.88"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported t and p consistent with pre/post means in Table 2",
+      "strength": "exact",
+      "scope": "Table 2 incongruent Flanker RT",
+      "evidence_refs": [
+        "ev32"
+      ],
+      "confidence": 0.85
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev1",
+      "kind": "text",
+      "location": {
+        "section": "Methods - Participants",
+        "page": 3,
+        "char_span": null,
+        "quote": "Assuming a medium effect size \n(f = 0.25), an alpha level of 0.05, and a statistical power of 0.80, the \nrequired total sample size was 42 participants (14 per group)."
+      },
+      "extracted_values": {
+        "effect_size_f": 0.25,
+        "alpha": 0.05,
+        "power": 0.8,
+        "required_total_n": 42,
+        "per_group": 14
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev2",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 1",
+        "page": 3,
+        "char_span": null,
+        "quote": "Randomized \n(n=48)"
+      },
+      "extracted_values": {
+        "assessed_eligibility": 53,
+        "excluded_initial": 5,
+        "randomized": 48,
+        "per_group_assigned": 16,
+        "hiit_analysed": 14,
+        "miae_analysed": 14,
+        "control_analysed": 16,
+        "parts": [
+          14,
+          14,
+          16
+        ],
+        "reported_total": 44
+      },
+      "confidence": 0.88
+    },
+    {
+      "id": "ev3",
+      "kind": "table",
+      "location": {
+        "section": "Table 1",
+        "page": 4,
+        "char_span": null,
+        "quote": "HIIT (N = 14)"
+      },
+      "extracted_values": {
+        "hiit_n": 14,
+        "miae_n": 14,
+        "control_n": 16,
+        "parts": [
+          14,
+          14,
+          16
+        ],
+        "reported_total": 44
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev4",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "t(26) = 14.90, p < 0.001, Cohen’s \nd = 5.62."
+      },
+      "extracted_values": {
+        "test": "t",
+        "statistic": 14.9,
+        "df": 26,
+        "p_upper_bound": 0.001,
+        "cohens_d": 5.62
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev5",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "F(1, 41) = 0.86, p = 0.375, \nη2ₚ  = 0.02"
+      },
+      "extracted_values": {
+        "test": "F",
+        "statistic": 0.86,
+        "df1": 1,
+        "df2": 41,
+        "reported_p": 0.375,
+        "eta2p": 0.02
+      },
+      "confidence": 0.93
+    },
+    {
+      "id": "ev6",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "a main effect of Group, F(2, 41) = 0.02, p = 0.974, \nη2ₚ = 0.00"
+      },
+      "extracted_values": {
+        "test": "F",
+        "statistic": 0.02,
+        "df1": 2,
+        "df2": 41,
+        "reported_p": 0.974,
+        "eta2p": 0.0
+      },
+      "confidence": 0.93
+    },
+    {
+      "id": "ev7",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "F(2, \n41) = 0.58, p = 0.564, η2ₚ = 0.02."
+      },
+      "extracted_values": {
+        "test": "F",
+        "statistic": 0.58,
+        "df1": 2,
+        "df2": 41,
+        "reported_p": 0.564,
+        "eta2p": 0.02
+      },
+      "confidence": 0.93
+    },
+    {
+      "id": "ev8",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "F(1, 41) = 6.53, p = 0.014, \nη2ₚ  = 0.13"
+      },
+      "extracted_values": {
+        "test": "F",
+        "statistic": 6.53,
+        "df1": 1,
+        "df2": 41,
+        "reported_p": 0.014,
+        "eta2p": 0.13,
+        "posthoc_t": 2.56,
+        "posthoc_t_p": 0.014
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev9",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "F(2, 41) = 0.26, p = 0.768, η2ₚ = 0.01."
+      },
+      "extracted_values": {
+        "test": "F",
+        "statistic": 0.26,
+        "df1": 2,
+        "df2": 41,
+        "reported_p": 0.768,
+        "eta2p": 0.01
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev10",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "F(1, 41) = 13.85, p < 0.001, \nη2ₚ  = 0.25"
+      },
+      "extracted_values": {
+        "test": "F",
+        "statistic": 13.85,
+        "df1": 1,
+        "df2": 41,
+        "p_upper_bound": 0.001,
+        "eta2p": 0.25,
+        "posthoc_t": 3.72
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev11",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "F(2, 41) = 0.42, p = 0.655, \nη2ₚ = 0.02."
+      },
+      "extracted_values": {
+        "test": "F",
+        "statistic": 0.42,
+        "df1": 2,
+        "df2": 41,
+        "reported_p": 0.655,
+        "eta2p": 0.02
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev12",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "F(1, 41) = 4.63, p = 0.037, η2ₚ = 0.10"
+      },
+      "extracted_values": {
+        "test": "F",
+        "statistic": 4.63,
+        "df1": 1,
+        "df2": 41,
+        "reported_p": 0.037,
+        "eta2p": 0.1,
+        "posthoc_t": 2.15,
+        "posthoc_t_p": 0.037
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev13",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "F(2, \n41) = 2.02, p = 0.146, η2ₚ = 0.09."
+      },
+      "extracted_values": {
+        "test": "F",
+        "statistic": 2.02,
+        "df1": 2,
+        "df2": 41,
+        "reported_p": 0.146,
+        "eta2p": 0.09
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev14",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "F(1, 41) = 20.91, p < 0.001, η2\nₚ = 0.33"
+      },
+      "extracted_values": {
+        "test": "F",
+        "statistic": 20.91,
+        "df1": 1,
+        "df2": 41,
+        "p_upper_bound": 0.001,
+        "eta2p": 0.33,
+        "posthoc_t": -4.57
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev15",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "F(2, \n41) = 0.09, p = 0.905, η2ₚ = 0.00."
+      },
+      "extracted_values": {
+        "test": "F",
+        "statistic": 0.09,
+        "df1": 2,
+        "df2": 41,
+        "reported_p": 0.905,
+        "eta2p": 0.0
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev16",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "F(1, 41) = 9.58, p = 0.004, η2\nₚ = 0.18"
+      },
+      "extracted_values": {
+        "test": "F",
+        "statistic": 9.58,
+        "df1": 1,
+        "df2": 41,
+        "reported_p": 0.004,
+        "eta2p": 0.18,
+        "posthoc_t": 3.1,
+        "posthoc_t_p": 0.004
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev17",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "F(2, \n41) = 0.09, p = 0.912, η2ₚ = 0.00."
+      },
+      "extracted_values": {
+        "test": "F",
+        "statistic": 0.09,
+        "df1": 2,
+        "df2": 41,
+        "reported_p": 0.912,
+        "eta2p": 0.0
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev18",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "F(1, 41) = 13.25, p < 0.001, η2ₚ = 0.24"
+      },
+      "extracted_values": {
+        "test": "F",
+        "statistic": 13.25,
+        "df1": 1,
+        "df2": 41,
+        "p_upper_bound": 0.001,
+        "eta2p": 0.24,
+        "posthoc_t": 3.64
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev19",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "F(2,  41) = 2.10, \np = 0.136, η2ₚ = 0.09."
+      },
+      "extracted_values": {
+        "test": "F",
+        "statistic": 2.1,
+        "df1": 2,
+        "df2": 41,
+        "reported_p": 0.136,
+        "eta2p": 0.09
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev20",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "F(1, \n41) = 11.38, p = 0.002, η2ₚ  = 0.21"
+      },
+      "extracted_values": {
+        "test": "F",
+        "statistic": 11.38,
+        "df1": 1,
+        "df2": 41,
+        "reported_p": 0.002,
+        "eta2p": 0.21,
+        "posthoc_t": -3.37,
+        "posthoc_t_p": 0.002
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev21",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "F(2, 41) = 1.28, p = 0.288, \nη2ₚ = 0.05."
+      },
+      "extracted_values": {
+        "test": "F",
+        "statistic": 1.28,
+        "df1": 2,
+        "df2": 41,
+        "reported_p": 0.288,
+        "eta2p": 0.05
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev22",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 6,
+        "char_span": null,
+        "quote": "41) = 44.30, p < 0.001, η2ₚ  = 0.52"
+      },
+      "extracted_values": {
+        "test": "F",
+        "statistic": 44.3,
+        "df1": 1,
+        "df2": 41,
+        "p_upper_bound": 0.001,
+        "eta2p": 0.52,
+        "posthoc_t": 6.66
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev23",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 6,
+        "char_span": null,
+        "quote": "F(2, 41) = 2.20, p = 0.124, \nη2ₚ = 0.09."
+      },
+      "extracted_values": {
+        "test": "F",
+        "statistic": 2.2,
+        "df1": 2,
+        "df2": 41,
+        "reported_p": 0.124,
+        "eta2p": 0.09
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev24",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 6,
+        "char_span": null,
+        "quote": "F(1, 41) = 17.33, \np < 0.001, η2ₚ  = 0.29"
+      },
+      "extracted_values": {
+        "test": "F",
+        "statistic": 17.33,
+        "df1": 1,
+        "df2": 41,
+        "p_upper_bound": 0.001,
+        "eta2p": 0.29,
+        "posthoc_t": 4.16
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev25",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 6,
+        "char_span": null,
+        "quote": "The Time × Group interaction was \nsignificant, F(2, 41) = 5.15, p = 0.010, η2ₚ = 0.20."
+      },
+      "extracted_values": {
+        "test": "F",
+        "statistic": 5.15,
+        "df1": 2,
+        "df2": 41,
+        "reported_p": 0.01,
+        "eta2p": 0.2
+      },
+      "confidence": 0.93
+    },
+    {
+      "id": "ev26",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 6,
+        "char_span": null,
+        "quote": "HIIT group, t(41) = 3.60, p = 0.013"
+      },
+      "extracted_values": {
+        "test": "t",
+        "statistic": 3.6,
+        "df": 41,
+        "reported_p": 0.013,
+        "group": "HIIT",
+        "adjustment": "Bonferroni"
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev27",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 6,
+        "char_span": null,
+        "quote": "MIAE group, \nt(41) = 3.61, p = 0.012"
+      },
+      "extracted_values": {
+        "test": "t",
+        "statistic": 3.61,
+        "df": 41,
+        "reported_p": 0.012,
+        "group": "MIAE",
+        "adjustment": "Bonferroni"
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev28",
+      "kind": "table",
+      "location": {
+        "section": "Table 2",
+        "page": 6,
+        "char_span": null,
+        "quote": "HIIT 928(62.9) 803(92.1) 5.97 <0.001 1.59\nMIAE 947(162.7) 802(151.9) 4.83 <0.001 1.29\nControl 917(108.7) 853(95.8) 1.74 0.070 0.48"
+      },
+      "extracted_values": {
+        "hiit_pre": 928,
+        "hiit_pre_sd": 62.9,
+        "hiit_post": 803,
+        "hiit_post_sd": 92.1,
+        "hiit_t": 5.97,
+        "hiit_d": 1.59,
+        "miae_pre": 947,
+        "miae_post": 802,
+        "miae_t": 4.83,
+        "miae_d": 1.29,
+        "control_pre": 917,
+        "control_post": 853,
+        "control_t": 1.74,
+        "control_p": 0.07,
+        "control_d": 0.48
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev29",
+      "kind": "table",
+      "location": {
+        "section": "Table 2",
+        "page": 6,
+        "char_span": null,
+        "quote": "HIIT 336(52.7) 227(74.2) 5.57 <0.001 1.49\nMIAE 344(127.5) 234(113.6) 3.39 0.005 0.90\nControl 280(89.6) 284(95.7) −0.14 0.889 −0.03"
+      },
+      "extracted_values": {
+        "hiit_pre": 336,
+        "hiit_post": 227,
+        "hiit_t": 5.57,
+        "hiit_d": 1.49,
+        "miae_pre": 344,
+        "miae_post": 234,
+        "miae_t": 3.39,
+        "miae_p": 0.005,
+        "miae_d": 0.9,
+        "control_pre": 280,
+        "control_post": 284,
+        "control_t": -0.14,
+        "control_p": 0.889,
+        "control_d": -0.03
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev30",
+      "kind": "text",
+      "location": {
+        "section": "Methods - Procedure",
+        "page": 4,
+        "char_span": null,
+        "quote": "participants performed highintensity interval exercise (80–90% HRmax) for 20 min."
+      },
+      "extracted_values": {
+        "hiit_intensity_pct_hrmax": [
+          80,
+          90
+        ],
+        "hiit_duration_min": 20,
+        "miae_intensity_pct_hrmax": [
+          60,
+          70
+        ],
+        "miae_duration_min": 20
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev31",
+      "kind": "table",
+      "location": {
+        "section": "Table 1",
+        "page": 4,
+        "char_span": null,
+        "quote": "HIIT (N = 14) 19 (1.5) 9:5 22 (2.0) 32 (5.7) 35 (6.8) 173 (5.5)"
+      },
+      "extracted_values": {
+        "hiit_hr_mean": 173,
+        "hiit_hr_sd": 5.5,
+        "miae_hr_mean": 140,
+        "miae_hr_sd": 6.1,
+        "control_hr": null,
+        "hiit_age_mean": 19,
+        "miae_age_mean": 19,
+        "control_age_mean": 19
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev32",
+      "kind": "table",
+      "location": {
+        "section": "Table 2",
+        "page": 6,
+        "char_span": null,
+        "quote": "HIIT 503(55.5) 467(55.1) 3.29 0.006 0.88\nMIAE 504(85.9) 465(63.3) 2.01 0.065 0.53\nControl 485(52.9) 464(55.8) 1.56 0.138 0.39"
+      },
+      "extracted_values": {
+        "hiit_pre": 503,
+        "hiit_post": 467,
+        "hiit_t": 3.29,
+        "hiit_p": 0.006,
+        "hiit_d": 0.88,
+        "miae_pre": 504,
+        "miae_post": 465,
+        "miae_t": 2.01,
+        "miae_p": 0.065,
+        "control_pre": 485,
+        "control_post": 464,
+        "control_t": 1.56,
+        "control_p": 0.138
+      },
+      "confidence": 0.85
+    }
+  ],
+  "bindings": [
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c4",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c5",
+      "evidence_id": "ev4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c6",
+      "evidence_id": "ev5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c7",
+      "evidence_id": "ev6",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c8",
+      "evidence_id": "ev7",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c9",
+      "evidence_id": "ev8",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c10",
+      "evidence_id": "ev9",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c11",
+      "evidence_id": "ev10",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c12",
+      "evidence_id": "ev11",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c13",
+      "evidence_id": "ev12",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c14",
+      "evidence_id": "ev13",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c15",
+      "evidence_id": "ev14",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c16",
+      "evidence_id": "ev15",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c17",
+      "evidence_id": "ev16",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c18",
+      "evidence_id": "ev17",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c19",
+      "evidence_id": "ev18",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c20",
+      "evidence_id": "ev19",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c21",
+      "evidence_id": "ev20",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c22",
+      "evidence_id": "ev21",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c23",
+      "evidence_id": "ev22",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c24",
+      "evidence_id": "ev23",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c25",
+      "evidence_id": "ev24",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c26",
+      "evidence_id": "ev25",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c27",
+      "evidence_id": "ev26",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c27",
+      "evidence_id": "ev27",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c28",
+      "evidence_id": "ev25",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c28",
+      "evidence_id": "ev15",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c28",
+      "evidence_id": "ev7",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c29",
+      "evidence_id": "ev28",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c30",
+      "evidence_id": "ev29",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c31",
+      "evidence_id": "ev30",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c32",
+      "evidence_id": "ev31",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c33",
+      "evidence_id": "ev32",
+      "relation": "rests_on"
+    }
+  ]
+}

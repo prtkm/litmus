@@ -1,0 +1,936 @@
+{
+  "paper_id": "chemistry-anon2026-triple-halide-perovskite-tandem",
+  "title": "Enhancing Wide-Bandgap Triple-Halide Perovskites for Tandem Solar Cells by 0.5% Formate and Zn(II) Doping",
+  "doi": "10.3390/molecules31040625",
+  "domain": "chemistry / materials science (halide perovskite photovoltaics)",
+  "n_pages_read": 12,
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The A-site cation subscripts of the stated composition (Cs0.21 FA0.74 MA0.05) sum to 1.00, as required for a normalized ABX3 perovskite.",
+      "quote": "(Cs0.21 FA0.74 MA0.05 )Pb(I0.81 Br0.14 Cl0.05 )3",
+      "section": "Abstract / throughout",
+      "page": 1,
+      "epistemic_tier": "T0",
+      "predicate": "Add the three A-site subscripts and check they equal 1.00.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "number",
+          "location": "Abstract, composition formula",
+          "quote": "(Cs0.21 FA0.74 MA0.05 )Pb(I0.81 Br0.14 Cl0.05 )3",
+          "extracted_values": {"Cs": 0.21, "FA": 0.74, "MA": 0.05, "sum": 1.00}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Arithmetic sum of stoichiometric subscripts (stoichiometry/total check).",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.99,
+        "rationale": "0.21+0.74+0.05 = 1.00 exactly. Off-the-shelf table-total / stoichiometry check covers this."
+      }
+    },
+    {
+      "id": "c2",
+      "text": "The X-site halide subscripts of the stated composition (I0.81 Br0.14 Cl0.05) sum to 1.00.",
+      "quote": "Pb(I0.81 Br0.14 Cl0.05 )3",
+      "section": "Abstract / throughout",
+      "page": 1,
+      "epistemic_tier": "T0",
+      "predicate": "Add the three halide subscripts and check they equal 1.00.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "number",
+          "location": "Abstract, composition formula",
+          "quote": "Pb(I0.81 Br0.14 Cl0.05 )3",
+          "extracted_values": {"I": 0.81, "Br": 0.14, "Cl": 0.05, "sum": 1.00}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Arithmetic sum of stoichiometric subscripts (stoichiometry/total check).",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.99,
+        "rationale": "0.81+0.14+0.05 = 1.00 exactly. Off-the-shelf stoichiometry/total check covers this."
+      }
+    },
+    {
+      "id": "c3",
+      "text": "Mariotti's composition (Cs0.22 FA0.78)Pb(I0.85 Br0.15)3 + 5 mol% MAPbCl3 re-writes (assuming full incorporation, no decomposition) to (Cs0.21 FA0.74 MA0.05)Pb(I0.81 Br0.14 Cl0.05)3.",
+      "quote": "We can re-write the composition used by Mariotti et al., (Cs0.22 FA0.78 )Pb(I0.85 Br0.15 )3 + 5% mol MAPbCl3 , into a more common description: we get (Cs0.21 FA0.74 MA0.05 )Pb(I0.81 Br0.14 Cl0.05 )3 , thereby assuming that all MAPbCl3 is incorporated into the perovskite matrix",
+      "section": "1. Introduction",
+      "page": 2,
+      "epistemic_tier": "T0",
+      "predicate": "Recompute: combine 1 mol base perovskite + 0.05 mol MAPbCl3; total Pb = 1.05; normalize each A-site and X-site amount per Pb; compare to stated formula.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "equation",
+          "location": "Introduction, composition re-write",
+          "quote": "(Cs0.22 FA0.78 )Pb(I0.85 Br0.15 )3 + 5% mol MAPbCl3 -> (Cs0.21 FA0.74 MA0.05 )Pb(I0.81 Br0.14 Cl0.05 )3",
+          "extracted_values": {"Pb_total": 1.05, "Cs_norm": 0.2095, "FA_norm": 0.7429, "MA_norm": 0.0476, "I_frac": 0.8095, "Br_frac": 0.1429, "Cl_frac": 0.0476}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Mass-balance / stoichiometry recomputation of mixed perovskite composition.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.95,
+        "rationale": "Recompute confirms: Cs 0.2095->0.21, FA 0.7429->0.74, MA 0.0476->0.05, I 0.8095->0.81, Br 0.1429->0.14, Cl 0.0476->0.05. Every value rounds to the stated subscript. Only caveat: MA and Cl each round 0.0476->0.05 (mild upward rounding); fully consistent given 2-decimal precision. Off-the-shelf mass-balance/stoichiometry verifier settles it."
+      }
+    },
+    {
+      "id": "c4",
+      "text": "Total doping of 1% comprises Zn(II) at 0.5 mol% and formate (Fo-) at 0.5 mol% (relative to Pb), i.e., 0.5% + 0.5% = 1%.",
+      "quote": "the optimal total doping concentration of zinc ions (Zn(II)) and formate anions (Fo-) is determined to be 1% relative to Pb(II)",
+      "section": "Abstract / Results / Conclusions",
+      "page": 1,
+      "epistemic_tier": "T0",
+      "predicate": "Add the two dopant percentages and check they equal the stated 1% total.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "number",
+          "location": "Results and Discussion (p4) and Conclusions (p9)",
+          "quote": "doping with Zn(II) (0.5 mol%), as well as for Fo- (0.5 mol% vs. Pb(II))",
+          "extracted_values": {"Zn_pct": 0.5, "Fo_pct": 0.5, "total_pct": 1.0}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Arithmetic sum (percent components add to stated total).",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.99,
+        "rationale": "0.5% + 0.5% = 1% total. Internally consistent across abstract, results, and conclusions. Off-the-shelf arithmetic/total check covers this."
+      }
+    },
+    {
+      "id": "c5",
+      "text": "A maximum absolute PLQY of 14% was obtained for the wide-bandgap perovskite on quartz at 1% total doping.",
+      "quote": "By using calibrated absolute photoluminescence quantum yield equipment, a maximum PLQY of 14% was obtained for wide-bandgap perovskite on quartz",
+      "section": "2. Results and Discussion",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Confirm the prose number 14% matches the value reported in the Figure 5 caption and is internally consistent with the abstract.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "figure",
+          "location": "Figure 5",
+          "quote": "Absolute photoluminescence quantum yield measurement data (PLQY = 14%)",
+          "extracted_values": {"PLQY_pct": 14}
+        },
+        {
+          "id": "e2",
+          "kind": "text",
+          "location": "Abstract",
+          "quote": "Photoluminescence quantum yields (up to 14% on quartz)",
+          "extracted_values": {"PLQY_pct": 14}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Prose-vs-figure-caption consistency check (the number 14% appears identically in abstract, body, Figure 5 title and caption).",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "14% is stated consistently in abstract, body text, Figure 5 title block, and caption. The underlying value is an integrated-sphere PLQY; the raw spectrometer integral cannot be recomputed from the rendered figure, so consistency (not first-principles recompute) is what is verifiable. Prose-vs-figure check supports the claim."
+      }
+    },
+    {
+      "id": "c6",
+      "text": "The 14% PLQY reported here is ~3.7x higher than the 3.75% PLQY Mariotti et al. reported for their films on quartz.",
+      "quote": "It has to be noted that Mariotti et al. [6] reported 3.75% as PLQY for their films on quartz (and a PL lifetime of ~2 us, by tail-fit).",
+      "section": "2. Results and Discussion",
+      "page": 6,
+      "epistemic_tier": "T2",
+      "predicate": "Compute the ratio 14/3.75 and verify it is consistent with the qualitative 'higher efficiency' claim; cross-check the 3.75% value against ref [6].",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "number",
+          "location": "Results (p6)",
+          "quote": "Mariotti et al. [6] reported 3.75% as PLQY for their films on quartz",
+          "extracted_values": {"this_work_PLQY": 14, "mariotti_PLQY": 3.75, "fold": 3.73}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Percent-change / ratio arithmetic (internal); literature cross-check of the 3.75% value against Mariotti Science 2023 (ref [6]) for the external part.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.7,
+        "rationale": "Internal ratio 14/3.75 = 3.73x is arithmetically sound and supports the qualitative improvement statement (T0/T2 part supported). The external value 3.75% attributed to ref [6] is a T5 literature lookup not settled here; comparison is also cross-substrate-consistent (both on quartz)."
+      }
+    },
+    {
+      "id": "c7",
+      "text": "The best optimally doped film shows a PL lifetime of 6.84 +/- 1.1 us (stretched-exponential, beta = 0.84), longer than reference materials at 3.65 +/- 0.8 us (2024) and 1.57 +/- 0.1 us (2019).",
+      "quote": "the red trace shows our 2025 material with a lifetime of 6.84 +/- 1.1 us, compared to 3.65 +/- 0.8 us (2024, blue) and 1.57 +/- 0.1 us (2019, green)",
+      "section": "2. Results and Discussion",
+      "page": 8,
+      "epistemic_tier": "T2",
+      "predicate": "Confirm the three lifetimes and uncertainties in the body text exactly match the tau(1)/tau(2)/tau(3) values printed in Figure 6 and its caption, and that ordering (6.84 > 3.65 > 1.57) supports the 'progressively longer' claim.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "figure",
+          "location": "Figure 6 (inset legend)",
+          "quote": "tau(1) = 6.84 +/- 1.1 us; tau(2) = 3.65 +/- 0.8 us; tau(3) = 1.57 +/- 0.1 us",
+          "extracted_values": {"tau1_us": 6.84, "tau1_err": 1.1, "tau2_us": 3.65, "tau2_err": 0.8, "tau3_us": 1.57, "tau3_err": 0.1}
+        },
+        {
+          "id": "e2",
+          "kind": "text",
+          "location": "Figure 6 caption",
+          "quote": "Beta values are, respectively, 0.90 (1.57 us) [9], 0.77 (3.65 us) [11], and 0.84 (6.84 us)",
+          "extracted_values": {"beta_157": 0.90, "beta_365": 0.77, "beta_684": 0.84}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Prose-vs-figure (and caption) numeric consistency check across body, Figure 6 inset, and caption.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "Body text 6.84/3.65/1.57 us exactly match Figure 6 inset tau values and caption; ordering supports the 'progressively longer lifetime' statement. The underlying stretched-exponential fit cannot be re-fit from the figure, but the cross-location consistency is verifiable and clean."
+      }
+    },
+    {
+      "id": "c8",
+      "text": "Both PL intensity (relative PLQY) and PL lifetime histogram peak position are maximal at 1% total doping in the composition series (Figure 3).",
+      "quote": "Both metrics show their highest PL performance at a total doping level of 1%.",
+      "section": "2. Results and Discussion",
+      "page": 4,
+      "epistemic_tier": "T4",
+      "predicate": "Inspect Figure 3: verify the red (relative PLQY) and blue (PL-lifetime histogram max x2) curves both attain their maximum at the x = 1.0% data point.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "figure",
+          "location": "Figure 3",
+          "quote": "Relative photoluminescence quantum yields (in red, left y-axis) and the peak positions of PL lifetime-histogram (in blue, right y-axis) ... as a function of total doping concentration",
+          "extracted_values": {"red_peak_x_pct": 1.0, "red_peak_y": 4.2, "blue_peak_x_pct": 1.0, "blue_peak_y_x2": 4.0, "x_points_pct": 2.5}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Claim<->figure support check: read curve maxima off Figure 3 (argmax of both traces).",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.9,
+        "rationale": "Figure 3 read at 300 DPI: red relative-PLQY rises to a sharp maximum (~4.2) at 1.0% then falls; blue lifetime-histogram-max (plotted x2) also peaks (~4.0) at 1.0%. Both maxima coincide at 1.0%, directly supporting the prose. Evidence binds cleanly."
+      }
+    },
+    {
+      "id": "c9",
+      "text": "The Shockley-Queisser limit caps single-junction PCE at 33.7%.",
+      "quote": "the power conversion efficiency (PCE) of single-junction cells is capped at 33.7% by the Shockley-Queisser (SQ) limit [1]",
+      "section": "1. Introduction",
+      "page": 1,
+      "epistemic_tier": "T1",
+      "predicate": "Compare the stated 33.7% against the established detailed-balance SQ limit value.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "statistic",
+          "location": "Introduction, ref [1] Shockley & Queisser 1961",
+          "quote": "capped at 33.7% by the Shockley-Queisser (SQ) limit",
+          "extracted_values": {"SQ_limit_pct": 33.7}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Fixed-external-knowledge lookup of the SQ detailed-balance limit (~33.7% at ~1.34 eV, AM1.5).",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.9,
+        "rationale": "33.7% is the widely cited single-junction SQ maximum (AM1.5G, optimal bandgap ~1.34 eV); matches established value. T1 knowledge check; no figure binding needed."
+      }
+    },
+    {
+      "id": "c10",
+      "text": "Considering Auger recombination, the realistic single-junction efficiency limit for silicon is 29.4%.",
+      "quote": "considering Auger recombination [2], realistically limited to 29.4% for silicon (Si)",
+      "section": "1. Introduction",
+      "page": 1,
+      "epistemic_tier": "T1",
+      "predicate": "Compare 29.4% against the Richter/Hermle/Glunz 2013 reassessed crystalline-silicon limit (ref [2]).",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "statistic",
+          "location": "Introduction, ref [2]",
+          "quote": "realistically limited to 29.4% for silicon (Si)",
+          "extracted_values": {"si_limit_pct": 29.4}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Fixed-external-knowledge / literature lookup of ref [2] (Richter et al., IEEE J. Photovolt. 2013) Si efficiency limit.",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "29.4% is the canonical Richter et al. (2013) Auger-limited c-Si efficiency, the standard value cited and matching ref [2]. T1 knowledge check."
+      }
+    },
+    {
+      "id": "c11",
+      "text": "Silicon has a bandgap of 1.12 eV, suitable as a tandem bottom cell.",
+      "quote": "Silicon, with its suitable bandgap of 1.12 eV, serves as a good bottom cell",
+      "section": "1. Introduction",
+      "page": 1,
+      "epistemic_tier": "T1",
+      "predicate": "Compare stated 1.12 eV against the known room-temperature indirect bandgap of crystalline silicon.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "number",
+          "location": "Introduction",
+          "quote": "its suitable bandgap of 1.12 eV",
+          "extracted_values": {"si_bandgap_eV": 1.12}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Fixed-external-knowledge lookup of the c-Si bandgap (~1.12 eV at 300 K).",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.95,
+        "rationale": "1.12 eV is the textbook room-temperature indirect bandgap of crystalline silicon. T1 knowledge check."
+      }
+    },
+    {
+      "id": "c12",
+      "text": "The current certified world-record perovskite/silicon tandem efficiency obtained by LONGi stands at 35.0% PCE.",
+      "quote": "The current certified world record obtained by LONGi stands at 35.0% PCE (see NREL-chart).",
+      "section": "1. Introduction",
+      "page": 1,
+      "epistemic_tier": "T5",
+      "predicate": "Cross-check the 35.0% LONGi perovskite/Si tandem record against the NREL certified efficiency chart / press records as of the paper's date.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "statistic",
+          "location": "Introduction",
+          "quote": "certified world record obtained by LONGi stands at 35.0% PCE",
+          "extracted_values": {"record_pct": 35.0}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "External literature / NREL-chart lookup of the certified perovskite-Si tandem record attributed to LONGi.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.55,
+        "rationale": "Plausible and consistent with reported tandem progress (LONGi reported ~33-34% in 2023-2024; ~35% is within the trajectory by early 2026). Requires NREL-chart verification with a date anchor; not settleable from the paper alone. Internally consistent (used again as '35.0%' later)."
+      }
+    },
+    {
+      "id": "c13",
+      "text": "Mariotti et al. achieved a certified 32.5% efficiency in triple-halide perovskite-silicon tandem solar cells in 2022.",
+      "quote": "Mariotti et al. [6] achieved a certified efficiency of 32.5% in triple-halide perovskite-silicon tandem solar cells in 2022.",
+      "section": "1. Introduction",
+      "page": 1,
+      "epistemic_tier": "T5",
+      "predicate": "Cross-check 32.5% certified tandem efficiency and the 2022 date against ref [6] (Mariotti et al., Science 2023).",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "statistic",
+          "location": "Introduction, ref [6]",
+          "quote": "certified efficiency of 32.5% ... in 2022",
+          "extracted_values": {"pce_pct": 32.5, "year_stated": 2022, "ref_year": 2023}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Literature lookup of ref [6] (Mariotti et al., Science 381, 63-69, 2023) for the certified 32.5% value and date.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.55,
+        "rationale": "32.5% certified HZB/Mariotti triple-halide tandem matches the well-known result; however the paper dates it '2022' while ref [6] is published 2023 (work/announcement was 2022, publication 2023) - a minor date-attribution ambiguity worth flagging but not necessarily an error. Value itself is literature-checkable."
+      }
+    },
+    {
+      "id": "c14",
+      "text": "Jeong et al. demonstrated that adding 2% formate anions increases cell efficiency to 25.2% PCE.",
+      "quote": "Jeong et al. [10] demonstrated that the addition of 2% (Fo-) formate anions significantly increases cell efficiency to 25.2%.",
+      "section": "1. Introduction",
+      "page": 2,
+      "epistemic_tier": "T5",
+      "predicate": "Cross-check 2% formate -> 25.2% PCE against ref [10] (Jeong et al., Nature 2021).",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "statistic",
+          "location": "Introduction, ref [10]",
+          "quote": "addition of 2% (Fo-) formate anions significantly increases cell efficiency to 25.2%",
+          "extracted_values": {"formate_pct": 2, "pce_pct": 25.2}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Literature lookup of ref [10] (Jeong et al., Nature 592, 381-385, 2021).",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.6,
+        "rationale": "Jeong et al. 2021 pseudo-halide (formate) FAPbI3 work reporting ~25.2% certified is well known and the value is consistent with that paper; reused consistently as 25.2% later in the text. T5 external check required to settle exact attribution."
+      }
+    },
+    {
+      "id": "c15",
+      "text": "The theoretical efficiency limit for perovskite/silicon tandem cells is ~44% (also stated as ~45% and with a practical target of ~41%).",
+      "quote": "there remains significant room for improvement towards the theoretical limit of 44%. The gap between this value and the current \"state of the art\" (35.0% PCE) implies plenty of options for contributions on the road to a practical value [3] of ~41% PCE.",
+      "section": "1. Introduction",
+      "page": 2,
+      "epistemic_tier": "T2",
+      "predicate": "Check internal consistency of the quoted theoretical-limit figures: abstract/intro use ~45% (p1), then 44% and ~41% (p2). Determine whether these are mutually consistent or conflicting framings.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "text",
+          "location": "Introduction p1",
+          "quote": "theoretically enabling PCEs up to ~45% [3]",
+          "extracted_values": {"limit_pct_p1": 45}
+        },
+        {
+          "id": "e2",
+          "kind": "text",
+          "location": "Introduction p2",
+          "quote": "theoretical limit of 44% ... practical value [3] of ~41% PCE",
+          "extracted_values": {"limit_pct_p2": 44, "practical_pct": 41}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Internal cross-consistency check (prose-vs-prose): are the ~45% and 44% theoretical-limit figures, both attributed to ref [3], reconcilable?",
+        "verifier_exists": true,
+        "candidate_verdict": "suspect",
+        "confidence": 0.5,
+        "rationale": "Two different theoretical-limit numbers (~45% on p1 and 44% on p2) are given for tandem PCE, both ultimately leaning on ref [3] (Futscher & Ehrler 2016). This is a mild internal inconsistency / loose rounding rather than a hard arithmetic error; flag as suspect pending the ref [3] value (~44-45% is the commonly cited detailed-balance perovskite/Si tandem limit). Worth an internal-consistency note."
+      }
+    },
+    {
+      "id": "c16",
+      "text": "An asymmetrically substituted carbazole SAM (alkoxy-substituted) yielded a certified Si tandem cell with 34.58% PCE.",
+      "quote": "resulting in a Si tandem cell with 34.58% PCE (certified).",
+      "section": "1. Introduction",
+      "page": 2,
+      "epistemic_tier": "T5",
+      "predicate": "Cross-check 34.58% certified tandem PCE against ref [16] (Jia et al., Nature 2025).",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "statistic",
+          "location": "Introduction, ref [16]",
+          "quote": "Si tandem cell with 34.58% PCE (certified)",
+          "extracted_values": {"pce_pct": 34.58}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Literature lookup of ref [16] (Jia et al., Nature 644, 912-919, 2025).",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.5,
+        "rationale": "Specific certified value (34.58%) attributed to ref [16]; plausible for a 2025 high-efficiency asymmetric-SAM tandem but requires the cited paper to confirm. Not settleable internally."
+      }
+    },
+    {
+      "id": "c17",
+      "text": "The current world-record single-junction perovskite cell (27.2% PCE) uses potassium binoxalate (0.7 mol%, 1.5 mg/mL) plus formamidinium formate (0.4 mol% vs 1.8 M Pb) as additives.",
+      "quote": "the current world record (27.2% PCE) [31] contains potassium binoxalate (K+ [HC2 O4 ]- , 0.7 mol%, 1.5 mg/mL) as well as formamidinium formate ([CH(NH2 )]+ [HCOO]- ), 0.65 mg/mL; 0.007 M; 0.4 mol% vs. 1.8 M Pb) as additives.",
+      "section": "1. Introduction",
+      "page": 3,
+      "epistemic_tier": "T5",
+      "predicate": "Cross-check the 27.2% record and additive details against ref [31] (Xiong et al., Science 2025); separately, the embedded molarity figures (0.007 M, 0.4 mol% vs 1.8 M) admit a T0 sub-check.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "statistic",
+          "location": "Introduction, ref [31]",
+          "quote": "current world record (27.2% PCE) [31]",
+          "extracted_values": {"pce_pct": 27.2, "Kbinoxalate_molpct": 0.7, "FAFo_M": 0.007, "FAFo_molpct": 0.4, "Pb_M": 1.8}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Literature lookup of ref [31] (Xiong et al., Science 390, 638-642, 2025) for the 27.2% value; plus optional T0 check that 0.007 M / 1.8 M ~ 0.39 mol% matches the stated 0.4 mol%.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.6,
+        "rationale": "Embedded T0 self-consistency holds: 0.007/1.8 = 0.0039 = 0.39 mol% ~ the stated 0.4 mol% (internally consistent). The 27.2% single-junction record and other additive specifics are T5 literature claims (ref [31]); plausible and consistent with late-2025 records, but exact attribution needs the cited paper."
+      }
+    },
+    {
+      "id": "c18",
+      "text": "One of the most recent single-junction top devices reached 26.95% PCE using a heptafluorobutyrate anionic additive.",
+      "quote": "one of the most recent single junction top devices (with 26.95% PCE) contains an anionic additive (heptafluorobutyrate) [30]",
+      "section": "1. Introduction",
+      "page": 2,
+      "epistemic_tier": "T5",
+      "predicate": "Cross-check 26.95% PCE and heptafluorobutyrate additive against ref [30] (Li et al., Nat. Photon. 2025).",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "statistic",
+          "location": "Introduction, ref [30]",
+          "quote": "single junction top devices (with 26.95% PCE) contains an anionic additive (heptafluorobutyrate)",
+          "extracted_values": {"pce_pct": 26.95}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Literature lookup of ref [30] (Li et al., Nat. Photon. 20, 55-62, 2025).",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.5,
+        "rationale": "Specific value attributed to a cited paper; not verifiable from this manuscript. Note ref [30] is listed as 'Nat. Photon. 2025, 20, 55-62' which is a future-volume style citation - flag for citation-metadata verification."
+      }
+    },
+    {
+      "id": "c19",
+      "text": "Two certified high-efficiency single-junction devices based on HABr-containing materials achieved 25.2% (2021) and 23.2% PCE (2019).",
+      "quote": "two recent (certified) high-efficiency single-junction devices were based on materials containing HABr, specifically 25.2% in 2021 [37] and 23.2% PCE in 2019 [38].",
+      "section": "1. Introduction",
+      "page": 3,
+      "epistemic_tier": "T5",
+      "predicate": "Cross-check 25.2% (2021, ref [37] Yoo et al. Nature) and 23.2% (2019, ref [38]) PCE values and their HABr attribution.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "statistic",
+          "location": "Introduction, refs [37],[38]",
+          "quote": "25.2% in 2021 [37] and 23.2% PCE in 2019 [38]",
+          "extracted_values": {"pce_2021_pct": 25.2, "pce_2019_pct": 23.2}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Literature lookup of refs [37] (Yoo et al., Nature 590, 587-593, 2021) and [38] (Energy Environ. Sci. 2019).",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.55,
+        "rationale": "Values match well-known Yoo et al. records (25.2% certified, 2021) but the HABr attribution and the 23.2%/2019 pairing need the cited papers to confirm. T5 external."
+      }
+    },
+    {
+      "id": "c20",
+      "text": "Triple-halide perovskites endure extreme conditions, including temperatures over 200 C.",
+      "quote": "characterized by their endurance in extreme conditions, such as temperatures over 200 C [4]",
+      "section": "1. Introduction",
+      "page": 1,
+      "epistemic_tier": "T5",
+      "predicate": "Cross-check the >200 C thermal-operation claim against ref [4] (Afshari et al., ACS Energy Lett. 2023).",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "text",
+          "location": "Introduction, ref [4]",
+          "quote": "temperatures over 200 C [4]",
+          "extracted_values": {"temp_C": 200}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Literature lookup of ref [4] (Afshari et al., 'FACsPb Triple Halide Perovskite Solar Cells with Thermal Operation over 200 C').",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.7,
+        "rationale": "The ref [4] title itself states 'Thermal Operation over 200 C', so the citation-to-claim match is strong (title-level support). Underlying experimental claim is the cited authors'."
+      }
+    },
+    {
+      "id": "c21",
+      "text": "Mariotti et al. reported 25% loss after 478 h of illumination for the undoped material.",
+      "quote": "Mariotti et al. reported 25% loss after 478 h of illumination (for \"undoped\" material) [6].",
+      "section": "2. Results and Discussion",
+      "page": 8,
+      "epistemic_tier": "T5",
+      "predicate": "Cross-check the 25%-loss-after-478-h figure against ref [6].",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "statistic",
+          "location": "Results, ref [6]",
+          "quote": "25% loss after 478 h of illumination",
+          "extracted_values": {"loss_pct": 25, "hours": 478}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Literature lookup of ref [6] (Mariotti et al., Science 2023) for the degradation figure.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.45,
+        "rationale": "Specific degradation figure attributed to ref [6]; not verifiable from this paper. Compared by the authors to their own 500 h photodegradation result (qualitatively consistent)."
+      }
+    },
+    {
+      "id": "c22",
+      "text": "The XRD pattern of the Zn-Fo-doped film (1% doping) closely resembles Mariotti's digitized GIWAXS-derived pattern, indicating doping does not change the perovskite lattice structure.",
+      "quote": "The XRD pattern obtained is compared with the data reported by Mariotti and shows good resemblance ... This indicates that the incorporation of Zn and formate (at 1% total doping level) does not change the perovskite lattice structure",
+      "section": "2. Results and Discussion",
+      "page": 3,
+      "epistemic_tier": "T4",
+      "predicate": "Inspect Figure 2: compare peak positions (2-theta) of the red doped-film pattern against the black digitized Mariotti pattern; check qualitative correspondence and that no new dopant phases appear in the bulk pattern.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "figure",
+          "location": "Figure 2 (XRD, 2-theta 10-40 deg)",
+          "quote": "XRD pattern of Zn-Fo-doped thin film ... (in red) on quartz ... together with the (optimized and digitized) XRD pattern ... as reported by Mariotti et al. [6] (black)",
+          "extracted_values": {"two_theta_min_deg": 10, "two_theta_max_deg": 40}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Claim<->figure support: visual/peak-position comparison of the two XRD patterns (and SI Table S1 peak list) to confirm lattice-invariance and absence of impurity phases.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.55,
+        "rationale": "Figure 2 shows the doped (red) and digitized-Mariotti (black) patterns overlaid with apparent main-peak correspondence and an 'undoped' label; at rendered resolution the major perovskite peaks broadly align, but rigorous peak-position matching requires SI Table S1 (tabulated XRD). The black pattern is a bulk/GIWAXS-derived trace lacking the PbI2 surface peak (the authors note this), so the comparison is partly apples-to-oranges. Binding to a quantitative verdict needs the SI table."
+      }
+    },
+    {
+      "id": "c23",
+      "text": "PbI2 needles were observed in the top layer of non-optimized films by both SEM and optical microscopy, and were eliminated by compositional engineering in optimized films.",
+      "quote": "PbI2 needles were observed in the top layer of our (non-optimized) films ... the optimized perovskite films do not exhibit visible PbI2 -related features at the surface",
+      "section": "2. Results and Discussion",
+      "page": 5,
+      "epistemic_tier": "T4",
+      "predicate": "Inspect Figure 4 (SEM vs optical) and Figure 6 inset: confirm white needle-like features in the non-optimized images and their absence in the optimized image, supporting the elimination claim.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "figure",
+          "location": "Figure 4 (SEM + optical, scale bar 5 um / 20 um)",
+          "quote": "Comparison of SEM and optical microscopy images ... containing substantial PbI2 needles in the top part of the layer (white crystals) ... No PbI2 is visible.",
+          "extracted_values": {"scalebar_um_optical": 20, "scalebar_um_SEM": 5, "crystal_dim_nm": 400}
+        },
+        {
+          "id": "e2",
+          "kind": "figure",
+          "location": "Figure 6 inset",
+          "quote": "The inset shows the absence of PbI2 needles using optical microscopy for a wide-bandgap material (red time trace).",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Claim<->figure (image) support: qualitative inspection that needle features present in non-optimized and absent in optimized images (corroborated by SI Figures S2-S5).",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.7,
+        "rationale": "Figure 4 right panel clearly shows white needle/stripe features (SEM stripes co-located with optical stripes) labelled as PbI2, and the left/inset panels show featureless perovskite without such needles. The qualitative morphological claim is image-supported; full verification (and that the needles are PbI2, not artifacts) would use SI images and XRD/EDX, which are not in the main text."
+      }
+    },
+    {
+      "id": "c24",
+      "text": "Laminated 1%-doped optimized films showed no yellowing after more than 1 year under dark/indoor-light ambient conditions, but laser irradiation (532 nm, 1-5 suns, partial illumination) caused permanent photodegradation after 500 h.",
+      "quote": "no yellowing after more than 1 year under dark, or indoor light, ambient conditions ... laser irradiation with 532 nm through a pinhole or a slit ... showed clear signs of permanent photodegradation after 500 hrs. Laser power was varied from 1 to 5 suns.",
+      "section": "2. Results and Discussion",
+      "page": 8,
+      "epistemic_tier": "T4",
+      "predicate": "Verify the stability and photodegradation claims against the supporting photobleaching data (Figure S8) and setup (Figure S9) in the SI.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "text",
+          "location": "Results; SI Figures S8, S9",
+          "quote": "Photobleaching is presented in Figure S8, setup in Figure S9",
+          "extracted_values": {"hours_to_degrade": 500, "suns_min": 1, "suns_max": 5, "stability_years": 1, "laser_nm": 532}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Claim<->evidence support against SI Figures S8/S9 (photobleaching curves and setup).",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.5,
+        "rationale": "Photodegradation and >1 year no-yellowing claims rest on SI Figures S8/S9 not present in the main PDF; cannot bind to quantitative evidence here. Qualitatively consistent with cited literature on partial-shading degradation (ref [51]) and MAPbI3 photolability (ref [49])."
+      }
+    },
+    {
+      "id": "c25",
+      "text": "The perovskite crystals have a dimension of ca. 400 nm.",
+      "quote": "The perovskite crystals have a dimension of ca. 400 nm (see Figure 4-left).",
+      "section": "2. Results and Discussion",
+      "page": 5,
+      "epistemic_tier": "T4",
+      "predicate": "Check the ~400 nm grain size against the SEM image (Figure 4 left) using its 500 nm scale bar.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "figure",
+          "location": "Figure 4 (left, SEM with 500 nm scale bar)",
+          "quote": "image obtained with SEM showing perovskite crystals, grain boundaries, and facets",
+          "extracted_values": {"crystal_dim_nm": 400, "scalebar_nm": 500}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Claim<->figure support: estimate grain size from Figure 4-left relative to its 500 nm scale bar.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.6,
+        "rationale": "Figure 4-left SEM (500 nm scale bar) shows grains roughly comparable to, and slightly smaller than, the scale bar, consistent with ~400 nm. Rough visual estimate supports the claim; precise grain-size statistics not provided."
+      }
+    },
+    {
+      "id": "c26",
+      "text": "The precursor solution was 1.4 M, prepared by dissolving the salts in 600 uL DMF and 150 uL DMSO (a 4:1 DMF:DMSO volume ratio, 750 uL total).",
+      "quote": "Perovskite ... precursor solutions (1.4 M) were prepared by dissolving FAI, MACl, CsI, PbI2 , PbBr2 , and PbCl2 in 600 uL DMF and 150 uL DMSO according to the stoichiometric ratios",
+      "section": "3. Experiment",
+      "page": 8,
+      "epistemic_tier": "T0",
+      "predicate": "Check the solvent volume ratio (600:150 = 4:1) and total volume (750 uL) for internal consistency; assess plausibility of 1.4 M lead-halide concentration in that volume.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "number",
+          "location": "Experiment, precursor preparation",
+          "quote": "1.4 M ... in 600 uL DMF and 150 uL DMSO",
+          "extracted_values": {"molarity_M": 1.4, "DMF_uL": 600, "DMSO_uL": 150, "ratio": 4.0, "total_uL": 750}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Unit/ratio consistency check (600:150 = 4:1, total 750 uL); method-plausibility for a ~1.4 M perovskite precursor (standard 4:1 DMF:DMSO).",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.85,
+        "rationale": "600/150 = 4.0 (4:1 DMF:DMSO) is the standard solvent system; total 750 uL; 1.4 M is a typical perovskite precursor concentration. Note the abstract elsewhere implies '1.4 M' while the rewritten-Mariotti discussion mentions Pb at 1.8 M for a different (cited) device - not a conflict (different systems). Internally consistent."
+      }
+    },
+    {
+      "id": "c27",
+      "text": "Films were spin-coated at 5000 rpm for 45 s (5 s acceleration) with 300 uL anisole anti-solvent dropped at 25 s, then annealed at 100 C for 20 min.",
+      "quote": "The perovskite films were spin-coated at 5000 rpm for 45 s (5 s acceleration), with 300 uL anisole dropped at 25 s after the start of spin-coating, and annealed on a hot plate at 100 C for 20 min.",
+      "section": "3. Experiment",
+      "page": 8,
+      "epistemic_tier": "T3",
+      "predicate": "Assess method appropriateness/internal consistency: anti-solvent drop time (25 s) falls within the 45 s spin window; parameters are standard for one-step antisolvent perovskite deposition.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "number",
+          "location": "Experiment, spin-coating",
+          "quote": "spin-coated at 5000 rpm for 45 s ... 300 uL anisole dropped at 25 s ... annealed ... at 100 C for 20 min",
+          "extracted_values": {"rpm": 5000, "spin_s": 45, "accel_s": 5, "anisole_uL": 300, "drop_s": 25, "anneal_C": 100, "anneal_min": 20}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Method-appropriateness / internal-timing-consistency check against standard one-step antisolvent protocols.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.75,
+        "rationale": "Drop time 25 s < 45 s total spin (consistent); 5000 rpm/45 s, anisole antisolvent, 100 C/20 min anneal are all within standard ranges for this composition. No internal inconsistency; appropriateness judgement, not a hard recompute."
+      }
+    },
+    {
+      "id": "c28",
+      "text": "PLQY was measured at 450 nm excitation (Edinburgh FS5 + SC-30 integrating sphere), while long-lifetime TR-PL used 485 nm excitation (AMOLF) and composition-series TRPL used 488 nm (PicoQuant confocal).",
+      "quote": "Photoluminescence quantum yield (PLQY) was measured using an Edinburgh Instruments FS5 fluorimeter ... equipped with an SC-30 integrating sphere at 450 nm excitation. Long-lifetime measurements were recorded at AMOLF using 485 nm excitation ... a 488 nm Chameleon laser",
+      "section": "3. Experiment",
+      "page": 8,
+      "epistemic_tier": "T3",
+      "predicate": "Check internal consistency of the excitation wavelengths cited across text/figures (Fig 6 says 485 nm; Fig 3 confocal; methods say 450/485/488 nm) and appropriateness for the ~1.7-1.8 eV bandgap material.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "text",
+          "location": "Experiment + Figure 6 caption",
+          "quote": "450 nm excitation ... 485 nm excitation ... 488 nm Chameleon laser; (Fig 6) Excitation is at 485 nm",
+          "extracted_values": {"PLQY_exc_nm": 450, "AMOLF_exc_nm": 485, "confocal_exc_nm": 488}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Internal consistency + method-appropriateness check of excitation wavelengths across methods and figure captions.",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.7,
+        "rationale": "Three different instruments use 450/485/488 nm respectively; all are above-bandgap for a wide-bandgap (~1.7 eV) perovskite and appropriate. Figure 6 (485 nm) matches the AMOLF method; no contradiction. Minor: multiple wavelengths could confuse a reader but are consistently attributed per instrument."
+      }
+    },
+    {
+      "id": "c29",
+      "text": "PbI2 is a non-photoactive material that does not produce photovoltage or photocurrent, and is preferentially enriched near the surface of the perovskite layer (per Mariotti GIWAXS).",
+      "quote": "Their GIWAXS measurements on perovskite indicate that PbI2 is preferentially enriched near the surface of the perovskite layer. PbI2 is a non-photoactive material that does not produce photovoltage or photocurrent.",
+      "section": "2. Results and Discussion",
+      "page": 5,
+      "epistemic_tier": "T1",
+      "predicate": "Assess the domain-knowledge claim that PbI2 (bandgap ~2.3-2.4 eV) is essentially non-photoactive in this PV context and the surface-enrichment claim against ref [6].",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "text",
+          "location": "Results",
+          "quote": "PbI2 is a non-photoactive material that does not produce photovoltage or photocurrent",
+          "extracted_values": {}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Fixed-knowledge check (PbI2 optoelectronic role) plus literature cross-check of the surface-enrichment claim vs ref [6].",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.65,
+        "rationale": "Domain-accepted that residual PbI2 is wide-gap and largely non-contributing to photocurrent in these devices (slight passivation effects aside); the 'preferentially enriched near surface' detail is attributed to ref [6] and is consistent with the literature. Established-knowledge support; the absolute 'does not produce any photocurrent' is a mild over-statement (PbI2 has ~2.3 eV gap, weak response) but qualitatively correct."
+      }
+    },
+    {
+      "id": "c30",
+      "text": "Mariotti's tail-fit PL lifetime for their films on quartz was ~2 us.",
+      "quote": "Mariotti et al. [6] reported 3.75% as PLQY for their films on quartz (and a PL lifetime of ~2 us, by tail-fit).",
+      "section": "2. Results and Discussion",
+      "page": 6,
+      "epistemic_tier": "T5",
+      "predicate": "Cross-check the ~2 us tail-fit lifetime attribution against ref [6].",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "number",
+          "location": "Results, ref [6]",
+          "quote": "a PL lifetime of ~2 us, by tail-fit",
+          "extracted_values": {"lifetime_us": 2}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Literature lookup of ref [6] for the tail-fit lifetime value.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.45,
+        "rationale": "Specific lifetime attributed to ref [6]; cannot confirm from this manuscript. Note the methodological caveat the authors themselves raise (mono- vs stretched-exponential fits make cross-paper lifetime comparison non-trivial)."
+      }
+    },
+    {
+      "id": "c31",
+      "text": "The abstract states PL lifetimes 'up to ~7 us on quartz', and the best measured value is 6.84 us.",
+      "quote": "Photoluminescence ... lifetimes (up to ~7 us on quartz)",
+      "section": "Abstract vs Figure 6 / Conclusions",
+      "page": 1,
+      "epistemic_tier": "T2",
+      "predicate": "Check internal consistency: does '~7 us' in the abstract correspond to the 6.84 us best value reported in Figure 6 and the conclusions?",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "text",
+          "location": "Abstract",
+          "quote": "lifetimes (up to ~7 us on quartz)",
+          "extracted_values": {"abstract_us": 7}
+        },
+        {
+          "id": "e2",
+          "kind": "number",
+          "location": "Conclusions / Figure 6",
+          "quote": "a PL lifetime of 6.84 us",
+          "extracted_values": {"best_us": 6.84}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Internal rounding-consistency check (abstract ~7 us vs body 6.84 us).",
+        "verifier_exists": true,
+        "candidate_verdict": "supported",
+        "confidence": 0.9,
+        "rationale": "6.84 us rounds to ~7 us; abstract is an honest rounding of the body/Figure 6 value. Consistent. (Distinct from the Figure 3 confocal lifetime-histogram axis, which is a different measurement plotted x2.)"
+      }
+    },
+    {
+      "id": "c32",
+      "text": "Figure 3 right y-axis plots the maximum of the PL-lifetime histogram multiplied by 2 (x2 scaling).",
+      "quote": "maximum of PL-lifetime (us) histogram (x2)",
+      "section": "Figure 3 (axis label)",
+      "page": 5,
+      "epistemic_tier": "T2",
+      "predicate": "Check that the Figure 3 blue-axis '(x2)' scaling is internally consistent: the displayed peak (~4.0) implies an actual histogram-max of ~2.0 us at 1% doping, which should be reconcilable with the confocal (not AMOLF tail-fit) measurement basis.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "figure",
+          "location": "Figure 3 (right y-axis)",
+          "quote": "maximum of PL-lifetime (us) histogram (x2)",
+          "extracted_values": {"displayed_peak": 4.0, "implied_actual_us": 2.0}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Internal cross-consistency: reconcile Figure 3 confocal histogram-max (~2 us after dividing by 2) with the AMOLF stretched-exp value (6.84 us) - distinct methods/quantities.",
+        "verifier_exists": false,
+        "candidate_verdict": "inconclusive",
+        "confidence": 0.5,
+        "rationale": "The '(x2)' label means the plotted blue values are doubled; peak ~4.0 -> ~2 us actual histogram-max at 1% doping. This is a different metric (confocal lifetime-histogram peak, ref Figure S1) from the AMOLF stretched-exponential 6.84 us, so the two need not match. Without the SI histogram (Figure S1) the exact reconciliation can't be bound; flag as a potential reader-confusion point, not a clear error."
+      }
+    },
+    {
+      "id": "c33",
+      "text": "Films were produced on ultra-flat glass coated with a 20 nm synthetic quartz layer, with representative film ~500 nm thick on a 15 x 20 mm substrate.",
+      "quote": "Ultra-flat glass substrates coated with a 20 nm synthetic quartz layer were obtained from Ossila ... Photograph of a representative wide-bandgap perovskite (~500 nm thick) layer on quartz (15 x 20 mm).",
+      "section": "3. Experiment / Figure 1",
+      "page": 3,
+      "epistemic_tier": "T3",
+      "predicate": "Assess internal consistency/plausibility of substrate (20 nm quartz on glass) and film thickness (~500 nm) descriptions; check the 15 x 20 mm dimension against the Figure 1 photograph.",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "figure",
+          "location": "Figure 1 + Experiment",
+          "quote": "(~500 nm thick) layer on quartz (15 x 20 mm); 20 nm synthetic quartz layer",
+          "extracted_values": {"film_nm": 500, "quartz_nm": 20, "substrate_mm_w": 15, "substrate_mm_h": 20}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Method-plausibility / internal-consistency check (film thickness ~500 nm typical; 'quartz' here is a 20 nm coating on glass, relevant when comparing to bulk-quartz literature).",
+        "verifier_exists": false,
+        "candidate_verdict": "supported",
+        "confidence": 0.65,
+        "rationale": "~500 nm perovskite is standard; the substrate is glass with a 20 nm quartz coating (not bulk quartz) - worth noting since PLQY/lifetime are repeatedly described as 'on quartz'. Dimensions plausible vs Figure 1. Appropriateness judgement; no contradiction found."
+      }
+    },
+    {
+      "id": "c34",
+      "text": "The green (2019) reference trace in Figure 6 corresponds to FA0.85MA0.15Pb(I0.95Br0.05)3 with 2.5% Zn(II) doping (caption text adds '2.5% Zn + CPACl').",
+      "quote": "green = FA0.85 MA0.15 Pb(I0.95 Br0.05 )3 with 2.5% Zn(II) doping, maximum at 800 nm.",
+      "section": "Figure 6 caption / legend",
+      "page": 7,
+      "epistemic_tier": "T2",
+      "predicate": "Check consistency between the Figure 6 caption ('2.5% Zn(II) doping') and the in-figure legend label, which reads '[2.5% Zn + CPACl]' - do the additive descriptions agree?",
+      "evidence": [
+        {
+          "id": "e1",
+          "kind": "figure",
+          "location": "Figure 6 legend (in-plot)",
+          "quote": "FA0.85MA0.15Pb(I0.95Br0.05)3-[2.5% Zn + CPACl] 2019",
+          "extracted_values": {"Zn_pct": 2.5}
+        },
+        {
+          "id": "e2",
+          "kind": "text",
+          "location": "Figure 6 caption",
+          "quote": "green = FA0.85 MA0.15 Pb(I0.95 Br0.05 )3 with 2.5% Zn(II) doping",
+          "extracted_values": {"Zn_pct": 2.5}
+        }
+      ],
+      "verification": {
+        "possible": true,
+        "verifier_needed": "Prose(caption)-vs-figure(legend) consistency check of the green-trace additive description.",
+        "verifier_exists": true,
+        "candidate_verdict": "suspect",
+        "confidence": 0.5,
+        "rationale": "The in-figure legend labels the green (2019) sample '[2.5% Zn + CPACl]' whereas the caption describes it as '2.5% Zn(II) doping' (no mention of CPACl), and the body (p8) calls it simply 'Zn-doped'. The Zn percentage (2.5%) is consistent, but the CPACl additive appears in the figure legend yet is dropped from the caption/body - a mild prose-vs-figure mismatch worth flagging."
+      }
+    }
+  ],
+  "paper_level_notes": "Published MDPI Molecules 2026, 31, 625 (DOI 10.3390/molecules31040625); Wang, al Moubayed, Williams (Univ. Amsterdam). Open-access CC BY. Received 14 Jan 2026, published 11 Feb 2026; PDF created 16 Feb 2026 (note: PDF creation post-dates the stated publication date by 5 days - minor metadata oddity). Data availability: main results in article + Supplementary Materials (SI not bundled in this 12-page PDF); additional RDM data deposited at https://doi.org/10.21942/uva.31231672 (good reproducibility signal). Funding CSC project 202406140035; no conflicts declared. Many quantitative claims (XRD Table S1; PL lifetime histograms Fig S1; SEM/optical Fig S2-S5; UV-Vis+PL Fig S6; violin plots Fig S7; photodegradation Fig S8-S9) live in the SI and CANNOT be bound to evidence from this PDF alone - the strongest external-verification gains require fetching the SI and the RDM dataset. DETERMINISTIC FRONTIER (T0-T2) is the most checkable: the composition re-write (c3) recomputes essentially exactly (Cs 0.2095/FA 0.7429/MA 0.0476; I 0.8095/Br 0.1429/Cl 0.0476 -> stated 0.21/0.74/0.05 and 0.81/0.14/0.05), subscript sums = 1.00 (c1,c2), doping 0.5+0.5=1% (c4), DMF:DMSO 4:1 (c26), and the embedded 0.007 M / 1.8 M = 0.39 mol% ~ 0.4 mol% (c17) all hold. Cross-consistency mostly clean: PLQY 14% and lifetimes 6.84/3.65/1.57 us match across body, figures, and captions (c5,c7); abstract ~7 us = 6.84 us rounding (c31). MINOR FLAGS (suspect/worth-noting, NOT manufactured errors): (i) theoretical tandem limit quoted as both ~45% (p1) and 44% (p2), both leaning on ref [3] (c15); (ii) Figure 6 green-trace additive labelled '2.5% Zn + CPACl' in-plot but '2.5% Zn(II)' only in the caption/body (c34); (iii) Mariotti certified result dated '2022' in text but ref [6] is Science 2023 (c13); (iv) Figure 3 right axis is plotted x2 and reflects a confocal histogram-max (~2 us) distinct from the AMOLF 6.84 us, a possible reader-confusion point (c32); (v) 'on quartz' actually means a 20 nm quartz coating on glass (c33); (vi) ref [30] cited as Nat. Photon. 2025 vol 20 (forward-volume style) - citation-metadata check. No integrity red flags (T7) detected from the main text; numbers are self-consistent and reuse cleanly. Several T5 literature-record claims (35.0% LONGi, 32.5% Mariotti, 25.2% Jeong, 27.2%/26.95% records, 34.58% SAM tandem) are plausible and consistent with the known field trajectory but require literature/NREL-chart verification with a date anchor to settle."
+}
