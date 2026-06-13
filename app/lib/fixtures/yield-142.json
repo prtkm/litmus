@@ -1,0 +1,42 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "yield-142",
+  "meta": {
+    "title": "Palladium-Catalyzed C–H Arylation of Benzaldehyde Derivatives Under Mild Conditions",
+    "field": "Organic Chemistry",
+    "doi": "10.26434/chemrxiv.example.0001",
+    "authors": "A. Researcher, B. Coauthor",
+    "venue": "ChemRxiv (preprint)"
+  },
+  "summary": {
+    "headline": "1 confirmed flag (severity A): reported yield exceeds the 100% stoichiometric ceiling.",
+    "verdict": "fail",
+    "claims_extracted": 18,
+    "verifiers_run": 11
+  },
+  "findings": [
+    {
+      "verifier_id": "yield_ceiling_v1",
+      "claim_id": "c-yield-table1",
+      "status": "fail",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": "A",
+      "message": "Reported chemical yield of 142% exceeds the 100% stoichiometric limit. Recomputing the yield from the paper's own reported isolated mass (562.0 mg), product molar mass (198.22 g/mol), and limiting-reagent amount (2.00 mmol, 1:1 stoichiometry) gives 141.8% — independently above the physical ceiling. A yield above 100% is impossible for a reaction that conserves mass; the most likely causes are a mass/MW transcription error, residual solvent, or co-eluting impurity.",
+      "discrepancy": "reported 142% vs. stoichiometric ceiling 100% (recomputed 141.8%, +41.8 points)",
+      "reported": "142%",
+      "computed": "141.8%",
+      "evidence": {
+        "quote": "Under the optimized conditions, the desired biaryl product was isolated in 142% yield (562 mg).",
+        "location": { "section": "Results and Discussion", "page": 4, "char_span": [11820, 11898] },
+        "recompute_script": "# T0 internal-arithmetic verifier: recompute reaction yield vs the 100% limit.\n# Reaction: limiting reagent benzaldehyde, 2.00 mmol -> product (1:1 stoichiometry).\n# We recompute % yield = moles_product / moles_theoretical * 100 from the paper's\n# own reported isolated mass and product MW, then test the stoichiometric ceiling.\n\nlimiting_mmol = 2.00          # benzaldehyde, the limiting reagent (paper, Table 1)\nproduct_mw = 198.22           # g/mol, reported product\nreported_mass_mg = 562.0      # isolated product mass reported in the paper\nreported_yield_pct = 142.0    # the paper's stated yield\n\n# 1:1 stoichiometry -> theoretical moles of product == limiting reagent moles.\ntheoretical_mmol = limiting_mmol\nmoles_product_mmol = (reported_mass_mg / 1000.0) / product_mw * 1000.0\ncomputed_yield_pct = moles_product_mmol / theoretical_mmol * 100.0\n\nLIMIT = 100.0\nexceeds = computed_yield_pct > LIMIT\n\nprint(f\"theoretical product: {theoretical_mmol:.3f} mmol (1:1 from limiting reagent)\")\nprint(f\"isolated product:    {moles_product_mmol:.3f} mmol ({reported_mass_mg:.1f} mg / {product_mw:.2f} g/mol)\")\nprint(f\"reported yield:      {reported_yield_pct:.1f}%\")\nprint(f\"recomputed yield:    {computed_yield_pct:.1f}%\")\nprint(f\"stoichiometric ceiling: {LIMIT:.1f}%\")\nprint(f\"VERDICT: FAIL - yield exceeds 100% by {computed_yield_pct - LIMIT:.1f} points (physically impossible)\" if exceeds else \"VERDICT: PASS\")\n",
+        "expected_output": "theoretical product: 2.000 mmol (1:1 from limiting reagent)\nisolated product:    2.835 mmol (562.0 mg / 198.22 g/mol)\nreported yield:      142.0%\nrecomputed yield:    141.8%\nstoichiometric ceiling: 100.0%\nVERDICT: FAIL - yield exceeds 100% by 41.8 points (physically impossible)\n",
+        "script_dependencies": []
+      },
+      "details": { "epistemic_tier": "T0", "reproducibility": "exact" }
+    }
+  ],
+  "dropped_flags": [],
+  "routed_to_human": [],
+  "abstained": []
+}

@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+/* LITMUS — a thin viewer over the audit JSON. The verdicts + scripts are the
+   product (DESIGN §16: not a dashboard-as-product). Calm, dense, legible. */
+
+:root {
+  --background: #fafaf9;
+  --surface: #ffffff;
+  --surface-2: #f5f5f4;
+  --foreground: #1c1917;
+  --muted: #57534e;
+  --faint: #78716c;
+  --border: #e7e5e4;
+  --border-strong: #d6d3d1;
+
+  /* Status (a finding's verdict). */
+  --fail: #b91c1c;
+  --fail-bg: #fef2f2;
+  --fail-border: #fecaca;
+  --pass: #15803d;
+  --pass-bg: #f0fdf4;
+  --pass-border: #bbf7d0;
+  --inconclusive: #b45309;
+  --inconclusive-bg: #fffbeb;
+  --inconclusive-border: #fde68a;
+
+  /* Severity. */
+  --sev-a: #b91c1c;
+  --sev-b: #c2410c;
+  --sev-c: #a16207;
+
+  /* Trust tiers — DESIGN §3.6: NEVER blur deterministic vs advisory.
+     Each tier gets a visually distinct, deliberately different hue. */
+  --tier-deterministic: #1d4ed8; /* blue   — exact, theorem-grade */
+  --tier-deterministic-bg: #eff6ff;
+  --tier-deterministic-border: #bfdbfe;
+  --tier-calibrated: #7c3aed; /* violet — calibrated/synthesized */
+  --tier-calibrated-bg: #f5f3ff;
+  --tier-calibrated-border: #ddd6fe;
+  --tier-advisory: #a16207; /* amber  — advisory only */
+  --tier-advisory-bg: #fefce8;
+  --tier-advisory-border: #fef08a;
+  --tier-human: #475569; /* slate  — routed to a human, not scored */
+  --tier-human-bg: #f8fafc;
+  --tier-human-border: #e2e8f0;
+
+  --ok: #15803d;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0c0a09;
+    --surface: #161311;
+    --surface-2: #1c1917;
+    --foreground: #f5f5f4;
+    --muted: #a8a29e;
+    --faint: #78716c;
+    --border: #292524;
+    --border-strong: #44403c;
+
+    --fail: #f87171;
+    --fail-bg: #2a1414;
+    --fail-border: #5b1f1f;
+    --pass: #4ade80;
+    --pass-bg: #0f2018;
+    --pass-border: #1f4a32;
+    --inconclusive: #fbbf24;
+    --inconclusive-bg: #261c08;
+    --inconclusive-border: #4a3a12;
+
+    --sev-a: #f87171;
+    --sev-b: #fb923c;
+    --sev-c: #fbbf24;
+
+    --tier-deterministic: #60a5fa;
+    --tier-deterministic-bg: #11203a;
+    --tier-deterministic-border: #1e3a5f;
+    --tier-calibrated: #a78bfa;
+    --tier-calibrated-bg: #1e1633;
+    --tier-calibrated-border: #3b2c5e;
+    --tier-advisory: #fbbf24;
+    --tier-advisory-bg: #261c08;
+    --tier-advisory-border: #4a3a12;
+    --tier-human: #94a3b8;
+    --tier-human-bg: #161b22;
+    --tier-human-border: #2a323d;
+
+    --ok: #4ade80;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans), ui-sans-serif, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+}
+
+code,
+pre {
+  font-family: var(--font-mono), ui-monospace, SFMono-Regular, monospace;
+}

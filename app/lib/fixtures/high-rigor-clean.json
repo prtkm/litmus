@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "high-rigor-clean",
+  "meta": {
+    "title": "Pre-Registered Replication of Solvent-Polarity Effects on a Diels–Alder Cycloaddition",
+    "field": "Physical Organic Chemistry",
+    "doi": "10.1021/example.0003",
+    "authors": "F. Careful, G. Rigorous, H. Thorough",
+    "venue": "Journal of the Example Society"
+  },
+  "summary": {
+    "headline": "No confirmed flags. 2 dimensions routed to a human; 1 candidate flag self-retracted on fresh-context re-read.",
+    "verdict": "pass",
+    "claims_extracted": 31,
+    "verifiers_run": 19
+  },
+  "findings": [],
+  "dropped_flags": [
+    {
+      "reason": "A fresh-context confirmation pass (DESIGN §13) re-read the table and retracted this candidate flag. The first pass folded the '18 excluded after screening' footnote into the denominator and reported a 215 vs 233 mismatch. On a clean re-read the reported total (215) reconciles exactly with the two arm sizes (120 + 95); the 18 excluded are pre-enrollment and never entered the total. Recorded as a self-caught false positive rather than shown as a finding — the autonomy evidence.",
+      "finding": {
+        "verifier_id": "table_total_v1",
+        "claim_id": "c-enrollment-table1",
+        "status": "fail",
+        "trust_tier": "deterministic_confirmed",
+        "verifier_kind": "prebuilt",
+        "severity": "C",
+        "message": "FIRST-PASS CANDIDATE (retracted): suspected the 'Total enrolled' did not match the per-arm sizes. Superseded by the fresh-context re-read below.",
+        "discrepancy": "first pass: reported 215 vs (mis-derived) 233",
+        "reported": "215",
+        "computed": "215",
+        "evidence": {
+          "quote": "A total of 215 participants were enrolled (arm A, n = 120; arm B, n = 95); 18 were excluded after screening.",
+          "location": { "section": "Methods", "page": 3, "char_span": [8021, 8126] },
+          "recompute_script": "# T0 table-total verifier (FIRST PASS, later RETRACTED on fresh context).\n# First pass mis-read the \"n = 18 excluded\" footnote as part of the denominator.\n# On a clean re-read the reported total reconciles exactly with the arm sizes.\n\narm_a = 120          # Table 1, arm A enrolled\narm_b = 95           # Table 1, arm B enrolled\nreported_total = 215 # Table 1, \"Total enrolled\"\n\ncomputed_total = arm_a + arm_b\nok = computed_total == reported_total\n\nprint(f\"arm A enrolled:   {arm_a}\")\nprint(f\"arm B enrolled:   {arm_b}\")\nprint(f\"sum of arms:      {computed_total}\")\nprint(f\"reported total:   {reported_total}\")\nprint(f\"VERDICT: PASS - reported total reconciles with the arm sizes\" if ok else f\"VERDICT: FAIL - off by {abs(computed_total - reported_total)}\")\n",
+          "expected_output": "arm A enrolled:   120\narm B enrolled:   95\nsum of arms:      215\nreported total:   215\nVERDICT: PASS - reported total reconciles with the arm sizes\n",
+          "script_dependencies": []
+        },
+        "details": { "epistemic_tier": "T0", "retracted_by": "fresh_context_pass" }
+      }
+    }
+  ],
+  "routed_to_human": [
+    {
+      "claim_id": "c-novelty-intro",
+      "dimension": "novelty",
+      "note": "The introduction positions the work as the first systematic replication of this solvent-polarity series. Whether that constitutes a novel-enough contribution is a judgment for the field, not a verifiable proposition. Surfaced, not scored (DESIGN §3.5).",
+      "quote": "To our knowledge, this is the first pre-registered replication of the full solvent-polarity series."
+    },
+    {
+      "claim_id": "c-importance-discussion",
+      "dimension": "significance",
+      "note": "The Discussion argues the reconciled rate constants 'settle a long-standing disagreement' in the literature. Whether the disagreement is settled is a matter of expert significance-weighting; LITMUS routes it rather than rendering a verdict.",
+      "quote": "These results should settle the long-standing disagreement over the polarity dependence of this cycloaddition."
+    }
+  ],
+  "abstained": []
+}

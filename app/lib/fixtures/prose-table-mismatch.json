@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "prose-table-mismatch",
+  "meta": {
+    "title": "A Microfluidic Platform for High-Throughput Enzymatic Assays",
+    "field": "Analytical Chemistry / Bioengineering",
+    "doi": "10.1021/example.0002",
+    "authors": "C. Lead, D. Second, E. Senior",
+    "venue": "Journal of the Example Society"
+  },
+  "summary": {
+    "headline": "1 confirmed flag (severity B): a Discussion percentage overstates the paper's own Table 2.",
+    "verdict": "fail",
+    "claims_extracted": 24,
+    "verifiers_run": 14
+  },
+  "findings": [
+    {
+      "verifier_id": "prose_percent_vs_table_v1",
+      "claim_id": "c-throughput-discussion",
+      "status": "fail",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "templated",
+      "severity": "B",
+      "message": "The Discussion states throughput improved by ~+40%, but the values it is bound to in Table 2 (baseline 50, treatment 68 units/hr) give +36.0%. The 4-point overstatement exceeds the 2-point tolerance. The binding (claim → Table 2 cells) was resolved by the model; the percentage itself is judged by code.",
+      "discrepancy": "prose '+40%' vs. table-derived +36.0% (50 → 68); gap 4.0 points",
+      "reported": "+40%",
+      "computed": "+36.0%",
+      "evidence": {
+        "quote": "Taken together, the microfluidic format improved assay throughput by roughly 40% relative to the plate-based baseline.",
+        "location": { "section": "Discussion", "page": 7, "char_span": [20144, 20259] },
+        "recompute_script": "# T2 internal-cross-consistency verifier: prose percent-change vs the paper's own table.\n# Claim (Discussion): \"treatment improved throughput by roughly +40% over baseline\".\n# Table 2 gives the underlying values the claim is bound to.\n\nbaseline = 50.0   # Table 2, control column (units/hr)\ntreatment = 68.0  # Table 2, treatment column (units/hr)\nclaimed_pct = 40.0  # prose: \"+40%\"\n\ncomputed_pct = (treatment - baseline) / baseline * 100.0\ndelta = abs(computed_pct - claimed_pct)\nTOL = 2.0  # tolerance in percentage points before we flag a prose/table mismatch\nmismatch = delta > TOL\n\nprint(f\"table baseline:   {baseline:.1f}\")\nprint(f\"table treatment:  {treatment:.1f}\")\nprint(f\"computed change:  {computed_pct:+.1f}% ((68 - 50) / 50)\")\nprint(f\"prose claim:      +{claimed_pct:.1f}%\")\nprint(f\"absolute gap:     {delta:.1f} points (tolerance {TOL:.1f})\")\nprint(f\"VERDICT: FAIL - prose overstates the table by {delta:.1f} points\" if mismatch else \"VERDICT: PASS\")\n",
+        "expected_output": "table baseline:   50.0\ntable treatment:  68.0\ncomputed change:  +36.0% ((68 - 50) / 50)\nprose claim:      +40.0%\nabsolute gap:     4.0 points (tolerance 2.0)\nVERDICT: FAIL - prose overstates the table by 4.0 points\n",
+        "script_dependencies": []
+      },
+      "details": { "epistemic_tier": "T2", "reproducibility": "exact_once_bound" }
+    }
+  ],
+  "dropped_flags": [],
+  "routed_to_human": [
+    {
+      "claim_id": "c-significance-abstract",
+      "dimension": "significance",
+      "note": "The abstract frames the throughput gain as a step change that 'could transform' clinical screening. Whether a 36% throughput improvement is practically significant for that setting is a domain-judgment call, not an arithmetic one. Surfaced for a human reviewer; LITMUS does not score it (DESIGN §3.5).",
+      "quote": "This advance could transform the economics of high-throughput clinical screening."
+    }
+  ],
+  "abstained": [
+    {
+      "verifier_id": "stat_test_appropriateness_v1",
+      "claim_id": "c-pvalue-results",
+      "status": "inconclusive",
+      "trust_tier": "advisory_assisted",
+      "verifier_kind": "assisted",
+      "severity": null,
+      "message": "Could not determine whether the reported t-test was paired or unpaired: the Methods do not state the pairing and the per-replicate data are not in the paper or SI. The verdict depends on that choice, so the verifier abstains rather than guess (DESIGN §3.4). Extraction confidence on the test design was below the binding threshold.",
+      "discrepancy": null,
+      "reported": "t-test, p = 0.03",
+      "computed": null,
+      "evidence": {
+        "quote": "Differences were assessed using a t-test (p = 0.03).",
+        "location": { "section": "Methods", "page": 6, "char_span": [17002, 17051] }
+      },
+      "details": { "epistemic_tier": "T3", "abstain_reason": "design_underspecified" }
+    }
+  ]
+}
