@@ -79,6 +79,50 @@ def _yield_tool_input() -> dict:
     }
 
 
+def _multi_product_yield_tool_input() -> dict:
+    """One reaction row reporting SEVERAL product yields at once — the roy2025 shape (IPL + GVL).
+
+    The extractor disambiguates them with prefixed ``*_yield_pct`` keys packed into a SINGLE
+    evidence record, with NO bare ``reported_yield_pct``. yield_check can only cover the reaction
+    by scanning the disambiguated keys (DESIGN §11); here the GVL yield is an impossible 142%.
+    """
+    return {
+        "claims": [
+            {
+                "id": "c1",
+                "text": "Over this catalyst the row gives 61% IPL and 142% GVL.",
+                "location": {
+                    "section": "Results",
+                    "page": 4,
+                    "char_span": None,
+                    "quote": "61% IPL and 142% GVL",
+                },
+                "epistemic_tier": "T1",
+                "predicate": "every reported_*_yield_pct <= 100",
+                "strength": "exact",
+                "scope": "Table 2, entry 3",
+                "evidence_refs": ["ev1"],
+                "confidence": 0.9,
+            }
+        ],
+        "evidence": [
+            {
+                "id": "ev1",
+                "kind": "table",
+                "location": {"section": "Results", "page": 4, "quote": "61 ... 142"},
+                "extracted_values": {
+                    # several product yields packed into ONE row, each disambiguated by product —
+                    # exactly what the live extractor produced on roy2025 (no bare reported_yield_pct).
+                    "reported_ipl_yield_pct": 61.0,
+                    "reported_gvl_yield_pct": 142.0,  # impossible: > 100%
+                },
+                "confidence": 0.9,
+            }
+        ],
+        "bindings": [{"claim_id": "c1", "evidence_id": "ev1", "relation": "rests_on"}],
+    }
+
+
 def _fake_message(tool_input: dict, *, name: str = TOOL_NAME) -> SimpleNamespace:
     """A fake Anthropic ``Message`` whose single content block is the emit_claim_graph tool call."""
     block = SimpleNamespace(type="tool_use", name=name, id="toolu_x", input=tool_input)
@@ -149,6 +193,65 @@ def test_free_form_key_alone_does_not_fire_verifier():
     assert report.checkable == []  # no verifier could bind -> no flag
     # a checkable (T1) claim with evidence that no verifier covered is a synthesis candidate.
     assert "c1" in report.meta.get("synthesis_candidates", [])
+
+
+# --- multi-product rows: disambiguated *_yield_pct keys still reach yield_check ----------
+def test_multi_product_yield_keys_survive_parse_path():
+    """The disambiguated per-product ``*_yield_pct`` keys survive the extractor parse path
+    verbatim (no value invented, no key dropped) — the precondition for the verifier binding them.
+    The bare ``reported_yield_pct`` is deliberately absent: this is the roy2025 multi-product shape.
+    """
+    graph = build_claim_graph(
+        _extract_tool_input(_fake_message(_multi_product_yield_tool_input())),
+        paper_id="keyalign-multiyield",
+    )
+
+    assert schema.validate(graph.to_dict(), "claim") == []
+    vals = graph.evidence_by_id("ev1").extracted_values
+    assert vals["reported_ipl_yield_pct"] == 61.0
+    assert vals["reported_gvl_yield_pct"] == 142.0
+    assert "reported_yield_pct" not in vals  # only the disambiguated keys are present
+
+
+def test_local_executor_flags_impossible_multi_product_yield():
+    """The coverage fix: a row reporting several product yields under disambiguated ``*_yield_pct``
+    keys (no bare ``reported_yield_pct``) must STILL be yield-checked — the impossible 142% GVL
+    yield is confirmed-flagged severity A instead of silently abstained (the pre-fix behavior)."""
+    graph = build_claim_graph(
+        _extract_tool_input(_fake_message(_multi_product_yield_tool_input())),
+        paper_id="keyalign-multiyield",
+    )
+
+    report = LocalExecutor(confirm=True).audit_graph(graph, _focused_registry())
+
+    flags = report.checkable
+    assert len(flags) == 1, [f.verifier_id for f in flags]
+    flag = flags[0]
+    assert flag.verifier_id == "yield_check.v1"
+    assert flag.status is Status.FAIL
+    assert flag.severity is Severity.A  # >100% is the severity-A physical-bound wedge
+    assert flag.trust_tier is TrustTier.DETERMINISTIC_CONFIRMED  # survived fresh-context confirm
+    assert flag.reported == 142.0  # the impossible product yield, not the in-bounds 61%
+    assert report.dropped_flags == []
+    assert "IMPOSSIBLE_YIELD" in (flag.evidence.expected_output or "")
+    assert schema.validate(report.to_dict(), "audit") == []
+
+
+def test_multi_product_all_in_bounds_binds_and_passes_not_abstains():
+    """Regression for the coverage gap itself: when EVERY packed product yield is <=100% (the
+    actual roy2025 case), the verifier must BIND and PASS — not abstain. Pre-fix it abstained
+    (no bare ``reported_yield_pct``) and the claim fell through to synthesis."""
+    ok = _multi_product_yield_tool_input()
+    ok["evidence"][0]["extracted_values"]["reported_gvl_yield_pct"] = 15.0  # now both <= 100
+    graph = build_claim_graph(_extract_tool_input(_fake_message(ok)), paper_id="keyalign-multiok")
+
+    report = LocalExecutor(confirm=True).audit_graph(graph, _focused_registry())
+
+    assert report.checkable == []  # nothing impossible -> no flag
+    # but the claim was COVERED (a PASS), so it is NOT a synthesis candidate (the pre-fix gap).
+    assert "c1" not in report.meta.get("synthesis_candidates", [])
+    yield_passes = [f for f in report.findings if f.verifier_id == "yield_check.v1"]
+    assert len(yield_passes) == 1 and yield_passes[0].status is Status.PASS
 
 
 def test_canonical_statcheck_keys_fire_via_parse_path():

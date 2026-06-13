@@ -27,8 +27,10 @@ percent is printed to finite precision: "a 36% increase" means the true change r
 lies in ``[35.5, 36.5]``. So ``50 -> 68.2`` (a true +36.4%) reported as "36%" is *correct* — the
 author rounded. The tolerance is half a unit in the reported percent's last printed place (``0.5``
 for an integer percent, ``0.05`` for one decimal), plus a small allowance for the inputs' own
-rounding. The flagship "+40% claimed but 50->68 is +36%" gap (4 points) blows past it and still
-FAILs.
+rounding (an exact integer count, or a unit ratio baseline like ``old=1.0``, carries none — only a
+genuinely fractional display does). The flagship "+40% claimed but 50->68 is +36%" gap (4 points)
+blows past it and still FAILs; so does a 12%-reduction ratio (aRR 0.88 off baseline 1.0) glossed
+as "9% fewer".
 
 Everything here is deterministic: no RNG, clock, or network in ``judge`` or in the emitted script
 (DESIGN §7 G4). The calibration kernel verifies that empirically.
@@ -298,6 +300,14 @@ class PercentChange(Verifier):
             ("percent_decrease", "halving", 100.0, 50.0, -50.0),      # -50%
             ("percent_decrease", "quarter_drop", 200.0, 150.0, -25.0),  # -25%
             ("percent_decrease", "tenth_drop", 50.0, 45.0, -10.0),    # -10%
+            # Fractional new with an integer-percent rounding: 50->68.2 is +36.4%, correctly
+            # printed "36%" (the author rounded). The reported half-ULP (0.5) plus new's own
+            # (0.05) covers the 0.4-point gap, so this PASSes — the rounding allowance, not a flag.
+            ("percent_increase", "fractional_round_36", 50.0, 68.2, 36.0),  # +36.4% -> "36%"
+            # Ratio-baseline archetype, CORRECTLY reported: aRR 0.88 off an exact baseline of 1.0
+            # is a 12% reduction; reported -12 must PASS. Guards the fix against over-tightening —
+            # a correct ratio claim must not become a false positive when old=1.0 is treated exact.
+            ("percent_decrease", "ratio_baseline_correct", 1.0, 0.88, -12.0),  # aRR 0.88 -> -12%
         ]
         for ctype, suffix, old, new, rep in clean_specs:
             assert abs(100.0 * (new - old) / old - rep) <= _tolerance(old, new, rep), (
@@ -315,6 +325,12 @@ class PercentChange(Verifier):
             ("percent_decrease", "understated", 100.0, 70.0, -10.0),   # really -30%
             ("percent_decrease", "overstated_drop", 200.0, 180.0, -25.0),  # really -10%
             ("percent_decrease", "flipped", 80.0, 100.0, -25.0),       # really +25%
+            # The ratio-baseline false-negative archetype this fix closes: an exact baseline of 1.0
+            # with a 2-dp adjusted ratio new=0.88 is a 12% reduction, but the paper rounded it to
+            # "9% fewer". The old rounding-aware tolerance treated old=1.0 as a ±0.5 measurement and
+            # ballooned ~45pp, swallowing the 3-point gap; now old=1.0 is exact, tol~1.0, and the
+            # over-claim still FAILs (the global-health-2023 corpus paper, corrigendum PMC11237678).
+            ("percent_decrease", "ratio_baseline_aRR", 1.0, 0.88, -9.0),  # aRR 0.88 is -12%, not -9%
         ]
         for ctype, suffix, old, new, rep in planted_specs:
             assert abs(100.0 * (new - old) / old - rep) > _tolerance(old, new, rep), (
