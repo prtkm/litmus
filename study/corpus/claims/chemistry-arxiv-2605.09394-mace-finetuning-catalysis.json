@@ -1,0 +1,1270 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "chemistry-arxiv-2605.09394-mace-finetuning-catalysis",
+  "meta": {
+    "notes": "Figure-read MAEs (CHCOH pathway, C1 pathway, OER) extracted from prose annotations of figures. Several abstract claims duplicate body/table values (prose_vs_table candidates). Tier proposals: most comparative MAE claims are T2 (internal cross-consistency between prose and tables/figures); literature claims about other models are T5.",
+    "double_extracted_abstract_body": [
+      "c2",
+      "c3",
+      "c4",
+      "c14",
+      "c15",
+      "c30"
+    ],
+    "extractor": "litmus.extract",
+    "model": "claude-opus-4-8",
+    "source": "opus-native-pdf"
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "text": "FS models with 5% to 10% of perturbed (high-energy) configurations from MD or contour exploring can reduce the error by over 2x compared to models trained only on relaxation trajectories.",
+      "location": {
+        "section": "Abstract",
+        "page": 2,
+        "char_span": null,
+        "quote": "that FS models with 5 % to 10 % of perturbed (high-energy) configurations from\nMD or contour exploring (CE), can reduce the error by over 2× compared to\nmodels trained only on relaxation trajectories."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "error_reduction_factor >= 2 when 5-10% perturbed configs added vs relaxation-only",
+      "strength": "comparative",
+      "scope": "FS models, Er/Ea test sets",
+      "evidence_refs": [
+        "ev_t4"
+      ],
+      "confidence": 0.75
+    },
+    {
+      "id": "c2",
+      "text": "An MLIP fine-tuned on metallic catalysts achieves an MAE of 0.30 eV for OER on iridium oxide polymorphs, which is 0.08 eV lower than out-of-box MACE-MH-1 and 0.14 eV lower than the best performing FS MLIP.",
+      "location": {
+        "section": "Abstract",
+        "page": 2,
+        "char_span": null,
+        "quote": "an MLIP fine-tuned on metallic catalysts achieves an MAE\nof 0.30 eV for OER on iridium oxide polymorphs, which is 0.08 eV lower than\nout-of-box MACE-MH-1 and 0.14 eV lower than the best performing FS MLIP."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_MAE_OER == 0.30 eV; diff_vs_MACE_MH1 == 0.08 eV; diff_vs_best_FS == 0.14 eV",
+      "strength": "comparative",
+      "scope": "OER on iridium oxide polymorphs",
+      "evidence_refs": [
+        "ev_abs_oer"
+      ],
+      "confidence": 0.7
+    },
+    {
+      "id": "c3",
+      "text": "An MLIP fine-tuned to O and OH adsorption on metal oxides gives an Ea MAE of 0.19 eV for out-of-distribution CO2RR reaction on Cu.",
+      "location": {
+        "section": "Abstract",
+        "page": 2,
+        "char_span": null,
+        "quote": "an MLIP fine-tuned to O and OH adsorption on metal oxides gives\nan Ea MAE of 0.19 eV for out-of-distribution CO2RR reaction on Cu"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_Ea_MAE == 0.19 eV for FT-MD(MO) on CO2RR Cu",
+      "strength": "approximate",
+      "scope": "out-of-distribution CO2RR reaction on Cu",
+      "evidence_refs": [
+        "ev_abs_ea_mo"
+      ],
+      "confidence": 0.65
+    },
+    {
+      "id": "c4",
+      "text": "A large MLIP fine-tuned to 49,860 configurations achieves an MAE of 0.15 eV for Er when screening a left-out set of 90,781 bimetallic alloys.",
+      "location": {
+        "section": "Abstract",
+        "page": 2,
+        "char_span": null,
+        "quote": "a large MLIP fine-tuned to 49,860\nconfigurations shows the best performance across both metallic and metal-oxide\ncatalysts, which was used to screen a large-left out, 90,781, of bimetallic alloys,\nachieving an MAE of 0.15 eV for Er"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_Er_MAE == 0.15 eV; FT-TS_configs == 49,860; screened == 90,781",
+      "strength": "approximate",
+      "scope": "FT-All on 90,781 bimetallic alloy screening, 2,115 DFT test subset",
+      "evidence_refs": [
+        "ev_abs_screen",
+        "ev_screen"
+      ],
+      "confidence": 0.7
+    },
+    {
+      "id": "c5",
+      "text": "The FS-BMA model achieves an MAE of 0.659 eV for the metal test set Er.",
+      "location": {
+        "section": "4.1.1",
+        "page": 9,
+        "char_span": null,
+        "quote": "achieves\nan MAE of 0.659 eV when predicting the metal test set Er"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_Er_M_MAE == 0.659 eV for FS-BMA",
+      "strength": "exact",
+      "scope": "FS-BMA, metallic catalyst Er test set",
+      "evidence_refs": [
+        "ev_t4"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c6",
+      "text": "The FS-BMA+MD model achieves an MAE of 0.310 eV for metallic catalyst Er and 0.476 eV for Er(MO).",
+      "location": {
+        "section": "4.1.1",
+        "page": 9,
+        "char_span": null,
+        "quote": "the\nmodel achieves an MAE of 0.310 eV for metallic catalyst Er, better than the performance of the unmodified large foundation models (UMA and MACE-MH-1), but\nperforms poorly for Er(MO) with an MAE of 0.476 eV"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_Er_M_MAE == 0.310 eV; reported_Er_MO_MAE == 0.476 eV for FS-BMA+MD",
+      "strength": "exact",
+      "scope": "FS-BMA+MD, metallic and metal-oxide Er",
+      "evidence_refs": [
+        "ev_t4"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c7",
+      "text": "The FS-All model achieves an MAE of 0.175 eV for Ea(M) predictions, about half of the error of the FS-BMA+MD model.",
+      "location": {
+        "section": "4.1.1",
+        "page": 9,
+        "char_span": null,
+        "quote": "This model achieves an MAE\nof 0.175 eV for Ea(M) predictions, about half of the error calculated using the\nFS-BMA+MD model, within 0.05 eV of the UMA and MACE-MH-1 models’ MAE."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_Ea_M_MAE == 0.175 eV for FS-All; ~= 0.5 * FS-BMA+MD Ea MAE (0.398)",
+      "strength": "comparative",
+      "scope": "FS-All, Ea metallic test set",
+      "evidence_refs": [
+        "ev_t4"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "c8",
+      "text": "FT-BMA (relaxation trajectories only) achieves Er(MO) MAE of 0.334 eV, about 0.06 eV lower than a model with about 2,692 metal-oxide configurations in training.",
+      "location": {
+        "section": "4.1.2",
+        "page": 10,
+        "char_span": null,
+        "quote": "with\nno metal oxide in the training set, the Er(MO) MAE is 0.334 eV, about 0.06 eV lower\nthan a model that had about 2,692 metal-oxides configurations in the training set."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_FT_BMA_Er_MO_MAE == 0.334 eV; diff vs FT-MD(MO) (0.306) ~= 0.06 eV",
+      "strength": "comparative",
+      "scope": "FT-BMA vs FT-MD(MO), Er metal-oxide",
+      "evidence_refs": [
+        "ev_t5"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "c9",
+      "text": "The FT-MD(M) model performs worse than the FT-BMA model with a 0.15 eV increase in Er(M) MAE.",
+      "location": {
+        "section": "4.1.2",
+        "page": 10,
+        "char_span": null,
+        "quote": "The FT-MD(M) model performs worse than the FT-BMA model\nwith a 0.15 eV increase in Er(M) MAE."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "FT_MD_M_Er_M_MAE (0.376) - FT_BMA_Er_M_MAE (0.238) ~= 0.15 eV",
+      "strength": "comparative",
+      "scope": "FT-MD(M) vs FT-BMA, Er metallic",
+      "evidence_refs": [
+        "ev_t5"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c10",
+      "text": "The FT-MD(M) model Er(MO) MAE is 0.428 eV while the FT-BMA MAE is 0.334 eV.",
+      "location": {
+        "section": "4.1.2",
+        "page": 10,
+        "char_span": null,
+        "quote": "the FT-MD(M) model MAE for Er(MO) is 0.428 eV\nwhile the FT-BMA MAE is 0.334 eV"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "FT_MD_M_Er_MO_MAE == 0.428 eV; FT_BMA_Er_MO_MAE == 0.334 eV",
+      "strength": "exact",
+      "scope": "FT-MD(M), FT-BMA Er metal-oxide",
+      "evidence_refs": [
+        "ev_t5"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c11",
+      "text": "The FT-CE model performs better for Er(MO) (MAE = 0.305 eV) than FT-BMA and FT-MD(M), almost identical to FT-MD(MO) (MAE = 0.306 eV).",
+      "location": {
+        "section": "4.1.2",
+        "page": 10,
+        "char_span": null,
+        "quote": "performs better for Er(MO) (MAE = 0.305 eV) than\nthe FT-BMA and FT-MD(M) models. It also has almost identical performance to the\nFT-MD(MO) model (MAE = 0.306 eV)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "FT_CE_Er_MO_MAE == 0.305 eV; FT_MD_MO_Er_MO_MAE == 0.306 eV",
+      "strength": "comparative",
+      "scope": "FT-CE, FT-MD(MO) Er metal-oxide",
+      "evidence_refs": [
+        "ev_t5"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c12",
+      "text": "FT-CE was fine-tuned using 1,789 Cu surface structures and 420 Ag, Ir, Pd, Pt, and Rh surface structures generated using CE.",
+      "location": {
+        "section": "4.1.2",
+        "page": 10,
+        "char_span": null,
+        "quote": "the FT-CE model, which was\nfine-tuned using 1,789 Cu surface structures and 420 Ag, Ir, Pd, Pt, and Rh surface\nstructures generated using CE"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "1789 + 420 == 2209 (FT-CE config total)",
+      "strength": "exact",
+      "scope": "FT-CE training set composition",
+      "evidence_refs": [
+        "ev_ce_split",
+        "ev_t5"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "c13",
+      "text": "After fine-tuning on all datasets (FT-All), the Er(MO) MAE decreases by 0.07 eV.",
+      "location": {
+        "section": "4.1.2",
+        "page": 11,
+        "char_span": null,
+        "quote": "the Er(M) and Ea (M) MAE\nare unchanged, the Er(MO) MAE decreases by 0.07 eV."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "FT_MD_MO_Er_MO (0.306) - FT_All_Er_MO (0.277) ~= 0.07 eV OR baseline diff",
+      "strength": "comparative",
+      "scope": "FT-All vs prior FT models, Er metal-oxide",
+      "evidence_refs": [
+        "ev_t5"
+      ],
+      "confidence": 0.7
+    },
+    {
+      "id": "c14",
+      "text": "For the CHCOH* pathway CO2RR reconstruction on Cu(001), MACE-MH-1 (OMAT) has MAE 1.011 eV, FS-BMA 0.455 eV, FS-All 0.251 eV, and FT-All 0.141 eV across 7 reactions.",
+      "location": {
+        "section": "4.2.1",
+        "page": 12,
+        "char_span": null,
+        "quote": "MACE-MH-1 (OMAT) performs the worst with an MAE of 1.011 eV. The\nFS-BMA model exhibits an error of of up to 0.5 eV for each elementary step (overall\nMAE of 0.455 eV)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported MAEs: MH1=1.011, FS-BMA=0.455, FS-All=0.251, FT-All=0.141 eV",
+      "strength": "exact",
+      "scope": "CHCOH* pathway, Cu(001), 7 reactions",
+      "evidence_refs": [
+        "ev_chcoh"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c15",
+      "text": "FT-All achieves an MAE of 0.141 eV across the 7 CHCOH* reactions and 0.143 eV across the entire 101 reactions reported across other catalysts.",
+      "location": {
+        "section": "4.2.1",
+        "page": 12,
+        "char_span": null,
+        "quote": "the best performing model\nwith an MAE of 0.141 eV across these 7 reactions, and similarly achieve an MAE of\n0.143 eV across the entire 101 reactions reported across other catalysts in this study."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "FT_All_MAE_7rxn == 0.141 eV; FT_All_MAE_101rxn == 0.143 eV",
+      "strength": "exact",
+      "scope": "FT-All, CO2RR pathways",
+      "evidence_refs": [
+        "ev_chcoh"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c16",
+      "text": "The FT-All model predicts CO protonation to C1 products with an MAE of 0.124 eV with respect to DFT.",
+      "location": {
+        "section": "4.2.1",
+        "page": 12,
+        "char_span": null,
+        "quote": "The FT-All model\n(solid lines) predicts the energy of each step with an MAE of 0.124 eV with respect to\nthe DFT values"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "FT_All_C1_MAE == 0.124 eV",
+      "strength": "exact",
+      "scope": "FT-All, CO protonation to C1 products",
+      "evidence_refs": [
+        "ev_c1"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c17",
+      "text": "Tang et al. provide 23 DFT NEB reactions used as an evaluation set.",
+      "location": {
+        "section": "4.2.1",
+        "page": 13,
+        "char_span": null,
+        "quote": "Their work provides 23 DFT NEB\nreactions created using similar DFT settings as those used to train our MLIPs"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "num_DFT_NEB_reactions == 23",
+      "strength": "exact",
+      "scope": "Ref [62] C3 product NEB reactions",
+      "evidence_refs": [
+        "ev_t6"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c18",
+      "text": "The 0.2 eV higher barrier prediction error by the FS-MD model arises because it predicted a different initial state, not the transition state.",
+      "location": {
+        "section": "4.2.1",
+        "page": 14,
+        "char_span": null,
+        "quote": "the 0.2 eV higher\nerror in predicting the barrier by the FS-MD model arises because it has predicted\na different initial state as compared to DFT, not the transition state."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "FS-MD barrier error ~0.2 eV attributed to initial-state difference",
+      "strength": "causal",
+      "scope": "CHCHO* + CO reaction on Cu(100)",
+      "evidence_refs": [],
+      "confidence": 0.6
+    },
+    {
+      "id": "c19",
+      "text": "Applying FT-All to final optimized NEB images showed a difference of 0.3 eV in barrier predictions.",
+      "location": {
+        "section": "4.2.1",
+        "page": 14,
+        "char_span": null,
+        "quote": "observed a difference of 0.3 eV\nin barrier predictions, indicating a high sensitivity of Ea to the structures at the initial\nand transitions states."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "barrier_prediction_difference == 0.3 eV",
+      "strength": "approximate",
+      "scope": "FT-All single-point on NEB final images",
+      "evidence_refs": [
+        "ev_s6"
+      ],
+      "confidence": 0.7
+    },
+    {
+      "id": "c20",
+      "text": "Flores et al. calculated OER energetics for a total of 96 reactions on rutile, alpha, and beta phases of IrO2 and IrO3.",
+      "location": {
+        "section": "4.2.2",
+        "page": 15,
+        "char_span": null,
+        "quote": "calculated the OER energetics for a total of 96 reactions on rutile (R), α,\nand β phases of several different surface terminations of IrO2 and IrO3 under applied\npotential."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "num_OER_reactions == 96",
+      "strength": "exact",
+      "scope": "Ref [58] OER reactions",
+      "evidence_refs": [],
+      "confidence": 0.85
+    },
+    {
+      "id": "c21",
+      "text": "The FS-All model has an error of 0.21 eV for O and OH adsorption but 1.6 eV for OOH* adsorption on alpha-IrO3(110); overall MAE 0.438 eV for the 96 reactions.",
+      "location": {
+        "section": "4.2.2",
+        "page": 15,
+        "char_span": null,
+        "quote": "has an error of 0.21 eV for O and OH adsorption. However,\nthe error is significantly higher for OOH* adsorption at 1.6 eV, which is attributed\nto the absence of OOH* species in the training set. For the 96 reactions reported in\nRef. [58], the FS-All model has an MAE of 0.438 eV."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "FS_All_O_OH_error == 0.21 eV; FS_All_OOH_error == 1.6 eV; FS_All_OER_MAE == 0.438 eV",
+      "strength": "exact",
+      "scope": "FS-All, OER on alpha-IrO3(110) and 96 reactions",
+      "evidence_refs": [
+        "ev_oer_fsall"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "c22",
+      "text": "Using MACE-MH-1 reduces OOH* error to less than 0.5 eV with an overall MAE of 0.384 eV, 0.05 eV lower than FS-All.",
+      "location": {
+        "section": "4.2.2",
+        "page": 15,
+        "char_span": null,
+        "quote": "reduces\nthe error for OOH* to less than 0.5 eV, and has an over-\nall MAE of 0.384 eV, which is a 0.05 eV lower than FS-All model."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "MACE_MH1_OER_MAE == 0.384 eV; diff vs FS-All (0.438) ~= 0.05 eV",
+      "strength": "comparative",
+      "scope": "MACE-MH-1, OER 96 reactions",
+      "evidence_refs": [
+        "ev_oer_mh1"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "c23",
+      "text": "The total MAEs for the 96 OER reactions for FT-MD(MO) and FT-All models are 0.313 and 0.278 eV, respectively.",
+      "location": {
+        "section": "4.2.2",
+        "page": 15,
+        "char_span": null,
+        "quote": "The total MAEs for the\n96 reaction for FT-MD(MO) and FT-All models are 0.313 and 0.278 eV, respectively,\nboth showing better performance than the from-scratch models."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "FT_MD_MO_OER_MAE == 0.313 eV; FT_All_OER_MAE == 0.278 eV",
+      "strength": "exact",
+      "scope": "FT-MD(MO), FT-All, OER 96 reactions",
+      "evidence_refs": [
+        "ev_oer_ft"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c24",
+      "text": "The screening procedure produced 90,781 total initialized structures, of which 90,181 converged.",
+      "location": {
+        "section": "4.2.3",
+        "page": 16,
+        "char_span": null,
+        "quote": "This procedure produced 90,781 total initialized structures,\nof which 90,181 converged."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "total_structures == 90,781; converged == 90,181",
+      "strength": "exact",
+      "scope": "binary alloy adsorption energy screening",
+      "evidence_refs": [
+        "ev_screen"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c25",
+      "text": "For 2,115 DFT test configurations, the FT-All model adsorption energy MAE is 0.15 eV.",
+      "location": {
+        "section": "4.2.3",
+        "page": 16,
+        "char_span": null,
+        "quote": "For these 2,115 configurations, the FT-All model adsorption energy MAE is 0.15 eV"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "FT_All_adsorption_MAE == 0.15 eV; n_test == 2,115",
+      "strength": "exact",
+      "scope": "FT-All, 2,115 DFT subset",
+      "evidence_refs": [
+        "ev_screen"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c26",
+      "text": "For the (311) surface termination, 77% of configurations are within ±0.2 eV; for (532) facet only 58% are within threshold; for all other terminations 65% to 75% lie within ±0.2 eV.",
+      "location": {
+        "section": "4.2.3",
+        "page": 16,
+        "char_span": null,
+        "quote": "For the (311) surface termination, 77% of configurations are within the target\nthreshold of ±0.2 eV. The accuracy is lowest for the (532) facet, the highest surface\ntermination we considered, with only 58% of predictions within the error threshold.\nNevertheless for all other surface terminations, 65% to 75% of the tested configurations\nlie within with the ±0.2 eV tolerance."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "pct_within_0.2eV: (311)==77%, (532)==58%, others 65-75%",
+      "strength": "exact",
+      "scope": "FT-All adsorption energy by surface termination",
+      "evidence_refs": [
+        "ev_term"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "c27",
+      "text": "For AgNi and CuAu, 68% and 46% are within ±0.2 eV of DFT respectively; for CuIr, 73% are within the threshold.",
+      "location": {
+        "section": "4.2.3",
+        "page": 16,
+        "char_span": null,
+        "quote": "For AgNi and CuAu, the performance is mediocre\nwith only 68% and 46% within ±0.2 eV of the DFT values, respectively. On the other\nhand, the model performance is much better for CuIr, with 73% within the threshold."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "pct_within_0.2eV: AgNi==68%, CuAu==46%, CuIr==73%",
+      "strength": "exact",
+      "scope": "FT-All adsorption energy by surface composition",
+      "evidence_refs": [
+        "ev_comp"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "c28",
+      "text": "The FT-All model has an MAE of 0.278 eV for OER on IrO polymorphs, better than the from-scratch model (MAE = 0.384 eV).",
+      "location": {
+        "section": "5",
+        "page": 17,
+        "char_span": null,
+        "quote": "FT-All model has an MAE\nof 0.278 eV, noticeably better the error of from-scratch model (MAE = 0.384 eV)."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "FT_All_OER_MAE == 0.278 eV; FS_model_OER_MAE == 0.384 eV",
+      "strength": "comparative",
+      "scope": "OER metal-oxide surfaces",
+      "evidence_refs": [
+        "ev_oer_ft",
+        "ev_oer_mh1"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c29",
+      "text": "81% of a randomly selected subset of reactions had less than ±0.2 eV error with respect to DFT values for adsorption energy screening.",
+      "location": {
+        "section": "5",
+        "page": 17,
+        "char_span": null,
+        "quote": "with 81% of randomly selected subset of reactions having\nless than ±0.2 eV error with respect to the DFT values."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "pct_within_0.2eV == 81% on 2,115 subset",
+      "strength": "exact",
+      "scope": "FT-All screening, 2,115 subset",
+      "evidence_refs": [
+        "ev_screen"
+      ],
+      "confidence": 0.7
+    },
+    {
+      "id": "c30",
+      "text": "For Er of CHCOH pathway for the CO2RR, the FT-All model achieves an MAE of 0.141 eV vs FS-All MAE of 0.251 eV.",
+      "location": {
+        "section": "5",
+        "page": 16,
+        "char_span": null,
+        "quote": "the FT-All model achieves an MAE of 0.141 eV, noticeably better than our\nbest from scratch model (FS-All MAE = 0.251 eV)."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "FT_All_CHCOH_MAE == 0.141 eV; FS_All_CHCOH_MAE == 0.251 eV",
+      "strength": "comparative",
+      "scope": "CHCOH pathway CO2RR Er",
+      "evidence_refs": [
+        "ev_chcoh"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c31",
+      "text": "All MLIPs fine-tuned to different training sets have a MAE of between 0.14 to 0.15 eV for Ea NEB calculations, better than the best FS model (MAE = 0.175 eV).",
+      "location": {
+        "section": "5",
+        "page": 16,
+        "char_span": null,
+        "quote": "all our\nMLIPs fine-tuned to a different training set each have a MAE of between 0.14 to\n0.15 eV, better than our best performing from scratch model (MAE = 0.175 eV)."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "FT_models_Ea_MAE in [0.14, 0.15]; FS_best_Ea_MAE == 0.175 eV",
+      "strength": "comparative",
+      "scope": "FT models Ea NEB, Ref [62] reactions",
+      "evidence_refs": [
+        "ev_t6",
+        "ev_t4"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "c32",
+      "text": "Wood et al. UMA model is able to estimate Er within 0.1 eV of DFT for 74% of Er reported in the AdsorbML task.",
+      "location": {
+        "section": "1 Introduction",
+        "page": 3,
+        "char_span": null,
+        "quote": "is able to estimate Er within 0.1 eV of DFT, for 74\n% of Er reported in AdsorbML task."
+      },
+      "epistemic_tier": "T5",
+      "predicate": "UMA estimates Er within 0.1 eV for 74% of AdsorbML Er",
+      "strength": "comparative",
+      "scope": "Wood et al. UMA, AdsorbML task",
+      "evidence_refs": [],
+      "confidence": 0.7
+    },
+    {
+      "id": "c33",
+      "text": "The Batatia et al. fine-tuned model has an MAE of 0.095 eV for S24 and 0.138 eV for OC20 benchmark tests.",
+      "location": {
+        "section": "1 Introduction",
+        "page": 3,
+        "char_span": null,
+        "quote": "with an MAE of 0.095 eV for the S24 [25] and 0.138 eV for OC20\nbenchmark tests."
+      },
+      "epistemic_tier": "T5",
+      "predicate": "reported_S24_MAE == 0.095 eV; reported_OC20_MAE == 0.138 eV",
+      "strength": "exact",
+      "scope": "Batatia et al. multi-head replay model",
+      "evidence_refs": [],
+      "confidence": 0.75
+    },
+    {
+      "id": "c34",
+      "text": "CatTSunami MLIP-predicted NEBs were successful for 56% of the 900 reactions studied, improving to 86% when ∆Ea calculated using single-point DFT energies.",
+      "location": {
+        "section": "1 Introduction",
+        "page": 3,
+        "char_span": null,
+        "quote": "They found that the MLIP-\npredicted NEBs were successful for 56% of the 900 reactions studied, which improved\nto 86% when the ∆Ea were calculated using single-point DFT energies at the MLIP’s\ninitial, transition, and final state structures."
+      },
+      "epistemic_tier": "T5",
+      "predicate": "success_pct == 56% of 900; improved == 86%",
+      "strength": "exact",
+      "scope": "CatTSunami project",
+      "evidence_refs": [],
+      "confidence": 0.75
+    },
+    {
+      "id": "c35",
+      "text": "Schaaf et al. trained an MLIP with MAE of 0.05 eV for Ea for CO2 hydrogenation to methanol on In2O3 in six active-learning loops.",
+      "location": {
+        "section": "1 Introduction",
+        "page": 3,
+        "char_span": null,
+        "quote": "trained an accurate MLIP (MAE of 0.05 eV\nfor Ea) for CO2 hydrogenation to methanol on In2O3 in six active-learning loops"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "reported_Ea_MAE == 0.05 eV (Schaaf et al.)",
+      "strength": "exact",
+      "scope": "Schaaf et al. In2O3 MLIP",
+      "evidence_refs": [],
+      "confidence": 0.75
+    },
+    {
+      "id": "c36",
+      "text": "The total training set across all 5 datasets comprises 49,860 configurations over 8 facets, 2200 surface compositions, 88 unique reactions, and 1569 all reactions.",
+      "location": {
+        "section": "Datasets",
+        "page": 8,
+        "char_span": null,
+        "quote": "Total 8 2200 49,860 88 1569"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "sum of config column parts == 49,860 total",
+      "strength": "exact",
+      "scope": "Table 2 training set totals",
+      "evidence_refs": [
+        "ev_t2"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c37",
+      "text": "MD simulations were performed for 10 ps in the NVT ensemble at T = 300 K.",
+      "location": {
+        "section": "Datasets",
+        "page": 7,
+        "char_span": null,
+        "quote": "We\nperformed MD simulations for 10 ps in the NVT\nensemble at T = 300 K"
+      },
+      "epistemic_tier": null,
+      "predicate": "MD duration == 10 ps; T == 300 K",
+      "strength": "exact",
+      "scope": "Metallic MD configuration generation",
+      "evidence_refs": [],
+      "confidence": 0.85
+    },
+    {
+      "id": "c38",
+      "text": "The CE potentiostat was set at 150 meV/atom higher than the MLIP optimized structure energy, gathering a total of 2,209 configurations.",
+      "location": {
+        "section": "Datasets",
+        "page": 7,
+        "char_span": null,
+        "quote": "with the potentiostat set at 150 meV/atom higher than the energy of the MLIP\noptimized structure (i.e., the local minima) with Utarget = 150 meV/atom and\ngathered a total of 2,209 configurations."
+      },
+      "epistemic_tier": null,
+      "predicate": "Utarget == 150 meV/atom; CE_configs == 2,209",
+      "strength": "exact",
+      "scope": "CE configuration generation",
+      "evidence_refs": [
+        "ev_ce_split"
+      ],
+      "confidence": 0.85
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev_t4",
+      "kind": "table",
+      "location": {
+        "section": "Table 4",
+        "page": 10,
+        "char_span": null,
+        "quote": "FS-BMA 39,584 0.659 – –\nFS-BMA+MD 47,651 0.310 0.476 0.398\nFS-All 49,860 0.279 0.398 0.175"
+      },
+      "extracted_values": {
+        "FS_BMA": {
+          "N": 39584,
+          "Er_M": 0.659,
+          "Er_MO": null,
+          "Ea_M": null
+        },
+        "FS_BMA_MD": {
+          "N": 47651,
+          "Er_M": 0.31,
+          "Er_MO": 0.476,
+          "Ea_M": 0.398
+        },
+        "FS_All": {
+          "N": 49860,
+          "Er_M": 0.279,
+          "Er_MO": 0.398,
+          "Ea_M": 0.175
+        },
+        "UMA_OC20": {
+          "Er_M": 0.403,
+          "Er_MO": 0.889,
+          "Ea_M": 0.131
+        },
+        "UMA_OMAT": {
+          "Er_M": 0.558,
+          "Er_MO": 0.243,
+          "Ea_M": 0.453
+        },
+        "MACE_MP0": {
+          "Er_M": 0.745,
+          "Er_MO": 0.466,
+          "Ea_M": 0.493
+        },
+        "MACE_MH1_OC20": {
+          "Er_M": 0.578,
+          "Er_MO": 0.556,
+          "Ea_M": 0.176
+        },
+        "MACE_MH1_OMAT": {
+          "Er_M": 0.478,
+          "Er_MO": 0.322,
+          "Ea_M": 0.22
+        }
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev_t5",
+      "kind": "table",
+      "location": {
+        "section": "Table 5",
+        "page": 11,
+        "char_span": null,
+        "quote": "MACE-MH-1 (OMAT) - 0.478 0.322 0.220\nFT-BMA 39,983 0.238 0.334 0.145\nFT-MD(M) 4,976 0.376 0.428 0.149\nFT-MD(MO) 2,692 0.334 0.306 0.184\nFT-CE 2,208 0.421 0.305 0.139\nFT-BMA+MD(M) 44,959 0.245 0.348 0.152\nFT-All 49,860 0.247 0.277 0.144"
+      },
+      "extracted_values": {
+        "MACE_MH1_OMAT": {
+          "Er_M": 0.478,
+          "Er_MO": 0.322,
+          "Ea_M": 0.22
+        },
+        "FT_BMA": {
+          "N": 39983,
+          "Er_M": 0.238,
+          "Er_MO": 0.334,
+          "Ea_M": 0.145
+        },
+        "FT_MD_M": {
+          "N": 4976,
+          "Er_M": 0.376,
+          "Er_MO": 0.428,
+          "Ea_M": 0.149
+        },
+        "FT_MD_MO": {
+          "N": 2692,
+          "Er_M": 0.334,
+          "Er_MO": 0.306,
+          "Ea_M": 0.184
+        },
+        "FT_CE": {
+          "N": 2208,
+          "Er_M": 0.421,
+          "Er_MO": 0.305,
+          "Ea_M": 0.139
+        },
+        "FT_BMA_MD_M": {
+          "N": 44959,
+          "Er_M": 0.245,
+          "Er_MO": 0.348,
+          "Ea_M": 0.152
+        },
+        "FT_All": {
+          "N": 49860,
+          "Er_M": 0.247,
+          "Er_MO": 0.277,
+          "Ea_M": 0.144
+        }
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev_t2",
+      "kind": "table",
+      "location": {
+        "section": "Table 2",
+        "page": 8,
+        "char_span": null,
+        "quote": "Bimetallic TM alloys [40] (111) 1924 39,983 6 -\nC2+ oxygenates [41] (111) 23 2,056 25 170\nNH3 synthesis [42, 43] (111), (211), (110), bcc(110) 71 2,577 6 512\nC2H6 dehydrogenation [44] (111), hcp(0001) 94 2,551 45 840\nO, OH adsorption [45] (100), (110), (210) 88 2,693 6 217\nTotal 8 2200 49,860 88 1569"
+      },
+      "extracted_values": {
+        "parts": [
+          39983,
+          2056,
+          2577,
+          2551,
+          2693
+        ],
+        "reported_total": 49860,
+        "surface_comps": [
+          1924,
+          23,
+          71,
+          94,
+          88
+        ],
+        "unique_reactions": [
+          6,
+          25,
+          6,
+          45,
+          6
+        ],
+        "total_unique_reactions": 88
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev_t6",
+      "kind": "table",
+      "location": {
+        "section": "Table 6 (S7)",
+        "page": 40,
+        "char_span": null,
+        "quote": "FT-BMA 0.141 100 %\nFT-MD(M) 0.159 91 %\nFT-MD(MO) 0.149 91 %\nFT-CE 0.143 100 %\nFT-BMA+MD(M) 0.153 100 %\nFT-All 0.142 100 %"
+      },
+      "extracted_values": {
+        "FT_BMA": {
+          "Ea": 0.141,
+          "convergence_pct": 100
+        },
+        "FT_MD_M": {
+          "Ea": 0.159,
+          "convergence_pct": 91
+        },
+        "FT_MD_MO": {
+          "Ea": 0.149,
+          "convergence_pct": 91
+        },
+        "FT_CE": {
+          "Ea": 0.143,
+          "convergence_pct": 100
+        },
+        "FT_BMA_MD_M": {
+          "Ea": 0.153,
+          "convergence_pct": 100
+        },
+        "FT_All": {
+          "Ea": 0.142,
+          "convergence_pct": 100
+        },
+        "n_reactions": 23
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev_abs_oer",
+      "kind": "statistic",
+      "location": {
+        "section": "Abstract",
+        "page": 2,
+        "char_span": null,
+        "quote": "an MAE\nof 0.30 eV for OER on iridium oxide polymorphs, which is 0.08 eV lower than\nout-of-box MACE-MH-1 and 0.14 eV lower than the best performing FS MLIP."
+      },
+      "extracted_values": {
+        "reported_MAE_OER": 0.3,
+        "diff_vs_MACE_MH1": 0.08,
+        "diff_vs_best_FS": 0.14
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "ev_abs_ea_mo",
+      "kind": "statistic",
+      "location": {
+        "section": "Abstract",
+        "page": 2,
+        "char_span": null,
+        "quote": "an Ea MAE of 0.19 eV for out-of-distribution CO2RR reaction on Cu"
+      },
+      "extracted_values": {
+        "reported_Ea_MAE": 0.19
+      },
+      "confidence": 0.65
+    },
+    {
+      "id": "ev_abs_screen",
+      "kind": "statistic",
+      "location": {
+        "section": "Abstract",
+        "page": 2,
+        "char_span": null,
+        "quote": "fine-tuned to 49,860\nconfigurations shows the best performance across both metallic and metal-oxide\ncatalysts, which was used to screen a large-left out, 90,781, of bimetallic alloys,\nachieving an MAE of 0.15 eV for Er"
+      },
+      "extracted_values": {
+        "FT_configs": 49860,
+        "screened": 90781,
+        "reported_Er_MAE": 0.15
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "ev_chcoh",
+      "kind": "figure",
+      "location": {
+        "section": "4.2.1 / Fig 3a",
+        "page": 12,
+        "char_span": null,
+        "quote": "MACE-MH-1 (OMAT) performs the worst with an MAE of 1.011 eV. The\nFS-BMA model exhibits an error of of up to 0.5 eV for each elementary step (overall\nMAE of 0.455 eV)"
+      },
+      "extracted_values": {
+        "MH1_MAE": 1.011,
+        "FS_BMA_MAE": 0.455,
+        "FS_All_MAE": 0.251,
+        "FT_All_MAE_7rxn": 0.141,
+        "FT_All_MAE_101rxn": 0.143,
+        "n_reactions_pathway": 7,
+        "n_reactions_all": 101
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev_c1",
+      "kind": "figure",
+      "location": {
+        "section": "4.2.1 / Fig 3b",
+        "page": 12,
+        "char_span": null,
+        "quote": "predicts the energy of each step with an MAE of 0.124 eV with respect to\nthe DFT values"
+      },
+      "extracted_values": {
+        "FT_All_C1_MAE": 0.124
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev_oer_fsall",
+      "kind": "statistic",
+      "location": {
+        "section": "4.2.2",
+        "page": 15,
+        "char_span": null,
+        "quote": "has an error of 0.21 eV for O and OH adsorption. However,\nthe error is significantly higher for OOH* adsorption at 1.6 eV"
+      },
+      "extracted_values": {
+        "O_OH_error": 0.21,
+        "OOH_error": 1.6,
+        "FS_All_OER_MAE": 0.438,
+        "metal_oxide_configs": 2692,
+        "metallic_surfaces": 47168
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev_oer_mh1",
+      "kind": "statistic",
+      "location": {
+        "section": "4.2.2",
+        "page": 15,
+        "char_span": null,
+        "quote": "reduces\nthe error for OOH* to less than 0.5 eV, and has an over-\nall MAE of 0.384 eV, which is a 0.05 eV lower than FS-All model."
+      },
+      "extracted_values": {
+        "OOH_error_bound": 0.5,
+        "MACE_MH1_OER_MAE": 0.384,
+        "diff_vs_FS_All": 0.05
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev_oer_ft",
+      "kind": "statistic",
+      "location": {
+        "section": "4.2.2",
+        "page": 15,
+        "char_span": null,
+        "quote": "The total MAEs for the\n96 reaction for FT-MD(MO) and FT-All models are 0.313 and 0.278 eV, respectively"
+      },
+      "extracted_values": {
+        "FT_MD_MO_OER_MAE": 0.313,
+        "FT_All_OER_MAE": 0.278,
+        "n_reactions": 96
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev_screen",
+      "kind": "statistic",
+      "location": {
+        "section": "4.2.3",
+        "page": 16,
+        "char_span": null,
+        "quote": "This procedure produced 90,781 total initialized structures,\nof which 90,181 converged."
+      },
+      "extracted_values": {
+        "total_structures": 90781,
+        "converged": 90181,
+        "n_DFT_test": 2115,
+        "FT_All_adsorption_MAE": 0.15,
+        "pct_within_0.2eV": 81
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev_term",
+      "kind": "figure",
+      "location": {
+        "section": "4.2.3 / Fig 6a",
+        "page": 16,
+        "char_span": null,
+        "quote": "For the (311) surface termination, 77% of configurations are within the target\nthreshold of ±0.2 eV. The accuracy is lowest for the (532) facet, the highest surface\ntermination we considered, with only 58% of predictions within the error threshold."
+      },
+      "extracted_values": {
+        "pct_311": 77,
+        "pct_532": 58,
+        "pct_others_low": 65,
+        "pct_others_high": 75
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev_comp",
+      "kind": "figure",
+      "location": {
+        "section": "4.2.3 / Fig 6b",
+        "page": 16,
+        "char_span": null,
+        "quote": "For AgNi and CuAu, the performance is mediocre\nwith only 68% and 46% within ±0.2 eV of the DFT values, respectively. On the other\nhand, the model performance is much better for CuIr, with 73% within the threshold."
+      },
+      "extracted_values": {
+        "pct_AgNi": 68,
+        "pct_CuAu": 46,
+        "pct_CuIr": 73
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev_ce_split",
+      "kind": "number",
+      "location": {
+        "section": "4.1.2",
+        "page": 10,
+        "char_span": null,
+        "quote": "fine-tuned using 1,789 Cu surface structures and 420 Ag, Ir, Pd, Pt, and Rh surface\nstructures generated using CE"
+      },
+      "extracted_values": {
+        "parts": [
+          1789,
+          420
+        ],
+        "reported_total": 2209
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev_s6",
+      "kind": "figure",
+      "location": {
+        "section": "S6",
+        "page": 39,
+        "char_span": null,
+        "quote": "which with the same calculator can have up to 0.3 eV difference\nin energy."
+      },
+      "extracted_values": {
+        "barrier_difference": 0.3
+      },
+      "confidence": 0.7
+    }
+  ],
+  "bindings": [
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev_t4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev_abs_oer",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev_abs_ea_mo",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c4",
+      "evidence_id": "ev_abs_screen",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c4",
+      "evidence_id": "ev_screen",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c5",
+      "evidence_id": "ev_t4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c6",
+      "evidence_id": "ev_t4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c7",
+      "evidence_id": "ev_t4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c8",
+      "evidence_id": "ev_t5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c9",
+      "evidence_id": "ev_t5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c10",
+      "evidence_id": "ev_t5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c11",
+      "evidence_id": "ev_t5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c12",
+      "evidence_id": "ev_ce_split",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c12",
+      "evidence_id": "ev_t5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c13",
+      "evidence_id": "ev_t5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c14",
+      "evidence_id": "ev_chcoh",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c15",
+      "evidence_id": "ev_chcoh",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c16",
+      "evidence_id": "ev_c1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c17",
+      "evidence_id": "ev_t6",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c19",
+      "evidence_id": "ev_s6",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c21",
+      "evidence_id": "ev_oer_fsall",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c22",
+      "evidence_id": "ev_oer_mh1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c23",
+      "evidence_id": "ev_oer_ft",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c24",
+      "evidence_id": "ev_screen",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c25",
+      "evidence_id": "ev_screen",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c26",
+      "evidence_id": "ev_term",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c27",
+      "evidence_id": "ev_comp",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c28",
+      "evidence_id": "ev_oer_ft",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c28",
+      "evidence_id": "ev_oer_mh1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c29",
+      "evidence_id": "ev_screen",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c30",
+      "evidence_id": "ev_chcoh",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c31",
+      "evidence_id": "ev_t6",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c31",
+      "evidence_id": "ev_t4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c36",
+      "evidence_id": "ev_t2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c38",
+      "evidence_id": "ev_ce_split",
+      "relation": "rests_on"
+    }
+  ]
+}

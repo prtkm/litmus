@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0",
-  "paper_id": "medicine-zhou2025-esketamine-low-opioid-anaesthesia",
+  "paper_id": "medicine-gkekas2025-rct-laparoscopic-supervision",
   "meta": {
     "executor": "local",
-    "n_claims": 27,
+    "n_claims": 22,
     "n_verifiers": 9,
     "synthesis_candidates": [
       "c1",
@@ -20,16 +20,9 @@
       "c12",
       "c13",
       "c14",
-      "c15",
       "c16",
-      "c18",
-      "c19",
-      "c20",
-      "c21",
-      "c22",
-      "c23",
-      "c24",
-      "c26"
+      "c17",
+      "c20"
     ],
     "confirmation": "fresh-sandbox",
     "registry_load_errors": []
@@ -39,22 +32,22 @@
     "n_flags": 0,
     "n_dropped": 0,
     "n_routed_to_human": 0,
-    "n_abstained": 26,
+    "n_abstained": 21,
     "flags_by_trust_tier": {},
     "flags_by_severity": {}
   },
   "findings": [
     {
       "verifier_id": "sum_check.v1",
-      "claim_id": "c25",
+      "claim_id": "c15",
       "status": "pass",
       "trust_tier": "deterministic_confirmed",
       "verifier_kind": "prebuilt",
       "severity": null,
       "message": "reported total equals the sum of its parts (within printing precision)",
       "discrepancy": null,
-      "reported": 64,
-      "computed": 64,
+      "reported": 20,
+      "computed": 20,
       "evidence": {
         "quote": null,
         "location": {
@@ -69,8 +62,8 @@
       },
       "details": {
         "parts": [
-          37,
-          27
+          8,
+          12
         ],
         "n_parts": 2,
         "tolerance": 1e-09
@@ -92,12 +85,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "POD-3 QoR-15 scores 121 (117.75\u2013124) 115 (111.75\u2013118.25) <0.001",
+        "quote": "the Supervised group (388s vs 168s; p < 0.001)",
         "location": {
-          "section": "3.1 / Table 2",
-          "page": 7,
+          "section": "3.2 Primary outcomes",
+          "page": 4,
           "char_span": null,
-          "quote": "POD-3 QoR-15 scores 121 (117.75\u2013124) 115 (111.75\u2013118.25) <0.001"
+          "quote": "the Supervised group (388s vs 168s; p < 0.001)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -117,12 +110,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Physical comfort 40 (39\u201341) 38 (37\u201340) <0.001",
+        "quote": "the independent group (347s vs 213s; p = 0.020)",
         "location": {
-          "section": "3.1 / Table 2",
-          "page": 7,
+          "section": "3.2 Primary outcomes",
+          "page": 4,
           "char_span": null,
-          "quote": "Physical comfort 40 (39\u201341) 38 (37\u201340) <0.001"
+          "quote": "the independent group (347s vs 213s; p = 0.020)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -142,12 +135,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Emotional state 32 (30\u201333) 29 (27.75\u201331) <0.001",
+        "quote": "did not reach\nstatistical significance ( p = 0.108)",
         "location": {
-          "section": "3.1 / Table 2",
-          "page": 7,
+          "section": "3.2 Primary outcomes",
+          "page": 4,
           "char_span": null,
-          "quote": "Emotional state 32 (30\u201333) 29 (27.75\u201331) <0.001"
+          "quote": "did not reach\nstatistical significance ( p = 0.108)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -167,12 +160,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Pain 18 (18\u201320) 18 (16.75\u201319) <0.001",
+        "quote": "The supervised group\ncompleted Test 1 in a mean of 168 s (SD 47), compared with\n213 s (SD 72) in the independent group. The mean difference\nwas \u221245 s, with a 95% CI ranging from \u2212108 to +18 s",
         "location": {
-          "section": "3.1 / Table 2",
-          "page": 7,
+          "section": "3.2 Primary outcomes",
+          "page": 4,
           "char_span": null,
-          "quote": "Pain 18 (18\u201320) 18 (16.75\u201319) <0.001"
+          "quote": "The supervised group\ncompleted Test 1 in a mean of 168 s (SD 47), compared with\n213 s (SD 72) in the independent group. The mean difference\nwas \u221245 s, with a 95% CI ranging from \u2212108 to +18 s"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -192,12 +185,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Statistically significant differences in QoR-15 scores between \nthe K and C groups were also observed on postoperative days 1 and 2 \n(P < 0.01)",
+        "quote": "slightly shorter\nin the supervised group compared with the independent group\n( p = 0.108 and p = 0.124, respectively)",
         "location": {
-          "section": "3.1 / Table 3",
-          "page": 7,
+          "section": "3.2 Primary outcomes",
+          "page": 4,
           "char_span": null,
-          "quote": "Statistically significant differences in QoR-15 scores between \nthe K and C groups were also observed on postoperative days 1 and 2 \n(P < 0.01)"
+          "quote": "slightly shorter\nin the supervised group compared with the independent group\n( p = 0.108 and p = 0.124, respectively)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -217,12 +210,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "POD-3 2 (2\u20132) 2 (2\u20133) 0.006",
+        "quote": "reported significantly lower perceived difficulty after training\ncompared to pre-training (4.1 vs 3.5; p = 0.049)",
         "location": {
-          "section": "3.2 / Table 4",
-          "page": 7,
+          "section": "3.3.1 Perceived difficulty",
+          "page": 4,
           "char_span": null,
-          "quote": "POD-3 2 (2\u20132) 2 (2\u20133) 0.006"
+          "quote": "reported significantly lower perceived difficulty after training\ncompared to pre-training (4.1 vs 3.5; p = 0.049)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -242,12 +235,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "POD-3 3 (3\u20134) 4 (3\u20134) 0.02",
+        "quote": "post-training score was significantly reduced to half of the\nbaseline value (4.6 vs 2.6; p = 0.003)",
         "location": {
-          "section": "3.2 / Table 4",
-          "page": 7,
+          "section": "3.3.1",
+          "page": 4,
           "char_span": null,
-          "quote": "POD-3 3 (3\u20134) 4 (3\u20134) 0.02"
+          "quote": "post-training score was significantly reduced to half of the\nbaseline value (4.6 vs 2.6; p = 0.003)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -267,12 +260,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "PCIA demand frequency 12.5 (9\u201315) 15 (12\u201317) 0.002",
+        "quote": "remaining at the\nsame level (4.5 vs 4.6; p = 0.685)",
         "location": {
-          "section": "3.2 / Table 4",
-          "page": 7,
+          "section": "3.3.1",
+          "page": 5,
           "char_span": null,
-          "quote": "PCIA demand frequency 12.5 (9\u201315) 15 (12\u201317) 0.002"
+          "quote": "remaining at the\nsame level (4.5 vs 4.6; p = 0.685)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -292,12 +285,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Rescue analgesia, n (%) 10 (14.3) 23 (32.9) 0.01",
+        "quote": "completed examination test 3 in a mean of\n137 s, compared to 249 s for those without such experience\n(p = 0.063)",
         "location": {
-          "section": "3.2 / Table 4",
-          "page": 7,
+          "section": "3.3.1.1.1",
+          "page": 5,
           "char_span": null,
-          "quote": "Rescue analgesia, n (%) 10 (14.3) 23 (32.9) 0.01"
+          "quote": "completed examination test 3 in a mean of\n137 s, compared to 249 s for those without such experience\n(p = 0.063)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -317,12 +310,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Rescue analgesic consumption per patient (mg) 0 (0\u20130) 0 (0\u2013100) 0.008",
+        "quote": "completed test 3 significantly faster than those who did not\n(130 \u00b1 13 s vs 207 \u00b1 130 s; p = 0.037)",
         "location": {
-          "section": "3.2 / Table 4",
-          "page": 7,
+          "section": "3.3.1.1.1",
+          "page": 5,
           "char_span": null,
-          "quote": "Rescue analgesic consumption per patient (mg) 0 (0\u20130) 0 (0\u2013100) 0.008"
+          "quote": "completed test 3 significantly faster than those who did not\n(130 \u00b1 13 s vs 207 \u00b1 130 s; p = 0.037)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -342,12 +335,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "reduced usage of propofol (866.56 \u00b1 76.44 mg vs. \n968.36 \u00b1 68.87 mg, P < 0.05)",
+        "quote": "a trend toward faster\ncompletion in test 3 (p = 0.102)",
         "location": {
-          "section": "3.4",
-          "page": 6,
+          "section": "3.3.1.1.1",
+          "page": 5,
           "char_span": null,
-          "quote": "reduced usage of propofol (866.56 \u00b1 76.44 mg vs. \n968.36 \u00b1 68.87 mg, P < 0.05)"
+          "quote": "a trend toward faster\ncompletion in test 3 (p = 0.102)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -367,12 +360,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "sufentanil (25 \u00b1 \n4.62 ug vs. 38 \u00b1 8.60 ug, P < 0.001)",
+        "quote": "a trend for men to complete live test 3 slightly faster\n(140 \u00b1 33 s vs 208 \u00b1 134 s; p = 0.092)",
         "location": {
-          "section": "3.4",
-          "page": 6,
+          "section": "3.4 Sex differences",
+          "page": 5,
           "char_span": null,
-          "quote": "sufentanil (25 \u00b1 \n4.62 ug vs. 38 \u00b1 8.60 ug, P < 0.001)"
+          "quote": "a trend for men to complete live test 3 slightly faster\n(140 \u00b1 33 s vs 208 \u00b1 134 s; p = 0.092)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -392,12 +385,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "remifentanil (2.1 \u00b1 0.35 mg vs. 2.5 \u00b1 0.72 mg, P < 0.001)",
+        "quote": "No significant\ndifferences were found in Warm-up (p = 0.627), Test 1 (p = 0.639),\nor Test 2 (p = 0.233)",
         "location": {
-          "section": "3.4",
-          "page": 6,
+          "section": "3.4 Sex differences",
+          "page": 5,
           "char_span": null,
-          "quote": "remifentanil (2.1 \u00b1 0.35 mg vs. 2.5 \u00b1 0.72 mg, P < 0.001)"
+          "quote": "No significant\ndifferences were found in Warm-up (p = 0.627), Test 1 (p = 0.639),\nor Test 2 (p = 0.233)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -417,37 +410,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "extubation time \n(35.8 \u00b1 13.02 min vs. 40.8 \u00b1 15.5 min, P < 0.05; Figure 4A)",
+        "quote": "women\nimproved their times significantly (173 s; p = 0.001) whereas men\nshowed a less pronounced improvement (159 s; p = 0.058)",
         "location": {
-          "section": "3.5",
-          "page": 6,
+          "section": "3.4 Sex differences",
+          "page": 5,
           "char_span": null,
-          "quote": "extubation time \n(35.8 \u00b1 13.02 min vs. 40.8 \u00b1 15.5 min, P < 0.05; Figure 4A)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c15",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "PACU stay duration (107.2 \u00b1 27.4 min vs. 118.9 \u00b1 27.2 min, P < 0.05;",
-        "location": {
-          "section": "3.5",
-          "page": 6,
-          "char_span": null,
-          "quote": "PACU stay duration (107.2 \u00b1 27.4 min vs. 118.9 \u00b1 27.2 min, P < 0.05;"
+          "quote": "women\nimproved their times significantly (173 s; p = 0.001) whereas men\nshowed a less pronounced improvement (159 s; p = 0.058)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -467,12 +435,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "the incidence \nof nausea and vomiting was significantly lower in the K group than \nin the C group (10.0% vs. 21.4%, P < 0.05)",
+        "quote": "Approximately 70% of participants were\nfemale",
         "location": {
-          "section": "3.6",
-          "page": 6,
+          "section": "3.1",
+          "page": 3,
           "char_span": null,
-          "quote": "the incidence \nof nausea and vomiting was significantly lower in the K group than \nin the C group (10.0% vs. 21.4%, P < 0.05)"
+          "quote": "Approximately 70% of participants were\nfemale"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -487,17 +455,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no applicable verifier",
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "No other significant \ndifferences were observed between the two groups in the incidence \nof dizziness, headache, drowsiness, or restlessness (P > \n0.05)",
+        "quote": "there was no significant difference in task completion \ntime between the supervision and independent groups",
         "location": {
-          "section": "3.6",
-          "page": 6,
+          "section": "3.1",
+          "page": 3,
           "char_span": null,
-          "quote": "No other significant \ndifferences were observed between the two groups in the incidence \nof dizziness, headache, drowsiness, or restlessness (P > \n0.05)"
+          "quote": "there was no significant difference in task completion \ntime between the supervision and independent groups"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -512,17 +480,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "higher QoR-15 score on postoperative day 3 (B = 5.52, 95% CI \n3.97 to 7.06, P < 0.001)",
+        "quote": "a total of \n36 trainees would be required to achieve 70% power to detect a \nstatistically significant difference between the groups",
         "location": {
-          "section": "3.7",
-          "page": 6,
+          "section": "2.3 Sample size",
+          "page": 2,
           "char_span": null,
-          "quote": "higher QoR-15 score on postoperative day 3 (B = 5.52, 95% CI \n3.97 to 7.06, P < 0.001)"
+          "quote": "a total of \n36 trainees would be required to achieve 70% power to detect a \nstatistically significant difference between the groups"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -537,17 +505,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "sufentanil (B = \u221212.61, 95% CI \n-15.02 to \u221210.19, P < 0.001)",
+        "quote": "the achieved power was \napproximately 28%\u201335%",
         "location": {
-          "section": "3.7",
+          "section": "5 Limitations",
           "page": 6,
           "char_span": null,
-          "quote": "sufentanil (B = \u221212.61, 95% CI \n-15.02 to \u221210.19, P < 0.001)"
+          "quote": "the achieved power was \napproximately 28%\u201335%"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -567,12 +535,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "remifentanil (B = \u22120.39, 95% CI \n-0.58 to \u22120.19, P < 0.001)",
+        "quote": "improved rope test \nperformance by 2.1 mm/s, compared with a control group that \nimproved by 0.6 mm/s (4). The standard deviation of the first \ngroup was 1.8 mm/s",
         "location": {
-          "section": "3.7",
-          "page": 6,
+          "section": "2.3 Sample size",
+          "page": 2,
           "char_span": null,
-          "quote": "remifentanil (B = \u22120.39, 95% CI \n-0.58 to \u22120.19, P < 0.001)"
+          "quote": "improved rope test \nperformance by 2.1 mm/s, compared with a control group that \nimproved by 0.6 mm/s (4). The standard deviation of the first \ngroup was 1.8 mm/s"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -587,17 +555,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "lower heart rate variability (B = \u22120.027, 95% CI \n-0.042 to \u22120.012, P < 0.001)",
+        "quote": "pass a \nthread through eight loops arranged in a circle",
         "location": {
-          "section": "3.7",
-          "page": 6,
+          "section": "2.5.1",
+          "page": 3,
           "char_span": null,
-          "quote": "lower heart rate variability (B = \u22120.027, 95% CI \n-0.042 to \u22120.012, P < 0.001)"
+          "quote": "pass a \nthread through eight loops arranged in a circle"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -612,117 +580,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "higher mean arterial \npressure variability (B = 0.018, 95% CI 0.001 to 0.034, P = 0.033)",
-        "location": {
-          "section": "3.7",
-          "page": 6,
-          "char_span": null,
-          "quote": "higher mean arterial \npressure variability (B = 0.018, 95% CI 0.001 to 0.034, P = 0.033)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c23",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Norepinephrine 9 (12.9) 28 (40) <0.01",
-        "location": {
-          "section": "3 / Table 1",
-          "page": 5,
-          "char_span": null,
-          "quote": "Norepinephrine 9 (12.9) 28 (40) <0.01"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c24",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "calculations indicated \n64 patients per group were required. Accounting for a 10% \ndropout rate, the final actual enrollment per group was \n72 patients, totaling 144 patients.",
-        "location": {
-          "section": "2.5",
-          "page": 4,
-          "char_span": null,
-          "quote": "calculations indicated \n64 patients per group were required. Accounting for a 10% \ndropout rate, the final actual enrollment per group was \n72 patients, totaling 144 patients."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c26",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "A statistically significant, six-point higher median QoR-15 score was \nobserved in the K group compared to the C group on POD3, which \nmeets the threshold for the established minimal clinically important \ndifference (MCID) of six points",
-        "location": {
-          "section": "4 Discussion",
-          "page": 6,
-          "char_span": null,
-          "quote": "A statistically significant, six-point higher median QoR-15 score was \nobserved in the K group compared to the C group on POD3, which \nmeets the threshold for the established minimal clinically important \ndifference (MCID) of six points"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c27",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
       "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "an esketamine-based multimodal low-opioid anaesthesia \nregimen significantly enhances recovery quality on postoperative \nday 3 in elderly patients undergoing thoracoscopic radical lung \ncancer surgery.",
+        "quote": "Remote real-time supervision significantly reduces perceived \ndifficulty and prevents the devaluation of feedback compared to independent \npractice.",
         "location": {
-          "section": "5 Conclusion",
-          "page": 10,
+          "section": "Abstract Conclusion",
+          "page": 1,
           "char_span": null,
-          "quote": "an esketamine-based multimodal low-opioid anaesthesia \nregimen significantly enhances recovery quality on postoperative \nday 3 in elderly patients undergoing thoracoscopic radical lung \ncancer surgery."
+          "quote": "Remote real-time supervision significantly reduces perceived \ndifficulty and prevents the devaluation of feedback compared to independent \npractice."
         },
         "recompute_script": null,
         "expected_output": null,

@@ -1,0 +1,1030 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "chemistry-arxiv-2605.09394-mace-finetuning-catalysis",
+  "meta": {
+    "executor": "local",
+    "n_claims": 38,
+    "n_verifiers": 9,
+    "synthesis_candidates": [
+      "c1",
+      "c2",
+      "c3",
+      "c4",
+      "c5",
+      "c6",
+      "c7",
+      "c8",
+      "c9",
+      "c10",
+      "c11",
+      "c13",
+      "c14",
+      "c15",
+      "c16",
+      "c17",
+      "c19",
+      "c21",
+      "c22",
+      "c23",
+      "c24",
+      "c25",
+      "c26",
+      "c27",
+      "c28",
+      "c29",
+      "c30",
+      "c31"
+    ],
+    "confirmation": "fresh-sandbox",
+    "registry_load_errors": []
+  },
+  "summary": {
+    "n_findings": 3,
+    "n_flags": 0,
+    "n_dropped": 0,
+    "n_routed_to_human": 0,
+    "n_abstained": 35,
+    "flags_by_trust_tier": {},
+    "flags_by_severity": {}
+  },
+  "findings": [
+    {
+      "verifier_id": "sum_check.v1",
+      "claim_id": "c12",
+      "status": "pass",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "reported total equals the sum of its parts (within printing precision)",
+      "discrepancy": null,
+      "reported": 2209,
+      "computed": 2209,
+      "evidence": {
+        "quote": null,
+        "location": {
+          "section": null,
+          "page": null,
+          "char_span": null,
+          "quote": null
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {
+        "parts": [
+          1789,
+          420
+        ],
+        "n_parts": 2,
+        "tolerance": 1e-09
+      }
+    },
+    {
+      "verifier_id": "sum_check.v1",
+      "claim_id": "c36",
+      "status": "pass",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "reported total equals the sum of its parts (within printing precision)",
+      "discrepancy": null,
+      "reported": 49860,
+      "computed": 49860,
+      "evidence": {
+        "quote": null,
+        "location": {
+          "section": null,
+          "page": null,
+          "char_span": null,
+          "quote": null
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {
+        "parts": [
+          39983,
+          2056,
+          2577,
+          2551,
+          2693
+        ],
+        "n_parts": 5,
+        "tolerance": 1e-09
+      }
+    },
+    {
+      "verifier_id": "sum_check.v1",
+      "claim_id": "c38",
+      "status": "pass",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "reported total equals the sum of its parts (within printing precision)",
+      "discrepancy": null,
+      "reported": 2209,
+      "computed": 2209,
+      "evidence": {
+        "quote": null,
+        "location": {
+          "section": null,
+          "page": null,
+          "char_span": null,
+          "quote": null
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {
+        "parts": [
+          1789,
+          420
+        ],
+        "n_parts": 2,
+        "tolerance": 1e-09
+      }
+    }
+  ],
+  "dropped_flags": [],
+  "routed_to_human": [],
+  "abstained": [
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c1",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "that FS models with 5 % to 10 % of perturbed (high-energy) configurations from\nMD or contour exploring (CE), can reduce the error by over 2\u00d7 compared to\nmodels trained only on relaxation trajectories.",
+        "location": {
+          "section": "Abstract",
+          "page": 2,
+          "char_span": null,
+          "quote": "that FS models with 5 % to 10 % of perturbed (high-energy) configurations from\nMD or contour exploring (CE), can reduce the error by over 2\u00d7 compared to\nmodels trained only on relaxation trajectories."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c2",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "an MLIP fine-tuned on metallic catalysts achieves an MAE\nof 0.30 eV for OER on iridium oxide polymorphs, which is 0.08 eV lower than\nout-of-box MACE-MH-1 and 0.14 eV lower than the best performing FS MLIP.",
+        "location": {
+          "section": "Abstract",
+          "page": 2,
+          "char_span": null,
+          "quote": "an MLIP fine-tuned on metallic catalysts achieves an MAE\nof 0.30 eV for OER on iridium oxide polymorphs, which is 0.08 eV lower than\nout-of-box MACE-MH-1 and 0.14 eV lower than the best performing FS MLIP."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c3",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "an MLIP fine-tuned to O and OH adsorption on metal oxides gives\nan Ea MAE of 0.19 eV for out-of-distribution CO2RR reaction on Cu",
+        "location": {
+          "section": "Abstract",
+          "page": 2,
+          "char_span": null,
+          "quote": "an MLIP fine-tuned to O and OH adsorption on metal oxides gives\nan Ea MAE of 0.19 eV for out-of-distribution CO2RR reaction on Cu"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c4",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "a large MLIP fine-tuned to 49,860\nconfigurations shows the best performance across both metallic and metal-oxide\ncatalysts, which was used to screen a large-left out, 90,781, of bimetallic alloys,\nachieving an MAE of 0.15 eV for Er",
+        "location": {
+          "section": "Abstract",
+          "page": 2,
+          "char_span": null,
+          "quote": "a large MLIP fine-tuned to 49,860\nconfigurations shows the best performance across both metallic and metal-oxide\ncatalysts, which was used to screen a large-left out, 90,781, of bimetallic alloys,\nachieving an MAE of 0.15 eV for Er"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c5",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "achieves\nan MAE of 0.659 eV when predicting the metal test set Er",
+        "location": {
+          "section": "4.1.1",
+          "page": 9,
+          "char_span": null,
+          "quote": "achieves\nan MAE of 0.659 eV when predicting the metal test set Er"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c6",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "the\nmodel achieves an MAE of 0.310 eV for metallic catalyst Er, better than the performance of the unmodified large foundation models (UMA and MACE-MH-1), but\nperforms poorly for Er(MO) with an MAE of 0.476 eV",
+        "location": {
+          "section": "4.1.1",
+          "page": 9,
+          "char_span": null,
+          "quote": "the\nmodel achieves an MAE of 0.310 eV for metallic catalyst Er, better than the performance of the unmodified large foundation models (UMA and MACE-MH-1), but\nperforms poorly for Er(MO) with an MAE of 0.476 eV"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c7",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "This model achieves an MAE\nof 0.175 eV for Ea(M) predictions, about half of the error calculated using the\nFS-BMA+MD model, within 0.05 eV of the UMA and MACE-MH-1 models\u2019 MAE.",
+        "location": {
+          "section": "4.1.1",
+          "page": 9,
+          "char_span": null,
+          "quote": "This model achieves an MAE\nof 0.175 eV for Ea(M) predictions, about half of the error calculated using the\nFS-BMA+MD model, within 0.05 eV of the UMA and MACE-MH-1 models\u2019 MAE."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c8",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "with\nno metal oxide in the training set, the Er(MO) MAE is 0.334 eV, about 0.06 eV lower\nthan a model that had about 2,692 metal-oxides configurations in the training set.",
+        "location": {
+          "section": "4.1.2",
+          "page": 10,
+          "char_span": null,
+          "quote": "with\nno metal oxide in the training set, the Er(MO) MAE is 0.334 eV, about 0.06 eV lower\nthan a model that had about 2,692 metal-oxides configurations in the training set."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c9",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "The FT-MD(M) model performs worse than the FT-BMA model\nwith a 0.15 eV increase in Er(M) MAE.",
+        "location": {
+          "section": "4.1.2",
+          "page": 10,
+          "char_span": null,
+          "quote": "The FT-MD(M) model performs worse than the FT-BMA model\nwith a 0.15 eV increase in Er(M) MAE."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c10",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "the FT-MD(M) model MAE for Er(MO) is 0.428 eV\nwhile the FT-BMA MAE is 0.334 eV",
+        "location": {
+          "section": "4.1.2",
+          "page": 10,
+          "char_span": null,
+          "quote": "the FT-MD(M) model MAE for Er(MO) is 0.428 eV\nwhile the FT-BMA MAE is 0.334 eV"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c11",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "performs better for Er(MO) (MAE = 0.305 eV) than\nthe FT-BMA and FT-MD(M) models. It also has almost identical performance to the\nFT-MD(MO) model (MAE = 0.306 eV)",
+        "location": {
+          "section": "4.1.2",
+          "page": 10,
+          "char_span": null,
+          "quote": "performs better for Er(MO) (MAE = 0.305 eV) than\nthe FT-BMA and FT-MD(M) models. It also has almost identical performance to the\nFT-MD(MO) model (MAE = 0.306 eV)"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c13",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "the Er(M) and Ea (M) MAE\nare unchanged, the Er(MO) MAE decreases by 0.07 eV.",
+        "location": {
+          "section": "4.1.2",
+          "page": 11,
+          "char_span": null,
+          "quote": "the Er(M) and Ea (M) MAE\nare unchanged, the Er(MO) MAE decreases by 0.07 eV."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c14",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "MACE-MH-1 (OMAT) performs the worst with an MAE of 1.011 eV. The\nFS-BMA model exhibits an error of of up to 0.5 eV for each elementary step (overall\nMAE of 0.455 eV)",
+        "location": {
+          "section": "4.2.1",
+          "page": 12,
+          "char_span": null,
+          "quote": "MACE-MH-1 (OMAT) performs the worst with an MAE of 1.011 eV. The\nFS-BMA model exhibits an error of of up to 0.5 eV for each elementary step (overall\nMAE of 0.455 eV)"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c15",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "the best performing model\nwith an MAE of 0.141 eV across these 7 reactions, and similarly achieve an MAE of\n0.143 eV across the entire 101 reactions reported across other catalysts in this study.",
+        "location": {
+          "section": "4.2.1",
+          "page": 12,
+          "char_span": null,
+          "quote": "the best performing model\nwith an MAE of 0.141 eV across these 7 reactions, and similarly achieve an MAE of\n0.143 eV across the entire 101 reactions reported across other catalysts in this study."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c16",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "The FT-All model\n(solid lines) predicts the energy of each step with an MAE of 0.124 eV with respect to\nthe DFT values",
+        "location": {
+          "section": "4.2.1",
+          "page": 12,
+          "char_span": null,
+          "quote": "The FT-All model\n(solid lines) predicts the energy of each step with an MAE of 0.124 eV with respect to\nthe DFT values"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c17",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "Their work provides 23 DFT NEB\nreactions created using similar DFT settings as those used to train our MLIPs",
+        "location": {
+          "section": "4.2.1",
+          "page": 13,
+          "char_span": null,
+          "quote": "Their work provides 23 DFT NEB\nreactions created using similar DFT settings as those used to train our MLIPs"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c18",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "the 0.2 eV higher\nerror in predicting the barrier by the FS-MD model arises because it has predicted\na different initial state as compared to DFT, not the transition state.",
+        "location": {
+          "section": "4.2.1",
+          "page": 14,
+          "char_span": null,
+          "quote": "the 0.2 eV higher\nerror in predicting the barrier by the FS-MD model arises because it has predicted\na different initial state as compared to DFT, not the transition state."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c19",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "observed a difference of 0.3 eV\nin barrier predictions, indicating a high sensitivity of Ea to the structures at the initial\nand transitions states.",
+        "location": {
+          "section": "4.2.1",
+          "page": 14,
+          "char_span": null,
+          "quote": "observed a difference of 0.3 eV\nin barrier predictions, indicating a high sensitivity of Ea to the structures at the initial\nand transitions states."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c20",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "calculated the OER energetics for a total of 96 reactions on rutile (R), \u03b1,\nand \u03b2 phases of several different surface terminations of IrO2 and IrO3 under applied\npotential.",
+        "location": {
+          "section": "4.2.2",
+          "page": 15,
+          "char_span": null,
+          "quote": "calculated the OER energetics for a total of 96 reactions on rutile (R), \u03b1,\nand \u03b2 phases of several different surface terminations of IrO2 and IrO3 under applied\npotential."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c21",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "has an error of 0.21 eV for O and OH adsorption. However,\nthe error is significantly higher for OOH* adsorption at 1.6 eV, which is attributed\nto the absence of OOH* species in the training set. For the 96 reactions reported in\nRef. [58], the FS-All model has an MAE of 0.438 eV.",
+        "location": {
+          "section": "4.2.2",
+          "page": 15,
+          "char_span": null,
+          "quote": "has an error of 0.21 eV for O and OH adsorption. However,\nthe error is significantly higher for OOH* adsorption at 1.6 eV, which is attributed\nto the absence of OOH* species in the training set. For the 96 reactions reported in\nRef. [58], the FS-All model has an MAE of 0.438 eV."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c22",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "reduces\nthe error for OOH* to less than 0.5 eV, and has an over-\nall MAE of 0.384 eV, which is a 0.05 eV lower than FS-All model.",
+        "location": {
+          "section": "4.2.2",
+          "page": 15,
+          "char_span": null,
+          "quote": "reduces\nthe error for OOH* to less than 0.5 eV, and has an over-\nall MAE of 0.384 eV, which is a 0.05 eV lower than FS-All model."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c23",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "The total MAEs for the\n96 reaction for FT-MD(MO) and FT-All models are 0.313 and 0.278 eV, respectively,\nboth showing better performance than the from-scratch models.",
+        "location": {
+          "section": "4.2.2",
+          "page": 15,
+          "char_span": null,
+          "quote": "The total MAEs for the\n96 reaction for FT-MD(MO) and FT-All models are 0.313 and 0.278 eV, respectively,\nboth showing better performance than the from-scratch models."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c24",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "This procedure produced 90,781 total initialized structures,\nof which 90,181 converged.",
+        "location": {
+          "section": "4.2.3",
+          "page": 16,
+          "char_span": null,
+          "quote": "This procedure produced 90,781 total initialized structures,\nof which 90,181 converged."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c25",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "For these 2,115 configurations, the FT-All model adsorption energy MAE is 0.15 eV",
+        "location": {
+          "section": "4.2.3",
+          "page": 16,
+          "char_span": null,
+          "quote": "For these 2,115 configurations, the FT-All model adsorption energy MAE is 0.15 eV"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c26",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "For the (311) surface termination, 77% of configurations are within the target\nthreshold of \u00b10.2 eV. The accuracy is lowest for the (532) facet, the highest surface\ntermination we considered, with only 58% of predictions within the error threshold.\nNevertheless for all other surface terminations, 65% to 75% of the tested configurations\nlie within with the \u00b10.2 eV tolerance.",
+        "location": {
+          "section": "4.2.3",
+          "page": 16,
+          "char_span": null,
+          "quote": "For the (311) surface termination, 77% of configurations are within the target\nthreshold of \u00b10.2 eV. The accuracy is lowest for the (532) facet, the highest surface\ntermination we considered, with only 58% of predictions within the error threshold.\nNevertheless for all other surface terminations, 65% to 75% of the tested configurations\nlie within with the \u00b10.2 eV tolerance."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c27",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "For AgNi and CuAu, the performance is mediocre\nwith only 68% and 46% within \u00b10.2 eV of the DFT values, respectively. On the other\nhand, the model performance is much better for CuIr, with 73% within the threshold.",
+        "location": {
+          "section": "4.2.3",
+          "page": 16,
+          "char_span": null,
+          "quote": "For AgNi and CuAu, the performance is mediocre\nwith only 68% and 46% within \u00b10.2 eV of the DFT values, respectively. On the other\nhand, the model performance is much better for CuIr, with 73% within the threshold."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c28",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "FT-All model has an MAE\nof 0.278 eV, noticeably better the error of from-scratch model (MAE = 0.384 eV).",
+        "location": {
+          "section": "5",
+          "page": 17,
+          "char_span": null,
+          "quote": "FT-All model has an MAE\nof 0.278 eV, noticeably better the error of from-scratch model (MAE = 0.384 eV)."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c29",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "with 81% of randomly selected subset of reactions having\nless than \u00b10.2 eV error with respect to the DFT values.",
+        "location": {
+          "section": "5",
+          "page": 17,
+          "char_span": null,
+          "quote": "with 81% of randomly selected subset of reactions having\nless than \u00b10.2 eV error with respect to the DFT values."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c30",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "the FT-All model achieves an MAE of 0.141 eV, noticeably better than our\nbest from scratch model (FS-All MAE = 0.251 eV).",
+        "location": {
+          "section": "5",
+          "page": 16,
+          "char_span": null,
+          "quote": "the FT-All model achieves an MAE of 0.141 eV, noticeably better than our\nbest from scratch model (FS-All MAE = 0.251 eV)."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c31",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "all our\nMLIPs fine-tuned to a different training set each have a MAE of between 0.14 to\n0.15 eV, better than our best performing from scratch model (MAE = 0.175 eV).",
+        "location": {
+          "section": "5",
+          "page": 16,
+          "char_span": null,
+          "quote": "all our\nMLIPs fine-tuned to a different training set each have a MAE of between 0.14 to\n0.15 eV, better than our best performing from scratch model (MAE = 0.175 eV)."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c32",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "is able to estimate Er within 0.1 eV of DFT, for 74\n% of Er reported in AdsorbML task.",
+        "location": {
+          "section": "1 Introduction",
+          "page": 3,
+          "char_span": null,
+          "quote": "is able to estimate Er within 0.1 eV of DFT, for 74\n% of Er reported in AdsorbML task."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c33",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "with an MAE of 0.095 eV for the S24 [25] and 0.138 eV for OC20\nbenchmark tests.",
+        "location": {
+          "section": "1 Introduction",
+          "page": 3,
+          "char_span": null,
+          "quote": "with an MAE of 0.095 eV for the S24 [25] and 0.138 eV for OC20\nbenchmark tests."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c34",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "They found that the MLIP-\npredicted NEBs were successful for 56% of the 900 reactions studied, which improved\nto 86% when the \u2206Ea were calculated using single-point DFT energies at the MLIP\u2019s\ninitial, transition, and final state structures.",
+        "location": {
+          "section": "1 Introduction",
+          "page": 3,
+          "char_span": null,
+          "quote": "They found that the MLIP-\npredicted NEBs were successful for 56% of the 900 reactions studied, which improved\nto 86% when the \u2206Ea were calculated using single-point DFT energies at the MLIP\u2019s\ninitial, transition, and final state structures."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c35",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "trained an accurate MLIP (MAE of 0.05 eV\nfor Ea) for CO2 hydrogenation to methanol on In2O3 in six active-learning loops",
+        "location": {
+          "section": "1 Introduction",
+          "page": 3,
+          "char_span": null,
+          "quote": "trained an accurate MLIP (MAE of 0.05 eV\nfor Ea) for CO2 hydrogenation to methanol on In2O3 in six active-learning loops"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c37",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "We\nperformed MD simulations for 10 ps in the NVT\nensemble at T = 300 K",
+        "location": {
+          "section": "Datasets",
+          "page": 7,
+          "char_span": null,
+          "quote": "We\nperformed MD simulations for 10 ps in the NVT\nensemble at T = 300 K"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    }
+  ]
+}

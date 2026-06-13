@@ -1,0 +1,484 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "chemistry-arxiv-2604.14784-water-nanodroplet-efields",
+  "meta": {
+    "executor": "local",
+    "n_claims": 18,
+    "n_verifiers": 9,
+    "synthesis_candidates": [
+      "c6",
+      "c7",
+      "c8",
+      "c9",
+      "c13",
+      "c17",
+      "c18"
+    ],
+    "confirmation": "fresh-sandbox",
+    "registry_load_errors": []
+  },
+  "summary": {
+    "n_findings": 0,
+    "n_flags": 0,
+    "n_dropped": 0,
+    "n_routed_to_human": 0,
+    "n_abstained": 18,
+    "flags_by_trust_tier": {},
+    "flags_by_severity": {}
+  },
+  "findings": [],
+  "dropped_flags": [],
+  "routed_to_human": [],
+  "abstained": [
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c1",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "find an outward-oriented field of \u223c 1.0\u20131.2 V/\u02daA along the intrinsic surface normal",
+        "location": {
+          "section": "Abstract",
+          "page": 2,
+          "char_span": null,
+          "quote": "find an outward-oriented field of \u223c 1.0\u20131.2 V/\u02daA along the intrinsic surface normal"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c2",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "its magnitude scales linearly with the average number of hydrogen bonds per\ninterfacial molecule",
+        "location": {
+          "section": "Abstract",
+          "page": 2,
+          "char_span": null,
+          "quote": "its magnitude scales linearly with the average number of hydrogen bonds per\ninterfacial molecule"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c3",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "which changes by a factor\nof only \u223c 10\u22125 between 3 and 40\u00b5m-sized droplets",
+        "location": {
+          "section": "Abstract",
+          "page": 2,
+          "char_span": null,
+          "quote": "which changes by a factor\nof only \u223c 10\u22125 between 3 and 40\u00b5m-sized droplets"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c4",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "the IEF is localized\ninside the interfacial region and rapidly vanishes within a few \u02daA",
+        "location": {
+          "section": "Abstract",
+          "page": 2,
+          "char_span": null,
+          "quote": "the IEF is localized\ninside the interfacial region and rapidly vanishes within a few \u02daA"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c5",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "that the air-water boundary may sustain electric fields on the order of \u223c 0.2 V/\u02daA",
+        "location": {
+          "section": "Introduction",
+          "page": 3,
+          "char_span": null,
+          "quote": "that the air-water boundary may sustain electric fields on the order of \u223c 0.2 V/\u02daA"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c6",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "i.e., about 5-6 times larger than previous computational\nestimates.",
+        "location": {
+          "section": "Results and discussion",
+          "page": 11,
+          "char_span": null,
+          "quote": "i.e., about 5-6 times larger than previous computational\nestimates."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c7",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "Each DPMD simulation was\ncarried out in the NVT canonical ensemble for at least 1 ns. The temperature was kept fixed\nat 300 K via the canonical-sampling-velocity-rescaling (CSVR) thermostat 55 with a damping\nfactor of 0.04 ps.",
+        "location": {
+          "section": "Methods",
+          "page": 5,
+          "char_span": null,
+          "quote": "Each DPMD simulation was\ncarried out in the NVT canonical ensemble for at least 1 ns. The temperature was kept fixed\nat 300 K via the canonical-sampling-velocity-rescaling (CSVR) thermostat 55 with a damping\nfactor of 0.04 ps."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c8",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "500 randomly chosen configurations were extracted from all DPMD trajectories and re-\nsampled via ab initio calculations at the PBE+D3",
+        "location": {
+          "section": "Methods",
+          "page": 5,
+          "char_span": null,
+          "quote": "500 randomly chosen configurations were extracted from all DPMD trajectories and re-\nsampled via ab initio calculations at the PBE+D3"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c9",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "charge states corresponding to \u22125e\n\u2212, \u2212e\u2212, +e\u2212, and +5e\u2212, hence probing regimes of 13%\nand 66% of the Rayleigh limit for Coulomb fission. These charge states approximately cor-\nrespond to net pH values of 13.74, 13.0, 0.96, and 0.26, respectively.",
+        "location": {
+          "section": "pH Effects on the Interfacial Electric Field",
+          "page": 13,
+          "char_span": null,
+          "quote": "charge states corresponding to \u22125e\n\u2212, \u2212e\u2212, +e\u2212, and +5e\u2212, hence probing regimes of 13%\nand 66% of the Rayleigh limit for Coulomb fission. These charge states approximately cor-\nrespond to net pH values of 13.74, 13.0, 0.96, and 0.26, respectively."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c10",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "that the IEF linearly increases with the total excess charge",
+        "location": {
+          "section": "pH Effects",
+          "page": 14,
+          "char_span": null,
+          "quote": "that the IEF linearly increases with the total excess charge"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c11",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "In the vapor1 region the typical field values drop to smaller\nvalues of approximately \u223c 0.3 V/\u02daA, while in the vapor2 region the field vanishes within\nthe statistical uncertainty.",
+        "location": {
+          "section": "Spatial Extension",
+          "page": 16,
+          "char_span": null,
+          "quote": "In the vapor1 region the typical field values drop to smaller\nvalues of approximately \u223c 0.3 V/\u02daA, while in the vapor2 region the field vanishes within\nthe statistical uncertainty."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c12",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "The corresponding distributions peak at approximately\n1.2\u20131.4 V/\u02daA",
+        "location": {
+          "section": "Spatial Extension",
+          "page": 15,
+          "char_span": null,
+          "quote": "The corresponding distributions peak at approximately\n1.2\u20131.4 V/\u02daA"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c13",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": null,
+        "location": {
+          "section": "Results and discussion",
+          "page": 11,
+          "char_span": null,
+          "quote": null
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c14",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "leading to an\naverage \u03b1 \u223c 96\u25e6in the droplet (\u03b1 \u223c 94\u25e6in the slab), implies a net electric field directed\noutward from the liquid toward the vapor.",
+        "location": {
+          "section": "Results and discussion",
+          "page": 8,
+          "char_span": null,
+          "quote": "leading to an\naverage \u03b1 \u223c 96\u25e6in the droplet (\u03b1 \u223c 94\u25e6in the slab), implies a net electric field directed\noutward from the liquid toward the vapor."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c15",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "reveals variations on the order of 10\u22125 V/\u02daA, i.e., five orders of magnitude smaller than\nthe field itself.",
+        "location": {
+          "section": "Results and discussion",
+          "page": 12,
+          "char_span": null,
+          "quote": "reveals variations on the order of 10\u22125 V/\u02daA, i.e., five orders of magnitude smaller than\nthe field itself."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c16",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "which yield essentially indistinguishable IEF distributions (see Fig. S8 of the SI)",
+        "location": {
+          "section": "Methods",
+          "page": 5,
+          "char_span": null,
+          "quote": "which yield essentially indistinguishable IEF distributions (see Fig. S8 of the SI)"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c17",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "samples composed of 256 and 512 H2O molecules were considered with box edges of\na = b = 19.641, c = 45.000 \u02daA and a = b = 24.830, c = 60.000 \u02daA, respectively",
+        "location": {
+          "section": "Methods",
+          "page": 5,
+          "char_span": null,
+          "quote": "samples composed of 256 and 512 H2O molecules were considered with box edges of\na = b = 19.641, c = 45.000 \u02daA and a = b = 24.830, c = 60.000 \u02daA, respectively"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c18",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "nanodroplets composed of 256, 384, 512, 640, 768, 896, and 1024 H2O molecules were simu-\nlated in cubic boxes with edges of 44, 48, 60, 63, 65, 67, and 68 \u02daA, respectively",
+        "location": {
+          "section": "Methods",
+          "page": 5,
+          "char_span": null,
+          "quote": "nanodroplets composed of 256, 384, 512, 640, 768, 896, and 1024 H2O molecules were simu-\nlated in cubic boxes with edges of 44, 48, 60, 63, 65, 67, and 68 \u02daA, respectively"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    }
+  ]
+}

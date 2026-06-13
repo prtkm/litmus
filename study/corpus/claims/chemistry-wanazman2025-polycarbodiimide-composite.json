@@ -1,0 +1,985 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "chemistry-wanazman2025-polycarbodiimide-composite",
+  "meta": {
+    "journal": "ACS Omega",
+    "year": 2026,
+    "doi": "10.1021/acsomega.6c02669",
+    "notes": "Figure-read values (Figures 3-9) approximated from text descriptions; underlying numeric figure data not tabulated in main text.",
+    "extractor": "litmus.extract",
+    "model": "claude-opus-4-8",
+    "source": "opus-native-pdf"
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "text": "AF-XNBR gloves can achieve ASTM D6319-compliant performance even under low-temperature curing conditions.",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "AF-XNBR gloves can achieve compliant\nperformance even under low-temperature curing conditions"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "measured tensile strength >= 14 MPa and elongation at break >= 500% at curing temperature 65 C",
+      "strength": "qualitative",
+      "scope": "55 um gloves, curing 65-110 C, ASTM D6319",
+      "evidence_refs": [
+        "ev1",
+        "ev9",
+        "ev10"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c2",
+      "text": "ASTM D6319-19 specifies a minimum tensile strength of 14 MPa and a minimum elongation at break of 500% for nitrile examination gloves.",
+      "location": {
+        "section": "3.7 Tensile Properties and Tear Strength Test",
+        "page": 4,
+        "char_span": null,
+        "quote": "which\nspecifies a minimum tensile strength of 14 MPa and a minimum\nelongation at break of 500% for nitrile examination gloves."
+      },
+      "epistemic_tier": "T1",
+      "predicate": "ASTM D6319-19 min_tensile_strength_MPa == 14 and min_elongation_pct == 500",
+      "strength": "exact",
+      "scope": "ASTM D6319-19, nitrile examination gloves",
+      "evidence_refs": [
+        "ev1"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c3",
+      "text": "The latex compound pH was brought down to roughly 10 using a 5% KOH aqueous solution.",
+      "location": {
+        "section": "3.2",
+        "page": 3,
+        "char_span": null,
+        "quote": "A 5% KOH aqueous solution was used to\nbring the compound’s pH down to roughly 10."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported_ph == 10",
+      "strength": "approximate",
+      "scope": "latex compound",
+      "evidence_refs": [
+        "ev2"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c4",
+      "text": "The swelling index of aged samples is consistently lower than that of unaged samples across all latex grades and curing temperatures, and this reduction is statistically significant (p < 0.05).",
+      "location": {
+        "section": "4.1.2",
+        "page": 4,
+        "char_span": null,
+        "quote": "This reduction was found to\nbe statistically significant (p < 0.05), signifying that aging leads\nto a measurable decrease in solvent uptake."
+      },
+      "epistemic_tier": "T3",
+      "predicate": "reported p-value bound p_upper_bound == 0.05 for aged vs unaged swelling index comparison",
+      "strength": "comparative",
+      "scope": "55 um gloves, all latex grades and curing temperatures",
+      "evidence_refs": [
+        "ev3"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c5",
+      "text": "XNBR gloves with K834 and NL129 show high swelling (~250-275%) when unaged, decreasing to ~210-230% after aging.",
+      "location": {
+        "section": "4.1.2",
+        "page": 5,
+        "char_span": null,
+        "quote": "XNBR gloves with latex K834 and NL129 for all three\ncuring conditions show high swelling (∼250−275%) when\nunaged. After aging, swelling decreases moderately (∼210−\n230%)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "unaged swelling index in [250,275]% and aged swelling index in [210,230]% for K834 and NL129",
+      "strength": "approximate",
+      "scope": "K834 and NL129, all curing conditions",
+      "evidence_refs": [
+        "ev4"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c6",
+      "text": "XNBR gloves using NL117 show much lower initial swelling (~140-150%) and slight further reduction after aging (~125-135%).",
+      "location": {
+        "section": "4.1.2",
+        "page": 5,
+        "char_span": null,
+        "quote": "XNBR gloves using latex NL117 show much lower\ninitial swelling (∼140−150%) compared to other latexes\nthroughout all curing conditions. Slight further reduction after\naging (∼125−135%)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "unaged NL117 swelling index in [140,150]% and aged in [125,135]%",
+      "strength": "approximate",
+      "scope": "NL117, all curing conditions",
+      "evidence_refs": [
+        "ev5"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c7",
+      "text": "NL117 consistently exhibits the highest calculated cross-link density among latex grades.",
+      "location": {
+        "section": "4.1.3 / Table 4",
+        "page": 6,
+        "char_span": null,
+        "quote": "NL117 consistently exhibiting the highest values"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "cross-link density of NL117 > cross-link density of K834 and NL129 across all conditions in Table 4",
+      "strength": "comparative",
+      "scope": "Table 4, cross-link density",
+      "evidence_refs": [
+        "ev6"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c8",
+      "text": "K834 latex shows lower crotch retention after aging (~36-57%).",
+      "location": {
+        "section": "4.1.3",
+        "page": 6,
+        "char_span": null,
+        "quote": "K834 latex shows lower retention after aging (crotch\nretention: ∼ 36−57%)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "K834 crotch retention in [36,57]% (Table 6 values 35.8, 45.8, 56.7)",
+      "strength": "approximate",
+      "scope": "K834, Table 6",
+      "evidence_refs": [
+        "ev7"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c9",
+      "text": "NL129 latex has moderate-to-high crotch retention (68-93%).",
+      "location": {
+        "section": "4.1.3",
+        "page": 6,
+        "char_span": null,
+        "quote": "NL129 latex\nhas moderate-to-high retention (68−93%)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "NL129 crotch retention in [68,93]% (Table 6 values 68.3, 75.0, 92.5)",
+      "strength": "approximate",
+      "scope": "NL129, Table 6",
+      "evidence_refs": [
+        "ev7"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c10",
+      "text": "NL117 latex performs best with crotch retention values approaching or exceeding 100%.",
+      "location": {
+        "section": "4.1.3",
+        "page": 6,
+        "char_span": null,
+        "quote": "NL117 latex performs\nthe best, with retention values approaching or exceeding 100%."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "NL117 crotch retention >= ~95% (Table 6 values 95.8, 100.0, 102.6)",
+      "strength": "comparative",
+      "scope": "NL117, Table 6",
+      "evidence_refs": [
+        "ev7"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c11",
+      "text": "K834 at 70 um tear strength increases from ~65 kN/m (unaged) to ~150 kN/m (aged).",
+      "location": {
+        "section": "4.2.2",
+        "page": 7,
+        "char_span": null,
+        "quote": "K834 at 70 μm increases from ∼65 kN/m (unaged)\nto ∼150 kN/m (aged)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "old_value ~65 kN/m, new_value ~150 kN/m tear strength for K834 at 70 um",
+      "strength": "approximate",
+      "scope": "K834, 70 um, curing 110 C, Figure 5",
+      "evidence_refs": [
+        "ev8"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "c12",
+      "text": "K834 at 90 um shows the highest tear strength (~160 kN/m aged).",
+      "location": {
+        "section": "4.2.2",
+        "page": 7,
+        "char_span": null,
+        "quote": "K834 at 90 μm shows the highest values\n(∼160 kN/m aged)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "aged tear strength K834 90 um ~160 kN/m, highest in Figure 5",
+      "strength": "approximate",
+      "scope": "K834, 90 um, aged, Figure 5",
+      "evidence_refs": [
+        "ev8"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "c13",
+      "text": "Tensile strength of latex films cured at 65 C reached about 30 MPa, similar to 110 C; K834 shows consistently high tensile strength (~30 MPa).",
+      "location": {
+        "section": "4.3.1",
+        "page": 8,
+        "char_span": null,
+        "quote": "the tensile\nstrength of the latex films cured at 65 °C reached about 30\nMPa, which is similar to 110 °C. In particular, K834 latex\nshows consistently high tensile strength across all curing\ntemperatures (∼30 MPa)."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "tensile strength at 65 C ~30 MPa and ~similar at 110 C (Figure 6)",
+      "strength": "approximate",
+      "scope": "55 um gloves, Figure 6",
+      "evidence_refs": [
+        "ev9"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "c14",
+      "text": "All XNBR latex gloves regardless of grade and curing temperature demonstrated elongation at break exceeding 500%, with no significant differences (p > 0.05) among grades and temperatures.",
+      "location": {
+        "section": "4.3.1",
+        "page": 9,
+        "char_span": null,
+        "quote": "demonstrated elongation at break values\nexceeding 500%. Statistical analysis using an independent t test\nconfirmed that there were no significant differences (p > 0.05)\nin elongation at break among the different latex grades and\ncuring temperatures."
+      },
+      "epistemic_tier": "T3",
+      "predicate": "elongation at break > 500% for all conditions; t-test p_lower_bound == 0.05 (n.s.) among grades/temperatures",
+      "strength": "comparative",
+      "scope": "55 um gloves, Figure 7, all grades and temperatures",
+      "evidence_refs": [
+        "ev10",
+        "ev11"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c15",
+      "text": "Aging resulted in a significant increase in tensile strength (p < 0.05) for all latex grades, while no significant differences (p > 0.05) were observed between latex grades within the same aging condition.",
+      "location": {
+        "section": "4.3.1",
+        "page": 9,
+        "char_span": null,
+        "quote": "aging resulted in a\nsignificant increase in tensile strength (p < 0.05) for all latex\ngrades, while no significant differences (p > 0.05) were\nobserved between the different latex grades within the same\naging condition."
+      },
+      "epistemic_tier": "T3",
+      "predicate": "t-test p_upper_bound == 0.05 for aging effect on tensile strength; p_lower_bound == 0.05 among grades",
+      "strength": "causal",
+      "scope": "55 um gloves cured at 65 C, Figures 8 and 9",
+      "evidence_refs": [
+        "ev12"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c16",
+      "text": "Virgin XNBR films exhibit an elongation at break of approximately 530% (ref 27).",
+      "location": {
+        "section": "4.3.1",
+        "page": 9,
+        "char_span": null,
+        "quote": "virgin XNBR films exhibit an elongation at break of\napproximately 530%"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "cited elongation at break of virgin XNBR films == ~530% per ref 27",
+      "strength": "approximate",
+      "scope": "ref 27",
+      "evidence_refs": [
+        "ev13"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "c17",
+      "text": "Increasing the XNBR content in the composite led to improvements in elongation at break up to 46% (ref 28).",
+      "location": {
+        "section": "4.3.1",
+        "page": 9,
+        "char_span": null,
+        "quote": "with\nenhancements up to 46%"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "cited elongation at break enhancement up to 46% per ref 28",
+      "strength": "bound",
+      "scope": "ref 28",
+      "evidence_refs": [
+        "ev14"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "c18",
+      "text": "Energy-efficient curing strategies such as cross-linking XNBR latex with multifunctional epoxides can reduce thermal load by up to 30%.",
+      "location": {
+        "section": "ESG",
+        "page": 10,
+        "char_span": null,
+        "quote": "can also reduce thermal\nload by up to 30%"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "cited thermal load reduction up to 30% per ref 18",
+      "strength": "bound",
+      "scope": "multifunctional epoxide curing, ref 18",
+      "evidence_refs": [
+        "ev15"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "c19",
+      "text": "The cross-link density was calculated using the Flory-Rehner equation with molar volume of toluene Vs = 105.91 cm3/mol and Flory-Huggins parameter chi = 0.39.",
+      "location": {
+        "section": "3.5",
+        "page": 3,
+        "char_span": null,
+        "quote": "Vs is the molar volume of toluene (105.91 cm3\n/mol),\nand χ is the Flory−Huggins polymer−solvent interaction parameter,\ntaken as 0.39."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "Flory-Rehner inputs Vs == 105.91 cm3/mol, chi == 0.39, density of toluene == 0.862 g/cm3",
+      "strength": "exact",
+      "scope": "eq 3, swelling test",
+      "evidence_refs": [
+        "ev16"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c20",
+      "text": "The durability time must be at least 42 min per Midori Anzen internal standard; a maximum of 120 min was used for this study.",
+      "location": {
+        "section": "3.6 / 4.1.3",
+        "page": 3,
+        "char_span": null,
+        "quote": "the\ndurability time must be at least 42 min."
+      },
+      "epistemic_tier": "T1",
+      "predicate": "durability threshold == 42 min; study max == 120 min",
+      "strength": "exact",
+      "scope": "durability test, Midori Anzen standard",
+      "evidence_refs": [
+        "ev17"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c21",
+      "text": "The XNBR cross-link formulation uses 100 phr XNBR, 2 phr KOH, 1 phr ZnO, 0.2 phr antioxidant, 2 phr TiO2, and 0.5 phr PCDI.",
+      "location": {
+        "section": "Table 2",
+        "page": 3,
+        "char_span": null,
+        "quote": "phr 100 2 1 0.2 2 0.5"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "formulation phr values == [100, 2, 1, 0.2, 2, 0.5]",
+      "strength": "exact",
+      "scope": "Table 2",
+      "evidence_refs": [
+        "ev18"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c22",
+      "text": "Latex grades have ACN content: K834 ~27%, NL129 ~20%, NL117 ~45%.",
+      "location": {
+        "section": "3.1",
+        "page": 3,
+        "char_span": null,
+        "quote": "K834 (∼27% ACN\ncontent), NL129 (∼20% ACN\ncontent), and NL117 (∼45% ACN\ncontent)"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "ACN content K834==27%, NL129==20%, NL117==45%",
+      "strength": "approximate",
+      "scope": "materials",
+      "evidence_refs": [
+        "ev19"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c23",
+      "text": "Artificial sweat solution prepared from 1 L deionized water, 20 g sodium chloride, 17.05 g lactic acid, 5.01 g acetic acid, 17.5 g ammonium chloride, and 2 N NaOH.",
+      "location": {
+        "section": "3.6",
+        "page": 3,
+        "char_span": null,
+        "quote": "20 g of sodium\nchloride, 17.05 g of lactic acid, 5.01 g of acetic acid, 17.5 g of\nammonium chloride, and 2 N sodium hydroxide solution."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "artificial sweat masses == [20 g NaCl, 17.05 g lactic acid, 5.01 g acetic acid, 17.5 g NH4Cl]",
+      "strength": "exact",
+      "scope": "durability test",
+      "evidence_refs": [
+        "ev20"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c24",
+      "text": "The test sample was maintained at 147 mm for 11 s then stretched to 195 mm before returning for 1.5 s per durability cycle.",
+      "location": {
+        "section": "3.6",
+        "page": 3,
+        "char_span": null,
+        "quote": "maintained\nin its typical state of 147 mm for 11 s and then stretched to 195 mm\nin length before returning to its initial shape for 1.5 s."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "baseline length == 147 mm, stretched == 195 mm, hold 11 s, return 1.5 s",
+      "strength": "exact",
+      "scope": "durability test cycle",
+      "evidence_refs": [
+        "ev21"
+      ],
+      "confidence": 0.9
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev1",
+      "kind": "text",
+      "location": {
+        "section": "3.7",
+        "page": 4,
+        "char_span": null,
+        "quote": "specifies a minimum tensile strength of 14 MPa and a minimum\nelongation at break of 500% for nitrile examination gloves."
+      },
+      "extracted_values": {
+        "min_tensile_strength_MPa": 14,
+        "min_elongation_pct": 500,
+        "standard": "ASTM D6319-19"
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev2",
+      "kind": "number",
+      "location": {
+        "section": "3.2",
+        "page": 3,
+        "char_span": null,
+        "quote": "bring the compound’s pH down to roughly 10."
+      },
+      "extracted_values": {
+        "reported_ph": 10,
+        "koh_solution_pct": 5
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev3",
+      "kind": "statistic",
+      "location": {
+        "section": "4.1.2",
+        "page": 4,
+        "char_span": null,
+        "quote": "statistically significant (p < 0.05)"
+      },
+      "extracted_values": {
+        "test": null,
+        "p_upper_bound": 0.05
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev4",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 3 / 4.1.2",
+        "page": 5,
+        "char_span": null,
+        "quote": "high swelling (∼250−275%) when\nunaged. After aging, swelling decreases moderately (∼210−\n230%)"
+      },
+      "extracted_values": {
+        "unaged_swelling_pct_range": [
+          250,
+          275
+        ],
+        "aged_swelling_pct_range": [
+          210,
+          230
+        ],
+        "grades": [
+          "K834",
+          "NL129"
+        ]
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev5",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 3 / 4.1.2",
+        "page": 5,
+        "char_span": null,
+        "quote": "much lower\ninitial swelling (∼140−150%)"
+      },
+      "extracted_values": {
+        "unaged_swelling_pct_range": [
+          140,
+          150
+        ],
+        "aged_swelling_pct_range": [
+          125,
+          135
+        ],
+        "grade": "NL117"
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev6",
+      "kind": "table",
+      "location": {
+        "section": "Table 4",
+        "page": 6,
+        "char_span": null,
+        "quote": "NL117/65 °C 11.5 13.5"
+      },
+      "extracted_values": {
+        "crosslink_density_x1e5_mol_cm3": {
+          "K834_65_unaged": 4.5,
+          "K834_65_aged": 6.5,
+          "K834_90_unaged": 4.4,
+          "K834_90_aged": 6.3,
+          "K834_110_unaged": 5.2,
+          "K834_110_aged": 5.6,
+          "NL129_65_unaged": 5.3,
+          "NL129_65_aged": 7.2,
+          "NL129_90_unaged": 4.9,
+          "NL129_90_aged": 6.4,
+          "NL129_110_unaged": 4.7,
+          "NL129_110_aged": 6.6,
+          "NL117_65_unaged": 11.5,
+          "NL117_65_aged": 13.5,
+          "NL117_90_unaged": 10.8,
+          "NL117_90_aged": 12.7,
+          "NL117_110_unaged": 10.2,
+          "NL117_110_aged": 12.3
+        }
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev7",
+      "kind": "table",
+      "location": {
+        "section": "Table 6",
+        "page": 6,
+        "char_span": null,
+        "quote": "K834 65 35.8 57.5"
+      },
+      "extracted_values": {
+        "crotch_retention_pct": {
+          "K834_65": 35.8,
+          "K834_90": 45.8,
+          "K834_110": 56.7,
+          "NL129_65": 68.3,
+          "NL129_90": 75.0,
+          "NL129_110": 92.5,
+          "NL117_65": 95.8,
+          "NL117_90": 100.0,
+          "NL117_110": 102.6
+        },
+        "palm_retention_pct": {
+          "K834_65": 57.5,
+          "K834_90": 60.0,
+          "K834_110": 81.7,
+          "NL129_65": 91.7,
+          "NL129_90": 100.0,
+          "NL129_110": 100.0,
+          "NL117_65": 100.0,
+          "NL117_90": 100.0,
+          "NL117_110": 100.0
+        }
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev8",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 5 / 4.2.2",
+        "page": 7,
+        "char_span": null,
+        "quote": "K834 at 70 μm increases from ∼65 kN/m (unaged)\nto ∼150 kN/m (aged)"
+      },
+      "extracted_values": {
+        "old_value": 65,
+        "new_value": 150,
+        "unit": "kN/m",
+        "K834_90um_aged_kN_m": 160,
+        "grade": "K834"
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev9",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 6 / 4.3.1",
+        "page": 8,
+        "char_span": null,
+        "quote": "the tensile\nstrength of the latex films cured at 65 °C reached about 30\nMPa, which is similar to 110 °C."
+      },
+      "extracted_values": {
+        "tensile_strength_65C_MPa": 30,
+        "tensile_strength_110C_MPa": 30,
+        "K834_tensile_MPa": 30
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev10",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 7 / 4.3.1",
+        "page": 9,
+        "char_span": null,
+        "quote": "demonstrated elongation at break values\nexceeding 500%"
+      },
+      "extracted_values": {
+        "elongation_at_break_threshold_pct": 500
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev11",
+      "kind": "statistic",
+      "location": {
+        "section": "4.3.1",
+        "page": 9,
+        "char_span": null,
+        "quote": "no significant differences (p > 0.05)\nin elongation at break among the different latex grades and\ncuring temperatures."
+      },
+      "extracted_values": {
+        "test": "t",
+        "p_lower_bound": 0.05
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev12",
+      "kind": "statistic",
+      "location": {
+        "section": "4.3.1",
+        "page": 9,
+        "char_span": null,
+        "quote": "aging resulted in a\nsignificant increase in tensile strength (p < 0.05) for all latex\ngrades"
+      },
+      "extracted_values": {
+        "test": "t",
+        "p_upper_bound": 0.05,
+        "effect": "aging on tensile strength"
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev13",
+      "kind": "text",
+      "location": {
+        "section": "4.3.1",
+        "page": 9,
+        "char_span": null,
+        "quote": "virgin XNBR films exhibit an elongation at break of\napproximately 530%"
+      },
+      "extracted_values": {
+        "cited_elongation_pct": 530,
+        "reference": "27"
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev14",
+      "kind": "text",
+      "location": {
+        "section": "4.3.1",
+        "page": 9,
+        "char_span": null,
+        "quote": "a significant improvement in the\nelongation at break, with enhancements up to 46%"
+      },
+      "extracted_values": {
+        "cited_enhancement_pct_upper": 46,
+        "reference": "28"
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev15",
+      "kind": "text",
+      "location": {
+        "section": "ESG discussion",
+        "page": 10,
+        "char_span": null,
+        "quote": "reduce thermal\nload by up to 30%"
+      },
+      "extracted_values": {
+        "cited_thermal_load_reduction_pct_upper": 30,
+        "reference": "18"
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev16",
+      "kind": "equation",
+      "location": {
+        "section": "3.5",
+        "page": 3,
+        "char_span": null,
+        "quote": "Vs is the molar volume of toluene (105.91 cm3\n/mol),\nand χ is the Flory−Huggins polymer−solvent interaction parameter,\ntaken as 0.39."
+      },
+      "extracted_values": {
+        "Vs_cm3_mol": 105.91,
+        "chi": 0.39,
+        "density_toluene_g_cm3": 0.862
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev17",
+      "kind": "number",
+      "location": {
+        "section": "3.6 / 4.1.3",
+        "page": 3,
+        "char_span": null,
+        "quote": "the\ndurability time must be at least 42 min."
+      },
+      "extracted_values": {
+        "durability_threshold_min": 42,
+        "study_max_min": 120
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev18",
+      "kind": "table",
+      "location": {
+        "section": "Table 2",
+        "page": 3,
+        "char_span": null,
+        "quote": "phr 100 2 1 0.2 2 0.5"
+      },
+      "extracted_values": {
+        "parts": [
+          100,
+          2,
+          1,
+          0.2,
+          2,
+          0.5
+        ],
+        "components": [
+          "XNBR",
+          "KOH",
+          "ZnO",
+          "antioxidant",
+          "TiO2",
+          "PCDI"
+        ]
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev19",
+      "kind": "text",
+      "location": {
+        "section": "3.1",
+        "page": 3,
+        "char_span": null,
+        "quote": "K834 (∼27% ACN\ncontent), NL129 (∼20% ACN\ncontent), and NL117 (∼45% ACN\ncontent)"
+      },
+      "extracted_values": {
+        "K834_ACN_pct": 27,
+        "NL129_ACN_pct": 20,
+        "NL117_ACN_pct": 45
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev20",
+      "kind": "text",
+      "location": {
+        "section": "3.6",
+        "page": 3,
+        "char_span": null,
+        "quote": "20 g of sodium\nchloride, 17.05 g of lactic acid, 5.01 g of acetic acid, 17.5 g of\nammonium chloride"
+      },
+      "extracted_values": {
+        "NaCl_g": 20,
+        "lactic_acid_g": 17.05,
+        "acetic_acid_g": 5.01,
+        "NH4Cl_g": 17.5,
+        "water_L": 1
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev21",
+      "kind": "number",
+      "location": {
+        "section": "3.6",
+        "page": 3,
+        "char_span": null,
+        "quote": "in its typical state of 147 mm for 11 s and then stretched to 195 mm\nin length before returning to its initial shape for 1.5 s."
+      },
+      "extracted_values": {
+        "baseline_mm": 147,
+        "stretched_mm": 195,
+        "hold_s": 11,
+        "return_s": 1.5
+      },
+      "confidence": 0.9
+    }
+  ],
+  "bindings": [
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev9",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev10",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c4",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c5",
+      "evidence_id": "ev4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c6",
+      "evidence_id": "ev5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c7",
+      "evidence_id": "ev6",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c8",
+      "evidence_id": "ev7",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c9",
+      "evidence_id": "ev7",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c10",
+      "evidence_id": "ev7",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c11",
+      "evidence_id": "ev8",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c12",
+      "evidence_id": "ev8",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c13",
+      "evidence_id": "ev9",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c14",
+      "evidence_id": "ev10",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c14",
+      "evidence_id": "ev11",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c15",
+      "evidence_id": "ev12",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c16",
+      "evidence_id": "ev13",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c17",
+      "evidence_id": "ev14",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c18",
+      "evidence_id": "ev15",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c19",
+      "evidence_id": "ev16",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c20",
+      "evidence_id": "ev17",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c21",
+      "evidence_id": "ev18",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c22",
+      "evidence_id": "ev19",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c23",
+      "evidence_id": "ev20",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c24",
+      "evidence_id": "ev21",
+      "relation": "rests_on"
+    }
+  ]
+}

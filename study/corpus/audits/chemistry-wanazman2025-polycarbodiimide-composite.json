@@ -1,15 +1,13 @@
 {
   "schema_version": "1.0",
-  "paper_id": "medicine-zhou2025-esketamine-low-opioid-anaesthesia",
+  "paper_id": "chemistry-wanazman2025-polycarbodiimide-composite",
   "meta": {
     "executor": "local",
-    "n_claims": 27,
+    "n_claims": 24,
     "n_verifiers": 9,
     "synthesis_candidates": [
-      "c1",
       "c2",
       "c3",
-      "c4",
       "c5",
       "c6",
       "c7",
@@ -19,64 +17,26 @@
       "c11",
       "c12",
       "c13",
-      "c14",
-      "c15",
-      "c16",
-      "c18",
       "c19",
       "c20",
       "c21",
       "c22",
       "c23",
-      "c24",
-      "c26"
+      "c24"
     ],
     "confirmation": "fresh-sandbox",
     "registry_load_errors": []
   },
   "summary": {
-    "n_findings": 1,
+    "n_findings": 0,
     "n_flags": 0,
     "n_dropped": 0,
     "n_routed_to_human": 0,
-    "n_abstained": 26,
+    "n_abstained": 24,
     "flags_by_trust_tier": {},
     "flags_by_severity": {}
   },
-  "findings": [
-    {
-      "verifier_id": "sum_check.v1",
-      "claim_id": "c25",
-      "status": "pass",
-      "trust_tier": "deterministic_confirmed",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "reported total equals the sum of its parts (within printing precision)",
-      "discrepancy": null,
-      "reported": 64,
-      "computed": 64,
-      "evidence": {
-        "quote": null,
-        "location": {
-          "section": null,
-          "page": null,
-          "char_span": null,
-          "quote": null
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {
-        "parts": [
-          37,
-          27
-        ],
-        "n_parts": 2,
-        "tolerance": 1e-09
-      }
-    }
-  ],
+  "findings": [],
   "dropped_flags": [],
   "routed_to_human": [],
   "abstained": [
@@ -87,17 +47,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "POD-3 QoR-15 scores 121 (117.75\u2013124) 115 (111.75\u2013118.25) <0.001",
+        "quote": "AF-XNBR gloves can achieve compliant\nperformance even under low-temperature curing conditions",
         "location": {
-          "section": "3.1 / Table 2",
-          "page": 7,
+          "section": "Abstract",
+          "page": 1,
           "char_span": null,
-          "quote": "POD-3 QoR-15 scores 121 (117.75\u2013124) 115 (111.75\u2013118.25) <0.001"
+          "quote": "AF-XNBR gloves can achieve compliant\nperformance even under low-temperature curing conditions"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -117,12 +77,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Physical comfort 40 (39\u201341) 38 (37\u201340) <0.001",
+        "quote": "which\nspecifies a minimum tensile strength of 14 MPa and a minimum\nelongation at break of 500% for nitrile examination gloves.",
         "location": {
-          "section": "3.1 / Table 2",
-          "page": 7,
+          "section": "3.7 Tensile Properties and Tear Strength Test",
+          "page": 4,
           "char_span": null,
-          "quote": "Physical comfort 40 (39\u201341) 38 (37\u201340) <0.001"
+          "quote": "which\nspecifies a minimum tensile strength of 14 MPa and a minimum\nelongation at break of 500% for nitrile examination gloves."
         },
         "recompute_script": null,
         "expected_output": null,
@@ -142,12 +102,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Emotional state 32 (30\u201333) 29 (27.75\u201331) <0.001",
+        "quote": "A 5% KOH aqueous solution was used to\nbring the compound\u2019s pH down to roughly 10.",
         "location": {
-          "section": "3.1 / Table 2",
-          "page": 7,
+          "section": "3.2",
+          "page": 3,
           "char_span": null,
-          "quote": "Emotional state 32 (30\u201333) 29 (27.75\u201331) <0.001"
+          "quote": "A 5% KOH aqueous solution was used to\nbring the compound\u2019s pH down to roughly 10."
         },
         "recompute_script": null,
         "expected_output": null,
@@ -162,17 +122,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Pain 18 (18\u201320) 18 (16.75\u201319) <0.001",
+        "quote": "This reduction was found to\nbe statistically significant (p < 0.05), signifying that aging leads\nto a measurable decrease in solvent uptake.",
         "location": {
-          "section": "3.1 / Table 2",
-          "page": 7,
+          "section": "4.1.2",
+          "page": 4,
           "char_span": null,
-          "quote": "Pain 18 (18\u201320) 18 (16.75\u201319) <0.001"
+          "quote": "This reduction was found to\nbe statistically significant (p < 0.05), signifying that aging leads\nto a measurable decrease in solvent uptake."
         },
         "recompute_script": null,
         "expected_output": null,
@@ -192,12 +152,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Statistically significant differences in QoR-15 scores between \nthe K and C groups were also observed on postoperative days 1 and 2 \n(P < 0.01)",
+        "quote": "XNBR gloves with latex K834 and NL129 for all three\ncuring conditions show high swelling (\u223c250\u2212275%) when\nunaged. After aging, swelling decreases moderately (\u223c210\u2212\n230%)",
         "location": {
-          "section": "3.1 / Table 3",
-          "page": 7,
+          "section": "4.1.2",
+          "page": 5,
           "char_span": null,
-          "quote": "Statistically significant differences in QoR-15 scores between \nthe K and C groups were also observed on postoperative days 1 and 2 \n(P < 0.01)"
+          "quote": "XNBR gloves with latex K834 and NL129 for all three\ncuring conditions show high swelling (\u223c250\u2212275%) when\nunaged. After aging, swelling decreases moderately (\u223c210\u2212\n230%)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -217,12 +177,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "POD-3 2 (2\u20132) 2 (2\u20133) 0.006",
+        "quote": "XNBR gloves using latex NL117 show much lower\ninitial swelling (\u223c140\u2212150%) compared to other latexes\nthroughout all curing conditions. Slight further reduction after\naging (\u223c125\u2212135%)",
         "location": {
-          "section": "3.2 / Table 4",
-          "page": 7,
+          "section": "4.1.2",
+          "page": 5,
           "char_span": null,
-          "quote": "POD-3 2 (2\u20132) 2 (2\u20133) 0.006"
+          "quote": "XNBR gloves using latex NL117 show much lower\ninitial swelling (\u223c140\u2212150%) compared to other latexes\nthroughout all curing conditions. Slight further reduction after\naging (\u223c125\u2212135%)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -242,12 +202,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "POD-3 3 (3\u20134) 4 (3\u20134) 0.02",
+        "quote": "NL117 consistently exhibiting the highest values",
         "location": {
-          "section": "3.2 / Table 4",
-          "page": 7,
+          "section": "4.1.3 / Table 4",
+          "page": 6,
           "char_span": null,
-          "quote": "POD-3 3 (3\u20134) 4 (3\u20134) 0.02"
+          "quote": "NL117 consistently exhibiting the highest values"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -267,12 +227,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "PCIA demand frequency 12.5 (9\u201315) 15 (12\u201317) 0.002",
+        "quote": "K834 latex shows lower retention after aging (crotch\nretention: \u223c 36\u221257%)",
         "location": {
-          "section": "3.2 / Table 4",
-          "page": 7,
+          "section": "4.1.3",
+          "page": 6,
           "char_span": null,
-          "quote": "PCIA demand frequency 12.5 (9\u201315) 15 (12\u201317) 0.002"
+          "quote": "K834 latex shows lower retention after aging (crotch\nretention: \u223c 36\u221257%)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -292,12 +252,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Rescue analgesia, n (%) 10 (14.3) 23 (32.9) 0.01",
+        "quote": "NL129 latex\nhas moderate-to-high retention (68\u221293%)",
         "location": {
-          "section": "3.2 / Table 4",
-          "page": 7,
+          "section": "4.1.3",
+          "page": 6,
           "char_span": null,
-          "quote": "Rescue analgesia, n (%) 10 (14.3) 23 (32.9) 0.01"
+          "quote": "NL129 latex\nhas moderate-to-high retention (68\u221293%)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -317,12 +277,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Rescue analgesic consumption per patient (mg) 0 (0\u20130) 0 (0\u2013100) 0.008",
+        "quote": "NL117 latex performs\nthe best, with retention values approaching or exceeding 100%.",
         "location": {
-          "section": "3.2 / Table 4",
-          "page": 7,
+          "section": "4.1.3",
+          "page": 6,
           "char_span": null,
-          "quote": "Rescue analgesic consumption per patient (mg) 0 (0\u20130) 0 (0\u2013100) 0.008"
+          "quote": "NL117 latex performs\nthe best, with retention values approaching or exceeding 100%."
         },
         "recompute_script": null,
         "expected_output": null,
@@ -342,12 +302,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "reduced usage of propofol (866.56 \u00b1 76.44 mg vs. \n968.36 \u00b1 68.87 mg, P < 0.05)",
+        "quote": "K834 at 70 \u03bcm increases from \u223c65 kN/m (unaged)\nto \u223c150 kN/m (aged)",
         "location": {
-          "section": "3.4",
-          "page": 6,
+          "section": "4.2.2",
+          "page": 7,
           "char_span": null,
-          "quote": "reduced usage of propofol (866.56 \u00b1 76.44 mg vs. \n968.36 \u00b1 68.87 mg, P < 0.05)"
+          "quote": "K834 at 70 \u03bcm increases from \u223c65 kN/m (unaged)\nto \u223c150 kN/m (aged)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -367,12 +327,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "sufentanil (25 \u00b1 \n4.62 ug vs. 38 \u00b1 8.60 ug, P < 0.001)",
+        "quote": "K834 at 90 \u03bcm shows the highest values\n(\u223c160 kN/m aged)",
         "location": {
-          "section": "3.4",
-          "page": 6,
+          "section": "4.2.2",
+          "page": 7,
           "char_span": null,
-          "quote": "sufentanil (25 \u00b1 \n4.62 ug vs. 38 \u00b1 8.60 ug, P < 0.001)"
+          "quote": "K834 at 90 \u03bcm shows the highest values\n(\u223c160 kN/m aged)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -392,12 +352,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "remifentanil (2.1 \u00b1 0.35 mg vs. 2.5 \u00b1 0.72 mg, P < 0.001)",
+        "quote": "the tensile\nstrength of the latex films cured at 65 \u00b0C reached about 30\nMPa, which is similar to 110 \u00b0C. In particular, K834 latex\nshows consistently high tensile strength across all curing\ntemperatures (\u223c30 MPa).",
         "location": {
-          "section": "3.4",
-          "page": 6,
+          "section": "4.3.1",
+          "page": 8,
           "char_span": null,
-          "quote": "remifentanil (2.1 \u00b1 0.35 mg vs. 2.5 \u00b1 0.72 mg, P < 0.001)"
+          "quote": "the tensile\nstrength of the latex films cured at 65 \u00b0C reached about 30\nMPa, which is similar to 110 \u00b0C. In particular, K834 latex\nshows consistently high tensile strength across all curing\ntemperatures (\u223c30 MPa)."
         },
         "recompute_script": null,
         "expected_output": null,
@@ -412,17 +372,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "extubation time \n(35.8 \u00b1 13.02 min vs. 40.8 \u00b1 15.5 min, P < 0.05; Figure 4A)",
+        "quote": "demonstrated elongation at break values\nexceeding 500%. Statistical analysis using an independent t test\nconfirmed that there were no significant differences (p > 0.05)\nin elongation at break among the different latex grades and\ncuring temperatures.",
         "location": {
-          "section": "3.5",
-          "page": 6,
+          "section": "4.3.1",
+          "page": 9,
           "char_span": null,
-          "quote": "extubation time \n(35.8 \u00b1 13.02 min vs. 40.8 \u00b1 15.5 min, P < 0.05; Figure 4A)"
+          "quote": "demonstrated elongation at break values\nexceeding 500%. Statistical analysis using an independent t test\nconfirmed that there were no significant differences (p > 0.05)\nin elongation at break among the different latex grades and\ncuring temperatures."
         },
         "recompute_script": null,
         "expected_output": null,
@@ -437,17 +397,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "PACU stay duration (107.2 \u00b1 27.4 min vs. 118.9 \u00b1 27.2 min, P < 0.05;",
+        "quote": "aging resulted in a\nsignificant increase in tensile strength (p < 0.05) for all latex\ngrades, while no significant differences (p > 0.05) were\nobserved between the different latex grades within the same\naging condition.",
         "location": {
-          "section": "3.5",
-          "page": 6,
+          "section": "4.3.1",
+          "page": 9,
           "char_span": null,
-          "quote": "PACU stay duration (107.2 \u00b1 27.4 min vs. 118.9 \u00b1 27.2 min, P < 0.05;"
+          "quote": "aging resulted in a\nsignificant increase in tensile strength (p < 0.05) for all latex\ngrades, while no significant differences (p > 0.05) were\nobserved between the different latex grades within the same\naging condition."
         },
         "recompute_script": null,
         "expected_output": null,
@@ -462,17 +422,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "the incidence \nof nausea and vomiting was significantly lower in the K group than \nin the C group (10.0% vs. 21.4%, P < 0.05)",
+        "quote": "virgin XNBR films exhibit an elongation at break of\napproximately 530%",
         "location": {
-          "section": "3.6",
-          "page": 6,
+          "section": "4.3.1",
+          "page": 9,
           "char_span": null,
-          "quote": "the incidence \nof nausea and vomiting was significantly lower in the K group than \nin the C group (10.0% vs. 21.4%, P < 0.05)"
+          "quote": "virgin XNBR films exhibit an elongation at break of\napproximately 530%"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -492,12 +452,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "No other significant \ndifferences were observed between the two groups in the incidence \nof dizziness, headache, drowsiness, or restlessness (P > \n0.05)",
+        "quote": "with\nenhancements up to 46%",
         "location": {
-          "section": "3.6",
-          "page": 6,
+          "section": "4.3.1",
+          "page": 9,
           "char_span": null,
-          "quote": "No other significant \ndifferences were observed between the two groups in the incidence \nof dizziness, headache, drowsiness, or restlessness (P > \n0.05)"
+          "quote": "with\nenhancements up to 46%"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -512,17 +472,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "higher QoR-15 score on postoperative day 3 (B = 5.52, 95% CI \n3.97 to 7.06, P < 0.001)",
+        "quote": "can also reduce thermal\nload by up to 30%",
         "location": {
-          "section": "3.7",
-          "page": 6,
+          "section": "ESG",
+          "page": 10,
           "char_span": null,
-          "quote": "higher QoR-15 score on postoperative day 3 (B = 5.52, 95% CI \n3.97 to 7.06, P < 0.001)"
+          "quote": "can also reduce thermal\nload by up to 30%"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -542,12 +502,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "sufentanil (B = \u221212.61, 95% CI \n-15.02 to \u221210.19, P < 0.001)",
+        "quote": "Vs is the molar volume of toluene (105.91 cm3\n/mol),\nand \u03c7 is the Flory\u2212Huggins polymer\u2212solvent interaction parameter,\ntaken as 0.39.",
         "location": {
-          "section": "3.7",
-          "page": 6,
+          "section": "3.5",
+          "page": 3,
           "char_span": null,
-          "quote": "sufentanil (B = \u221212.61, 95% CI \n-15.02 to \u221210.19, P < 0.001)"
+          "quote": "Vs is the molar volume of toluene (105.91 cm3\n/mol),\nand \u03c7 is the Flory\u2212Huggins polymer\u2212solvent interaction parameter,\ntaken as 0.39."
         },
         "recompute_script": null,
         "expected_output": null,
@@ -567,12 +527,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "remifentanil (B = \u22120.39, 95% CI \n-0.58 to \u22120.19, P < 0.001)",
+        "quote": "the\ndurability time must be at least 42 min.",
         "location": {
-          "section": "3.7",
-          "page": 6,
+          "section": "3.6 / 4.1.3",
+          "page": 3,
           "char_span": null,
-          "quote": "remifentanil (B = \u22120.39, 95% CI \n-0.58 to \u22120.19, P < 0.001)"
+          "quote": "the\ndurability time must be at least 42 min."
         },
         "recompute_script": null,
         "expected_output": null,
@@ -592,12 +552,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "lower heart rate variability (B = \u22120.027, 95% CI \n-0.042 to \u22120.012, P < 0.001)",
+        "quote": "phr 100 2 1 0.2 2 0.5",
         "location": {
-          "section": "3.7",
-          "page": 6,
+          "section": "Table 2",
+          "page": 3,
           "char_span": null,
-          "quote": "lower heart rate variability (B = \u22120.027, 95% CI \n-0.042 to \u22120.012, P < 0.001)"
+          "quote": "phr 100 2 1 0.2 2 0.5"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -617,12 +577,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "higher mean arterial \npressure variability (B = 0.018, 95% CI 0.001 to 0.034, P = 0.033)",
+        "quote": "K834 (\u223c27% ACN\ncontent), NL129 (\u223c20% ACN\ncontent), and NL117 (\u223c45% ACN\ncontent)",
         "location": {
-          "section": "3.7",
-          "page": 6,
+          "section": "3.1",
+          "page": 3,
           "char_span": null,
-          "quote": "higher mean arterial \npressure variability (B = 0.018, 95% CI 0.001 to 0.034, P = 0.033)"
+          "quote": "K834 (\u223c27% ACN\ncontent), NL129 (\u223c20% ACN\ncontent), and NL117 (\u223c45% ACN\ncontent)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -642,12 +602,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Norepinephrine 9 (12.9) 28 (40) <0.01",
+        "quote": "20 g of sodium\nchloride, 17.05 g of lactic acid, 5.01 g of acetic acid, 17.5 g of\nammonium chloride, and 2 N sodium hydroxide solution.",
         "location": {
-          "section": "3 / Table 1",
-          "page": 5,
+          "section": "3.6",
+          "page": 3,
           "char_span": null,
-          "quote": "Norepinephrine 9 (12.9) 28 (40) <0.01"
+          "quote": "20 g of sodium\nchloride, 17.05 g of lactic acid, 5.01 g of acetic acid, 17.5 g of\nammonium chloride, and 2 N sodium hydroxide solution."
         },
         "recompute_script": null,
         "expected_output": null,
@@ -667,62 +627,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "calculations indicated \n64 patients per group were required. Accounting for a 10% \ndropout rate, the final actual enrollment per group was \n72 patients, totaling 144 patients.",
+        "quote": "maintained\nin its typical state of 147 mm for 11 s and then stretched to 195 mm\nin length before returning to its initial shape for 1.5 s.",
         "location": {
-          "section": "2.5",
-          "page": 4,
+          "section": "3.6",
+          "page": 3,
           "char_span": null,
-          "quote": "calculations indicated \n64 patients per group were required. Accounting for a 10% \ndropout rate, the final actual enrollment per group was \n72 patients, totaling 144 patients."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c26",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "A statistically significant, six-point higher median QoR-15 score was \nobserved in the K group compared to the C group on POD3, which \nmeets the threshold for the established minimal clinically important \ndifference (MCID) of six points",
-        "location": {
-          "section": "4 Discussion",
-          "page": 6,
-          "char_span": null,
-          "quote": "A statistically significant, six-point higher median QoR-15 score was \nobserved in the K group compared to the C group on POD3, which \nmeets the threshold for the established minimal clinically important \ndifference (MCID) of six points"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c27",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "an esketamine-based multimodal low-opioid anaesthesia \nregimen significantly enhances recovery quality on postoperative \nday 3 in elderly patients undergoing thoracoscopic radical lung \ncancer surgery.",
-        "location": {
-          "section": "5 Conclusion",
-          "page": 10,
-          "char_span": null,
-          "quote": "an esketamine-based multimodal low-opioid anaesthesia \nregimen significantly enhances recovery quality on postoperative \nday 3 in elderly patients undergoing thoracoscopic radical lung \ncancer surgery."
+          "quote": "maintained\nin its typical state of 147 mm for 11 s and then stretched to 195 mm\nin length before returning to its initial shape for 1.5 s."
         },
         "recompute_script": null,
         "expected_output": null,

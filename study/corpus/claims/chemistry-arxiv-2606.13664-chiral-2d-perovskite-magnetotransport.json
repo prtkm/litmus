@@ -1,0 +1,890 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "chemistry-arxiv-2606.13664-chiral-2d-perovskite-magnetotransport",
+  "meta": {
+    "title": "Morphology control and low-temperature magnetotransport in chiral 2D perovskite R-(MBA)2PbI4",
+    "arxiv_id": "2606.13664v1",
+    "notes": "Extraction transcribes checkable quantitative claims; figure-read values (XRD intensity, Hall slope, VRH R^2 fits) noted with reduced confidence.",
+    "extractor": "litmus.extract",
+    "model": "claude-opus-4-8",
+    "source": "opus-native-pdf"
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Hall measurements under dark conditions identify p-type conduction with a Hall mobility of ~0.2 cm2 V-1 s-1.",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "unambiguously identifying p-type conduction with a Hall mobility of ∼ 0.2cm2V"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_hall_mobility_abstract == reported_hall_mobility_body (0.207 cm2/V·s)",
+      "strength": "approximate",
+      "scope": "Hall-bar geometry, dark, room temperature",
+      "evidence_refs": [
+        "ev1",
+        "ev7"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c2",
+      "text": "Carrier density of ~3×10^14 cm-2.",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "a carrier density of ∼ 3×1014 cm−2"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_carrier_density_abstract == reported_carrier_density_body (3.29e14 cm-2)",
+      "strength": "approximate",
+      "scope": "Hall-bar, room temperature",
+      "evidence_refs": [
+        "ev2",
+        "ev7"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c3",
+      "text": "At room temperature the measured Hall coefficient corresponds to a mobility µH = 0.207 cm2/V·s and a sheet carrier density p = 3.29×10^14 cm-2.",
+      "location": {
+        "section": "3.4 Hall Transport",
+        "page": 17,
+        "char_span": null,
+        "quote": "the measured Hall coefficient corresponds to a mobility µH = 0.207 cm2/V·s and a sheet\ncarrier density p = 3.29 × 1014 cm−2"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "p_2D == 1/(q*R_H); mu_H == |R_H|*sigma",
+      "strength": "exact",
+      "scope": "room temperature, Hall-bar, 1500 rpm film",
+      "evidence_refs": [
+        "ev7"
+      ],
+      "confidence": 0.97
+    },
+    {
+      "id": "c4",
+      "text": "R4000rpm/R1500rpm ≈ 850 at 1.5 V, much larger than the ~threefold increase expected from thickness alone.",
+      "location": {
+        "section": "3.1",
+        "page": 7,
+        "char_span": null,
+        "quote": "the\nmuch larger observed increase (R4000rpm/R1500rpm ≈ 850 at 1.5V)"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "resistance_ratio == R_4000rpm / R_1500rpm at 1.5 V",
+      "strength": "approximate",
+      "scope": "1.5 V, comparing 4000 rpm and 1500 rpm films",
+      "evidence_refs": [
+        "ev3"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c5",
+      "text": "Thickness alone would predict only an approximately threefold increase in resistance between the 1500 rpm and 4000 rpm films.",
+      "location": {
+        "section": "3.1",
+        "page": 7,
+        "char_span": null,
+        "quote": "thickness alone would\npredict only an approximately threefold increase in resistance between the 1500 rpm and\n4000 rpm films if the resistivity were unchanged"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "predicted_R_ratio == thickness_1500rpm / thickness_4000rpm ≈ 300nm/100nm = 3",
+      "strength": "approximate",
+      "scope": "1500 rpm (~300 nm) vs 4000 rpm (~100 nm)",
+      "evidence_refs": [
+        "ev4"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c6",
+      "text": "1500 rpm film had average thickness ~300 nm and the lowest measured resistance (~10 MΩ).",
+      "location": {
+        "section": "3.1",
+        "page": 7,
+        "char_span": null,
+        "quote": "the resulting film had an average thickness of ∼ 300 nm (Figure 1a) and exhibited large,"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "thickness_1500rpm == 300 nm; resistance_1500rpm == 10 MΩ",
+      "strength": "approximate",
+      "scope": "1500 rpm film",
+      "evidence_refs": [
+        "ev4",
+        "ev5"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c7",
+      "text": "Films thicknesses: 2000 rpm ~225 nm, 3000 rpm ~165 nm, 4000 rpm ~100 nm.",
+      "location": {
+        "section": "3.1",
+        "page": 7,
+        "char_span": null,
+        "quote": "produced thinner films (∼225 nm) with slightly\nsmaller grains and reduced domain connectivity"
+      },
+      "epistemic_tier": "T1",
+      "predicate": "thickness values transcribed: 2000rpm=225nm, 3000rpm=165nm, 4000rpm=100nm",
+      "strength": "approximate",
+      "scope": "spin-speed series",
+      "evidence_refs": [
+        "ev4"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c8",
+      "text": "Two Arrhenius regimes with activation energies of 0.11 eV for T > 140 K and 0.015 eV for T < 70 K.",
+      "location": {
+        "section": "3.2 / Fig 2 caption",
+        "page": 11,
+        "char_span": null,
+        "quote": "at high temperatures (T > 140 K), the slope yields Ea ≈ 0.11 eV, whereas at low temperatures (T < 70 K), Ea ≈ 0.015 eV is extracted"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "E_a == slope * k_B from R(T)=R0 exp(Ea/(kB T)) fit",
+      "strength": "approximate",
+      "scope": "T>140 K and T<70 K regimes",
+      "evidence_refs": [
+        "ev6"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c9",
+      "text": "In-plane resistance measurements were performed down to 38 K, the lowest temperature reported for in-plane transport in this material; prior chiral-HOIP FET studies reported down to 77-78 K.",
+      "location": {
+        "section": "3.2",
+        "page": 11,
+        "char_span": null,
+        "quote": "in prior temperature-dependent chiralHOIP FET studies measurements were reported down to 77–78 K"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "measured_low_T_limit == 38 K < prior_reported_limit (77-78 K)",
+      "strength": "comparative",
+      "scope": "in-plane FET resistance, this material",
+      "evidence_refs": [
+        "ev8"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c10",
+      "text": "FET MR: large positive MR of 10% at 3T at room temperature, and ~-9% at 3T at 78.2 K.",
+      "location": {
+        "section": "3.3",
+        "page": 13,
+        "char_span": null,
+        "quote": "Large positive MR of 10% at 3T is observed at room-temperature, whereas large negative\nMR of approximately -9% at 3T is observed at 78.2 K"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "MR(B) == [R(B)-R(0)]/R(B); values 10% at 3T (RT), -9% at 3T (78.2 K)",
+      "strength": "approximate",
+      "scope": "FET device, B=3T",
+      "evidence_refs": [
+        "ev9"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c11",
+      "text": "Hall-bar paths crossing the grain boundary exhibit MR of 6-8%, while paths avoiding it exhibit MR of 0.05-0.2%.",
+      "location": {
+        "section": "3.3",
+        "page": 14,
+        "char_span": null,
+        "quote": "measurement paths that traversed\nacross the observed grain boundary exhibit a much larger MR of 6-8%, comparable with\nthat observed in the FET sample. However, the low resistance current paths that avoided\nthis boundary exhibited a much smaller MR in the range of 0.05-0.2%"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "MR_crossing in [6,8]%, MR_avoiding in [0.05,0.2]%",
+      "strength": "comparative",
+      "scope": "Hall-bar MR, different current paths",
+      "evidence_refs": [
+        "ev10"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c12",
+      "text": "At 1V, paths avoiding the grain boundary showed resistances ~10-50 MΩ, paths crossing showed ~1.5 GΩ, an increase of roughly two orders of magnitude.",
+      "location": {
+        "section": "3.2",
+        "page": 12,
+        "char_span": null,
+        "quote": "At 1V, paths avoiding the grain boundary showed resistances of approximately 10–50 MΩ, whereas paths crossing the boundary showed resistances"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "resistance_ratio_crossing_to_avoiding == ~1.5GΩ/(10-50MΩ) ≈ 2 orders of magnitude",
+      "strength": "approximate",
+      "scope": "1 V, Hall-bar paths",
+      "evidence_refs": [
+        "ev11"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "c13",
+      "text": "Hall-bar geometry is expected to be approximately 500 times more resistive than the three-terminal channel for the same film thickness and resistivity.",
+      "location": {
+        "section": "3.3",
+        "page": 13,
+        "char_span": null,
+        "quote": "the Hall-bar geometry is expected to be\napproximately 500 times more resistive than the three-terminal channel for the same film\nthickness and resistivity"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "geometric_resistance_ratio == (L/W)_Hallbar / (L/W)_FET ≈ 500",
+      "strength": "approximate",
+      "scope": "Hall-bar vs FET geometry",
+      "evidence_refs": [
+        "ev12"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "c14",
+      "text": "Through tuning of spin-coating speed, the in-plane resistivity was reduced by more than three orders of magnitude.",
+      "location": {
+        "section": "Conclusion",
+        "page": 18,
+        "char_span": null,
+        "quote": "the in-plane resistivity was reduced by more than three\norders of magnitude, enabling reliable lateral device operation"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "resistivity_reduction_factor > 1000",
+      "strength": "bound",
+      "scope": "spin-speed series",
+      "evidence_refs": [
+        "ev3"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "c15",
+      "text": "The Hall voltage VH(B) varies linearly with B over the full range and its positive slope confirms p-type transport.",
+      "location": {
+        "section": "3.4",
+        "page": 16,
+        "char_span": null,
+        "quote": "VH(B) varies linearly\nwith B over the full range, and the positive\nslope of VH confirms p-type transport in the\nfilm"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "V_H(B) linear in B with positive slope -> p-type",
+      "strength": "qualitative",
+      "scope": "room temperature, Hall-bar, -3 to 3 T",
+      "evidence_refs": [
+        "ev13"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c16",
+      "text": "Comparable Hall mobility values reported in related 2D perovskites; undoped 2D lead-iodide perovskites such as (PEA)2PbI4 typically exhibit mobilities ~0.1-1 cm2/V·s.",
+      "location": {
+        "section": "3.4",
+        "page": 17,
+        "char_span": null,
+        "quote": "undoped 2D lead-iodide perovskites such as (PEA)2PbI4 typically exhibit mobilities on the order of ∼0.1–1 cm2/V·s"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "measured_mu (0.207) within reported range 0.1-1 cm2/V·s for (PEA)2PbI4",
+      "strength": "comparative",
+      "scope": "comparison to (PEA)2PbI4",
+      "evidence_refs": [
+        "ev14"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c17",
+      "text": "Contact resistance extracted from multi-terminal structures averaged ~50 kΩ and was negligible compared to the film resistance.",
+      "location": {
+        "section": "3.1",
+        "page": 6,
+        "char_span": null,
+        "quote": "The contact resistance extracted from multi-terminal structures averaged ∼ 50 kΩ and was\nnegligible compared to the film resistance"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "contact_resistance == 50 kΩ << film_resistance",
+      "strength": "approximate",
+      "scope": "multi-terminal structures",
+      "evidence_refs": [
+        "ev15"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c18",
+      "text": "Three and four-wire measurements showed contact resistance never exceeded 5% for any current path.",
+      "location": {
+        "section": "3.2",
+        "page": 12,
+        "char_span": null,
+        "quote": "Three and four-wire measurements showed that contact resistance never exceeded 5% for\nany current path"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "contact_resistance_fraction <= 5% for all paths",
+      "strength": "bound",
+      "scope": "Hall-bar current paths",
+      "evidence_refs": [
+        "ev16"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c19",
+      "text": "These measurements represent the first Hall-effect characterization of R-(MBA)2PbI4 thin films under dark conditions.",
+      "location": {
+        "section": "Conclusion",
+        "page": 19,
+        "char_span": null,
+        "quote": "these measurements represent\nthe first Hall-effect characterization of R-(MBA)2PbI4 thin films under dark conditions"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "novelty claim: first dark Hall-effect characterization of R-(MBA)2PbI4",
+      "strength": "qualitative",
+      "scope": "R-(MBA)2PbI4 thin films",
+      "evidence_refs": [],
+      "confidence": 0.8
+    },
+    {
+      "id": "c20",
+      "text": "VRH fits did not conclusively distinguish a VRH model from Arrhenius-type transport; linear fit R^2 values: T^-1 0.9866, T^-1/2 0.9876, T^-1/3 0.9887, T^-1/4 0.9893.",
+      "location": {
+        "section": "SI Fig 6",
+        "page": 28,
+        "char_span": null,
+        "quote": "the present data do not show an obvious improvement in linearization in this regime compared with the Arrhenius plot, and thus do not\nconclusively distinguish a VRH mechanism from Arrhenius-type transport"
+      },
+      "epistemic_tier": "T3",
+      "predicate": "R^2 comparison across T^-1, T^-1/2, T^-1/3, T^-1/4 fits does not favor VRH",
+      "strength": "qualitative",
+      "scope": "low-temperature regime fits",
+      "evidence_refs": [
+        "ev17"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c21",
+      "text": "Films prepared at spin speeds above 1000 rpm show a strong (002) diffraction peak; the 1500 rpm film gives the highest intensity.",
+      "location": {
+        "section": "Fig 1 caption",
+        "page": 8,
+        "char_span": null,
+        "quote": "with films spun above\n1000 rpm showing clear (002) reflections, with the 1500 rpm film giving the highest intensity"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "(002) peak intensity maximal for 1500 rpm in XRD",
+      "strength": "qualitative",
+      "scope": "XRD patterns, Fig 1e",
+      "evidence_refs": [
+        "ev18"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c22",
+      "text": "Lead (II) iodide 413 mg, 0.895 mmol; (R)-(-)-α-methylbenzylamine 228 µL, 1.80 mmol used in synthesis.",
+      "location": {
+        "section": "Sample Preparation",
+        "page": 5,
+        "char_span": null,
+        "quote": "lead (II) iodide (413 mg, 0.895 mmol; Sigma Aldrich)"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "mmol == mass/molar_mass; PbI2: 413mg/461.01 ≈ 0.895 mmol; MBA molar ratio",
+      "strength": "exact",
+      "scope": "crystal synthesis",
+      "evidence_refs": [
+        "ev19",
+        "ev20"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c23",
+      "text": "Magnitude of low-field MR in devices (|ΔR|/R ~ 10% at |B| ~ 1 T) is comparable to that reported for other hybrid lead-halide perovskites.",
+      "location": {
+        "section": "3.3",
+        "page": 13,
+        "char_span": null,
+        "quote": "the magnitude of the low-field MR in our devices (|∆R|/R ∼ 10% at\n|B|∼ 1 T) is comparable to that reported for other hybrid lead–halide perovskites"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "measured_MR (~10% at 1T) comparable to literature values for hybrid lead-halide perovskites",
+      "strength": "comparative",
+      "scope": "low-field MR comparison",
+      "evidence_refs": [
+        "ev9"
+      ],
+      "confidence": 0.8
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev1",
+      "kind": "number",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "a Hall mobility of ∼ 0.2cm2V"
+      },
+      "extracted_values": {
+        "hall_mobility_cm2Vs": 0.2
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev2",
+      "kind": "number",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "a carrier density of ∼ 3×1014 cm−2"
+      },
+      "extracted_values": {
+        "carrier_density_cm2": 300000000000000.0
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev3",
+      "kind": "number",
+      "location": {
+        "section": "3.1",
+        "page": 7,
+        "char_span": null,
+        "quote": "(R4000rpm/R1500rpm ≈ 850 at 1.5V)"
+      },
+      "extracted_values": {
+        "resistance_ratio": 850,
+        "voltage_V": 1.5
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev4",
+      "kind": "number",
+      "location": {
+        "section": "3.1",
+        "page": 7,
+        "char_span": null,
+        "quote": "at 3000 rpm (∼ 165 nm) and 4000 rpm (∼ 100 nm)"
+      },
+      "extracted_values": {
+        "thickness_1500rpm_nm": 300,
+        "thickness_2000rpm_nm": 225,
+        "thickness_3000rpm_nm": 165,
+        "thickness_4000rpm_nm": 100,
+        "predicted_thickness_ratio": 3.0
+      },
+      "confidence": 0.88
+    },
+    {
+      "id": "ev5",
+      "kind": "number",
+      "location": {
+        "section": "3.1",
+        "page": 7,
+        "char_span": null,
+        "quote": "This\nmorphology correlated with the lowest measured resistance (∼10 MΩ) (Figure 1f)"
+      },
+      "extracted_values": {
+        "resistance_1500rpm_MΩ": 10
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev6",
+      "kind": "number",
+      "location": {
+        "section": "3.2",
+        "page": 11,
+        "char_span": null,
+        "quote": "the slope yields Ea ≈ 0.11 eV, whereas at low temperatures (T < 70 K), Ea ≈ 0.015 eV is extracted"
+      },
+      "extracted_values": {
+        "Ea_high_eV": 0.11,
+        "T_high_K": 140,
+        "Ea_low_eV": 0.015,
+        "T_low_K": 70
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev7",
+      "kind": "number",
+      "location": {
+        "section": "3.4 Hall Transport",
+        "page": 17,
+        "char_span": null,
+        "quote": "a mobility µH = 0.207 cm2/V·s and a sheet\ncarrier density p = 3.29 × 1014 cm−2"
+      },
+      "extracted_values": {
+        "hall_mobility_cm2Vs": 0.207,
+        "sheet_carrier_density_cm2": 329000000000000.0
+      },
+      "confidence": 0.97
+    },
+    {
+      "id": "ev8",
+      "kind": "number",
+      "location": {
+        "section": "3.2",
+        "page": 11,
+        "char_span": null,
+        "quote": "measurements were reported down to 77–78 K"
+      },
+      "extracted_values": {
+        "measured_low_T_K": 38,
+        "prior_low_T_K_range": [
+          77,
+          78
+        ]
+      },
+      "confidence": 0.88
+    },
+    {
+      "id": "ev9",
+      "kind": "number",
+      "location": {
+        "section": "3.3",
+        "page": 13,
+        "char_span": null,
+        "quote": "Large positive MR of 10% at 3T is observed at room-temperature, whereas large negative\nMR of approximately -9% at 3T is observed at 78.2 K"
+      },
+      "extracted_values": {
+        "MR_RT_pct": 10,
+        "B_T": 3,
+        "MR_78p2K_pct": -9,
+        "T_low_K": 78.2
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev10",
+      "kind": "number",
+      "location": {
+        "section": "3.3",
+        "page": 14,
+        "char_span": null,
+        "quote": "exhibit a much larger MR of 6-8%, comparable with\nthat observed in the FET sample. However, the low resistance current paths that avoided\nthis boundary exhibited a much smaller MR in the range of 0.05-0.2%"
+      },
+      "extracted_values": {
+        "MR_crossing_pct_range": [
+          6,
+          8
+        ],
+        "MR_avoiding_pct_range": [
+          0.05,
+          0.2
+        ]
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev11",
+      "kind": "number",
+      "location": {
+        "section": "3.2/3.3",
+        "page": 12,
+        "char_span": null,
+        "quote": "paths avoiding the grain boundary showed resistances of approximately 10–50 MΩ"
+      },
+      "extracted_values": {
+        "R_avoiding_MΩ_range": [
+          10,
+          50
+        ],
+        "R_crossing_GΩ": 1.5,
+        "voltage_V": 1,
+        "increase_orders_of_magnitude": 2
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev12",
+      "kind": "number",
+      "location": {
+        "section": "3.3",
+        "page": 13,
+        "char_span": null,
+        "quote": "approximately 500 times more resistive than the three-terminal channel"
+      },
+      "extracted_values": {
+        "geometric_resistance_ratio": 500
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev13",
+      "kind": "figure",
+      "location": {
+        "section": "Fig 4",
+        "page": 16,
+        "char_span": null,
+        "quote": "The transverse voltage,\nVxy, was measured between the V+ and V−\ncontacts while sweeping the magnetic field\nfrom −3 T to 3 T"
+      },
+      "extracted_values": {
+        "B_range_T": [
+          -3,
+          3
+        ],
+        "slope_sign": "positive"
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev14",
+      "kind": "number",
+      "location": {
+        "section": "3.4",
+        "page": 17,
+        "char_span": null,
+        "quote": "typically exhibit mobilities on the order of ∼0.1–1 cm2/V·s"
+      },
+      "extracted_values": {
+        "PEA2PbI4_mobility_range_cm2Vs": [
+          0.1,
+          1
+        ],
+        "measured_mobility_cm2Vs": 0.207
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev15",
+      "kind": "number",
+      "location": {
+        "section": "3.1",
+        "page": 6,
+        "char_span": null,
+        "quote": "averaged ∼ 50 kΩ and was\nnegligible compared to the film resistance"
+      },
+      "extracted_values": {
+        "contact_resistance_kΩ": 50
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev16",
+      "kind": "number",
+      "location": {
+        "section": "3.2",
+        "page": 12,
+        "char_span": null,
+        "quote": "contact resistance never exceeded 5% for\nany current path"
+      },
+      "extracted_values": {
+        "contact_resistance_max_pct": 5
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev17",
+      "kind": "figure",
+      "location": {
+        "section": "SI Fig 6",
+        "page": 28,
+        "char_span": null,
+        "quote": "fit (N=9): m=124±5.5, R^2=0.9866"
+      },
+      "extracted_values": {
+        "R2_Tinv1": 0.9866,
+        "slope_Tinv1": 124,
+        "R2_Tinv_half": 0.9876,
+        "slope_Tinv_half": 38.69,
+        "R2_Tinv_third": 0.9887,
+        "slope_Tinv_third": 30.85,
+        "R2_Tinv_quarter": 0.9893,
+        "slope_Tinv_quarter": 30
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev18",
+      "kind": "figure",
+      "location": {
+        "section": "Fig 1e",
+        "page": 8,
+        "char_span": null,
+        "quote": "with the 1500 rpm film giving the highest intensity"
+      },
+      "extracted_values": {
+        "highest_intensity_spin_speed_rpm": 1500
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev19",
+      "kind": "number",
+      "location": {
+        "section": "Sample Preparation",
+        "page": 5,
+        "char_span": null,
+        "quote": "lead (II) iodide (413 mg, 0.895 mmol; Sigma Aldrich)"
+      },
+      "extracted_values": {
+        "PbI2_mg": 413,
+        "PbI2_mmol": 0.895
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev20",
+      "kind": "number",
+      "location": {
+        "section": "Sample Preparation",
+        "page": 5,
+        "char_span": null,
+        "quote": "(R)-(-)-α -methylbenzylamine (228 µL , 1.80 mmol;"
+      },
+      "extracted_values": {
+        "MBA_uL": 228,
+        "MBA_mmol": 1.8
+      },
+      "confidence": 0.92
+    }
+  ],
+  "bindings": [
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev7",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev7",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev7",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c4",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c5",
+      "evidence_id": "ev4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c6",
+      "evidence_id": "ev4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c6",
+      "evidence_id": "ev5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c7",
+      "evidence_id": "ev4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c8",
+      "evidence_id": "ev6",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c9",
+      "evidence_id": "ev8",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c10",
+      "evidence_id": "ev9",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c11",
+      "evidence_id": "ev10",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c12",
+      "evidence_id": "ev11",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c13",
+      "evidence_id": "ev12",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c14",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c15",
+      "evidence_id": "ev13",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c16",
+      "evidence_id": "ev14",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c17",
+      "evidence_id": "ev15",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c18",
+      "evidence_id": "ev16",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c20",
+      "evidence_id": "ev17",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c21",
+      "evidence_id": "ev18",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c22",
+      "evidence_id": "ev19",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c22",
+      "evidence_id": "ev20",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c23",
+      "evidence_id": "ev9",
+      "relation": "rests_on"
+    }
+  ]
+}

@@ -1,0 +1,1609 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "chemistry-oztoksoy2025-melt-strength-polypropylene",
+  "meta": {
+    "journal": "ACS Omega",
+    "year": 2026,
+    "doi": "10.1021/acsomega.5c13372",
+    "note": "Figure-derived numeric values (Figures 15,16,21,22) are read from bar-chart labels; confidence reflects readability. Many DSC/foam values cross-checkable between prose and Table 2/Table 3 (T2).",
+    "extractor": "litmus.extract",
+    "model": "claude-opus-4-8",
+    "source": "opus-native-pdf"
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Foaming achieved cell densities up to 1.1 × 10^8 cells/cm^3 and reduced average cell sizes of 7.48 μm.",
+      "location": {
+        "section": "Introduction",
+        "page": 3,
+        "char_span": null,
+        "quote": "revealed cell densities up to 1.1 × 108 cells/\ncm3 and reduced average cell sizes of 7.48 μm"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_cell_density_max == 1.1e8 cells/cm3 AND reported_min_cell_size == 7.48 um consistent with Table 3",
+      "strength": "approximate",
+      "scope": "PP5 foam, Table 3",
+      "evidence_refs": [
+        "ev_table3",
+        "ev1"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c2",
+      "text": "Neat PP0 exhibited the highest tensile modulus (1957 MPa) and yield strength (39.6 MPa).",
+      "location": {
+        "section": "Mechanical Properties",
+        "page": 11,
+        "char_span": null,
+        "quote": "Neat polypropylene (PP0) displayed the highest tensile\nmodulus (1957 MPa) and yield strength (39.6 MPa)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_tensile_modulus_PP0 == 1957 MPa AND reported_yield_strength_PP0 == 39.6 MPa consistent with Figure 15",
+      "strength": "exact",
+      "scope": "PP0, Figure 15",
+      "evidence_refs": [
+        "ev_fig15"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c3",
+      "text": "In PP1 the yield strength decreased to 36.5 MPa.",
+      "location": {
+        "section": "Mechanical Properties",
+        "page": 11,
+        "char_span": null,
+        "quote": "the yield strength decreased to 36.5 MPa"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_yield_strength_PP1 == 36.5 MPa consistent with Figure 15",
+      "strength": "exact",
+      "scope": "PP1",
+      "evidence_refs": [
+        "ev_fig15"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c4",
+      "text": "Elongation at break increased to 112.8% in PP2 and 130.8% in PP3.",
+      "location": {
+        "section": "Mechanical Properties",
+        "page": 11,
+        "char_span": null,
+        "quote": "significantly increasing\nelongation at break (112.8% in PP2 and 130.8% in PP3)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_tensile_strain_PP2 == 112.8 AND reported_tensile_strain_PP3 == 130.8 consistent with Figure 15",
+      "strength": "exact",
+      "scope": "PP2, PP3, Figure 15",
+      "evidence_refs": [
+        "ev_fig15"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c5",
+      "text": "The average particle size of the dispersed phase was 0.38 ± 0.02 μm in PP/LDPE and 0.53 ± 0.03 μm in rPP/LDPE samples.",
+      "location": {
+        "section": "Morphology via SEM",
+        "page": 6,
+        "char_span": null,
+        "quote": "the average\nparticle size of the dispersed phase was determined to be 0.38\n± 0.02 μm in the PP/LDPE samples and 0.53 ± 0.03 μm in\nthe rPP/LDPE samples"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "reported_particle_size_PPLDPE == 0.38±0.02 um AND reported_particle_size_rPPLDPE == 0.53±0.03 um",
+      "strength": "approximate",
+      "scope": "60/40 PP/LDPE and rPP/LDPE",
+      "evidence_refs": [
+        "ev2"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c6",
+      "text": "The average dispersed phase particle size was 0.13 ± 0.03 μm for rPP7.",
+      "location": {
+        "section": "Rheological Properties",
+        "page": 7,
+        "char_span": null,
+        "quote": "the average particle size of dispersed\nphase was found as 0.13 ± 0.03 μm for rPP7"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "reported_particle_size_rPP7 == 0.13±0.03 um",
+      "strength": "approximate",
+      "scope": "rPP7",
+      "evidence_refs": [
+        "ev3"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c7",
+      "text": "rPP7 exhibited 11% gel content while PP7 was 6%.",
+      "location": {
+        "section": "Rheological Properties",
+        "page": 9,
+        "char_span": null,
+        "quote": "While rPP7 exhibited 11% gel content, this value was\ndetermined to be 6% for the PP7 sample."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "reported_gel_content_rPP7 == 11 pct AND reported_gel_content_PP7 == 6 pct",
+      "strength": "exact",
+      "scope": "rPP7, PP7",
+      "evidence_refs": [
+        "ev4"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c8",
+      "text": "Neat LDPE melting temperature was 105.1 °C and pure PP (PP0) was 157.4 °C.",
+      "location": {
+        "section": "DSC Results",
+        "page": 13,
+        "char_span": null,
+        "quote": "Neat LDPE exhibited a melting temperature (Tm) of 105.1\n°C, while pure PP (PP0) displayed a melting point of 157.4\n°C."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_Tm_LDPE == 105.1 C AND reported_Tm_PP0 == 157.4 C consistent with Table 2",
+      "strength": "exact",
+      "scope": "Table 2",
+      "evidence_refs": [
+        "ev_table2",
+        "ev5"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c9",
+      "text": "With peroxide addition the PP melting enthalpy decreased from 100.7 to 95.6 J/g.",
+      "location": {
+        "section": "DSC Results",
+        "page": 13,
+        "char_span": null,
+        "quote": "the\nmelting enthalpy decreased from 100.7 to 95.6 J/g"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_dHm_PP0 == 100.7 J/g AND reported_dHm_PP1 == 95.6 J/g consistent with Table 2",
+      "strength": "exact",
+      "scope": "PP0->PP1, Table 2",
+      "evidence_refs": [
+        "ev_table2",
+        "ev6"
+      ],
+      "confidence": 0.93
+    },
+    {
+      "id": "c10",
+      "text": "Introduction of peroxide alone (PP1) reduced Tc,onset of PP from 129.9 to 122.6 °C.",
+      "location": {
+        "section": "DSC Results",
+        "page": 13,
+        "char_span": null,
+        "quote": "Tc,onset\nwas 129.9 °C. The introduction of peroxide alone (PP1) led to\na pronounced reduction in Tc,onset to 122.6 °C"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_Tconset_PP0 == 129.9 C AND reported_Tconset_PP1 == 122.6 C consistent with Table 2",
+      "strength": "exact",
+      "scope": "PP0->PP1, Table 2",
+      "evidence_refs": [
+        "ev_table2",
+        "ev7"
+      ],
+      "confidence": 0.93
+    },
+    {
+      "id": "c11",
+      "text": "In PP4 and PP5 (2 wt% TMPTA) the melt crystallization onset of PP increased to 126.4 and 125.9 °C.",
+      "location": {
+        "section": "DSC Results",
+        "page": 13,
+        "char_span": null,
+        "quote": "increased\nmarkedly to 126.4 and 125.9 °C as a comparison with\nuncompatibilized PP/LDPE blends"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_Tconset_PP4 == 126.4 C AND reported_Tconset_PP5 == 125.9 C consistent with Table 2",
+      "strength": "exact",
+      "scope": "PP4, PP5, Table 2",
+      "evidence_refs": [
+        "ev_table2",
+        "ev8"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c12",
+      "text": "At higher TMPTA in PP6 (20 wt% LDPE) the Tc,onset of PP decreased to 122.3 °C.",
+      "location": {
+        "section": "DSC Results",
+        "page": 13,
+        "char_span": null,
+        "quote": "LDPE (PP6), with Tc,onset value of PP decreasing to 122.3 °C"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_Tconset_PP6 == 122.3 C consistent with Table 2",
+      "strength": "exact",
+      "scope": "PP6, Table 2",
+      "evidence_refs": [
+        "ev_table2",
+        "ev9"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c13",
+      "text": "The ΔHc value of rPP decreased from 112.9 to 43.8 J/g when 40% LDPE was incorporated.",
+      "location": {
+        "section": "DSC Results",
+        "page": 13,
+        "char_span": null,
+        "quote": "the ΔHc value of rPP decreased from\n112.9 to 43.8 J/g (Table 2)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_dHc_rPP0 == 112.9 J/g AND reported_dHc_rPP3 == 43.8 J/g consistent with Table 2",
+      "strength": "exact",
+      "scope": "rPP0->rPP3, Table 2",
+      "evidence_refs": [
+        "ev_table2",
+        "ev10"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c14",
+      "text": "The recycled homopolymer rPP0 showed an initial crystallinity of 58.5%, exceeding its virgin counterpart.",
+      "location": {
+        "section": "DSC Results",
+        "page": 13,
+        "char_span": null,
+        "quote": "the recycled\nhomopolymer (rPP0) showed an initial crystallinity of 58.5%"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_Xc_rPP0 == 58.5 pct consistent with Table 2",
+      "strength": "exact",
+      "scope": "rPP0, Table 2",
+      "evidence_refs": [
+        "ev_table2",
+        "ev11"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c15",
+      "text": "Blending rPP with LDPE (rPP5) reduced PP crystallinity to 35.8%.",
+      "location": {
+        "section": "DSC Results / Structure of Foams",
+        "page": 14,
+        "char_span": null,
+        "quote": "fell to 35.8%, which signifies a much higher decline compared\nto that observed in the virgin counterpart blend"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_Xc_rPP5 == 35.8 pct consistent with Table 2",
+      "strength": "exact",
+      "scope": "rPP5, Table 2",
+      "evidence_refs": [
+        "ev_table2",
+        "ev12"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c16",
+      "text": "PP0 exhibited the lowest cell density (6.6 × 10^7 cells/cm^3) and largest mean cell size (≈9.4 μm).",
+      "location": {
+        "section": "Structure of the Foams",
+        "page": 14,
+        "char_span": null,
+        "quote": "PP0 exhibited the lowest cell density (6.6 × 107\ncells/cm3) and the largest mean cell size (≈9.4 μm)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_cell_density_PP0 == 6.6e7 cells/cm3 AND reported_mean_cell_size_PP0 == 9.4 um consistent with Table 3",
+      "strength": "approximate",
+      "scope": "PP0 foam, Table 3",
+      "evidence_refs": [
+        "ev_table3",
+        "ev13"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c17",
+      "text": "PP5 showed the highest cell density (1.1 × 10^8 cells/cm^3) and smallest average cell diameter (≈7.5 μm).",
+      "location": {
+        "section": "Structure of the Foams",
+        "page": 14,
+        "char_span": null,
+        "quote": "PP5 showed the\nhighest cell density (1.1 × 108 cells/cm3\n) and the smallest\naverage cell diameter (≈7.5 μm)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_cell_density_PP5 == 1.1e8 cells/cm3 AND reported_mean_cell_size_PP5 == 7.5 um consistent with Table 3 (7.48)",
+      "strength": "approximate",
+      "scope": "PP5 foam, Table 3",
+      "evidence_refs": [
+        "ev_table3",
+        "ev14"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c18",
+      "text": "PP7 exhibited a lower cell nucleation density (N0 = 8.7 × 10^7 cells/cm^3) and larger cells (≈7.8 μm) than PP5.",
+      "location": {
+        "section": "Structure of the Foams",
+        "page": 14,
+        "char_span": null,
+        "quote": "PP7 exhibited a lower cell nucleation\ndensity (N0 = 8.7 × 107 cells/cm3\n) compared to PP5"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_cell_density_PP7 == 8.7e7 cells/cm3 AND reported_mean_cell_size_PP7 == 7.8 um consistent with Table 3",
+      "strength": "approximate",
+      "scope": "PP7 foam, Table 3",
+      "evidence_refs": [
+        "ev_table3",
+        "ev15"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c19",
+      "text": "After foaming, the density of PP1 decreased from 0.91 to 0.74 g/cm^3.",
+      "location": {
+        "section": "Mechanical Properties of Foamed Materials",
+        "page": 15,
+        "char_span": null,
+        "quote": "the density of PP1\ndecreased from 0.91 to 0.74 g/cm3"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_density_PP1 == 0.91 g/cm3 AND reported_density_PP1_foamed == 0.74 g/cm3 consistent with Figure 21",
+      "strength": "exact",
+      "scope": "PP1, Figure 21",
+      "evidence_refs": [
+        "ev_fig21",
+        "ev16"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c20",
+      "text": "For PP5 the modulus decreased from 928 to 717 MPa and the yield strength from 25.1 to 18.0 MPa after foaming.",
+      "location": {
+        "section": "Mechanical Properties of Foamed Materials",
+        "page": 15,
+        "char_span": null,
+        "quote": "for PP5, the\nmodulus decreased from 928 to 717 MPa and the yield strength from\n25.1 to 18.0 MPa"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_modulus_PP5 928->717 MPa AND reported_yield_PP5 25.1->18.0 MPa consistent with Figure 21",
+      "strength": "exact",
+      "scope": "PP5, Figure 21",
+      "evidence_refs": [
+        "ev_fig21",
+        "ev17"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c21",
+      "text": "For PP7 the modulus dropped from 810 to 701 MPa and the yield strength from 26.2 to 17.5 MPa after foaming.",
+      "location": {
+        "section": "Mechanical Properties of Foamed Materials",
+        "page": 15,
+        "char_span": null,
+        "quote": "for PP7, the modulus dropped from\n810 to 701 MPa and the yield strength from 26.2 to 17.5 MPa"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_modulus_PP7 810->701 MPa AND reported_yield_PP7 26.2->17.5 MPa consistent with Figure 21",
+      "strength": "exact",
+      "scope": "PP7, Figure 21",
+      "evidence_refs": [
+        "ev_fig21",
+        "ev18"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c22",
+      "text": "After foaming the material density decreased by approximately 5-20%.",
+      "location": {
+        "section": "Mechanical Properties of Foamed Materials",
+        "page": 15,
+        "char_span": null,
+        "quote": "the material density decreased\nby approximately 5−20%"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_density_reduction_pct in range 5..20",
+      "strength": "bound",
+      "scope": "all foamed samples",
+      "evidence_refs": [],
+      "confidence": 0.85
+    },
+    {
+      "id": "c23",
+      "text": "rPP0 tensile modulus reduced from 1457 to 1348 MPa upon foaming.",
+      "location": {
+        "section": "Mechanical Properties of Foamed Materials",
+        "page": 16,
+        "char_span": null,
+        "quote": "the\ntensile modulus reduced from only 1457 to 1348 MPa upon\nfoaming"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_modulus_rPP0 1457->1348 MPa consistent with Figure 22",
+      "strength": "exact",
+      "scope": "rPP0, Figure 22",
+      "evidence_refs": [
+        "ev_fig22",
+        "ev19"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c24",
+      "text": "rPP0 yield strength reduced from 32.2 to 27.6 MPa and Izod impact strength from 43.7 to 24.7 kJ/m2 upon foaming.",
+      "location": {
+        "section": "Mechanical Properties of Foamed Materials",
+        "page": 16,
+        "char_span": null,
+        "quote": "its yield strength reduced by 32.2 to\n27.6 MPa and the Izod impact strength reduced by half 43.7 to\n24.7 kJ/m2"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_yield_rPP0 32.2->27.6 MPa AND reported_impact_rPP0 43.7->24.7 kJ/m2 consistent with Figure 22",
+      "strength": "exact",
+      "scope": "rPP0, Figure 22",
+      "evidence_refs": [
+        "ev_fig22",
+        "ev20"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c25",
+      "text": "rPP5 impact strength reduced from 100.4 to 33.5 kJ/m2 after foaming.",
+      "location": {
+        "section": "Mechanical Properties of Foamed Materials",
+        "page": 16,
+        "char_span": null,
+        "quote": "which is before foaming\n100.4 to 33.5 kJ/m2 after foaming were recorded by it"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_impact_rPP5 100.4->33.5 kJ/m2 consistent with Figure 22",
+      "strength": "exact",
+      "scope": "rPP5, Figure 22",
+      "evidence_refs": [
+        "ev_fig22",
+        "ev21"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "c26",
+      "text": "rPP7 modulus reduced from 796 to 615 MPa and impact toughness from 94.3 to 28.4 kJ/m2 upon foaming.",
+      "location": {
+        "section": "Mechanical Properties of Foamed Materials",
+        "page": 16,
+        "char_span": null,
+        "quote": "The modulus reduced\nby 796 to 615 MPa upon foaming and the impact toughness\nreduced from 94.3 to 28.4 kJ/m2"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_modulus_rPP7 796->615 MPa AND reported_impact_rPP7 94.3->28.4 kJ/m2 consistent with Figure 22",
+      "strength": "exact",
+      "scope": "rPP7, Figure 22",
+      "evidence_refs": [
+        "ev_fig22",
+        "ev22"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "c27",
+      "text": "rPP5 displayed the most refined cell morphology with smallest mean cell diameter (~7.8 μm) and highest cell density (1.1 × 10^8 cells/cm^3).",
+      "location": {
+        "section": "Structure of the Foams",
+        "page": 15,
+        "char_span": null,
+        "quote": "rPP5 displayed the most refined cell morphology,\ncharacterized by the smallest mean cell diameter (∼7.8 μm)\nand the highest cell density (1.1 × 108 cells/cm3"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_cell_density_rPP5 == 1.1e8 cells/cm3 AND reported_mean_cell_size_rPP5 == 7.8 um consistent with Table 3",
+      "strength": "approximate",
+      "scope": "rPP5 foam, Table 3",
+      "evidence_refs": [
+        "ev_table3",
+        "ev23"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "c28",
+      "text": "Homopolymer PPH MFR = 23 g/10 min, LDPE MFR = 22 g/10 min, rPP MFR = 25 g/10 min.",
+      "location": {
+        "section": "Experimental / Materials",
+        "page": 3,
+        "char_span": null,
+        "quote": "Homo polypropylene (PPH, melt flow rate, MFR = 23 g/10 min)"
+      },
+      "epistemic_tier": "T1",
+      "predicate": "reported_MFR_PPH == 23 AND reported_MFR_LDPE == 22 AND reported_MFR_rPP == 25 g/10min",
+      "strength": "exact",
+      "scope": "Materials",
+      "evidence_refs": [
+        "ev24"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c29",
+      "text": "Mechanical recycling has a theoretical retained value of 20-50% of virgin material market value.",
+      "location": {
+        "section": "Introduction",
+        "page": 2,
+        "char_span": null,
+        "quote": "with a theoretical\nretained value of 20−50% of virgin material market value"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "stated_retained_value_pct in range 20..50",
+      "strength": "bound",
+      "scope": "mechanical recycling, literature",
+      "evidence_refs": [],
+      "confidence": 0.8
+    },
+    {
+      "id": "c30",
+      "text": "Table 1 blend compositions sum to 100% per row.",
+      "location": {
+        "section": "Table 1",
+        "page": 3,
+        "char_span": null,
+        "quote": "Table 1. Compositions of PP/LDPE and rPP/LDPE Blends"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "for each row, sum(PP, rPP, DHBP, TMPTA, LDPE) == 100",
+      "strength": "exact",
+      "scope": "Table 1 all rows",
+      "evidence_refs": [
+        "ev_table1"
+      ],
+      "confidence": 0.9
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev1",
+      "kind": "text",
+      "location": {
+        "section": "Introduction",
+        "page": 3,
+        "char_span": null,
+        "quote": "revealed cell densities up to 1.1 × 108 cells/\ncm3 and reduced average cell sizes of 7.48 μm"
+      },
+      "extracted_values": {
+        "max_cell_density_cells_per_cm3": 110000000.0,
+        "min_avg_cell_size_um": 7.48
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev_table3",
+      "kind": "table",
+      "location": {
+        "section": "Table 3",
+        "page": 14,
+        "char_span": null,
+        "quote": "Table 3. Average Cell Sizes and Cell Density of PP, PP/LDPE, and rPP, rPP/LDPE Polymer Composite Foams"
+      },
+      "extracted_values": {
+        "PP0": {
+          "n": 372,
+          "D0_um": 9.36,
+          "median_um": 6.25,
+          "N0_cells_per_cm3": 65900000.0
+        },
+        "PP5": {
+          "n": 520,
+          "D0_um": 7.48,
+          "median_um": 5.34,
+          "N0_cells_per_cm3": 110000000.0
+        },
+        "PP7": {
+          "n": 441,
+          "D0_um": 7.8,
+          "median_um": 5.48,
+          "N0_cells_per_cm3": 87200000.0
+        },
+        "rPP0": {
+          "n": 418,
+          "D0_um": 9.19,
+          "median_um": 5.9,
+          "N0_cells_per_cm3": 75800000.0
+        },
+        "rPP5": {
+          "n": 524,
+          "D0_um": 7.77,
+          "median_um": 5.49,
+          "N0_cells_per_cm3": 112000000.0
+        },
+        "rPP7": {
+          "n": 375,
+          "D0_um": 8.32,
+          "median_um": 5.45,
+          "N0_cells_per_cm3": 66500000.0
+        }
+      },
+      "confidence": 0.93
+    },
+    {
+      "id": "ev_fig15",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 15",
+        "page": 10,
+        "char_span": null,
+        "quote": "Figure 15. Changes in mechanical properties of PP and compatibilized and uncompatibilized PP/LDPE blends."
+      },
+      "extracted_values": {
+        "tensile_modulus_MPa": {
+          "PP0": 1957.2,
+          "PP1": 1622.3,
+          "PP2": 1275.6,
+          "PP3": 1042.2,
+          "PP4": 1314.1,
+          "PP5": 928.7,
+          "PP6": 1260.5,
+          "PP7": 810.3
+        },
+        "yield_strength_MPa": {
+          "PP0": 39.6,
+          "PP1": 36.5,
+          "PP2": 28.7,
+          "PP3": 24.2,
+          "PP4": 29.2,
+          "PP5": 25.1,
+          "PP6": 30.3,
+          "PP7": 26.2
+        },
+        "tensile_strain_pct": {
+          "PP0": 11.5,
+          "PP1": 14.4,
+          "PP2": 112.8,
+          "PP3": 130.8,
+          "PP4": 18.5,
+          "PP5": 52.0,
+          "PP6": 12.6,
+          "PP7": 13.8
+        },
+        "izod_impact_kJ_per_mm2": {
+          "PP0": 51.4,
+          "PP1": 41.4,
+          "PP2": 70.9,
+          "PP3": 86.3,
+          "PP4": 55.1,
+          "PP5": 100.9,
+          "PP6": 55.7,
+          "PP7": 102.9
+        }
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev_fig16",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 16",
+        "page": 11,
+        "char_span": null,
+        "quote": "Figure 16. Changes in mechanical properties of rPP and compatibilized and uncompatibilized rPP/LDPE blends."
+      },
+      "extracted_values": {
+        "tensile_modulus_MPa": {
+          "rPP0": 1457.4,
+          "rPP3": 843.5,
+          "rPP5": 686.4,
+          "rPP7": 796.3
+        },
+        "yield_strength_MPa": {
+          "rPP0": 32.2,
+          "rPP3": 21.0,
+          "rPP5": 23.2,
+          "rPP7": 24.6
+        },
+        "tensile_strain_pct": {
+          "rPP0": 116.4,
+          "rPP3": 203.3,
+          "rPP5": 50.0,
+          "rPP7": 10.3
+        },
+        "izod_impact_kJ_per_mm2": {
+          "rPP0": 43.7,
+          "rPP3": 101.0,
+          "rPP5": 100.4,
+          "rPP7": 94.3
+        }
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev2",
+      "kind": "text",
+      "location": {
+        "section": "Morphology via SEM",
+        "page": 6,
+        "char_span": null,
+        "quote": "0.38\n± 0.02 μm in the PP/LDPE samples and 0.53 ± 0.03 μm in\nthe rPP/LDPE samples"
+      },
+      "extracted_values": {
+        "particle_size_PPLDPE_um": 0.38,
+        "particle_size_PPLDPE_err": 0.02,
+        "particle_size_rPPLDPE_um": 0.53,
+        "particle_size_rPPLDPE_err": 0.03
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev3",
+      "kind": "text",
+      "location": {
+        "section": "Rheological Properties",
+        "page": 7,
+        "char_span": null,
+        "quote": "the average particle size of dispersed\nphase was found as 0.13 ± 0.03 μm for rPP7"
+      },
+      "extracted_values": {
+        "particle_size_rPP7_um": 0.13,
+        "err": 0.03
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev4",
+      "kind": "statistic",
+      "location": {
+        "section": "Rheological Properties",
+        "page": 9,
+        "char_span": null,
+        "quote": "While rPP7 exhibited 11% gel content, this value was\ndetermined to be 6% for the PP7 sample."
+      },
+      "extracted_values": {
+        "gel_content_rPP7_pct": 11,
+        "gel_content_PP7_pct": 6
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev_table2",
+      "kind": "table",
+      "location": {
+        "section": "Table 2",
+        "page": 13,
+        "char_span": null,
+        "quote": "Table 2. Thermal Properties of Neat Polymers, Compatibilized and Uncompatibilized PP/LDPE and rPP/LDPE Blends"
+      },
+      "extracted_values": {
+        "LDPE": {
+          "Tm_LDPE": 105.1,
+          "Tconset_LDPE": 95.5,
+          "dHm_LDPE": 110.3,
+          "dHc_LDPE": 79.2,
+          "Xc_LDPE": 38.3
+        },
+        "PP0": {
+          "Tm_PP": 157.4,
+          "Tconset_PP": 129.9,
+          "dHm_PP": 100.7,
+          "dHc_PP": 102.6,
+          "Xc_PP": 48.6
+        },
+        "PP1": {
+          "Tm_PP": 161.2,
+          "Tconset_PP": 122.6,
+          "dHm_PP": 95.6,
+          "dHc_PP": 104.6,
+          "Xc_PP": 46.4
+        },
+        "PP2": {
+          "Tm_LDPE": 103.9,
+          "Tconset_LDPE": 101.1,
+          "dHm_LDPE": 10.7,
+          "dHc_LDPE": 8.7,
+          "Tm_PP": 161.5,
+          "Tconset_PP": 120.4,
+          "dHm_PP": 71.3,
+          "dHc_PP": 71.6,
+          "Xc_PP": 43.0,
+          "Xc_LDPE": 18.6
+        },
+        "PP3": {
+          "Tm_LDPE": 94.7,
+          "Tconset_LDPE": 100.5,
+          "dHm_LDPE": 29.7,
+          "dHc_LDPE": 23.6,
+          "Tm_PP": 161.4,
+          "Tconset_PP": 120.7,
+          "dHm_PP": 52.4,
+          "dHc_PP": 50.7,
+          "Xc_PP": 42.2,
+          "Xc_LDPE": 25.8
+        },
+        "PP4": {
+          "Tm_PP": 162.8,
+          "Tconset_PP": 126.4,
+          "dHm_PP": 78.4,
+          "dHc_PP": 76.0,
+          "Xc_PP": 48.8
+        },
+        "PP5": {
+          "Tm_PP": 162.6,
+          "Tconset_PP": 125.9,
+          "dHm_PP": 53.6,
+          "dHc_PP": 54.9,
+          "Xc_PP": 44.8
+        },
+        "PP6": {
+          "Tm_PP": 159.4,
+          "Tconset_PP": 122.3,
+          "dHm_PP": 64.1,
+          "dHc_PP": 63.4,
+          "Xc_PP": 41.4
+        },
+        "PP7": {
+          "Tm_PP": 163.0,
+          "Tconset_PP": 125.4,
+          "dHm_PP": 50.9,
+          "dHc_PP": 50.0,
+          "Xc_PP": 45.0
+        },
+        "rPP0": {
+          "Tm_PP": 163.2,
+          "Tconset_PP": 124.9,
+          "dHm_PP": 121.1,
+          "dHc_PP": 112.9,
+          "Xc_PP": 58.5
+        },
+        "rPP3": {
+          "Tm_PP": 160.3,
+          "Tconset_PP": 122.6,
+          "dHm_PP": 42.8,
+          "dHc_PP": 43.8,
+          "Xc_PP": 34.5,
+          "Xc_LDPE": 28.7
+        },
+        "rPP5": {
+          "Tm_PP": 163.8,
+          "Tconset_PP": 123.6,
+          "dHm_PP": 42.9,
+          "dHc_PP": 42.0,
+          "Xc_PP": 35.8,
+          "Xc_LDPE": 23.6
+        },
+        "rPP7": {
+          "Tm_PP": 163.8,
+          "Tconset_PP": 123.1,
+          "dHm_PP": 42.4,
+          "dHc_PP": 42.2,
+          "Xc_PP": 35.5,
+          "Xc_LDPE": 29.9
+        }
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev5",
+      "kind": "number",
+      "location": {
+        "section": "DSC Results",
+        "page": 13,
+        "char_span": null,
+        "quote": "melting temperature (Tm) of 105.1\n°C, while pure PP (PP0) displayed a melting point of 157.4\n°C"
+      },
+      "extracted_values": {
+        "prose_value": 105.1,
+        "source_value": 105.1,
+        "quantity": "Tm_LDPE_C",
+        "Tm_PP0_prose": 157.4,
+        "Tm_PP0_table": 157.4
+      },
+      "confidence": 0.93
+    },
+    {
+      "id": "ev6",
+      "kind": "number",
+      "location": {
+        "section": "DSC Results",
+        "page": 13,
+        "char_span": null,
+        "quote": "the\nmelting enthalpy decreased from 100.7 to 95.6 J/g"
+      },
+      "extracted_values": {
+        "old_value": 100.7,
+        "new_value": 95.6,
+        "quantity": "dHm_PP_J_per_g",
+        "prose_value": 100.7,
+        "source_value": 100.7
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev7",
+      "kind": "number",
+      "location": {
+        "section": "DSC Results",
+        "page": 13,
+        "char_span": null,
+        "quote": "Tc,onset\nwas 129.9 °C. The introduction of peroxide alone (PP1) led to\na pronounced reduction in Tc,onset to 122.6 °C"
+      },
+      "extracted_values": {
+        "old_value": 129.9,
+        "new_value": 122.6,
+        "quantity": "Tconset_PP_C",
+        "prose_value": 129.9,
+        "source_value": 129.9
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev8",
+      "kind": "number",
+      "location": {
+        "section": "DSC Results",
+        "page": 13,
+        "char_span": null,
+        "quote": "increased\nmarkedly to 126.4 and 125.9 °C"
+      },
+      "extracted_values": {
+        "Tconset_PP4_prose": 126.4,
+        "Tconset_PP4_table": 126.4,
+        "Tconset_PP5_prose": 125.9,
+        "Tconset_PP5_table": 125.9
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev9",
+      "kind": "number",
+      "location": {
+        "section": "DSC Results",
+        "page": 13,
+        "char_span": null,
+        "quote": "Tc,onset value of PP decreasing to 122.3 °C"
+      },
+      "extracted_values": {
+        "prose_value": 122.3,
+        "source_value": 122.3,
+        "quantity": "Tconset_PP6_C"
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev10",
+      "kind": "number",
+      "location": {
+        "section": "DSC Results",
+        "page": 13,
+        "char_span": null,
+        "quote": "the ΔHc value of rPP decreased from\n112.9 to 43.8 J/g"
+      },
+      "extracted_values": {
+        "old_value": 112.9,
+        "new_value": 43.8,
+        "quantity": "dHc_rPP_J_per_g",
+        "prose_value": 112.9,
+        "source_value": 112.9
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev11",
+      "kind": "number",
+      "location": {
+        "section": "DSC Results",
+        "page": 13,
+        "char_span": null,
+        "quote": "showed an initial crystallinity of 58.5%"
+      },
+      "extracted_values": {
+        "prose_value": 58.5,
+        "source_value": 58.5,
+        "quantity": "Xc_rPP0_pct"
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev12",
+      "kind": "number",
+      "location": {
+        "section": "Structure of the Foams",
+        "page": 14,
+        "char_span": null,
+        "quote": "fell to 35.8%"
+      },
+      "extracted_values": {
+        "prose_value": 35.8,
+        "source_value": 35.8,
+        "quantity": "Xc_rPP5_pct"
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev13",
+      "kind": "text",
+      "location": {
+        "section": "Structure of the Foams",
+        "page": 14,
+        "char_span": null,
+        "quote": "PP0 exhibited the lowest cell density (6.6 × 107\ncells/cm3) and the largest mean cell size (≈9.4 μm)"
+      },
+      "extracted_values": {
+        "prose_cell_density": 66000000.0,
+        "table_cell_density": 65900000.0,
+        "prose_cell_size": 9.4,
+        "table_cell_size": 9.36,
+        "quantity": "PP0 foam cell density and size"
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev14",
+      "kind": "text",
+      "location": {
+        "section": "Structure of the Foams",
+        "page": 14,
+        "char_span": null,
+        "quote": "the\nhighest cell density (1.1 × 108 cells/cm3\n) and the smallest\naverage cell diameter (≈7.5 μm)"
+      },
+      "extracted_values": {
+        "prose_cell_density": 110000000.0,
+        "table_cell_density": 110000000.0,
+        "prose_cell_size": 7.5,
+        "table_cell_size": 7.48,
+        "quantity": "PP5 foam cell density and size"
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev15",
+      "kind": "text",
+      "location": {
+        "section": "Structure of the Foams",
+        "page": 14,
+        "char_span": null,
+        "quote": "density (N0 = 8.7 × 107 cells/cm3"
+      },
+      "extracted_values": {
+        "prose_cell_density": 87000000.0,
+        "table_cell_density": 87200000.0,
+        "prose_cell_size": 7.8,
+        "table_cell_size": 7.8,
+        "quantity": "PP7 foam cell density and size"
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev16",
+      "kind": "number",
+      "location": {
+        "section": "Mechanical Properties of Foamed Materials",
+        "page": 15,
+        "char_span": null,
+        "quote": "the density of PP1\ndecreased from 0.91 to 0.74 g/cm3"
+      },
+      "extracted_values": {
+        "old_value": 0.91,
+        "new_value": 0.74,
+        "quantity": "density_PP1_g_per_cm3"
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev17",
+      "kind": "number",
+      "location": {
+        "section": "Mechanical Properties of Foamed Materials",
+        "page": 15,
+        "char_span": null,
+        "quote": "the\nmodulus decreased from 928 to 717 MPa and the yield strength from\n25.1 to 18.0 MPa"
+      },
+      "extracted_values": {
+        "modulus_old": 928,
+        "modulus_new": 717,
+        "yield_old": 25.1,
+        "yield_new": 18.0,
+        "quantity": "PP5 modulus and yield strength"
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev18",
+      "kind": "number",
+      "location": {
+        "section": "Mechanical Properties of Foamed Materials",
+        "page": 15,
+        "char_span": null,
+        "quote": "the modulus dropped from\n810 to 701 MPa and the yield strength from 26.2 to 17.5 MPa"
+      },
+      "extracted_values": {
+        "modulus_old": 810,
+        "modulus_new": 701,
+        "yield_old": 26.2,
+        "yield_new": 17.5,
+        "quantity": "PP7 modulus and yield strength"
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev19",
+      "kind": "number",
+      "location": {
+        "section": "Mechanical Properties of Foamed Materials",
+        "page": 16,
+        "char_span": null,
+        "quote": "the\ntensile modulus reduced from only 1457 to 1348 MPa upon\nfoaming"
+      },
+      "extracted_values": {
+        "old_value": 1457,
+        "new_value": 1348,
+        "quantity": "modulus_rPP0_MPa"
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev20",
+      "kind": "number",
+      "location": {
+        "section": "Mechanical Properties of Foamed Materials",
+        "page": 16,
+        "char_span": null,
+        "quote": "its yield strength reduced by 32.2 to\n27.6 MPa and the Izod impact strength reduced by half 43.7 to\n24.7 kJ/m2"
+      },
+      "extracted_values": {
+        "yield_old": 32.2,
+        "yield_new": 27.6,
+        "impact_old": 43.7,
+        "impact_new": 24.7,
+        "quantity": "rPP0 yield and impact"
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev21",
+      "kind": "number",
+      "location": {
+        "section": "Mechanical Properties of Foamed Materials",
+        "page": 16,
+        "char_span": null,
+        "quote": "100.4 to 33.5 kJ/m2 after foaming"
+      },
+      "extracted_values": {
+        "old_value": 100.4,
+        "new_value": 33.5,
+        "quantity": "impact_rPP5_kJ_per_m2"
+      },
+      "confidence": 0.88
+    },
+    {
+      "id": "ev22",
+      "kind": "number",
+      "location": {
+        "section": "Mechanical Properties of Foamed Materials",
+        "page": 16,
+        "char_span": null,
+        "quote": "The modulus reduced\nby 796 to 615 MPa upon foaming and the impact toughness\nreduced from 94.3 to 28.4 kJ/m2"
+      },
+      "extracted_values": {
+        "modulus_old": 796,
+        "modulus_new": 615,
+        "impact_old": 94.3,
+        "impact_new": 28.4,
+        "quantity": "rPP7 modulus and impact"
+      },
+      "confidence": 0.88
+    },
+    {
+      "id": "ev23",
+      "kind": "text",
+      "location": {
+        "section": "Structure of the Foams",
+        "page": 15,
+        "char_span": null,
+        "quote": "the smallest mean cell diameter (∼7.8 μm)\nand the highest cell density (1.1 × 108 cells/cm3"
+      },
+      "extracted_values": {
+        "prose_cell_density": 110000000.0,
+        "table_cell_density": 112000000.0,
+        "prose_cell_size": 7.8,
+        "table_cell_size": 7.77,
+        "quantity": "rPP5 foam cell density and size"
+      },
+      "confidence": 0.88
+    },
+    {
+      "id": "ev24",
+      "kind": "text",
+      "location": {
+        "section": "Experimental / Materials",
+        "page": 3,
+        "char_span": null,
+        "quote": "Homo polypropylene (PPH, melt flow rate, MFR = 23 g/10 min) was\nsupplied by Rom Petrochemical Company, while low-density\npolyethylene (LDPE, MFR = 22 g/10 min)"
+      },
+      "extracted_values": {
+        "MFR_PPH": 23,
+        "MFR_LDPE": 22,
+        "MFR_rPP": 25,
+        "unit": "g/10 min"
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev_table1",
+      "kind": "table",
+      "location": {
+        "section": "Table 1",
+        "page": 3,
+        "char_span": null,
+        "quote": "Table 1. Compositions of PP/LDPE and rPP/LDPE Blends"
+      },
+      "extracted_values": {
+        "PP1": {
+          "parts": [
+            99.75,
+            0.25,
+            0,
+            0
+          ],
+          "reported_total": 100
+        },
+        "PP4": {
+          "parts": [
+            77.75,
+            0.25,
+            2,
+            20
+          ],
+          "reported_total": 100
+        },
+        "PP5": {
+          "parts": [
+            57.75,
+            0.25,
+            2,
+            40
+          ],
+          "reported_total": 100
+        },
+        "PP6": {
+          "parts": [
+            74.75,
+            0.25,
+            5,
+            20
+          ],
+          "reported_total": 100
+        },
+        "PP7": {
+          "parts": [
+            54.75,
+            0.25,
+            5,
+            40
+          ],
+          "reported_total": 100
+        },
+        "rPP5": {
+          "parts": [
+            57.75,
+            0.25,
+            2,
+            40
+          ],
+          "reported_total": 100
+        },
+        "rPP7": {
+          "parts": [
+            54.75,
+            0.25,
+            5,
+            40
+          ],
+          "reported_total": 100
+        }
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev_fig21",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 21",
+        "page": 15,
+        "char_span": null,
+        "quote": "Figure 21. Mechanical properties of PP, PP/LDPE blends, and their foamed counterparts."
+      },
+      "extracted_values": {
+        "density_g_per_cm3": {
+          "PP0": 0.91,
+          "PP0_foamed": 0.83,
+          "PP1": 0.91,
+          "PP1_foamed": 0.74,
+          "PP2": 0.9,
+          "PP2_foamed": 0.85,
+          "PP3": 0.9,
+          "PP3_foamed": 0.78,
+          "PP4": 0.92,
+          "PP4_foamed": 0.82,
+          "PP5": 0.92,
+          "PP5_foamed": 0.82,
+          "PP6": 0.93,
+          "PP6_foamed": 0.82,
+          "PP7": 0.93,
+          "PP7_foamed": 0.81
+        }
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev_fig22",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 22",
+        "page": 16,
+        "char_span": null,
+        "quote": "Figure 22. Mechanical properties of rPP, rPP/LDPE blends, and their foamed counterparts."
+      },
+      "extracted_values": {
+        "tensile_modulus_MPa": {
+          "rPP0": 1457.4,
+          "rPP0_foamed": 1348.3,
+          "rPP3": 843.5,
+          "rPP3_foamed": 730.1,
+          "rPP5": 686.4,
+          "rPP5_foamed": 670.1,
+          "rPP7": 796.3,
+          "rPP7_foamed": 615.6
+        }
+      },
+      "confidence": 0.85
+    }
+  ],
+  "bindings": [
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev_table3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev_fig15",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev_fig15",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c4",
+      "evidence_id": "ev_fig15",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c5",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c6",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c7",
+      "evidence_id": "ev4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c8",
+      "evidence_id": "ev_table2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c8",
+      "evidence_id": "ev5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c9",
+      "evidence_id": "ev_table2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c9",
+      "evidence_id": "ev6",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c10",
+      "evidence_id": "ev_table2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c10",
+      "evidence_id": "ev7",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c11",
+      "evidence_id": "ev_table2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c11",
+      "evidence_id": "ev8",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c12",
+      "evidence_id": "ev_table2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c12",
+      "evidence_id": "ev9",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c13",
+      "evidence_id": "ev_table2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c13",
+      "evidence_id": "ev10",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c14",
+      "evidence_id": "ev_table2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c14",
+      "evidence_id": "ev11",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c15",
+      "evidence_id": "ev_table2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c15",
+      "evidence_id": "ev12",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c16",
+      "evidence_id": "ev_table3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c16",
+      "evidence_id": "ev13",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c17",
+      "evidence_id": "ev_table3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c17",
+      "evidence_id": "ev14",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c18",
+      "evidence_id": "ev_table3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c18",
+      "evidence_id": "ev15",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c19",
+      "evidence_id": "ev_fig21",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c19",
+      "evidence_id": "ev16",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c20",
+      "evidence_id": "ev_fig21",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c20",
+      "evidence_id": "ev17",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c21",
+      "evidence_id": "ev_fig21",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c21",
+      "evidence_id": "ev18",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c23",
+      "evidence_id": "ev_fig22",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c23",
+      "evidence_id": "ev19",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c24",
+      "evidence_id": "ev_fig22",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c24",
+      "evidence_id": "ev20",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c25",
+      "evidence_id": "ev_fig22",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c25",
+      "evidence_id": "ev21",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c26",
+      "evidence_id": "ev_fig22",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c26",
+      "evidence_id": "ev22",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c27",
+      "evidence_id": "ev_table3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c27",
+      "evidence_id": "ev23",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c28",
+      "evidence_id": "ev24",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c30",
+      "evidence_id": "ev_table1",
+      "relation": "rests_on"
+    }
+  ]
+}

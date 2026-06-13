@@ -1,0 +1,1217 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "chemistry-jana2025-co2-electroreduction-cu-zif",
+  "meta": {
+    "journal": "Nanoscale Advances",
+    "year": 2026,
+    "doi": "10.1039/d6na00256k",
+    "note": "Many quotes contain OCR artifacts (e.g. 'shied' for 'shifted', 'conrmed' for 'confirmed') reproduced verbatim from the source text.",
+    "extractor": "litmus.extract",
+    "model": "claude-opus-4-8",
+    "source": "opus-native-pdf"
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The Cu-ZIF@AC composite achieved a low overpotential of −0.56 V (vs. RHE) at −10 mA cm−2 current density for CO2RR.",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "the Cu-ZIF@AC composite achieved low overpotential of\n−0.56 V (vs. RHE) at −10 mA cm−2 current density, surpassing the performance of usually reported\nMOF-based systems"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_overpotential_V == −0.56 at current_density == −10 mA cm−2 for Cu-ZIF@AC",
+      "strength": "comparative",
+      "scope": "Cu-ZIF@AC, CO2-saturated 0.5 M KHCO3, LSV",
+      "evidence_refs": [
+        "ev1"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c2",
+      "text": "The catalyst selectively produced acetic acid with 71.5% faradaic efficiency at −0.3 V (vs. RHE) onset potential.",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "the catalyst selectively produced acetic acid (71.5% faradaic efficiency) at\n−0.3 V (vs. RHE) onset potential"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_FE_AcOH_pct == 71.5 at potential == −0.3 V vs RHE",
+      "strength": "approximate",
+      "scope": "Cu-ZIF@AC, −0.3 V vs RHE, CO2-purged 0.5 M KHCO3",
+      "evidence_refs": [
+        "ev2"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c3",
+      "text": "Global mean CO2 concentration has increased by approximately 35% over the past six decades.",
+      "location": {
+        "section": "1 Introduction",
+        "page": 1,
+        "char_span": null,
+        "quote": "the global mean\nCO2 concentration has increased by approximately 35% over the\npast six decades"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "stated_pct_increase_CO2 == 35 over ~60 years (Keeling curve)",
+      "strength": "approximate",
+      "scope": "global mean atmospheric CO2, past six decades",
+      "evidence_refs": [
+        "ev3"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c4",
+      "text": "Cu and 2-MI were taken in 1:2 mmol ratio to obtain ultimate 7 wt% Cu-ZIF loading within the AC matrix.",
+      "location": {
+        "section": "2.3 Synthesis of Cu-ZIF@AC",
+        "page": 2,
+        "char_span": null,
+        "quote": "The metal precursor and\norganic linker was taken in 1 : 2 mmol ratio to get ultimate\n7 wt% Cu-ZIF loading within the AC matrix"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "stated_Cu_ZIF_loading_wt_pct == 7 with precursor:linker mmol ratio == 1:2",
+      "strength": "exact",
+      "scope": "Cu-ZIF@AC synthesis",
+      "evidence_refs": [
+        "ev4"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c5",
+      "text": "The XRD pattern of Cu-ZIF@AC matched Cu-ZIF peaks at 2θ values of 14.46°, 29.62°, 31.52°, 33.1°, 34.85°, 39.54°, 44.88°, and 48.01°, with a graphitic peak at 26.35°.",
+      "location": {
+        "section": "3.1 Physical characterization",
+        "page": 4,
+        "char_span": null,
+        "quote": "having 2q values at 14.46°, 29.62°, 31.52°, 33.1°, 34.85°,\n39.54°, 44.88°, and 48.01°, indicating the successful formation\nof Cu-ZIF inside the activated carbon pores"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_2theta_peaks == [14.46,29.62,31.52,33.1,34.85,39.54,44.88,48.01]; graphitic peak == 26.35",
+      "strength": "exact",
+      "scope": "Cu-ZIF@AC PXRD, Cu Kα",
+      "evidence_refs": [
+        "ev5"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c6",
+      "text": "AC has a micro-porosity surface area of 1350.25 m2 g−1.",
+      "location": {
+        "section": "3.1",
+        "page": 5,
+        "char_span": null,
+        "quote": "the preserved micro-porosity of AC (1350.25 m2\ng−1)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_surface_area_AC == 1350.25 m2/g",
+      "strength": "exact",
+      "scope": "AC, N2 adsorption at 77 K",
+      "evidence_refs": [
+        "ev6"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c7",
+      "text": "Pristine Cu-ZIF has a very low BET surface area of 41.7 m2 g−1.",
+      "location": {
+        "section": "3.1",
+        "page": 5,
+        "char_span": null,
+        "quote": "a very low\nsurface area (41.7 m2 g−1\n)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_surface_area_CuZIF == 41.7 m2/g",
+      "strength": "exact",
+      "scope": "pristine Cu-ZIF, N2 adsorption",
+      "evidence_refs": [
+        "ev7"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c8",
+      "text": "Cu-ZIF@AC has a BET surface area of 502.02 m2 g−1.",
+      "location": {
+        "section": "3.1",
+        "page": 5,
+        "char_span": null,
+        "quote": "The signicant decrease in BET\nsurface area for Cu-ZIF@AC (502.02 m2 g−1\n)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_surface_area_CuZIF_AC == 502.02 m2/g",
+      "strength": "exact",
+      "scope": "Cu-ZIF@AC, N2 adsorption",
+      "evidence_refs": [
+        "ev8"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c9",
+      "text": "ICP-OES quantified the Cu content of the Cu-ZIF@AC composite as 2.1 wt%.",
+      "location": {
+        "section": "3.1",
+        "page": 5,
+        "char_span": null,
+        "quote": "quantied the copper (Cu) content of the Cu-ZIF@AC\ncomposite as 2.1 wt% (Table 1)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_Cu_content_wt_pct == 2.1 (ICP-OES)",
+      "strength": "exact",
+      "scope": "Cu-ZIF@AC, ICP-OES",
+      "evidence_refs": [
+        "ev9"
+      ],
+      "confidence": 0.93
+    },
+    {
+      "id": "c10",
+      "text": "Cu-ZIF@AC showed Cu+/Cu2+ redox couple at 1.28 and 0.2 V vs. RHE, whereas Cu-ZIF showed it at 1.01 and 0.57 V vs. RHE.",
+      "location": {
+        "section": "3.2 Electrochemical tests",
+        "page": 5,
+        "char_span": null,
+        "quote": "The Cu-ZIF@AC showed Cu+\n/\nCu2+ redox couple at 1.28 and 0.2 V vs. RHE, whereas the Cu-ZIF\nshowed Cu+\n/Cu2+ redox couple at 1.01 and 0.57 V vs. RHE"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported redox potentials Cu-ZIF@AC == [1.28, 0.2] V; Cu-ZIF == [1.01, 0.57] V vs RHE",
+      "strength": "exact",
+      "scope": "CV, N2-saturated 0.5 M Na2SO4, 50 mV/s",
+      "evidence_refs": [
+        "ev10"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c11",
+      "text": "The charge-transfer resistance Rct1 of pristine Cu-ZIF is 133.98 Ω, Cu-ZIF@AC is 4.89 Ω, and bare AC is 3.91 Ω.",
+      "location": {
+        "section": "3.2",
+        "page": 6,
+        "char_span": null,
+        "quote": "the charge-transfer resistance (Rct1) of pristine Cu-ZIF is signicantly high (133.98 U)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_Rct1: Cu-ZIF == 133.98 Ω, Cu-ZIF@AC == 4.89 Ω, AC == 3.91 Ω",
+      "strength": "exact",
+      "scope": "EIS, Nyquist plots",
+      "evidence_refs": [
+        "ev11"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c12",
+      "text": "Cu-ZIF@AC demonstrated an overpotential of −0.56 V vs. RHE at −10 mA cm−2, compared to −0.72 V vs. RHE for Cu-ZIF.",
+      "location": {
+        "section": "3.2",
+        "page": 6,
+        "char_span": null,
+        "quote": "The Cu-ZIF@AC demonstrated an overpotential of\n−0.56 V vs. RHE at −10 mA cm−2\n, compared to −0.72 V vs. RHE\nfor Cu-ZIF"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_overpotential Cu-ZIF@AC == −0.56 V, Cu-ZIF == −0.72 V at −10 mA cm−2",
+      "strength": "comparative",
+      "scope": "LSV, CO2-purged 0.5 M KHCO3, 10 mV/s",
+      "evidence_refs": [
+        "ev12"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c13",
+      "text": "In N2-saturated 0.5 M KHCO3, the overpotential shifted to −0.66 V vs. RHE at −10 mA cm−2.",
+      "location": {
+        "section": "3.2",
+        "page": 6,
+        "char_span": null,
+        "quote": "the overpotential shied to −0.66 V vs. RHE at\n−10 mA cm−2 (Fig. 3c)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_overpotential_N2_KHCO3 == −0.66 V at −10 mA cm−2",
+      "strength": "exact",
+      "scope": "LSV, N2-saturated 0.5 M KHCO3",
+      "evidence_refs": [
+        "ev13"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "c14",
+      "text": "In 5 M Na2SO4 (CO2-free), Cu-ZIF@AC exhibited an overpotential of −0.72 V vs. RHE at −10 mA cm−2.",
+      "location": {
+        "section": "3.2",
+        "page": 6,
+        "char_span": null,
+        "quote": "exhibiting overpotential of to −0.72 V vs. RHE\nat −10 mA cm−2"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_overpotential_Na2SO4 == −0.72 V at −10 mA cm−2",
+      "strength": "exact",
+      "scope": "LSV, 5 M Na2SO4, CO2-free",
+      "evidence_refs": [
+        "ev14"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c15",
+      "text": "Chronoamperometry at −0.56 V vs. RHE for 12 h showed an average current density of −10 mA cm−2.",
+      "location": {
+        "section": "3.2",
+        "page": 7,
+        "char_span": null,
+        "quote": "showing an"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_stability_current_density == −10 mA cm−2 over 12 h at −0.56 V",
+      "strength": "exact",
+      "scope": "chronoamperometry, 12 h, CO2-saturated 0.5 M KHCO3, −0.56 V",
+      "evidence_refs": [
+        "ev15"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "c16",
+      "text": "At −0.3 V the highest F.E. of 71.5 ± 0.29% is found for AcOH, decreasing to 54.79, 49.8, 44.23, 27.53, 19.12% at −0.4, −0.5, −0.56, −0.6, −0.7 V respectively.",
+      "location": {
+        "section": "3.3 Product analysis",
+        "page": 7,
+        "char_span": null,
+        "quote": "the highest F.E. of 71.5 ± 0.29% is found for AcOH\noutperforming several previously reported MOF- and Cu-based\ncatalysts summarized in Table S1.55–57 As potential becomes\nmore negative, the F.E. of AcOH gradually decreases 54.79 ±\n0.15%, 49.8 ± 0.12, 44.23 ± 0.15%, 27.53 ± 0.17%, 19.12 ±\n0.14% at −0.4, −0.5, −0.56, −0.6, −0.7 V (vs. RHE) respectively"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_FE_AcOH at [−0.3,−0.4,−0.5,−0.56,−0.6,−0.7] V == [71.5,54.79,49.8,44.23,27.53,19.12]%",
+      "strength": "exact",
+      "scope": "Cu-ZIF@AC, CO2-purged 0.5 M KHCO3, varying potential",
+      "evidence_refs": [
+        "ev2",
+        "ev16"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c17",
+      "text": "At −0.3 V onset potential, AcOH F.E. over time was 69.6%, 71.5%, 71.0%, 69.1% at 15, 30, 45, 60 minutes.",
+      "location": {
+        "section": "3.3",
+        "page": 7,
+        "char_span": null,
+        "quote": "acetic acid (AcOH) is the predominant CO2RR product over 15–60 minutes of chronoamperometry"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_FE_AcOH_vs_time at [15,30,45,60] min == [69.6,71.5,71.0,69.1]%",
+      "strength": "exact",
+      "scope": "Cu-ZIF@AC, −0.3 V vs RHE, Fig 4b",
+      "evidence_refs": [
+        "ev17"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c18",
+      "text": "The optimized Cu-ZIF unit cell contains 276 atoms with lattice parameters a=16.33 Å, b=16.61 Å, c=16.62 Å, and angles α=93.00°, β=106.61°, γ=100.06°.",
+      "location": {
+        "section": "3.4",
+        "page": 8,
+        "char_span": null,
+        "quote": "The\noptimized unit cell of the Cu-ZIF contains 276 atoms, with\nlattice parameters: a = 16.33 Å, b = 16.61 Å, c = 16.62 Å, and\nangles a = 93.00°, b = 106.61°, g = 100.06°"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported unit cell: atoms==276, a==16.33, b==16.61, c==16.62 Å, α==93.00, β==106.61, γ==100.06°",
+      "strength": "exact",
+      "scope": "DFT optimized Cu-ZIF primitive cell",
+      "evidence_refs": [
+        "ev18"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c19",
+      "text": "Cu–N bond lengths range from 1.96 Å to 2.03 Å.",
+      "location": {
+        "section": "3.4",
+        "page": 8,
+        "char_span": null,
+        "quote": "The Cu–N bond\nlengths range from 1.96 Å to 2.03 Å"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported_Cu_N_bond_length_range == [1.96, 2.03] Å",
+      "strength": "bound",
+      "scope": "DFT optimized Cu-ZIF",
+      "evidence_refs": [
+        "ev19"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c20",
+      "text": "The spin-polarized configuration (MAGMOM=0.6) has total energy −1756.0987 eV vs non-spin-polarized −1755.5236 eV, a stabilization of approximately 0.64 eV.",
+      "location": {
+        "section": "3.4",
+        "page": 8,
+        "char_span": null,
+        "quote": "converged to the lowest-energy state with a total energy of\n−1756.0987 eV, whereas the non-spin-polarized conguration\n(ISPIN = 1) exhibited a higher energy of −1755.5236 eV. The\nstabilization energy of approximately 0.64 eV"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "stabilization_eV == −1755.5236 − (−1756.0987) ≈ 0.64",
+      "strength": "approximate",
+      "scope": "DFT, spin-polarized vs non-spin-polarized Cu-ZIF",
+      "evidence_refs": [
+        "ev20"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c21",
+      "text": "The most stable, intermediate, and least stable CO2 adsorption configurations are Cu3 (−0.58 eV), Cu5 (−0.36 eV), and Cu7 (−0.18 eV).",
+      "location": {
+        "section": "3.5",
+        "page": 8,
+        "char_span": null,
+        "quote": "denoted as Cu3, Cu7, and Cu5, with adsorption energies of −0.58 eV, −0.18 eV, and −0.36 eV, respectively"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported_Eads: Cu3==−0.58, Cu7==−0.18, Cu5==−0.36 eV",
+      "strength": "exact",
+      "scope": "DFT CO2 adsorption on Cu sites",
+      "evidence_refs": [
+        "ev21"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c22",
+      "text": "At 0.0 V, Cu3 maintains the lowest overall thermodynamic reaction energy (−1.45 eV) for CO2 to CH3COOH, vs Cu5 (−1.05) and Cu7 (−1.41 eV).",
+      "location": {
+        "section": "page 10",
+        "page": 10,
+        "char_span": null,
+        "quote": "Cu3 maintains the lowest overall thermodynamic reaction energy (−1.45 eV) without any applied potential\nfor CO2 to CH3COOH, demonstrating superior catalytic activity\nrelative to Cu5 (−1.05) and Cu7 (−1.41 eV)"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported_reaction_energy_0V: Cu3==−1.45, Cu5==−1.05, Cu7==−1.41 eV",
+      "strength": "exact",
+      "scope": "DFT, 0 V vs RHE, CO2 to CH3COOH",
+      "evidence_refs": [
+        "ev22"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c23",
+      "text": "At −0.70 V vs. RHE, the calculated thermodynamic reaction energies for Cu3, Cu5, Cu7 are −7.05, −6.65, −7.01 eV respectively.",
+      "location": {
+        "section": "page 10",
+        "page": 10,
+        "char_span": null,
+        "quote": "the calculated thermodynamic reaction energies for the Cu3, Cu5, and Cu7 sites are\n−7.05, −6.65, and −7.01 eV, respectively"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported_reaction_energy_minus0.7V: Cu3==−7.05, Cu5==−6.65, Cu7==−7.01 eV",
+      "strength": "exact",
+      "scope": "DFT, −0.70 V vs RHE",
+      "evidence_refs": [
+        "ev23"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c24",
+      "text": "At −0.56 V the reaction energies for Cu3, Cu5, Cu7 are −5.93, −5.53, −5.89 eV, and at −0.30 V are −3.85, −3.45, −3.81 eV.",
+      "location": {
+        "section": "page 10",
+        "page": 10,
+        "char_span": null,
+        "quote": "reaction\nenergies for Cu3, Cu5, Cu7 are −5.93, −5.53, −5.89 eV and −3.85,\n−3.45, −3.81 eV, respectively"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported_reaction_energy: at −0.56V [−5.93,−5.53,−5.89]; at −0.30V [−3.85,−3.45,−3.81] eV",
+      "strength": "exact",
+      "scope": "DFT, −0.56 and −0.30 V vs RHE",
+      "evidence_refs": [
+        "ev24"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c25",
+      "text": "DFT calculations used a plane-wave cutoff energy of 500 eV, energy convergence < 10−6 eV, forces < 2×10−2 eV Å−1, and a 1×1×1 Monkhorst-Pack k-point grid.",
+      "location": {
+        "section": "2.8",
+        "page": 3,
+        "char_span": null,
+        "quote": "converged to less than\n10−6 eV and 2 × 10−2 eV Å−1\n, respectively, using a plane-wave\ncutoff energy of 500 eV"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported DFT params: cutoff==500 eV, energy_conv==1e-6 eV, force_conv==2e-2 eV/Å, k-grid==1x1x1",
+      "strength": "exact",
+      "scope": "VASP DFT computational setup",
+      "evidence_refs": [
+        "ev25"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c26",
+      "text": "For Cu3, *OCHO formation (1.59 eV) is lower energy penalty than COOH (2.09 eV); *OCHOH to *CHO requires 1.88 eV (C-O bond cleavage).",
+      "location": {
+        "section": "3.5",
+        "page": 9,
+        "char_span": null,
+        "quote": "as *OCHO formation 1.59 eV and its\nsubsequent hydrogenation proceed with the lowest energy\npenalties (vs. 2.09 eV for COOH)"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported energies Cu3: *OCHO==1.59, COOH==2.09, *OCHOH->*CHO==1.88 eV",
+      "strength": "exact",
+      "scope": "DFT free energy profile, Cu3 site",
+      "evidence_refs": [
+        "ev26"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c27",
+      "text": "For Cu7, *COOH step (0.24 eV) is more stable than *OCHO step (1.34 eV); *CH2OH to *CH2 cleavage requires 2.53 eV.",
+      "location": {
+        "section": "3.5",
+        "page": 9,
+        "char_span": null,
+        "quote": "in\nwhich *COOH step of 0.24 eV is thermodynamically more stable\nthan *OCHO step of 1.34 eV"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported energies Cu7: *COOH==0.24, *OCHO==1.34, *CH2OH->*CH2==2.53 eV",
+      "strength": "exact",
+      "scope": "DFT free energy profile, Cu7 site",
+      "evidence_refs": [
+        "ev27"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c28",
+      "text": "Cu-ZIF MOF has not been previously investigated for CO2 reduction; the Cu-ZIF@AC composite represents a novel catalyst platform.",
+      "location": {
+        "section": "2 (intro of methods)",
+        "page": 2,
+        "char_span": null,
+        "quote": "Cu-ZIF MOF has not\nbeen previously investigated for CO2 reduction, and the CuZIF@AC composite introduced here represents a novel catalyst platform"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "novelty claim: Cu-ZIF not previously studied for CO2RR",
+      "strength": "qualitative",
+      "scope": "prior art / literature",
+      "evidence_refs": [],
+      "confidence": 0.8
+    },
+    {
+      "id": "c29",
+      "text": "Cu-ZIF@AC composite exhibits the lowest overpotential for CO2RR at −10 mA cm−2 among the MOF-based catalysts listed in Table S1.",
+      "location": {
+        "section": "3.2",
+        "page": 6,
+        "char_span": null,
+        "quote": "Cu-ZIF@AC composite exhibits the lowest overpotential for CO2RR at −10 mA cm−2 current density among the\nMOF-based catalysts listed in Table S1"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "comparative claim: Cu-ZIF@AC overpotential lowest among Table S1 MOF catalysts",
+      "strength": "comparative",
+      "scope": "Table S1 MOF-based catalysts",
+      "evidence_refs": [
+        "ev12"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "c30",
+      "text": "The ZIF-8 structure contained 96 carbon, 120 hydrogen, 48 nitrogen and 12 zinc atoms, modified by substituting 12 Zn with Cu to form Cu-ZIF.",
+      "location": {
+        "section": "2.9",
+        "page": 4,
+        "char_span": null,
+        "quote": "which contained 96 carbon, 120 hydrogen, 48 nitrogen\nand 12 zinc atoms. The ZIF-8 was modied by substituting 12\nZn atoms with Cu atoms to form Cu-ZIF"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "ZIF-8 composition: C==96, H==120, N==48, Zn==12; 12 Zn replaced by Cu",
+      "strength": "exact",
+      "scope": "structural model from ZIF-8",
+      "evidence_refs": [
+        "ev28"
+      ],
+      "confidence": 0.9
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev1",
+      "kind": "number",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "low overpotential of\n−0.56 V (vs. RHE) at −10 mA cm−2 current density"
+      },
+      "extracted_values": {
+        "overpotential_V": -0.56,
+        "current_density_mA_cm2": -10
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev2",
+      "kind": "number",
+      "location": {
+        "section": "Abstract / 3.3",
+        "page": 1,
+        "char_span": null,
+        "quote": "acetic acid (71.5% faradaic efficiency) at\n−0.3 V (vs. RHE)"
+      },
+      "extracted_values": {
+        "reported_FE_AcOH_pct": 71.5,
+        "potential_V": -0.3,
+        "error_pct": 0.29
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev3",
+      "kind": "number",
+      "location": {
+        "section": "1 Introduction",
+        "page": 1,
+        "char_span": null,
+        "quote": "increased by approximately 35% over the\npast six decades"
+      },
+      "extracted_values": {
+        "reported_pct_increase": 35,
+        "years": 60
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev4",
+      "kind": "number",
+      "location": {
+        "section": "2.3",
+        "page": 2,
+        "char_span": null,
+        "quote": "1 : 2 mmol ratio to get ultimate\n7 wt% Cu-ZIF loading within the AC matrix"
+      },
+      "extracted_values": {
+        "precursor_linker_mmol_ratio": [
+          1,
+          2
+        ],
+        "reported_loading_wt_pct": 7,
+        "AC_mass_mg": 250
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev5",
+      "kind": "number",
+      "location": {
+        "section": "3.1",
+        "page": 4,
+        "char_span": null,
+        "quote": "2q values at 14.46°, 29.62°, 31.52°, 33.1°, 34.85°,\n39.54°, 44.88°, and 48.01°"
+      },
+      "extracted_values": {
+        "two_theta_peaks": [
+          14.46,
+          29.62,
+          31.52,
+          33.1,
+          34.85,
+          39.54,
+          44.88,
+          48.01
+        ],
+        "graphitic_peak": 26.35,
+        "wavelength_nm": 0.154
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev6",
+      "kind": "number",
+      "location": {
+        "section": "3.1",
+        "page": 5,
+        "char_span": null,
+        "quote": "micro-porosity of AC (1350.25 m2\ng−1)"
+      },
+      "extracted_values": {
+        "surface_area_m2_g": 1350.25
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev7",
+      "kind": "number",
+      "location": {
+        "section": "3.1",
+        "page": 5,
+        "char_span": null,
+        "quote": "a very low\nsurface area (41.7 m2 g−1\n)"
+      },
+      "extracted_values": {
+        "surface_area_m2_g": 41.7
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev8",
+      "kind": "number",
+      "location": {
+        "section": "3.1",
+        "page": 5,
+        "char_span": null,
+        "quote": "BET\nsurface area for Cu-ZIF@AC (502.02 m2 g−1\n)"
+      },
+      "extracted_values": {
+        "surface_area_m2_g": 502.02
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev9",
+      "kind": "table",
+      "location": {
+        "section": "Table 1",
+        "page": 5,
+        "char_span": null,
+        "quote": "Cu-ZIF@AC 2.1  0.002"
+      },
+      "extracted_values": {
+        "reported_Cu_wt_pct": 2.1,
+        "error": 0.002,
+        "method": "ICP-OES"
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev10",
+      "kind": "number",
+      "location": {
+        "section": "3.2",
+        "page": 5,
+        "char_span": null,
+        "quote": "Cu2+ redox couple at 1.28 and 0.2 V vs. RHE, whereas the Cu-ZIF\nshowed Cu+\n/Cu2+ redox couple at 1.01 and 0.57 V vs. RHE"
+      },
+      "extracted_values": {
+        "CuZIF_AC_redox_V": [
+          1.28,
+          0.2
+        ],
+        "CuZIF_redox_V": [
+          1.01,
+          0.57
+        ],
+        "scan_rate_mV_s": 50
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev11",
+      "kind": "number",
+      "location": {
+        "section": "3.2",
+        "page": 6,
+        "char_span": null,
+        "quote": "Cu-ZIF is signicantly high (133.98 U). In contrast, CuZIF@AC exhibits a dramatically reduced Rct1 value (4.89 U),\nwhich is slightly more than that of bare AC (3.91 U)"
+      },
+      "extracted_values": {
+        "Rct1_CuZIF_ohm": 133.98,
+        "Rct1_CuZIF_AC_ohm": 4.89,
+        "Rct1_AC_ohm": 3.91
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev12",
+      "kind": "number",
+      "location": {
+        "section": "3.2",
+        "page": 6,
+        "char_span": null,
+        "quote": "overpotential of\n−0.56 V vs. RHE at −10 mA cm−2\n, compared to −0.72 V vs. RHE\nfor Cu-ZIF"
+      },
+      "extracted_values": {
+        "overpotential_CuZIF_AC_V": -0.56,
+        "overpotential_CuZIF_V": -0.72,
+        "current_density_mA_cm2": -10
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev13",
+      "kind": "number",
+      "location": {
+        "section": "3.2",
+        "page": 6,
+        "char_span": null,
+        "quote": "the overpotential shied to −0.66 V vs. RHE at\n−10 mA cm−2"
+      },
+      "extracted_values": {
+        "overpotential_V": -0.66,
+        "current_density_mA_cm2": -10
+      },
+      "confidence": 0.88
+    },
+    {
+      "id": "ev14",
+      "kind": "number",
+      "location": {
+        "section": "3.2",
+        "page": 6,
+        "char_span": null,
+        "quote": "overpotential of to −0.72 V vs. RHE\nat −10 mA cm−2"
+      },
+      "extracted_values": {
+        "overpotential_V": -0.72,
+        "electrolyte": "5 M Na2SO4",
+        "current_density_mA_cm2": -10
+      },
+      "confidence": 0.82
+    },
+    {
+      "id": "ev15",
+      "kind": "number",
+      "location": {
+        "section": "3.2 / page 7",
+        "page": 7,
+        "char_span": null,
+        "quote": "average current density of −10 mA cm−2 (Fig. 3d)"
+      },
+      "extracted_values": {
+        "avg_current_density_mA_cm2": -10,
+        "duration_h": 12,
+        "potential_V": -0.56
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev16",
+      "kind": "figure",
+      "location": {
+        "section": "Fig. 4a / 3.3",
+        "page": 7,
+        "char_span": null,
+        "quote": "54.79 ±\n0.15%, 49.8 ± 0.12, 44.23 ± 0.15%, 27.53 ± 0.17%, 19.12 ±\n0.14% at −0.4, −0.5, −0.56, −0.6, −0.7 V"
+      },
+      "extracted_values": {
+        "potentials_V": [
+          -0.3,
+          -0.4,
+          -0.5,
+          -0.56,
+          -0.6,
+          -0.7
+        ],
+        "FE_AcOH_pct": [
+          71.5,
+          54.79,
+          49.8,
+          44.23,
+          27.53,
+          19.12
+        ],
+        "errors_pct": [
+          0.29,
+          0.15,
+          0.12,
+          0.15,
+          0.17,
+          0.14
+        ]
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev17",
+      "kind": "figure",
+      "location": {
+        "section": "Fig. 4b",
+        "page": 7,
+        "char_span": null,
+        "quote": "69.6%"
+      },
+      "extracted_values": {
+        "times_min": [
+          15,
+          30,
+          45,
+          60
+        ],
+        "FE_AcOH_pct": [
+          69.6,
+          71.5,
+          71.0,
+          69.1
+        ]
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "ev18",
+      "kind": "number",
+      "location": {
+        "section": "3.4",
+        "page": 8,
+        "char_span": null,
+        "quote": "contains 276 atoms, with\nlattice parameters: a = 16.33 Å, b = 16.61 Å, c = 16.62 Å, and\nangles a = 93.00°, b = 106.61°, g = 100.06°"
+      },
+      "extracted_values": {
+        "atoms": 276,
+        "a_A": 16.33,
+        "b_A": 16.61,
+        "c_A": 16.62,
+        "alpha_deg": 93.0,
+        "beta_deg": 106.61,
+        "gamma_deg": 100.06
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev19",
+      "kind": "number",
+      "location": {
+        "section": "3.4",
+        "page": 8,
+        "char_span": null,
+        "quote": "Cu–N bond\nlengths range from 1.96 Å to 2.03 Å"
+      },
+      "extracted_values": {
+        "Cu_N_min_A": 1.96,
+        "Cu_N_max_A": 2.03
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev20",
+      "kind": "number",
+      "location": {
+        "section": "3.4",
+        "page": 8,
+        "char_span": null,
+        "quote": "total energy of\n−1756.0987 eV, whereas the non-spin-polarized conguration\n(ISPIN = 1) exhibited a higher energy of −1755.5236 eV. The\nstabilization energy of approximately 0.64 eV"
+      },
+      "extracted_values": {
+        "E_spin_polarized_eV": -1756.0987,
+        "E_non_spin_eV": -1755.5236,
+        "reported_stabilization_eV": 0.64,
+        "old_value": -1755.5236,
+        "new_value": -1756.0987
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev21",
+      "kind": "number",
+      "location": {
+        "section": "3.5",
+        "page": 8,
+        "char_span": null,
+        "quote": "with adsorption energies of −0.58 eV, −0.18 eV, and −0.36 eV, respectively"
+      },
+      "extracted_values": {
+        "Eads_Cu3_eV": -0.58,
+        "Eads_Cu7_eV": -0.18,
+        "Eads_Cu5_eV": -0.36
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev22",
+      "kind": "number",
+      "location": {
+        "section": "page 10",
+        "page": 10,
+        "char_span": null,
+        "quote": "lowest overall thermodynamic reaction energy (−1.45 eV)"
+      },
+      "extracted_values": {
+        "E_Cu3_eV": -1.45,
+        "E_Cu5_eV": -1.05,
+        "E_Cu7_eV": -1.41,
+        "potential_V": 0.0
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev23",
+      "kind": "number",
+      "location": {
+        "section": "page 10",
+        "page": 10,
+        "char_span": null,
+        "quote": "−7.05, −6.65, and −7.01 eV, respectively"
+      },
+      "extracted_values": {
+        "E_Cu3_eV": -7.05,
+        "E_Cu5_eV": -6.65,
+        "E_Cu7_eV": -7.01,
+        "potential_V": -0.7
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev24",
+      "kind": "number",
+      "location": {
+        "section": "page 10",
+        "page": 10,
+        "char_span": null,
+        "quote": "−5.93,\n−5.53, −5.89 eV and −3.85,\n−3.45, −3.81 eV"
+      },
+      "extracted_values": {
+        "E_minus0.56V": [
+          -5.93,
+          -5.53,
+          -5.89
+        ],
+        "E_minus0.30V": [
+          -3.85,
+          -3.45,
+          -3.81
+        ],
+        "sites": [
+          "Cu3",
+          "Cu5",
+          "Cu7"
+        ]
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev25",
+      "kind": "number",
+      "location": {
+        "section": "2.8",
+        "page": 3,
+        "char_span": null,
+        "quote": "converged to less than\n10−6 eV and 2 × 10−2 eV Å−1\n, respectively, using a plane-wave\ncutoff energy of 500 eV"
+      },
+      "extracted_values": {
+        "cutoff_eV": 500,
+        "energy_conv_eV": 1e-06,
+        "force_conv_eV_A": 0.02,
+        "k_grid": "1x1x1"
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev26",
+      "kind": "number",
+      "location": {
+        "section": "3.5",
+        "page": 9,
+        "char_span": null,
+        "quote": "*OCHO formation 1.59 eV and its\nsubsequent hydrogenation proceed with the lowest energy\npenalties (vs. 2.09 eV for COOH)"
+      },
+      "extracted_values": {
+        "OCHO_eV": 1.59,
+        "COOH_eV": 2.09,
+        "OCHOH_to_CHO_eV": 1.88
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev27",
+      "kind": "number",
+      "location": {
+        "section": "3.5",
+        "page": 9,
+        "char_span": null,
+        "quote": "*COOH step of 0.24 eV is thermodynamically more stable\nthan *OCHO step of 1.34 eV"
+      },
+      "extracted_values": {
+        "COOH_eV": 0.24,
+        "OCHO_eV": 1.34,
+        "CH2OH_to_CH2_eV": 2.53
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev28",
+      "kind": "number",
+      "location": {
+        "section": "2.9",
+        "page": 4,
+        "char_span": null,
+        "quote": "96 carbon, 120 hydrogen, 48 nitrogen\nand 12 zinc atoms"
+      },
+      "extracted_values": {
+        "C": 96,
+        "H": 120,
+        "N": 48,
+        "Zn": 12,
+        "Zn_replaced_by_Cu": 12
+      },
+      "confidence": 0.9
+    }
+  ],
+  "bindings": [
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c4",
+      "evidence_id": "ev4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c5",
+      "evidence_id": "ev5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c6",
+      "evidence_id": "ev6",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c7",
+      "evidence_id": "ev7",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c8",
+      "evidence_id": "ev8",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c9",
+      "evidence_id": "ev9",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c10",
+      "evidence_id": "ev10",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c11",
+      "evidence_id": "ev11",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c12",
+      "evidence_id": "ev12",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c13",
+      "evidence_id": "ev13",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c14",
+      "evidence_id": "ev14",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c15",
+      "evidence_id": "ev15",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c16",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c16",
+      "evidence_id": "ev16",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c17",
+      "evidence_id": "ev17",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c18",
+      "evidence_id": "ev18",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c19",
+      "evidence_id": "ev19",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c20",
+      "evidence_id": "ev20",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c21",
+      "evidence_id": "ev21",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c22",
+      "evidence_id": "ev22",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c23",
+      "evidence_id": "ev23",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c24",
+      "evidence_id": "ev24",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c25",
+      "evidence_id": "ev25",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c26",
+      "evidence_id": "ev26",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c27",
+      "evidence_id": "ev27",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c29",
+      "evidence_id": "ev12",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c30",
+      "evidence_id": "ev28",
+      "relation": "rests_on"
+    }
+  ]
+}

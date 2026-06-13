@@ -1,9 +1,9 @@
 {
   "schema_version": "1.0",
-  "paper_id": "medicine-zhou2025-esketamine-low-opioid-anaesthesia",
+  "paper_id": "chemistry-arxiv-2606.13664-chiral-2d-perovskite-magnetotransport",
   "meta": {
     "executor": "local",
-    "n_claims": 27,
+    "n_claims": 23,
     "n_verifiers": 9,
     "synthesis_candidates": [
       "c1",
@@ -14,69 +14,28 @@
       "c6",
       "c7",
       "c8",
-      "c9",
       "c10",
       "c11",
       "c12",
       "c13",
-      "c14",
-      "c15",
-      "c16",
+      "c17",
       "c18",
-      "c19",
-      "c20",
       "c21",
-      "c22",
-      "c23",
-      "c24",
-      "c26"
+      "c22"
     ],
     "confirmation": "fresh-sandbox",
     "registry_load_errors": []
   },
   "summary": {
-    "n_findings": 1,
+    "n_findings": 0,
     "n_flags": 0,
     "n_dropped": 0,
     "n_routed_to_human": 0,
-    "n_abstained": 26,
+    "n_abstained": 23,
     "flags_by_trust_tier": {},
     "flags_by_severity": {}
   },
-  "findings": [
-    {
-      "verifier_id": "sum_check.v1",
-      "claim_id": "c25",
-      "status": "pass",
-      "trust_tier": "deterministic_confirmed",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "reported total equals the sum of its parts (within printing precision)",
-      "discrepancy": null,
-      "reported": 64,
-      "computed": 64,
-      "evidence": {
-        "quote": null,
-        "location": {
-          "section": null,
-          "page": null,
-          "char_span": null,
-          "quote": null
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {
-        "parts": [
-          37,
-          27
-        ],
-        "n_parts": 2,
-        "tolerance": 1e-09
-      }
-    }
-  ],
+  "findings": [],
   "dropped_flags": [],
   "routed_to_human": [],
   "abstained": [
@@ -92,12 +51,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "POD-3 QoR-15 scores 121 (117.75\u2013124) 115 (111.75\u2013118.25) <0.001",
+        "quote": "unambiguously identifying p-type conduction with a Hall mobility of \u223c 0.2cm2V",
         "location": {
-          "section": "3.1 / Table 2",
-          "page": 7,
+          "section": "Abstract",
+          "page": 1,
           "char_span": null,
-          "quote": "POD-3 QoR-15 scores 121 (117.75\u2013124) 115 (111.75\u2013118.25) <0.001"
+          "quote": "unambiguously identifying p-type conduction with a Hall mobility of \u223c 0.2cm2V"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -117,12 +76,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Physical comfort 40 (39\u201341) 38 (37\u201340) <0.001",
+        "quote": "a carrier density of \u223c 3\u00d71014 cm\u22122",
         "location": {
-          "section": "3.1 / Table 2",
-          "page": 7,
+          "section": "Abstract",
+          "page": 1,
           "char_span": null,
-          "quote": "Physical comfort 40 (39\u201341) 38 (37\u201340) <0.001"
+          "quote": "a carrier density of \u223c 3\u00d71014 cm\u22122"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -142,12 +101,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Emotional state 32 (30\u201333) 29 (27.75\u201331) <0.001",
+        "quote": "the measured Hall coefficient corresponds to a mobility \u00b5H = 0.207 cm2/V\u00b7s and a sheet\ncarrier density p = 3.29 \u00d7 1014 cm\u22122",
         "location": {
-          "section": "3.1 / Table 2",
-          "page": 7,
+          "section": "3.4 Hall Transport",
+          "page": 17,
           "char_span": null,
-          "quote": "Emotional state 32 (30\u201333) 29 (27.75\u201331) <0.001"
+          "quote": "the measured Hall coefficient corresponds to a mobility \u00b5H = 0.207 cm2/V\u00b7s and a sheet\ncarrier density p = 3.29 \u00d7 1014 cm\u22122"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -167,12 +126,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Pain 18 (18\u201320) 18 (16.75\u201319) <0.001",
+        "quote": "the\nmuch larger observed increase (R4000rpm/R1500rpm \u2248 850 at 1.5V)",
         "location": {
-          "section": "3.1 / Table 2",
+          "section": "3.1",
           "page": 7,
           "char_span": null,
-          "quote": "Pain 18 (18\u201320) 18 (16.75\u201319) <0.001"
+          "quote": "the\nmuch larger observed increase (R4000rpm/R1500rpm \u2248 850 at 1.5V)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -192,12 +151,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Statistically significant differences in QoR-15 scores between \nthe K and C groups were also observed on postoperative days 1 and 2 \n(P < 0.01)",
+        "quote": "thickness alone would\npredict only an approximately threefold increase in resistance between the 1500 rpm and\n4000 rpm films if the resistivity were unchanged",
         "location": {
-          "section": "3.1 / Table 3",
+          "section": "3.1",
           "page": 7,
           "char_span": null,
-          "quote": "Statistically significant differences in QoR-15 scores between \nthe K and C groups were also observed on postoperative days 1 and 2 \n(P < 0.01)"
+          "quote": "thickness alone would\npredict only an approximately threefold increase in resistance between the 1500 rpm and\n4000 rpm films if the resistivity were unchanged"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -217,12 +176,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "POD-3 2 (2\u20132) 2 (2\u20133) 0.006",
+        "quote": "the resulting film had an average thickness of \u223c 300 nm (Figure 1a) and exhibited large,",
         "location": {
-          "section": "3.2 / Table 4",
+          "section": "3.1",
           "page": 7,
           "char_span": null,
-          "quote": "POD-3 2 (2\u20132) 2 (2\u20133) 0.006"
+          "quote": "the resulting film had an average thickness of \u223c 300 nm (Figure 1a) and exhibited large,"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -242,12 +201,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "POD-3 3 (3\u20134) 4 (3\u20134) 0.02",
+        "quote": "produced thinner films (\u223c225 nm) with slightly\nsmaller grains and reduced domain connectivity",
         "location": {
-          "section": "3.2 / Table 4",
+          "section": "3.1",
           "page": 7,
           "char_span": null,
-          "quote": "POD-3 3 (3\u20134) 4 (3\u20134) 0.02"
+          "quote": "produced thinner films (\u223c225 nm) with slightly\nsmaller grains and reduced domain connectivity"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -267,12 +226,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "PCIA demand frequency 12.5 (9\u201315) 15 (12\u201317) 0.002",
+        "quote": "at high temperatures (T > 140 K), the slope yields Ea \u2248 0.11 eV, whereas at low temperatures (T < 70 K), Ea \u2248 0.015 eV is extracted",
         "location": {
-          "section": "3.2 / Table 4",
-          "page": 7,
+          "section": "3.2 / Fig 2 caption",
+          "page": 11,
           "char_span": null,
-          "quote": "PCIA demand frequency 12.5 (9\u201315) 15 (12\u201317) 0.002"
+          "quote": "at high temperatures (T > 140 K), the slope yields Ea \u2248 0.11 eV, whereas at low temperatures (T < 70 K), Ea \u2248 0.015 eV is extracted"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -287,17 +246,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Rescue analgesia, n (%) 10 (14.3) 23 (32.9) 0.01",
+        "quote": "in prior temperature-dependent chiralHOIP FET studies measurements were reported down to 77\u201378 K",
         "location": {
-          "section": "3.2 / Table 4",
-          "page": 7,
+          "section": "3.2",
+          "page": 11,
           "char_span": null,
-          "quote": "Rescue analgesia, n (%) 10 (14.3) 23 (32.9) 0.01"
+          "quote": "in prior temperature-dependent chiralHOIP FET studies measurements were reported down to 77\u201378 K"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -317,12 +276,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Rescue analgesic consumption per patient (mg) 0 (0\u20130) 0 (0\u2013100) 0.008",
+        "quote": "Large positive MR of 10% at 3T is observed at room-temperature, whereas large negative\nMR of approximately -9% at 3T is observed at 78.2 K",
         "location": {
-          "section": "3.2 / Table 4",
-          "page": 7,
+          "section": "3.3",
+          "page": 13,
           "char_span": null,
-          "quote": "Rescue analgesic consumption per patient (mg) 0 (0\u20130) 0 (0\u2013100) 0.008"
+          "quote": "Large positive MR of 10% at 3T is observed at room-temperature, whereas large negative\nMR of approximately -9% at 3T is observed at 78.2 K"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -342,12 +301,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "reduced usage of propofol (866.56 \u00b1 76.44 mg vs. \n968.36 \u00b1 68.87 mg, P < 0.05)",
+        "quote": "measurement paths that traversed\nacross the observed grain boundary exhibit a much larger MR of 6-8%, comparable with\nthat observed in the FET sample. However, the low resistance current paths that avoided\nthis boundary exhibited a much smaller MR in the range of 0.05-0.2%",
         "location": {
-          "section": "3.4",
-          "page": 6,
+          "section": "3.3",
+          "page": 14,
           "char_span": null,
-          "quote": "reduced usage of propofol (866.56 \u00b1 76.44 mg vs. \n968.36 \u00b1 68.87 mg, P < 0.05)"
+          "quote": "measurement paths that traversed\nacross the observed grain boundary exhibit a much larger MR of 6-8%, comparable with\nthat observed in the FET sample. However, the low resistance current paths that avoided\nthis boundary exhibited a much smaller MR in the range of 0.05-0.2%"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -367,12 +326,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "sufentanil (25 \u00b1 \n4.62 ug vs. 38 \u00b1 8.60 ug, P < 0.001)",
+        "quote": "At 1V, paths avoiding the grain boundary showed resistances of approximately 10\u201350 M\u03a9, whereas paths crossing the boundary showed resistances",
         "location": {
-          "section": "3.4",
-          "page": 6,
+          "section": "3.2",
+          "page": 12,
           "char_span": null,
-          "quote": "sufentanil (25 \u00b1 \n4.62 ug vs. 38 \u00b1 8.60 ug, P < 0.001)"
+          "quote": "At 1V, paths avoiding the grain boundary showed resistances of approximately 10\u201350 M\u03a9, whereas paths crossing the boundary showed resistances"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -392,12 +351,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "remifentanil (2.1 \u00b1 0.35 mg vs. 2.5 \u00b1 0.72 mg, P < 0.001)",
+        "quote": "the Hall-bar geometry is expected to be\napproximately 500 times more resistive than the three-terminal channel for the same film\nthickness and resistivity",
         "location": {
-          "section": "3.4",
-          "page": 6,
+          "section": "3.3",
+          "page": 13,
           "char_span": null,
-          "quote": "remifentanil (2.1 \u00b1 0.35 mg vs. 2.5 \u00b1 0.72 mg, P < 0.001)"
+          "quote": "the Hall-bar geometry is expected to be\napproximately 500 times more resistive than the three-terminal channel for the same film\nthickness and resistivity"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -412,17 +371,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "extubation time \n(35.8 \u00b1 13.02 min vs. 40.8 \u00b1 15.5 min, P < 0.05; Figure 4A)",
+        "quote": "the in-plane resistivity was reduced by more than three\norders of magnitude, enabling reliable lateral device operation",
         "location": {
-          "section": "3.5",
-          "page": 6,
+          "section": "Conclusion",
+          "page": 18,
           "char_span": null,
-          "quote": "extubation time \n(35.8 \u00b1 13.02 min vs. 40.8 \u00b1 15.5 min, P < 0.05; Figure 4A)"
+          "quote": "the in-plane resistivity was reduced by more than three\norders of magnitude, enabling reliable lateral device operation"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -437,17 +396,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "PACU stay duration (107.2 \u00b1 27.4 min vs. 118.9 \u00b1 27.2 min, P < 0.05;",
+        "quote": "VH(B) varies linearly\nwith B over the full range, and the positive\nslope of VH confirms p-type transport in the\nfilm",
         "location": {
-          "section": "3.5",
-          "page": 6,
+          "section": "3.4",
+          "page": 16,
           "char_span": null,
-          "quote": "PACU stay duration (107.2 \u00b1 27.4 min vs. 118.9 \u00b1 27.2 min, P < 0.05;"
+          "quote": "VH(B) varies linearly\nwith B over the full range, and the positive\nslope of VH confirms p-type transport in the\nfilm"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -462,17 +421,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "the incidence \nof nausea and vomiting was significantly lower in the K group than \nin the C group (10.0% vs. 21.4%, P < 0.05)",
+        "quote": "undoped 2D lead-iodide perovskites such as (PEA)2PbI4 typically exhibit mobilities on the order of \u223c0.1\u20131 cm2/V\u00b7s",
         "location": {
-          "section": "3.6",
-          "page": 6,
+          "section": "3.4",
+          "page": 17,
           "char_span": null,
-          "quote": "the incidence \nof nausea and vomiting was significantly lower in the K group than \nin the C group (10.0% vs. 21.4%, P < 0.05)"
+          "quote": "undoped 2D lead-iodide perovskites such as (PEA)2PbI4 typically exhibit mobilities on the order of \u223c0.1\u20131 cm2/V\u00b7s"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -487,17 +446,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no applicable verifier",
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "No other significant \ndifferences were observed between the two groups in the incidence \nof dizziness, headache, drowsiness, or restlessness (P > \n0.05)",
+        "quote": "The contact resistance extracted from multi-terminal structures averaged \u223c 50 k\u03a9 and was\nnegligible compared to the film resistance",
         "location": {
-          "section": "3.6",
+          "section": "3.1",
           "page": 6,
           "char_span": null,
-          "quote": "No other significant \ndifferences were observed between the two groups in the incidence \nof dizziness, headache, drowsiness, or restlessness (P > \n0.05)"
+          "quote": "The contact resistance extracted from multi-terminal structures averaged \u223c 50 k\u03a9 and was\nnegligible compared to the film resistance"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -517,12 +476,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "higher QoR-15 score on postoperative day 3 (B = 5.52, 95% CI \n3.97 to 7.06, P < 0.001)",
+        "quote": "Three and four-wire measurements showed that contact resistance never exceeded 5% for\nany current path",
         "location": {
-          "section": "3.7",
-          "page": 6,
+          "section": "3.2",
+          "page": 12,
           "char_span": null,
-          "quote": "higher QoR-15 score on postoperative day 3 (B = 5.52, 95% CI \n3.97 to 7.06, P < 0.001)"
+          "quote": "Three and four-wire measurements showed that contact resistance never exceeded 5% for\nany current path"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -537,17 +496,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "sufentanil (B = \u221212.61, 95% CI \n-15.02 to \u221210.19, P < 0.001)",
+        "quote": "these measurements represent\nthe first Hall-effect characterization of R-(MBA)2PbI4 thin films under dark conditions",
         "location": {
-          "section": "3.7",
-          "page": 6,
+          "section": "Conclusion",
+          "page": 19,
           "char_span": null,
-          "quote": "sufentanil (B = \u221212.61, 95% CI \n-15.02 to \u221210.19, P < 0.001)"
+          "quote": "these measurements represent\nthe first Hall-effect characterization of R-(MBA)2PbI4 thin films under dark conditions"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -562,17 +521,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "remifentanil (B = \u22120.39, 95% CI \n-0.58 to \u22120.19, P < 0.001)",
+        "quote": "the present data do not show an obvious improvement in linearization in this regime compared with the Arrhenius plot, and thus do not\nconclusively distinguish a VRH mechanism from Arrhenius-type transport",
         "location": {
-          "section": "3.7",
-          "page": 6,
+          "section": "SI Fig 6",
+          "page": 28,
           "char_span": null,
-          "quote": "remifentanil (B = \u22120.39, 95% CI \n-0.58 to \u22120.19, P < 0.001)"
+          "quote": "the present data do not show an obvious improvement in linearization in this regime compared with the Arrhenius plot, and thus do not\nconclusively distinguish a VRH mechanism from Arrhenius-type transport"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -592,12 +551,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "lower heart rate variability (B = \u22120.027, 95% CI \n-0.042 to \u22120.012, P < 0.001)",
+        "quote": "with films spun above\n1000 rpm showing clear (002) reflections, with the 1500 rpm film giving the highest intensity",
         "location": {
-          "section": "3.7",
-          "page": 6,
+          "section": "Fig 1 caption",
+          "page": 8,
           "char_span": null,
-          "quote": "lower heart rate variability (B = \u22120.027, 95% CI \n-0.042 to \u22120.012, P < 0.001)"
+          "quote": "with films spun above\n1000 rpm showing clear (002) reflections, with the 1500 rpm film giving the highest intensity"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -617,12 +576,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "higher mean arterial \npressure variability (B = 0.018, 95% CI 0.001 to 0.034, P = 0.033)",
+        "quote": "lead (II) iodide (413 mg, 0.895 mmol; Sigma Aldrich)",
         "location": {
-          "section": "3.7",
-          "page": 6,
+          "section": "Sample Preparation",
+          "page": 5,
           "char_span": null,
-          "quote": "higher mean arterial \npressure variability (B = 0.018, 95% CI 0.001 to 0.034, P = 0.033)"
+          "quote": "lead (II) iodide (413 mg, 0.895 mmol; Sigma Aldrich)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -637,92 +596,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Norepinephrine 9 (12.9) 28 (40) <0.01",
-        "location": {
-          "section": "3 / Table 1",
-          "page": 5,
-          "char_span": null,
-          "quote": "Norepinephrine 9 (12.9) 28 (40) <0.01"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c24",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "calculations indicated \n64 patients per group were required. Accounting for a 10% \ndropout rate, the final actual enrollment per group was \n72 patients, totaling 144 patients.",
-        "location": {
-          "section": "2.5",
-          "page": 4,
-          "char_span": null,
-          "quote": "calculations indicated \n64 patients per group were required. Accounting for a 10% \ndropout rate, the final actual enrollment per group was \n72 patients, totaling 144 patients."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c26",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "A statistically significant, six-point higher median QoR-15 score was \nobserved in the K group compared to the C group on POD3, which \nmeets the threshold for the established minimal clinically important \ndifference (MCID) of six points",
-        "location": {
-          "section": "4 Discussion",
-          "page": 6,
-          "char_span": null,
-          "quote": "A statistically significant, six-point higher median QoR-15 score was \nobserved in the K group compared to the C group on POD3, which \nmeets the threshold for the established minimal clinically important \ndifference (MCID) of six points"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c27",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
       "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "an esketamine-based multimodal low-opioid anaesthesia \nregimen significantly enhances recovery quality on postoperative \nday 3 in elderly patients undergoing thoracoscopic radical lung \ncancer surgery.",
+        "quote": "the magnitude of the low-field MR in our devices (|\u2206R|/R \u223c 10% at\n|B|\u223c 1 T) is comparable to that reported for other hybrid lead\u2013halide perovskites",
         "location": {
-          "section": "5 Conclusion",
-          "page": 10,
+          "section": "3.3",
+          "page": 13,
           "char_span": null,
-          "quote": "an esketamine-based multimodal low-opioid anaesthesia \nregimen significantly enhances recovery quality on postoperative \nday 3 in elderly patients undergoing thoracoscopic radical lung \ncancer surgery."
+          "quote": "the magnitude of the low-field MR in our devices (|\u2206R|/R \u223c 10% at\n|B|\u223c 1 T) is comparable to that reported for other hybrid lead\u2013halide perovskites"
         },
         "recompute_script": null,
         "expected_output": null,

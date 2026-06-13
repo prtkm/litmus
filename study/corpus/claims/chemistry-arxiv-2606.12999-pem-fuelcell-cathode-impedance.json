@@ -1,0 +1,427 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "chemistry-arxiv-2606.12999-pem-fuelcell-cathode-impedance",
+  "meta": {
+    "note": "Analytical/modeling paper; most claims are model-derived (T0 internal arithmetic on equations) or qualitative figure-based comparisons. No empirical statistics or yields. Table I lists parameters used in figures.",
+    "paper_type": "theory/modeling",
+    "extractor": "litmus.extract",
+    "model": "claude-opus-4-8",
+    "source": "opus-native-pdf"
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "text": "In-phase harmonic perturbations to the cell current density and CCL temperature lower both CCL impedance and static resistivity.",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "in-phase harmonic\nperturbations to the cell current density and CCL temperature lower both CCL impedance and static resistivity."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "CCL_impedance(kappa>0) < CCL_impedance(kappa=0) AND static_resistivity(kappa>0) < static_resistivity(kappa=0)",
+      "strength": "causal",
+      "scope": "CCL impedance model, in-phase current and temperature oscillations",
+      "evidence_refs": [
+        "ev1"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c2",
+      "text": "The impedance reduction is primarily driven by the oscillating exchange current density of the ORR.",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "This mitigation is primarily driven by the oscillating exchange current density of the oxygen reduction reaction."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "dominant_contribution_to_impedance_reduction == oscillating_exchange_current_density_i_star",
+      "strength": "causal",
+      "scope": "CCL impedance model",
+      "evidence_refs": [
+        "ev1",
+        "ev2"
+      ],
+      "confidence": 0.93
+    },
+    {
+      "id": "c3",
+      "text": "The Arrhenius slope of i* variation with temperature (T* = 8807 K) is nearly seven times larger than the proton conductivity slope (Tsigma = 1268 K); ratio betaT = T*/Tsigma ≈ 6.95.",
+      "location": {
+        "section": "II. MODEL / III. RESULTS",
+        "page": 2,
+        "char_span": null,
+        "quote": "\\beta_T =\n\\frac{T_*}{T_\\sigma}\n\\simeq 6.95."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "betaT == T_star / T_sigma == 8807 / 1268 ≈ 6.95",
+      "strength": "approximate",
+      "scope": "Eq.(15), Arrhenius slopes",
+      "evidence_refs": [
+        "ev3"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c4",
+      "text": "For T1 = 0.1 K, j0 = 1 A cm^-2, j1 = 0.01 A cm^-2, T0 = 353 K, Tsigma = 1268 K, the temperature control parameter kappa ≈ 0.1.",
+      "location": {
+        "section": "III. RESULTS AND DISCUSSION",
+        "page": 3,
+        "char_span": null,
+        "quote": "we take T\n1 = 0.1 K,\nj0 = 1 A cm2, j\n1 = 0.01 A cm−2\nand T\n0 = 353 K. With\nthese parameters and Tσ = 1268 K, we get κ ≃ 0.1."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "kappa == (Lambda1 * j0_tilde)/j1_tilde with Lambda1 = Tsigma*T1/(T0)^2 ≈ 0.1 given stated parameters",
+      "strength": "approximate",
+      "scope": "T1=0.1K, j0=1, j1=0.01, T0=353K, Tsigma=1268K",
+      "evidence_refs": [
+        "ev4"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "c5",
+      "text": "At kappa = 1 with betaT = 0, Eq.(18) reduces to an ideal semicircle (parallel RC-circuit impedance) that does not contain proton conductivity, i.e., proton transport losses in the CCL are fully eliminated.",
+      "location": {
+        "section": "III. RESULTS AND DISCUSSION",
+        "page": 3,
+        "char_span": null,
+        "quote": "at κ = 1, the in-phase temperature and current\ndensity oscillations fully eliminate proton transport losses in\nthe CCL."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "Eq(18)|_{betaT=0, kappa=1} == 1/(j0_tilde + i*omega_tilde/eps^2) == Eq(21)",
+      "strength": "exact",
+      "scope": "Eq.(18) with betaT=0, kappa=1",
+      "evidence_refs": [
+        "ev5"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c6",
+      "text": "At small kappa, the reduction of impedance due to proton conductivity oscillations alone (betaT=0) is marginal.",
+      "location": {
+        "section": "III. RESULTS AND DISCUSSION",
+        "page": 3,
+        "char_span": null,
+        "quote": "at small κ the reduction of impedance due to\nproton conductivity oscillations is rather marginal."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "impedance_reduction(betaT=0, small kappa) is small (qualitative)",
+      "strength": "qualitative",
+      "scope": "Figure 1b, betaT=0, kappa=0.05,0.1",
+      "evidence_refs": [
+        "ev2"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c7",
+      "text": "Increasing kappa reduces both the size of the faradaic arc and the straight proton transport line, and decreases the static cell resistivity (the rightmost point of the Nyquist spectrum).",
+      "location": {
+        "section": "III. RESULTS AND DISCUSSION",
+        "page": 3,
+        "char_span": null,
+        "quote": "the static cell resistivity (the rightmost\npoint of the Nyquist spectrum) decreases with κ."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "static_resistivity decreases monotonically as kappa increases in Figure 1a",
+      "strength": "comparative",
+      "scope": "Figure 1a, j0=100 mA cm-2, betaT=6.95, kappa=0,0.05,0.1",
+      "evidence_refs": [
+        "ev1"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c8",
+      "text": "The CCL static resistivity is given by R = b/j0 + lt/(3 sigma_p) - kappa betaT b/j0 - kappa lt/(3 sigma_p), where the third and fourth terms describe the reduction in faradaic and proton transport resistivities due to temperature oscillations.",
+      "location": {
+        "section": "IV (Results)",
+        "page": 4,
+        "char_span": null,
+        "quote": "R =\nb\nj0\n+\nlt\n3σp\n− κβT\nb\nj0\n− κ\nlt\n3σp"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "R == b/j0 + lt/(3*sigma_p) - kappa*betaT*b/j0 - kappa*lt/(3*sigma_p)",
+      "strength": "exact",
+      "scope": "Eq.(25), small j0 limit",
+      "evidence_refs": [
+        "ev6"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "c9",
+      "text": "At a cell current density of 0.413 A cm^-2, with positive kappa both the high-frequency proton transport line and the main faradaic arc decrease in size.",
+      "location": {
+        "section": "IV (Results)",
+        "page": 4,
+        "char_span": null,
+        "quote": "With\npositive κ, both the high-frequency proton transport line,\nand the main faradaic arc decrease in size (Figure 2)."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "arc_size and proton_transport_line decrease as kappa increases at j0=0.413 A cm-2 in Figure 2",
+      "strength": "comparative",
+      "scope": "Figure 2, j0=413 mA cm-2, betaT=6.95, kappa=0,0.05,0.1",
+      "evidence_refs": [
+        "ev7"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c10",
+      "text": "This model demonstrates a larger decrease in CCL impedance from in-phase current and temperature oscillations than was shown in reference 8.",
+      "location": {
+        "section": "I. INTRODUCTION",
+        "page": 1,
+        "char_span": null,
+        "quote": "in-phase oscillations of\nthe cell current density and temperature decrease the\nimpedance of the CCL much more than was shown in"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "impedance_reduction(this model) > impedance_reduction(ref 8)",
+      "strength": "comparative",
+      "scope": "comparison to Kulikovsky ref 8",
+      "evidence_refs": [
+        "ev8"
+      ],
+      "confidence": 0.8
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev1",
+      "kind": "figure",
+      "location": {
+        "section": "FIG. 1",
+        "page": 3,
+        "char_span": null,
+        "quote": "FIG. 1. (a) The Nyquist spectra of impedance Eq.(18) for the\nthree values of the temperature control parameter κ. The cell\ncurrent density is 100 mA cm−2"
+      },
+      "extracted_values": {
+        "current_density_mA_cm2": 100,
+        "betaT": 6.95,
+        "kappa_values": [
+          0,
+          0.05,
+          0.1
+        ]
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev2",
+      "kind": "figure",
+      "location": {
+        "section": "FIG. 1(b)",
+        "page": 3,
+        "char_span": null,
+        "quote": "(b)\nThe Nyquist plots of impedance Eq.(18) with the oscillations\nof the exchange current “switched off”, βT = 0."
+      },
+      "extracted_values": {
+        "betaT": 0,
+        "current_density_mA_cm2": 100,
+        "kappa_values": [
+          0,
+          0.05,
+          0.1,
+          1.0
+        ]
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev3",
+      "kind": "equation",
+      "location": {
+        "section": "Eq.(2) and Eq.(15)",
+        "page": 1,
+        "char_span": null,
+        "quote": "Tσ = 1268 K."
+      },
+      "extracted_values": {
+        "T_sigma_K": 1268,
+        "T_star_K": 8807,
+        "betaT": 6.95,
+        "ratio_computed": 6.9456
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev4",
+      "kind": "text",
+      "location": {
+        "section": "III. RESULTS AND DISCUSSION",
+        "page": 3,
+        "char_span": null,
+        "quote": "we take T\n1 = 0.1 K,\nj0 = 1 A cm2, j\n1 = 0.01 A cm−2\nand T\n0 = 353 K. With\nthese parameters and Tσ = 1268 K, we get κ ≃ 0.1."
+      },
+      "extracted_values": {
+        "T1_K": 0.1,
+        "j0_A_cm2": 1,
+        "j1_A_cm2": 0.01,
+        "T0_K": 353,
+        "T_sigma_K": 1268,
+        "kappa": 0.1
+      },
+      "confidence": 0.88
+    },
+    {
+      "id": "ev5",
+      "kind": "equation",
+      "location": {
+        "section": "Eq.(21)",
+        "page": 3,
+        "char_span": null,
+        "quote": "ZeRC =\n1\n˜j0 + i˜ω/ε2\n, (21)"
+      },
+      "extracted_values": {
+        "kappa": 1,
+        "betaT": 0
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev6",
+      "kind": "equation",
+      "location": {
+        "section": "Eq.(25)",
+        "page": 4,
+        "char_span": null,
+        "quote": "R =\nb\nj0\n+\nlt\n3σp\n− κβT\nb\nj0\n− κ\nlt\n3σp"
+      },
+      "extracted_values": {
+        "terms": [
+          "b/j0",
+          "lt/(3 sigma_p)",
+          "-kappa*betaT*b/j0",
+          "-kappa*lt/(3 sigma_p)"
+        ]
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev7",
+      "kind": "figure",
+      "location": {
+        "section": "FIG. 2",
+        "page": 4,
+        "char_span": null,
+        "quote": "FIG. 2. The Nyquist spectra of the CCL impedance resulting\nfrom the numerical solution of Eq.(12)"
+      },
+      "extracted_values": {
+        "current_density_mA_cm2": 413,
+        "betaT": 6.95,
+        "kappa_values": [
+          0,
+          0.05,
+          0.1
+        ]
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev8",
+      "kind": "text",
+      "location": {
+        "section": "References",
+        "page": 4,
+        "char_span": null,
+        "quote": "Andrei Kulikovsky. In-phase current and temperature oscillations\nreduce PEM fuel cell resistivity: A modeling study. Electrochem.\nComm., 188:108169, 2026. doi:10.1016/j.elecom.2026.108169."
+      },
+      "extracted_values": {
+        "reference_number": 8,
+        "journal": "Electrochem. Comm.",
+        "volume": 188,
+        "article": 108169,
+        "year": 2026
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev9",
+      "kind": "table",
+      "location": {
+        "section": "TABLE I",
+        "page": 3,
+        "char_span": null,
+        "quote": "TABLE I. The cell properties and operation parameters."
+      },
+      "extracted_values": {
+        "i_star_A_cm3": 0.0001,
+        "Cdl_F_cm3": 20,
+        "b_mV_per_exp": 30,
+        "sigma_p_0_Ohm_inv_cm_inv": 0.01,
+        "lt_um": 10,
+        "p_bar": 1.0,
+        "T0_K_expr": "273 + 80",
+        "T0_K": 353,
+        "j0_A_cm2": [
+          0.1,
+          0.413
+        ]
+      },
+      "confidence": 0.85
+    }
+  ],
+  "bindings": [
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c4",
+      "evidence_id": "ev4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c5",
+      "evidence_id": "ev5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c6",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c7",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c8",
+      "evidence_id": "ev6",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c9",
+      "evidence_id": "ev7",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c10",
+      "evidence_id": "ev8",
+      "relation": "rests_on"
+    }
+  ]
+}

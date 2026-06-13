@@ -1,0 +1,707 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "chemistry-arxiv-2604.14784-water-nanodroplet-efields",
+  "meta": {
+    "title": "Interfacial Electric Fields in Water Nanodroplets are Weakly Dependent on Curvature and pH",
+    "note": "Computational chemistry / MD paper; main checkable quantities are field magnitudes, simulation parameters, pH/charge values, and fit statistics. Table S* and Fig S* are in unavailable SI.",
+    "extractor": "litmus.extract",
+    "model": "claude-opus-4-8",
+    "source": "opus-native-pdf"
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Across planar interfaces and nanodroplets of varying curvature and charge state, an outward-oriented interfacial electric field of ~1.0–1.2 V/Å along the intrinsic surface normal is found.",
+      "location": {
+        "section": "Abstract",
+        "page": 2,
+        "char_span": null,
+        "quote": "find an outward-oriented field of ∼ 1.0–1.2 V/˚A along the intrinsic surface normal"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "reported_IEF_range_V_per_A == [1.0, 1.2] along WC surface normal",
+      "strength": "approximate",
+      "scope": "planar interfaces and nanodroplets, WC surface normal",
+      "evidence_refs": [
+        "ev1"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c2",
+      "text": "The IEF magnitude scales linearly with the average number of hydrogen bonds per interfacial molecule.",
+      "location": {
+        "section": "Abstract",
+        "page": 2,
+        "char_span": null,
+        "quote": "its magnitude scales linearly with the average number of hydrogen bonds per\ninterfacial molecule"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "linear correlation exists between IEF magnitude and average H-bonds per interfacial molecule",
+      "strength": "comparative",
+      "scope": "interfacial molecules",
+      "evidence_refs": [
+        "ev2"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c3",
+      "text": "The IEF changes by a factor of only ~10^-5 between 3 and 40 µm-sized droplets.",
+      "location": {
+        "section": "Abstract",
+        "page": 2,
+        "char_span": null,
+        "quote": "which changes by a factor\nof only ∼ 10−5 between 3 and 40µm-sized droplets"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "extrapolated_IEF_change_factor between 3 and 40 µm droplets == ~1e-5",
+      "strength": "approximate",
+      "scope": "3 to 40 µm droplets, extrapolated",
+      "evidence_refs": [
+        "ev3"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c4",
+      "text": "The IEF is localized inside the interfacial region and rapidly vanishes within a few Å.",
+      "location": {
+        "section": "Abstract",
+        "page": 2,
+        "char_span": null,
+        "quote": "the IEF is localized\ninside the interfacial region and rapidly vanishes within a few ˚A"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "IEF decays to ~zero within a few Å from interface",
+      "strength": "qualitative",
+      "scope": "vapor regions beyond interface",
+      "evidence_refs": [
+        "ev9"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c5",
+      "text": "The air-water boundary may sustain electric fields on the order of ~0.2 V/Å (prior literature estimate).",
+      "location": {
+        "section": "Introduction",
+        "page": 3,
+        "char_span": null,
+        "quote": "that the air-water boundary may sustain electric fields on the order of ∼ 0.2 V/˚A"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "prior_literature_IEF == ~0.2 V/Å",
+      "strength": "approximate",
+      "scope": "prior studies (refs 6,9,11–13)",
+      "evidence_refs": [
+        "ev4"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c6",
+      "text": "The reported IEF magnitude (~1.0–1.2 V/Å) is about 5-6 times larger than previous computational estimates.",
+      "location": {
+        "section": "Results and discussion",
+        "page": 11,
+        "char_span": null,
+        "quote": "i.e., about 5-6 times larger than previous computational\nestimates."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "ratio of reported IEF (1.0-1.2 V/Å) to prior estimate (~0.2 V/Å) == ~5-6",
+      "strength": "comparative",
+      "scope": "vs ref 12",
+      "evidence_refs": [
+        "ev1",
+        "ev4"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c7",
+      "text": "Each DPMD simulation was carried out in the NVT canonical ensemble for at least 1 ns at 300 K with CSVR thermostat (damping 0.04 ps).",
+      "location": {
+        "section": "Methods",
+        "page": 5,
+        "char_span": null,
+        "quote": "Each DPMD simulation was\ncarried out in the NVT canonical ensemble for at least 1 ns. The temperature was kept fixed\nat 300 K via the canonical-sampling-velocity-rescaling (CSVR) thermostat 55 with a damping\nfactor of 0.04 ps."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "simulation_time >= 1 ns; T == 300 K; damping == 0.04 ps",
+      "strength": "exact",
+      "scope": "all DPMD simulations",
+      "evidence_refs": [
+        "ev5"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "id": "c8",
+      "text": "500 randomly chosen configurations were extracted from all DPMD trajectories and re-sampled via ab initio PBE+D3 DFT.",
+      "location": {
+        "section": "Methods",
+        "page": 5,
+        "char_span": null,
+        "quote": "500 randomly chosen configurations were extracted from all DPMD trajectories and re-\nsampled via ab initio calculations at the PBE+D3"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "n_configurations_resampled == 500",
+      "strength": "exact",
+      "scope": "ab initio resampling",
+      "evidence_refs": [
+        "ev6"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c9",
+      "text": "Charge states corresponding to -5e, -e, +e, and +5e were simulated, probing 13% and 66% of the Rayleigh limit, corresponding to net pH values of 13.74, 13.0, 0.96, and 0.26.",
+      "location": {
+        "section": "pH Effects on the Interfacial Electric Field",
+        "page": 13,
+        "char_span": null,
+        "quote": "charge states corresponding to −5e\n−, −e−, +e−, and +5e−, hence probing regimes of 13%\nand 66% of the Rayleigh limit for Coulomb fission. These charge states approximately cor-\nrespond to net pH values of 13.74, 13.0, 0.96, and 0.26, respectively."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "charge_states == [-5,-1,+1,+5] e; pH == [13.74,13.0,0.96,0.26]; Rayleigh fractions == [13%,66%]",
+      "strength": "approximate",
+      "scope": "charged nanodroplets",
+      "evidence_refs": [
+        "ev7"
+      ],
+      "confidence": 0.93
+    },
+    {
+      "id": "c10",
+      "text": "The IEF linearly increases with the total excess charge.",
+      "location": {
+        "section": "pH Effects",
+        "page": 14,
+        "char_span": null,
+        "quote": "that the IEF linearly increases with the total excess charge"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "IEF increases linearly with droplet excess charge",
+      "strength": "comparative",
+      "scope": "charged nanodroplets, Fig 3a",
+      "evidence_refs": [
+        "ev8"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "c11",
+      "text": "In the vapor1 region the typical field values drop to approximately ~0.3 V/Å, while in vapor2 the field vanishes within statistical uncertainty.",
+      "location": {
+        "section": "Spatial Extension",
+        "page": 16,
+        "char_span": null,
+        "quote": "In the vapor1 region the typical field values drop to smaller\nvalues of approximately ∼ 0.3 V/˚A, while in the vapor2 region the field vanishes within\nthe statistical uncertainty."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "vapor1_field == ~0.3 V/Å; vapor2_field == ~0",
+      "strength": "approximate",
+      "scope": "vapor1 and vapor2 regions",
+      "evidence_refs": [
+        "ev9"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c12",
+      "text": "The interfacial-region electric field distributions peak at approximately 1.2–1.4 V/Å.",
+      "location": {
+        "section": "Spatial Extension",
+        "page": 15,
+        "char_span": null,
+        "quote": "The corresponding distributions peak at approximately\n1.2–1.4 V/˚A"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "interfacial field distribution peak == [1.2,1.4] V/Å",
+      "strength": "approximate",
+      "scope": "interfacial region, Fig 4",
+      "evidence_refs": [
+        "ev10"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c13",
+      "text": "Fig 2b shows an anticorrelation between IEF and average H-bond number with R^2=0.994 and Pearson's r=-0.997.",
+      "location": {
+        "section": "Results and discussion",
+        "page": 11,
+        "char_span": null,
+        "quote": null
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported R_squared == 0.994 and Pearson_r == -0.997 are consistent",
+      "strength": "exact",
+      "scope": "Fig 2b linear fit",
+      "evidence_refs": [
+        "ev2"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c14",
+      "text": "The average dipole angle is α ~ 96° in the droplet and α ~ 94° in the slab, implying a net outward-directed electric field.",
+      "location": {
+        "section": "Results and discussion",
+        "page": 8,
+        "char_span": null,
+        "quote": "leading to an\naverage α ∼ 96◦in the droplet (α ∼ 94◦in the slab), implies a net electric field directed\noutward from the liquid toward the vapor."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "mean_alpha_droplet == 96 deg; mean_alpha_slab == 94 deg",
+      "strength": "approximate",
+      "scope": "droplet and slab interfacial molecules",
+      "evidence_refs": [
+        "ev11"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c15",
+      "text": "Extrapolation of the curvature dependence to 3-40 µm droplets reveals variations on the order of 10^-5 V/Å, five orders of magnitude smaller than the field itself.",
+      "location": {
+        "section": "Results and discussion",
+        "page": 12,
+        "char_span": null,
+        "quote": "reveals variations on the order of 10−5 V/˚A, i.e., five orders of magnitude smaller than\nthe field itself."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "extrapolated_IEF_variation == ~1e-5 V/Å; ratio to field == ~1e-5",
+      "strength": "approximate",
+      "scope": "3-40 µm extrapolation",
+      "evidence_refs": [
+        "ev3"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c16",
+      "text": "Benchmark SCAN and r2SCAN calculations yield essentially indistinguishable IEF distributions, demonstrating robustness to the density functional.",
+      "location": {
+        "section": "Methods",
+        "page": 5,
+        "char_span": null,
+        "quote": "which yield essentially indistinguishable IEF distributions (see Fig. S8 of the SI)"
+      },
+      "epistemic_tier": "T6",
+      "predicate": "IEF distributions at PBE+D3, SCAN, r2SCAN are indistinguishable",
+      "strength": "qualitative",
+      "scope": "slabs and nanodroplets, Fig S8",
+      "evidence_refs": [],
+      "confidence": 0.8
+    },
+    {
+      "id": "c17",
+      "text": "Flat-interface samples of 256 and 512 H2O were used with box edges a=b=19.641, c=45.000 Å and a=b=24.830, c=60.000 Å respectively.",
+      "location": {
+        "section": "Methods",
+        "page": 5,
+        "char_span": null,
+        "quote": "samples composed of 256 and 512 H2O molecules were considered with box edges of\na = b = 19.641, c = 45.000 ˚A and a = b = 24.830, c = 60.000 ˚A, respectively"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "box dimensions as stated for 256 and 512 molecule slabs",
+      "strength": "exact",
+      "scope": "flat air-water slab systems",
+      "evidence_refs": [
+        "ev12"
+      ],
+      "confidence": 0.93
+    },
+    {
+      "id": "c18",
+      "text": "Seven isolated nanodroplets of 256, 384, 512, 640, 768, 896, 1024 H2O were simulated in cubic boxes with edges 44, 48, 60, 63, 65, 67, 68 Å.",
+      "location": {
+        "section": "Methods",
+        "page": 5,
+        "char_span": null,
+        "quote": "nanodroplets composed of 256, 384, 512, 640, 768, 896, and 1024 H2O molecules were simu-\nlated in cubic boxes with edges of 44, 48, 60, 63, 65, 67, and 68 ˚A, respectively"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "nanodroplet sizes and box edges as listed",
+      "strength": "exact",
+      "scope": "isolated nanodroplets",
+      "evidence_refs": [
+        "ev13"
+      ],
+      "confidence": 0.93
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev1",
+      "kind": "number",
+      "location": {
+        "section": "Abstract / Results",
+        "page": 11,
+        "char_span": null,
+        "quote": "Its magnitude\nranges between ∼1.0 and 1.2 V/˚A"
+      },
+      "extracted_values": {
+        "IEF_min_V_per_A": 1.0,
+        "IEF_max_V_per_A": 1.2,
+        "unit": "V/Å"
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev2",
+      "kind": "figure",
+      "location": {
+        "section": "Fig 2b",
+        "page": 11,
+        "char_span": null,
+        "quote": null
+      },
+      "extracted_values": {
+        "R_squared": 0.994,
+        "pearson_r": -0.997
+      },
+      "confidence": 0.82
+    },
+    {
+      "id": "ev3",
+      "kind": "number",
+      "location": {
+        "section": "Results / Abstract",
+        "page": 12,
+        "char_span": null,
+        "quote": "reveals variations on the order of 10−5 V/˚A"
+      },
+      "extracted_values": {
+        "extrapolated_variation_V_per_A": 1e-05,
+        "droplet_size_range_um": [
+          3,
+          40
+        ]
+      },
+      "confidence": 0.88
+    },
+    {
+      "id": "ev4",
+      "kind": "number",
+      "location": {
+        "section": "Introduction",
+        "page": 3,
+        "char_span": null,
+        "quote": "that the air-water boundary may sustain electric fields on the order of ∼ 0.2 V/˚A"
+      },
+      "extracted_values": {
+        "prior_IEF_V_per_A": 0.2,
+        "unit": "V/Å"
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev5",
+      "kind": "text",
+      "location": {
+        "section": "Methods",
+        "page": 5,
+        "char_span": null,
+        "quote": "The temperature was kept fixed\nat 300 K via the canonical-sampling-velocity-rescaling (CSVR) thermostat 55 with a damping\nfactor of 0.04 ps."
+      },
+      "extracted_values": {
+        "sim_time_ns": 1,
+        "temperature_K": 300,
+        "damping_ps": 0.04
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev6",
+      "kind": "number",
+      "location": {
+        "section": "Methods",
+        "page": 5,
+        "char_span": null,
+        "quote": "500 randomly chosen configurations were extracted from all DPMD trajectories"
+      },
+      "extracted_values": {
+        "n_configurations": 500
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev7",
+      "kind": "number",
+      "location": {
+        "section": "pH Effects",
+        "page": 13,
+        "char_span": null,
+        "quote": "correspond to net pH values of 13.74, 13.0, 0.96, and 0.26, respectively"
+      },
+      "extracted_values": {
+        "charge_states_e": [
+          -5,
+          -1,
+          1,
+          5
+        ],
+        "reported_ph_values": [
+          13.74,
+          13.0,
+          0.96,
+          0.26
+        ],
+        "rayleigh_fractions_pct": [
+          13,
+          66
+        ]
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev8",
+      "kind": "figure",
+      "location": {
+        "section": "Fig 3a",
+        "page": 13,
+        "char_span": null,
+        "quote": "In panel (a), the dotted line is a linear fit of the data points."
+      },
+      "extracted_values": {
+        "relation": "IEF vs droplet charge, linear fit"
+      },
+      "confidence": 0.82
+    },
+    {
+      "id": "ev9",
+      "kind": "number",
+      "location": {
+        "section": "Spatial Extension",
+        "page": 16,
+        "char_span": null,
+        "quote": "In the vapor1 region the typical field values drop to smaller\nvalues of approximately ∼ 0.3 V/˚A"
+      },
+      "extracted_values": {
+        "vapor1_field_V_per_A": 0.3,
+        "vapor2_field_V_per_A": 0.0
+      },
+      "confidence": 0.88
+    },
+    {
+      "id": "ev10",
+      "kind": "number",
+      "location": {
+        "section": "Spatial Extension",
+        "page": 15,
+        "char_span": null,
+        "quote": "distributions peak at approximately\n1.2–1.4 V/˚A"
+      },
+      "extracted_values": {
+        "interface_peak_min_V_per_A": 1.2,
+        "interface_peak_max_V_per_A": 1.4
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev11",
+      "kind": "number",
+      "location": {
+        "section": "Results",
+        "page": 8,
+        "char_span": null,
+        "quote": "average α ∼ 96◦in the droplet (α ∼ 94◦in the slab)"
+      },
+      "extracted_values": {
+        "mean_alpha_droplet_deg": 96,
+        "mean_alpha_slab_deg": 94
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev12",
+      "kind": "number",
+      "location": {
+        "section": "Methods",
+        "page": 5,
+        "char_span": null,
+        "quote": "a = b = 19.641, c = 45.000 ˚A and a = b = 24.830, c = 60.000 ˚A, respectively"
+      },
+      "extracted_values": {
+        "slab256_box": [
+          19.641,
+          19.641,
+          45.0
+        ],
+        "slab512_box": [
+          24.83,
+          24.83,
+          60.0
+        ],
+        "n_molecules": [
+          256,
+          512
+        ]
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev13",
+      "kind": "number",
+      "location": {
+        "section": "Methods",
+        "page": 5,
+        "char_span": null,
+        "quote": "256, 384, 512, 640, 768, 896, and 1024 H2O molecules were simu-\nlated in cubic boxes with edges of 44, 48, 60, 63, 65, 67, and 68 ˚A"
+      },
+      "extracted_values": {
+        "droplet_n_molecules": [
+          256,
+          384,
+          512,
+          640,
+          768,
+          896,
+          1024
+        ],
+        "droplet_box_edges_A": [
+          44,
+          48,
+          60,
+          63,
+          65,
+          67,
+          68
+        ]
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev14",
+      "kind": "table",
+      "location": {
+        "section": "Table 1",
+        "page": 10,
+        "char_span": null,
+        "quote": "ndon nacc mean CT (e\n−)"
+      },
+      "extracted_values": {
+        "droplet_CT": {
+          "0,1": -0.052,
+          "0,2": -0.082,
+          "1,0": 0.045,
+          "1,1": -0.009,
+          "1,2": -0.033,
+          "1,3": -0.03,
+          "2,0": 0.072,
+          "2,1": 0.022,
+          "2,2": 0.0,
+          "2,3": 0.009
+        },
+        "slab_CT": {
+          "0,1": -0.05,
+          "0,2": -0.086,
+          "1,0": 0.043,
+          "1,1": -0.006,
+          "1,2": -0.036,
+          "1,3": -0.025,
+          "2,0": 0.074,
+          "2,1": 0.025,
+          "2,2": -0.001,
+          "2,3": 0.009
+        }
+      },
+      "confidence": 0.9
+    }
+  ],
+  "bindings": [
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c4",
+      "evidence_id": "ev9",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c5",
+      "evidence_id": "ev4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c6",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c6",
+      "evidence_id": "ev4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c7",
+      "evidence_id": "ev5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c8",
+      "evidence_id": "ev6",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c9",
+      "evidence_id": "ev7",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c10",
+      "evidence_id": "ev8",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c11",
+      "evidence_id": "ev9",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c12",
+      "evidence_id": "ev10",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c13",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c14",
+      "evidence_id": "ev11",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c15",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c17",
+      "evidence_id": "ev12",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c18",
+      "evidence_id": "ev13",
+      "relation": "rests_on"
+    }
+  ]
+}

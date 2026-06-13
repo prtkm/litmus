@@ -1,0 +1,64 @@
+{
+  "corpus": {
+    "papers_audited": 24,
+    "confirmed_flags": 1,
+    "emitted_flags": 1,
+    "deterministic_precision": 1.0,
+    "passes": 67,
+    "abstained": 487,
+    "routed_to_human": 8,
+    "flags_by_verifier": {
+      "statcheck.v1": 1
+    },
+    "flags_by_field": {
+      "psychology": 1
+    },
+    "papers_with_confirmed_flags": {
+      "psychology-bai2025-acute-exercise-executive-function": 1
+    }
+  },
+  "candidate_benchmark": {
+    "total_items": 91,
+    "suspect": 57,
+    "supported": 34,
+    "note": "reasoner judgments \u2014 candidate, not gold (DESIGN \u00a717)"
+  },
+  "convergence": {
+    "papers_reasoner_suspect_AND_litmus_confirmed": [
+      "psychology-bai2025-acute-exercise-executive-function"
+    ],
+    "papers_reasoner_suspect_but_litmus_abstained": [
+      "biology-anon-retracted-oblongifolin-gem-resistance",
+      "biology-zhang2025-brd4-protac-fulvestrant-breast",
+      "chemistry-anon2026-triple-halide-perovskite-tandem",
+      "chemistry-araruna2025-lewis-acid-ionic-liquid-styrene",
+      "chemistry-arxiv-2605.09394-mace-finetuning-catalysis",
+      "chemistry-jana2025-co2-electroreduction-cu-zif",
+      "chemistry-jimenezcruz2026-pd-prolinate-catalysis",
+      "chemistry-oztoksoy2025-melt-strength-polypropylene",
+      "chemistry-roy2025-transfer-hydrogenation-furfural",
+      "chemistry-wanazman2025-polycarbodiimide-composite",
+      "economics-anchuri2026-gas-demand-elasticity-l1-l2",
+      "medicine-gkekas2025-rct-laparoscopic-supervision",
+      "medicine-lin2025-nimotuzumab-gemcitabine-pancreatic",
+      "medicine-zhou2025-esketamine-low-opioid-anaesthesia",
+      "ml-xu2026-scllm-cross-modal-clustering",
+      "physics-singh2026-ultralow-thermal-conductivity",
+      "psychology-anon2024-rr-group-membership-individuating",
+      "psychology-wheeler2025-face-interpretation-social-anxiety"
+    ],
+    "interpretation": "candidate->gold: a deterministic verifier confirmed a reproducible flag on these papers, promoting the reasoner's suspicion to gold (DESIGN \u00a719 convergence). Papers where LITMUS abstained are the synthesis/coverage queue (WS-D/E/F)."
+  },
+  "calibrated_fpr_ceilings": {
+    "figure_vs_table.v1": 0.05,
+    "grim.v1": 0.05,
+    "mass_balance.v1": 0.05,
+    "percent_change.v1": 0.05,
+    "prose_vs_table.v1": 0.05,
+    "statcheck.v1": 0.05,
+    "sum_check.v1": 0.05,
+    "unit_consistency.v1": 0.05,
+    "yield_check.v1": 0.05
+  },
+  "honesty_note": "No single external 'recall' is reported: confirming the reasoner's suspect claims needs a human or a new deterministic verifier (DESIGN \u00a717 \u2014 avoid circularity). The numbers above are all reproducible: every confirmed flag reran in a fresh, network-less sandbox; deterministic_precision is measured, not asserted."
+}

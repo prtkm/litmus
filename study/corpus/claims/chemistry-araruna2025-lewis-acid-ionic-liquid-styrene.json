@@ -1,0 +1,1030 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "chemistry-araruna2025-lewis-acid-ionic-liquid-styrene",
+  "meta": {
+    "title": "Unveiling the Mechanistic Role of Lewis Acidic Ionic Liquids in Styrene Polymerization",
+    "journal": "ACS Polym. Au",
+    "year": 2026,
+    "doi": "10.1021/acspolymersau.6c00024",
+    "notes": "Conversions and molar mass data primarily in Tables 1-5 and Figures 2-4; mechanism via ESI-MS in Figure 3 and Scheme 1.",
+    "extractor": "litmus.extract",
+    "model": "claude-opus-4-8",
+    "source": "opus-native-pdf"
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Catalytic systems effectively polymerized styrene in the temperature range 50–90 °C, obtaining quantitative conversions in the presence of ILs with small amounts of Lewis acid.",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "These catalytic systems were effective to polymerize styrene in the temperature range of 50−90 °C, obtaining\nquantitative conversions in the presence of ILs in polymerization\ncatalyzed by small amounts of Lewis acid."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "temperature_range == [50, 90] °C and conversions reach ~quantitative under stated IL/Lewis acid conditions",
+      "strength": "qualitative",
+      "scope": "styrene polymerization with ILs/Lewis acids, 50–90 °C",
+      "evidence_refs": [
+        "ev_t2",
+        "ev_t3"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c2",
+      "text": "Polymers were synthesized with number-average molar mass in the range 200,000–600 g/mol.",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "in the range of 200,000−600 g mol−1"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "min(Mn) == 600 g/mol and max(Mn) == 200000 g/mol across Table 5",
+      "strength": "bound",
+      "scope": "polymers in Table 5",
+      "evidence_refs": [
+        "ev_t5"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c3",
+      "text": "Molar-mass dispersity ranged from 1.43 to 4.67.",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "ranging from 1.43 to 4.67"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "min(DM) == 1.43 and max(DM) == 4.67 across Table 5",
+      "strength": "bound",
+      "scope": "polymers in Table 5",
+      "evidence_refs": [
+        "ev_t5"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c4",
+      "text": "Glass transition temperatures were in the range 40–71 °C.",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "glass\ntransition temperatures in the range of 40−71 °C"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "min(Tg) == 40 °C and max(Tg) == 71 °C across Table 5",
+      "strength": "bound",
+      "scope": "polymers in Table 5",
+      "evidence_refs": [
+        "ev_t5"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c5",
+      "text": "Rodrigues et al. reported [C4C1Im][Fe2Cl7] achieving 71% conversion in 15 min at 70 °C.",
+      "location": {
+        "section": "Introduction",
+        "page": 2,
+        "char_span": null,
+        "quote": "exhibits high\ncatalytic activity, achieving 71% conversion in just 15 min at 70\n°C"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "cited_value: conversion == 71% at 15 min, 70 °C in Rodrigues et al.",
+      "strength": "exact",
+      "scope": "cited prior work (ref 19)",
+      "evidence_refs": [
+        "ev_fe2cl7"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c6",
+      "text": "[C4C1Im][NTf2] reached 93% conversion under the same conditions (cited prior work).",
+      "location": {
+        "section": "Introduction",
+        "page": 2,
+        "char_span": null,
+        "quote": "reaching 93% conversion in the presence of\n[C4C1Im][NTf2]"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "cited_value: conversion == 93% with [C4C1Im][NTf2]",
+      "strength": "exact",
+      "scope": "cited prior work (ref 19)",
+      "evidence_refs": [
+        "ev_ntf2_93"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c7",
+      "text": "1.0 g of [C4C1Im][PF6] dissolves about 0.7 g of styrene.",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 3,
+        "char_span": null,
+        "quote": "1.0 g of [C4C1Im][PF6]\ndissolves about 0.7 g of styrene"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "cited_value: 1.0 g [C4C1Im][PF6] dissolves ~0.7 g styrene",
+      "strength": "approximate",
+      "scope": "solubility, cited ref 40",
+      "evidence_refs": [
+        "ev_solubility"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c8",
+      "text": "Indium-based catalyst (InCl3 in [C4C1Im][NTf2]) produced polystyrene with 99% conversion, the best result.",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 4,
+        "char_span": null,
+        "quote": "producing\npolystyrene with 99% conversion when supported in\n[C4C1Im][NTf2]"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "InCl3 in [C4C1Im][NTf2] conversion == 99% (Table 1)",
+      "strength": "exact",
+      "scope": "InCl3/[C4C1Im][NTf2], 0.1 mol%, 90 °C",
+      "evidence_refs": [
+        "ev_t1_incl3"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c9",
+      "text": "Bueno et al. used high AlCl3 concentrations (5.8 mol %), nearly 60 times higher than in this study.",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 4,
+        "char_span": null,
+        "quote": "they used\nhigh concentrations of AlCl3 (5.8 mol %), corresponding to a\nmolar ratio nearly 60 times higher than that employed in the\npresent study"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "5.8 mol% / present study catalyst mol% (0.1) ≈ 58 ~ 60",
+      "strength": "comparative",
+      "scope": "comparison to ref 28",
+      "evidence_refs": [
+        "ev_bueno"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c10",
+      "text": "Quantitative conversion (~99%) was achieved at 50 °C; conversion increased with synthesis temperature.",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 4,
+        "char_span": null,
+        "quote": "At temperatures above 50 °C, the system becomes\nso reactive that it leads to polystyrene formation in nearly\nquantitative yields."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "conversion(%) vs temperature monotonic increase per Table 2",
+      "strength": "causal",
+      "scope": "InCl3/[C4C1Im][NTf2], 0.1 mol%, 2 h, Table 2",
+      "evidence_refs": [
+        "ev_t2"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c11",
+      "text": "Cationic polymerization with quantitative conversion was achieved using only 0.1 mol % catalyst in 2 h at 50 °C.",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 4,
+        "char_span": null,
+        "quote": "cationic polymerization with quantitative conversion was\nsuccessfully achieved using only 0.1 mol % of catalyst in 2 h at\n50 °C"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "conversion == 99% at 0.1 mol% InCl3, 50 °C, 2 h (Table 3 entry 3)",
+      "strength": "exact",
+      "scope": "InCl3/[C4C1Im][NTf2], 0.1 mol%, 50 °C, 2 h",
+      "evidence_refs": [
+        "ev_t3"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c12",
+      "text": "Vijayaraghavan and MacFarlane used approximately 2.8–5.0 mol % catalyst to obtain polystyrene with conversions above 90% in 2 h at 60 °C.",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 4,
+        "char_span": null,
+        "quote": "used approximately 2.8−5.0 mol % of catalyst�bisoxalatoboric acid and its derivatives�to obtain polystyrene with\nconversions above 90% via cationic polymerization, conducted"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "cited_value: 2.8–5.0 mol% catalyst, >90% conversion, 2 h, 60 °C",
+      "strength": "comparative",
+      "scope": "cited refs 48–50",
+      "evidence_refs": [
+        "ev_vijay"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c13",
+      "text": "Verebélyi and Iván obtained polystyrene with high conversions (above 80%) in 5 min, using ~53.3 mol % catalyst at −20 to 25 °C.",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 5,
+        "char_span": null,
+        "quote": "obtained polystyrene with high conversions\n(above 80%) in just 5 min at temperatures ranging from"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "cited_value: >80% conversion in 5 min at −20 to 25 °C with ~53.3 mol% catalyst",
+      "strength": "comparative",
+      "scope": "cited ref 51",
+      "evidence_refs": [
+        "ev_verebelyi"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "c14",
+      "text": "A 99% conversion was achieved in just 40 min of reaction, with low conversion up to 30 min (cationic gel effect).",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 6,
+        "char_span": null,
+        "quote": "after which a\n99% conversion was achieved in just 40 min of reaction"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "conversion == 99% at 40 min per Figure 2A / Table 5",
+      "strength": "exact",
+      "scope": "InCl3/[C4C1Im][NTf2], 0.1 mol%, 50 °C, Figure 2A",
+      "evidence_refs": [
+        "ev_fig2"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c15",
+      "text": "Dispersity (ĐM) increases from 1.47 to 2.32 as polymerization time increases from 10 to 40 min.",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 6,
+        "char_span": null,
+        "quote": "the dispersity (ĐM) increases from 1.47 to 2.32\nas the polymerization time increases from 10 to 40 min"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "DM at 10 min == 1.47 and DM at 40 min == 2.32 (Table 5 entries 12,15)",
+      "strength": "comparative",
+      "scope": "Table 5, entries 12–15",
+      "evidence_refs": [
+        "ev_t5"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "c16",
+      "text": "Number-average molar mass (Mn) decreases from approximately 4700 to 2500 g/mol and weight-average molar mass (Mw) from approximately 7000 to 5800 g/mol as time increases from 10 to 60 min.",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 6,
+        "char_span": null,
+        "quote": "molar mass (M̅n) decreases from approximately 4700 to 2500 g\nmol−1 and the weight-average molar mass (M̅w) decreases from\napproximately 7000 to 5800 g mol−1"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "Mn 10min≈4700, 60min≈2500; Mw 10min≈7000, 60min≈5800 (Table 5 entries 12,17)",
+      "strength": "approximate",
+      "scope": "Table 5, entries 12–15/17",
+      "evidence_refs": [
+        "ev_t5"
+      ],
+      "confidence": 0.78
+    },
+    {
+      "id": "c17",
+      "text": "Very low conversions (0 or traces) were obtained in organic solvents instead of ILs.",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 6,
+        "char_span": null,
+        "quote": "Very low conversions were\nobtained in polymerizations carried out in these organic\nsolvents, with only trace amounts of polystyrene being\ndetected."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "conversion == 0 or traces for all solvents in Table 4",
+      "strength": "qualitative",
+      "scope": "Table 4, InCl3, 0.1 mol%, 50 °C, 2 h",
+      "evidence_refs": [
+        "ev_t4"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c18",
+      "text": "ESI(+)-MS spectrum showed a prominent signal at m/z 558.1672 attributed to the IL (2 cations, 1 anion).",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 8,
+        "char_span": null,
+        "quote": "a prominent signal of m/z 558.1672,\nattributed to the IL (2 cations, 1 anion)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "observed_mz == 558.1672 for [2 cations + 1 anion] of [C4C1Im][NTf2]",
+      "strength": "exact",
+      "scope": "Figure 3A, ESI(+)-MS",
+      "evidence_refs": [
+        "ev_fig3a"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c19",
+      "text": "An ion at m/z 313 was detected, consistent with the chloronium cation, with isotopic distribution at m/z 314, 315, 316, 317 reflecting the 35Cl/37Cl pattern (two chlorine atoms).",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 8,
+        "char_span": null,
+        "quote": "revealing the appearance of an ion of m/z 313. Its isotopic\ndistribution (additional signals of m/z 314, 315, 316, and 317,\nhighlighted in red) is consistent with the formation of the\nchloronium cation"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "observed_mz == 313 with isotopologues 314–317; consistent with 2 Cl pattern",
+      "strength": "qualitative",
+      "scope": "Figure 3B, ESI(+)-MS",
+      "evidence_refs": [
+        "ev_fig3b"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c20",
+      "text": "Reaction mechanism was monitored using a 1:250 molar ratio (catalyst:monomer) in [C4C1Im][NTf2]; previous 1:1000 ratio gave low-intensity signals.",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 7,
+        "char_span": null,
+        "quote": "The system was\nprepared using a 1:250 molar ratio (catalyst:monomer), which\nensured an adequate concentration of the active species for MS\ndetection."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "MS monitoring molar ratio == 1:250 catalyst:monomer",
+      "strength": "exact",
+      "scope": "ESI-MS mechanistic study",
+      "evidence_refs": [
+        "ev_ratio"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c21",
+      "text": "Number-average molar mass ranged from 200,000 to 600 g/mol and weight-average molar mass from 426,000 to 1300 g/mol across samples.",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 9,
+        "char_span": null,
+        "quote": "from 200,000 to 600 g mol−1\n, and the weight-average molar\nmass ranging from 426,000 to 1300 g mol−1"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "Mn range [600,200000]; Mw range [1300,426000] g/mol across Table 5",
+      "strength": "bound",
+      "scope": "Table 5",
+      "evidence_refs": [
+        "ev_t5"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "c22",
+      "text": "Literature for cationic polymerization of styrene with ILs typically yields polystyrene with 11,000 to 650 g/mol and dispersities between 1.3 and 3.1.",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 9,
+        "char_span": null,
+        "quote": "typically yield polystyrene with between 11,000 to 650 g mol−1\nand dispersities between 1.3 and 3.1."
+      },
+      "epistemic_tier": "T5",
+      "predicate": "cited_value: literature Mn 650–11000 g/mol, DM 1.3–3.1",
+      "strength": "comparative",
+      "scope": "cited refs 28,40,45,46,48–50",
+      "evidence_refs": [
+        "ev_lit_range"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "c23",
+      "text": "DSC initial sample masses were approximately 8.0 mg, heated to 200 °C at 10 °C/min, helium flow 30 mL/min.",
+      "location": {
+        "section": "Experimental Methods",
+        "page": 2,
+        "char_span": null,
+        "quote": "Initial sample masses\nwere approximately 8.0 mg. The samples were cooled to −50 °C and\nthen heated to 200 °C at a rate of 10 °C/min and under an inert\nhelium atmosphere at a flow rate of 30 mL min−1"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "DSC: mass ≈ 8.0 mg, heat to 200 °C at 10 °C/min, He 30 mL/min",
+      "strength": "exact",
+      "scope": "DSC method",
+      "evidence_refs": [
+        "ev_dsc"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c24",
+      "text": "Preliminary polymerizations used 2.5 mL styrene and 0.5 mL IL with a 1:1000 molar ratio of Lewis acid to monomer (0.1 mol % catalyst) at 90 °C.",
+      "location": {
+        "section": "Experimental Methods",
+        "page": 3,
+        "char_span": null,
+        "quote": "polymerizations were performed in sealed tubes containing 2.5 mL of\nstyrene (purified by passing it through an activated aluminum oxide\ncolumn to remove inhibitors prior to use) and 0.5 mL of IL, using a\n1:1000 molar ratio of Lewis acid to monomer (i.e., 0.1 mol %\ncatalyst), at 90 °C"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "1:1000 molar ratio == 0.1 mol % catalyst",
+      "strength": "exact",
+      "scope": "preliminary polymerizations",
+      "evidence_refs": [
+        "ev_prelim"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c25",
+      "text": "Highest dispersity polymer was FeCl3 at 90 °C (no IL) with ĐM 4.67.",
+      "location": {
+        "section": "Table 5",
+        "page": 8,
+        "char_span": null,
+        "quote": "18 FeCl3 90 120 96 6232 1336 4.67"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "DM == 4.67 for FeCl3, 90 °C, 120 min (Table 5 entry 18)",
+      "strength": "exact",
+      "scope": "Table 5 entry 18",
+      "evidence_refs": [
+        "ev_t5_e18"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "c26",
+      "text": "InCl3 in [C4C1Im][BF4] (entry 1) gave Mn 206,094 g/mol, Mw 426,155 g/mol, ĐM 2.07, Tg 71.8 °C.",
+      "location": {
+        "section": "Table 5",
+        "page": 8,
+        "char_span": null,
+        "quote": "1 InCl3 [C4C1Im][BF4] 90 (118 h) 54 426,155 206,094 2.07 71.8"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "entry1: Mw==426155, Mn==206094, DM==2.07, Tg==71.8",
+      "strength": "exact",
+      "scope": "Table 5 entry 1",
+      "evidence_refs": [
+        "ev_t5_e1"
+      ],
+      "confidence": 0.88
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev_t2",
+      "kind": "table",
+      "location": {
+        "section": "Table 2",
+        "page": 5,
+        "char_span": null,
+        "quote": "1 40 6\n2 50 99\n3 60 97\n4 70 98\n5 80 98\n6 90 99"
+      },
+      "extracted_values": {
+        "temperature_C": [
+          40,
+          50,
+          60,
+          70,
+          80,
+          90
+        ],
+        "conversion_pct": [
+          6,
+          99,
+          97,
+          98,
+          98,
+          99
+        ]
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev_t3",
+      "kind": "table",
+      "location": {
+        "section": "Table 3",
+        "page": 5,
+        "char_span": null,
+        "quote": "1 1.00 99\n2 0.20 99\n3 0.10 99\n4 0.09 2.6\n5 0.08 5.3\n6 0.07 2.2"
+      },
+      "extracted_values": {
+        "InCl3_mol_pct": [
+          1.0,
+          0.2,
+          0.1,
+          0.09,
+          0.08,
+          0.07,
+          0.06,
+          0.05,
+          0.04,
+          0.03,
+          0.02,
+          0.01
+        ],
+        "conversion_pct": [
+          99,
+          99,
+          99,
+          2.6,
+          5.3,
+          2.2,
+          "traces",
+          "traces",
+          "traces",
+          "traces",
+          "traces",
+          "traces"
+        ]
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev_t5",
+      "kind": "table",
+      "location": {
+        "section": "Table 5",
+        "page": 8,
+        "char_span": null,
+        "quote": "Table 5. Average Molar Masses, Molar-Mass Dispersity, and Glass Transition Temperature (Tg) of Polymers Synthesized with\nDifferent Lewis Acids"
+      },
+      "extracted_values": {
+        "Mn_min": 600,
+        "Mn_max": 206094,
+        "Mw_min": 731,
+        "Mw_max": 426155,
+        "DM_min": 1.42,
+        "DM_max": 4.67,
+        "Tg_min": 25.0,
+        "Tg_max": 71.8
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "ev_fe2cl7",
+      "kind": "statistic",
+      "location": {
+        "section": "Introduction",
+        "page": 2,
+        "char_span": null,
+        "quote": "achieving 71% conversion in just 15 min at 70\n°C"
+      },
+      "extracted_values": {
+        "conversion_pct": 71,
+        "time_min": 15,
+        "temperature_C": 70
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev_ntf2_93",
+      "kind": "statistic",
+      "location": {
+        "section": "Introduction",
+        "page": 2,
+        "char_span": null,
+        "quote": "reaching 93% conversion in the presence of\n[C4C1Im][NTf2]"
+      },
+      "extracted_values": {
+        "conversion_pct": 93
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev_solubility",
+      "kind": "number",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 3,
+        "char_span": null,
+        "quote": "1.0 g of [C4C1Im][PF6]\ndissolves about 0.7 g of styrene"
+      },
+      "extracted_values": {
+        "reactant_masses": [
+          1.0
+        ],
+        "product_masses": [
+          0.7
+        ],
+        "mass_IL_g": 1.0,
+        "mass_styrene_dissolved_g": 0.7
+      },
+      "confidence": 0.88
+    },
+    {
+      "id": "ev_t1_incl3",
+      "kind": "table",
+      "location": {
+        "section": "Table 1",
+        "page": 4,
+        "char_span": null,
+        "quote": "InCl3 99% 10% tracesb traces\n99% (2 h) 96% (118 h) 54% (118 h) 95% (2.5 h)"
+      },
+      "extracted_values": {
+        "InCl3_NTf2_conversion_pct": 99,
+        "InCl3_PF6_conversion_pct": 10,
+        "InCl3_NTf2_2h_pct": 99,
+        "InCl3_PF6_118h_pct": 96
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev_bueno",
+      "kind": "statistic",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 4,
+        "char_span": null,
+        "quote": "high concentrations of AlCl3 (5.8 mol %), corresponding to a\nmolar ratio nearly 60 times higher than that employed in the\npresent study"
+      },
+      "extracted_values": {
+        "AlCl3_mol_pct": 5.8,
+        "present_study_mol_pct": 0.1,
+        "ratio_factor_stated": 60
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev_t4",
+      "kind": "table",
+      "location": {
+        "section": "Table 4",
+        "page": 6,
+        "char_span": null,
+        "quote": "1 N,N-dimethylformamide 0\n2 dimethyl sulfoxide traces\n3 1,4-dioxane traces\n4 toluene 0\n5 acetonitrile 0\n6 chloroform traces\n7 dichloromethane 0"
+      },
+      "extracted_values": {
+        "solvents": [
+          "N,N-dimethylformamide",
+          "dimethyl sulfoxide",
+          "1,4-dioxane",
+          "toluene",
+          "acetonitrile",
+          "chloroform",
+          "dichloromethane"
+        ],
+        "conversion": [
+          0,
+          "traces",
+          "traces",
+          0,
+          0,
+          "traces",
+          0
+        ]
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev_fig2",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 2",
+        "page": 6,
+        "char_span": null,
+        "quote": "99% conversion was achieved in just 40 min of reaction"
+      },
+      "extracted_values": {
+        "conversion_at_40min_pct": 99
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev_fig3a",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 3",
+        "page": 7,
+        "char_span": null,
+        "quote": "558.1672"
+      },
+      "extracted_values": {
+        "observed_mz": 558.1672
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev_fig3b",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 3",
+        "page": 7,
+        "char_span": null,
+        "quote": "the styrene−chloronium cation (m/z 313) is\ndetected"
+      },
+      "extracted_values": {
+        "observed_mz": 313,
+        "isotopologue_mz": [
+          314,
+          315,
+          316,
+          317
+        ]
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev_ratio",
+      "kind": "text",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 7,
+        "char_span": null,
+        "quote": "using a 1:250 molar ratio (catalyst:monomer)"
+      },
+      "extracted_values": {
+        "catalyst_monomer_ratio": "1:250",
+        "previous_ratio": "1:1000"
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev_dsc",
+      "kind": "text",
+      "location": {
+        "section": "Experimental Methods",
+        "page": 2,
+        "char_span": null,
+        "quote": "Initial sample masses\nwere approximately 8.0 mg. The samples were cooled to −50 °C and\nthen heated to 200 °C at a rate of 10 °C/min and under an inert\nhelium atmosphere at a flow rate of 30 mL min−1"
+      },
+      "extracted_values": {
+        "sample_mass_mg": 8.0,
+        "max_temp_C": 200,
+        "heating_rate_C_min": 10,
+        "He_flow_mL_min": 30
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev_prelim",
+      "kind": "text",
+      "location": {
+        "section": "Experimental Methods",
+        "page": 3,
+        "char_span": null,
+        "quote": "2.5 mL of\nstyrene"
+      },
+      "extracted_values": {
+        "styrene_mL": 2.5,
+        "IL_mL": 0.5,
+        "molar_ratio_LA_to_monomer": "1:1000",
+        "catalyst_mol_pct": 0.1,
+        "temperature_C": 90
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev_vijay",
+      "kind": "statistic",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 4,
+        "char_span": null,
+        "quote": "used approximately 2.8−5.0 mol % of catalyst"
+      },
+      "extracted_values": {
+        "catalyst_mol_pct_range": [
+          2.8,
+          5.0
+        ],
+        "conversion_pct_lower_bound": 90,
+        "time_h": 2,
+        "temperature_C": 60
+      },
+      "confidence": 0.82
+    },
+    {
+      "id": "ev_verebelyi",
+      "kind": "statistic",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 6,
+        "char_span": null,
+        "quote": "around 53.3 mol %"
+      },
+      "extracted_values": {
+        "catalyst_mol_pct": 53.3,
+        "conversion_pct_lower_bound": 80,
+        "time_min": 5,
+        "temperature_range_C": [
+          -20,
+          25
+        ]
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev_lit_range",
+      "kind": "text",
+      "location": {
+        "section": "Results and Discussion",
+        "page": 9,
+        "char_span": null,
+        "quote": "typically yield polystyrene with between 11,000 to 650 g mol−1\nand dispersities between 1.3 and 3.1."
+      },
+      "extracted_values": {
+        "Mn_range_g_mol": [
+          650,
+          11000
+        ],
+        "DM_range": [
+          1.3,
+          3.1
+        ]
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev_t5_e18",
+      "kind": "table",
+      "location": {
+        "section": "Table 5",
+        "page": 8,
+        "char_span": null,
+        "quote": "18 FeCl3 90 120 96 6232 1336 4.67"
+      },
+      "extracted_values": {
+        "Lewis_acid": "FeCl3",
+        "temperature_C": 90,
+        "time_min": 120,
+        "conversion_pct": 96,
+        "Mw": 6232,
+        "Mn": 1336,
+        "DM": 4.67
+      },
+      "confidence": 0.88
+    },
+    {
+      "id": "ev_t5_e1",
+      "kind": "table",
+      "location": {
+        "section": "Table 5",
+        "page": 8,
+        "char_span": null,
+        "quote": "1 InCl3 [C4C1Im][BF4] 90 (118 h) 54 426,155 206,094 2.07 71.8"
+      },
+      "extracted_values": {
+        "Lewis_acid": "InCl3",
+        "IL": "[C4C1Im][BF4]",
+        "temperature_C": 90,
+        "conversion_pct": 54,
+        "Mw": 426155,
+        "Mn": 206094,
+        "DM": 2.07,
+        "Tg_C": 71.8
+      },
+      "confidence": 0.88
+    }
+  ],
+  "bindings": [
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev_t2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev_t3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev_t5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev_t5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c4",
+      "evidence_id": "ev_t5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c5",
+      "evidence_id": "ev_fe2cl7",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c6",
+      "evidence_id": "ev_ntf2_93",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c7",
+      "evidence_id": "ev_solubility",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c8",
+      "evidence_id": "ev_t1_incl3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c9",
+      "evidence_id": "ev_bueno",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c10",
+      "evidence_id": "ev_t2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c11",
+      "evidence_id": "ev_t3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c12",
+      "evidence_id": "ev_vijay",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c13",
+      "evidence_id": "ev_verebelyi",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c14",
+      "evidence_id": "ev_fig2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c15",
+      "evidence_id": "ev_t5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c16",
+      "evidence_id": "ev_t5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c17",
+      "evidence_id": "ev_t4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c18",
+      "evidence_id": "ev_fig3a",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c19",
+      "evidence_id": "ev_fig3b",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c20",
+      "evidence_id": "ev_ratio",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c21",
+      "evidence_id": "ev_t5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c22",
+      "evidence_id": "ev_lit_range",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c23",
+      "evidence_id": "ev_dsc",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c24",
+      "evidence_id": "ev_prelim",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c25",
+      "evidence_id": "ev_t5_e18",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c26",
+      "evidence_id": "ev_t5_e1",
+      "relation": "rests_on"
+    }
+  ]
+}

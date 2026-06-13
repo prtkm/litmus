@@ -1,0 +1,1302 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "economics-anchuri2026-gas-demand-elasticity-l1-l2",
+  "meta": {
+    "title": "Price Elasticity of Gas Demand on L1 and L2: Evidence from Ethereum and Arbitrum",
+    "authors": [
+      "Pranay Anchuri",
+      "Akaki Mamageishvili"
+    ],
+    "venue": "arXiv:2606.13555v1 [econ.EM]",
+    "notes": "Figure 1 caption N (16,939,781) differs from N printed inside plot (16,962,902); both transcribed in ev7. Table 7 lists C0 wallets as 2,606 in the table but 2,608 in Table 4 / Table 13.",
+    "extractor": "litmus.extract",
+    "model": "claude-opus-4-8",
+    "source": "opus-native-pdf"
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "text": "On Ethereum mainnet (full year 2025), the pooled IV elasticity is -0.006***, near-inelastic: a 10% fee increase reduces total gas demand by approximately 0.06%.",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "the pooled IV elasticity is −0.006∗∗∗, near-inelastic: a 10% fee increase reduces total\ngas demand by approximately 0.06%"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_pooled_L1_IV_elasticity == -0.0059 (rounded -0.006); 10*|elasticity| approx 0.06%",
+      "strength": "approximate",
+      "scope": "Ethereum mainnet, full year 2025, pooled IV",
+      "evidence_refs": [
+        "ev1",
+        "ev9"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "id": "c2",
+      "text": "On Arbitrum One (October 2025–April 2026), the pooled IV elasticity is -0.036**.",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "On Arbitrum One (October 2025–April 2026), the pooled IV\nelasticity is −0.036∗∗"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_pooled_L2_IV_elasticity == -0.0359 (rounded -0.036)",
+      "strength": "approximate",
+      "scope": "Arbitrum One, Oct 2025–Apr 2026, pooled IV",
+      "evidence_refs": [
+        "ev2",
+        "ev10"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "id": "c3",
+      "text": "L2 is measurably more responsive than L1; the L2 pooled estimate is six times larger in magnitude than the L1 estimate.",
+      "location": {
+        "section": "7.2 IV Estimates",
+        "page": 15,
+        "char_span": null,
+        "quote": "six times larger in magnitude than the Ethereum estimate"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "abs(L2_pooled_elasticity)/abs(L1_pooled_elasticity) approx 6 ; -0.0359/-0.0059",
+      "strength": "comparative",
+      "scope": "pooled IV estimates L1 vs L2",
+      "evidence_refs": [
+        "ev9",
+        "ev10"
+      ],
+      "confidence": 0.93
+    },
+    {
+      "id": "c4",
+      "text": "A 10% fee increase on Arbitrum reduces total gas demand by an estimated 0.36%.",
+      "location": {
+        "section": "7.2 IV Estimates",
+        "page": 15,
+        "char_span": null,
+        "quote": "A\n10% fee increase on Arbitrum reduces total gas demand by an estimated 0.36%"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "10*|L2_pooled_elasticity| == 0.36% ; 10*0.0359 ≈ 0.36",
+      "strength": "approximate",
+      "scope": "Arbitrum pooled IV",
+      "evidence_refs": [
+        "ev10"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c5",
+      "text": "Per-resource L2 elasticities range from computation (-0.027*) to refunds (-0.27***), with storage growth (-0.15***) and calldata (-0.06*) in between.",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "elasticities ranging from modestly\nelastic computation (−0.027∗) to −0.27∗∗∗ for refunds, with storage growth (−0.15∗∗∗) and calldata\n(−0.06∗) in between"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "per-resource IV elasticities: computation -0.0274, refund -0.2688, storageGrowth -0.1510, l2Calldata -0.0575",
+      "strength": "comparative",
+      "scope": "L2 per-resource pooled IV, Table 8",
+      "evidence_refs": [
+        "ev3",
+        "ev4",
+        "ev5",
+        "ev6"
+      ],
+      "confidence": 0.94
+    },
+    {
+      "id": "c6",
+      "text": "Cluster-level elasticities reach up to roughly 6x the pooled estimate.",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "with cluster-level elasticities up to roughly\n6× the pooled estimate"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "max cluster elasticity magnitude / pooled magnitude approx 6",
+      "strength": "comparative",
+      "scope": "behavioral clustering, cluster-level vs pooled",
+      "evidence_refs": [
+        "ev9",
+        "ev11"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "c7",
+      "text": "A pooled OLS regression of log gas usage on log base fee across 16,939,781 Arbitrum wallet-hour observations yields beta_hat = +0.094, a positive coefficient.",
+      "location": {
+        "section": "Introduction",
+        "page": 2,
+        "char_span": null,
+        "quote": "log gas usage on log base fee across 16,939,781 Arbitrum wallet-hour observations yields\nβˆ = +0.094, a positive coefficient that contradicts the expected negative demand response"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "raw_OLS_slope == +0.094 over N=16,939,781 wallet-hour observations",
+      "strength": "exact",
+      "scope": "Figure 1, Arbitrum L2 panel, raw pooled OLS",
+      "evidence_refs": [
+        "ev7"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c8",
+      "text": "The Ethereum L1 panel contains 44,449 wallets observed over 365 daily periods, yielding 35,276,914 wallet-day observations.",
+      "location": {
+        "section": "3.1 Ethereum L1",
+        "page": 4,
+        "char_span": null,
+        "quote": "the panel data contains 44,449 wallets observed over 365 daily\nperiods, yielding a total of 35,276,914 wallet-day observations"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "wallet_day_obs consistent with 44,449 wallets x 365 periods (panel may be unbalanced); reported_total == 35,276,914",
+      "strength": "exact",
+      "scope": "Ethereum L1 dataset, 2025",
+      "evidence_refs": [
+        "ev8"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c9",
+      "text": "The Arbitrum L2 panel contains 23,119 wallets observed over 5,087 hourly periods, yielding 16,939,781 wallet-hour observations.",
+      "location": {
+        "section": "3.2 Arbitrum L2",
+        "page": 5,
+        "char_span": null,
+        "quote": "The resulting panel contains 23,119 wallets observed over 5,087 hourly periods,\nyielding a total of 16,939,781 wallet-hour observations"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported_wallet_hour_total == 16,939,781 over 23,119 wallets x 5,087 periods",
+      "strength": "exact",
+      "scope": "Arbitrum L2 dataset, Oct 2025–Apr 2026",
+      "evidence_refs": [
+        "ev12"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c10",
+      "text": "The FE-OLS (two-way fixed effects) estimate of beta is -0.007 on Ethereum and -0.016 on Arbitrum.",
+      "location": {
+        "section": "4.2.0.4 Residual endogeneity",
+        "page": 8,
+        "char_span": null,
+        "quote": "The FE-OLS estimate\nof β is −0.007 on Ethereum and −0.016 on Arbitrum, both negative"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "FE_OLS_L1 == -0.007 (Table6 -0.0074) ; FE_OLS_L2 == -0.016 (Table7 -0.0161)",
+      "strength": "approximate",
+      "scope": "two-way FE-OLS estimates L1 and L2",
+      "evidence_refs": [
+        "ev9",
+        "ev10"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "c11",
+      "text": "Omitting log n_it from both stages reverses the sign of the estimate (+0.052 on Ethereum, +1.52 on Arbitrum).",
+      "location": {
+        "section": "footnote 3",
+        "page": 7,
+        "char_span": null,
+        "quote": "Omitting log nit from both stages reverses the sign of the estimate (+0.052 on Ethereum, +1.52 on\nArbitrum)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "estimate_without_control_L1 == +0.052 ; estimate_without_control_L2 == +1.52",
+      "strength": "exact",
+      "scope": "specification without transaction-count control",
+      "evidence_refs": [
+        "ev13"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c12",
+      "text": "On L1 the overall first-stage coefficient is pi_hat = 0.480 and the first-stage partial R^2 is 0.252.",
+      "location": {
+        "section": "6.1 First Stage",
+        "page": 12,
+        "char_span": null,
+        "quote": "The overall first-stage coefficient is πˆ = 0.480."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "L1_first_stage_coef == 0.480 ; L1_first_stage_partial_R2 == 0.252",
+      "strength": "exact",
+      "scope": "Ethereum L1 first stage",
+      "evidence_refs": [
+        "ev14"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c13",
+      "text": "On L2 the pooled first-stage coefficient is pi_hat = 0.052 and the first-stage partial R^2 is only 0.007.",
+      "location": {
+        "section": "7.1 First Stage",
+        "page": 14,
+        "char_span": null,
+        "quote": "The pooled first-stage coefficient\nis πˆ = 0.052"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "L2_first_stage_coef == 0.052 ; L2_first_stage_partial_R2 == 0.007",
+      "strength": "exact",
+      "scope": "Arbitrum L2 pooled first stage",
+      "evidence_refs": [
+        "ev15"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c14",
+      "text": "The L1 pooled IV elasticity is -0.0059*** (SE = 0.0005), with partial F = 11,873,625.",
+      "location": {
+        "section": "6.2 IV Estimates",
+        "page": 12,
+        "char_span": null,
+        "quote": "The pooled elasticity is −0.0059∗∗∗ (SE = 0.0005)"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "L1_pooled_IV == -0.0059, SE == 0.0005, p<0.001, partial_F == 11,873,625",
+      "strength": "exact",
+      "scope": "Table 6 pooled row",
+      "evidence_refs": [
+        "ev9"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c15",
+      "text": "The L2 pooled IV elasticity is -0.0359** (SE = 0.0141), partial F = 118,405.",
+      "location": {
+        "section": "7.2 IV Estimates",
+        "page": 15,
+        "char_span": null,
+        "quote": "The pooled elasticity\nis −0.0359∗∗ (SE = 0.0141)"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "L2_pooled_IV == -0.0359, SE == 0.0141, p<0.01, partial_F == 118,405",
+      "strength": "exact",
+      "scope": "Table 7 pooled row",
+      "evidence_refs": [
+        "ev10"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c16",
+      "text": "L1 cluster C3 (always-on) has the highest first-stage F (pi_hat = 0.689, F = 15,170,218) yet a near-zero, statistically insignificant elasticity (-0.0010, p = 0.17).",
+      "location": {
+        "section": "6.2 IV Estimates",
+        "page": 13,
+        "char_span": null,
+        "quote": "Wallets in C3 (9.3%) have the highest first-stage F\n(πˆ = 0.689, F = 15,170,218) yet the elasticity is near-zero and statistically insignificant\n(−0.0010, p = 0.17)"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "C3_first_stage_coef == 0.689, F == 15,170,218, IV == -0.0010, p == 0.17",
+      "strength": "exact",
+      "scope": "Table 6 cluster C3",
+      "evidence_refs": [
+        "ev9",
+        "ev16"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c17",
+      "text": "L2 cluster C1 (long-running) IV elasticity is -0.0782** (SE = 0.0268, F = 113,875).",
+      "location": {
+        "section": "7.2 IV Estimates",
+        "page": 15,
+        "char_span": null,
+        "quote": "with βˆ = −0.0782∗∗ (SE = 0.0268, F = 113,875)"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "C1_L2_IV == -0.0782, SE == 0.0268, p<0.01, F == 113,875",
+      "strength": "exact",
+      "scope": "Table 7 cluster C1",
+      "evidence_refs": [
+        "ev10"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c18",
+      "text": "L2 cluster C2 IV estimate is near-zero and statistically insignificant (-0.0057, p = 0.88).",
+      "location": {
+        "section": "7.2 IV Estimates",
+        "page": 15,
+        "char_span": null,
+        "quote": "is near-zero and statistically insignificant (−0.0057, p = 0.88)"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "C2_L2_IV == -0.0057, p == 0.88",
+      "strength": "exact",
+      "scope": "Table 7 cluster C2",
+      "evidence_refs": [
+        "ev10"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c19",
+      "text": "L2 cluster C5 yields a positive estimate (+0.0314, p = 0.21) and C0 yields beta_hat = -1.163, both excluded from causal interpretation.",
+      "location": {
+        "section": "7.2 IV Estimates",
+        "page": 15,
+        "char_span": null,
+        "quote": "yields a positive estimate (+0.0314, p = 0.21), consistent with exclusion restriction\nfailure"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "C5_L2_IV == +0.0314, p == 0.21 ; C0_L2_IV == -1.163",
+      "strength": "exact",
+      "scope": "Table 7 clusters C5 and C0",
+      "evidence_refs": [
+        "ev10"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c20",
+      "text": "L2 per-resource pooled IV: computation -0.0274* (SE 0.0123), historyGrowth -0.0109 n.s. (p=0.72), storageAccessRead +0.0344*, storageAccessWrite +0.1186***, storageGrowth -0.1510***, l2Calldata -0.0575*, refund -0.2688***.",
+      "location": {
+        "section": "8.1 Per-Dimension Pooled Estimates",
+        "page": 16,
+        "char_span": null,
+        "quote": "Computation gas, the dominant\ncomponent of most transactions, is modestly elastic at −0.0274∗(SE = 0.0123). Storage\ngrowth and refunds are the most price-sensitive: −0.1510∗∗∗ (SE = 0.0446) and −0.2688∗∗∗"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "per-resource IV values match Table 8 columns",
+      "strength": "exact",
+      "scope": "Table 8 L2 per-resource pooled IV",
+      "evidence_refs": [
+        "ev3",
+        "ev4",
+        "ev5",
+        "ev6",
+        "ev17"
+      ],
+      "confidence": 0.93
+    },
+    {
+      "id": "c21",
+      "text": "History growth per-resource elasticity is statistically insignificant from zero (p = 0.72).",
+      "location": {
+        "section": "8.1 Per-Dimension Pooled Estimates",
+        "page": 16,
+        "char_span": null,
+        "quote": "History growth is statistically insignificant from zero (p = 0.72)"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "historyGrowth_pvalue == 0.72",
+      "strength": "exact",
+      "scope": "Table 8 historyGrowth",
+      "evidence_refs": [
+        "ev17"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c22",
+      "text": "Storage growth and refunds effects are concentrated in per-resource cluster C3 (35.0%): -0.3709*** for storage growth (SE = 0.0549) and -0.4157*** for refunds (SE = 0.0514).",
+      "location": {
+        "section": "8.3 Most Elastic Resources",
+        "page": 17,
+        "char_span": null,
+        "quote": "−0.3709∗∗∗ for storage growth (SE = 0.0549)\nand −0.4157∗∗∗ for refunds (SE = 0.0514)"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "C3_storageGrowth_IV == -0.3709, SE == 0.0549 ; C3_refund_IV == -0.4157, SE == 0.0514",
+      "strength": "exact",
+      "scope": "per-resource cluster C3",
+      "evidence_refs": [
+        "ev18",
+        "ev19"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c23",
+      "text": "The share of active wallet-hours using storage reads is effectively constant across base-fee deciles (0.951–0.956); storage writes decline from 0.835 to 0.773.",
+      "location": {
+        "section": "8.2 Positive Elasticities",
+        "page": 16,
+        "char_span": null,
+        "quote": "effectively constant across base-fee\ndeciles (0.951–0.956)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "storage_read_share_range == [0.951,0.956] ; storage_write_share from 0.835 to 0.773",
+      "strength": "approximate",
+      "scope": "selection by fee decile, L2 per-resource",
+      "evidence_refs": [
+        "ev20"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "c24",
+      "text": "On Ethereum the base fee adjusts by at most ±12.5% per block (approximately 12 seconds).",
+      "location": {
+        "section": "4.2.0.3 Time granularity",
+        "page": 7,
+        "char_span": null,
+        "quote": "the base fee adjusts\nby at most ±12.5% per block (approximately 12 seconds)"
+      },
+      "epistemic_tier": "T1",
+      "predicate": "max_base_fee_adjustment_per_block == 12.5% ; block_time approx 12 s",
+      "strength": "bound",
+      "scope": "Ethereum mainnet EIP-1559",
+      "evidence_refs": [
+        "ev21"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c25",
+      "text": "Ethereum's target moved up by a factor of 2, from 15M to 30M gas.",
+      "location": {
+        "section": "2.1 The EIP-1559 Fee Mechanism",
+        "page": 3,
+        "char_span": null,
+        "quote": "the target has moved up by a factor of 2 on\nEthereum, from 15M to 30M"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "30M / 15M == 2",
+      "strength": "exact",
+      "scope": "Ethereum gas target",
+      "evidence_refs": [
+        "ev22"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c26",
+      "text": "Arbitrum increased its base fee floor from 0.01 gwei to 0.02 gwei; Arbitrum's 0.02 gwei floor is roughly 4x Base's 0.005 gwei floor.",
+      "location": {
+        "section": "2.2 L1 vs. L2 Fee Regimes",
+        "page": 4,
+        "char_span": null,
+        "quote": "Arbitrum increased it from 0.01\ngwei to 0.02 gwei"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "Arbitrum_floor == 0.02 gwei ; 0.02/0.005 == 4 (roughly 4x Base)",
+      "strength": "approximate",
+      "scope": "L2 base fee floors",
+      "evidence_refs": [
+        "ev23"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c27",
+      "text": "Arbitrum's 250 ms block time generates 48x more blocks per unit time than Ethereum's 12-second blocks.",
+      "location": {
+        "section": "3.1 Ethereum L1",
+        "page": 4,
+        "char_span": null,
+        "quote": "Arbitrum’s 250 ms block time generates 48× more\nblocks per unit time than Ethereum’s 12-second blocks"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "12000 ms / 250 ms == 48",
+      "strength": "exact",
+      "scope": "block time comparison",
+      "evidence_refs": [
+        "ev24"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c28",
+      "text": "Conclusion: pooled IV estimates of -0.006 (L1) and -0.036 (L2) imply a 10% fee increase reduces total demand by at most 0.4%.",
+      "location": {
+        "section": "12 Conclusion",
+        "page": 21,
+        "char_span": null,
+        "quote": "pooled IV estimates of −0.006 (L1) and −0.036\n(L2) imply that a 10% fee increase reduces total demand by at most 0.4%"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "10*|L2_elasticity| == 0.36% <= 0.4% ; 10*|L1| == 0.06%",
+      "strength": "bound",
+      "scope": "conclusion summary",
+      "evidence_refs": [
+        "ev9",
+        "ev10"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c29",
+      "text": "All three k-means analyses exhibit a clear kink at k = 6, the chosen number of clusters.",
+      "location": {
+        "section": "5.1 Clustering Procedure",
+        "page": 10,
+        "char_span": null,
+        "quote": "all three exhibit a clear kink\nat k = 6"
+      },
+      "epistemic_tier": "T8",
+      "predicate": "chosen_k == 6 by elbow method for all three analyses",
+      "strength": "qualitative",
+      "scope": "clustering diagnostics",
+      "evidence_refs": [
+        "ev25"
+      ],
+      "confidence": 0.7
+    },
+    {
+      "id": "c30",
+      "text": "The median C5 wallet conducts 75.4% of its active hours in above-median-fee periods (IQR: 40.0–87.9%), compared with 27.0–48.1% for all other clusters.",
+      "location": {
+        "section": "C Exclusion Restriction Discussion",
+        "page": 26,
+        "char_span": null,
+        "quote": "The median C5 wallet conducts 75.4% of\nits active hours in above-median-fee periods (IQR: 40.0–87.9%), compared with 27.0–48.1%\nfor all other clusters"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "C5_median_high_fee_fraction == 0.754, P25 == 0.400, P75 == 0.879",
+      "strength": "exact",
+      "scope": "Table 13 L2 cluster C5",
+      "evidence_refs": [
+        "ev26"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c31",
+      "text": "L2 per-resource cluster C2 shows large negative elasticities (e.g. computation -0.1590***, historyGrowth -0.6859***, calldata -0.3560***), while C3 is strongly negative for storage growth (-0.3709***) and refunds (-0.4157***).",
+      "location": {
+        "section": "Table 9",
+        "page": 17,
+        "char_span": null,
+        "quote": "computation −0.1590∗∗∗ −0.0232 n.s."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "C2 and C3 per-resource IV values match Table 9",
+      "strength": "exact",
+      "scope": "Table 9 clusters C2, C3",
+      "evidence_refs": [
+        "ev27"
+      ],
+      "confidence": 0.9
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev1",
+      "kind": "statistic",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "the pooled IV elasticity is −0.006∗∗∗"
+      },
+      "extracted_values": {
+        "L1_pooled_IV_elasticity_rounded": -0.006,
+        "significance": "p<0.001"
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev2",
+      "kind": "statistic",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "the pooled IV\nelasticity is −0.036∗∗"
+      },
+      "extracted_values": {
+        "L2_pooled_IV_elasticity_rounded": -0.036,
+        "significance": "p<0.01"
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev3",
+      "kind": "statistic",
+      "location": {
+        "section": "Table 8",
+        "page": 16,
+        "char_span": null,
+        "quote": "computation 23,119 −0.0026 −0.0274∗0.0123 118,405"
+      },
+      "extracted_values": {
+        "resource": "computation",
+        "beta_OLS": -0.0026,
+        "beta_IV": -0.0274,
+        "SE": 0.0123,
+        "partial_F": 118405,
+        "p_upper_bound": 0.05
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev4",
+      "kind": "statistic",
+      "location": {
+        "section": "Table 8",
+        "page": 16,
+        "char_span": null,
+        "quote": "refund 17,770 −0.0232 −0.2688∗∗∗ 0.0414 30,666"
+      },
+      "extracted_values": {
+        "resource": "refund",
+        "beta_OLS": -0.0232,
+        "beta_IV": -0.2688,
+        "SE": 0.0414,
+        "partial_F": 30666,
+        "p_upper_bound": 0.001
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev5",
+      "kind": "statistic",
+      "location": {
+        "section": "Table 8",
+        "page": 16,
+        "char_span": null,
+        "quote": "storageGrowth 18,990 −0.0388 −0.1510∗∗∗ 0.0446 26,104"
+      },
+      "extracted_values": {
+        "resource": "storageGrowth",
+        "beta_OLS": -0.0388,
+        "beta_IV": -0.151,
+        "SE": 0.0446,
+        "partial_F": 26104,
+        "p_upper_bound": 0.001
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev6",
+      "kind": "statistic",
+      "location": {
+        "section": "Table 8",
+        "page": 16,
+        "char_span": null,
+        "quote": "l2Calldata 20,799 −0.0125 −0.0575∗0.0228 71,727"
+      },
+      "extracted_values": {
+        "resource": "l2Calldata",
+        "beta_OLS": -0.0125,
+        "beta_IV": -0.0575,
+        "SE": 0.0228,
+        "partial_F": 71727,
+        "p_upper_bound": 0.05
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev7",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 1",
+        "page": 2,
+        "char_span": null,
+        "quote": "βˆ = +0.094, a positive coefficient"
+      },
+      "extracted_values": {
+        "raw_OLS_slope": 0.094,
+        "N_caption": 16939781,
+        "N_in_plot": 16962902,
+        "R_squared": 0.001,
+        "slope_SE": 0.0007
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev8",
+      "kind": "text",
+      "location": {
+        "section": "3.1 Ethereum L1",
+        "page": 4,
+        "char_span": null,
+        "quote": "44,449 wallets observed over 365 daily\nperiods, yielding a total of 35,276,914 wallet-day observations"
+      },
+      "extracted_values": {
+        "wallets": 44449,
+        "periods": 365,
+        "reported_total_obs": 35276914,
+        "min_tx_threshold": 500
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev9",
+      "kind": "table",
+      "location": {
+        "section": "Table 6",
+        "page": 15,
+        "char_span": null,
+        "quote": "Pooled 44,449 (100%) −0.0074 −0.0059∗∗∗ 0.0005 11,873,625"
+      },
+      "extracted_values": {
+        "pooled_wallets": 44449,
+        "pooled_beta_OLS": -0.0074,
+        "pooled_beta_IV": -0.0059,
+        "pooled_SE": 0.0005,
+        "pooled_partial_F": 11873625,
+        "C0_beta_IV": -0.0236,
+        "C0_SE": 0.0015,
+        "C5_beta_IV": -0.0212,
+        "C5_SE": 0.0022,
+        "C3_beta_IV": -0.001,
+        "C2_beta_IV": -0.0016
+      },
+      "confidence": 0.93
+    },
+    {
+      "id": "ev10",
+      "kind": "table",
+      "location": {
+        "section": "Table 7",
+        "page": 15,
+        "char_span": null,
+        "quote": "Pooled 23,119 (100%) −0.0161 −0.0359∗∗ 0.0141 118,405"
+      },
+      "extracted_values": {
+        "pooled_wallets": 23119,
+        "pooled_beta_OLS": -0.0161,
+        "pooled_beta_IV": -0.0359,
+        "pooled_SE": 0.0141,
+        "pooled_partial_F": 118405,
+        "C0_beta_IV": -1.163,
+        "C1_beta_IV": -0.0782,
+        "C1_SE": 0.0268,
+        "C1_F": 113875,
+        "C2_beta_IV": -0.0057,
+        "C3_beta_IV": 0.0792,
+        "C4_beta_IV": -0.1272,
+        "C5_beta_IV": 0.0314
+      },
+      "confidence": 0.93
+    },
+    {
+      "id": "ev11",
+      "kind": "text",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "cluster-level elasticities up to roughly\n6× the pooled estimate"
+      },
+      "extracted_values": {
+        "multiplier": 6
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "ev12",
+      "kind": "text",
+      "location": {
+        "section": "3.2 Arbitrum L2",
+        "page": 5,
+        "char_span": null,
+        "quote": "23,119 wallets observed over 5,087 hourly periods,\nyielding a total of 16,939,781 wallet-hour observations"
+      },
+      "extracted_values": {
+        "wallets": 23119,
+        "periods": 5087,
+        "reported_total_obs": 16939781,
+        "min_tx_threshold": 500
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev13",
+      "kind": "statistic",
+      "location": {
+        "section": "footnote 3",
+        "page": 7,
+        "char_span": null,
+        "quote": "reverses the sign of the estimate (+0.052 on Ethereum, +1.52 on\nArbitrum)"
+      },
+      "extracted_values": {
+        "no_control_L1": 0.052,
+        "no_control_L2": 1.52
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev14",
+      "kind": "statistic",
+      "location": {
+        "section": "6.1 First Stage",
+        "page": 12,
+        "char_span": null,
+        "quote": "The first-stage partial R2is 0.252"
+      },
+      "extracted_values": {
+        "L1_first_stage_coef": 0.48,
+        "L1_first_stage_partial_R2": 0.252
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev15",
+      "kind": "statistic",
+      "location": {
+        "section": "7.1 First Stage",
+        "page": 14,
+        "char_span": null,
+        "quote": "the first-stage partial R2is only 0.007"
+      },
+      "extracted_values": {
+        "L2_first_stage_coef": 0.052,
+        "L2_first_stage_partial_R2": 0.007,
+        "L2_pooled_partial_F": 118405,
+        "C0_F": 1361,
+        "C1_F": 113875
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev16",
+      "kind": "table",
+      "location": {
+        "section": "Table 6",
+        "page": 15,
+        "char_span": null,
+        "quote": "C3 (always-on) 4,123 (9.3%) −0.0022 −0.0010 n.s. 0.0007 15,170,218"
+      },
+      "extracted_values": {
+        "cluster": "C3",
+        "beta_OLS": -0.0022,
+        "beta_IV": -0.001,
+        "SE": 0.0007,
+        "partial_F": 15170218,
+        "first_stage_coef": 0.689
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev17",
+      "kind": "table",
+      "location": {
+        "section": "Table 8",
+        "page": 16,
+        "char_span": null,
+        "quote": "historyGrowth 20,052 −0.0109 −0.0109 n.s. 0.0304 46,410"
+      },
+      "extracted_values": {
+        "historyGrowth_beta_IV": -0.0109,
+        "historyGrowth_SE": 0.0304,
+        "historyGrowth_pvalue": 0.72,
+        "storageAccessRead_beta_IV": 0.0344,
+        "storageAccessWrite_beta_IV": 0.1186
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev18",
+      "kind": "table",
+      "location": {
+        "section": "Table 9",
+        "page": 17,
+        "char_span": null,
+        "quote": "storageGrowth +0.1274 n.s. −0.3709∗∗∗"
+      },
+      "extracted_values": {
+        "C3_storageGrowth_IV": -0.3709,
+        "C3_storageGrowth_SE": 0.0549
+      },
+      "confidence": 0.88
+    },
+    {
+      "id": "ev19",
+      "kind": "table",
+      "location": {
+        "section": "Table 9",
+        "page": 17,
+        "char_span": null,
+        "quote": "refund +0.0781 n.s. −0.4157∗∗∗"
+      },
+      "extracted_values": {
+        "C3_refund_IV": -0.4157,
+        "C3_refund_SE": 0.0514
+      },
+      "confidence": 0.88
+    },
+    {
+      "id": "ev20",
+      "kind": "text",
+      "location": {
+        "section": "8.2 Positive Elasticities",
+        "page": 16,
+        "char_span": null,
+        "quote": "Storage writes show a clearer decline (0.835\nat the lowest fee decile to 0.773 at the highest)"
+      },
+      "extracted_values": {
+        "storage_read_share_min": 0.951,
+        "storage_read_share_max": 0.956,
+        "storage_write_share_low": 0.835,
+        "storage_write_share_high": 0.773
+      },
+      "confidence": 0.88
+    },
+    {
+      "id": "ev21",
+      "kind": "number",
+      "location": {
+        "section": "4.2.0.3 Time granularity",
+        "page": 7,
+        "char_span": null,
+        "quote": "the base fee adjusts\nby at most ±12.5% per block (approximately 12 seconds)"
+      },
+      "extracted_values": {
+        "max_adjustment_pct": 12.5,
+        "block_time_s": 12
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev22",
+      "kind": "number",
+      "location": {
+        "section": "2.1 The EIP-1559 Fee Mechanism",
+        "page": 3,
+        "char_span": null,
+        "quote": "from 15M to 30M"
+      },
+      "extracted_values": {
+        "old_value": 15000000,
+        "new_value": 30000000,
+        "reported_pct_change": 100.0
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev23",
+      "kind": "number",
+      "location": {
+        "section": "2.2 L1 vs. L2 Fee Regimes",
+        "page": 4,
+        "char_span": null,
+        "quote": "Arbitrum increased it from 0.01\ngwei to 0.02 gwei"
+      },
+      "extracted_values": {
+        "old_value": 0.01,
+        "new_value": 0.02,
+        "reported_pct_change": 100.0,
+        "base_floor_gwei": 0.005,
+        "arbitrum_floor_gwei": 0.02,
+        "approx_ratio_to_base": 4
+      },
+      "confidence": 0.88
+    },
+    {
+      "id": "ev24",
+      "kind": "number",
+      "location": {
+        "section": "3.1 Ethereum L1",
+        "page": 4,
+        "char_span": null,
+        "quote": "Arbitrum’s 250 ms block time generates 48× more\nblocks per unit time than Ethereum’s 12-second blocks"
+      },
+      "extracted_values": {
+        "arbitrum_block_ms": 250,
+        "ethereum_block_s": 12,
+        "reported_ratio": 48
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev25",
+      "kind": "text",
+      "location": {
+        "section": "5.1 Clustering Procedure",
+        "page": 10,
+        "char_span": null,
+        "quote": "all three exhibit a clear kink\nat k = 6"
+      },
+      "extracted_values": {
+        "chosen_k": 6,
+        "k_range_tested": [
+          2,
+          12
+        ]
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev26",
+      "kind": "table",
+      "location": {
+        "section": "Table 13",
+        "page": 26,
+        "char_span": null,
+        "quote": "C5 Cong-active†6,466 0.754 0.400 0.879"
+      },
+      "extracted_values": {
+        "cluster": "C5",
+        "n_wallets": 6466,
+        "median": 0.754,
+        "P25": 0.4,
+        "P75": 0.879
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev27",
+      "kind": "table",
+      "location": {
+        "section": "Table 9",
+        "page": 17,
+        "char_span": null,
+        "quote": "computation −0.1590∗∗∗ −0.0232 n.s."
+      },
+      "extracted_values": {
+        "C2_computation_IV": -0.159,
+        "C2_historyGrowth_IV": -0.6859,
+        "C2_storageAccessRead_IV": -0.3189,
+        "C2_storageAccessWrite_IV": -0.3207,
+        "C2_l2Calldata_IV": -0.356,
+        "C3_computation_IV": -0.0232,
+        "C3_storageGrowth_IV": -0.3709,
+        "C3_refund_IV": -0.4157
+      },
+      "confidence": 0.9
+    }
+  ],
+  "bindings": [
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev9",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev10",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev9",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev10",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c4",
+      "evidence_id": "ev10",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c5",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c5",
+      "evidence_id": "ev4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c5",
+      "evidence_id": "ev5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c5",
+      "evidence_id": "ev6",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c6",
+      "evidence_id": "ev9",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c6",
+      "evidence_id": "ev11",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c7",
+      "evidence_id": "ev7",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c8",
+      "evidence_id": "ev8",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c9",
+      "evidence_id": "ev12",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c10",
+      "evidence_id": "ev9",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c10",
+      "evidence_id": "ev10",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c11",
+      "evidence_id": "ev13",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c12",
+      "evidence_id": "ev14",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c13",
+      "evidence_id": "ev15",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c14",
+      "evidence_id": "ev9",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c15",
+      "evidence_id": "ev10",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c16",
+      "evidence_id": "ev9",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c16",
+      "evidence_id": "ev16",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c17",
+      "evidence_id": "ev10",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c18",
+      "evidence_id": "ev10",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c19",
+      "evidence_id": "ev10",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c20",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c20",
+      "evidence_id": "ev4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c20",
+      "evidence_id": "ev5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c20",
+      "evidence_id": "ev6",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c20",
+      "evidence_id": "ev17",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c21",
+      "evidence_id": "ev17",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c22",
+      "evidence_id": "ev18",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c22",
+      "evidence_id": "ev19",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c23",
+      "evidence_id": "ev20",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c24",
+      "evidence_id": "ev21",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c25",
+      "evidence_id": "ev22",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c26",
+      "evidence_id": "ev23",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c27",
+      "evidence_id": "ev24",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c28",
+      "evidence_id": "ev9",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c28",
+      "evidence_id": "ev10",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c29",
+      "evidence_id": "ev25",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c30",
+      "evidence_id": "ev26",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c31",
+      "evidence_id": "ev27",
+      "relation": "rests_on"
+    }
+  ]
+}

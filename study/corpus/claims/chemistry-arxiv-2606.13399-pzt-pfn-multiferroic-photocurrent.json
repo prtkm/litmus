@@ -1,0 +1,1225 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "chemistry-arxiv-2606.13399-pzt-pfn-multiferroic-photocurrent",
+  "meta": {
+    "title": "Enhanced Photocurrent Response in Epitaxial 0.5PZT-0.5PFN Multiferroic Thin Films",
+    "note": "Materials physics paper on epitaxial PZTFN0.5 thin films; checkable claims are mostly reported physical quantities (T0/T2/T4), literature comparisons (T5), and band-model parameters (T1). Several values appear in both abstract and body (cross-consistency targets).",
+    "extractor": "litmus.extract",
+    "model": "claude-opus-4-8",
+    "source": "opus-native-pdf"
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The films display good ferroelectric properties with remanent polarization ≈ 17 µC/cm2 (PUND) and coercive field ≈ 150 kV/cm.",
+      "location": {
+        "section": "Abstract",
+        "page": 2,
+        "char_span": null,
+        "quote": "good ferroelectric properties (remanent polarization ≈ 17 µC/cm2, PUND; coercive field ≈ 150 kV/cm)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "abstract_Pr_uC_cm2 == body_PUND_Pr_uC_cm2 == 17",
+      "strength": "approximate",
+      "scope": "PZTFN0.5 epitaxial film, PUND technique",
+      "evidence_refs": [
+        "ev1",
+        "ev2"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c2",
+      "text": "The films exhibit weak ferromagnetic behavior at room temperature with remanence 1.30 emu/cm3 and coercive field 90 Oe.",
+      "location": {
+        "section": "Abstract",
+        "page": 2,
+        "char_span": null,
+        "quote": "weak ferromagnetic behavior at room temperature (remanence 1.30 emu/cm3; coercive field 90 Oe)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "abstract_Mr_emu_cm3 == body_Mr_emu_cm3 == 1.3; abstract_Hc_Oe == body_Hc_Oe == 90",
+      "strength": "approximate",
+      "scope": "STO//PZTFN0.5 thin film, room temperature, M-H loop",
+      "evidence_refs": [
+        "ev3"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c3",
+      "text": "Photovoltaic measurements under 403 nm illumination achieved Jsc values between ±20 µA/cm2.",
+      "location": {
+        "section": "Abstract",
+        "page": 2,
+        "char_span": null,
+        "quote": "achieving Jsc values \nbetween ±20 µA/cm2"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "abstract_Jsc_uA_cm2 (±20) consistent with body Jsc = 23 µA/cm2",
+      "strength": "approximate",
+      "scope": "403 nm monochromatic laser illumination",
+      "evidence_refs": [
+        "ev4",
+        "ev5"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c4",
+      "text": "The direct band gap energy is reduced from 3.6 eV in PZT to 3.0 eV in 0.5PZT-0.5PFN.",
+      "location": {
+        "section": "Introduction",
+        "page": 4,
+        "char_span": null,
+        "quote": "reducing the direct band gap energy from 3.6 eV in \nPZT to 3.0 eV in 0.5PZT-0.5PFN"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "stated_bandgap_PZT_eV == 3.6 and stated_bandgap_PZTFN_eV == 3.0 per ref [14]",
+      "strength": "comparative",
+      "scope": "ref [14], direct band gap",
+      "evidence_refs": [
+        "ev6"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c5",
+      "text": "The PZTFN0.5 film lattice parameters are a = 4.022 Å, c = 4.096 Å, and c/a = 1.018.",
+      "location": {
+        "section": "Results A",
+        "page": 6,
+        "char_span": null,
+        "quote": "lattice parameters a = 4.022 ˚A, c = 4.096 ˚A, and c/a = 1.018"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported_c_over_a == 4.096 / 4.022",
+      "strength": "exact",
+      "scope": "PZTFN0.5 film, RSM (103) reflection",
+      "evidence_refs": [
+        "ev7"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c6",
+      "text": "The film c/a tetragonality (1.018) closely aligns with bulk ceramics which exhibit c/a = 1.016.",
+      "location": {
+        "section": "Results A",
+        "page": 7,
+        "char_span": null,
+        "quote": "tetragonality closely aligns with that observed in bulk ceramics, which exhibit a c/a ratio of \n1.016 [8]"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "film_c_over_a (1.018) ≈ bulk_c_over_a (1.016) per ref [8]",
+      "strength": "comparative",
+      "scope": "bulk ceramics, ref [8]",
+      "evidence_refs": [
+        "ev7",
+        "ev8"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c7",
+      "text": "The lattice mismatch between STO substrate and the film is around 3%, corresponding to compressive strain.",
+      "location": {
+        "section": "Results A",
+        "page": 7,
+        "char_span": null,
+        "quote": "the mismatch between the \nsubstrate (STO) and the film gives a value of around 3%, corresponding to compressive\nstrain"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "mismatch_pct == 100*(a_STO - a_film)/a_STO with a_STO=3.905, a_film=4.022 ≈ -3%",
+      "strength": "approximate",
+      "scope": "STO substrate vs PZTFN0.5 film in-plane parameters",
+      "evidence_refs": [
+        "ev7",
+        "ev9"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c8",
+      "text": "The SRO layer thickness determined from oscillation period is approximately 20 nm for both samples.",
+      "location": {
+        "section": "Results A",
+        "page": 6,
+        "char_span": null,
+        "quote": "The SRO layer thickness determined from the \nperiod of the oscillations is approximately 20 nm for both samples"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "reported_SRO_thickness_nm == 20",
+      "strength": "approximate",
+      "scope": "both samples, XRD oscillations",
+      "evidence_refs": [
+        "ev10"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c9",
+      "text": "The final film thickness was around 80 nm with growth rate ≈ 0.04 nm/pulse.",
+      "location": {
+        "section": "Experimental",
+        "page": 5,
+        "char_span": null,
+        "quote": "The final thickness of \nthe samples was around 80 nm (growth rate ≈ 0.04 nm/pulse)"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported_thickness_nm == 80 consistent with growth_rate 0.04 nm/pulse",
+      "strength": "approximate",
+      "scope": "PZTFN0.5 deposited films",
+      "evidence_refs": [
+        "ev11"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c10",
+      "text": "Maximum capacitance values used for normalization were 690 pF for PZT and 960 pF for PZTFN0.5.",
+      "location": {
+        "section": "Results B",
+        "page": 9,
+        "char_span": null,
+        "quote": "maximum capacitance values: 690 pF for PZT and 960 pF for PZTFN0.5"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_Cmax_PZT_pF == 690 and reported_Cmax_PZTFN_pF == 960",
+      "strength": "exact",
+      "scope": "C-V measurements",
+      "evidence_refs": [
+        "ev12"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c11",
+      "text": "The estimated imprint field for the PZTFN0.5 sample from P-E loops is approximately 40 kV/cm.",
+      "location": {
+        "section": "Results B",
+        "page": 9,
+        "char_span": null,
+        "quote": "The estimated imprint field\nfor the PZTFN0.5 sample from P–E loops is approximately 40 kV/cm"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "reported_imprint_field_kV_cm == 40",
+      "strength": "approximate",
+      "scope": "PZTFN0.5 P-E loop, Fig 3b",
+      "evidence_refs": [
+        "ev13"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c12",
+      "text": "The saturation polarization reached in PZT is about 30% higher than in the PZTFN0.5 sample.",
+      "location": {
+        "section": "Results B",
+        "page": 11,
+        "char_span": null,
+        "quote": "the saturation polarization reached in PZT \nis about 30% higher than in the PZTFN0.5 sample"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_pct_higher == 100*(Psat_PZT - Psat_PZTFN)/Psat_PZTFN ≈ 30",
+      "strength": "comparative",
+      "scope": "PZT vs PZTFN0.5 P-E loops",
+      "evidence_refs": [
+        "ev14"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c13",
+      "text": "The Pr value obtained using the PUND technique was 17 µC/cm2.",
+      "location": {
+        "section": "Results B",
+        "page": 11,
+        "char_span": null,
+        "quote": "The Pr value obtained using this technique was 17 µC/cm2."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "PUND_Pr_uC_cm2 == 17",
+      "strength": "exact",
+      "scope": "PZTFN0.5, PUND technique, inset Fig 3b",
+      "evidence_refs": [
+        "ev2"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c14",
+      "text": "Up and Down polarization states remain clearly distinguishable up to 10^4 s in retention measurements.",
+      "location": {
+        "section": "Results B",
+        "page": 11,
+        "char_span": null,
+        "quote": "the Up and Down polarization states remain \nclearly distinguishable up to 104 s"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "retention_time_s == 1e4",
+      "strength": "qualitative",
+      "scope": "PUND retention, Fig S5",
+      "evidence_refs": [
+        "ev15"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c15",
+      "text": "The measured surface roughness was approximately 0.82 nm.",
+      "location": {
+        "section": "Results B",
+        "page": 12,
+        "char_span": null,
+        "quote": "The measured surface \nroughness was approximately 0.82 nm"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "reported_roughness_nm == 0.82",
+      "strength": "approximate",
+      "scope": "PZTFN0.5, PFM measurement",
+      "evidence_refs": [
+        "ev16"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c16",
+      "text": "The magnetization and coercive field for PZTFN0.5 epitaxial film (Mr = 1.3 emu/cm3, Hc = 90 Oe) are similar to PZTFT0.4 epitaxial films (Mr = 1.58 emu/cm3, Hc = 108 Oe).",
+      "location": {
+        "section": "Results B",
+        "page": 12,
+        "char_span": null,
+        "quote": "measured for the PZTFN0.5 epitaxial film (Mr = 1.3 emu/cm3, Hc = 90 Oe) are quite similar to \nthose reported for PZTFT0.4 epitaxial films (Mr = 1.58 emu/cm3, Hc = 108 Oe) [9]"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "PZTFN_Mr==1.3, Hc==90 vs PZTFT_Mr==1.58, Hc==108 per ref [9]",
+      "strength": "comparative",
+      "scope": "PZTFN0.5 vs PZTFT0.4, ref [9]",
+      "evidence_refs": [
+        "ev3",
+        "ev17"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c17",
+      "text": "A magnetic saturation of 12 emu/cm3 is observed, higher than PZTFT0.4 films (7 emu/cm3).",
+      "location": {
+        "section": "Results B",
+        "page": 12,
+        "char_span": null,
+        "quote": "a magnetic saturation of 12 emu/cm3 is observed, which is higher than that for \nPZTFT0.4 films (7 emu/cm3)"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "Msat_PZTFN_emu_cm3 == 12 > Msat_PZTFT_emu_cm3 == 7",
+      "strength": "comparative",
+      "scope": "PZTFN0.5 vs PZTFT0.4",
+      "evidence_refs": [
+        "ev18"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c18",
+      "text": "Comparing PLD PZTFN0.5 with sol-gel polycrystalline films, remanences are similar (1.3 and 1.8 emu/cm3) but coercive fields differ significantly (90 Oe versus 1500 Oe).",
+      "location": {
+        "section": "Results B",
+        "page": 12,
+        "char_span": null,
+        "quote": "the remanences are similar (1.3 emu/cm3 and 1.8 emu/cm3 [14]), but \nthere is\na significant difference in coercive field values (90 Oe versus 1500 Oe)"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "Mr_PLD==1.3 vs Mr_solgel==1.8; Hc_PLD==90 vs Hc_solgel==1500 per ref [14]",
+      "strength": "comparative",
+      "scope": "PLD vs sol-gel polycrystalline, ref [14]",
+      "evidence_refs": [
+        "ev19"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c19",
+      "text": "The 403 nm laser source has hν = 3.08 eV with optical fluence 100 ± 5 mW/cm2.",
+      "location": {
+        "section": "Experimental",
+        "page": 6,
+        "char_span": null,
+        "quote": "403 ± 8 nm (hν = 3.08 eV) laser source with a constant calibrated optical fluence of \n100 ± 5 mW/cm2"
+      },
+      "epistemic_tier": "T1",
+      "predicate": "photon_energy_eV == 1239.84/403 ≈ 3.08",
+      "strength": "exact",
+      "scope": "photovoltaic measurement laser source",
+      "evidence_refs": [
+        "ev20"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c20",
+      "text": "A notable increase in conductivity of about one order of magnitude occurs when light is switched ON vs OFF.",
+      "location": {
+        "section": "Results C",
+        "page": 13,
+        "char_span": null,
+        "quote": "A notable increase in conductivity (about one order of magnitude) occurs when the light \nis switched ON compared to the OFF state"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "conductivity_ratio_ON_OFF ≈ 10",
+      "strength": "approximate",
+      "scope": "PZTFN0.5 J-E response, Fig 4a",
+      "evidence_refs": [
+        "ev21"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c21",
+      "text": "The J-E response was measured for applied voltages from -3 V to 3 V (±375 kV/cm).",
+      "location": {
+        "section": "Results C",
+        "page": 13,
+        "char_span": null,
+        "quote": "applied \nvoltages ranging from −3 V to 3 V (±375 kV/cm)"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "field_kV_cm == voltage_V / thickness_cm; 3V over 80nm ≈ 375 kV/cm",
+      "strength": "exact",
+      "scope": "J-E DC measurement",
+      "evidence_refs": [
+        "ev22"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c22",
+      "text": "Schottky junction D1 (PZTFN0.5/Au) has a barrier height of 1.2 eV and D2 (SRO/PZTFN0.5) has a barrier height of 0.7 eV.",
+      "location": {
+        "section": "Results C",
+        "page": 16,
+        "char_span": null,
+        "quote": "D1 (PZTFN0.5/Au) with a barrier height of 1.2 eV, and D2 (SRO/PZTFN0.5) \nwith a barrier height of 0.7 eV"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "barrier_D2 == eϕAu - χ; barrier heights consistent with eϕSRO=4.6, eϕAu=5.1, Eg=3.0",
+      "strength": "exact",
+      "scope": "proposed band model, Fig 5",
+      "evidence_refs": [
+        "ev23",
+        "ev24"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "c23",
+      "text": "The model uses electron affinities eϕSRO = 4.6 eV and eϕAu = 5.1 eV, with band gap Eg = 3.0 eV for PZTFN0.5.",
+      "location": {
+        "section": "Results C",
+        "page": 15,
+        "char_span": null,
+        "quote": "The electron affinities involved are eϕSRO = 4.6 eV [23] and eϕAu = 5.1 eV [24], considering a \nband gap Eg = 3.0 eV for PZTFN0.5 [14]"
+      },
+      "epistemic_tier": "T1",
+      "predicate": "eϕSRO_eV==4.6, eϕAu_eV==5.1, Eg_eV==3.0 per refs [23][24][14]",
+      "strength": "exact",
+      "scope": "proposed physical model",
+      "evidence_refs": [
+        "ev24"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c24",
+      "text": "Unpoled sputter-deposited BFO films yielded Jsc of 4.5 µA/cm2 under similar illumination (405 nm, 100 mW/cm2).",
+      "location": {
+        "section": "Results C",
+        "page": 18,
+        "char_span": null,
+        "quote": "unpoled, sputter-deposited BFO films (100 nm thick) with ITO \nelectrodes yielded JSC of 4.5 µA/cm2 under similar illumination conditions (λ = 405 nm, 100 \nmW/cm2) [26]"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "BFO_Jsc_uA_cm2 == 4.5 per ref [26]",
+      "strength": "comparative",
+      "scope": "ref [26], BFO films",
+      "evidence_refs": [
+        "ev25"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c25",
+      "text": "Higher Jsc values up to 25 µA/cm2 have been reported for graphene/BFO/Pt heterojunctions.",
+      "location": {
+        "section": "Results C",
+        "page": 18,
+        "char_span": null,
+        "quote": "higher values, up to 25 µA/cm2, have been reported for \ngraphene/BFO/Pt heterojunctions [27]"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "graphene_BFO_Jsc_uA_cm2 == 25 per ref [27]",
+      "strength": "comparative",
+      "scope": "ref [27]",
+      "evidence_refs": [
+        "ev26"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c26",
+      "text": "The measured short-circuit photocurrent density Jsc = 23 µA/cm2 and open-circuit voltage Voc = -0.07 V.",
+      "location": {
+        "section": "Conclusions",
+        "page": 19,
+        "char_span": null,
+        "quote": "the short-circuit photocurrent density (JSC = 23 µA/cm2) and \nopencircuit voltage (VOC = −0.07 V)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_Jsc_uA_cm2 == 23 and reported_Voc_V == -0.07",
+      "strength": "exact",
+      "scope": "PZTFN0.5 under 403 nm",
+      "evidence_refs": [
+        "ev5"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c27",
+      "text": "The films exhibit saturated hysteresis loops with remanent polarization of 17 µC/cm2 (PUND) and high coercive fields exceeding 100 kV/cm.",
+      "location": {
+        "section": "Conclusions",
+        "page": 18,
+        "char_span": null,
+        "quote": "a remanent polarization \nof 17 µC/cm2 (PUND technique) and high coercive fields exceeding 100 kV/cm"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "conclusion_Pr_uC_cm2 == 17 and Ec_kV_cm > 100",
+      "strength": "bound",
+      "scope": "PZTFN0.5 epitaxial film",
+      "evidence_refs": [
+        "ev2"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c28",
+      "text": "PZTFT40/LSCO//MgO(001) films exhibit a remanent polarization of 13 µC/cm2 with Ec = 40 kV/cm.",
+      "location": {
+        "section": "Results B",
+        "page": 12,
+        "char_span": null,
+        "quote": "PZTFT40/LSCO//MgO(001) films exhibit a remanent \npolarization of 13 µC/cm2 [9]. However, the coercive field is significantly lower in this case \n(Ec = 40 kV/cm)"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "PZTFT40_Pr_uC_cm2 == 13, Ec_kV_cm == 40 per ref [9]",
+      "strength": "comparative",
+      "scope": "ref [9]",
+      "evidence_refs": [
+        "ev27"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c29",
+      "text": "Polycrystalline PZTFN0.5 films on Pt/Ti/SiO2/Si have reported Pr and Ec of 10 µC/cm2 and 80 kV/cm.",
+      "location": {
+        "section": "Results B",
+        "page": 12,
+        "char_span": null,
+        "quote": "Polycrystalline PZTFN0.5 films deposited on Pt/Ti/SiO2/Si substrates have \nreported Pr and Ec values of 10 µC/cm2 and 80 kV/cm, respectively [8]"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "poly_PZTFN_Pr_uC_cm2 == 10, Ec_kV_cm == 80 per ref [8]",
+      "strength": "comparative",
+      "scope": "ref [8]",
+      "evidence_refs": [
+        "ev28"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c30",
+      "text": "SRO layer grows coherently on STO with in-plane a = 3.905 Å and out-of-plane c = 3.945 Å.",
+      "location": {
+        "section": "Results A",
+        "page": 6,
+        "char_span": null,
+        "quote": "the SRO \nconductive bottom layer coherently grows on the STO substrate with in-plane parameter a \n= 3.905 ˚A and out-of-plane parameter c = 3.945 ˚A"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "SRO_a_angstrom == 3.905, SRO_c_angstrom == 3.945",
+      "strength": "exact",
+      "scope": "SRO layer on STO, RSM",
+      "evidence_refs": [
+        "ev29"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c31",
+      "text": "No photocurrent response is observed for the reference PZT film under 403 nm, while PZTFN0.5 shows a clear response; no response detected under 515 nm green light.",
+      "location": {
+        "section": "SI Figure S6",
+        "page": 28,
+        "char_span": null,
+        "quote": "no response is detected under green light illumination of 515 nm. For the reference\nPZT film, no significant photocurrent response is observed under 403 nm illumination"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "PZT_photocurrent_403nm ≈ 0; PZTFN_photocurrent_515nm ≈ 0",
+      "strength": "qualitative",
+      "scope": "Fig S6, 0.5 V applied",
+      "evidence_refs": [
+        "ev30"
+      ],
+      "confidence": 0.85
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev1",
+      "kind": "number",
+      "location": {
+        "section": "Abstract",
+        "page": 2,
+        "char_span": null,
+        "quote": "remanent polarization ≈ 17 µC/cm2, PUND; coercive field ≈ 150 kV/cm"
+      },
+      "extracted_values": {
+        "Pr_uC_cm2": 17,
+        "Ec_kV_cm": 150
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev2",
+      "kind": "number",
+      "location": {
+        "section": "Results B",
+        "page": 11,
+        "char_span": null,
+        "quote": "The Pr value obtained using this technique was 17 µC/cm2."
+      },
+      "extracted_values": {
+        "PUND_Pr_uC_cm2": 17,
+        "prose_value": 17,
+        "source_value": 17,
+        "quantity": "remanent polarization (PUND)"
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev3",
+      "kind": "number",
+      "location": {
+        "section": "Results B",
+        "page": 12,
+        "char_span": null,
+        "quote": "PZTFN0.5 epitaxial film (Mr = 1.3 emu/cm3, Hc = 90 Oe)"
+      },
+      "extracted_values": {
+        "Mr_emu_cm3": 1.3,
+        "Hc_Oe": 90
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev4",
+      "kind": "number",
+      "location": {
+        "section": "Abstract",
+        "page": 2,
+        "char_span": null,
+        "quote": "Jsc values \nbetween ±20 µA/cm2"
+      },
+      "extracted_values": {
+        "Jsc_uA_cm2": 20
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev5",
+      "kind": "number",
+      "location": {
+        "section": "Conclusions",
+        "page": 19,
+        "char_span": null,
+        "quote": "the short-circuit photocurrent density (JSC = 23 µA/cm2) and \nopencircuit voltage (VOC = −0.07 V)"
+      },
+      "extracted_values": {
+        "Jsc_uA_cm2": 23,
+        "Voc_V": -0.07
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev6",
+      "kind": "number",
+      "location": {
+        "section": "Introduction",
+        "page": 4,
+        "char_span": null,
+        "quote": "reducing the direct band gap energy from 3.6 eV in \nPZT to 3.0 eV in 0.5PZT-0.5PFN"
+      },
+      "extracted_values": {
+        "old_value": 3.6,
+        "new_value": 3.0,
+        "bandgap_PZT_eV": 3.6,
+        "bandgap_PZTFN_eV": 3.0,
+        "reported_pct_change": -16.7
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev7",
+      "kind": "number",
+      "location": {
+        "section": "Results A",
+        "page": 6,
+        "char_span": null,
+        "quote": "lattice parameters a = 4.022 ˚A, c = 4.096 ˚A, and c/a = 1.018"
+      },
+      "extracted_values": {
+        "a_angstrom": 4.022,
+        "c_angstrom": 4.096,
+        "reported_c_over_a": 1.018
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev8",
+      "kind": "number",
+      "location": {
+        "section": "Results A",
+        "page": 7,
+        "char_span": null,
+        "quote": "bulk ceramics, which exhibit a c/a ratio of \n1.016 [8]"
+      },
+      "extracted_values": {
+        "bulk_c_over_a": 1.016
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev9",
+      "kind": "number",
+      "location": {
+        "section": "Results A",
+        "page": 7,
+        "char_span": null,
+        "quote": "gives a value of around 3%, corresponding to compressive\nstrain"
+      },
+      "extracted_values": {
+        "mismatch_pct": 3
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev10",
+      "kind": "number",
+      "location": {
+        "section": "Results A",
+        "page": 6,
+        "char_span": null,
+        "quote": "is approximately 20 nm for both samples"
+      },
+      "extracted_values": {
+        "SRO_thickness_nm": 20
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev11",
+      "kind": "number",
+      "location": {
+        "section": "Experimental",
+        "page": 5,
+        "char_span": null,
+        "quote": "The final thickness of \nthe samples was around 80 nm (growth rate ≈ 0.04 nm/pulse)"
+      },
+      "extracted_values": {
+        "thickness_nm": 80,
+        "growth_rate_nm_per_pulse": 0.04
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev12",
+      "kind": "number",
+      "location": {
+        "section": "Results B",
+        "page": 9,
+        "char_span": null,
+        "quote": "maximum capacitance values: 690 pF for PZT and 960 pF for PZTFN0.5"
+      },
+      "extracted_values": {
+        "Cmax_PZT_pF": 690,
+        "Cmax_PZTFN_pF": 960
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev13",
+      "kind": "number",
+      "location": {
+        "section": "Results B",
+        "page": 9,
+        "char_span": null,
+        "quote": "is approximately 40 kV/cm (Fig. 3b)"
+      },
+      "extracted_values": {
+        "imprint_field_kV_cm": 40
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev14",
+      "kind": "number",
+      "location": {
+        "section": "Results B",
+        "page": 11,
+        "char_span": null,
+        "quote": "is about 30% higher than in the PZTFN0.5 sample"
+      },
+      "extracted_values": {
+        "reported_pct_higher": 30
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev15",
+      "kind": "figure",
+      "location": {
+        "section": "SI Figure S5",
+        "page": 27,
+        "char_span": null,
+        "quote": "Both polarization states remain \nclearly distinguishable up to 104 s"
+      },
+      "extracted_values": {
+        "retention_time_s": 10000
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev16",
+      "kind": "number",
+      "location": {
+        "section": "Results B",
+        "page": 12,
+        "char_span": null,
+        "quote": "The measured surface \nroughness was approximately 0.82 nm"
+      },
+      "extracted_values": {
+        "roughness_nm": 0.82
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev17",
+      "kind": "number",
+      "location": {
+        "section": "Results B",
+        "page": 12,
+        "char_span": null,
+        "quote": "PZTFT0.4 epitaxial films (Mr = 1.58 emu/cm3, Hc = 108 Oe) [9]"
+      },
+      "extracted_values": {
+        "PZTFT_Mr_emu_cm3": 1.58,
+        "PZTFT_Hc_Oe": 108
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev18",
+      "kind": "number",
+      "location": {
+        "section": "Results B",
+        "page": 12,
+        "char_span": null,
+        "quote": "a magnetic saturation of 12 emu/cm3 is observed, which is higher than that for \nPZTFT0.4 films (7 emu/cm3)"
+      },
+      "extracted_values": {
+        "Msat_PZTFN_emu_cm3": 12,
+        "Msat_PZTFT_emu_cm3": 7
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev19",
+      "kind": "number",
+      "location": {
+        "section": "Results B",
+        "page": 12,
+        "char_span": null,
+        "quote": "(1.3 emu/cm3 and 1.8 emu/cm3 [14]), but \nthere is\na significant difference in coercive field values (90 Oe versus 1500 Oe)"
+      },
+      "extracted_values": {
+        "Mr_PLD_emu_cm3": 1.3,
+        "Mr_solgel_emu_cm3": 1.8,
+        "Hc_PLD_Oe": 90,
+        "Hc_solgel_Oe": 1500
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev20",
+      "kind": "number",
+      "location": {
+        "section": "Experimental",
+        "page": 6,
+        "char_span": null,
+        "quote": "403 ± 8 nm (hν = 3.08 eV) laser source with a constant calibrated optical fluence of \n100 ± 5 mW/cm2"
+      },
+      "extracted_values": {
+        "wavelength_nm": 403,
+        "photon_energy_eV": 3.08,
+        "fluence_mW_cm2": 100,
+        "value_a": 403,
+        "unit_a": "nm",
+        "value_b": 3.08,
+        "unit_b": "eV"
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev21",
+      "kind": "figure",
+      "location": {
+        "section": "Results C",
+        "page": 13,
+        "char_span": null,
+        "quote": "A notable increase in conductivity (about one order of magnitude) occurs when the light \nis switched ON"
+      },
+      "extracted_values": {
+        "conductivity_ratio_ON_OFF": 10
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev22",
+      "kind": "number",
+      "location": {
+        "section": "Results C",
+        "page": 13,
+        "char_span": null,
+        "quote": "applied \nvoltages ranging from −3 V to 3 V (±375 kV/cm)"
+      },
+      "extracted_values": {
+        "voltage_range_V": [
+          -3,
+          3
+        ],
+        "field_kV_cm": 375
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev23",
+      "kind": "number",
+      "location": {
+        "section": "Results C",
+        "page": 16,
+        "char_span": null,
+        "quote": "D1 (PZTFN0.5/Au) with a barrier height of 1.2 eV, and D2 (SRO/PZTFN0.5) \nwith a barrier height of 0.7 eV"
+      },
+      "extracted_values": {
+        "barrier_D1_eV": 1.2,
+        "barrier_D2_eV": 0.7
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev24",
+      "kind": "number",
+      "location": {
+        "section": "Results C",
+        "page": 15,
+        "char_span": null,
+        "quote": "eϕSRO = 4.6 eV [23] and eϕAu = 5.1 eV [24], considering a \nband gap Eg = 3.0 eV for PZTFN0.5 [14]"
+      },
+      "extracted_values": {
+        "e_phi_SRO_eV": 4.6,
+        "e_phi_Au_eV": 5.1,
+        "Eg_eV": 3.0
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev25",
+      "kind": "number",
+      "location": {
+        "section": "Results C",
+        "page": 18,
+        "char_span": null,
+        "quote": "yielded JSC of 4.5 µA/cm2 under similar illumination conditions (λ = 405 nm, 100 \nmW/cm2) [26]"
+      },
+      "extracted_values": {
+        "BFO_Jsc_uA_cm2": 4.5,
+        "wavelength_nm": 405,
+        "fluence_mW_cm2": 100
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev26",
+      "kind": "number",
+      "location": {
+        "section": "Results C",
+        "page": 18,
+        "char_span": null,
+        "quote": "up to 25 µA/cm2, have been reported for \ngraphene/BFO/Pt heterojunctions [27]"
+      },
+      "extracted_values": {
+        "graphene_BFO_Jsc_uA_cm2": 25
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev27",
+      "kind": "number",
+      "location": {
+        "section": "Results B",
+        "page": 12,
+        "char_span": null,
+        "quote": "remanent \npolarization of 13 µC/cm2 [9]. However, the coercive field is significantly lower in this case \n(Ec = 40 kV/cm)"
+      },
+      "extracted_values": {
+        "PZTFT40_Pr_uC_cm2": 13,
+        "PZTFT40_Ec_kV_cm": 40
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev28",
+      "kind": "number",
+      "location": {
+        "section": "Results B",
+        "page": 12,
+        "char_span": null,
+        "quote": "reported Pr and Ec values of 10 µC/cm2 and 80 kV/cm, respectively [8]"
+      },
+      "extracted_values": {
+        "poly_Pr_uC_cm2": 10,
+        "poly_Ec_kV_cm": 80
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev29",
+      "kind": "number",
+      "location": {
+        "section": "Results A",
+        "page": 6,
+        "char_span": null,
+        "quote": "in-plane parameter a \n= 3.905 ˚A and out-of-plane parameter c = 3.945 ˚A"
+      },
+      "extracted_values": {
+        "SRO_a_angstrom": 3.905,
+        "SRO_c_angstrom": 3.945
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev30",
+      "kind": "figure",
+      "location": {
+        "section": "SI Figure S6",
+        "page": 28,
+        "char_span": null,
+        "quote": "A clear increase in current density is \nobserved when the PZTFN0.5 sample is illuminated with the violet light source of 403 nm. In \ncontrast, no response is detected under green light illumination of 515 nm"
+      },
+      "extracted_values": {
+        "applied_voltage_V": 0.5,
+        "wavelength_active_nm": 403,
+        "wavelength_inactive_nm": 515
+      },
+      "confidence": 0.85
+    }
+  ],
+  "bindings": [
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c4",
+      "evidence_id": "ev6",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c5",
+      "evidence_id": "ev7",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c6",
+      "evidence_id": "ev7",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c6",
+      "evidence_id": "ev8",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c7",
+      "evidence_id": "ev7",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c7",
+      "evidence_id": "ev9",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c8",
+      "evidence_id": "ev10",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c9",
+      "evidence_id": "ev11",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c10",
+      "evidence_id": "ev12",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c11",
+      "evidence_id": "ev13",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c12",
+      "evidence_id": "ev14",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c13",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c14",
+      "evidence_id": "ev15",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c15",
+      "evidence_id": "ev16",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c16",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c16",
+      "evidence_id": "ev17",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c17",
+      "evidence_id": "ev18",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c18",
+      "evidence_id": "ev19",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c19",
+      "evidence_id": "ev20",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c20",
+      "evidence_id": "ev21",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c21",
+      "evidence_id": "ev22",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c22",
+      "evidence_id": "ev23",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c22",
+      "evidence_id": "ev24",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c23",
+      "evidence_id": "ev24",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c24",
+      "evidence_id": "ev25",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c25",
+      "evidence_id": "ev26",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c26",
+      "evidence_id": "ev5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c27",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c28",
+      "evidence_id": "ev27",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c29",
+      "evidence_id": "ev28",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c30",
+      "evidence_id": "ev29",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c31",
+      "evidence_id": "ev30",
+      "relation": "rests_on"
+    }
+  ]
+}

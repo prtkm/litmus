@@ -1,0 +1,1004 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "biology-zhang2025-brd4-protac-fulvestrant-breast",
+  "meta": {
+    "journal": "Frontiers in Oncology",
+    "doi": "10.3389/fonc.2026.1828900",
+    "type": "Original Research",
+    "note": "Bioinformatics/cell biology study; many claims rest on figures (Western blots, ChIP-seq landscapes, Venn diagrams, KM curves). Several percentages read off figures; figure-derived values carry lower confidence.",
+    "extractor": "litmus.extract",
+    "model": "claude-opus-4-8",
+    "source": "opus-native-pdf"
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Chromatin binding densities of all five factors (H3K4ac, H3K9ac, H3K23ac, H3K27ac, BRD4) were significantly elevated in promoter regions of MCF7 cells compared to MCF10A cells.",
+      "location": {
+        "section": "3.1",
+        "page": 4,
+        "char_span": null,
+        "quote": "the chromatin\nbinding densities of all five factors were significantly elevated in\npromoter regions of MCF7 cells compared to MCF10A cells"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "binding_density(MCF7) > binding_density(MCF10A) for each of H3K4ac, H3K9ac, H3K23ac, H3K27ac, BRD4 in promoter regions",
+      "strength": "comparative",
+      "scope": "MCF7 vs MCF10A cell lines, promoter regions, Figures 1A-E",
+      "evidence_refs": [
+        "ev1"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c2",
+      "text": "A substantial majority (≥78%) of BRD4 binding sites coincided with histone acetylation sites: H3K27ac (93.93%), H3K4ac (88.42%), H3K9ac (83.18%), H3K23ac (78.00%).",
+      "location": {
+        "section": "3.1",
+        "page": 4,
+        "char_span": null,
+        "quote": "a substantial majority (≥78%) of\nBRD4 binding sites coincided with histone acetylation sites, specifically H3K27ac (93.93%), H3K4ac (88.42%), H3K9ac (83.18%), and\nH3K23ac (78.00%)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_overlap_pct == 100 * (BRD4_sites_overlapping_mark / total_BRD4_sites) for each mark; all >= 78%",
+      "strength": "approximate",
+      "scope": "BRD4 vs histone acetylation marks, Figures 1F-J",
+      "evidence_refs": [
+        "ev2",
+        "ev1"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c3",
+      "text": "Co-localization events between BRD4 and histone acetylation marks were supported by correlation coefficients all exceeding 0.7.",
+      "location": {
+        "section": "3.1",
+        "page": 4,
+        "char_span": null,
+        "quote": "These co-localization events were supported by\nstrong correlation coefficients, all exceeding 0.7 (Figures 1F–J)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "correlation_coefficient > 0.7 for all BRD4-mark pairs",
+      "strength": "bound",
+      "scope": "Figures 1F-J",
+      "evidence_refs": [
+        "ev3"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c4",
+      "text": "High BRD4 expression was significantly associated with reduced survival in breast cancer patients (HR=1.61).",
+      "location": {
+        "section": "3.2",
+        "page": 5,
+        "char_span": null,
+        "quote": "a high expression level of BRD4 was significantly\nassociated with reduced survival probability in breast cancer\npatients"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "hazard_ratio(high vs low BRD4) reported with HR=1.61, logrank p=4.8e-05 in breast cancer OS",
+      "strength": "comparative",
+      "scope": "BRD4_BRCA_OS, Figure 2A",
+      "evidence_refs": [
+        "ev4"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c5",
+      "text": "High BRD4 expression predicted poor prognosis in luminal subtype breast cancer (HR=1.35).",
+      "location": {
+        "section": "3.2",
+        "page": 5,
+        "char_span": null,
+        "quote": "including those with the luminal subtype (Figures 2A,\nB)"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "hazard_ratio reported HR=1.35, logrank p=0.023 in luminal BRCA OS",
+      "strength": "comparative",
+      "scope": "BRD4_luminal_BRCA_OS, Figure 2B",
+      "evidence_refs": [
+        "ev5"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c6",
+      "text": "Elevated BRD4 expression predicted poor prognosis in patients undergoing endocrine therapy (HR=1.4).",
+      "location": {
+        "section": "3.2",
+        "page": 5,
+        "char_span": null,
+        "quote": "elevated BRD4 expression also predicted poor\nprognosis in patients undergoing endocrine therapy (Figure 2C)"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "hazard_ratio reported HR=1.4, logrank p=0.047 in endocrine therapy OS",
+      "strength": "comparative",
+      "scope": "BRD4_Endocrine therapy_OS, Figure 2C",
+      "evidence_refs": [
+        "ev6"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c7",
+      "text": "BRD4 expression is significantly upregulated in the fulvestrant-resistant MCF7 cell line.",
+      "location": {
+        "section": "3.2",
+        "page": 5,
+        "char_span": null,
+        "quote": "BRD4 expression is\nsignificantly upregulated in the fulvestrant-resistant cell line\n(Figure 2D, Supplementary Table 1)"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "BRD4_expression(fulvestrant-resistant) > BRD4_expression(parental MCF7)",
+      "strength": "comparative",
+      "scope": "GSE118713, parental vs fulvestrant-resistant MCF7, Figure 2D",
+      "evidence_refs": [
+        "ev7"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c8",
+      "text": "ZBC260 was identified as the most potent BRD4 degrader among the screened panel.",
+      "location": {
+        "section": "3.3",
+        "page": 4,
+        "char_span": null,
+        "quote": "we first screened a panel of compounds and identified ZBC260 as the most potent degrader (Figure 3A)"
+      },
+      "epistemic_tier": "T8",
+      "predicate": "ZBC260 produces greatest BRD4 degradation among JQ1, ARV825, ZBC260",
+      "strength": "comparative",
+      "scope": "Figure 3A, 50nM 48h",
+      "evidence_refs": [
+        "ev8"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c9",
+      "text": "Pre-treatment with proteasome inhibitor MG132 abrogated ZBC260-induced BRD4 degradation.",
+      "location": {
+        "section": "3.3",
+        "page": 4,
+        "char_span": null,
+        "quote": "pre-treatment with the proteasome inhibitor\nMG132 abrogated ZBC260-induced BRD4 degradation\n(Figure 3B)"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "BRD4 level with MG132+ZBC260 restored relative to ZBC260 alone",
+      "strength": "causal",
+      "scope": "Figure 3B, MG132 10uM 6h then ZBC260 50nM 48h",
+      "evidence_refs": [
+        "ev9"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c10",
+      "text": "ZBC260 reduced BRD4 protein in a dose- and time-dependent manner.",
+      "location": {
+        "section": "3.3",
+        "page": 4,
+        "char_span": null,
+        "quote": "ZBC260 also\nled to a marked reduction in BRD4 protein levels in a dose- and\ntime-dependent manner (Figures 3C, D)"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "BRD4 protein decreases monotonically with ZBC260 dose (0-50nM) and time (0-48h)",
+      "strength": "qualitative",
+      "scope": "Figures 3C-D",
+      "evidence_refs": [
+        "ev10"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c11",
+      "text": "ZBC260 enhanced the inhibitory effect of fulvestrant to inhibit cell migration and proliferation and induce apoptosis.",
+      "location": {
+        "section": "3.3",
+        "page": 4,
+        "char_span": null,
+        "quote": "ZBC260 enhanced the inhibitory effect of fulvestrant to\nmore profoundly inhibit cell migration and proliferation and to\ninduce apoptosis (Figures 4B–E)"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "effect(Ful+ZBC260) > effect(Ful) on migration, proliferation, apoptosis; p<0.05",
+      "strength": "comparative",
+      "scope": "Figures 4B-E, MCF7, n=3",
+      "evidence_refs": [
+        "ev11"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c12",
+      "text": "Approximately 50% of BRD4 binding sites are located in promoter regions.",
+      "location": {
+        "section": "3.4",
+        "page": 5,
+        "char_span": null,
+        "quote": "approximately 50% of BRD4\nbinding sites are located in promoter regions (Figure 5A)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "promoter_fraction(BRD4 binding sites) ≈ 0.50",
+      "strength": "approximate",
+      "scope": "Figure 5A, MCF7",
+      "evidence_refs": [
+        "ev12"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c13",
+      "text": "About one-third of ER binding sites were found in promoter regions.",
+      "location": {
+        "section": "3.4",
+        "page": 6,
+        "char_span": null,
+        "quote": "About onethird of ER binding sites were found in promoter regions\n(Figure 5E)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "promoter_fraction(ER binding sites) ≈ 0.33",
+      "strength": "approximate",
+      "scope": "Figure 5E, MCF7",
+      "evidence_refs": [
+        "ev13"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c14",
+      "text": "61.0% of ER promoter-binding genes overlapped with BRD4 promoter-binding genes.",
+      "location": {
+        "section": "3.5",
+        "page": 6,
+        "char_span": null,
+        "quote": "61.0% of ER promoter-binding genes overlapped with BRD4"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "overlap_pct == 100 * (ER∩BRD4 genes) / (ER promoter-binding genes) == 61.0",
+      "strength": "exact",
+      "scope": "Figure 6A, MCF7",
+      "evidence_refs": [
+        "ev14"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c15",
+      "text": "50% of fulvestrant-downregulated genes were also suppressed by JQ1.",
+      "location": {
+        "section": "3.5",
+        "page": 7,
+        "char_span": null,
+        "quote": "50% of fulvestrant-downregulated\ngenes were also suppressed by JQ1"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "overlap_pct == 100 * (Ful-down ∩ JQ1-down) / (Ful-down genes) == 50",
+      "strength": "exact",
+      "scope": "Figures 6A-C, Supplementary Table 2",
+      "evidence_refs": [
+        "ev15"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c16",
+      "text": "Intersection of JQ1- and fulvestrant-downregulated genes with fulvestrant-resistant upregulated genes identified 58 candidate genes.",
+      "location": {
+        "section": "3.5",
+        "page": 7,
+        "char_span": null,
+        "quote": "identifying 58\ncandidate genes potentially core to BRD4 and ER function as well as\ntherapy resistance (Figure 6C)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "count of intersection candidate genes == 58",
+      "strength": "exact",
+      "scope": "Figure 6C",
+      "evidence_refs": [
+        "ev16"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c17",
+      "text": "BRD4 super-enhancer mapping identified 450 SEs.",
+      "location": {
+        "section": "3.5",
+        "page": 7,
+        "char_span": null,
+        "quote": "we mapped its downstream SE\nlandscape and identified 450 SEs (Supplementary Table 3)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "count of identified super-enhancers == 450",
+      "strength": "exact",
+      "scope": "Supplementary Table 3",
+      "evidence_refs": [
+        "ev17"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c18",
+      "text": "These SEs were associated with 12 of the 58 shortlisted genes.",
+      "location": {
+        "section": "3.5",
+        "page": 7,
+        "char_span": null,
+        "quote": "these SEs were\nassociated with 12 of the 58 shortlisted genes (Figure 6D)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "count of SE-associated shortlisted genes == 12 out of 58",
+      "strength": "exact",
+      "scope": "Figure 6D",
+      "evidence_refs": [
+        "ev18"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c19",
+      "text": "Combined ZBC260 and fulvestrant treatment potently inhibited GREB1 expression.",
+      "location": {
+        "section": "3.5",
+        "page": 7,
+        "char_span": null,
+        "quote": "combined ZBC260 and fulvestrant treatment potently inhibited the expression of GREB1 (Figures 6F, G)"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "GREB1_expression(Ful+ZBC260) < GREB1_expression(single/vehicle)",
+      "strength": "comparative",
+      "scope": "Figures 6F-G, MCF7 immunofluorescence",
+      "evidence_refs": [
+        "ev19"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c20",
+      "text": "GREB1 knockdown enhanced the inhibitory effect of ZBC260 on migration, proliferation, and apoptosis.",
+      "location": {
+        "section": "3.5",
+        "page": 7,
+        "char_span": null,
+        "quote": "GREB1 knock down also enhanced the\ninhibitory effect of ZBC260 to more profoundly inhibit cell migration and proliferation and to induce apoptosis (Figures 7A–D)"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "effect(ZBC260+si-GREB1) > effect(ZBC260) on migration, proliferation, apoptosis",
+      "strength": "comparative",
+      "scope": "Figures 7A-D, MCF7",
+      "evidence_refs": [
+        "ev20"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c21",
+      "text": "ZBC260 ChIP-qPCR showed reduced BRD4 binding on GREB1 promoter, further impaired by ZBC260+fulvestrant, and rescued by estrogen.",
+      "location": {
+        "section": "3.6",
+        "page": 7,
+        "char_span": null,
+        "quote": "ZBC260\ninduce BRD4 less chromatin binding events on the promoter\nregions of GREB1, and ZBC260 combined with fulvestrant more\nimpair the events, but estrogen rescue the events (Figure 8B)"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "BRD4_binding(ZBC260) < vehicle; ZBC260+Ful < ZBC260; ZBC260+E2 rescue; p<0.05",
+      "strength": "comparative",
+      "scope": "Figure 8B ChIP-qPCR, MCF7",
+      "evidence_refs": [
+        "ev21"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c22",
+      "text": "ER+ breast cancer accounts for about 75% of all cases, with acquired resistance driving relapse in up to 30% of patients.",
+      "location": {
+        "section": "4",
+        "page": 7,
+        "char_span": null,
+        "quote": "which accounts for about 75% of all\ncases, acquired resistance drives relapse in up to 30% of patients (7)"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "ER+ proportion ≈ 75%; relapse rate up to 30%",
+      "strength": "approximate",
+      "scope": "Discussion, cited reference (7)",
+      "evidence_refs": [
+        "ev22"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c23",
+      "text": "Over 60% of ER promoter-binding events and 50% of its transcriptome overlap with that of BRD4.",
+      "location": {
+        "section": "4",
+        "page": 9,
+        "char_span": null,
+        "quote": "over 60% of ER\npromoter-binding events and 50% of its transcriptome overlap with\nthat of BRD4"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "ER-BRD4 promoter overlap > 60%; transcriptome overlap == 50%",
+      "strength": "approximate",
+      "scope": "Discussion summarizing Figures 6A-C",
+      "evidence_refs": [
+        "ev14",
+        "ev15"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "c24",
+      "text": "BRD4 super-enhancer cutoff was 8034.7455.",
+      "location": {
+        "section": "2.5",
+        "page": 2,
+        "char_span": null,
+        "quote": "Enhancers above the inflection point of the curve\nwere defined as super-enhancers (BRD4 cut-off, 8034.7455)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "super_enhancer_cutoff(BRD4) == 8034.7455",
+      "strength": "exact",
+      "scope": "ROSE algorithm, BRD4 signal",
+      "evidence_refs": [
+        "ev23"
+      ],
+      "confidence": 0.9
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev1",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 1",
+        "page": 4,
+        "char_span": null,
+        "quote": "the H3K4ac, H3K9ac, H3K23ac, H3K27ac and BRD4 chromatin\nbinding landscapes MCF10A and MCF7 cell lines"
+      },
+      "extracted_values": {
+        "factors": [
+          "H3K4ac",
+          "H3K9ac",
+          "H3K23ac",
+          "H3K27ac",
+          "BRD4"
+        ],
+        "window": "TSS ± 5.0kb"
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev2",
+      "kind": "statistic",
+      "location": {
+        "section": "3.1",
+        "page": 4,
+        "char_span": null,
+        "quote": "H3K27ac (93.93%), H3K4ac (88.42%), H3K9ac (83.18%), and\nH3K23ac (78.00%)"
+      },
+      "extracted_values": {
+        "H3K27ac_overlap_pct": 93.93,
+        "H3K4ac_overlap_pct": 88.42,
+        "H3K9ac_overlap_pct": 83.18,
+        "H3K23ac_overlap_pct": 78.0,
+        "min_majority_pct": 78
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev3",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 1J",
+        "page": 4,
+        "char_span": null,
+        "quote": "0.71  0.70  0.72  0.75"
+      },
+      "extracted_values": {
+        "correlation_coefficients_shown": [
+          0.71,
+          0.7,
+          0.72,
+          0.75,
+          0.77,
+          0.83,
+          0.77,
+          0.73,
+          0.77
+        ],
+        "threshold_stated": 0.7
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "ev4",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 2A",
+        "page": 5,
+        "char_span": null,
+        "quote": "HR = 1.61 (1.28 - 2.03)\nlogrank P = 4.8e-05"
+      },
+      "extracted_values": {
+        "test": "logrank",
+        "hazard_ratio": 1.61,
+        "hr_ci": [
+          1.28,
+          2.03
+        ],
+        "reported_p": 4.8e-05,
+        "cohort": "BRD4_BRCA_OS"
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev5",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 2B",
+        "page": 5,
+        "char_span": null,
+        "quote": "HR = 1.35 (1.04 - 1.75)\nlogrank P = 0.023"
+      },
+      "extracted_values": {
+        "test": "logrank",
+        "hazard_ratio": 1.35,
+        "hr_ci": [
+          1.04,
+          1.75
+        ],
+        "reported_p": 0.023,
+        "cohort": "BRD4_luminal_BRCA_OS"
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev6",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 2C",
+        "page": 5,
+        "char_span": null,
+        "quote": "HR = 1.4 (1 - 1.95)\nlogrank P = 0.047"
+      },
+      "extracted_values": {
+        "test": "logrank",
+        "hazard_ratio": 1.4,
+        "hr_ci": [
+          1.0,
+          1.95
+        ],
+        "reported_p": 0.047,
+        "cohort": "BRD4_Endocrine therapy_OS"
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev7",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 2D",
+        "page": 5,
+        "char_span": null,
+        "quote": "volcano plot of the differential expression genes in\nMCF7 fulvestrant resistant cell line"
+      },
+      "extracted_values": {
+        "dataset": "GSE118713",
+        "comparison": "parental vs fulvestrant-resistant MCF7"
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev8",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 3A",
+        "page": 5,
+        "char_span": null,
+        "quote": "western blot analysis of the protein level of BRD4 after treated with\nJQ1, ARV825, and ZBC260 (50nM, 48h)"
+      },
+      "extracted_values": {
+        "compounds": [
+          "JQ1",
+          "ARV825",
+          "ZBC260"
+        ],
+        "concentration_nM": 50,
+        "time_h": 48
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev9",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 3B",
+        "page": 5,
+        "char_span": null,
+        "quote": "western blot analysis of the protein level of BRD4 after pre-treated with the proteasome inhibitor MG132\n(10mM, 6h), followed with ZBC260 (50nM, 48h)"
+      },
+      "extracted_values": {
+        "MG132_conc": "10mM",
+        "MG132_time_h": 6,
+        "ZBC260_conc_nM": 50,
+        "ZBC260_time_h": 48
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev10",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 3C-D",
+        "page": 5,
+        "char_span": null,
+        "quote": "western blot analysis of the protein level of BRD4 after treated with gradient concentrations of\n0–50nM ZBC260 for 48h; (D) western blot analysis of the protein level of BRD4 after treated with 50nM ZBC260 for 0-48hours (n=3)"
+      },
+      "extracted_values": {
+        "dose_range_nM": [
+          0,
+          50
+        ],
+        "dose_points_nM": [
+          0,
+          5,
+          25,
+          50
+        ],
+        "time_points_h": [
+          0,
+          12,
+          24,
+          48
+        ],
+        "n": 3
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev11",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 4",
+        "page": 6,
+        "char_span": null,
+        "quote": "* indicates p<0.05, ZBC260 compared to vehicle; # indicates p<0.05, Ful+ZBC260 compared to Ful; $ indicates p<0.05, Ful+ZBC260\ncompared to ZBC260 (mean ± SEM, n=3)"
+      },
+      "extracted_values": {
+        "p_upper_bound": 0.05,
+        "n": 3,
+        "treatments": [
+          "vehicle",
+          "fulvestrant 100nM",
+          "ZBC260 50nM",
+          "Ful+ZBC260"
+        ]
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev12",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 5A",
+        "page": 6,
+        "char_span": null,
+        "quote": "Bar plot of BRD4 (A) and ER (E) chromatin binding features"
+      },
+      "extracted_values": {
+        "BRD4_promoter_fraction": 0.5
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "ev13",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 5E",
+        "page": 6,
+        "char_span": null,
+        "quote": "Bar plot of BRD4 (A) and ER (E) chromatin binding features"
+      },
+      "extracted_values": {
+        "ER_promoter_fraction": 0.33
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "ev14",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 6A",
+        "page": 7,
+        "char_span": null,
+        "quote": "7416\n(43.2%)  5951\n(34.6%)  3812\n(22.2%)"
+      },
+      "extracted_values": {
+        "BRD4_only": 7416,
+        "BRD4_only_pct": 43.2,
+        "overlap": 5951,
+        "overlap_pct": 34.6,
+        "ER_only": 3812,
+        "ER_only_pct": 22.2,
+        "prose_value": 61.0,
+        "quantity": "ER promoter-binding genes overlapping BRD4 (%)"
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev15",
+      "kind": "text",
+      "location": {
+        "section": "3.5",
+        "page": 7,
+        "char_span": null,
+        "quote": "50% of fulvestrant-downregulated\ngenes were also suppressed by JQ1"
+      },
+      "extracted_values": {
+        "overlap_pct": 50
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev16",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 6C",
+        "page": 7,
+        "char_span": null,
+        "quote": "58\n(1.5%)"
+      },
+      "extracted_values": {
+        "candidate_genes": 58,
+        "candidate_pct": 1.5
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev17",
+      "kind": "dataset",
+      "location": {
+        "section": "3.5",
+        "page": 7,
+        "char_span": null,
+        "quote": "identified 450 SEs (Supplementary Table 3)"
+      },
+      "extracted_values": {
+        "num_super_enhancers": 450
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev18",
+      "kind": "text",
+      "location": {
+        "section": "3.5",
+        "page": 7,
+        "char_span": null,
+        "quote": "these SEs were\nassociated with 12 of the 58 shortlisted genes"
+      },
+      "extracted_values": {
+        "SE_associated_genes": 12,
+        "total_shortlisted": 58
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev19",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 6F-G",
+        "page": 7,
+        "char_span": null,
+        "quote": "the representative fluorescence microscope image of\nBRD4 and GREB1 immunofluorescence in MCF7 separately treated with vehicle, fulvestrant(100nM), ZBC260 (50nM) and Ful+ZBC260 for 48h (n=3)"
+      },
+      "extracted_values": {
+        "fulvestrant_nM": 100,
+        "ZBC260_nM": 50,
+        "time_h": 48,
+        "n": 3
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev20",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 7",
+        "page": 8,
+        "char_span": null,
+        "quote": "the representative microscope image, and transwell image of MCF7 treated with negative control, ZBC260 (50nM), GREB1 siRNA\n(50nM), ZBC260 and GREB1 siRNA for 48h"
+      },
+      "extracted_values": {
+        "ZBC260_nM": 50,
+        "siRNA_nM": 50,
+        "time_h": 48,
+        "n": 3
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev21",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 8B",
+        "page": 8,
+        "char_span": null,
+        "quote": "bar graph of BRD4 ChIP-qPCR result on GREB1\npromoter region of MCF7 separately treated with vehicle, fulvestrant(100nM), ZBC260(50nM) and Ful+ZBC260 for 48h"
+      },
+      "extracted_values": {
+        "p_upper_bound": 0.05,
+        "n": 3,
+        "treatments": [
+          "Vehicle",
+          "ZBC260",
+          "ZBC260+Ful",
+          "ZBC260+E2"
+        ]
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev22",
+      "kind": "text",
+      "location": {
+        "section": "4",
+        "page": 7,
+        "char_span": null,
+        "quote": "which accounts for about 75% of all\ncases, acquired resistance drives relapse in up to 30% of patients (7)"
+      },
+      "extracted_values": {
+        "er_positive_pct": 75,
+        "relapse_pct_upper": 30
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev23",
+      "kind": "number",
+      "location": {
+        "section": "2.5",
+        "page": 2,
+        "char_span": null,
+        "quote": "(BRD4 cut-off, 8034.7455)"
+      },
+      "extracted_values": {
+        "BRD4_SE_cutoff": 8034.7455
+      },
+      "confidence": 0.95
+    }
+  ],
+  "bindings": [
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c4",
+      "evidence_id": "ev4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c5",
+      "evidence_id": "ev5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c6",
+      "evidence_id": "ev6",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c7",
+      "evidence_id": "ev7",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c8",
+      "evidence_id": "ev8",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c9",
+      "evidence_id": "ev9",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c10",
+      "evidence_id": "ev10",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c11",
+      "evidence_id": "ev11",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c12",
+      "evidence_id": "ev12",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c13",
+      "evidence_id": "ev13",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c14",
+      "evidence_id": "ev14",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c15",
+      "evidence_id": "ev15",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c16",
+      "evidence_id": "ev16",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c17",
+      "evidence_id": "ev17",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c18",
+      "evidence_id": "ev18",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c19",
+      "evidence_id": "ev19",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c20",
+      "evidence_id": "ev20",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c21",
+      "evidence_id": "ev21",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c22",
+      "evidence_id": "ev22",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c23",
+      "evidence_id": "ev14",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c23",
+      "evidence_id": "ev15",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c24",
+      "evidence_id": "ev23",
+      "relation": "rests_on"
+    }
+  ]
+}

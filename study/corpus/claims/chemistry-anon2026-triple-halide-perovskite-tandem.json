@@ -1,0 +1,840 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "chemistry-anon2026-triple-halide-perovskite-tandem",
+  "meta": {
+    "journal": "Molecules",
+    "year": 2026,
+    "volume": 31,
+    "article": 625,
+    "doi": "10.3390/molecules31040625",
+    "note": "Quantitative claims extracted from body, figures (esp. Figs 5, 6), and experimental section. Several headline numbers (14% PLQY, 6.84 µs lifetime, 1% doping) appear redundantly in abstract, results, and conclusions.",
+    "extractor": "litmus.extract",
+    "model": "claude-opus-4-8",
+    "source": "opus-native-pdf"
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Photoluminescence quantum yields up to 14% on quartz were obtained for the doped wide-bandgap perovskite.",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "Photoluminescence quantum yields\n(up to 14% on quartz), as well as photoluminescence lifetimes (up to ~7 µs on quartz),\nindicate improved optical properties."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_max_PLQY_pct == 14 on quartz, consistent with figure/text value",
+      "strength": "approximate",
+      "scope": "doped Cs0.21FA0.74MA0.05Pb(I0.81Br0.14Cl0.05)3 thin film on quartz, 1% doping",
+      "evidence_refs": [
+        "ev1",
+        "ev5"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c2",
+      "text": "Photoluminescence lifetimes up to ~7 µs on quartz indicate improved optical properties.",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "photoluminescence lifetimes (up to ~7 µs on quartz)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_max_PL_lifetime_us ~ 7 on quartz, consistent with Figure 6 value (6.84 µs)",
+      "strength": "approximate",
+      "scope": "doped perovskite on quartz",
+      "evidence_refs": [
+        "ev2"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c3",
+      "text": "The optimal total doping concentration of Zn(II) and formate is 1% relative to Pb(II).",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "the optimal\ntotal doping concentration of zinc ions (Zn(II)) and formate anions (Fo−) is determined to\nbe 1% relative to Pb(II)."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "optimal_total_doping_pct == 1 relative to Pb(II), with Zn 0.5% + Fo 0.5%",
+      "strength": "qualitative",
+      "scope": "wide-bandgap triple-halide perovskite composition",
+      "evidence_refs": [
+        "ev3"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c4",
+      "text": "PCE of single-junction cells is capped at 33.7% by the Shockley–Queisser limit and realistically limited to 29.4% for silicon considering Auger recombination.",
+      "location": {
+        "section": "1. Introduction",
+        "page": 1,
+        "char_span": null,
+        "quote": "capped at 33.7% by the Shockley–Queisser (SQ) limit [1]\nand, considering Auger recombination [2], realistically limited to 29.4% for silicon (Si)."
+      },
+      "epistemic_tier": "T1",
+      "predicate": "SQ_limit_pct == 33.7 and silicon_Auger_limit_pct == 29.4",
+      "strength": "exact",
+      "scope": "single-junction cells / silicon",
+      "evidence_refs": [
+        "ev6"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c5",
+      "text": "Tandem solar cells theoretically enable PCEs up to ~45%.",
+      "location": {
+        "section": "1. Introduction",
+        "page": 1,
+        "char_span": null,
+        "quote": "theoretically enabling PCEs up to ~45% [3]"
+      },
+      "epistemic_tier": "T1",
+      "predicate": "tandem_theoretical_PCE_pct ~ 45",
+      "strength": "approximate",
+      "scope": "tandem solar cells, ref [3]",
+      "evidence_refs": [
+        "ev7"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c6",
+      "text": "The current certified world record obtained by LONGi stands at 35.0% PCE.",
+      "location": {
+        "section": "1. Introduction",
+        "page": 1,
+        "char_span": null,
+        "quote": "The current certified world record obtained by LONGi stands at 35.0% PCE"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "LONGi_certified_record_PCE_pct == 35.0",
+      "strength": "exact",
+      "scope": "perovskite-silicon tandem world record",
+      "evidence_refs": [
+        "ev8"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c7",
+      "text": "Mariotti et al. achieved a certified efficiency of 32.5% in triple-halide perovskite–silicon tandem solar cells in 2022.",
+      "location": {
+        "section": "1. Introduction",
+        "page": 1,
+        "char_span": null,
+        "quote": "Mariotti et al. [6] achieved a certified efficiency of 32.5% in\ntriple-halide perovskite–silicon tandem solar cells in 2022."
+      },
+      "epistemic_tier": "T5",
+      "predicate": "Mariotti_certified_efficiency_pct == 32.5",
+      "strength": "exact",
+      "scope": "Mariotti et al. [6], 2022",
+      "evidence_refs": [
+        "ev9"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c8",
+      "text": "Jeong et al. demonstrated that addition of 2% formate anions increases cell efficiency to 25.2%.",
+      "location": {
+        "section": "1. Introduction",
+        "page": 2,
+        "char_span": null,
+        "quote": "the addition of 2% (Fo−) formate anions\nsignificantly increases cell efficiency to 25.2%"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "formate_doped_efficiency_pct == 25.2 at 2% formate",
+      "strength": "exact",
+      "scope": "Jeong et al. [10]",
+      "evidence_refs": [
+        "ev10"
+      ],
+      "confidence": 0.93
+    },
+    {
+      "id": "c9",
+      "text": "The current world record (27.2% PCE) contains potassium binoxalate at 0.7 mol%, 1.5 mg/mL.",
+      "location": {
+        "section": "1. Introduction",
+        "page": 2,
+        "char_span": null,
+        "quote": "the current\nworld record (27.2% PCE) [31] contains potassium binoxalate"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "single_junction_world_record_PCE_pct == 27.2",
+      "strength": "exact",
+      "scope": "ref [31] single junction record",
+      "evidence_refs": [
+        "ev11"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c10",
+      "text": "Asymmetrically substituted carbazole HTL resulted in a Si tandem cell with 34.58% PCE (certified).",
+      "location": {
+        "section": "1. Introduction",
+        "page": 2,
+        "char_span": null,
+        "quote": "resulting in a Si\ntandem cell with 34.58% PCE (certified)"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "Si_tandem_certified_PCE_pct == 34.58",
+      "strength": "exact",
+      "scope": "ref [16]",
+      "evidence_refs": [
+        "ev12"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c11",
+      "text": "A maximum PLQY of 14% was obtained for wide-bandgap perovskite on quartz, while Mariotti et al. reported 3.75% PLQY for their films on quartz.",
+      "location": {
+        "section": "2. Results and Discussion",
+        "page": 6,
+        "char_span": null,
+        "quote": "a maximum PLQY of 14% was\nobtained for wide-bandgap perovskite on quartz"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "this_work_PLQY_pct == 14 vs Mariotti_PLQY_pct == 3.75 on quartz",
+      "strength": "comparative",
+      "scope": "optimally doped layers on quartz",
+      "evidence_refs": [
+        "ev1",
+        "ev13"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c12",
+      "text": "Mariotti et al. reported 3.75% PLQY and a PL lifetime of ~2 µs (by tail-fit) for their films on quartz.",
+      "location": {
+        "section": "2. Results and Discussion",
+        "page": 6,
+        "char_span": null,
+        "quote": "Mariotti et al. [6] reported 3.75% as PLQY for their films on\nquartz (and a PL lifetime of ~2 µs, by tail-fit)"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "Mariotti_PLQY_pct == 3.75 and Mariotti_PL_lifetime_us ~ 2",
+      "strength": "exact",
+      "scope": "Mariotti et al. [6] films on quartz",
+      "evidence_refs": [
+        "ev13"
+      ],
+      "confidence": 0.93
+    },
+    {
+      "id": "c13",
+      "text": "The 2025 material shows a PL lifetime of 6.84 ± 1.1 µs, compared to 3.65 ± 0.8 µs (2024) and 1.57 ± 0.1 µs (2019).",
+      "location": {
+        "section": "2. Results and Discussion",
+        "page": 8,
+        "char_span": null,
+        "quote": "the red\ntrace shows our 2025 material with a lifetime of 6.84 ± 1.1 µs, compared to 3.65 ± 0.8 µs\n(2024, blue) and 1.57 ± 0.1 µs (2019, green)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "lifetime_2025_us == 6.84 ; lifetime_2024_us == 3.65 ; lifetime_2019_us == 1.57, consistent with Figure 6",
+      "strength": "comparative",
+      "scope": "TR-PL of three perovskite films, Figure 6",
+      "evidence_refs": [
+        "ev2",
+        "ev14"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c14",
+      "text": "Beta values from stretched exponential fitting are 0.90 (1.57 µs), 0.77 (3.65 µs), and 0.84 (6.84 µs).",
+      "location": {
+        "section": "Figure 6 caption",
+        "page": 7,
+        "char_span": null,
+        "quote": "Beta values are, respectively, 0.90 (1.57 µs) [9], 0.77 (3.65 µs) [11], and 0.84 (6.84 µs),\nobtained with stretched exponential fitting."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "beta values: 0.90, 0.77, 0.84 paired with lifetimes 1.57, 3.65, 6.84 µs",
+      "strength": "exact",
+      "scope": "Figure 6 stretched exponential fits",
+      "evidence_refs": [
+        "ev15"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c15",
+      "text": "The perovskite crystals have a dimension of ca. 400 nm.",
+      "location": {
+        "section": "2. Results and Discussion",
+        "page": 5,
+        "char_span": null,
+        "quote": "The perovskite crystals have a dimension of\nca. 400 nm (see Figure 4—left)."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "crystal_dimension_nm ~ 400",
+      "strength": "approximate",
+      "scope": "Figure 4 left, SEM",
+      "evidence_refs": [
+        "ev16"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c16",
+      "text": "Laminated 1% doped optimized films show no yellowing after more than 1 year, but partial laser irradiation (532 nm) showed photodegradation after 500 hrs.",
+      "location": {
+        "section": "2. Results and Discussion",
+        "page": 8,
+        "char_span": null,
+        "quote": "laser irradiation with 532 nm through a pinhole\nor a slit (=partial illumination) showed clear signs of permanent photodegradation after\n500 hrs"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "photodegradation observed after 500 hrs at 532 nm, 1-5 suns",
+      "strength": "qualitative",
+      "scope": "laminated 1% doped wide-bandgap films",
+      "evidence_refs": [
+        "ev17"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c17",
+      "text": "Mariotti et al. reported 25% loss after 478 h of illumination for undoped material.",
+      "location": {
+        "section": "2. Results and Discussion",
+        "page": 8,
+        "char_span": null,
+        "quote": "Mariotti et al. reported 25% loss after 478 h\nof illumination (for “undoped” material) [6]"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "Mariotti_reported_loss_pct == 25 after 478 h",
+      "strength": "exact",
+      "scope": "Mariotti et al. [6], undoped material",
+      "evidence_refs": [
+        "ev18"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c18",
+      "text": "The conclusion restates a PLQY of 14% and PL lifetime of 6.84 µs obtained at 1% total doping.",
+      "location": {
+        "section": "4. Conclusions",
+        "page": 9,
+        "char_span": null,
+        "quote": "A PLQY\nof 14% has been obtained and a PL lifetime of 6.84 µs."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "conclusion_PLQY_pct == 14 and conclusion_lifetime_us == 6.84, consistent with results",
+      "strength": "exact",
+      "scope": "Conclusions, 1% total doping on quartz",
+      "evidence_refs": [
+        "ev1",
+        "ev2"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c19",
+      "text": "Perovskite precursor solutions were 1.4 M, prepared in 600 µL DMF and 150 µL DMSO.",
+      "location": {
+        "section": "3. Experiment",
+        "page": 8,
+        "char_span": null,
+        "quote": "precursor solutions (1.4 M) were\nprepared by dissolving FAI, MACl, CsI, PbI2, PbBr2, and PbCl2 in 600 µL DMF and 150 µL\nDMSO"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "precursor_molarity_M == 1.4 ; DMF_uL == 600 ; DMSO_uL == 150",
+      "strength": "exact",
+      "scope": "Experiment, precursor preparation",
+      "evidence_refs": [
+        "ev19"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c20",
+      "text": "Films were spin-coated at 5000 rpm for 45 s with 300 µL anisole dropped at 25 s, and annealed at 100 °C for 20 min.",
+      "location": {
+        "section": "3. Experiment",
+        "page": 8,
+        "char_span": null,
+        "quote": "The perovskite\nfilms were spin-coated at 5000 rpm for 45 s (5 s acceleration), with 300 µL anisole dropped\nat 25 s after the start of spin-coating, and annealed on a hot plate at 100 °C for 20 min."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "spin_rpm == 5000 ; spin_time_s == 45 ; anneal_temp_C == 100 ; anneal_time_min == 20",
+      "strength": "exact",
+      "scope": "Experiment, film fabrication",
+      "evidence_refs": [
+        "ev20"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c21",
+      "text": "Theoretical limit for perovskite-silicon tandem is 44%, with a practical value of ~41% PCE; current state of the art is 35.0% PCE.",
+      "location": {
+        "section": "1. Introduction",
+        "page": 2,
+        "char_span": null,
+        "quote": "there\nremains significant room for improvement towards the theoretical limit of 44%."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "theoretical_limit_pct == 44 ; practical_pct ~ 41 ; state_of_art_pct == 35.0",
+      "strength": "comparative",
+      "scope": "PSTSCs",
+      "evidence_refs": [
+        "ev21"
+      ],
+      "confidence": 0.88
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev1",
+      "kind": "number",
+      "location": {
+        "section": "2. Results and Discussion / Figure 5",
+        "page": 6,
+        "char_span": null,
+        "quote": "a maximum PLQY of 14% was\nobtained for wide-bandgap perovskite on quartz"
+      },
+      "extracted_values": {
+        "max_PLQY_pct": 14
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev2",
+      "kind": "number",
+      "location": {
+        "section": "Abstract / Figure 6",
+        "page": 8,
+        "char_span": null,
+        "quote": "a lifetime of 6.84 ± 1.1 µs"
+      },
+      "extracted_values": {
+        "max_PL_lifetime_us": 6.84,
+        "uncertainty_us": 1.1
+      },
+      "confidence": 0.93
+    },
+    {
+      "id": "ev3",
+      "kind": "text",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "is determined to\nbe 1% relative to Pb(II)."
+      },
+      "extracted_values": {
+        "optimal_total_doping_pct": 1,
+        "Zn_pct": 0.5,
+        "Fo_pct": 0.5
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev6",
+      "kind": "number",
+      "location": {
+        "section": "1. Introduction",
+        "page": 1,
+        "char_span": null,
+        "quote": "capped at 33.7% by the Shockley–Queisser (SQ) limit [1]\nand, considering Auger recombination [2], realistically limited to 29.4% for silicon (Si)."
+      },
+      "extracted_values": {
+        "SQ_limit_pct": 33.7,
+        "silicon_Auger_limit_pct": 29.4
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev7",
+      "kind": "number",
+      "location": {
+        "section": "1. Introduction",
+        "page": 1,
+        "char_span": null,
+        "quote": "theoretically enabling PCEs up to ~45% [3]"
+      },
+      "extracted_values": {
+        "tandem_theoretical_PCE_pct": 45
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev8",
+      "kind": "number",
+      "location": {
+        "section": "1. Introduction",
+        "page": 1,
+        "char_span": null,
+        "quote": "The current certified world record obtained by LONGi stands at 35.0% PCE"
+      },
+      "extracted_values": {
+        "LONGi_certified_record_PCE_pct": 35.0
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev9",
+      "kind": "number",
+      "location": {
+        "section": "1. Introduction",
+        "page": 1,
+        "char_span": null,
+        "quote": "achieved a certified efficiency of 32.5% in\ntriple-halide perovskite–silicon tandem solar cells in 2022"
+      },
+      "extracted_values": {
+        "Mariotti_certified_efficiency_pct": 32.5,
+        "year": 2022
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev10",
+      "kind": "number",
+      "location": {
+        "section": "1. Introduction",
+        "page": 2,
+        "char_span": null,
+        "quote": "the addition of 2% (Fo−) formate anions\nsignificantly increases cell efficiency to 25.2%"
+      },
+      "extracted_values": {
+        "formate_pct": 2,
+        "efficiency_pct": 25.2
+      },
+      "confidence": 0.93
+    },
+    {
+      "id": "ev11",
+      "kind": "number",
+      "location": {
+        "section": "1. Introduction",
+        "page": 2,
+        "char_span": null,
+        "quote": "the current\nworld record (27.2% PCE) [31] contains potassium binoxalate"
+      },
+      "extracted_values": {
+        "world_record_PCE_pct": 27.2
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev12",
+      "kind": "number",
+      "location": {
+        "section": "1. Introduction",
+        "page": 2,
+        "char_span": null,
+        "quote": "resulting in a Si\ntandem cell with 34.58% PCE (certified)"
+      },
+      "extracted_values": {
+        "Si_tandem_certified_PCE_pct": 34.58
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev13",
+      "kind": "number",
+      "location": {
+        "section": "2. Results and Discussion",
+        "page": 6,
+        "char_span": null,
+        "quote": "Mariotti et al. [6] reported 3.75% as PLQY for their films on\nquartz (and a PL lifetime of ~2 µs, by tail-fit)"
+      },
+      "extracted_values": {
+        "Mariotti_PLQY_pct": 3.75,
+        "Mariotti_PL_lifetime_us": 2
+      },
+      "confidence": 0.93
+    },
+    {
+      "id": "ev14",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 6 inset",
+        "page": 7,
+        "char_span": null,
+        "quote": "tau(1)   = 6.84 ± 1.1 µs"
+      },
+      "extracted_values": {
+        "tau1_us": 6.84,
+        "tau1_unc_us": 1.1,
+        "tau2_us": 3.65,
+        "tau2_unc_us": 0.8,
+        "tau3_us": 1.57,
+        "tau3_unc_us": 0.1
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev15",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 6 caption",
+        "page": 7,
+        "char_span": null,
+        "quote": "Beta values are, respectively, 0.90 (1.57 µs) [9], 0.77 (3.65 µs) [11], and 0.84 (6.84 µs)"
+      },
+      "extracted_values": {
+        "beta_1": 0.9,
+        "lifetime_1_us": 1.57,
+        "beta_2": 0.77,
+        "lifetime_2_us": 3.65,
+        "beta_3": 0.84,
+        "lifetime_3_us": 6.84
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev16",
+      "kind": "number",
+      "location": {
+        "section": "2. Results and Discussion",
+        "page": 5,
+        "char_span": null,
+        "quote": "The perovskite crystals have a dimension of\nca. 400 nm (see Figure 4—left)."
+      },
+      "extracted_values": {
+        "crystal_dimension_nm": 400
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev17",
+      "kind": "text",
+      "location": {
+        "section": "2. Results and Discussion",
+        "page": 8,
+        "char_span": null,
+        "quote": "showed clear signs of permanent photodegradation after\n500 hrs. Laser power was varied from 1 to 5 suns."
+      },
+      "extracted_values": {
+        "photodegradation_hours": 500,
+        "wavelength_nm": 532,
+        "laser_power_suns_range": [
+          1,
+          5
+        ]
+      },
+      "confidence": 0.88
+    },
+    {
+      "id": "ev18",
+      "kind": "number",
+      "location": {
+        "section": "2. Results and Discussion",
+        "page": 8,
+        "char_span": null,
+        "quote": "Mariotti et al. reported 25% loss after 478 h\nof illumination (for “undoped” material) [6]"
+      },
+      "extracted_values": {
+        "loss_pct": 25,
+        "illumination_hours": 478
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev19",
+      "kind": "number",
+      "location": {
+        "section": "3. Experiment",
+        "page": 8,
+        "char_span": null,
+        "quote": "precursor solutions (1.4 M) were\nprepared by dissolving FAI, MACl, CsI, PbI2, PbBr2, and PbCl2 in 600 µL DMF and 150 µL\nDMSO"
+      },
+      "extracted_values": {
+        "molarity_M": 1.4,
+        "DMF_uL": 600,
+        "DMSO_uL": 150
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev20",
+      "kind": "number",
+      "location": {
+        "section": "3. Experiment",
+        "page": 8,
+        "char_span": null,
+        "quote": "spin-coated at 5000 rpm for 45 s (5 s acceleration), with 300 µL anisole dropped\nat 25 s after the start of spin-coating, and annealed on a hot plate at 100 °C for 20 min"
+      },
+      "extracted_values": {
+        "spin_rpm": 5000,
+        "spin_time_s": 45,
+        "anisole_uL": 300,
+        "anneal_temp_C": 100,
+        "anneal_time_min": 20
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev21",
+      "kind": "number",
+      "location": {
+        "section": "1. Introduction",
+        "page": 2,
+        "char_span": null,
+        "quote": "the theoretical limit of 44%."
+      },
+      "extracted_values": {
+        "theoretical_limit_pct": 44,
+        "practical_pct": 41,
+        "state_of_art_pct": 35.0
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev5",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 5 caption",
+        "page": 7,
+        "char_span": null,
+        "quote": "Absolute photoluminescence quantum yield measurement data (PLQY = 14%)"
+      },
+      "extracted_values": {
+        "PLQY_pct": 14,
+        "total_doping_pct": 1
+      },
+      "confidence": 0.93
+    }
+  ],
+  "bindings": [
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c4",
+      "evidence_id": "ev6",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c5",
+      "evidence_id": "ev7",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c6",
+      "evidence_id": "ev8",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c7",
+      "evidence_id": "ev9",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c8",
+      "evidence_id": "ev10",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c9",
+      "evidence_id": "ev11",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c10",
+      "evidence_id": "ev12",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c11",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c11",
+      "evidence_id": "ev13",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c12",
+      "evidence_id": "ev13",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c13",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c13",
+      "evidence_id": "ev14",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c14",
+      "evidence_id": "ev15",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c15",
+      "evidence_id": "ev16",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c16",
+      "evidence_id": "ev17",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c17",
+      "evidence_id": "ev18",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c18",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c18",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c19",
+      "evidence_id": "ev19",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c20",
+      "evidence_id": "ev20",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c21",
+      "evidence_id": "ev21",
+      "relation": "rests_on"
+    }
+  ]
+}

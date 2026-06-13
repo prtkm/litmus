@@ -23,15 +23,15 @@
   },
   "summary": {
     "n_findings": 21,
-    "n_flags": 9,
+    "n_flags": 1,
     "n_dropped": 0,
     "n_routed_to_human": 0,
     "n_abstained": 12,
     "flags_by_trust_tier": {
-      "deterministic_confirmed": 9
+      "deterministic_confirmed": 1
     },
     "flags_by_severity": {
-      "B": 9
+      "C": 1
     }
   },
   "findings": [
@@ -42,7 +42,7 @@
       "trust_tier": "deterministic_confirmed",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "reported total equals the sum of its parts",
+      "message": "reported total equals the sum of its parts (within printing precision)",
       "discrepancy": null,
       "reported": 44,
       "computed": 44,
@@ -64,7 +64,8 @@
           14,
           16
         ],
-        "n_parts": 3
+        "n_parts": 3,
+        "tolerance": 1e-09
       }
     },
     {
@@ -74,7 +75,7 @@
       "trust_tier": "deterministic_confirmed",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "reported total equals the sum of its parts",
+      "message": "reported total equals the sum of its parts (within printing precision)",
       "discrepancy": null,
       "reported": 44,
       "computed": 44,
@@ -96,7 +97,8 @@
           14,
           16
         ],
-        "n_parts": 3
+        "n_parts": 3,
+        "tolerance": 1e-09
       }
     },
     {
@@ -106,7 +108,7 @@
       "trust_tier": "deterministic_confirmed",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "reported total equals the sum of its parts",
+      "message": "reported total equals the sum of its parts (within printing precision)",
       "discrepancy": null,
       "reported": 44,
       "computed": 44,
@@ -128,30 +130,31 @@
           14,
           16
         ],
-        "n_parts": 3
+        "n_parts": 3,
+        "tolerance": 1e-09
       }
     },
     {
       "verifier_id": "statcheck.v1",
       "claim_id": "c6",
-      "status": "fail",
+      "status": "pass",
       "trust_tier": "deterministic_confirmed",
       "verifier_kind": "prebuilt",
-      "severity": "B",
-      "message": "reported p-value is not a correct rounding of the p recomputed from the statistic",
-      "discrepancy": "reported p=0.375 but F statistic 0.86 (df1=1,df2=41) gives p=0.359166",
+      "severity": null,
+      "message": "reported p-value is consistent with the achievable p-range from the statistic (allowing for the statistic's printed precision)",
+      "discrepancy": null,
       "reported": 0.375,
       "computed": 0.359166,
       "evidence": {
-        "quote": "F(1, 41) = 0.86, p = 0.375, \n\u03b72\u209a  = 0.02",
+        "quote": null,
         "location": {
-          "section": "Results",
-          "page": 5,
+          "section": null,
+          "page": null,
           "char_span": null,
-          "quote": "F(1, 41) = 0.86, p = 0.375, \n\u03b72\u209a  = 0.02"
+          "quote": null
         },
-        "recompute_script": "# LITMUS recompute script for statcheck.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only (math), network-less, deterministic.\n\nimport math\n\n\ndef _betacf(a, b, x):\n    \"\"\"Numerical-Recipes continued fraction for the incomplete beta (Lentz's method).\"\"\"\n    MAXIT = 400\n    FPMIN = 1.0e-300\n    CF_EPS = 3.0e-14\n    qab = a + b\n    qap = a + 1.0\n    qam = a - 1.0\n    c = 1.0\n    d = 1.0 - qab * x / qap\n    if abs(d) < FPMIN:\n        d = FPMIN\n    d = 1.0 / d\n    h = d\n    for m in range(1, MAXIT + 1):\n        m2 = 2 * m\n        aa = m * (b - m) * x / ((qam + m2) * (a + m2))\n        d = 1.0 + aa * d\n        if abs(d) < FPMIN:\n            d = FPMIN\n        c = 1.0 + aa / c\n        if abs(c) < FPMIN:\n            c = FPMIN\n        d = 1.0 / d\n        h *= d * c\n        aa = -(a + m) * (qab + m) * x / ((a + m2) * (qap + m2))\n        d = 1.0 + aa * d\n        if abs(d) < FPMIN:\n            d = FPMIN\n        c = 1.0 + aa / c\n        if abs(c) < FPMIN:\n            c = FPMIN\n        d = 1.0 / d\n        delta = d * c\n        h *= delta\n        if abs(delta - 1.0) < CF_EPS:\n            break\n    return h\n\n\ndef _betai(a, b, x):\n    \"\"\"Regularized incomplete beta I_x(a, b) via lgamma + the betacf continued fraction.\"\"\"\n    if x <= 0.0:\n        return 0.0\n    if x >= 1.0:\n        return 1.0\n    bt = math.exp(\n        math.lgamma(a + b) - math.lgamma(a) - math.lgamma(b)\n        + a * math.log(x) + b * math.log(1.0 - x)\n    )\n    if x < (a + 1.0) / (a + b + 2.0):\n        return bt * _betacf(a, b, x) / a\n    return 1.0 - bt * _betacf(b, a, 1.0 - x) / b\n\n\ndef _gammq(a, x):\n    \"\"\"Regularized upper incomplete gamma Q(a, x): series for P then Q=1-P below x<a+1,\n    continued fraction for Q above. (Numerical Recipes gammp/gammq.)\"\"\"\n    if x < 0.0 or a <= 0.0:\n        raise ValueError(\"bad args to _gammq\")\n    if x == 0.0:\n        return 1.0\n    gln = math.lgamma(a)\n    if x < a + 1.0:\n        ap = a\n        s = 1.0 / a\n        delta = s\n        for _ in range(1000):\n            ap += 1.0\n            delta *= x / ap\n            s += delta\n            if abs(delta) < abs(s) * 3.0e-15:\n                break\n        p = s * math.exp(-x + a * math.log(x) - gln)\n        return 1.0 - p\n    FPMIN = 1.0e-300\n    b = x + 1.0 - a\n    c = 1.0 / FPMIN\n    d = 1.0 / b\n    h = d\n    for i in range(1, 1000):\n        an = -i * (i - a)\n        b += 2.0\n        d = an * d + b\n        if abs(d) < FPMIN:\n            d = FPMIN\n        c = b + an / c\n        if abs(c) < FPMIN:\n            c = FPMIN\n        d = 1.0 / d\n        delta = d * c\n        h *= delta\n        if abs(delta - 1.0) < 3.0e-15:\n            break\n    return math.exp(-x + a * math.log(x) - gln) * h\n\n\ndef _p_two_tailed(test, statistic, df, df1, df2):\n    \"\"\"Two-tailed p-value for a reported test statistic. Pure stdlib math.\n\n    Returns None when the inputs are out of the distribution's domain (so the caller\n    abstains rather than inventing a verdict, DESIGN \u00a73.4).\n    \"\"\"\n    if test == \"z\":\n        return 2.0 * (1.0 - 0.5 * (1.0 + math.erf(abs(statistic) / math.sqrt(2.0))))\n    if test == \"t\":\n        if df is None or df <= 0:\n            return None\n        x = df / (df + statistic * statistic)\n        return _betai(df / 2.0, 0.5, x)\n    if test == \"r\":\n        if df is None or df <= 0:\n            return None\n        if abs(statistic) >= 1.0:\n            return None  # r out of (-1, 1): t-transform is undefined\n        t = statistic * math.sqrt(df / (1.0 - statistic * statistic))\n        x = df / (df + t * t)\n        return _betai(df / 2.0, 0.5, x)\n    if test == \"chi2\":\n        if df is None or df <= 0 or statistic < 0:\n            return None\n        return _gammq(df / 2.0, statistic / 2.0)\n    if test == \"F\":\n        if df1 is None or df2 is None or df1 <= 0 or df2 <= 0 or statistic < 0:\n            return None\n        x = df2 / (df2 + df1 * statistic)\n        return _betai(df2 / 2.0, df1 / 2.0, x)\n    return None\n\nTEST = 'F'\nSTATISTIC = 0.86\nDF = None\nDF1 = 1\nDF2 = 41\nREPORTED_P = 0.375\nDECIMALS = 3\nEPS = 1e-9\n\n\ndef _round_p(p):\n    return round(p, 6)\n\n\ndef _fmt_num(value):\n    if isinstance(value, bool):\n        value = int(value)\n    if isinstance(value, int):\n        return str(value)\n    if isinstance(value, float) and value.is_integer():\n        return str(int(value))\n    return repr(value)\n\n\ndef _df_field():\n    if TEST == 'F':\n        return 'df1=' + _fmt_num(DF1) + ',df2=' + _fmt_num(DF2)\n    return 'df=' + _fmt_num(DF)\n\n\np = _p_two_tailed(TEST, STATISTIC, DF, DF1, DF2)\nthreshold = 0.5 * 10 ** (-DECIMALS) + EPS\nif p is not None and abs(REPORTED_P - p) > threshold:\n    print(\n        'INCONSISTENT test=' + TEST + ' stat=' + _fmt_num(STATISTIC) + ' '\n        + _df_field() + ' reported_p=' + _fmt_num(REPORTED_P)\n        + ' recomputed_p=' + _fmt_num(_round_p(p))\n    )\nelse:\n    print('OK')\n",
-        "expected_output": "INCONSISTENT test=F stat=0.86 df1=1,df2=41 reported_p=0.375 recomputed_p=0.359166",
+        "recompute_script": null,
+        "expected_output": null,
         "script_dependencies": []
       },
       "details": {
@@ -160,31 +163,37 @@
         "df": null,
         "df1": 1,
         "df2": 41,
-        "decimals": 3,
-        "decision_flip": false
+        "stat_decimals": 2,
+        "rep_decimals": 3,
+        "achievable_p_range": [
+          0.357787,
+          0.360552
+        ],
+        "in_range": false,
+        "rel_err": 0.04408553858241955
       }
     },
     {
       "verifier_id": "statcheck.v1",
       "claim_id": "c7",
-      "status": "fail",
+      "status": "pass",
       "trust_tier": "deterministic_confirmed",
       "verifier_kind": "prebuilt",
-      "severity": "B",
-      "message": "reported p-value is not a correct rounding of the p recomputed from the statistic",
-      "discrepancy": "reported p=0.974 but F statistic 0.02 (df1=2,df2=41) gives p=0.980208",
+      "severity": null,
+      "message": "reported p-value is consistent with the achievable p-range from the statistic (allowing for the statistic's printed precision)",
+      "discrepancy": null,
       "reported": 0.974,
       "computed": 0.980208,
       "evidence": {
-        "quote": "a main effect of Group, F(2, 41) = 0.02, p = 0.974, \n\u03b72\u209a = 0.00",
+        "quote": null,
         "location": {
-          "section": "Results",
-          "page": 5,
+          "section": null,
+          "page": null,
           "char_span": null,
-          "quote": "a main effect of Group, F(2, 41) = 0.02, p = 0.974, \n\u03b72\u209a = 0.00"
+          "quote": null
         },
-        "recompute_script": "# LITMUS recompute script for statcheck.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only (math), network-less, deterministic.\n\nimport math\n\n\ndef _betacf(a, b, x):\n    \"\"\"Numerical-Recipes continued fraction for the incomplete beta (Lentz's method).\"\"\"\n    MAXIT = 400\n    FPMIN = 1.0e-300\n    CF_EPS = 3.0e-14\n    qab = a + b\n    qap = a + 1.0\n    qam = a - 1.0\n    c = 1.0\n    d = 1.0 - qab * x / qap\n    if abs(d) < FPMIN:\n        d = FPMIN\n    d = 1.0 / d\n    h = d\n    for m in range(1, MAXIT + 1):\n        m2 = 2 * m\n        aa = m * (b - m) * x / ((qam + m2) * (a + m2))\n        d = 1.0 + aa * d\n        if abs(d) < FPMIN:\n            d = FPMIN\n        c = 1.0 + aa / c\n        if abs(c) < FPMIN:\n            c = FPMIN\n        d = 1.0 / d\n        h *= d * c\n        aa = -(a + m) * (qab + m) * x / ((a + m2) * (qap + m2))\n        d = 1.0 + aa * d\n        if abs(d) < FPMIN:\n            d = FPMIN\n        c = 1.0 + aa / c\n        if abs(c) < FPMIN:\n            c = FPMIN\n        d = 1.0 / d\n        delta = d * c\n        h *= delta\n        if abs(delta - 1.0) < CF_EPS:\n            break\n    return h\n\n\ndef _betai(a, b, x):\n    \"\"\"Regularized incomplete beta I_x(a, b) via lgamma + the betacf continued fraction.\"\"\"\n    if x <= 0.0:\n        return 0.0\n    if x >= 1.0:\n        return 1.0\n    bt = math.exp(\n        math.lgamma(a + b) - math.lgamma(a) - math.lgamma(b)\n        + a * math.log(x) + b * math.log(1.0 - x)\n    )\n    if x < (a + 1.0) / (a + b + 2.0):\n        return bt * _betacf(a, b, x) / a\n    return 1.0 - bt * _betacf(b, a, 1.0 - x) / b\n\n\ndef _gammq(a, x):\n    \"\"\"Regularized upper incomplete gamma Q(a, x): series for P then Q=1-P below x<a+1,\n    continued fraction for Q above. (Numerical Recipes gammp/gammq.)\"\"\"\n    if x < 0.0 or a <= 0.0:\n        raise ValueError(\"bad args to _gammq\")\n    if x == 0.0:\n        return 1.0\n    gln = math.lgamma(a)\n    if x < a + 1.0:\n        ap = a\n        s = 1.0 / a\n        delta = s\n        for _ in range(1000):\n            ap += 1.0\n            delta *= x / ap\n            s += delta\n            if abs(delta) < abs(s) * 3.0e-15:\n                break\n        p = s * math.exp(-x + a * math.log(x) - gln)\n        return 1.0 - p\n    FPMIN = 1.0e-300\n    b = x + 1.0 - a\n    c = 1.0 / FPMIN\n    d = 1.0 / b\n    h = d\n    for i in range(1, 1000):\n        an = -i * (i - a)\n        b += 2.0\n        d = an * d + b\n        if abs(d) < FPMIN:\n            d = FPMIN\n        c = b + an / c\n        if abs(c) < FPMIN:\n            c = FPMIN\n        d = 1.0 / d\n        delta = d * c\n        h *= delta\n        if abs(delta - 1.0) < 3.0e-15:\n            break\n    return math.exp(-x + a * math.log(x) - gln) * h\n\n\ndef _p_two_tailed(test, statistic, df, df1, df2):\n    \"\"\"Two-tailed p-value for a reported test statistic. Pure stdlib math.\n\n    Returns None when the inputs are out of the distribution's domain (so the caller\n    abstains rather than inventing a verdict, DESIGN \u00a73.4).\n    \"\"\"\n    if test == \"z\":\n        return 2.0 * (1.0 - 0.5 * (1.0 + math.erf(abs(statistic) / math.sqrt(2.0))))\n    if test == \"t\":\n        if df is None or df <= 0:\n            return None\n        x = df / (df + statistic * statistic)\n        return _betai(df / 2.0, 0.5, x)\n    if test == \"r\":\n        if df is None or df <= 0:\n            return None\n        if abs(statistic) >= 1.0:\n            return None  # r out of (-1, 1): t-transform is undefined\n        t = statistic * math.sqrt(df / (1.0 - statistic * statistic))\n        x = df / (df + t * t)\n        return _betai(df / 2.0, 0.5, x)\n    if test == \"chi2\":\n        if df is None or df <= 0 or statistic < 0:\n            return None\n        return _gammq(df / 2.0, statistic / 2.0)\n    if test == \"F\":\n        if df1 is None or df2 is None or df1 <= 0 or df2 <= 0 or statistic < 0:\n            return None\n        x = df2 / (df2 + df1 * statistic)\n        return _betai(df2 / 2.0, df1 / 2.0, x)\n    return None\n\nTEST = 'F'\nSTATISTIC = 0.02\nDF = None\nDF1 = 2\nDF2 = 41\nREPORTED_P = 0.974\nDECIMALS = 3\nEPS = 1e-9\n\n\ndef _round_p(p):\n    return round(p, 6)\n\n\ndef _fmt_num(value):\n    if isinstance(value, bool):\n        value = int(value)\n    if isinstance(value, int):\n        return str(value)\n    if isinstance(value, float) and value.is_integer():\n        return str(int(value))\n    return repr(value)\n\n\ndef _df_field():\n    if TEST == 'F':\n        return 'df1=' + _fmt_num(DF1) + ',df2=' + _fmt_num(DF2)\n    return 'df=' + _fmt_num(DF)\n\n\np = _p_two_tailed(TEST, STATISTIC, DF, DF1, DF2)\nthreshold = 0.5 * 10 ** (-DECIMALS) + EPS\nif p is not None and abs(REPORTED_P - p) > threshold:\n    print(\n        'INCONSISTENT test=' + TEST + ' stat=' + _fmt_num(STATISTIC) + ' '\n        + _df_field() + ' reported_p=' + _fmt_num(REPORTED_P)\n        + ' recomputed_p=' + _fmt_num(_round_p(p))\n    )\nelse:\n    print('OK')\n",
-        "expected_output": "INCONSISTENT test=F stat=0.02 df1=2,df2=41 reported_p=0.974 recomputed_p=0.980208",
+        "recompute_script": null,
+        "expected_output": null,
         "script_dependencies": []
       },
       "details": {
@@ -193,8 +202,14 @@
         "df": null,
         "df1": 2,
         "df2": 41,
-        "decimals": 3,
-        "decision_flip": false
+        "stat_decimals": 2,
+        "rep_decimals": 3,
+        "achievable_p_range": [
+          0.975325,
+          0.985117
+        ],
+        "in_range": false,
+        "rel_err": 0.006333582867045867
       }
     },
     {
@@ -204,7 +219,7 @@
       "trust_tier": "deterministic_confirmed",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "reported p-value is a correct rounding of the p recomputed from the statistic",
+      "message": "reported p-value is consistent with the achievable p-range from the statistic (allowing for the statistic's printed precision)",
       "discrepancy": null,
       "reported": 0.564,
       "computed": 0.564426,
@@ -226,7 +241,14 @@
         "df": null,
         "df1": 2,
         "df2": 41,
-        "decimals": 3
+        "stat_decimals": 2,
+        "rep_decimals": 3,
+        "achievable_p_range": [
+          0.561688,
+          0.567177
+        ],
+        "in_range": true,
+        "rel_err": 0.0007540736871264964
       }
     },
     {
@@ -236,7 +258,7 @@
       "trust_tier": "deterministic_confirmed",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "reported p-value is a correct rounding of the p recomputed from the statistic",
+      "message": "reported p-value is consistent with the achievable p-range from the statistic (allowing for the statistic's printed precision)",
       "discrepancy": null,
       "reported": 0.014,
       "computed": 0.014413,
@@ -258,30 +280,37 @@
         "df": null,
         "df1": 1,
         "df2": 41,
-        "decimals": 3
+        "stat_decimals": 2,
+        "rep_decimals": 3,
+        "achievable_p_range": [
+          0.014378,
+          0.014448
+        ],
+        "in_range": true,
+        "rel_err": 0.028665165259874937
       }
     },
     {
       "verifier_id": "statcheck.v1",
       "claim_id": "c10",
-      "status": "fail",
+      "status": "pass",
       "trust_tier": "deterministic_confirmed",
       "verifier_kind": "prebuilt",
-      "severity": "B",
-      "message": "reported p-value is not a correct rounding of the p recomputed from the statistic",
-      "discrepancy": "reported p=0.768 but F statistic 0.26 (df1=2,df2=41) gives p=0.772313",
+      "severity": null,
+      "message": "reported p-value is consistent with the achievable p-range from the statistic (allowing for the statistic's printed precision)",
+      "discrepancy": null,
       "reported": 0.768,
       "computed": 0.772313,
       "evidence": {
-        "quote": "F(2, 41) = 0.26, p = 0.768, \u03b72\u209a = 0.01.",
+        "quote": null,
         "location": {
-          "section": "Results",
-          "page": 5,
+          "section": null,
+          "page": null,
           "char_span": null,
-          "quote": "F(2, 41) = 0.26, p = 0.768, \u03b72\u209a = 0.01."
+          "quote": null
         },
-        "recompute_script": "# LITMUS recompute script for statcheck.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only (math), network-less, deterministic.\n\nimport math\n\n\ndef _betacf(a, b, x):\n    \"\"\"Numerical-Recipes continued fraction for the incomplete beta (Lentz's method).\"\"\"\n    MAXIT = 400\n    FPMIN = 1.0e-300\n    CF_EPS = 3.0e-14\n    qab = a + b\n    qap = a + 1.0\n    qam = a - 1.0\n    c = 1.0\n    d = 1.0 - qab * x / qap\n    if abs(d) < FPMIN:\n        d = FPMIN\n    d = 1.0 / d\n    h = d\n    for m in range(1, MAXIT + 1):\n        m2 = 2 * m\n        aa = m * (b - m) * x / ((qam + m2) * (a + m2))\n        d = 1.0 + aa * d\n        if abs(d) < FPMIN:\n            d = FPMIN\n        c = 1.0 + aa / c\n        if abs(c) < FPMIN:\n            c = FPMIN\n        d = 1.0 / d\n        h *= d * c\n        aa = -(a + m) * (qab + m) * x / ((a + m2) * (qap + m2))\n        d = 1.0 + aa * d\n        if abs(d) < FPMIN:\n            d = FPMIN\n        c = 1.0 + aa / c\n        if abs(c) < FPMIN:\n            c = FPMIN\n        d = 1.0 / d\n        delta = d * c\n        h *= delta\n        if abs(delta - 1.0) < CF_EPS:\n            break\n    return h\n\n\ndef _betai(a, b, x):\n    \"\"\"Regularized incomplete beta I_x(a, b) via lgamma + the betacf continued fraction.\"\"\"\n    if x <= 0.0:\n        return 0.0\n    if x >= 1.0:\n        return 1.0\n    bt = math.exp(\n        math.lgamma(a + b) - math.lgamma(a) - math.lgamma(b)\n        + a * math.log(x) + b * math.log(1.0 - x)\n    )\n    if x < (a + 1.0) / (a + b + 2.0):\n        return bt * _betacf(a, b, x) / a\n    return 1.0 - bt * _betacf(b, a, 1.0 - x) / b\n\n\ndef _gammq(a, x):\n    \"\"\"Regularized upper incomplete gamma Q(a, x): series for P then Q=1-P below x<a+1,\n    continued fraction for Q above. (Numerical Recipes gammp/gammq.)\"\"\"\n    if x < 0.0 or a <= 0.0:\n        raise ValueError(\"bad args to _gammq\")\n    if x == 0.0:\n        return 1.0\n    gln = math.lgamma(a)\n    if x < a + 1.0:\n        ap = a\n        s = 1.0 / a\n        delta = s\n        for _ in range(1000):\n            ap += 1.0\n            delta *= x / ap\n            s += delta\n            if abs(delta) < abs(s) * 3.0e-15:\n                break\n        p = s * math.exp(-x + a * math.log(x) - gln)\n        return 1.0 - p\n    FPMIN = 1.0e-300\n    b = x + 1.0 - a\n    c = 1.0 / FPMIN\n    d = 1.0 / b\n    h = d\n    for i in range(1, 1000):\n        an = -i * (i - a)\n        b += 2.0\n        d = an * d + b\n        if abs(d) < FPMIN:\n            d = FPMIN\n        c = b + an / c\n        if abs(c) < FPMIN:\n            c = FPMIN\n        d = 1.0 / d\n        delta = d * c\n        h *= delta\n        if abs(delta - 1.0) < 3.0e-15:\n            break\n    return math.exp(-x + a * math.log(x) - gln) * h\n\n\ndef _p_two_tailed(test, statistic, df, df1, df2):\n    \"\"\"Two-tailed p-value for a reported test statistic. Pure stdlib math.\n\n    Returns None when the inputs are out of the distribution's domain (so the caller\n    abstains rather than inventing a verdict, DESIGN \u00a73.4).\n    \"\"\"\n    if test == \"z\":\n        return 2.0 * (1.0 - 0.5 * (1.0 + math.erf(abs(statistic) / math.sqrt(2.0))))\n    if test == \"t\":\n        if df is None or df <= 0:\n            return None\n        x = df / (df + statistic * statistic)\n        return _betai(df / 2.0, 0.5, x)\n    if test == \"r\":\n        if df is None or df <= 0:\n            return None\n        if abs(statistic) >= 1.0:\n            return None  # r out of (-1, 1): t-transform is undefined\n        t = statistic * math.sqrt(df / (1.0 - statistic * statistic))\n        x = df / (df + t * t)\n        return _betai(df / 2.0, 0.5, x)\n    if test == \"chi2\":\n        if df is None or df <= 0 or statistic < 0:\n            return None\n        return _gammq(df / 2.0, statistic / 2.0)\n    if test == \"F\":\n        if df1 is None or df2 is None or df1 <= 0 or df2 <= 0 or statistic < 0:\n            return None\n        x = df2 / (df2 + df1 * statistic)\n        return _betai(df2 / 2.0, df1 / 2.0, x)\n    return None\n\nTEST = 'F'\nSTATISTIC = 0.26\nDF = None\nDF1 = 2\nDF2 = 41\nREPORTED_P = 0.768\nDECIMALS = 3\nEPS = 1e-9\n\n\ndef _round_p(p):\n    return round(p, 6)\n\n\ndef _fmt_num(value):\n    if isinstance(value, bool):\n        value = int(value)\n    if isinstance(value, int):\n        return str(value)\n    if isinstance(value, float) and value.is_integer():\n        return str(int(value))\n    return repr(value)\n\n\ndef _df_field():\n    if TEST == 'F':\n        return 'df1=' + _fmt_num(DF1) + ',df2=' + _fmt_num(DF2)\n    return 'df=' + _fmt_num(DF)\n\n\np = _p_two_tailed(TEST, STATISTIC, DF, DF1, DF2)\nthreshold = 0.5 * 10 ** (-DECIMALS) + EPS\nif p is not None and abs(REPORTED_P - p) > threshold:\n    print(\n        'INCONSISTENT test=' + TEST + ' stat=' + _fmt_num(STATISTIC) + ' '\n        + _df_field() + ' reported_p=' + _fmt_num(REPORTED_P)\n        + ' recomputed_p=' + _fmt_num(_round_p(p))\n    )\nelse:\n    print('OK')\n",
-        "expected_output": "INCONSISTENT test=F stat=0.26 df1=2,df2=41 reported_p=0.768 recomputed_p=0.772313",
+        "recompute_script": null,
+        "expected_output": null,
         "script_dependencies": []
       },
       "details": {
@@ -290,31 +319,37 @@
         "df": null,
         "df1": 2,
         "df2": 41,
-        "decimals": 3,
-        "decision_flip": false
+        "stat_decimals": 2,
+        "rep_decimals": 3,
+        "achievable_p_range": [
+          0.76851,
+          0.776136
+        ],
+        "in_range": false,
+        "rel_err": 0.005584863034176838
       }
     },
     {
       "verifier_id": "statcheck.v1",
       "claim_id": "c12",
-      "status": "fail",
+      "status": "pass",
       "trust_tier": "deterministic_confirmed",
       "verifier_kind": "prebuilt",
-      "severity": "B",
-      "message": "reported p-value is not a correct rounding of the p recomputed from the statistic",
-      "discrepancy": "reported p=0.655 but F statistic 0.42 (df1=2,df2=41) gives p=0.659842",
+      "severity": null,
+      "message": "reported p-value is consistent with the achievable p-range from the statistic (allowing for the statistic's printed precision)",
+      "discrepancy": null,
       "reported": 0.655,
       "computed": 0.659842,
       "evidence": {
-        "quote": "F(2, 41) = 0.42, p = 0.655, \n\u03b72\u209a = 0.02.",
+        "quote": null,
         "location": {
-          "section": "Results",
-          "page": 5,
+          "section": null,
+          "page": null,
           "char_span": null,
-          "quote": "F(2, 41) = 0.42, p = 0.655, \n\u03b72\u209a = 0.02."
+          "quote": null
         },
-        "recompute_script": "# LITMUS recompute script for statcheck.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only (math), network-less, deterministic.\n\nimport math\n\n\ndef _betacf(a, b, x):\n    \"\"\"Numerical-Recipes continued fraction for the incomplete beta (Lentz's method).\"\"\"\n    MAXIT = 400\n    FPMIN = 1.0e-300\n    CF_EPS = 3.0e-14\n    qab = a + b\n    qap = a + 1.0\n    qam = a - 1.0\n    c = 1.0\n    d = 1.0 - qab * x / qap\n    if abs(d) < FPMIN:\n        d = FPMIN\n    d = 1.0 / d\n    h = d\n    for m in range(1, MAXIT + 1):\n        m2 = 2 * m\n        aa = m * (b - m) * x / ((qam + m2) * (a + m2))\n        d = 1.0 + aa * d\n        if abs(d) < FPMIN:\n            d = FPMIN\n        c = 1.0 + aa / c\n        if abs(c) < FPMIN:\n            c = FPMIN\n        d = 1.0 / d\n        h *= d * c\n        aa = -(a + m) * (qab + m) * x / ((a + m2) * (qap + m2))\n        d = 1.0 + aa * d\n        if abs(d) < FPMIN:\n            d = FPMIN\n        c = 1.0 + aa / c\n        if abs(c) < FPMIN:\n            c = FPMIN\n        d = 1.0 / d\n        delta = d * c\n        h *= delta\n        if abs(delta - 1.0) < CF_EPS:\n            break\n    return h\n\n\ndef _betai(a, b, x):\n    \"\"\"Regularized incomplete beta I_x(a, b) via lgamma + the betacf continued fraction.\"\"\"\n    if x <= 0.0:\n        return 0.0\n    if x >= 1.0:\n        return 1.0\n    bt = math.exp(\n        math.lgamma(a + b) - math.lgamma(a) - math.lgamma(b)\n        + a * math.log(x) + b * math.log(1.0 - x)\n    )\n    if x < (a + 1.0) / (a + b + 2.0):\n        return bt * _betacf(a, b, x) / a\n    return 1.0 - bt * _betacf(b, a, 1.0 - x) / b\n\n\ndef _gammq(a, x):\n    \"\"\"Regularized upper incomplete gamma Q(a, x): series for P then Q=1-P below x<a+1,\n    continued fraction for Q above. (Numerical Recipes gammp/gammq.)\"\"\"\n    if x < 0.0 or a <= 0.0:\n        raise ValueError(\"bad args to _gammq\")\n    if x == 0.0:\n        return 1.0\n    gln = math.lgamma(a)\n    if x < a + 1.0:\n        ap = a\n        s = 1.0 / a\n        delta = s\n        for _ in range(1000):\n            ap += 1.0\n            delta *= x / ap\n            s += delta\n            if abs(delta) < abs(s) * 3.0e-15:\n                break\n        p = s * math.exp(-x + a * math.log(x) - gln)\n        return 1.0 - p\n    FPMIN = 1.0e-300\n    b = x + 1.0 - a\n    c = 1.0 / FPMIN\n    d = 1.0 / b\n    h = d\n    for i in range(1, 1000):\n        an = -i * (i - a)\n        b += 2.0\n        d = an * d + b\n        if abs(d) < FPMIN:\n            d = FPMIN\n        c = b + an / c\n        if abs(c) < FPMIN:\n            c = FPMIN\n        d = 1.0 / d\n        delta = d * c\n        h *= delta\n        if abs(delta - 1.0) < 3.0e-15:\n            break\n    return math.exp(-x + a * math.log(x) - gln) * h\n\n\ndef _p_two_tailed(test, statistic, df, df1, df2):\n    \"\"\"Two-tailed p-value for a reported test statistic. Pure stdlib math.\n\n    Returns None when the inputs are out of the distribution's domain (so the caller\n    abstains rather than inventing a verdict, DESIGN \u00a73.4).\n    \"\"\"\n    if test == \"z\":\n        return 2.0 * (1.0 - 0.5 * (1.0 + math.erf(abs(statistic) / math.sqrt(2.0))))\n    if test == \"t\":\n        if df is None or df <= 0:\n            return None\n        x = df / (df + statistic * statistic)\n        return _betai(df / 2.0, 0.5, x)\n    if test == \"r\":\n        if df is None or df <= 0:\n            return None\n        if abs(statistic) >= 1.0:\n            return None  # r out of (-1, 1): t-transform is undefined\n        t = statistic * math.sqrt(df / (1.0 - statistic * statistic))\n        x = df / (df + t * t)\n        return _betai(df / 2.0, 0.5, x)\n    if test == \"chi2\":\n        if df is None or df <= 0 or statistic < 0:\n            return None\n        return _gammq(df / 2.0, statistic / 2.0)\n    if test == \"F\":\n        if df1 is None or df2 is None or df1 <= 0 or df2 <= 0 or statistic < 0:\n            return None\n        x = df2 / (df2 + df1 * statistic)\n        return _betai(df2 / 2.0, df1 / 2.0, x)\n    return None\n\nTEST = 'F'\nSTATISTIC = 0.42\nDF = None\nDF1 = 2\nDF2 = 41\nREPORTED_P = 0.655\nDECIMALS = 3\nEPS = 1e-9\n\n\ndef _round_p(p):\n    return round(p, 6)\n\n\ndef _fmt_num(value):\n    if isinstance(value, bool):\n        value = int(value)\n    if isinstance(value, int):\n        return str(value)\n    if isinstance(value, float) and value.is_integer():\n        return str(int(value))\n    return repr(value)\n\n\ndef _df_field():\n    if TEST == 'F':\n        return 'df1=' + _fmt_num(DF1) + ',df2=' + _fmt_num(DF2)\n    return 'df=' + _fmt_num(DF)\n\n\np = _p_two_tailed(TEST, STATISTIC, DF, DF1, DF2)\nthreshold = 0.5 * 10 ** (-DECIMALS) + EPS\nif p is not None and abs(REPORTED_P - p) > threshold:\n    print(\n        'INCONSISTENT test=' + TEST + ' stat=' + _fmt_num(STATISTIC) + ' '\n        + _df_field() + ' reported_p=' + _fmt_num(REPORTED_P)\n        + ' recomputed_p=' + _fmt_num(_round_p(p))\n    )\nelse:\n    print('OK')\n",
-        "expected_output": "INCONSISTENT test=F stat=0.42 df1=2,df2=41 reported_p=0.655 recomputed_p=0.659842",
+        "recompute_script": null,
+        "expected_output": null,
         "script_dependencies": []
       },
       "details": {
@@ -323,8 +358,14 @@
         "df": null,
         "df1": 2,
         "df2": 41,
-        "decimals": 3,
-        "decision_flip": false
+        "stat_decimals": 2,
+        "rep_decimals": 3,
+        "achievable_p_range": [
+          0.656617,
+          0.663083
+        ],
+        "in_range": false,
+        "rel_err": 0.007337553514889177
       }
     },
     {
@@ -334,7 +375,7 @@
       "trust_tier": "deterministic_confirmed",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "reported p-value is a correct rounding of the p recomputed from the statistic",
+      "message": "reported p-value is consistent with the achievable p-range from the statistic (allowing for the statistic's printed precision)",
       "discrepancy": null,
       "reported": 0.037,
       "computed": 0.037358,
@@ -356,7 +397,14 @@
         "df": null,
         "df1": 1,
         "df2": 41,
-        "decimals": 3
+        "stat_decimals": 2,
+        "rep_decimals": 3,
+        "achievable_p_range": [
+          0.03726,
+          0.037455
+        ],
+        "in_range": true,
+        "rel_err": 0.00957104294065959
       }
     },
     {
@@ -366,7 +414,7 @@
       "trust_tier": "deterministic_confirmed",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "reported p-value is a correct rounding of the p recomputed from the statistic",
+      "message": "reported p-value is consistent with the achievable p-range from the statistic (allowing for the statistic's printed precision)",
       "discrepancy": null,
       "reported": 0.146,
       "computed": 0.145647,
@@ -388,30 +436,37 @@
         "df": null,
         "df1": 2,
         "df2": 41,
-        "decimals": 3
+        "stat_decimals": 2,
+        "rep_decimals": 3,
+        "achievable_p_range": [
+          0.144986,
+          0.146312
+        ],
+        "in_range": true,
+        "rel_err": 0.002422072321748536
       }
     },
     {
       "verifier_id": "statcheck.v1",
       "claim_id": "c16",
-      "status": "fail",
+      "status": "pass",
       "trust_tier": "deterministic_confirmed",
       "verifier_kind": "prebuilt",
-      "severity": "B",
-      "message": "reported p-value is not a correct rounding of the p recomputed from the statistic",
-      "discrepancy": "reported p=0.905 but F statistic 0.09 (df1=2,df2=41) gives p=0.914111",
+      "severity": null,
+      "message": "reported p-value is consistent with the achievable p-range from the statistic (allowing for the statistic's printed precision)",
+      "discrepancy": null,
       "reported": 0.905,
       "computed": 0.914111,
       "evidence": {
-        "quote": "F(2, \n41) = 0.09, p = 0.905, \u03b72\u209a = 0.00.",
+        "quote": null,
         "location": {
-          "section": "Results",
-          "page": 5,
+          "section": null,
+          "page": null,
           "char_span": null,
-          "quote": "F(2, \n41) = 0.09, p = 0.905, \u03b72\u209a = 0.00."
+          "quote": null
         },
-        "recompute_script": "# LITMUS recompute script for statcheck.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only (math), network-less, deterministic.\n\nimport math\n\n\ndef _betacf(a, b, x):\n    \"\"\"Numerical-Recipes continued fraction for the incomplete beta (Lentz's method).\"\"\"\n    MAXIT = 400\n    FPMIN = 1.0e-300\n    CF_EPS = 3.0e-14\n    qab = a + b\n    qap = a + 1.0\n    qam = a - 1.0\n    c = 1.0\n    d = 1.0 - qab * x / qap\n    if abs(d) < FPMIN:\n        d = FPMIN\n    d = 1.0 / d\n    h = d\n    for m in range(1, MAXIT + 1):\n        m2 = 2 * m\n        aa = m * (b - m) * x / ((qam + m2) * (a + m2))\n        d = 1.0 + aa * d\n        if abs(d) < FPMIN:\n            d = FPMIN\n        c = 1.0 + aa / c\n        if abs(c) < FPMIN:\n            c = FPMIN\n        d = 1.0 / d\n        h *= d * c\n        aa = -(a + m) * (qab + m) * x / ((a + m2) * (qap + m2))\n        d = 1.0 + aa * d\n        if abs(d) < FPMIN:\n            d = FPMIN\n        c = 1.0 + aa / c\n        if abs(c) < FPMIN:\n            c = FPMIN\n        d = 1.0 / d\n        delta = d * c\n        h *= delta\n        if abs(delta - 1.0) < CF_EPS:\n            break\n    return h\n\n\ndef _betai(a, b, x):\n    \"\"\"Regularized incomplete beta I_x(a, b) via lgamma + the betacf continued fraction.\"\"\"\n    if x <= 0.0:\n        return 0.0\n    if x >= 1.0:\n        return 1.0\n    bt = math.exp(\n        math.lgamma(a + b) - math.lgamma(a) - math.lgamma(b)\n        + a * math.log(x) + b * math.log(1.0 - x)\n    )\n    if x < (a + 1.0) / (a + b + 2.0):\n        return bt * _betacf(a, b, x) / a\n    return 1.0 - bt * _betacf(b, a, 1.0 - x) / b\n\n\ndef _gammq(a, x):\n    \"\"\"Regularized upper incomplete gamma Q(a, x): series for P then Q=1-P below x<a+1,\n    continued fraction for Q above. (Numerical Recipes gammp/gammq.)\"\"\"\n    if x < 0.0 or a <= 0.0:\n        raise ValueError(\"bad args to _gammq\")\n    if x == 0.0:\n        return 1.0\n    gln = math.lgamma(a)\n    if x < a + 1.0:\n        ap = a\n        s = 1.0 / a\n        delta = s\n        for _ in range(1000):\n            ap += 1.0\n            delta *= x / ap\n            s += delta\n            if abs(delta) < abs(s) * 3.0e-15:\n                break\n        p = s * math.exp(-x + a * math.log(x) - gln)\n        return 1.0 - p\n    FPMIN = 1.0e-300\n    b = x + 1.0 - a\n    c = 1.0 / FPMIN\n    d = 1.0 / b\n    h = d\n    for i in range(1, 1000):\n        an = -i * (i - a)\n        b += 2.0\n        d = an * d + b\n        if abs(d) < FPMIN:\n            d = FPMIN\n        c = b + an / c\n        if abs(c) < FPMIN:\n            c = FPMIN\n        d = 1.0 / d\n        delta = d * c\n        h *= delta\n        if abs(delta - 1.0) < 3.0e-15:\n            break\n    return math.exp(-x + a * math.log(x) - gln) * h\n\n\ndef _p_two_tailed(test, statistic, df, df1, df2):\n    \"\"\"Two-tailed p-value for a reported test statistic. Pure stdlib math.\n\n    Returns None when the inputs are out of the distribution's domain (so the caller\n    abstains rather than inventing a verdict, DESIGN \u00a73.4).\n    \"\"\"\n    if test == \"z\":\n        return 2.0 * (1.0 - 0.5 * (1.0 + math.erf(abs(statistic) / math.sqrt(2.0))))\n    if test == \"t\":\n        if df is None or df <= 0:\n            return None\n        x = df / (df + statistic * statistic)\n        return _betai(df / 2.0, 0.5, x)\n    if test == \"r\":\n        if df is None or df <= 0:\n            return None\n        if abs(statistic) >= 1.0:\n            return None  # r out of (-1, 1): t-transform is undefined\n        t = statistic * math.sqrt(df / (1.0 - statistic * statistic))\n        x = df / (df + t * t)\n        return _betai(df / 2.0, 0.5, x)\n    if test == \"chi2\":\n        if df is None or df <= 0 or statistic < 0:\n            return None\n        return _gammq(df / 2.0, statistic / 2.0)\n    if test == \"F\":\n        if df1 is None or df2 is None or df1 <= 0 or df2 <= 0 or statistic < 0:\n            return None\n        x = df2 / (df2 + df1 * statistic)\n        return _betai(df2 / 2.0, df1 / 2.0, x)\n    return None\n\nTEST = 'F'\nSTATISTIC = 0.09\nDF = None\nDF1 = 2\nDF2 = 41\nREPORTED_P = 0.905\nDECIMALS = 3\nEPS = 1e-9\n\n\ndef _round_p(p):\n    return round(p, 6)\n\n\ndef _fmt_num(value):\n    if isinstance(value, bool):\n        value = int(value)\n    if isinstance(value, int):\n        return str(value)\n    if isinstance(value, float) and value.is_integer():\n        return str(int(value))\n    return repr(value)\n\n\ndef _df_field():\n    if TEST == 'F':\n        return 'df1=' + _fmt_num(DF1) + ',df2=' + _fmt_num(DF2)\n    return 'df=' + _fmt_num(DF)\n\n\np = _p_two_tailed(TEST, STATISTIC, DF, DF1, DF2)\nthreshold = 0.5 * 10 ** (-DECIMALS) + EPS\nif p is not None and abs(REPORTED_P - p) > threshold:\n    print(\n        'INCONSISTENT test=' + TEST + ' stat=' + _fmt_num(STATISTIC) + ' '\n        + _df_field() + ' reported_p=' + _fmt_num(REPORTED_P)\n        + ' recomputed_p=' + _fmt_num(_round_p(p))\n    )\nelse:\n    print('OK')\n",
-        "expected_output": "INCONSISTENT test=F stat=0.09 df1=2,df2=41 reported_p=0.905 recomputed_p=0.914111",
+        "recompute_script": null,
+        "expected_output": null,
         "script_dependencies": []
       },
       "details": {
@@ -420,8 +475,14 @@
         "df": null,
         "df1": 2,
         "df2": 41,
-        "decimals": 3,
-        "decision_flip": false
+        "stat_decimals": 2,
+        "rep_decimals": 3,
+        "achievable_p_range": [
+          0.909573,
+          0.918674
+        ],
+        "in_range": false,
+        "rel_err": 0.009967313694005935
       }
     },
     {
@@ -431,7 +492,7 @@
       "trust_tier": "deterministic_confirmed",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "reported p-value is a correct rounding of the p recomputed from the statistic",
+      "message": "reported p-value is consistent with the achievable p-range from the statistic (allowing for the statistic's printed precision)",
       "discrepancy": null,
       "reported": 0.004,
       "computed": 0.003538,
@@ -453,30 +514,37 @@
         "df": null,
         "df1": 1,
         "df2": 41,
-        "decimals": 3
+        "stat_decimals": 2,
+        "rep_decimals": 3,
+        "achievable_p_range": [
+          0.00353,
+          0.003546
+        ],
+        "in_range": true,
+        "rel_err": 0.1305391794962001
       }
     },
     {
       "verifier_id": "statcheck.v1",
       "claim_id": "c18",
-      "status": "fail",
+      "status": "pass",
       "trust_tier": "deterministic_confirmed",
       "verifier_kind": "prebuilt",
-      "severity": "B",
-      "message": "reported p-value is not a correct rounding of the p recomputed from the statistic",
-      "discrepancy": "reported p=0.912 but F statistic 0.09 (df1=2,df2=41) gives p=0.914111",
+      "severity": null,
+      "message": "reported p-value is consistent with the achievable p-range from the statistic (allowing for the statistic's printed precision)",
+      "discrepancy": null,
       "reported": 0.912,
       "computed": 0.914111,
       "evidence": {
-        "quote": "F(2, \n41) = 0.09, p = 0.912, \u03b72\u209a = 0.00.",
+        "quote": null,
         "location": {
-          "section": "Results",
-          "page": 5,
+          "section": null,
+          "page": null,
           "char_span": null,
-          "quote": "F(2, \n41) = 0.09, p = 0.912, \u03b72\u209a = 0.00."
+          "quote": null
         },
-        "recompute_script": "# LITMUS recompute script for statcheck.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only (math), network-less, deterministic.\n\nimport math\n\n\ndef _betacf(a, b, x):\n    \"\"\"Numerical-Recipes continued fraction for the incomplete beta (Lentz's method).\"\"\"\n    MAXIT = 400\n    FPMIN = 1.0e-300\n    CF_EPS = 3.0e-14\n    qab = a + b\n    qap = a + 1.0\n    qam = a - 1.0\n    c = 1.0\n    d = 1.0 - qab * x / qap\n    if abs(d) < FPMIN:\n        d = FPMIN\n    d = 1.0 / d\n    h = d\n    for m in range(1, MAXIT + 1):\n        m2 = 2 * m\n        aa = m * (b - m) * x / ((qam + m2) * (a + m2))\n        d = 1.0 + aa * d\n        if abs(d) < FPMIN:\n            d = FPMIN\n        c = 1.0 + aa / c\n        if abs(c) < FPMIN:\n            c = FPMIN\n        d = 1.0 / d\n        h *= d * c\n        aa = -(a + m) * (qab + m) * x / ((a + m2) * (qap + m2))\n        d = 1.0 + aa * d\n        if abs(d) < FPMIN:\n            d = FPMIN\n        c = 1.0 + aa / c\n        if abs(c) < FPMIN:\n            c = FPMIN\n        d = 1.0 / d\n        delta = d * c\n        h *= delta\n        if abs(delta - 1.0) < CF_EPS:\n            break\n    return h\n\n\ndef _betai(a, b, x):\n    \"\"\"Regularized incomplete beta I_x(a, b) via lgamma + the betacf continued fraction.\"\"\"\n    if x <= 0.0:\n        return 0.0\n    if x >= 1.0:\n        return 1.0\n    bt = math.exp(\n        math.lgamma(a + b) - math.lgamma(a) - math.lgamma(b)\n        + a * math.log(x) + b * math.log(1.0 - x)\n    )\n    if x < (a + 1.0) / (a + b + 2.0):\n        return bt * _betacf(a, b, x) / a\n    return 1.0 - bt * _betacf(b, a, 1.0 - x) / b\n\n\ndef _gammq(a, x):\n    \"\"\"Regularized upper incomplete gamma Q(a, x): series for P then Q=1-P below x<a+1,\n    continued fraction for Q above. (Numerical Recipes gammp/gammq.)\"\"\"\n    if x < 0.0 or a <= 0.0:\n        raise ValueError(\"bad args to _gammq\")\n    if x == 0.0:\n        return 1.0\n    gln = math.lgamma(a)\n    if x < a + 1.0:\n        ap = a\n        s = 1.0 / a\n        delta = s\n        for _ in range(1000):\n            ap += 1.0\n            delta *= x / ap\n            s += delta\n            if abs(delta) < abs(s) * 3.0e-15:\n                break\n        p = s * math.exp(-x + a * math.log(x) - gln)\n        return 1.0 - p\n    FPMIN = 1.0e-300\n    b = x + 1.0 - a\n    c = 1.0 / FPMIN\n    d = 1.0 / b\n    h = d\n    for i in range(1, 1000):\n        an = -i * (i - a)\n        b += 2.0\n        d = an * d + b\n        if abs(d) < FPMIN:\n            d = FPMIN\n        c = b + an / c\n        if abs(c) < FPMIN:\n            c = FPMIN\n        d = 1.0 / d\n        delta = d * c\n        h *= delta\n        if abs(delta - 1.0) < 3.0e-15:\n            break\n    return math.exp(-x + a * math.log(x) - gln) * h\n\n\ndef _p_two_tailed(test, statistic, df, df1, df2):\n    \"\"\"Two-tailed p-value for a reported test statistic. Pure stdlib math.\n\n    Returns None when the inputs are out of the distribution's domain (so the caller\n    abstains rather than inventing a verdict, DESIGN \u00a73.4).\n    \"\"\"\n    if test == \"z\":\n        return 2.0 * (1.0 - 0.5 * (1.0 + math.erf(abs(statistic) / math.sqrt(2.0))))\n    if test == \"t\":\n        if df is None or df <= 0:\n            return None\n        x = df / (df + statistic * statistic)\n        return _betai(df / 2.0, 0.5, x)\n    if test == \"r\":\n        if df is None or df <= 0:\n            return None\n        if abs(statistic) >= 1.0:\n            return None  # r out of (-1, 1): t-transform is undefined\n        t = statistic * math.sqrt(df / (1.0 - statistic * statistic))\n        x = df / (df + t * t)\n        return _betai(df / 2.0, 0.5, x)\n    if test == \"chi2\":\n        if df is None or df <= 0 or statistic < 0:\n            return None\n        return _gammq(df / 2.0, statistic / 2.0)\n    if test == \"F\":\n        if df1 is None or df2 is None or df1 <= 0 or df2 <= 0 or statistic < 0:\n            return None\n        x = df2 / (df2 + df1 * statistic)\n        return _betai(df2 / 2.0, df1 / 2.0, x)\n    return None\n\nTEST = 'F'\nSTATISTIC = 0.09\nDF = None\nDF1 = 2\nDF2 = 41\nREPORTED_P = 0.912\nDECIMALS = 3\nEPS = 1e-9\n\n\ndef _round_p(p):\n    return round(p, 6)\n\n\ndef _fmt_num(value):\n    if isinstance(value, bool):\n        value = int(value)\n    if isinstance(value, int):\n        return str(value)\n    if isinstance(value, float) and value.is_integer():\n        return str(int(value))\n    return repr(value)\n\n\ndef _df_field():\n    if TEST == 'F':\n        return 'df1=' + _fmt_num(DF1) + ',df2=' + _fmt_num(DF2)\n    return 'df=' + _fmt_num(DF)\n\n\np = _p_two_tailed(TEST, STATISTIC, DF, DF1, DF2)\nthreshold = 0.5 * 10 ** (-DECIMALS) + EPS\nif p is not None and abs(REPORTED_P - p) > threshold:\n    print(\n        'INCONSISTENT test=' + TEST + ' stat=' + _fmt_num(STATISTIC) + ' '\n        + _df_field() + ' reported_p=' + _fmt_num(REPORTED_P)\n        + ' recomputed_p=' + _fmt_num(_round_p(p))\n    )\nelse:\n    print('OK')\n",
-        "expected_output": "INCONSISTENT test=F stat=0.09 df1=2,df2=41 reported_p=0.912 recomputed_p=0.914111",
+        "recompute_script": null,
+        "expected_output": null,
         "script_dependencies": []
       },
       "details": {
@@ -485,31 +553,37 @@
         "df": null,
         "df1": 2,
         "df2": 41,
-        "decimals": 3,
-        "decision_flip": false
+        "stat_decimals": 2,
+        "rep_decimals": 3,
+        "achievable_p_range": [
+          0.909573,
+          0.918674
+        ],
+        "in_range": true,
+        "rel_err": 0.0023096023082137085
       }
     },
     {
       "verifier_id": "statcheck.v1",
       "claim_id": "c20",
-      "status": "fail",
+      "status": "pass",
       "trust_tier": "deterministic_confirmed",
       "verifier_kind": "prebuilt",
-      "severity": "B",
-      "message": "reported p-value is not a correct rounding of the p recomputed from the statistic",
-      "discrepancy": "reported p=0.136 but F statistic 2.1 (df1=2,df2=41) gives p=0.135435",
+      "severity": null,
+      "message": "reported p-value is consistent with the achievable p-range from the statistic (allowing for the statistic's printed precision)",
+      "discrepancy": null,
       "reported": 0.136,
       "computed": 0.135435,
       "evidence": {
-        "quote": "F(2,  41) = 2.10, \np = 0.136, \u03b72\u209a = 0.09.",
+        "quote": null,
         "location": {
-          "section": "Results",
-          "page": 5,
+          "section": null,
+          "page": null,
           "char_span": null,
-          "quote": "F(2,  41) = 2.10, \np = 0.136, \u03b72\u209a = 0.09."
+          "quote": null
         },
-        "recompute_script": "# LITMUS recompute script for statcheck.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only (math), network-less, deterministic.\n\nimport math\n\n\ndef _betacf(a, b, x):\n    \"\"\"Numerical-Recipes continued fraction for the incomplete beta (Lentz's method).\"\"\"\n    MAXIT = 400\n    FPMIN = 1.0e-300\n    CF_EPS = 3.0e-14\n    qab = a + b\n    qap = a + 1.0\n    qam = a - 1.0\n    c = 1.0\n    d = 1.0 - qab * x / qap\n    if abs(d) < FPMIN:\n        d = FPMIN\n    d = 1.0 / d\n    h = d\n    for m in range(1, MAXIT + 1):\n        m2 = 2 * m\n        aa = m * (b - m) * x / ((qam + m2) * (a + m2))\n        d = 1.0 + aa * d\n        if abs(d) < FPMIN:\n            d = FPMIN\n        c = 1.0 + aa / c\n        if abs(c) < FPMIN:\n            c = FPMIN\n        d = 1.0 / d\n        h *= d * c\n        aa = -(a + m) * (qab + m) * x / ((a + m2) * (qap + m2))\n        d = 1.0 + aa * d\n        if abs(d) < FPMIN:\n            d = FPMIN\n        c = 1.0 + aa / c\n        if abs(c) < FPMIN:\n            c = FPMIN\n        d = 1.0 / d\n        delta = d * c\n        h *= delta\n        if abs(delta - 1.0) < CF_EPS:\n            break\n    return h\n\n\ndef _betai(a, b, x):\n    \"\"\"Regularized incomplete beta I_x(a, b) via lgamma + the betacf continued fraction.\"\"\"\n    if x <= 0.0:\n        return 0.0\n    if x >= 1.0:\n        return 1.0\n    bt = math.exp(\n        math.lgamma(a + b) - math.lgamma(a) - math.lgamma(b)\n        + a * math.log(x) + b * math.log(1.0 - x)\n    )\n    if x < (a + 1.0) / (a + b + 2.0):\n        return bt * _betacf(a, b, x) / a\n    return 1.0 - bt * _betacf(b, a, 1.0 - x) / b\n\n\ndef _gammq(a, x):\n    \"\"\"Regularized upper incomplete gamma Q(a, x): series for P then Q=1-P below x<a+1,\n    continued fraction for Q above. (Numerical Recipes gammp/gammq.)\"\"\"\n    if x < 0.0 or a <= 0.0:\n        raise ValueError(\"bad args to _gammq\")\n    if x == 0.0:\n        return 1.0\n    gln = math.lgamma(a)\n    if x < a + 1.0:\n        ap = a\n        s = 1.0 / a\n        delta = s\n        for _ in range(1000):\n            ap += 1.0\n            delta *= x / ap\n            s += delta\n            if abs(delta) < abs(s) * 3.0e-15:\n                break\n        p = s * math.exp(-x + a * math.log(x) - gln)\n        return 1.0 - p\n    FPMIN = 1.0e-300\n    b = x + 1.0 - a\n    c = 1.0 / FPMIN\n    d = 1.0 / b\n    h = d\n    for i in range(1, 1000):\n        an = -i * (i - a)\n        b += 2.0\n        d = an * d + b\n        if abs(d) < FPMIN:\n            d = FPMIN\n        c = b + an / c\n        if abs(c) < FPMIN:\n            c = FPMIN\n        d = 1.0 / d\n        delta = d * c\n        h *= delta\n        if abs(delta - 1.0) < 3.0e-15:\n            break\n    return math.exp(-x + a * math.log(x) - gln) * h\n\n\ndef _p_two_tailed(test, statistic, df, df1, df2):\n    \"\"\"Two-tailed p-value for a reported test statistic. Pure stdlib math.\n\n    Returns None when the inputs are out of the distribution's domain (so the caller\n    abstains rather than inventing a verdict, DESIGN \u00a73.4).\n    \"\"\"\n    if test == \"z\":\n        return 2.0 * (1.0 - 0.5 * (1.0 + math.erf(abs(statistic) / math.sqrt(2.0))))\n    if test == \"t\":\n        if df is None or df <= 0:\n            return None\n        x = df / (df + statistic * statistic)\n        return _betai(df / 2.0, 0.5, x)\n    if test == \"r\":\n        if df is None or df <= 0:\n            return None\n        if abs(statistic) >= 1.0:\n            return None  # r out of (-1, 1): t-transform is undefined\n        t = statistic * math.sqrt(df / (1.0 - statistic * statistic))\n        x = df / (df + t * t)\n        return _betai(df / 2.0, 0.5, x)\n    if test == \"chi2\":\n        if df is None or df <= 0 or statistic < 0:\n            return None\n        return _gammq(df / 2.0, statistic / 2.0)\n    if test == \"F\":\n        if df1 is None or df2 is None or df1 <= 0 or df2 <= 0 or statistic < 0:\n            return None\n        x = df2 / (df2 + df1 * statistic)\n        return _betai(df2 / 2.0, df1 / 2.0, x)\n    return None\n\nTEST = 'F'\nSTATISTIC = 2.1\nDF = None\nDF1 = 2\nDF2 = 41\nREPORTED_P = 0.136\nDECIMALS = 3\nEPS = 1e-9\n\n\ndef _round_p(p):\n    return round(p, 6)\n\n\ndef _fmt_num(value):\n    if isinstance(value, bool):\n        value = int(value)\n    if isinstance(value, int):\n        return str(value)\n    if isinstance(value, float) and value.is_integer():\n        return str(int(value))\n    return repr(value)\n\n\ndef _df_field():\n    if TEST == 'F':\n        return 'df1=' + _fmt_num(DF1) + ',df2=' + _fmt_num(DF2)\n    return 'df=' + _fmt_num(DF)\n\n\np = _p_two_tailed(TEST, STATISTIC, DF, DF1, DF2)\nthreshold = 0.5 * 10 ** (-DECIMALS) + EPS\nif p is not None and abs(REPORTED_P - p) > threshold:\n    print(\n        'INCONSISTENT test=' + TEST + ' stat=' + _fmt_num(STATISTIC) + ' '\n        + _df_field() + ' reported_p=' + _fmt_num(REPORTED_P)\n        + ' recomputed_p=' + _fmt_num(_round_p(p))\n    )\nelse:\n    print('OK')\n",
-        "expected_output": "INCONSISTENT test=F stat=2.1 df1=2,df2=41 reported_p=0.136 recomputed_p=0.135435",
+        "recompute_script": null,
+        "expected_output": null,
         "script_dependencies": []
       },
       "details": {
@@ -518,8 +592,14 @@
         "df": null,
         "df1": 2,
         "df2": 41,
-        "decimals": 3,
-        "decision_flip": false
+        "stat_decimals": 1,
+        "rep_decimals": 3,
+        "achievable_p_range": [
+          0.129436,
+          0.141726
+        ],
+        "in_range": true,
+        "rel_err": 0.004171194815577456
       }
     },
     {
@@ -529,7 +609,7 @@
       "trust_tier": "deterministic_confirmed",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "reported p-value is a correct rounding of the p recomputed from the statistic",
+      "message": "reported p-value is consistent with the achievable p-range from the statistic (allowing for the statistic's printed precision)",
       "discrepancy": null,
       "reported": 0.002,
       "computed": 0.001632,
@@ -551,30 +631,37 @@
         "df": null,
         "df1": 1,
         "df2": 41,
-        "decimals": 3
+        "stat_decimals": 2,
+        "rep_decimals": 3,
+        "achievable_p_range": [
+          0.001628,
+          0.001635
+        ],
+        "in_range": true,
+        "rel_err": 0.22585367173863413
       }
     },
     {
       "verifier_id": "statcheck.v1",
       "claim_id": "c22",
-      "status": "fail",
+      "status": "pass",
       "trust_tier": "deterministic_confirmed",
       "verifier_kind": "prebuilt",
-      "severity": "B",
-      "message": "reported p-value is not a correct rounding of the p recomputed from the statistic",
-      "discrepancy": "reported p=0.288 but F statistic 1.28 (df1=2,df2=41) gives p=0.288913",
+      "severity": null,
+      "message": "reported p-value is consistent with the achievable p-range from the statistic (allowing for the statistic's printed precision)",
+      "discrepancy": null,
       "reported": 0.288,
       "computed": 0.288913,
       "evidence": {
-        "quote": "F(2, 41) = 1.28, p = 0.288, \n\u03b72\u209a = 0.05.",
+        "quote": null,
         "location": {
-          "section": "Results",
-          "page": 5,
+          "section": null,
+          "page": null,
           "char_span": null,
-          "quote": "F(2, 41) = 1.28, p = 0.288, \n\u03b72\u209a = 0.05."
+          "quote": null
         },
-        "recompute_script": "# LITMUS recompute script for statcheck.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only (math), network-less, deterministic.\n\nimport math\n\n\ndef _betacf(a, b, x):\n    \"\"\"Numerical-Recipes continued fraction for the incomplete beta (Lentz's method).\"\"\"\n    MAXIT = 400\n    FPMIN = 1.0e-300\n    CF_EPS = 3.0e-14\n    qab = a + b\n    qap = a + 1.0\n    qam = a - 1.0\n    c = 1.0\n    d = 1.0 - qab * x / qap\n    if abs(d) < FPMIN:\n        d = FPMIN\n    d = 1.0 / d\n    h = d\n    for m in range(1, MAXIT + 1):\n        m2 = 2 * m\n        aa = m * (b - m) * x / ((qam + m2) * (a + m2))\n        d = 1.0 + aa * d\n        if abs(d) < FPMIN:\n            d = FPMIN\n        c = 1.0 + aa / c\n        if abs(c) < FPMIN:\n            c = FPMIN\n        d = 1.0 / d\n        h *= d * c\n        aa = -(a + m) * (qab + m) * x / ((a + m2) * (qap + m2))\n        d = 1.0 + aa * d\n        if abs(d) < FPMIN:\n            d = FPMIN\n        c = 1.0 + aa / c\n        if abs(c) < FPMIN:\n            c = FPMIN\n        d = 1.0 / d\n        delta = d * c\n        h *= delta\n        if abs(delta - 1.0) < CF_EPS:\n            break\n    return h\n\n\ndef _betai(a, b, x):\n    \"\"\"Regularized incomplete beta I_x(a, b) via lgamma + the betacf continued fraction.\"\"\"\n    if x <= 0.0:\n        return 0.0\n    if x >= 1.0:\n        return 1.0\n    bt = math.exp(\n        math.lgamma(a + b) - math.lgamma(a) - math.lgamma(b)\n        + a * math.log(x) + b * math.log(1.0 - x)\n    )\n    if x < (a + 1.0) / (a + b + 2.0):\n        return bt * _betacf(a, b, x) / a\n    return 1.0 - bt * _betacf(b, a, 1.0 - x) / b\n\n\ndef _gammq(a, x):\n    \"\"\"Regularized upper incomplete gamma Q(a, x): series for P then Q=1-P below x<a+1,\n    continued fraction for Q above. (Numerical Recipes gammp/gammq.)\"\"\"\n    if x < 0.0 or a <= 0.0:\n        raise ValueError(\"bad args to _gammq\")\n    if x == 0.0:\n        return 1.0\n    gln = math.lgamma(a)\n    if x < a + 1.0:\n        ap = a\n        s = 1.0 / a\n        delta = s\n        for _ in range(1000):\n            ap += 1.0\n            delta *= x / ap\n            s += delta\n            if abs(delta) < abs(s) * 3.0e-15:\n                break\n        p = s * math.exp(-x + a * math.log(x) - gln)\n        return 1.0 - p\n    FPMIN = 1.0e-300\n    b = x + 1.0 - a\n    c = 1.0 / FPMIN\n    d = 1.0 / b\n    h = d\n    for i in range(1, 1000):\n        an = -i * (i - a)\n        b += 2.0\n        d = an * d + b\n        if abs(d) < FPMIN:\n            d = FPMIN\n        c = b + an / c\n        if abs(c) < FPMIN:\n            c = FPMIN\n        d = 1.0 / d\n        delta = d * c\n        h *= delta\n        if abs(delta - 1.0) < 3.0e-15:\n            break\n    return math.exp(-x + a * math.log(x) - gln) * h\n\n\ndef _p_two_tailed(test, statistic, df, df1, df2):\n    \"\"\"Two-tailed p-value for a reported test statistic. Pure stdlib math.\n\n    Returns None when the inputs are out of the distribution's domain (so the caller\n    abstains rather than inventing a verdict, DESIGN \u00a73.4).\n    \"\"\"\n    if test == \"z\":\n        return 2.0 * (1.0 - 0.5 * (1.0 + math.erf(abs(statistic) / math.sqrt(2.0))))\n    if test == \"t\":\n        if df is None or df <= 0:\n            return None\n        x = df / (df + statistic * statistic)\n        return _betai(df / 2.0, 0.5, x)\n    if test == \"r\":\n        if df is None or df <= 0:\n            return None\n        if abs(statistic) >= 1.0:\n            return None  # r out of (-1, 1): t-transform is undefined\n        t = statistic * math.sqrt(df / (1.0 - statistic * statistic))\n        x = df / (df + t * t)\n        return _betai(df / 2.0, 0.5, x)\n    if test == \"chi2\":\n        if df is None or df <= 0 or statistic < 0:\n            return None\n        return _gammq(df / 2.0, statistic / 2.0)\n    if test == \"F\":\n        if df1 is None or df2 is None or df1 <= 0 or df2 <= 0 or statistic < 0:\n            return None\n        x = df2 / (df2 + df1 * statistic)\n        return _betai(df2 / 2.0, df1 / 2.0, x)\n    return None\n\nTEST = 'F'\nSTATISTIC = 1.28\nDF = None\nDF1 = 2\nDF2 = 41\nREPORTED_P = 0.288\nDECIMALS = 3\nEPS = 1e-9\n\n\ndef _round_p(p):\n    return round(p, 6)\n\n\ndef _fmt_num(value):\n    if isinstance(value, bool):\n        value = int(value)\n    if isinstance(value, int):\n        return str(value)\n    if isinstance(value, float) and value.is_integer():\n        return str(int(value))\n    return repr(value)\n\n\ndef _df_field():\n    if TEST == 'F':\n        return 'df1=' + _fmt_num(DF1) + ',df2=' + _fmt_num(DF2)\n    return 'df=' + _fmt_num(DF)\n\n\np = _p_two_tailed(TEST, STATISTIC, DF, DF1, DF2)\nthreshold = 0.5 * 10 ** (-DECIMALS) + EPS\nif p is not None and abs(REPORTED_P - p) > threshold:\n    print(\n        'INCONSISTENT test=' + TEST + ' stat=' + _fmt_num(STATISTIC) + ' '\n        + _df_field() + ' reported_p=' + _fmt_num(REPORTED_P)\n        + ' recomputed_p=' + _fmt_num(_round_p(p))\n    )\nelse:\n    print('OK')\n",
-        "expected_output": "INCONSISTENT test=F stat=1.28 df1=2,df2=41 reported_p=0.288 recomputed_p=0.288913",
+        "recompute_script": null,
+        "expected_output": null,
         "script_dependencies": []
       },
       "details": {
@@ -583,8 +670,14 @@
         "df": null,
         "df1": 2,
         "df2": 41,
-        "decimals": 3,
-        "decision_flip": false
+        "stat_decimals": 2,
+        "rep_decimals": 3,
+        "achievable_p_range": [
+          0.287557,
+          0.290276
+        ],
+        "in_range": true,
+        "rel_err": 0.003161547706309826
       }
     },
     {
@@ -594,7 +687,7 @@
       "trust_tier": "deterministic_confirmed",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "reported p-value is a correct rounding of the p recomputed from the statistic",
+      "message": "reported p-value is consistent with the achievable p-range from the statistic (allowing for the statistic's printed precision)",
       "discrepancy": null,
       "reported": 0.124,
       "computed": 0.123715,
@@ -616,7 +709,14 @@
         "df": null,
         "df1": 2,
         "df2": 41,
-        "decimals": 3
+        "stat_decimals": 1,
+        "rep_decimals": 3,
+        "achievable_p_range": [
+          0.118259,
+          0.129436
+        ],
+        "in_range": true,
+        "rel_err": 0.002299712946937866
       }
     },
     {
@@ -626,7 +726,7 @@
       "trust_tier": "deterministic_confirmed",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "reported p-value is a correct rounding of the p recomputed from the statistic",
+      "message": "reported p-value is consistent with the achievable p-range from the statistic (allowing for the statistic's printed precision)",
       "discrepancy": null,
       "reported": 0.01,
       "computed": 0.010108,
@@ -648,7 +748,14 @@
         "df": null,
         "df1": 2,
         "df2": 41,
-        "decimals": 2
+        "stat_decimals": 2,
+        "rep_decimals": 2,
+        "achievable_p_range": [
+          0.010068,
+          0.010148
+        ],
+        "in_range": true,
+        "rel_err": 0.01067969653674945
       }
     },
     {
@@ -657,9 +764,9 @@
       "status": "fail",
       "trust_tier": "deterministic_confirmed",
       "verifier_kind": "prebuilt",
-      "severity": "B",
-      "message": "reported p-value is not a correct rounding of the p recomputed from the statistic",
-      "discrepancy": "reported p=0.013 but t statistic 3.6 (df=41) gives p=0.00085",
+      "severity": "C",
+      "message": "reported p-value is not achievable from the statistic at any rounding (decision unchanged, but the relative gap is large)",
+      "discrepancy": "reported p=0.013 but t statistic 3.6 (df=41) admits p in [0.000735,0.000983]",
       "reported": 0.013,
       "computed": 0.00085,
       "evidence": {
@@ -670,8 +777,8 @@
           "char_span": null,
           "quote": "HIIT group, t(41) = 3.60, p = 0.013"
         },
-        "recompute_script": "# LITMUS recompute script for statcheck.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only (math), network-less, deterministic.\n\nimport math\n\n\ndef _betacf(a, b, x):\n    \"\"\"Numerical-Recipes continued fraction for the incomplete beta (Lentz's method).\"\"\"\n    MAXIT = 400\n    FPMIN = 1.0e-300\n    CF_EPS = 3.0e-14\n    qab = a + b\n    qap = a + 1.0\n    qam = a - 1.0\n    c = 1.0\n    d = 1.0 - qab * x / qap\n    if abs(d) < FPMIN:\n        d = FPMIN\n    d = 1.0 / d\n    h = d\n    for m in range(1, MAXIT + 1):\n        m2 = 2 * m\n        aa = m * (b - m) * x / ((qam + m2) * (a + m2))\n        d = 1.0 + aa * d\n        if abs(d) < FPMIN:\n            d = FPMIN\n        c = 1.0 + aa / c\n        if abs(c) < FPMIN:\n            c = FPMIN\n        d = 1.0 / d\n        h *= d * c\n        aa = -(a + m) * (qab + m) * x / ((a + m2) * (qap + m2))\n        d = 1.0 + aa * d\n        if abs(d) < FPMIN:\n            d = FPMIN\n        c = 1.0 + aa / c\n        if abs(c) < FPMIN:\n            c = FPMIN\n        d = 1.0 / d\n        delta = d * c\n        h *= delta\n        if abs(delta - 1.0) < CF_EPS:\n            break\n    return h\n\n\ndef _betai(a, b, x):\n    \"\"\"Regularized incomplete beta I_x(a, b) via lgamma + the betacf continued fraction.\"\"\"\n    if x <= 0.0:\n        return 0.0\n    if x >= 1.0:\n        return 1.0\n    bt = math.exp(\n        math.lgamma(a + b) - math.lgamma(a) - math.lgamma(b)\n        + a * math.log(x) + b * math.log(1.0 - x)\n    )\n    if x < (a + 1.0) / (a + b + 2.0):\n        return bt * _betacf(a, b, x) / a\n    return 1.0 - bt * _betacf(b, a, 1.0 - x) / b\n\n\ndef _gammq(a, x):\n    \"\"\"Regularized upper incomplete gamma Q(a, x): series for P then Q=1-P below x<a+1,\n    continued fraction for Q above. (Numerical Recipes gammp/gammq.)\"\"\"\n    if x < 0.0 or a <= 0.0:\n        raise ValueError(\"bad args to _gammq\")\n    if x == 0.0:\n        return 1.0\n    gln = math.lgamma(a)\n    if x < a + 1.0:\n        ap = a\n        s = 1.0 / a\n        delta = s\n        for _ in range(1000):\n            ap += 1.0\n            delta *= x / ap\n            s += delta\n            if abs(delta) < abs(s) * 3.0e-15:\n                break\n        p = s * math.exp(-x + a * math.log(x) - gln)\n        return 1.0 - p\n    FPMIN = 1.0e-300\n    b = x + 1.0 - a\n    c = 1.0 / FPMIN\n    d = 1.0 / b\n    h = d\n    for i in range(1, 1000):\n        an = -i * (i - a)\n        b += 2.0\n        d = an * d + b\n        if abs(d) < FPMIN:\n            d = FPMIN\n        c = b + an / c\n        if abs(c) < FPMIN:\n            c = FPMIN\n        d = 1.0 / d\n        delta = d * c\n        h *= delta\n        if abs(delta - 1.0) < 3.0e-15:\n            break\n    return math.exp(-x + a * math.log(x) - gln) * h\n\n\ndef _p_two_tailed(test, statistic, df, df1, df2):\n    \"\"\"Two-tailed p-value for a reported test statistic. Pure stdlib math.\n\n    Returns None when the inputs are out of the distribution's domain (so the caller\n    abstains rather than inventing a verdict, DESIGN \u00a73.4).\n    \"\"\"\n    if test == \"z\":\n        return 2.0 * (1.0 - 0.5 * (1.0 + math.erf(abs(statistic) / math.sqrt(2.0))))\n    if test == \"t\":\n        if df is None or df <= 0:\n            return None\n        x = df / (df + statistic * statistic)\n        return _betai(df / 2.0, 0.5, x)\n    if test == \"r\":\n        if df is None or df <= 0:\n            return None\n        if abs(statistic) >= 1.0:\n            return None  # r out of (-1, 1): t-transform is undefined\n        t = statistic * math.sqrt(df / (1.0 - statistic * statistic))\n        x = df / (df + t * t)\n        return _betai(df / 2.0, 0.5, x)\n    if test == \"chi2\":\n        if df is None or df <= 0 or statistic < 0:\n            return None\n        return _gammq(df / 2.0, statistic / 2.0)\n    if test == \"F\":\n        if df1 is None or df2 is None or df1 <= 0 or df2 <= 0 or statistic < 0:\n            return None\n        x = df2 / (df2 + df1 * statistic)\n        return _betai(df2 / 2.0, df1 / 2.0, x)\n    return None\n\nTEST = 't'\nSTATISTIC = 3.6\nDF = 41\nDF1 = None\nDF2 = None\nREPORTED_P = 0.013\nDECIMALS = 3\nEPS = 1e-9\n\n\ndef _round_p(p):\n    return round(p, 6)\n\n\ndef _fmt_num(value):\n    if isinstance(value, bool):\n        value = int(value)\n    if isinstance(value, int):\n        return str(value)\n    if isinstance(value, float) and value.is_integer():\n        return str(int(value))\n    return repr(value)\n\n\ndef _df_field():\n    if TEST == 'F':\n        return 'df1=' + _fmt_num(DF1) + ',df2=' + _fmt_num(DF2)\n    return 'df=' + _fmt_num(DF)\n\n\np = _p_two_tailed(TEST, STATISTIC, DF, DF1, DF2)\nthreshold = 0.5 * 10 ** (-DECIMALS) + EPS\nif p is not None and abs(REPORTED_P - p) > threshold:\n    print(\n        'INCONSISTENT test=' + TEST + ' stat=' + _fmt_num(STATISTIC) + ' '\n        + _df_field() + ' reported_p=' + _fmt_num(REPORTED_P)\n        + ' recomputed_p=' + _fmt_num(_round_p(p))\n    )\nelse:\n    print('OK')\n",
-        "expected_output": "INCONSISTENT test=t stat=3.6 df=41 reported_p=0.013 recomputed_p=0.00085",
+        "recompute_script": "# LITMUS recompute script for statcheck.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only (math), network-less, deterministic.\n# Statistic-rounding-aware: re-derives p over the interval the printed statistic admits.\n\nimport math\n\n\ndef _betacf(a, b, x):\n    \"\"\"Numerical-Recipes continued fraction for the incomplete beta (Lentz's method).\"\"\"\n    MAXIT = 400\n    FPMIN = 1.0e-300\n    CF_EPS = 3.0e-14\n    qab = a + b\n    qap = a + 1.0\n    qam = a - 1.0\n    c = 1.0\n    d = 1.0 - qab * x / qap\n    if abs(d) < FPMIN:\n        d = FPMIN\n    d = 1.0 / d\n    h = d\n    for m in range(1, MAXIT + 1):\n        m2 = 2 * m\n        aa = m * (b - m) * x / ((qam + m2) * (a + m2))\n        d = 1.0 + aa * d\n        if abs(d) < FPMIN:\n            d = FPMIN\n        c = 1.0 + aa / c\n        if abs(c) < FPMIN:\n            c = FPMIN\n        d = 1.0 / d\n        h *= d * c\n        aa = -(a + m) * (qab + m) * x / ((a + m2) * (qap + m2))\n        d = 1.0 + aa * d\n        if abs(d) < FPMIN:\n            d = FPMIN\n        c = 1.0 + aa / c\n        if abs(c) < FPMIN:\n            c = FPMIN\n        d = 1.0 / d\n        delta = d * c\n        h *= delta\n        if abs(delta - 1.0) < CF_EPS:\n            break\n    return h\n\n\ndef _betai(a, b, x):\n    \"\"\"Regularized incomplete beta I_x(a, b) via lgamma + the betacf continued fraction.\"\"\"\n    if x <= 0.0:\n        return 0.0\n    if x >= 1.0:\n        return 1.0\n    bt = math.exp(\n        math.lgamma(a + b) - math.lgamma(a) - math.lgamma(b)\n        + a * math.log(x) + b * math.log(1.0 - x)\n    )\n    if x < (a + 1.0) / (a + b + 2.0):\n        return bt * _betacf(a, b, x) / a\n    return 1.0 - bt * _betacf(b, a, 1.0 - x) / b\n\n\ndef _gammq(a, x):\n    \"\"\"Regularized upper incomplete gamma Q(a, x): series for P then Q=1-P below x<a+1,\n    continued fraction for Q above. (Numerical Recipes gammp/gammq.)\"\"\"\n    if x < 0.0 or a <= 0.0:\n        raise ValueError(\"bad args to _gammq\")\n    if x == 0.0:\n        return 1.0\n    gln = math.lgamma(a)\n    if x < a + 1.0:\n        ap = a\n        s = 1.0 / a\n        delta = s\n        for _ in range(1000):\n            ap += 1.0\n            delta *= x / ap\n            s += delta\n            if abs(delta) < abs(s) * 3.0e-15:\n                break\n        p = s * math.exp(-x + a * math.log(x) - gln)\n        return 1.0 - p\n    FPMIN = 1.0e-300\n    b = x + 1.0 - a\n    c = 1.0 / FPMIN\n    d = 1.0 / b\n    h = d\n    for i in range(1, 1000):\n        an = -i * (i - a)\n        b += 2.0\n        d = an * d + b\n        if abs(d) < FPMIN:\n            d = FPMIN\n        c = b + an / c\n        if abs(c) < FPMIN:\n            c = FPMIN\n        d = 1.0 / d\n        delta = d * c\n        h *= delta\n        if abs(delta - 1.0) < 3.0e-15:\n            break\n    return math.exp(-x + a * math.log(x) - gln) * h\n\n\ndef _p_two_tailed(test, statistic, df, df1, df2):\n    \"\"\"Two-tailed p-value for a reported test statistic. Pure stdlib math.\n\n    Returns None when the inputs are out of the distribution's domain (so the caller\n    abstains rather than inventing a verdict, DESIGN \u00a73.4).\n    \"\"\"\n    if test == \"z\":\n        return 2.0 * (1.0 - 0.5 * (1.0 + math.erf(abs(statistic) / math.sqrt(2.0))))\n    if test == \"t\":\n        if df is None or df <= 0:\n            return None\n        x = df / (df + statistic * statistic)\n        return _betai(df / 2.0, 0.5, x)\n    if test == \"r\":\n        if df is None or df <= 0:\n            return None\n        if abs(statistic) >= 1.0:\n            return None  # r out of (-1, 1): t-transform is undefined\n        t = statistic * math.sqrt(df / (1.0 - statistic * statistic))\n        x = df / (df + t * t)\n        return _betai(df / 2.0, 0.5, x)\n    if test == \"chi2\":\n        if df is None or df <= 0 or statistic < 0:\n            return None\n        return _gammq(df / 2.0, statistic / 2.0)\n    if test == \"F\":\n        if df1 is None or df2 is None or df1 <= 0 or df2 <= 0 or statistic < 0:\n            return None\n        x = df2 / (df2 + df1 * statistic)\n        return _betai(df2 / 2.0, df1 / 2.0, x)\n    return None\n\n\ndef _p_range(test, statistic, df, df1, df2, half, n_samples):\n    \"\"\"The achievable two-tailed p-range over the statistic's rounding interval.\n\n    The printed statistic stands for any true value in ``[statistic-half, statistic+half]`` (half\n    = 0.5*10^-stat_decimals). We sample that interval (endpoints + interior), clamp a negative\n    sample up to 0 for the one-sided F/chi2 supports, skip out-of-domain samples, and return\n    ``(p_lo, p_hi, p_point)`` \u2014 the min/max achievable p and the p at the printed value itself.\n    Returns ``(None, None, None)`` if the printed value itself is out of domain.\n    \"\"\"\n    p_point = _p_two_tailed(test, statistic, df, df1, df2)\n    if p_point is None:\n        return None, None, None\n    lo = statistic - half\n    hi = statistic + half\n    ps = []\n    n = n_samples if n_samples > 1 else 2\n    for i in range(n):\n        s = lo + (hi - lo) * i / (n - 1)\n        if test in (\"F\", \"chi2\") and s < 0.0:\n            s = 0.0\n        p = _p_two_tailed(test, s, df, df1, df2)\n        if p is not None:\n            ps.append(p)\n    if not ps:\n        ps = [p_point]\n    return min(ps), max(ps), p_point\n\nTEST = 't'\nSTATISTIC = 3.6\nDF = 41\nDF1 = None\nDF2 = None\nREPORTED_P = 0.013\nSTAT_DECIMALS = 1\nREP_DECIMALS = 3\nN_SAMPLES = 9\nSIGNIFICANCE = 0.05\nMIN_REL_ERR_FOR_C = 0.25\nEPS = 1e-9\n\n\ndef _round_p(p):\n    return round(p, 6)\n\n\ndef _fmt_num(value):\n    if isinstance(value, bool):\n        value = int(value)\n    if isinstance(value, int):\n        return str(value)\n    if isinstance(value, float) and value.is_integer():\n        return str(int(value))\n    return repr(value)\n\n\ndef _df_field():\n    if TEST == 'F':\n        return 'df1=' + _fmt_num(DF1) + ',df2=' + _fmt_num(DF2)\n    return 'df=' + _fmt_num(DF)\n\n\nstat_half = 0.5 * 10 ** (-STAT_DECIMALS)\nrep_half = 0.5 * 10 ** (-REP_DECIMALS)\np_lo, p_hi, p_point = _p_range(TEST, STATISTIC, DF, DF1, DF2, stat_half, N_SAMPLES)\nif p_point is None:\n    print('OK')\nelse:\n    in_range = (REPORTED_P + rep_half >= p_lo - EPS) and (REPORTED_P - rep_half <= p_hi + EPS)\n    decision_flip = (REPORTED_P < SIGNIFICANCE) != (p_point < SIGNIFICANCE)\n    rel_err = abs(REPORTED_P - p_point) / max(abs(p_point), 1e-12)\n    flag = (not in_range) and (decision_flip or rel_err > MIN_REL_ERR_FOR_C)\n    if flag:\n        print(\n            'INCONSISTENT test=' + TEST + ' stat=' + _fmt_num(STATISTIC) + ' '\n            + _df_field() + ' reported_p=' + _fmt_num(REPORTED_P)\n            + ' achievable_p=[' + _fmt_num(_round_p(p_lo)) + ',' + _fmt_num(_round_p(p_hi)) + ']'\n        )\n    else:\n        print('OK')\n",
+        "expected_output": "INCONSISTENT test=t stat=3.6 df=41 reported_p=0.013 achievable_p=[0.000735,0.000983]",
         "script_dependencies": []
       },
       "details": {
@@ -680,8 +787,14 @@
         "df": 41,
         "df1": null,
         "df2": null,
-        "decimals": 3,
-        "decision_flip": false
+        "stat_decimals": 1,
+        "rep_decimals": 3,
+        "achievable_p_range": [
+          0.000735,
+          0.000983
+        ],
+        "decision_flip": false,
+        "rel_err": 14.289287953421164
       }
     },
     {
@@ -691,7 +804,7 @@
       "trust_tier": "deterministic_confirmed",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "reported p-value is a correct rounding of the p recomputed from the statistic",
+      "message": "reported p-value is consistent with the achievable p-range from the statistic (allowing for the statistic's printed precision)",
       "discrepancy": null,
       "reported": 0.01,
       "computed": 0.010108,
@@ -713,7 +826,14 @@
         "df": null,
         "df1": 2,
         "df2": 41,
-        "decimals": 2
+        "stat_decimals": 2,
+        "rep_decimals": 2,
+        "achievable_p_range": [
+          0.010068,
+          0.010148
+        ],
+        "in_range": true,
+        "rel_err": 0.01067969653674945
       }
     }
   ],

@@ -1,84 +1,45 @@
 {
   "schema_version": "1.0",
-  "paper_id": "medicine-zhou2025-esketamine-low-opioid-anaesthesia",
+  "paper_id": "biology-zhang2025-brd4-protac-fulvestrant-breast",
   "meta": {
     "executor": "local",
-    "n_claims": 27,
+    "n_claims": 24,
     "n_verifiers": 9,
     "synthesis_candidates": [
-      "c1",
       "c2",
       "c3",
-      "c4",
-      "c5",
-      "c6",
-      "c7",
-      "c8",
-      "c9",
-      "c10",
-      "c11",
       "c12",
       "c13",
       "c14",
       "c15",
       "c16",
+      "c17",
       "c18",
-      "c19",
-      "c20",
-      "c21",
-      "c22",
       "c23",
-      "c24",
-      "c26"
+      "c24"
     ],
     "confirmation": "fresh-sandbox",
     "registry_load_errors": []
   },
   "summary": {
-    "n_findings": 1,
+    "n_findings": 0,
     "n_flags": 0,
     "n_dropped": 0,
-    "n_routed_to_human": 0,
-    "n_abstained": 26,
+    "n_routed_to_human": 1,
+    "n_abstained": 23,
     "flags_by_trust_tier": {},
     "flags_by_severity": {}
   },
-  "findings": [
+  "findings": [],
+  "dropped_flags": [],
+  "routed_to_human": [
     {
-      "verifier_id": "sum_check.v1",
-      "claim_id": "c25",
-      "status": "pass",
-      "trust_tier": "deterministic_confirmed",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "reported total equals the sum of its parts (within printing precision)",
-      "discrepancy": null,
-      "reported": 64,
-      "computed": 64,
-      "evidence": {
-        "quote": null,
-        "location": {
-          "section": null,
-          "page": null,
-          "char_span": null,
-          "quote": null
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {
-        "parts": [
-          37,
-          27
-        ],
-        "n_parts": 2,
-        "tolerance": 1e-09
-      }
+      "claim_id": "c8",
+      "dimension": "tier:T8",
+      "note": "tier T8: subjective/integrity \u2014 surfaced, not scored (DESIGN \u00a73.5)",
+      "quote": "we first screened a panel of compounds and identified ZBC260 as the most potent degrader (Figure 3A)"
     }
   ],
-  "dropped_flags": [],
-  "routed_to_human": [],
   "abstained": [
     {
       "verifier_id": "litmus.planner",
@@ -87,17 +48,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "POD-3 QoR-15 scores 121 (117.75\u2013124) 115 (111.75\u2013118.25) <0.001",
+        "quote": "the chromatin\nbinding densities of all five factors were significantly elevated in\npromoter regions of MCF7 cells compared to MCF10A cells",
         "location": {
-          "section": "3.1 / Table 2",
-          "page": 7,
+          "section": "3.1",
+          "page": 4,
           "char_span": null,
-          "quote": "POD-3 QoR-15 scores 121 (117.75\u2013124) 115 (111.75\u2013118.25) <0.001"
+          "quote": "the chromatin\nbinding densities of all five factors were significantly elevated in\npromoter regions of MCF7 cells compared to MCF10A cells"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -117,12 +78,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Physical comfort 40 (39\u201341) 38 (37\u201340) <0.001",
+        "quote": "a substantial majority (\u226578%) of\nBRD4 binding sites coincided with histone acetylation sites, specifically H3K27ac (93.93%), H3K4ac (88.42%), H3K9ac (83.18%), and\nH3K23ac (78.00%)",
         "location": {
-          "section": "3.1 / Table 2",
-          "page": 7,
+          "section": "3.1",
+          "page": 4,
           "char_span": null,
-          "quote": "Physical comfort 40 (39\u201341) 38 (37\u201340) <0.001"
+          "quote": "a substantial majority (\u226578%) of\nBRD4 binding sites coincided with histone acetylation sites, specifically H3K27ac (93.93%), H3K4ac (88.42%), H3K9ac (83.18%), and\nH3K23ac (78.00%)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -142,12 +103,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Emotional state 32 (30\u201333) 29 (27.75\u201331) <0.001",
+        "quote": "These co-localization events were supported by\nstrong correlation coefficients, all exceeding 0.7 (Figures 1F\u2013J)",
         "location": {
-          "section": "3.1 / Table 2",
-          "page": 7,
+          "section": "3.1",
+          "page": 4,
           "char_span": null,
-          "quote": "Emotional state 32 (30\u201333) 29 (27.75\u201331) <0.001"
+          "quote": "These co-localization events were supported by\nstrong correlation coefficients, all exceeding 0.7 (Figures 1F\u2013J)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -162,17 +123,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Pain 18 (18\u201320) 18 (16.75\u201319) <0.001",
+        "quote": "a high expression level of BRD4 was significantly\nassociated with reduced survival probability in breast cancer\npatients",
         "location": {
-          "section": "3.1 / Table 2",
-          "page": 7,
+          "section": "3.2",
+          "page": 5,
           "char_span": null,
-          "quote": "Pain 18 (18\u201320) 18 (16.75\u201319) <0.001"
+          "quote": "a high expression level of BRD4 was significantly\nassociated with reduced survival probability in breast cancer\npatients"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -187,17 +148,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Statistically significant differences in QoR-15 scores between \nthe K and C groups were also observed on postoperative days 1 and 2 \n(P < 0.01)",
+        "quote": "including those with the luminal subtype (Figures 2A,\nB)",
         "location": {
-          "section": "3.1 / Table 3",
-          "page": 7,
+          "section": "3.2",
+          "page": 5,
           "char_span": null,
-          "quote": "Statistically significant differences in QoR-15 scores between \nthe K and C groups were also observed on postoperative days 1 and 2 \n(P < 0.01)"
+          "quote": "including those with the luminal subtype (Figures 2A,\nB)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -212,17 +173,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "POD-3 2 (2\u20132) 2 (2\u20133) 0.006",
+        "quote": "elevated BRD4 expression also predicted poor\nprognosis in patients undergoing endocrine therapy (Figure 2C)",
         "location": {
-          "section": "3.2 / Table 4",
-          "page": 7,
+          "section": "3.2",
+          "page": 5,
           "char_span": null,
-          "quote": "POD-3 2 (2\u20132) 2 (2\u20133) 0.006"
+          "quote": "elevated BRD4 expression also predicted poor\nprognosis in patients undergoing endocrine therapy (Figure 2C)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -237,42 +198,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "POD-3 3 (3\u20134) 4 (3\u20134) 0.02",
+        "quote": "BRD4 expression is\nsignificantly upregulated in the fulvestrant-resistant cell line\n(Figure 2D, Supplementary Table 1)",
         "location": {
-          "section": "3.2 / Table 4",
-          "page": 7,
+          "section": "3.2",
+          "page": 5,
           "char_span": null,
-          "quote": "POD-3 3 (3\u20134) 4 (3\u20134) 0.02"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c8",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "PCIA demand frequency 12.5 (9\u201315) 15 (12\u201317) 0.002",
-        "location": {
-          "section": "3.2 / Table 4",
-          "page": 7,
-          "char_span": null,
-          "quote": "PCIA demand frequency 12.5 (9\u201315) 15 (12\u201317) 0.002"
+          "quote": "BRD4 expression is\nsignificantly upregulated in the fulvestrant-resistant cell line\n(Figure 2D, Supplementary Table 1)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -287,17 +223,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Rescue analgesia, n (%) 10 (14.3) 23 (32.9) 0.01",
+        "quote": "pre-treatment with the proteasome inhibitor\nMG132 abrogated ZBC260-induced BRD4 degradation\n(Figure 3B)",
         "location": {
-          "section": "3.2 / Table 4",
-          "page": 7,
+          "section": "3.3",
+          "page": 4,
           "char_span": null,
-          "quote": "Rescue analgesia, n (%) 10 (14.3) 23 (32.9) 0.01"
+          "quote": "pre-treatment with the proteasome inhibitor\nMG132 abrogated ZBC260-induced BRD4 degradation\n(Figure 3B)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -312,17 +248,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Rescue analgesic consumption per patient (mg) 0 (0\u20130) 0 (0\u2013100) 0.008",
+        "quote": "ZBC260 also\nled to a marked reduction in BRD4 protein levels in a dose- and\ntime-dependent manner (Figures 3C, D)",
         "location": {
-          "section": "3.2 / Table 4",
-          "page": 7,
+          "section": "3.3",
+          "page": 4,
           "char_span": null,
-          "quote": "Rescue analgesic consumption per patient (mg) 0 (0\u20130) 0 (0\u2013100) 0.008"
+          "quote": "ZBC260 also\nled to a marked reduction in BRD4 protein levels in a dose- and\ntime-dependent manner (Figures 3C, D)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -337,17 +273,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "reduced usage of propofol (866.56 \u00b1 76.44 mg vs. \n968.36 \u00b1 68.87 mg, P < 0.05)",
+        "quote": "ZBC260 enhanced the inhibitory effect of fulvestrant to\nmore profoundly inhibit cell migration and proliferation and to\ninduce apoptosis (Figures 4B\u2013E)",
         "location": {
-          "section": "3.4",
-          "page": 6,
+          "section": "3.3",
+          "page": 4,
           "char_span": null,
-          "quote": "reduced usage of propofol (866.56 \u00b1 76.44 mg vs. \n968.36 \u00b1 68.87 mg, P < 0.05)"
+          "quote": "ZBC260 enhanced the inhibitory effect of fulvestrant to\nmore profoundly inhibit cell migration and proliferation and to\ninduce apoptosis (Figures 4B\u2013E)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -367,12 +303,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "sufentanil (25 \u00b1 \n4.62 ug vs. 38 \u00b1 8.60 ug, P < 0.001)",
+        "quote": "approximately 50% of BRD4\nbinding sites are located in promoter regions (Figure 5A)",
         "location": {
           "section": "3.4",
-          "page": 6,
+          "page": 5,
           "char_span": null,
-          "quote": "sufentanil (25 \u00b1 \n4.62 ug vs. 38 \u00b1 8.60 ug, P < 0.001)"
+          "quote": "approximately 50% of BRD4\nbinding sites are located in promoter regions (Figure 5A)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -392,12 +328,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "remifentanil (2.1 \u00b1 0.35 mg vs. 2.5 \u00b1 0.72 mg, P < 0.001)",
+        "quote": "About onethird of ER binding sites were found in promoter regions\n(Figure 5E)",
         "location": {
           "section": "3.4",
           "page": 6,
           "char_span": null,
-          "quote": "remifentanil (2.1 \u00b1 0.35 mg vs. 2.5 \u00b1 0.72 mg, P < 0.001)"
+          "quote": "About onethird of ER binding sites were found in promoter regions\n(Figure 5E)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -417,12 +353,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "extubation time \n(35.8 \u00b1 13.02 min vs. 40.8 \u00b1 15.5 min, P < 0.05; Figure 4A)",
+        "quote": "61.0% of ER promoter-binding genes overlapped with BRD4",
         "location": {
           "section": "3.5",
           "page": 6,
           "char_span": null,
-          "quote": "extubation time \n(35.8 \u00b1 13.02 min vs. 40.8 \u00b1 15.5 min, P < 0.05; Figure 4A)"
+          "quote": "61.0% of ER promoter-binding genes overlapped with BRD4"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -442,12 +378,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "PACU stay duration (107.2 \u00b1 27.4 min vs. 118.9 \u00b1 27.2 min, P < 0.05;",
+        "quote": "50% of fulvestrant-downregulated\ngenes were also suppressed by JQ1",
         "location": {
           "section": "3.5",
-          "page": 6,
+          "page": 7,
           "char_span": null,
-          "quote": "PACU stay duration (107.2 \u00b1 27.4 min vs. 118.9 \u00b1 27.2 min, P < 0.05;"
+          "quote": "50% of fulvestrant-downregulated\ngenes were also suppressed by JQ1"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -467,12 +403,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "the incidence \nof nausea and vomiting was significantly lower in the K group than \nin the C group (10.0% vs. 21.4%, P < 0.05)",
+        "quote": "identifying 58\ncandidate genes potentially core to BRD4 and ER function as well as\ntherapy resistance (Figure 6C)",
         "location": {
-          "section": "3.6",
-          "page": 6,
+          "section": "3.5",
+          "page": 7,
           "char_span": null,
-          "quote": "the incidence \nof nausea and vomiting was significantly lower in the K group than \nin the C group (10.0% vs. 21.4%, P < 0.05)"
+          "quote": "identifying 58\ncandidate genes potentially core to BRD4 and ER function as well as\ntherapy resistance (Figure 6C)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -487,17 +423,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no applicable verifier",
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "No other significant \ndifferences were observed between the two groups in the incidence \nof dizziness, headache, drowsiness, or restlessness (P > \n0.05)",
+        "quote": "we mapped its downstream SE\nlandscape and identified 450 SEs (Supplementary Table 3)",
         "location": {
-          "section": "3.6",
-          "page": 6,
+          "section": "3.5",
+          "page": 7,
           "char_span": null,
-          "quote": "No other significant \ndifferences were observed between the two groups in the incidence \nof dizziness, headache, drowsiness, or restlessness (P > \n0.05)"
+          "quote": "we mapped its downstream SE\nlandscape and identified 450 SEs (Supplementary Table 3)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -517,12 +453,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "higher QoR-15 score on postoperative day 3 (B = 5.52, 95% CI \n3.97 to 7.06, P < 0.001)",
+        "quote": "these SEs were\nassociated with 12 of the 58 shortlisted genes (Figure 6D)",
         "location": {
-          "section": "3.7",
-          "page": 6,
+          "section": "3.5",
+          "page": 7,
           "char_span": null,
-          "quote": "higher QoR-15 score on postoperative day 3 (B = 5.52, 95% CI \n3.97 to 7.06, P < 0.001)"
+          "quote": "these SEs were\nassociated with 12 of the 58 shortlisted genes (Figure 6D)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -537,17 +473,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "sufentanil (B = \u221212.61, 95% CI \n-15.02 to \u221210.19, P < 0.001)",
+        "quote": "combined ZBC260 and fulvestrant treatment potently inhibited the expression of GREB1 (Figures 6F, G)",
         "location": {
-          "section": "3.7",
-          "page": 6,
+          "section": "3.5",
+          "page": 7,
           "char_span": null,
-          "quote": "sufentanil (B = \u221212.61, 95% CI \n-15.02 to \u221210.19, P < 0.001)"
+          "quote": "combined ZBC260 and fulvestrant treatment potently inhibited the expression of GREB1 (Figures 6F, G)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -562,17 +498,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "remifentanil (B = \u22120.39, 95% CI \n-0.58 to \u22120.19, P < 0.001)",
+        "quote": "GREB1 knock down also enhanced the\ninhibitory effect of ZBC260 to more profoundly inhibit cell migration and proliferation and to induce apoptosis (Figures 7A\u2013D)",
         "location": {
-          "section": "3.7",
-          "page": 6,
+          "section": "3.5",
+          "page": 7,
           "char_span": null,
-          "quote": "remifentanil (B = \u22120.39, 95% CI \n-0.58 to \u22120.19, P < 0.001)"
+          "quote": "GREB1 knock down also enhanced the\ninhibitory effect of ZBC260 to more profoundly inhibit cell migration and proliferation and to induce apoptosis (Figures 7A\u2013D)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -587,17 +523,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "lower heart rate variability (B = \u22120.027, 95% CI \n-0.042 to \u22120.012, P < 0.001)",
+        "quote": "ZBC260\ninduce BRD4 less chromatin binding events on the promoter\nregions of GREB1, and ZBC260 combined with fulvestrant more\nimpair the events, but estrogen rescue the events (Figure 8B)",
         "location": {
-          "section": "3.7",
-          "page": 6,
+          "section": "3.6",
+          "page": 7,
           "char_span": null,
-          "quote": "lower heart rate variability (B = \u22120.027, 95% CI \n-0.042 to \u22120.012, P < 0.001)"
+          "quote": "ZBC260\ninduce BRD4 less chromatin binding events on the promoter\nregions of GREB1, and ZBC260 combined with fulvestrant more\nimpair the events, but estrogen rescue the events (Figure 8B)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -612,17 +548,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "higher mean arterial \npressure variability (B = 0.018, 95% CI 0.001 to 0.034, P = 0.033)",
+        "quote": "which accounts for about 75% of all\ncases, acquired resistance drives relapse in up to 30% of patients (7)",
         "location": {
-          "section": "3.7",
-          "page": 6,
+          "section": "4",
+          "page": 7,
           "char_span": null,
-          "quote": "higher mean arterial \npressure variability (B = 0.018, 95% CI 0.001 to 0.034, P = 0.033)"
+          "quote": "which accounts for about 75% of all\ncases, acquired resistance drives relapse in up to 30% of patients (7)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -642,12 +578,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Norepinephrine 9 (12.9) 28 (40) <0.01",
+        "quote": "over 60% of ER\npromoter-binding events and 50% of its transcriptome overlap with\nthat of BRD4",
         "location": {
-          "section": "3 / Table 1",
-          "page": 5,
+          "section": "4",
+          "page": 9,
           "char_span": null,
-          "quote": "Norepinephrine 9 (12.9) 28 (40) <0.01"
+          "quote": "over 60% of ER\npromoter-binding events and 50% of its transcriptome overlap with\nthat of BRD4"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -667,62 +603,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "calculations indicated \n64 patients per group were required. Accounting for a 10% \ndropout rate, the final actual enrollment per group was \n72 patients, totaling 144 patients.",
+        "quote": "Enhancers above the inflection point of the curve\nwere defined as super-enhancers (BRD4 cut-off, 8034.7455)",
         "location": {
           "section": "2.5",
-          "page": 4,
+          "page": 2,
           "char_span": null,
-          "quote": "calculations indicated \n64 patients per group were required. Accounting for a 10% \ndropout rate, the final actual enrollment per group was \n72 patients, totaling 144 patients."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c26",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "A statistically significant, six-point higher median QoR-15 score was \nobserved in the K group compared to the C group on POD3, which \nmeets the threshold for the established minimal clinically important \ndifference (MCID) of six points",
-        "location": {
-          "section": "4 Discussion",
-          "page": 6,
-          "char_span": null,
-          "quote": "A statistically significant, six-point higher median QoR-15 score was \nobserved in the K group compared to the C group on POD3, which \nmeets the threshold for the established minimal clinically important \ndifference (MCID) of six points"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c27",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "an esketamine-based multimodal low-opioid anaesthesia \nregimen significantly enhances recovery quality on postoperative \nday 3 in elderly patients undergoing thoracoscopic radical lung \ncancer surgery.",
-        "location": {
-          "section": "5 Conclusion",
-          "page": 10,
-          "char_span": null,
-          "quote": "an esketamine-based multimodal low-opioid anaesthesia \nregimen significantly enhances recovery quality on postoperative \nday 3 in elderly patients undergoing thoracoscopic radical lung \ncancer surgery."
+          "quote": "Enhancers above the inflection point of the curve\nwere defined as super-enhancers (BRD4 cut-off, 8034.7455)"
         },
         "recompute_script": null,
         "expected_output": null,

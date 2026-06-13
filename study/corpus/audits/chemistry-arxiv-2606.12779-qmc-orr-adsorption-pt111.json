@@ -1,0 +1,553 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "chemistry-arxiv-2606.12779-qmc-orr-adsorption-pt111",
+  "meta": {
+    "executor": "local",
+    "n_claims": 20,
+    "n_verifiers": 9,
+    "synthesis_candidates": [
+      "c2",
+      "c3",
+      "c4",
+      "c5",
+      "c6",
+      "c7",
+      "c11",
+      "c12",
+      "c13",
+      "c14",
+      "c15",
+      "c16",
+      "c17",
+      "c18",
+      "c19",
+      "c20"
+    ],
+    "confirmation": "fresh-sandbox",
+    "registry_load_errors": []
+  },
+  "summary": {
+    "n_findings": 3,
+    "n_flags": 0,
+    "n_dropped": 0,
+    "n_routed_to_human": 0,
+    "n_abstained": 17,
+    "flags_by_trust_tier": {},
+    "flags_by_severity": {}
+  },
+  "findings": [
+    {
+      "verifier_id": "prose_vs_table.v1",
+      "claim_id": "c8",
+      "status": "pass",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "the prose value agrees with the value the bound source reports",
+      "discrepancy": null,
+      "reported": -0.042,
+      "computed": -0.042,
+      "evidence": {
+        "quote": null,
+        "location": {
+          "section": null,
+          "page": null,
+          "char_span": null,
+          "quote": null
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {
+        "quantity": "SD-FNDMC HCO formation signed error eV",
+        "rel_tol": 0.01
+      }
+    },
+    {
+      "verifier_id": "prose_vs_table.v1",
+      "claim_id": "c9",
+      "status": "pass",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "the prose value agrees with the value the bound source reports",
+      "discrepancy": null,
+      "reported": -0.042,
+      "computed": -0.042,
+      "evidence": {
+        "quote": null,
+        "location": {
+          "section": null,
+          "page": null,
+          "char_span": null,
+          "quote": null
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {
+        "quantity": "SD-FNDMC HCO formation signed error eV",
+        "rel_tol": 0.01
+      }
+    },
+    {
+      "verifier_id": "prose_vs_table.v1",
+      "claim_id": "c10",
+      "status": "pass",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "the prose value agrees with the value the bound source reports",
+      "discrepancy": null,
+      "reported": -0.042,
+      "computed": -0.042,
+      "evidence": {
+        "quote": null,
+        "location": {
+          "section": null,
+          "page": null,
+          "char_span": null,
+          "quote": null
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {
+        "quantity": "SD-FNDMC HCO formation signed error eV",
+        "rel_tol": 0.01
+      }
+    }
+  ],
+  "dropped_flags": [],
+  "routed_to_human": [],
+  "abstained": [
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c1",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "For Pt(111), the resulting correction is small for O and\nOH but larger for OOH, while the geometry-matched refinement gives only a secondary correction.",
+        "location": {
+          "section": "Abstract",
+          "page": 1,
+          "char_span": null,
+          "quote": "For Pt(111), the resulting correction is small for O and\nOH but larger for OOH, while the geometry-matched refinement gives only a secondary correction."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c2",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "Applying the same cycle to HCO and COH on Cu(111) gives corrections of opposite sign",
+        "location": {
+          "section": "Abstract",
+          "page": 1,
+          "char_span": null,
+          "quote": "Applying the same cycle to HCO and COH on Cu(111) gives corrections of opposite sign"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c3",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "\u03b4hyb(O) = \u22120.091 eV,\n\u03b4hyb(OH) = \u22120.037 eV,\n\u03b4hyb(OOH) = \u22120.183 eV.",
+        "location": {
+          "section": "III.C Scheme 1",
+          "page": 8,
+          "char_span": null,
+          "quote": "\u03b4hyb(O) = \u22120.091 eV,\n\u03b4hyb(OH) = \u22120.037 eV,\n\u03b4hyb(OOH) = \u22120.183 eV."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c4",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "= \u22120.041 \u00b1 0.007 eV.",
+        "location": {
+          "section": "III.D Scheme 2",
+          "page": 9,
+          "char_span": null,
+          "quote": "= \u22120.041 \u00b1 0.007 eV."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c5",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "\u2206E\nQMC\nrlx (OOH) = 0.198 \u00b1 0.007 eV,\n\u2206E\nHL\nrlx (OOH) = 0.158 eV.",
+        "location": {
+          "section": "III.D Scheme 2",
+          "page": 9,
+          "char_span": null,
+          "quote": "\u2206E\nQMC\nrlx (OOH) = 0.198 \u00b1 0.007 eV,\n\u2206E\nHL\nrlx (OOH) = 0.158 eV."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c6",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "the O\u2013O bond elongates from 1.35 \u02daA in\nthe optimized gas-phase structure to 1.43 \u02daA in\nthe surface-extracted geometry, while the O\u2013H\nbond length remains nearly unchanged and the\nH\u2013O\u2013O angle decreases from 105.0\u25e6to 102.1\u25e6.",
+        "location": {
+          "section": "III.D Scheme 2",
+          "page": 9,
+          "char_span": null,
+          "quote": "the O\u2013O bond elongates from 1.35 \u02daA in\nthe optimized gas-phase structure to 1.43 \u02daA in\nthe surface-extracted geometry, while the O\u2013H\nbond length remains nearly unchanged and the\nH\u2013O\u2013O angle decreases from 105.0\u25e6to 102.1\u25e6."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c7",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "\u03b4hyb(HCO) = +0.042 eV,\n\u03b4hyb(COH) = \u22120.063 eV.",
+        "location": {
+          "section": "III.E Transferability",
+          "page": 10,
+          "char_span": null,
+          "quote": "\u03b4hyb(HCO) = +0.042 eV,\n\u03b4hyb(COH) = \u22120.063 eV."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c11",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "OOHtop 4.557(41) 4.374(44) 4.333(44)",
+        "location": {
+          "section": "Table II",
+          "page": 8,
+          "char_span": null,
+          "quote": "OOHtop 4.557(41) 4.374(44) 4.333(44)"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c12",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "SD-FNDMC \u22122.603 [-0.097] 0.322 [-0.065] 0.102 [-0.025] 2.925 [ 0.032] 5.308 [ 0.168]",
+        "location": {
+          "section": "Table I",
+          "page": 7,
+          "char_span": null,
+          "quote": "SD-FNDMC \u22122.603 [-0.097] 0.322 [-0.065] 0.102 [-0.025] 2.925 [ 0.032] 5.308 [ 0.168]"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c13",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "gies by only 0.006\u20130.032 eV depending on site,\nwhereas for HCO it ranges from \u22120.029 eV\nat the bridge site to +0.045 eV at the top\nsite.",
+        "location": {
+          "section": "III.E Transferability",
+          "page": 11,
+          "char_span": null,
+          "quote": "gies by only 0.006\u20130.032 eV depending on site,\nwhereas for HCO it ranges from \u22120.029 eV\nat the bridge site to +0.045 eV at the top\nsite."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c14",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "The fcc Pt lattice constant optimized at this\nlevel was 3.93 \u02daA using a 16 \u00d7 16 \u00d7 16 k-point\nmesh.",
+        "location": {
+          "section": "II.A DFT structural models",
+          "page": 3,
+          "char_span": null,
+          "quote": "The fcc Pt lattice constant optimized at this\nlevel was 3.93 \u02daA using a 16 \u00d7 16 \u00d7 16 k-point\nmesh."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c15",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "The Pt(111) slab was then constructed\nas a three-layer slab containing 12 Pt atoms\nin total, with cell dimensions of 5.55, 5.55,\nand 20.54 \u02daA.",
+        "location": {
+          "section": "II.A DFT structural models",
+          "page": 3,
+          "char_span": null,
+          "quote": "The Pt(111) slab was then constructed\nas a three-layer slab containing 12 Pt atoms\nin total, with cell dimensions of 5.55, 5.55,\nand 20.54 \u02daA."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c16",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "ECBS =\n3\n3EVTZ \u2212 23EVDZ\n3\n3 \u2212 23\n. (1)",
+        "location": {
+          "section": "II.C coupled cluster",
+          "page": 3,
+          "char_span": null,
+          "quote": "ECBS =\n3\n3EVTZ \u2212 23EVDZ\n3\n3 \u2212 23\n. (1)"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c17",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "The final energies were obtained from fixednode diffusion Monte Carlo runs with a time\nstep of \u2206\u03c4 = 0.005 a.u.",
+        "location": {
+          "section": "II.E DMC sampling",
+          "page": 4,
+          "char_span": null,
+          "quote": "The final energies were obtained from fixednode diffusion Monte Carlo runs with a time\nstep of \u2206\u03c4 = 0.005 a.u."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c18",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "Residual finite-size effects in adsorption energies were removed by N \u22125/4\nextrapolation\n[84] between the 1 \u00d7 1 and 2 \u00d7 2 surface cells",
+        "location": {
+          "section": "II.E DMC sampling",
+          "page": 4,
+          "char_span": null,
+          "quote": "Residual finite-size effects in adsorption energies were removed by N \u22125/4\nextrapolation\n[84] between the 1 \u00d7 1 and 2 \u00d7 2 surface cells"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c19",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "a plane-wave cutoff of 520 eV, Gaussian smearing of 0.05 eV",
+        "location": {
+          "section": "II.A DFT structural models",
+          "page": 3,
+          "char_span": null,
+          "quote": "a plane-wave cutoff of 520 eV, Gaussian smearing of 0.05 eV"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c20",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "Experiment \u22122.506 0.387 0.128 2.893 5.140",
+        "location": {
+          "section": "Table I",
+          "page": 7,
+          "char_span": null,
+          "quote": "Experiment \u22122.506 0.387 0.128 2.893 5.140"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    }
+  ]
+}

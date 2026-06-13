@@ -1,0 +1,1047 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "chemistry-jimenezcruz2026-pd-prolinate-catalysis",
+  "meta": {
+    "paper_title": "Pd(II)-Prolinate Prolinium and Pd(II)-LysGly Complexes Catalyzed the Enantioselective Aldol, Morita-Baylis-Hillman and Heck Reactions",
+    "journal": "Molecules",
+    "year": 2026,
+    "volume": 31,
+    "article": 599,
+    "doi": "10.3390/molecules31040599",
+    "notes": "Yield/ee/dr values transcribed from Tables 1-6 and experimental section. Canonical yield keys added where masses/moles stated.",
+    "extractor": "litmus.extract",
+    "model": "claude-opus-4-8",
+    "source": "opus-native-pdf"
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The catalytic system promoted the aldol reaction with yields of 80-95%, diastereoselectivities up to 1:69 syn/anti, and ee greater than 99%.",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "achieving yields of 80–95%, excellent diastereoselectivities (1:69 syn/anti), and\nenantiomeric excesses greater than 99%"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "abstract_yield_range == reported aldol yields in Table 3 for (S)-4; abstract_dr == 1:69 (Table 3 entry 3); abstract_ee > 99 consistent with Table 3",
+      "strength": "approximate",
+      "scope": "aldol reaction, catalyst (S)-4, Table 3",
+      "evidence_refs": [
+        "ev_t3"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c2",
+      "text": "Aldol reaction (in situ Pd-proline) gave best yield of 34% in DMF after 24 h Pd+solvent stirring.",
+      "location": {
+        "section": "2. Results",
+        "page": 3,
+        "char_span": null,
+        "quote": "The\nbest results were obtained when the metal was stirred with the solvent for 24 h (Table 1,\nentries 2 and 6)."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "max_yield_in_table1 == 34 at DMF/24h (entry 6)",
+      "strength": "comparative",
+      "scope": "Table 1, in situ catalyst",
+      "evidence_refs": [
+        "ev_t1"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c3",
+      "text": "Under optimized conditions (DMSO, 4 °C) complex (S)-3 gave 39% yield and 32% ee in the aldol reaction.",
+      "location": {
+        "section": "2. Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "A 39% yield and an enantiomeric excess (ee) of 32% were\nobtained under these optimized conditions (Table 2, entry 7)."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "reported_yield == 39 and reported_ee == 32 consistent with Table 2 entry 7",
+      "strength": "exact",
+      "scope": "Table 2, entry 7, DMSO 4 °C, complex (S)-3",
+      "evidence_refs": [
+        "ev_t2"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c4",
+      "text": "Catalyst (S)-4 (proline ligand) achieved yields above 85% and ee greater than 95% in aldol reactions (entries 1,3,5,7,9,10).",
+      "location": {
+        "section": "2. Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "efficiently\npromoted the reaction, achieving yields above 85% and enantiomeric excesses greater than\n95% (Table 3, entries 1, 3, 5, 7, 9 and 10)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "for Table 3 entries {1,3,5,7,9,10}: yield > 85 and ee > 95",
+      "strength": "bound",
+      "scope": "Table 3, complex (S)-4",
+      "evidence_refs": [
+        "ev_t3"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c5",
+      "text": "A syn/anti diastereomeric ratio of up to 1:69 was obtained (Table 3, entry 3).",
+      "location": {
+        "section": "2. Results",
+        "page": 6,
+        "char_span": null,
+        "quote": "a syn/anti diastereomeric ratio of up to 1:69 was obtained (Table 3, entry 3)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "max_dr_syn_anti == 1:69 at Table 3 entry 3",
+      "strength": "bound",
+      "scope": "Table 3, entry 3 (3-NO2, (S)-4)",
+      "evidence_refs": [
+        "ev_t3"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c6",
+      "text": "DFT activation barriers for the aldol transition state were 7.1 kcal/mol (gas phase) and 6.7 kcal/mol (DMSO).",
+      "location": {
+        "section": "2. Results",
+        "page": 7,
+        "char_span": null,
+        "quote": "with activation barriers of 7.1 and 6.7 kcal/mol, respectively"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "TS_gas == 7.1 and TS_DMSO == 6.7 consistent with Table 4",
+      "strength": "exact",
+      "scope": "DFT, Table 4 / Figure 3",
+      "evidence_refs": [
+        "ev_t4",
+        "ev_fig3"
+      ],
+      "confidence": 0.93
+    },
+    {
+      "id": "c7",
+      "text": "The intermediate after C-C bond formation is +0.4 kcal/mol (gas phase, slightly endothermic) and -2.3 kcal/mol (DMSO).",
+      "location": {
+        "section": "2. Results",
+        "page": 7,
+        "char_span": null,
+        "quote": "is slightly endothermic in the\ngas phase (+0.4 kcal/mol), whereas in DMSO it is significantly stabilized"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "intermediate_gas == 0.4 and intermediate_DMSO == -2.3 consistent with Table 4 and Figure 3",
+      "strength": "exact",
+      "scope": "DFT, Table 4 / Figure 3",
+      "evidence_refs": [
+        "ev_t4",
+        "ev_fig3"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c8",
+      "text": "MBH adducts were obtained as racemic mixtures in all cases (no asymmetry induction).",
+      "location": {
+        "section": "2. Results",
+        "page": 8,
+        "char_span": null,
+        "quote": "each MBH adduct was obtained as a racemic mixture in all cases"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "MBH ee == 0 (racemic) for all entries",
+      "strength": "qualitative",
+      "scope": "MBH reaction, Table 5",
+      "evidence_refs": [
+        "ev_t5"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c9",
+      "text": "In the Heck reaction the best result was up to 90% yield with Pd complex 4 using 4-iodophenol.",
+      "location": {
+        "section": "2. Results",
+        "page": 9,
+        "char_span": null,
+        "quote": "reaching yields of up to 90% when 4-iodophenol was used as the aryl halide\n(Table 6, entry 3)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "max_heck_yield == 90 at Table 6 entry 3 (4-OH, cat 4)",
+      "strength": "bound",
+      "scope": "Table 6, entry 3",
+      "evidence_refs": [
+        "ev_t6"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c10",
+      "text": "Heck yields were significantly higher under microwave irradiation than under reflux.",
+      "location": {
+        "section": "2. Results",
+        "page": 9,
+        "char_span": null,
+        "quote": "the yields were significantly higher when the process was\ncarried out by microwave irradiation"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "yield_MW > yield_reflux for same substrate (entry 2 vs entry 1: 81 vs 43)",
+      "strength": "comparative",
+      "scope": "Table 6, entries 1 vs 2",
+      "evidence_refs": [
+        "ev_t6"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "c11",
+      "text": "Complex (S)-3 was obtained as a black solid in 51% yield (0.042 g from 0.137 mmol PdCl2).",
+      "location": {
+        "section": "3.2 Catalyst Synthesis",
+        "page": 10,
+        "char_span": null,
+        "quote": "0.042 g of complex (S)-3 was obtained as a black solid in 51% yield"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported_yield_pct == 51 from masses/moles of (S)-3 synthesis",
+      "strength": "exact",
+      "scope": "complex (S)-3 synthesis",
+      "evidence_refs": [
+        "ev_s3syn"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c12",
+      "text": "Complex (S)-4 was isolated as an orange solid in 73% yield (0.166 g from 0.56 mmol PdCl2).",
+      "location": {
+        "section": "3.2 Catalyst Synthesis",
+        "page": 10,
+        "char_span": null,
+        "quote": "0.166 g of compound (S)-4 was isolated as an orange solid (73% yield)"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported_yield_pct == 73 from masses/moles of (S)-4 synthesis",
+      "strength": "exact",
+      "scope": "complex (S)-4 synthesis",
+      "evidence_refs": [
+        "ev_s4syn"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c13",
+      "text": "Compound 1a (2-nitro) was afforded in 86% isolated yield (0.042 g from 0.198 mmol aldehyde).",
+      "location": {
+        "section": "3.3",
+        "page": 11,
+        "char_span": null,
+        "quote": "The reaction afforded 0.042 g of compound 1a, corresponding to a\n86% isolated yield."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported_yield_pct == 86 == 100*mol_product/mol_limiting",
+      "strength": "exact",
+      "scope": "compound 1a",
+      "evidence_refs": [
+        "ev_1a"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c14",
+      "text": "Compound 1c (4-nitro) was afforded in 98% isolated yield (0.048 g from 4-nitrobenzaldehyde).",
+      "location": {
+        "section": "3.3",
+        "page": 11,
+        "char_span": null,
+        "quote": "The\nreaction afforded 0.048 g of compound 1c, corresponding to a 98% isolated yield."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported_yield_pct == 98 == 100*mol_product/mol_limiting",
+      "strength": "exact",
+      "scope": "compound 1c",
+      "evidence_refs": [
+        "ev_1c"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "c15",
+      "text": "Compound 1a HPLC gave 99% ee.",
+      "location": {
+        "section": "3.3",
+        "page": 11,
+        "char_span": null,
+        "quote": "t_R = 21.62 min (major)\nand 23.23 min (minor), 99% ee."
+      },
+      "epistemic_tier": "T6",
+      "predicate": "reported_ee == 99 from HPLC peak areas",
+      "strength": "exact",
+      "scope": "compound 1a, chiral HPLC",
+      "evidence_refs": [
+        "ev_1a"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "c16",
+      "text": "MBH adduct 5a was obtained in 90% yield (0.045 g) using catalyst (S)-3.",
+      "location": {
+        "section": "3.4",
+        "page": 13,
+        "char_span": null,
+        "quote": "0.045 g of a\nwhite solid was obtained with a yield of 90%"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported_yield_pct == 90 from 0.213 mmol aldehyde and 0.045 g product",
+      "strength": "exact",
+      "scope": "MBH compound 5a",
+      "evidence_refs": [
+        "ev_5a"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c17",
+      "text": "Heck adduct 6a was obtained in 90% yield (0.030 g) from 4-iodophenol.",
+      "location": {
+        "section": "3.5",
+        "page": 14,
+        "char_span": null,
+        "quote": "0.030 g of a\nwhite solid was obtained in a yield of 90%"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported_yield_pct == 90 from 0.181 mmol aryl halide and 0.030 g product",
+      "strength": "exact",
+      "scope": "Heck compound 6a",
+      "evidence_refs": [
+        "ev_6a"
+      ],
+      "confidence": 0.82
+    },
+    {
+      "id": "c18",
+      "text": "List reported aromatic aldol adducts in good yields and ee approaching 80% catalyzed by L-proline (30 mol%).",
+      "location": {
+        "section": "1. Introduction",
+        "page": 2,
+        "char_span": null,
+        "quote": "List reported the synthesis\nof aromatic aldol adducts in good yields and enantiomeric excesses approaching 80%, by\ncatalyzing the reactions with L-proline (30 mol%)"
+      },
+      "epistemic_tier": "T5",
+      "predicate": "cited claim: List et al. ee approaching 80% with L-proline 30 mol%",
+      "strength": "approximate",
+      "scope": "reference [12]",
+      "evidence_refs": [],
+      "confidence": 0.85
+    },
+    {
+      "id": "c19",
+      "text": "Conclusion: catalysts (S)-3 and (S)-4 achieved diastereoselectivity up to 1:69 and ee greater than 99%.",
+      "location": {
+        "section": "4. Conclusions",
+        "page": 15,
+        "char_span": null,
+        "quote": "high diastereoselectivity (r.d.\nup to 1:69), favoring the formation of the anti diastereomer in all cases. Furthermore, the\ncomplexes (S)-3 and (S)-4 demonstrated the ability to induce high enantioselectivity and\nachieving enantiomeric excesses greater than 99%"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "conclusion_dr == 1:69 and conclusion_ee > 99 consistent with Table 3",
+      "strength": "bound",
+      "scope": "Conclusions, aldol reaction",
+      "evidence_refs": [
+        "ev_t3"
+      ],
+      "confidence": 0.88
+    },
+    {
+      "id": "c20",
+      "text": "FAB+ fragmentation signals at m/z 289 and 307 are consistent with Pd coordination to S-Lys fragment; Cl at 2.622 keV and Pd at 3.382 keV in EDS.",
+      "location": {
+        "section": "2. Results",
+        "page": 4,
+        "char_span": null,
+        "quote": "the\nfragmentation signals detected at m/z 289 and 307 are consistent with metal coordination\nwith S-Lys fragment"
+      },
+      "epistemic_tier": "T1",
+      "predicate": "m/z 289, 307 and EDS Kα Cl=2.622 keV, Pd=3.382 keV consistent with Pd complex",
+      "strength": "qualitative",
+      "scope": "complex (S)-3 characterization",
+      "evidence_refs": [
+        "ev_eds"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "c21",
+      "text": "Compound 6c was obtained in 76% yield (0.026 g).",
+      "location": {
+        "section": "3.5",
+        "page": 14,
+        "char_span": null,
+        "quote": "0.026 g of a white solid with a 76% yield"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported_yield_pct == 76 from mol aryl halide and 0.026 g product",
+      "strength": "exact",
+      "scope": "Heck compound 6c",
+      "evidence_refs": [
+        "ev_6c"
+      ],
+      "confidence": 0.78
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev_t1",
+      "kind": "table",
+      "location": {
+        "section": "Table 1",
+        "page": 3,
+        "char_span": null,
+        "quote": "6 DMF 24 34"
+      },
+      "extracted_values": {
+        "entries": [
+          {
+            "solvent": "DMSO",
+            "time": 2,
+            "yield_pct": 15
+          },
+          {
+            "solvent": "DMSO",
+            "time": 24,
+            "yield_pct": 19
+          },
+          {
+            "solvent": "CH3CN",
+            "time": 2,
+            "yield_pct": null
+          },
+          {
+            "solvent": "CH3CN",
+            "time": 24,
+            "yield_pct": null
+          },
+          {
+            "solvent": "DMF",
+            "time": 2,
+            "yield_pct": 19
+          },
+          {
+            "solvent": "DMF",
+            "time": 24,
+            "yield_pct": 34
+          }
+        ]
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev_t2",
+      "kind": "table",
+      "location": {
+        "section": "Table 2",
+        "page": 5,
+        "char_span": null,
+        "quote": "7 DMSO ** 39 1:1 32"
+      },
+      "extracted_values": {
+        "entries": [
+          {
+            "solvent": "H2O",
+            "yield_pct": null,
+            "ee_pct": null
+          },
+          {
+            "solvent": "EtOH",
+            "yield_pct": 15,
+            "dr": "1:1",
+            "ee_pct": 16
+          },
+          {
+            "solvent": "DMF",
+            "yield_pct": 27,
+            "dr": "1:1",
+            "ee_pct": 24
+          },
+          {
+            "solvent": "DMSO",
+            "yield_pct": 31,
+            "dr": "1:1",
+            "ee_pct": 27
+          },
+          {
+            "solvent": "CH3CN",
+            "yield_pct": null,
+            "ee_pct": null
+          },
+          {
+            "solvent": "THF",
+            "yield_pct": null,
+            "dr": "1:1",
+            "ee_pct": 2
+          },
+          {
+            "solvent": "DMSO**",
+            "yield_pct": 39,
+            "dr": "1:1",
+            "ee_pct": 32
+          }
+        ],
+        "reported_yield_pct": 39,
+        "reported_ee_pct": 32
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev_t3",
+      "kind": "table",
+      "location": {
+        "section": "Table 3",
+        "page": 6,
+        "char_span": null,
+        "quote": "3 3-(NO2) (S)-4 1b 84 1:69 >99"
+      },
+      "extracted_values": {
+        "entries": [
+          {
+            "entry": 1,
+            "R": "2-NO2",
+            "cat": "(S)-4",
+            "yield_pct": 86,
+            "dr": "1:25",
+            "ee_pct": ">99"
+          },
+          {
+            "entry": 2,
+            "R": "2-NO2",
+            "cat": "(S)-3",
+            "yield_pct": 12,
+            "dr": "1:1",
+            "ee_pct": 53
+          },
+          {
+            "entry": 3,
+            "R": "3-NO2",
+            "cat": "(S)-4",
+            "yield_pct": 84,
+            "dr": "1:69",
+            "ee_pct": ">99"
+          },
+          {
+            "entry": 4,
+            "R": "3-NO2",
+            "cat": "(S)-3",
+            "yield_pct": 15,
+            "dr": "1:1",
+            "ee_pct": 39
+          },
+          {
+            "entry": 5,
+            "R": "4-NO2",
+            "cat": "(S)-4",
+            "yield_pct": 98,
+            "dr": "1:13",
+            "ee_pct": 92
+          },
+          {
+            "entry": 6,
+            "R": "4-NO2",
+            "cat": "(S)-3",
+            "yield_pct": 25,
+            "dr": "1:1.3",
+            "ee_pct": 35
+          },
+          {
+            "entry": 7,
+            "R": "3-Cl",
+            "cat": "(S)-4",
+            "yield_pct": 90,
+            "dr": "1:11",
+            "ee_pct": ">99"
+          },
+          {
+            "entry": 8,
+            "R": "4-Cl",
+            "cat": "(S)-4",
+            "yield_pct": 63,
+            "dr": "1:22",
+            "ee_pct": 93
+          },
+          {
+            "entry": 9,
+            "R": "3-Br",
+            "cat": "(S)-4",
+            "yield_pct": 88,
+            "dr": "1:17",
+            "ee_pct": 98
+          },
+          {
+            "entry": 10,
+            "R": "4-Br",
+            "cat": "(S)-4",
+            "yield_pct": 91,
+            "dr": "1:15",
+            "ee_pct": 98
+          },
+          {
+            "entry": 11,
+            "R": "2-OMe",
+            "cat": "(S)-4",
+            "yield_pct": 61,
+            "dr": "1:64",
+            "ee_pct": 97
+          },
+          {
+            "entry": 12,
+            "R": "3-CF3",
+            "cat": "(S)-4",
+            "yield_pct": 89,
+            "dr": "1:64",
+            "ee_pct": null
+          },
+          {
+            "entry": 13,
+            "R": "4-NO2",
+            "cat": "(S)-4",
+            "yield_pct": 59,
+            "dr": "1:1.5",
+            "ee_pct": 86
+          }
+        ]
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev_t4",
+      "kind": "table",
+      "location": {
+        "section": "Table 4",
+        "page": 8,
+        "char_span": null,
+        "quote": "GAS PHASE 0.0 7.1 0.4"
+      },
+      "extracted_values": {
+        "gas_phase": {
+          "reactants": 0.0,
+          "TS": 7.1,
+          "intermediate": 0.4
+        },
+        "dmso": {
+          "reactants": 0.0,
+          "TS": 6.7,
+          "intermediate": -2.3
+        },
+        "units": "kcal/mol"
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev_fig3",
+      "kind": "figure",
+      "location": {
+        "section": "Figure 3",
+        "page": 8,
+        "char_span": null,
+        "quote": "Energy profile diagram for the calculated reaction mechanism between 4-nitrobenzaldehyde\nand cyclohexanone catalyzed by Pd complex (S)-4"
+      },
+      "extracted_values": {
+        "gas_TS": 7.1,
+        "dmso_TS": 6.7,
+        "gas_intermediate": 0.4,
+        "dmso_intermediate": -2.3,
+        "reactants": 0.0
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev_t5",
+      "kind": "table",
+      "location": {
+        "section": "Table 5",
+        "page": 9,
+        "char_span": null,
+        "quote": "8 4-NO2 (S)-4 5d 89"
+      },
+      "extracted_values": {
+        "entries": [
+          {
+            "entry": 1,
+            "R": "2-Cl",
+            "cat": "(S)-3",
+            "yield_pct": 87
+          },
+          {
+            "entry": 2,
+            "R": "2-Cl",
+            "cat": "(S)-4",
+            "yield_pct": 90
+          },
+          {
+            "entry": 3,
+            "R": "4-Cl",
+            "cat": "(S)-3",
+            "yield_pct": 75
+          },
+          {
+            "entry": 4,
+            "R": "4-Cl",
+            "cat": "(S)-4",
+            "yield_pct": 91
+          },
+          {
+            "entry": 5,
+            "R": "3-NO2",
+            "cat": "(S)-3",
+            "yield_pct": 75
+          },
+          {
+            "entry": 6,
+            "R": "3-NO2",
+            "cat": "(S)-4",
+            "yield_pct": 81
+          },
+          {
+            "entry": 7,
+            "R": "4-NO2",
+            "cat": "(S)-3",
+            "yield_pct": 83
+          },
+          {
+            "entry": 8,
+            "R": "4-NO2",
+            "cat": "(S)-4",
+            "yield_pct": 89
+          }
+        ]
+      },
+      "confidence": 0.93
+    },
+    {
+      "id": "ev_t6",
+      "kind": "table",
+      "location": {
+        "section": "Table 6",
+        "page": 9,
+        "char_span": null,
+        "quote": "3 4-OH 4 6a 90"
+      },
+      "extracted_values": {
+        "entries": [
+          {
+            "entry": 1,
+            "R": "4-OH",
+            "cat": 3,
+            "yield_pct": 43,
+            "note": "reflux"
+          },
+          {
+            "entry": 2,
+            "R": "4-OH",
+            "cat": 3,
+            "yield_pct": 81
+          },
+          {
+            "entry": 3,
+            "R": "4-OH",
+            "cat": 4,
+            "yield_pct": 90
+          },
+          {
+            "entry": 4,
+            "R": "4-OMe",
+            "cat": 3,
+            "yield_pct": 65
+          },
+          {
+            "entry": 5,
+            "R": "4-OMe",
+            "cat": 4,
+            "yield_pct": 80
+          },
+          {
+            "entry": 6,
+            "R": "4-OEt",
+            "cat": 3,
+            "yield_pct": 63
+          },
+          {
+            "entry": 7,
+            "R": "4-OEt",
+            "cat": 4,
+            "yield_pct": 80
+          },
+          {
+            "entry": 8,
+            "R": "4-OBn",
+            "cat": 3,
+            "yield_pct": 58
+          },
+          {
+            "entry": 9,
+            "R": "4-OBn",
+            "cat": 4,
+            "yield_pct": 71
+          }
+        ]
+      },
+      "confidence": 0.93
+    },
+    {
+      "id": "ev_s3syn",
+      "kind": "text",
+      "location": {
+        "section": "3.2",
+        "page": 10,
+        "char_span": null,
+        "quote": "palladium chloride (PdCl2) (0.024 g,\n0.137 mmol) in CH3CN, and 0.136 g of the peptide L-lysine-glycine-OMe (0.270 mmol)\nwas added to the resulting mixture. Following the reaction, 0.042 g of complex (S)-3 was ob-\ntained as a black solid in 51% yield."
+      },
+      "extracted_values": {
+        "reported_yield_pct": 51,
+        "mol_limiting_reagent": 0.000137,
+        "mass_product_g": 0.042,
+        "pdcl2_mmol": 0.137,
+        "peptide_mmol": 0.27
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev_s4syn",
+      "kind": "text",
+      "location": {
+        "section": "3.2",
+        "page": 10,
+        "char_span": null,
+        "quote": "palladium chloride (PdCl2) (0.100 g, 0.56 mmol)\nin CH3CN; subsequently, L-proline (0.136 g, 1.18 mmol) was added to the resulting mixture.\nAfter the reaction, 0.166 g of compound (S)-4 was isolated as an orange solid (73% yield)"
+      },
+      "extracted_values": {
+        "reported_yield_pct": 73,
+        "pdcl2_mmol": 0.56,
+        "proline_mmol": 1.18,
+        "mass_product_g": 0.166
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev_1a",
+      "kind": "text",
+      "location": {
+        "section": "3.3",
+        "page": 11,
+        "char_span": null,
+        "quote": "0.030 g (0.198 mmol) of 2-nitrobenzaldehyde, 0.10 mL\n(0.097 g, 0.992 mmol) of cyclohexanone, and 0.008 g (0.019 mmol) of catalyst were placed\nin 0.3 mL of DMSO. The reaction afforded 0.042 g of compound 1a, corresponding to a\n86% isolated yield."
+      },
+      "extracted_values": {
+        "reported_yield_pct": 86,
+        "mol_limiting_reagent": 0.000198,
+        "aldehyde_mmol": 0.198,
+        "cyclohexanone_mmol": 0.992,
+        "mass_product_g": 0.042,
+        "reported_ee_pct": 99
+      },
+      "confidence": 0.88
+    },
+    {
+      "id": "ev_1c",
+      "kind": "text",
+      "location": {
+        "section": "3.3",
+        "page": 11,
+        "char_span": null,
+        "quote": "0.030 g (1.198 mmol) of 4-nitrobenzaldehyde, 0.10 mL (0.097 g, 0.992 mmol) of cy-\nclohexanone, and 0.008 g (0.019 mmol) of catalyst were placed in 0.3 mL of DMSO. The\nreaction afforded 0.048 g of compound 1c, corresponding to a 98% isolated yield."
+      },
+      "extracted_values": {
+        "reported_yield_pct": 98,
+        "aldehyde_mmol": 1.198,
+        "cyclohexanone_mmol": 0.992,
+        "mass_product_g": 0.048,
+        "reported_ee_pct": 92
+      },
+      "confidence": 0.82
+    },
+    {
+      "id": "ev_5a",
+      "kind": "text",
+      "location": {
+        "section": "3.4",
+        "page": 13,
+        "char_span": null,
+        "quote": "a mixture of 0.024 mL (0.030 g, 0.213 mmol) of\n2-chlorobenzaldehyde and 0.107 mL (0.102 g, 1.07 mmol) of 2-cyclohexen-1-one in 1 mL of\nethylene glycol was treated with 0.111 mL (0.082 g, 0.640 mmol) of DIPEA, 0.01 mL of acetic\nacid, and 0.008 g (0.01 mmol) of catalyst (S)-3 was added. From this reaction, 0.045 g of a\nwhite solid was obtained with a yield of 90%"
+      },
+      "extracted_values": {
+        "reported_yield_pct": 90,
+        "mol_limiting_reagent": 0.000213,
+        "aldehyde_mmol": 0.213,
+        "mass_product_g": 0.045
+      },
+      "confidence": 0.82
+    },
+    {
+      "id": "ev_6a",
+      "kind": "text",
+      "location": {
+        "section": "3.5",
+        "page": 14,
+        "char_span": null,
+        "quote": "0.040 g (0.181 mmol) of\n4-iodophenol and 0.092 mL (0.087 g, 0.909 mmol) of 2-cyclohexen-1-one and 0.095 mL\n(0.070 g, 0.541 mmol) of DIEA were reacted; to this mixture, 0.007 g (0.017 mmol) of catalyst\nwas added in 3 mL of the water/DMF solvent mixture (1:1), from this reaction, 0.030 g of a\nwhite solid was obtained in a yield of 90%"
+      },
+      "extracted_values": {
+        "reported_yield_pct": 90,
+        "mol_limiting_reagent": 0.000181,
+        "aryl_halide_mmol": 0.181,
+        "mass_product_g": 0.03
+      },
+      "confidence": 0.8
+    },
+    {
+      "id": "ev_6c",
+      "kind": "text",
+      "location": {
+        "section": "3.5",
+        "page": 14,
+        "char_span": null,
+        "quote": "0.040 g (1.6 mmol) of\n1-ethoxy-4-iodobenzene, 0.081 mL (0.077 g, 0.806 mmol), of 2-cyclohexen-1-one and\n0.084 mL (0.062 g, 0.483 mmol) of DIEA were reacted. To this mixture, 0.007 g (0.017 mmol)\nof catalyst was added in 3 mL of a water/DMF solvent mixture (1:1). This reaction yielded\n0.026 g of a white solid with a 76% yield"
+      },
+      "extracted_values": {
+        "reported_yield_pct": 76,
+        "aryl_halide_mmol": 1.6,
+        "mass_product_g": 0.026
+      },
+      "confidence": 0.75
+    },
+    {
+      "id": "ev_eds",
+      "kind": "text",
+      "location": {
+        "section": "2. Results",
+        "page": 4,
+        "char_span": null,
+        "quote": "the presence of chlorine atoms,\ndetected in the EDS spectrum (Kα emission) at 2.622 keV, and of palladium at 3.382 keV"
+      },
+      "extracted_values": {
+        "m_z_fragments": [
+          289,
+          307
+        ],
+        "cl_keV": 2.622,
+        "pd_keV": 3.382
+      },
+      "confidence": 0.85
+    }
+  ],
+  "bindings": [
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev_t3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev_t1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev_t2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c4",
+      "evidence_id": "ev_t3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c5",
+      "evidence_id": "ev_t3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c6",
+      "evidence_id": "ev_t4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c6",
+      "evidence_id": "ev_fig3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c7",
+      "evidence_id": "ev_t4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c7",
+      "evidence_id": "ev_fig3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c8",
+      "evidence_id": "ev_t5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c9",
+      "evidence_id": "ev_t6",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c10",
+      "evidence_id": "ev_t6",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c11",
+      "evidence_id": "ev_s3syn",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c12",
+      "evidence_id": "ev_s4syn",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c13",
+      "evidence_id": "ev_1a",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c14",
+      "evidence_id": "ev_1c",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c15",
+      "evidence_id": "ev_1a",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c16",
+      "evidence_id": "ev_5a",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c17",
+      "evidence_id": "ev_6a",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c19",
+      "evidence_id": "ev_t3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c20",
+      "evidence_id": "ev_eds",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c21",
+      "evidence_id": "ev_6c",
+      "relation": "rests_on"
+    }
+  ]
+}

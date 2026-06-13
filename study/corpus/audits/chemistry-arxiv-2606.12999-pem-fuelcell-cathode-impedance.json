@@ -1,0 +1,283 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "chemistry-arxiv-2606.12999-pem-fuelcell-cathode-impedance",
+  "meta": {
+    "executor": "local",
+    "n_claims": 10,
+    "n_verifiers": 9,
+    "synthesis_candidates": [
+      "c3",
+      "c4",
+      "c5",
+      "c7",
+      "c8",
+      "c9"
+    ],
+    "confirmation": "fresh-sandbox",
+    "registry_load_errors": []
+  },
+  "summary": {
+    "n_findings": 0,
+    "n_flags": 0,
+    "n_dropped": 0,
+    "n_routed_to_human": 0,
+    "n_abstained": 10,
+    "flags_by_trust_tier": {},
+    "flags_by_severity": {}
+  },
+  "findings": [],
+  "dropped_flags": [],
+  "routed_to_human": [],
+  "abstained": [
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c1",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "in-phase harmonic\nperturbations to the cell current density and CCL temperature lower both CCL impedance and static resistivity.",
+        "location": {
+          "section": "Abstract",
+          "page": 1,
+          "char_span": null,
+          "quote": "in-phase harmonic\nperturbations to the cell current density and CCL temperature lower both CCL impedance and static resistivity."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c2",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "This mitigation is primarily driven by the oscillating exchange current density of the oxygen reduction reaction.",
+        "location": {
+          "section": "Abstract",
+          "page": 1,
+          "char_span": null,
+          "quote": "This mitigation is primarily driven by the oscillating exchange current density of the oxygen reduction reaction."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c3",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "\\beta_T =\n\\frac{T_*}{T_\\sigma}\n\\simeq 6.95.",
+        "location": {
+          "section": "II. MODEL / III. RESULTS",
+          "page": 2,
+          "char_span": null,
+          "quote": "\\beta_T =\n\\frac{T_*}{T_\\sigma}\n\\simeq 6.95."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c4",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "we take T\n1 = 0.1 K,\nj0 = 1 A cm2, j\n1 = 0.01 A cm\u22122\nand T\n0 = 353 K. With\nthese parameters and T\u03c3 = 1268 K, we get \u03ba \u2243 0.1.",
+        "location": {
+          "section": "III. RESULTS AND DISCUSSION",
+          "page": 3,
+          "char_span": null,
+          "quote": "we take T\n1 = 0.1 K,\nj0 = 1 A cm2, j\n1 = 0.01 A cm\u22122\nand T\n0 = 353 K. With\nthese parameters and T\u03c3 = 1268 K, we get \u03ba \u2243 0.1."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c5",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "at \u03ba = 1, the in-phase temperature and current\ndensity oscillations fully eliminate proton transport losses in\nthe CCL.",
+        "location": {
+          "section": "III. RESULTS AND DISCUSSION",
+          "page": 3,
+          "char_span": null,
+          "quote": "at \u03ba = 1, the in-phase temperature and current\ndensity oscillations fully eliminate proton transport losses in\nthe CCL."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c6",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "at small \u03ba the reduction of impedance due to\nproton conductivity oscillations is rather marginal.",
+        "location": {
+          "section": "III. RESULTS AND DISCUSSION",
+          "page": 3,
+          "char_span": null,
+          "quote": "at small \u03ba the reduction of impedance due to\nproton conductivity oscillations is rather marginal."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c7",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "the static cell resistivity (the rightmost\npoint of the Nyquist spectrum) decreases with \u03ba.",
+        "location": {
+          "section": "III. RESULTS AND DISCUSSION",
+          "page": 3,
+          "char_span": null,
+          "quote": "the static cell resistivity (the rightmost\npoint of the Nyquist spectrum) decreases with \u03ba."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c8",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "R =\nb\nj0\n+\nlt\n3\u03c3p\n\u2212 \u03ba\u03b2T\nb\nj0\n\u2212 \u03ba\nlt\n3\u03c3p",
+        "location": {
+          "section": "IV (Results)",
+          "page": 4,
+          "char_span": null,
+          "quote": "R =\nb\nj0\n+\nlt\n3\u03c3p\n\u2212 \u03ba\u03b2T\nb\nj0\n\u2212 \u03ba\nlt\n3\u03c3p"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c9",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "With\npositive \u03ba, both the high-frequency proton transport line,\nand the main faradaic arc decrease in size (Figure 2).",
+        "location": {
+          "section": "IV (Results)",
+          "page": 4,
+          "char_span": null,
+          "quote": "With\npositive \u03ba, both the high-frequency proton transport line,\nand the main faradaic arc decrease in size (Figure 2)."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c10",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "in-phase oscillations of\nthe cell current density and temperature decrease the\nimpedance of the CCL much more than was shown in",
+        "location": {
+          "section": "I. INTRODUCTION",
+          "page": 1,
+          "char_span": null,
+          "quote": "in-phase oscillations of\nthe cell current density and temperature decrease the\nimpedance of the CCL much more than was shown in"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    }
+  ]
+}

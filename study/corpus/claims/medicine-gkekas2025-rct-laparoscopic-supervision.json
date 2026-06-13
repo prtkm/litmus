@@ -1,0 +1,882 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "medicine-gkekas2025-rct-laparoscopic-supervision",
+  "meta": {
+    "title": "Does supervision matter? A randomized controlled study of laparoscopic simulator training in undergraduate education",
+    "journal": "Frontiers in Surgery",
+    "year": 2026,
+    "doi": "10.3389/fsurg.2026.1815062",
+    "design": "RCT, n=20",
+    "notes": "Table 2 in the PDF appears garbled/misaligned in transcription (rows for within-group deltas split oddly); between-group p-values and means read from the clean cells. Some prose/table inconsistencies noted (e.g. shooter SD values, mobile p 0.101 vs 0.102, feedback p 0.684 vs 0.685 in text).",
+    "extractor": "litmus.extract",
+    "model": "claude-opus-4-8",
+    "source": "opus-native-pdf"
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The supervised group showed significant improvement in procedure time from warm-up to first exercise (388s vs 168s; p<0.001).",
+      "location": {
+        "section": "3.2 Primary outcomes",
+        "page": 4,
+        "char_span": null,
+        "quote": "the Supervised group (388s vs 168s; p < 0.001)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "paired_test_p_consistent_with_means; reported_p < 0.001 for warm-up (388) vs Test 1 (168) in supervised group",
+      "strength": "comparative",
+      "scope": "Supervised group (n=8), paired warm-up vs Test 1",
+      "evidence_refs": [
+        "ev1",
+        "ev3"
+      ],
+      "confidence": 0.97
+    },
+    {
+      "id": "c2",
+      "text": "The independent group showed significant improvement in procedure time from warm-up to first exercise (347s vs 213s; p=0.020).",
+      "location": {
+        "section": "3.2 Primary outcomes",
+        "page": 4,
+        "char_span": null,
+        "quote": "the independent group (347s vs 213s; p = 0.020)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "paired_test_p_consistent_with_means; reported_p == 0.020 for warm-up (347) vs Test 1 (213) in independent group",
+      "strength": "comparative",
+      "scope": "Independent group (n=12), paired warm-up vs Test 1",
+      "evidence_refs": [
+        "ev2",
+        "ev3"
+      ],
+      "confidence": 0.97
+    },
+    {
+      "id": "c3",
+      "text": "No statistically significant difference between groups in the primary outcome (Test 1 completion time), p=0.108.",
+      "location": {
+        "section": "3.2 Primary outcomes",
+        "page": 4,
+        "char_span": null,
+        "quote": "did not reach\nstatistical significance ( p = 0.108)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "between_group_p == 0.108 for Test 1 supervised (168±47) vs independent (213±72)",
+      "strength": "comparative",
+      "scope": "Test 1, supervised vs independent",
+      "evidence_refs": [
+        "ev3",
+        "ev4"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c4",
+      "text": "Supervised group completed Test 1 in mean 168 s (SD 47) vs 213 s (SD 72) in independent group; mean difference -45 s, 95% CI -108 to +18 s.",
+      "location": {
+        "section": "3.2 Primary outcomes",
+        "page": 4,
+        "char_span": null,
+        "quote": "The supervised group\ncompleted Test 1 in a mean of 168 s (SD 47), compared with\n213 s (SD 72) in the independent group. The mean difference\nwas −45 s, with a 95% CI ranging from −108 to +18 s"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "mean_difference == 168 - 213 == -45; CI = [-108, +18]",
+      "strength": "exact",
+      "scope": "Test 1, supervised vs independent",
+      "evidence_refs": [
+        "ev4"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "id": "c5",
+      "text": "Procedure times for first and second exercises tended to be slightly shorter in supervised group (p=0.108 and p=0.124).",
+      "location": {
+        "section": "3.2 Primary outcomes",
+        "page": 4,
+        "char_span": null,
+        "quote": "slightly shorter\nin the supervised group compared with the independent group\n( p = 0.108 and p = 0.124, respectively)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "between_group_p Test1 == 0.108, Test2 == 0.124",
+      "strength": "comparative",
+      "scope": "Test 1 and Test 2, supervised vs independent",
+      "evidence_refs": [
+        "ev3"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c6",
+      "text": "Supervised group reported significantly lower perceived difficulty after training (4.1 vs 3.5; p=0.049).",
+      "location": {
+        "section": "3.3.1 Perceived difficulty",
+        "page": 4,
+        "char_span": null,
+        "quote": "reported significantly lower perceived difficulty after training\ncompared to pre-training (4.1 vs 3.5; p = 0.049)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "paired_test_p == 0.049 for perceived difficulty before (4.1) vs after (3.5) in supervised group",
+      "strength": "comparative",
+      "scope": "Supervised group, perceived difficulty pre/post",
+      "evidence_refs": [
+        "ev5"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c7",
+      "text": "Independent group's feedback value score significantly reduced to half baseline (4.6 vs 2.6; p=0.003).",
+      "location": {
+        "section": "3.3.1",
+        "page": 4,
+        "char_span": null,
+        "quote": "post-training score was significantly reduced to half of the\nbaseline value (4.6 vs 2.6; p = 0.003)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "paired_test_p == 0.003 for feedback value before (4.6) vs after (2.6) in independent group; 2.6 ~= half of 4.6",
+      "strength": "comparative",
+      "scope": "Independent group, feedback value pre/post",
+      "evidence_refs": [
+        "ev6"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c8",
+      "text": "In supervised group, feedback value pre/post scores did not change significantly (4.5 vs 4.6; p=0.685).",
+      "location": {
+        "section": "3.3.1",
+        "page": 5,
+        "char_span": null,
+        "quote": "remaining at the\nsame level (4.5 vs 4.6; p = 0.685)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "paired_test_p == 0.685 (or 0.684 per table) for feedback value before (4.5) vs after (4.6) in supervised group",
+      "strength": "comparative",
+      "scope": "Supervised group, feedback value pre/post",
+      "evidence_refs": [
+        "ev6"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c9",
+      "text": "Participants with gaming experience completed test 3 in mean 137 s vs 249 s without (p=0.063).",
+      "location": {
+        "section": "3.3.1.1.1",
+        "page": 5,
+        "char_span": null,
+        "quote": "completed examination test 3 in a mean of\n137 s, compared to 249 s for those without such experience\n(p = 0.063)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "between_group_p == 0.063 for test 3 gaming (137) vs no gaming (249)",
+      "strength": "comparative",
+      "scope": "Test 3, gaming vs no gaming experience",
+      "evidence_refs": [
+        "ev7"
+      ],
+      "confidence": 0.93
+    },
+    {
+      "id": "c10",
+      "text": "Shooter game players completed test 3 significantly faster (130±13 s vs 207±130 s; p=0.037).",
+      "location": {
+        "section": "3.3.1.1.1",
+        "page": 5,
+        "char_span": null,
+        "quote": "completed test 3 significantly faster than those who did not\n(130 ± 13 s vs 207 ± 130 s; p = 0.037)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "between_group_p == 0.037 for test 3 shooter (130±13) vs non-shooter (207±130)",
+      "strength": "comparative",
+      "scope": "Test 3, shooter vs non-shooter",
+      "evidence_refs": [
+        "ev8"
+      ],
+      "confidence": 0.93
+    },
+    {
+      "id": "c11",
+      "text": "Mobile gaming experience showed trend toward faster test 3 completion (p=0.102).",
+      "location": {
+        "section": "3.3.1.1.1",
+        "page": 5,
+        "char_span": null,
+        "quote": "a trend toward faster\ncompletion in test 3 (p = 0.102)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "between_group_p ~ 0.102 (table reports 0.101) for test 3 mobile vs non-mobile",
+      "strength": "comparative",
+      "scope": "Test 3, mobile gamers vs not",
+      "evidence_refs": [
+        "ev9"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c12",
+      "text": "Trend for men to complete test 3 slightly faster than women (140±33 s vs 208±134 s; p=0.092).",
+      "location": {
+        "section": "3.4 Sex differences",
+        "page": 5,
+        "char_span": null,
+        "quote": "a trend for men to complete live test 3 slightly faster\n(140 ± 33 s vs 208 ± 134 s; p = 0.092)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "between_group_p == 0.092 for test 3 males (140±33) vs females (208±134)",
+      "strength": "comparative",
+      "scope": "Test 3, male vs female",
+      "evidence_refs": [
+        "ev10"
+      ],
+      "confidence": 0.93
+    },
+    {
+      "id": "c13",
+      "text": "No significant sex differences in Warm-up (p=0.627), Test 1 (p=0.639), Test 2 (p=0.233).",
+      "location": {
+        "section": "3.4 Sex differences",
+        "page": 5,
+        "char_span": null,
+        "quote": "No significant\ndifferences were found in Warm-up (p = 0.627), Test 1 (p = 0.639),\nor Test 2 (p = 0.233)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "between_group_p Warmup==0.627, Test1==0.639, Test2==0.233 for sex differences",
+      "strength": "comparative",
+      "scope": "Warm-up/Test1/Test2, male vs female",
+      "evidence_refs": [
+        "ev10"
+      ],
+      "confidence": 0.93
+    },
+    {
+      "id": "c14",
+      "text": "In paired warm-up vs test 1, women improved significantly (173 s; p=0.001) whereas men less (159 s; p=0.058).",
+      "location": {
+        "section": "3.4 Sex differences",
+        "page": 5,
+        "char_span": null,
+        "quote": "women\nimproved their times significantly (173 s; p = 0.001) whereas men\nshowed a less pronounced improvement (159 s; p = 0.058)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "paired_test_p women==0.001 (improvement 173s), men==0.058 (improvement 159s)",
+      "strength": "comparative",
+      "scope": "Warm-up to Test 1, by sex",
+      "evidence_refs": [
+        "ev11"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c15",
+      "text": "20 medical students were randomized: supervision (n=8) and independent (n=12).",
+      "location": {
+        "section": "3.1 Participant flow",
+        "page": 3,
+        "char_span": null,
+        "quote": "continuous instructor supervision (n = 8) and independent \npractice (n = 12)"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "n_supervised + n_independent == 8 + 12 == 20 total participants",
+      "strength": "exact",
+      "scope": "Whole study",
+      "evidence_refs": [
+        "ev12"
+      ],
+      "confidence": 0.98
+    },
+    {
+      "id": "c16",
+      "text": "Approximately 70% of participants were female.",
+      "location": {
+        "section": "3.1",
+        "page": 3,
+        "char_span": null,
+        "quote": "Approximately 70% of participants were\nfemale"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "female_pct == 14/20 == 70%",
+      "strength": "approximate",
+      "scope": "Whole sample n=20",
+      "evidence_refs": [
+        "ev13"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c17",
+      "text": "No significant baseline difference in task completion time between groups (p=0.529).",
+      "location": {
+        "section": "3.1",
+        "page": 3,
+        "char_span": null,
+        "quote": "there was no significant difference in task completion \ntime between the supervision and independent groups"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "baseline between_group_p == 0.529 for warm-up times (388 vs 347)",
+      "strength": "comparative",
+      "scope": "Baseline warm-up times",
+      "evidence_refs": [
+        "ev14"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c18",
+      "text": "A priori power calculation indicated 36 participants required for 70% power; only 20 enrolled.",
+      "location": {
+        "section": "2.3 Sample size",
+        "page": 2,
+        "char_span": null,
+        "quote": "a total of \n36 trainees would be required to achieve 70% power to detect a \nstatistically significant difference between the groups"
+      },
+      "epistemic_tier": "T3",
+      "predicate": "sample_size_calc: required N == 36 for 70% power; enrolled N == 20",
+      "strength": "exact",
+      "scope": "Power analysis",
+      "evidence_refs": [
+        "ev15"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c19",
+      "text": "Post-hoc achieved power ranged approximately 28% to 35%.",
+      "location": {
+        "section": "5 Limitations",
+        "page": 6,
+        "char_span": null,
+        "quote": "the achieved power was \napproximately 28%–35%"
+      },
+      "epistemic_tier": "T3",
+      "predicate": "post_hoc_power in [28%, 35%]",
+      "strength": "approximate",
+      "scope": "Observed effect sizes, n=20",
+      "evidence_refs": [
+        "ev16"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c20",
+      "text": "Prior study basis: guided group improved rope performance by 2.1 mm/s vs control 0.6 mm/s, SD 1.8 mm/s.",
+      "location": {
+        "section": "2.3 Sample size",
+        "page": 2,
+        "char_span": null,
+        "quote": "improved rope test \nperformance by 2.1 mm/s, compared with a control group that \nimproved by 0.6 mm/s (4). The standard deviation of the first \ngroup was 1.8 mm/s"
+      },
+      "epistemic_tier": "T1",
+      "predicate": "prior effect: guided improvement == 2.1 mm/s, control == 0.6 mm/s, SD == 1.8 mm/s",
+      "strength": "exact",
+      "scope": "Previous unpublished study (ref 4)",
+      "evidence_refs": [
+        "ev17"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c21",
+      "text": "Rope Race task involves passing a thread through eight loops arranged in a circle.",
+      "location": {
+        "section": "2.5.1",
+        "page": 3,
+        "char_span": null,
+        "quote": "pass a \nthread through eight loops arranged in a circle"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "n_loops == 8",
+      "strength": "qualitative",
+      "scope": "Simulator task description",
+      "evidence_refs": [],
+      "confidence": 0.9
+    },
+    {
+      "id": "c22",
+      "text": "Conclusion: remote real-time supervision significantly reduces perceived difficulty and prevents devaluation of feedback compared to independent practice.",
+      "location": {
+        "section": "Abstract Conclusion",
+        "page": 1,
+        "char_span": null,
+        "quote": "Remote real-time supervision significantly reduces perceived \ndifficulty and prevents the devaluation of feedback compared to independent \npractice."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "causal_claim: supervision reduces perceived difficulty and prevents feedback devaluation, supported by p=0.049 and p=0.003 results",
+      "strength": "causal",
+      "scope": "Whole study",
+      "evidence_refs": [
+        "ev5",
+        "ev6"
+      ],
+      "confidence": 0.9
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev1",
+      "kind": "statistic",
+      "location": {
+        "section": "3.2 / Table 2",
+        "page": 4,
+        "char_span": null,
+        "quote": "the Supervised group (388s vs 168s; p < 0.001)"
+      },
+      "extracted_values": {
+        "warmup": 388,
+        "test1": 168,
+        "group": "Supervised",
+        "p_upper_bound": 0.001,
+        "test": "paired"
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev2",
+      "kind": "statistic",
+      "location": {
+        "section": "3.2 / Table 2",
+        "page": 4,
+        "char_span": null,
+        "quote": "the independent group (347s vs 213s; p = 0.020)"
+      },
+      "extracted_values": {
+        "warmup": 347,
+        "test1": 213,
+        "group": "Independent",
+        "test": "paired",
+        "reported_p": 0.02
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev3",
+      "kind": "table",
+      "location": {
+        "section": "Table 2",
+        "page": 4,
+        "char_span": null,
+        "quote": "Test 1 168 (47) 213 (72)"
+      },
+      "extracted_values": {
+        "warmup_supervised": 388,
+        "warmup_supervised_sd": 109,
+        "warmup_independent": 347,
+        "warmup_independent_sd": 172,
+        "test1_supervised": 168,
+        "test1_supervised_sd": 47,
+        "test1_independent": 213,
+        "test1_independent_sd": 72,
+        "test2_supervised": 156,
+        "test2_supervised_sd": 68,
+        "test2_independent": 217,
+        "test2_independent_sd": 102,
+        "test3_supervised": 154,
+        "test3_supervised_sd": 58,
+        "test3_independent": 210,
+        "test3_independent_sd": 141,
+        "between_group_p_warmup": 0.529,
+        "between_group_p_test1": 0.108,
+        "between_group_p_test2": 0.124,
+        "between_group_p_test3": 0.24
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev4",
+      "kind": "statistic",
+      "location": {
+        "section": "3.2",
+        "page": 4,
+        "char_span": null,
+        "quote": "The mean difference\nwas −45 s, with a 95% CI ranging from −108 to +18 s"
+      },
+      "extracted_values": {
+        "test1_supervised_mean": 168,
+        "test1_supervised_sd": 47,
+        "test1_independent_mean": 213,
+        "test1_independent_sd": 72,
+        "mean_difference": -45,
+        "ci_lower": -108,
+        "ci_upper": 18,
+        "reported_p": 0.108
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev5",
+      "kind": "statistic",
+      "location": {
+        "section": "Table 3 / 3.3.1",
+        "page": 5,
+        "char_span": null,
+        "quote": "I think the simulator training will be/was \ndifficult."
+      },
+      "extracted_values": {
+        "before": 4.1,
+        "after": 3.5,
+        "difference": -0.6,
+        "reported_p": 0.049,
+        "group": "Supervised",
+        "n": 8
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev6",
+      "kind": "table",
+      "location": {
+        "section": "Table 3",
+        "page": 5,
+        "char_span": null,
+        "quote": "4.5 4.6 0.1 0.684 4.6 2.6 −2.0 0.003"
+      },
+      "extracted_values": {
+        "supervised_before": 4.5,
+        "supervised_after": 4.6,
+        "supervised_diff": 0.1,
+        "supervised_p": 0.684,
+        "independent_before": 4.6,
+        "independent_after": 2.6,
+        "independent_diff": -2.0,
+        "independent_p": 0.003,
+        "item": "feedback value"
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev7",
+      "kind": "table",
+      "location": {
+        "section": "Table 4",
+        "page": 5,
+        "char_span": null,
+        "quote": "Live test 3 137 22 249 155 p = 0.063"
+      },
+      "extracted_values": {
+        "gaming_mean": 137,
+        "gaming_sd": 22,
+        "no_gaming_mean": 249,
+        "no_gaming_sd": 155,
+        "reported_p": 0.063,
+        "n_gaming": 11,
+        "n_no_gaming": 9
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev8",
+      "kind": "table",
+      "location": {
+        "section": "Table 4 / 3.3.1.1.1",
+        "page": 5,
+        "char_span": null,
+        "quote": "Live test 3 130 13 207 103 p = 0.037"
+      },
+      "extracted_values": {
+        "shooter_mean": 130,
+        "shooter_sd": 13,
+        "non_shooter_mean": 207,
+        "non_shooter_sd": 103,
+        "reported_p": 0.037,
+        "n_shooter": 5,
+        "n_non_shooter": 15,
+        "prose_shooter_sd": 13,
+        "prose_non_shooter_sd": 130
+      },
+      "confidence": 0.88
+    },
+    {
+      "id": "ev9",
+      "kind": "table",
+      "location": {
+        "section": "Table 4",
+        "page": 5,
+        "char_span": null,
+        "quote": "Live test 3 142 24 212 139 0.101"
+      },
+      "extracted_values": {
+        "mobile_mean": 142,
+        "mobile_sd": 24,
+        "non_mobile_mean": 212,
+        "non_mobile_sd": 139,
+        "reported_p_table": 0.101,
+        "reported_p_prose": 0.102,
+        "n_mobile": 7,
+        "n_non_mobile": 13
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev10",
+      "kind": "table",
+      "location": {
+        "section": "Table 5",
+        "page": 5,
+        "char_span": null,
+        "quote": "Live test 3* 208 134 140 33 p = 0.092"
+      },
+      "extracted_values": {
+        "females_test3_mean": 208,
+        "females_test3_sd": 134,
+        "males_test3_mean": 140,
+        "males_test3_sd": 33,
+        "reported_p_test3": 0.092,
+        "reported_p_warmup": 0.627,
+        "reported_p_test1": 0.639,
+        "reported_p_test2": 0.233,
+        "n_females": 14,
+        "n_males": 6
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev11",
+      "kind": "statistic",
+      "location": {
+        "section": "3.4",
+        "page": 5,
+        "char_span": null,
+        "quote": "women\nimproved their times significantly (173 s; p = 0.001) whereas men\nshowed a less pronounced improvement (159 s; p = 0.058)"
+      },
+      "extracted_values": {
+        "women_improvement_s": 173,
+        "women_p": 0.001,
+        "men_improvement_s": 159,
+        "men_p": 0.058
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev12",
+      "kind": "number",
+      "location": {
+        "section": "3.1",
+        "page": 3,
+        "char_span": null,
+        "quote": "continuous instructor supervision (n = 8) and independent \npractice (n = 12)"
+      },
+      "extracted_values": {
+        "parts": [
+          8,
+          12
+        ],
+        "reported_total": 20,
+        "n_supervised": 8,
+        "n_independent": 12
+      },
+      "confidence": 0.97
+    },
+    {
+      "id": "ev13",
+      "kind": "table",
+      "location": {
+        "section": "Table 1",
+        "page": 4,
+        "char_span": null,
+        "quote": "Female 6 (75.0%) 8 (66.7%) 14 (70.0%)"
+      },
+      "extracted_values": {
+        "female_total": 14,
+        "female_pct": 70.0,
+        "total_n": 20,
+        "reported_mean": null
+      },
+      "confidence": 0.93
+    },
+    {
+      "id": "ev14",
+      "kind": "table",
+      "location": {
+        "section": "Table 1",
+        "page": 4,
+        "char_span": null,
+        "quote": "Seconds [Mean (SD)] 388 (109) 347 (172) 363 (148) 0.529"
+      },
+      "extracted_values": {
+        "supervised_mean": 388,
+        "supervised_sd": 109,
+        "independent_mean": 347,
+        "independent_sd": 172,
+        "total_mean": 363,
+        "total_sd": 148,
+        "reported_p": 0.529
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev15",
+      "kind": "text",
+      "location": {
+        "section": "2.3",
+        "page": 2,
+        "char_span": null,
+        "quote": "a total of \n36 trainees would be required to achieve 70% power"
+      },
+      "extracted_values": {
+        "required_n": 36,
+        "target_power_pct": 70,
+        "enrolled_n": 20
+      },
+      "confidence": 0.93
+    },
+    {
+      "id": "ev16",
+      "kind": "text",
+      "location": {
+        "section": "5 Limitations",
+        "page": 6,
+        "char_span": null,
+        "quote": "the achieved power was \napproximately 28%–35%"
+      },
+      "extracted_values": {
+        "power_lower_pct": 28,
+        "power_upper_pct": 35
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev17",
+      "kind": "statistic",
+      "location": {
+        "section": "2.3",
+        "page": 2,
+        "char_span": null,
+        "quote": "improved rope test \nperformance by 2.1 mm/s, compared with a control group that \nimproved by 0.6 mm/s"
+      },
+      "extracted_values": {
+        "guided_improvement_mm_s": 2.1,
+        "control_improvement_mm_s": 0.6,
+        "sd_mm_s": 1.8
+      },
+      "confidence": 0.9
+    }
+  ],
+  "bindings": [
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c4",
+      "evidence_id": "ev4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c5",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c6",
+      "evidence_id": "ev5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c7",
+      "evidence_id": "ev6",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c8",
+      "evidence_id": "ev6",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c9",
+      "evidence_id": "ev7",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c10",
+      "evidence_id": "ev8",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c11",
+      "evidence_id": "ev9",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c12",
+      "evidence_id": "ev10",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c13",
+      "evidence_id": "ev10",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c14",
+      "evidence_id": "ev11",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c15",
+      "evidence_id": "ev12",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c16",
+      "evidence_id": "ev13",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c17",
+      "evidence_id": "ev14",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c18",
+      "evidence_id": "ev15",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c19",
+      "evidence_id": "ev16",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c20",
+      "evidence_id": "ev17",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c22",
+      "evidence_id": "ev5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c22",
+      "evidence_id": "ev6",
+      "relation": "rests_on"
+    }
+  ]
+}

@@ -1,0 +1,705 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "chemistry-arxiv-2606.13420-fecconib-melt-quenched-alloy",
+  "meta": {
+    "journal": "Functional Materials",
+    "volume_issue": "32(3)",
+    "pages": "418-422",
+    "year": 2025,
+    "doi": "10.15407/fm32.03.418",
+    "notes": "Accepted manuscript. Figure 3 inset coercive field values read approximately from plot; transcribed numeric values come from text (5200 and 17500 A/m). Table 1 dual columns transcribed as printed.",
+    "extractor": "litmus.extract",
+    "model": "claude-opus-4-8",
+    "source": "opus-native-pdf"
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The cooling rate of the melt-quenched films was estimated to be ~10^6 K/s based on the film thickness.",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "The cooling rate of the melt-quenched films was estimated to be ~ 106 K/s based on the film thickness."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "Vc computed from Eq.(1) with delta=40 um is consistent with ~10^6 K/s",
+      "strength": "approximate",
+      "scope": "melt-quenched films, ~40 um thickness",
+      "evidence_refs": [
+        "ev1",
+        "ev7",
+        "ev8"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c2",
+      "text": "X-ray analysis revealed a multiphase structure including a BCC-type ordered phase (B2) and intermetallic compounds (Fe, Ni, Co)2B.",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "X-ray analysis revealed a multiphase structure, including a BCC-type ordered phase (structural type B2) and intermetallic compounds (Fe, Ni, Co)2B."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "XRD pattern identifies B2 ordered BCC phase and (Fe,Ni,Co)2B intermetallic",
+      "strength": "qualitative",
+      "scope": "as-cast and MQ FeCoNiB0.7Si0.3Be",
+      "evidence_refs": [
+        "ev11",
+        "ev12"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c3",
+      "text": "In melt-quenched samples, the fraction of the B2 phase increased, leading to a decrease in microhardness from 10400 MPa (as-cast) to 8900 MPa (melt-quenched).",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "the fraction of the B2 phase increased, leading to a decrease in microhardness (from 10400 MPa in as-cast to 8900 MPa in melt-quenched samples)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "as_cast_microhardness_MPa == 10400 AND MQ_microhardness_MPa == 8900 consistent with body text",
+      "strength": "comparative",
+      "scope": "as-cast vs MQ FeCoNiB0.7Si0.3Be",
+      "evidence_refs": [
+        "ev2",
+        "ev13"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c4",
+      "text": "The coercive field of melt-quenched samples (17500 A/m) was significantly higher than that of the as-cast ones (5200 A/m).",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "The coercive field of melt-quenched samples (17500 A/m) was significantly higher than that of the as-cast ones (5200 A/m)"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "Hc_MQ == 17500 A/m AND Hc_as_cast == 5200 A/m consistent with body/figure",
+      "strength": "comparative",
+      "scope": "as-cast vs MQ FeCoNiB0.7Si0.3Be",
+      "evidence_refs": [
+        "ev3",
+        "ev14",
+        "ev16"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c5",
+      "text": "The nominal composition is 20 at.% Fe, 20 at.% Co, 20 at.% Ni, 14 at.% B, 6 at.% Si and 20 at.% Be.",
+      "location": {
+        "section": "Experimental",
+        "page": 3,
+        "char_span": null,
+        "quote": "20 at.% Fe, 20 at.% Co, 20 at.% Ni, 14 at.% B, 6 at.% Si and 20 at.% Be"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "sum(at.% parts) == 100",
+      "strength": "exact",
+      "scope": "nominal as-cast composition",
+      "evidence_refs": [
+        "ev4"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c6",
+      "text": "The average cooling rate in the copper mold for as-cast samples was approximately ~10^2 K/s.",
+      "location": {
+        "section": "Experimental",
+        "page": 3,
+        "char_span": null,
+        "quote": "The average cooling rate in the copper mold was approximately ~102 K/s."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "as_cast_cooling_rate ~ 10^2 K/s",
+      "strength": "approximate",
+      "scope": "as-cast copper mold",
+      "evidence_refs": [
+        "ev5"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c7",
+      "text": "Calculated electronic/thermodynamic/structural parameters: ∆Smix=14.4 J/(mol·K), ∆Hmix=-17.3 kJ/mol, Ω=1.5, VEC=6.46, δr=12.47%, δχ^A=7.838%.",
+      "location": {
+        "section": "Results and Discussions",
+        "page": 5,
+        "char_span": null,
+        "quote": "14.4 -17.3 1.5 6.46 12.47 7.838"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "Omega == Tm*delta_Smix/|delta_Hmix| recompute consistent; parameters computed from composition via Eqs.(2)-(7)",
+      "strength": "exact",
+      "scope": "FeCoNiB0.7Si0.3Be, Table 1",
+      "evidence_refs": [
+        "ev10"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c8",
+      "text": "Based on the calculated parameters and known criteria, the alloy should contain amorphous or intermetallic phases as well as a BCC-type solid solution.",
+      "location": {
+        "section": "Results and Discussions",
+        "page": 5,
+        "char_span": null,
+        "quote": "the FeCoNiB0.7Si0.3Be alloy should contain amorphous or intermetallic phases as well as a BCC-type solid solution"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "phase prediction from parameter values matches literature criteria",
+      "strength": "qualitative",
+      "scope": "FeCoNiB0.7Si0.3Be parameter-based prediction",
+      "evidence_refs": [
+        "ev10"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "c9",
+      "text": "The as-cast sample BCC B2 lattice parameter is a = 0.2655 nm; in MQ sample a = 0.2653 nm.",
+      "location": {
+        "section": "Results and Discussions",
+        "page": 6,
+        "char_span": null,
+        "quote": "lattice parameter a = 0.2655 nm"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "lattice_parameter_as_cast == 0.2655 nm; lattice_parameter_MQ == 0.2653 nm",
+      "strength": "exact",
+      "scope": "B2 BCC phase, as-cast and MQ",
+      "evidence_refs": [
+        "ev11",
+        "ev12"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c10",
+      "text": "The MQ sample had a higher content of the B2 phase compared to the (Fe, Ni, Co)2B phase, indicating rapid cooling can prevent formation of complex intermetallics.",
+      "location": {
+        "section": "Results and Discussions",
+        "page": 6,
+        "char_span": null,
+        "quote": "the MQ sample had a higher content of the B2 phase compared to the (Fe, Ni, Co)2B phase"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "relative XRD peak intensities indicate higher B2 fraction in MQ",
+      "strength": "comparative",
+      "scope": "MQ FeCoNiB0.7Si0.3Be, Fig.1",
+      "evidence_refs": [
+        "ev16"
+      ],
+      "confidence": 0.75
+    },
+    {
+      "id": "c11",
+      "text": "As-cast samples exhibited microhardness Hμ = 10400±300 MPa, exceeding MQ samples (8900±300 MPa).",
+      "location": {
+        "section": "Results and Discussions",
+        "page": 7,
+        "char_span": null,
+        "quote": "The as-cast samples exhibited a microhardness of Hμ = 10400±300 MPa, which exceeds the values of the MQ samples (8900±300 MPa)."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "10400 > 8900 (with ±300 errors); consistent with abstract",
+      "strength": "comparative",
+      "scope": "as-cast vs MQ FeCoNiB0.7Si0.3Be",
+      "evidence_refs": [
+        "ev13",
+        "ev2"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c12",
+      "text": "Specific saturation magnetization MS remains practically unchanged: 71 A·m2/kg for as-cast and 73 A·m2/kg for MQ.",
+      "location": {
+        "section": "Results and Discussions",
+        "page": 9,
+        "char_span": null,
+        "quote": "being 71 A·m2/kg for as-cast and 73 A·m2/kg for MQ samples"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "Ms_as_cast == 71 AND Ms_MQ == 73 consistent with Fig.3 plotted values",
+      "strength": "comparative",
+      "scope": "as-cast vs MQ FeCoNiB0.7Si0.3Be, room temperature",
+      "evidence_refs": [
+        "ev15",
+        "ev16"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c13",
+      "text": "The FeCoNiB0.7Si0.3Be alloy exhibits ferromagnetic properties and can be classified as a hard magnetic material based on coercive field magnitude.",
+      "location": {
+        "section": "Conclusions",
+        "page": 9,
+        "char_span": null,
+        "quote": "the FeCoNiB0.7Si0.3Be HEA can be classified as a hard magnetic material"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "Hc magnitude classifies material as hard magnetic",
+      "strength": "qualitative",
+      "scope": "as-cast and MQ FeCoNiB0.7Si0.3Be",
+      "evidence_refs": [
+        "ev3",
+        "ev14"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "c14",
+      "text": "Rapid quenching (up to 10^6 K/s) increases the fraction of the B2 phase and reduces the content of the intermetallic phase.",
+      "location": {
+        "section": "Conclusions",
+        "page": 9,
+        "char_span": null,
+        "quote": "Rapid quenching (up to 106 K/s) increases the fraction of the B2 phase and reduces the content of the intermetallic phase."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "increased cooling rate -> increased B2 fraction, decreased intermetallic fraction",
+      "strength": "causal",
+      "scope": "MQ FeCoNiB0.7Si0.3Be",
+      "evidence_refs": [
+        "ev1",
+        "ev7"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "c15",
+      "text": "The coercive field magnitude increases with the cooling rate of the melt, attributed to structure refinement and increased microstresses.",
+      "location": {
+        "section": "Conclusions",
+        "page": 9,
+        "char_span": null,
+        "quote": "The coercive field magnitude of the studied alloy increases with the cooling rate of the melt"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "higher cooling rate -> higher Hc (causal attribution to refinement/microstresses)",
+      "strength": "causal",
+      "scope": "as-cast vs MQ FeCoNiB0.7Si0.3Be",
+      "evidence_refs": [
+        "ev3",
+        "ev14"
+      ],
+      "confidence": 0.82
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev1",
+      "kind": "number",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "The cooling rate of the melt-quenched films was estimated to be ~ 106 K/s based on the film thickness."
+      },
+      "extracted_values": {
+        "cooling_rate_K_per_s": 1000000,
+        "stated_as": "~10^6 K/s"
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev2",
+      "kind": "number",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "leading to a decrease in microhardness (from 10400 MPa in as-cast to 8900 MPa in melt-quenched samples)"
+      },
+      "extracted_values": {
+        "old_value": 10400,
+        "new_value": 8900,
+        "reported_pct_change": null,
+        "unit": "MPa"
+      },
+      "confidence": 0.96
+    },
+    {
+      "id": "ev3",
+      "kind": "number",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "The coercive field of melt-quenched samples (17500 A/m) was significantly higher than that of the as-cast ones (5200 A/m)"
+      },
+      "extracted_values": {
+        "Hc_MQ_A_per_m": 17500,
+        "Hc_as_cast_A_per_m": 5200,
+        "old_value": 5200,
+        "new_value": 17500,
+        "reported_pct_change": null
+      },
+      "confidence": 0.96
+    },
+    {
+      "id": "ev4",
+      "kind": "number",
+      "location": {
+        "section": "Experimental",
+        "page": 3,
+        "char_span": null,
+        "quote": "with a nominal composition of 20 at.% Fe, 20 at.% Co, 20 at.% Ni, 14 at.% B, 6 at.% Si and 20 at.% Be"
+      },
+      "extracted_values": {
+        "parts": [
+          20,
+          20,
+          20,
+          14,
+          6,
+          20
+        ],
+        "reported_total": null,
+        "elements": [
+          "Fe",
+          "Co",
+          "Ni",
+          "B",
+          "Si",
+          "Be"
+        ],
+        "unit": "at.%"
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev5",
+      "kind": "number",
+      "location": {
+        "section": "Experimental",
+        "page": 3,
+        "char_span": null,
+        "quote": "The average cooling rate in the copper mold was approximately ~102 K/s."
+      },
+      "extracted_values": {
+        "cooling_rate_K_per_s": 100,
+        "stated_as": "~10^2 K/s"
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev6",
+      "kind": "number",
+      "location": {
+        "section": "Experimental",
+        "page": 4,
+        "char_span": null,
+        "quote": "rotating (~8000 RPM) hollow cylinder of copper. The linear velocity of the inner surface of the cylinder reached 110 m/s."
+      },
+      "extracted_values": {
+        "rotation_RPM": 8000,
+        "linear_velocity_m_per_s": 110
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev7",
+      "kind": "number",
+      "location": {
+        "section": "Experimental",
+        "page": 4,
+        "char_span": null,
+        "quote": "Given the obtained film thickness of ~40 μm, the calculated cooling rate was approximately ~106 K/s."
+      },
+      "extracted_values": {
+        "film_thickness_um": 40,
+        "cooling_rate_K_per_s": 1000000
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev8",
+      "kind": "equation",
+      "location": {
+        "section": "Experimental",
+        "page": 4,
+        "char_span": null,
+        "quote": "𝑉𝑐 =\nα\ncρδ\n(𝑇 − 𝑇0), (1)"
+      },
+      "extracted_values": {
+        "equation": "Vc = (alpha/(c*rho*delta))*(T-T0)"
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev9",
+      "kind": "number",
+      "location": {
+        "section": "Experimental",
+        "page": 4,
+        "char_span": null,
+        "quote": "The microhardness was examined using a PMT-3 tester under a load of 100 g."
+      },
+      "extracted_values": {
+        "load_g": 100
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev10",
+      "kind": "table",
+      "location": {
+        "section": "Results and Discussions",
+        "page": 5,
+        "char_span": null,
+        "quote": "∆Smix, J/(mol·K)l· ∆Hmix, kJ/mol Ω VEC 𝛿𝑟, % 𝛿𝜒\nA\n, %\n14.4 -17.3 1.5 6.46 12.47 7.838"
+      },
+      "extracted_values": {
+        "delta_Smix_J_per_mol_K": 14.4,
+        "delta_Hmix_kJ_per_mol": -17.3,
+        "Omega": 1.5,
+        "VEC": 6.46,
+        "delta_r_pct": 12.47,
+        "delta_chi_A_pct": 7.838
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev11",
+      "kind": "number",
+      "location": {
+        "section": "Results and Discussions",
+        "page": 6,
+        "char_span": null,
+        "quote": "with a BCC lattice (structural type B2, lattice parameter a = 0.2655 nm)"
+      },
+      "extracted_values": {
+        "lattice_parameter_a_nm_as_cast": 0.2655
+      },
+      "confidence": 0.93
+    },
+    {
+      "id": "ev12",
+      "kind": "number",
+      "location": {
+        "section": "Results and Discussions",
+        "page": 6,
+        "char_span": null,
+        "quote": "of the ordered solid solution with a BCC lattice was a = 0.2653 nm"
+      },
+      "extracted_values": {
+        "lattice_parameter_a_nm_MQ": 0.2653
+      },
+      "confidence": 0.93
+    },
+    {
+      "id": "ev13",
+      "kind": "number",
+      "location": {
+        "section": "Results and Discussions",
+        "page": 7,
+        "char_span": null,
+        "quote": "The as-cast samples exhibited a microhardness of Hμ = 10400±300 MPa, which exceeds the values of the MQ samples (8900±300 MPa)."
+      },
+      "extracted_values": {
+        "Hmu_as_cast_MPa": 10400,
+        "Hmu_as_cast_err_MPa": 300,
+        "Hmu_MQ_MPa": 8900,
+        "Hmu_MQ_err_MPa": 300,
+        "old_value": 10400,
+        "new_value": 8900
+      },
+      "confidence": 0.96
+    },
+    {
+      "id": "ev14",
+      "kind": "number",
+      "location": {
+        "section": "Results and Discussions",
+        "page": 9,
+        "char_span": null,
+        "quote": "(17500 A/m) compared to as-cast samples (5200 A/m)"
+      },
+      "extracted_values": {
+        "Hc_MQ_A_per_m": 17500,
+        "Hc_as_cast_A_per_m": 5200
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev15",
+      "kind": "number",
+      "location": {
+        "section": "Results and Discussions",
+        "page": 9,
+        "char_span": null,
+        "quote": "being 71 A·m2/kg for as-cast and 73 A·m2/kg for MQ samples"
+      },
+      "extracted_values": {
+        "Ms_as_cast_Am2_per_kg": 71,
+        "Ms_MQ_Am2_per_kg": 73
+      },
+      "confidence": 0.94
+    },
+    {
+      "id": "ev16",
+      "kind": "figure",
+      "location": {
+        "section": "Results and Discussions",
+        "page": 8,
+        "char_span": null,
+        "quote": "Fig.3. Hysteresis loops of as-cast (a) and melt-quenched (b) samples of \nFeCoNiB0.7Si0.3Be HEA."
+      },
+      "extracted_values": {
+        "as_cast_inset_Hc_A_per_m_approx": 5000,
+        "MQ_inset_Hc_A_per_m_approx": 20000,
+        "as_cast_Ms_plot_approx": 71,
+        "MQ_Ms_plot_approx": 73
+      },
+      "confidence": 0.6
+    }
+  ],
+  "bindings": [
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev7",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev8",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev11",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev12",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev13",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c4",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c4",
+      "evidence_id": "ev14",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c4",
+      "evidence_id": "ev16",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c5",
+      "evidence_id": "ev4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c6",
+      "evidence_id": "ev5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c7",
+      "evidence_id": "ev10",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c8",
+      "evidence_id": "ev10",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c9",
+      "evidence_id": "ev11",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c9",
+      "evidence_id": "ev12",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c10",
+      "evidence_id": "ev16",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c11",
+      "evidence_id": "ev13",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c11",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c12",
+      "evidence_id": "ev15",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c12",
+      "evidence_id": "ev16",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c13",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c13",
+      "evidence_id": "ev14",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c14",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c14",
+      "evidence_id": "ev7",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c15",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c15",
+      "evidence_id": "ev14",
+      "relation": "rests_on"
+    }
+  ]
+}

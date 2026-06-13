@@ -1,0 +1,409 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "chemistry-arxiv-2606.13420-fecconib-melt-quenched-alloy",
+  "meta": {
+    "executor": "local",
+    "n_claims": 15,
+    "n_verifiers": 9,
+    "synthesis_candidates": [
+      "c1",
+      "c3",
+      "c4",
+      "c5",
+      "c7",
+      "c11",
+      "c12"
+    ],
+    "confirmation": "fresh-sandbox",
+    "registry_load_errors": []
+  },
+  "summary": {
+    "n_findings": 0,
+    "n_flags": 0,
+    "n_dropped": 0,
+    "n_routed_to_human": 0,
+    "n_abstained": 15,
+    "flags_by_trust_tier": {},
+    "flags_by_severity": {}
+  },
+  "findings": [],
+  "dropped_flags": [],
+  "routed_to_human": [],
+  "abstained": [
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c1",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "The cooling rate of the melt-quenched films was estimated to be ~ 106 K/s based on the film thickness.",
+        "location": {
+          "section": "Abstract",
+          "page": 1,
+          "char_span": null,
+          "quote": "The cooling rate of the melt-quenched films was estimated to be ~ 106 K/s based on the film thickness."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c2",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "X-ray analysis revealed a multiphase structure, including a BCC-type ordered phase (structural type B2) and intermetallic compounds (Fe, Ni, Co)2B.",
+        "location": {
+          "section": "Abstract",
+          "page": 1,
+          "char_span": null,
+          "quote": "X-ray analysis revealed a multiphase structure, including a BCC-type ordered phase (structural type B2) and intermetallic compounds (Fe, Ni, Co)2B."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c3",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "the fraction of the B2 phase increased, leading to a decrease in microhardness (from 10400 MPa in as-cast to 8900 MPa in melt-quenched samples)",
+        "location": {
+          "section": "Abstract",
+          "page": 1,
+          "char_span": null,
+          "quote": "the fraction of the B2 phase increased, leading to a decrease in microhardness (from 10400 MPa in as-cast to 8900 MPa in melt-quenched samples)"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c4",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "The coercive field of melt-quenched samples (17500 A/m) was significantly higher than that of the as-cast ones (5200 A/m)",
+        "location": {
+          "section": "Abstract",
+          "page": 1,
+          "char_span": null,
+          "quote": "The coercive field of melt-quenched samples (17500 A/m) was significantly higher than that of the as-cast ones (5200 A/m)"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c5",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "20 at.% Fe, 20 at.% Co, 20 at.% Ni, 14 at.% B, 6 at.% Si and 20 at.% Be",
+        "location": {
+          "section": "Experimental",
+          "page": 3,
+          "char_span": null,
+          "quote": "20 at.% Fe, 20 at.% Co, 20 at.% Ni, 14 at.% B, 6 at.% Si and 20 at.% Be"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c6",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "The average cooling rate in the copper mold was approximately ~102 K/s.",
+        "location": {
+          "section": "Experimental",
+          "page": 3,
+          "char_span": null,
+          "quote": "The average cooling rate in the copper mold was approximately ~102 K/s."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c7",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "14.4 -17.3 1.5 6.46 12.47 7.838",
+        "location": {
+          "section": "Results and Discussions",
+          "page": 5,
+          "char_span": null,
+          "quote": "14.4 -17.3 1.5 6.46 12.47 7.838"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c8",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "the FeCoNiB0.7Si0.3Be alloy should contain amorphous or intermetallic phases as well as a BCC-type solid solution",
+        "location": {
+          "section": "Results and Discussions",
+          "page": 5,
+          "char_span": null,
+          "quote": "the FeCoNiB0.7Si0.3Be alloy should contain amorphous or intermetallic phases as well as a BCC-type solid solution"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c9",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "lattice parameter a = 0.2655 nm",
+        "location": {
+          "section": "Results and Discussions",
+          "page": 6,
+          "char_span": null,
+          "quote": "lattice parameter a = 0.2655 nm"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c10",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "the MQ sample had a higher content of the B2 phase compared to the (Fe, Ni, Co)2B phase",
+        "location": {
+          "section": "Results and Discussions",
+          "page": 6,
+          "char_span": null,
+          "quote": "the MQ sample had a higher content of the B2 phase compared to the (Fe, Ni, Co)2B phase"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c11",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "The as-cast samples exhibited a microhardness of H\u03bc = 10400\u00b1300 MPa, which exceeds the values of the MQ samples (8900\u00b1300 MPa).",
+        "location": {
+          "section": "Results and Discussions",
+          "page": 7,
+          "char_span": null,
+          "quote": "The as-cast samples exhibited a microhardness of H\u03bc = 10400\u00b1300 MPa, which exceeds the values of the MQ samples (8900\u00b1300 MPa)."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c12",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "being 71 A\u00b7m2/kg for as-cast and 73 A\u00b7m2/kg for MQ samples",
+        "location": {
+          "section": "Results and Discussions",
+          "page": 9,
+          "char_span": null,
+          "quote": "being 71 A\u00b7m2/kg for as-cast and 73 A\u00b7m2/kg for MQ samples"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c13",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "the FeCoNiB0.7Si0.3Be HEA can be classified as a hard magnetic material",
+        "location": {
+          "section": "Conclusions",
+          "page": 9,
+          "char_span": null,
+          "quote": "the FeCoNiB0.7Si0.3Be HEA can be classified as a hard magnetic material"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c14",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "Rapid quenching (up to 106 K/s) increases the fraction of the B2 phase and reduces the content of the intermetallic phase.",
+        "location": {
+          "section": "Conclusions",
+          "page": 9,
+          "char_span": null,
+          "quote": "Rapid quenching (up to 106 K/s) increases the fraction of the B2 phase and reduces the content of the intermetallic phase."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c15",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "The coercive field magnitude of the studied alloy increases with the cooling rate of the melt",
+        "location": {
+          "section": "Conclusions",
+          "page": 9,
+          "char_span": null,
+          "quote": "The coercive field magnitude of the studied alloy increases with the cooling rate of the melt"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    }
+  ]
+}

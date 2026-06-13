@@ -1,23 +1,30 @@
 {
   "schema_version": "1.0",
-  "paper_id": "chemistry-roy2025-transfer-hydrogenation-furfural",
+  "paper_id": "chemistry-jimenezcruz2026-pd-prolinate-catalysis",
   "meta": {
     "executor": "local",
-    "n_claims": 29,
+    "n_claims": 21,
     "n_verifiers": 9,
     "synthesis_candidates": [
-      "c15",
-      "c22",
-      "c25"
+      "c1",
+      "c2",
+      "c4",
+      "c5",
+      "c6",
+      "c7",
+      "c9",
+      "c10",
+      "c19",
+      "c20"
     ],
     "confirmation": "fresh-sandbox",
     "registry_load_errors": []
   },
   "summary": {
-    "n_findings": 16,
+    "n_findings": 9,
     "n_flags": 0,
     "n_dropped": 0,
-    "n_routed_to_human": 1,
+    "n_routed_to_human": 0,
     "n_abstained": 12,
     "flags_by_trust_tier": {},
     "flags_by_severity": {}
@@ -25,210 +32,14 @@
   "findings": [
     {
       "verifier_id": "yield_check.v1",
-      "claim_id": "c1",
+      "claim_id": "c3",
       "status": "pass",
       "trust_tier": "deterministic_confirmed",
       "verifier_kind": "prebuilt",
       "severity": null,
       "message": "reported yield is within the stoichiometric bound and matches its quantities",
       "discrepancy": null,
-      "reported": 67,
-      "computed": null,
-      "evidence": {
-        "quote": null,
-        "location": {
-          "section": null,
-          "page": null,
-          "char_span": null,
-          "quote": null
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {
-        "checked_bound": true,
-        "recomputed": false
-      }
-    },
-    {
-      "verifier_id": "yield_check.v1",
-      "claim_id": "c2",
-      "status": "pass",
-      "trust_tier": "deterministic_confirmed",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "reported yield is within the stoichiometric bound and matches its quantities",
-      "discrepancy": null,
-      "reported": 67,
-      "computed": null,
-      "evidence": {
-        "quote": null,
-        "location": {
-          "section": null,
-          "page": null,
-          "char_span": null,
-          "quote": null
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {
-        "checked_bound": true,
-        "recomputed": false
-      }
-    },
-    {
-      "verifier_id": "yield_check.v1",
-      "claim_id": "c4",
-      "status": "pass",
-      "trust_tier": "deterministic_confirmed",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "reported yield is within the stoichiometric bound and matches its quantities",
-      "discrepancy": null,
-      "reported": 50,
-      "computed": null,
-      "evidence": {
-        "quote": null,
-        "location": {
-          "section": null,
-          "page": null,
-          "char_span": null,
-          "quote": null
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {
-        "checked_bound": true,
-        "recomputed": false
-      }
-    },
-    {
-      "verifier_id": "yield_check.v1",
-      "claim_id": "c5",
-      "status": "pass",
-      "trust_tier": "deterministic_confirmed",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "reported yield is within the stoichiometric bound and matches its quantities",
-      "discrepancy": null,
-      "reported": 50,
-      "computed": null,
-      "evidence": {
-        "quote": null,
-        "location": {
-          "section": null,
-          "page": null,
-          "char_span": null,
-          "quote": null
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {
-        "checked_bound": true,
-        "recomputed": false
-      }
-    },
-    {
-      "verifier_id": "yield_check.v1",
-      "claim_id": "c7",
-      "status": "pass",
-      "trust_tier": "deterministic_confirmed",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "reported yield is within the stoichiometric bound and matches its quantities",
-      "discrepancy": null,
-      "reported": 15,
-      "computed": null,
-      "evidence": {
-        "quote": null,
-        "location": {
-          "section": null,
-          "page": null,
-          "char_span": null,
-          "quote": null
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {
-        "checked_bound": true,
-        "recomputed": false
-      }
-    },
-    {
-      "verifier_id": "yield_check.v1",
-      "claim_id": "c8",
-      "status": "pass",
-      "trust_tier": "deterministic_confirmed",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "reported yield is within the stoichiometric bound and matches its quantities",
-      "discrepancy": null,
-      "reported": 59,
-      "computed": null,
-      "evidence": {
-        "quote": null,
-        "location": {
-          "section": null,
-          "page": null,
-          "char_span": null,
-          "quote": null
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {
-        "checked_bound": true,
-        "recomputed": false
-      }
-    },
-    {
-      "verifier_id": "yield_check.v1",
-      "claim_id": "c9",
-      "status": "pass",
-      "trust_tier": "deterministic_confirmed",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "reported yield is within the stoichiometric bound and matches its quantities",
-      "discrepancy": null,
-      "reported": 47,
-      "computed": null,
-      "evidence": {
-        "quote": null,
-        "location": {
-          "section": null,
-          "page": null,
-          "char_span": null,
-          "quote": null
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {
-        "checked_bound": true,
-        "recomputed": false
-      }
-    },
-    {
-      "verifier_id": "yield_check.v1",
-      "claim_id": "c10",
-      "status": "pass",
-      "trust_tier": "deterministic_confirmed",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "reported yield is within the stoichiometric bound and matches its quantities",
-      "discrepancy": null,
-      "reported": 2,
+      "reported": 39,
       "computed": null,
       "evidence": {
         "quote": null,
@@ -256,7 +67,7 @@
       "severity": null,
       "message": "reported yield is within the stoichiometric bound and matches its quantities",
       "discrepancy": null,
-      "reported": 27,
+      "reported": 51,
       "computed": null,
       "evidence": {
         "quote": null,
@@ -284,7 +95,7 @@
       "severity": null,
       "message": "reported yield is within the stoichiometric bound and matches its quantities",
       "discrepancy": null,
-      "reported": 30,
+      "reported": 73,
       "computed": null,
       "evidence": {
         "quote": null,
@@ -312,7 +123,63 @@
       "severity": null,
       "message": "reported yield is within the stoichiometric bound and matches its quantities",
       "discrepancy": null,
-      "reported": 75,
+      "reported": 86,
+      "computed": null,
+      "evidence": {
+        "quote": null,
+        "location": {
+          "section": null,
+          "page": null,
+          "char_span": null,
+          "quote": null
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {
+        "checked_bound": true,
+        "recomputed": false
+      }
+    },
+    {
+      "verifier_id": "yield_check.v1",
+      "claim_id": "c14",
+      "status": "pass",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "reported yield is within the stoichiometric bound and matches its quantities",
+      "discrepancy": null,
+      "reported": 98,
+      "computed": null,
+      "evidence": {
+        "quote": null,
+        "location": {
+          "section": null,
+          "page": null,
+          "char_span": null,
+          "quote": null
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {
+        "checked_bound": true,
+        "recomputed": false
+      }
+    },
+    {
+      "verifier_id": "yield_check.v1",
+      "claim_id": "c15",
+      "status": "pass",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "reported yield is within the stoichiometric bound and matches its quantities",
+      "discrepancy": null,
+      "reported": 86,
       "computed": null,
       "evidence": {
         "quote": null,
@@ -340,7 +207,7 @@
       "severity": null,
       "message": "reported yield is within the stoichiometric bound and matches its quantities",
       "discrepancy": null,
-      "reported": 67,
+      "reported": 90,
       "computed": null,
       "evidence": {
         "quote": null,
@@ -368,35 +235,7 @@
       "severity": null,
       "message": "reported yield is within the stoichiometric bound and matches its quantities",
       "discrepancy": null,
-      "reported": 61,
-      "computed": null,
-      "evidence": {
-        "quote": null,
-        "location": {
-          "section": null,
-          "page": null,
-          "char_span": null,
-          "quote": null
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {
-        "checked_bound": true,
-        "recomputed": false
-      }
-    },
-    {
-      "verifier_id": "yield_check.v1",
-      "claim_id": "c20",
-      "status": "pass",
-      "trust_tier": "deterministic_confirmed",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "reported yield is within the stoichiometric bound and matches its quantities",
-      "discrepancy": null,
-      "reported": 80,
+      "reported": 90,
       "computed": null,
       "evidence": {
         "quote": null,
@@ -424,35 +263,7 @@
       "severity": null,
       "message": "reported yield is within the stoichiometric bound and matches its quantities",
       "discrepancy": null,
-      "reported": 95,
-      "computed": null,
-      "evidence": {
-        "quote": null,
-        "location": {
-          "section": null,
-          "page": null,
-          "char_span": null,
-          "quote": null
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {
-        "checked_bound": true,
-        "recomputed": false
-      }
-    },
-    {
-      "verifier_id": "yield_check.v1",
-      "claim_id": "c26",
-      "status": "pass",
-      "trust_tier": "deterministic_confirmed",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "reported yield is within the stoichiometric bound and matches its quantities",
-      "discrepancy": null,
-      "reported": 67,
+      "reported": 76,
       "computed": null,
       "evidence": {
         "quote": null,
@@ -473,68 +284,11 @@
     }
   ],
   "dropped_flags": [],
-  "routed_to_human": [
-    {
-      "claim_id": "c3",
-      "dimension": "tier:T8",
-      "note": "tier T8: subjective/integrity \u2014 surfaced, not scored (DESIGN \u00a73.5)",
-      "quote": "the most active Ru-complex in terms of isopropyl levulinate (IPL) formation at 130\u00b0C after 21 h was Ru-MACHO-BH"
-    }
-  ],
+  "routed_to_human": [],
   "abstained": [
     {
       "verifier_id": "litmus.planner",
-      "claim_id": "c6",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "52% yield\nof IPL",
-        "location": {
-          "section": "Results and Discussion",
-          "page": 3,
-          "char_span": null,
-          "quote": "52% yield\nof IPL"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c14",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "At 150\u00b0C full conversion of\nFF was achieved, however, the yield of IPL (45%) dropped considerably",
-        "location": {
-          "section": "Results and Discussion",
-          "page": 3,
-          "char_span": null,
-          "quote": "At 150\u00b0C full conversion of\nFF was achieved, however, the yield of IPL (45%) dropped considerably"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c15",
+      "claim_id": "c1",
       "status": "inconclusive",
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
@@ -544,12 +298,212 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "From 2 to 7 h the conversion of FF increased from 54% to\n77%, respectively (Figure 5A,B). After 9 h, FF was almost fully\nconverted (94%), while after 21 h complete conversion was\nachieved",
+        "quote": "achieving yields of 80\u201395%, excellent diastereoselectivities (1:69 syn/anti), and\nenantiomeric excesses greater than 99%",
         "location": {
-          "section": "Results and Discussion",
-          "page": 4,
+          "section": "Abstract",
+          "page": 1,
           "char_span": null,
-          "quote": "From 2 to 7 h the conversion of FF increased from 54% to\n77%, respectively (Figure 5A,B). After 9 h, FF was almost fully\nconverted (94%), while after 21 h complete conversion was\nachieved"
+          "quote": "achieving yields of 80\u201395%, excellent diastereoselectivities (1:69 syn/anti), and\nenantiomeric excesses greater than 99%"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c2",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "The\nbest results were obtained when the metal was stirred with the solvent for 24 h (Table 1,\nentries 2 and 6).",
+        "location": {
+          "section": "2. Results",
+          "page": 3,
+          "char_span": null,
+          "quote": "The\nbest results were obtained when the metal was stirred with the solvent for 24 h (Table 1,\nentries 2 and 6)."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c4",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "efficiently\npromoted the reaction, achieving yields above 85% and enantiomeric excesses greater than\n95% (Table 3, entries 1, 3, 5, 7, 9 and 10)",
+        "location": {
+          "section": "2. Results",
+          "page": 5,
+          "char_span": null,
+          "quote": "efficiently\npromoted the reaction, achieving yields above 85% and enantiomeric excesses greater than\n95% (Table 3, entries 1, 3, 5, 7, 9 and 10)"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c5",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "a syn/anti diastereomeric ratio of up to 1:69 was obtained (Table 3, entry 3)",
+        "location": {
+          "section": "2. Results",
+          "page": 6,
+          "char_span": null,
+          "quote": "a syn/anti diastereomeric ratio of up to 1:69 was obtained (Table 3, entry 3)"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c6",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "with activation barriers of 7.1 and 6.7 kcal/mol, respectively",
+        "location": {
+          "section": "2. Results",
+          "page": 7,
+          "char_span": null,
+          "quote": "with activation barriers of 7.1 and 6.7 kcal/mol, respectively"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c7",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "is slightly endothermic in the\ngas phase (+0.4 kcal/mol), whereas in DMSO it is significantly stabilized",
+        "location": {
+          "section": "2. Results",
+          "page": 7,
+          "char_span": null,
+          "quote": "is slightly endothermic in the\ngas phase (+0.4 kcal/mol), whereas in DMSO it is significantly stabilized"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c8",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "each MBH adduct was obtained as a racemic mixture in all cases",
+        "location": {
+          "section": "2. Results",
+          "page": 8,
+          "char_span": null,
+          "quote": "each MBH adduct was obtained as a racemic mixture in all cases"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c9",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "reaching yields of up to 90% when 4-iodophenol was used as the aryl halide\n(Table 6, entry 3)",
+        "location": {
+          "section": "2. Results",
+          "page": 9,
+          "char_span": null,
+          "quote": "reaching yields of up to 90% when 4-iodophenol was used as the aryl halide\n(Table 6, entry 3)"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c10",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "the yields were significantly higher when the process was\ncarried out by microwave irradiation",
+        "location": {
+          "section": "2. Results",
+          "page": 9,
+          "char_span": null,
+          "quote": "the yields were significantly higher when the process was\ncarried out by microwave irradiation"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -569,12 +523,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "In both\ncases IPL was afforded in 65% yield. This observation conclusively demonstrates a homogenously catalyzed transformation",
+        "quote": "List reported the synthesis\nof aromatic aldol adducts in good yields and enantiomeric excesses approaching 80%, by\ncatalyzing the reactions with L-proline (30 mol%)",
         "location": {
-          "section": "Results and Discussion",
-          "page": 5,
+          "section": "1. Introduction",
+          "page": 2,
           "char_span": null,
-          "quote": "In both\ncases IPL was afforded in 65% yield. This observation conclusively demonstrates a homogenously catalyzed transformation"
+          "quote": "List reported the synthesis\nof aromatic aldol adducts in good yields and enantiomeric excesses approaching 80%, by\ncatalyzing the reactions with L-proline (30 mol%)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -589,192 +543,42 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no applicable verifier",
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "the conversion\napproached 100% while IPL was produced in 59% (Table S4,\nentry 11), clearly showing that running the reaction at FF concentration of 0.4 M FF in IPA is optimal",
+        "quote": "high diastereoselectivity (r.d.\nup to 1:69), favoring the formation of the anti diastereomer in all cases. Furthermore, the\ncomplexes (S)-3 and (S)-4 demonstrated the ability to induce high enantioselectivity and\nachieving enantiomeric excesses greater than 99%",
         "location": {
-          "section": "Results and Discussion",
+          "section": "4. Conclusions",
+          "page": 15,
+          "char_span": null,
+          "quote": "high diastereoselectivity (r.d.\nup to 1:69), favoring the formation of the anti diastereomer in all cases. Furthermore, the\ncomplexes (S)-3 and (S)-4 demonstrated the ability to induce high enantioselectivity and\nachieving enantiomeric excesses greater than 99%"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c20",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "the\nfragmentation signals detected at m/z 289 and 307 are consistent with metal coordination\nwith S-Lys fragment",
+        "location": {
+          "section": "2. Results",
           "page": 4,
           "char_span": null,
-          "quote": "the conversion\napproached 100% while IPL was produced in 59% (Table S4,\nentry 11), clearly showing that running the reaction at FF concentration of 0.4 M FF in IPA is optimal"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c22",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "identify two\nmain peaks representing the molecular weights of 236.27 and\n178.18 g mol\u22121 (Figures S14 and S15)",
-        "location": {
-          "section": "Results and Discussion",
-          "page": 5,
-          "char_span": null,
-          "quote": "identify two\nmain peaks representing the molecular weights of 236.27 and\n178.18 g mol\u22121 (Figures S14 and S15)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c23",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "\u0394RG\u00b0 (298 K) = 26.1 kJ mol\u22121\n\u0394RG\u00b0 (403 K) = 46.1 kJ mol\u22121",
-        "location": {
-          "section": "Results and Discussion",
-          "page": 6,
-          "char_span": null,
-          "quote": "\u0394RG\u00b0 (298 K) = 26.1 kJ mol\u22121\n\u0394RG\u00b0 (403 K) = 46.1 kJ mol\u22121"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c24",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "\u0394RG\u00b0 (298 K) = -14.9 kJ mol\u22121\n\u0394RG\u00b0 (403 K) = -11.9 kJ mol\u22121",
-        "location": {
-          "section": "Results and Discussion",
-          "page": 6,
-          "char_span": null,
-          "quote": "\u0394RG\u00b0 (298 K) = -14.9 kJ mol\u22121\n\u0394RG\u00b0 (403 K) = -11.9 kJ mol\u22121"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c25",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "With an average of\n15%\u201320% (Figure 5B, red arrows), the conversion curve shows\nthe presence of unidentified products",
-        "location": {
-          "section": "Results and Discussion",
-          "page": 5,
-          "char_span": null,
-          "quote": "With an average of\n15%\u201320% (Figure 5B, red arrows), the conversion curve shows\nthe presence of unidentified products"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c27",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "at a\ncatalyst loading of 0.1 mol% for the selective TH of FF to FA using\niPrOH as a solvent with 79% isolated yield [16]",
-        "location": {
-          "section": "Introduction",
-          "page": 2,
-          "char_span": null,
-          "quote": "at a\ncatalyst loading of 0.1 mol% for the selective TH of FF to FA using\niPrOH as a solvent with 79% isolated yield [16]"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c28",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "giving IPL in 53% yield, albeit considerable humin formation was\nobserved [40]",
-        "location": {
-          "section": "Introduction",
-          "page": 2,
-          "char_span": null,
-          "quote": "giving IPL in 53% yield, albeit considerable humin formation was\nobserved [40]"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c29",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "significantly\nincreased the IPL yield to 87% using furfural as substrate, at 160\u00b0C for 18 h [38]",
-        "location": {
-          "section": "Introduction",
-          "page": 2,
-          "char_span": null,
-          "quote": "significantly\nincreased the IPL yield to 87% using furfural as substrate, at 160\u00b0C for 18 h [38]"
+          "quote": "the\nfragmentation signals detected at m/z 289 and 307 are consistent with metal coordination\nwith S-Lys fragment"
         },
         "recompute_script": null,
         "expected_output": null,

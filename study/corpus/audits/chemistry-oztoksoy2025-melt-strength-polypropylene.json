@@ -1,60 +1,54 @@
 {
   "schema_version": "1.0",
-  "paper_id": "medicine-zhou2025-esketamine-low-opioid-anaesthesia",
+  "paper_id": "chemistry-oztoksoy2025-melt-strength-polypropylene",
   "meta": {
     "executor": "local",
-    "n_claims": 27,
+    "n_claims": 30,
     "n_verifiers": 9,
     "synthesis_candidates": [
       "c1",
       "c2",
       "c3",
       "c4",
-      "c5",
-      "c6",
-      "c7",
-      "c8",
-      "c9",
-      "c10",
       "c11",
-      "c12",
-      "c13",
-      "c14",
-      "c15",
       "c16",
+      "c17",
       "c18",
       "c19",
       "c20",
       "c21",
-      "c22",
       "c23",
       "c24",
-      "c26"
+      "c25",
+      "c26",
+      "c27",
+      "c28",
+      "c30"
     ],
     "confirmation": "fresh-sandbox",
     "registry_load_errors": []
   },
   "summary": {
-    "n_findings": 1,
+    "n_findings": 7,
     "n_flags": 0,
     "n_dropped": 0,
     "n_routed_to_human": 0,
-    "n_abstained": 26,
+    "n_abstained": 23,
     "flags_by_trust_tier": {},
     "flags_by_severity": {}
   },
   "findings": [
     {
-      "verifier_id": "sum_check.v1",
-      "claim_id": "c25",
+      "verifier_id": "prose_vs_table.v1",
+      "claim_id": "c8",
       "status": "pass",
       "trust_tier": "deterministic_confirmed",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "reported total equals the sum of its parts (within printing precision)",
+      "message": "the prose value agrees with the value the bound source reports",
       "discrepancy": null,
-      "reported": 64,
-      "computed": 64,
+      "reported": 105.1,
+      "computed": 105.1,
       "evidence": {
         "quote": null,
         "location": {
@@ -68,12 +62,176 @@
         "script_dependencies": []
       },
       "details": {
-        "parts": [
-          37,
-          27
-        ],
-        "n_parts": 2,
-        "tolerance": 1e-09
+        "quantity": "Tm_LDPE_C",
+        "rel_tol": 0.01
+      }
+    },
+    {
+      "verifier_id": "prose_vs_table.v1",
+      "claim_id": "c9",
+      "status": "pass",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "the prose value agrees with the value the bound source reports",
+      "discrepancy": null,
+      "reported": 100.7,
+      "computed": 100.7,
+      "evidence": {
+        "quote": null,
+        "location": {
+          "section": null,
+          "page": null,
+          "char_span": null,
+          "quote": null
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {
+        "quantity": "dHm_PP_J_per_g",
+        "rel_tol": 0.01
+      }
+    },
+    {
+      "verifier_id": "prose_vs_table.v1",
+      "claim_id": "c10",
+      "status": "pass",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "the prose value agrees with the value the bound source reports",
+      "discrepancy": null,
+      "reported": 129.9,
+      "computed": 129.9,
+      "evidence": {
+        "quote": null,
+        "location": {
+          "section": null,
+          "page": null,
+          "char_span": null,
+          "quote": null
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {
+        "quantity": "Tconset_PP_C",
+        "rel_tol": 0.01
+      }
+    },
+    {
+      "verifier_id": "prose_vs_table.v1",
+      "claim_id": "c12",
+      "status": "pass",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "the prose value agrees with the value the bound source reports",
+      "discrepancy": null,
+      "reported": 122.3,
+      "computed": 122.3,
+      "evidence": {
+        "quote": null,
+        "location": {
+          "section": null,
+          "page": null,
+          "char_span": null,
+          "quote": null
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {
+        "quantity": "Tconset_PP6_C",
+        "rel_tol": 0.01
+      }
+    },
+    {
+      "verifier_id": "prose_vs_table.v1",
+      "claim_id": "c13",
+      "status": "pass",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "the prose value agrees with the value the bound source reports",
+      "discrepancy": null,
+      "reported": 112.9,
+      "computed": 112.9,
+      "evidence": {
+        "quote": null,
+        "location": {
+          "section": null,
+          "page": null,
+          "char_span": null,
+          "quote": null
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {
+        "quantity": "dHc_rPP_J_per_g",
+        "rel_tol": 0.01
+      }
+    },
+    {
+      "verifier_id": "prose_vs_table.v1",
+      "claim_id": "c14",
+      "status": "pass",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "the prose value agrees with the value the bound source reports",
+      "discrepancy": null,
+      "reported": 58.5,
+      "computed": 58.5,
+      "evidence": {
+        "quote": null,
+        "location": {
+          "section": null,
+          "page": null,
+          "char_span": null,
+          "quote": null
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {
+        "quantity": "Xc_rPP0_pct",
+        "rel_tol": 0.01
+      }
+    },
+    {
+      "verifier_id": "prose_vs_table.v1",
+      "claim_id": "c15",
+      "status": "pass",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "the prose value agrees with the value the bound source reports",
+      "discrepancy": null,
+      "reported": 35.8,
+      "computed": 35.8,
+      "evidence": {
+        "quote": null,
+        "location": {
+          "section": null,
+          "page": null,
+          "char_span": null,
+          "quote": null
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {
+        "quantity": "Xc_rPP5_pct",
+        "rel_tol": 0.01
       }
     }
   ],
@@ -92,12 +250,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "POD-3 QoR-15 scores 121 (117.75\u2013124) 115 (111.75\u2013118.25) <0.001",
+        "quote": "revealed cell densities up to 1.1 \u00d7 108 cells/\ncm3 and reduced average cell sizes of 7.48 \u03bcm",
         "location": {
-          "section": "3.1 / Table 2",
-          "page": 7,
+          "section": "Introduction",
+          "page": 3,
           "char_span": null,
-          "quote": "POD-3 QoR-15 scores 121 (117.75\u2013124) 115 (111.75\u2013118.25) <0.001"
+          "quote": "revealed cell densities up to 1.1 \u00d7 108 cells/\ncm3 and reduced average cell sizes of 7.48 \u03bcm"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -117,12 +275,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Physical comfort 40 (39\u201341) 38 (37\u201340) <0.001",
+        "quote": "Neat polypropylene (PP0) displayed the highest tensile\nmodulus (1957 MPa) and yield strength (39.6 MPa)",
         "location": {
-          "section": "3.1 / Table 2",
-          "page": 7,
+          "section": "Mechanical Properties",
+          "page": 11,
           "char_span": null,
-          "quote": "Physical comfort 40 (39\u201341) 38 (37\u201340) <0.001"
+          "quote": "Neat polypropylene (PP0) displayed the highest tensile\nmodulus (1957 MPa) and yield strength (39.6 MPa)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -142,12 +300,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Emotional state 32 (30\u201333) 29 (27.75\u201331) <0.001",
+        "quote": "the yield strength decreased to 36.5 MPa",
         "location": {
-          "section": "3.1 / Table 2",
-          "page": 7,
+          "section": "Mechanical Properties",
+          "page": 11,
           "char_span": null,
-          "quote": "Emotional state 32 (30\u201333) 29 (27.75\u201331) <0.001"
+          "quote": "the yield strength decreased to 36.5 MPa"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -167,12 +325,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Pain 18 (18\u201320) 18 (16.75\u201319) <0.001",
+        "quote": "significantly increasing\nelongation at break (112.8% in PP2 and 130.8% in PP3)",
         "location": {
-          "section": "3.1 / Table 2",
-          "page": 7,
+          "section": "Mechanical Properties",
+          "page": 11,
           "char_span": null,
-          "quote": "Pain 18 (18\u201320) 18 (16.75\u201319) <0.001"
+          "quote": "significantly increasing\nelongation at break (112.8% in PP2 and 130.8% in PP3)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -187,17 +345,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Statistically significant differences in QoR-15 scores between \nthe K and C groups were also observed on postoperative days 1 and 2 \n(P < 0.01)",
+        "quote": "the average\nparticle size of the dispersed phase was determined to be 0.38\n\u00b1 0.02 \u03bcm in the PP/LDPE samples and 0.53 \u00b1 0.03 \u03bcm in\nthe rPP/LDPE samples",
         "location": {
-          "section": "3.1 / Table 3",
-          "page": 7,
+          "section": "Morphology via SEM",
+          "page": 6,
           "char_span": null,
-          "quote": "Statistically significant differences in QoR-15 scores between \nthe K and C groups were also observed on postoperative days 1 and 2 \n(P < 0.01)"
+          "quote": "the average\nparticle size of the dispersed phase was determined to be 0.38\n\u00b1 0.02 \u03bcm in the PP/LDPE samples and 0.53 \u00b1 0.03 \u03bcm in\nthe rPP/LDPE samples"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -212,17 +370,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "POD-3 2 (2\u20132) 2 (2\u20133) 0.006",
+        "quote": "the average particle size of dispersed\nphase was found as 0.13 \u00b1 0.03 \u03bcm for rPP7",
         "location": {
-          "section": "3.2 / Table 4",
+          "section": "Rheological Properties",
           "page": 7,
           "char_span": null,
-          "quote": "POD-3 2 (2\u20132) 2 (2\u20133) 0.006"
+          "quote": "the average particle size of dispersed\nphase was found as 0.13 \u00b1 0.03 \u03bcm for rPP7"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -237,92 +395,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "POD-3 3 (3\u20134) 4 (3\u20134) 0.02",
+        "quote": "While rPP7 exhibited 11% gel content, this value was\ndetermined to be 6% for the PP7 sample.",
         "location": {
-          "section": "3.2 / Table 4",
-          "page": 7,
+          "section": "Rheological Properties",
+          "page": 9,
           "char_span": null,
-          "quote": "POD-3 3 (3\u20134) 4 (3\u20134) 0.02"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c8",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "PCIA demand frequency 12.5 (9\u201315) 15 (12\u201317) 0.002",
-        "location": {
-          "section": "3.2 / Table 4",
-          "page": 7,
-          "char_span": null,
-          "quote": "PCIA demand frequency 12.5 (9\u201315) 15 (12\u201317) 0.002"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c9",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Rescue analgesia, n (%) 10 (14.3) 23 (32.9) 0.01",
-        "location": {
-          "section": "3.2 / Table 4",
-          "page": 7,
-          "char_span": null,
-          "quote": "Rescue analgesia, n (%) 10 (14.3) 23 (32.9) 0.01"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c10",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Rescue analgesic consumption per patient (mg) 0 (0\u20130) 0 (0\u2013100) 0.008",
-        "location": {
-          "section": "3.2 / Table 4",
-          "page": 7,
-          "char_span": null,
-          "quote": "Rescue analgesic consumption per patient (mg) 0 (0\u20130) 0 (0\u2013100) 0.008"
+          "quote": "While rPP7 exhibited 11% gel content, this value was\ndetermined to be 6% for the PP7 sample."
         },
         "recompute_script": null,
         "expected_output": null,
@@ -342,112 +425,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "reduced usage of propofol (866.56 \u00b1 76.44 mg vs. \n968.36 \u00b1 68.87 mg, P < 0.05)",
+        "quote": "increased\nmarkedly to 126.4 and 125.9 \u00b0C as a comparison with\nuncompatibilized PP/LDPE blends",
         "location": {
-          "section": "3.4",
-          "page": 6,
+          "section": "DSC Results",
+          "page": 13,
           "char_span": null,
-          "quote": "reduced usage of propofol (866.56 \u00b1 76.44 mg vs. \n968.36 \u00b1 68.87 mg, P < 0.05)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c12",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "sufentanil (25 \u00b1 \n4.62 ug vs. 38 \u00b1 8.60 ug, P < 0.001)",
-        "location": {
-          "section": "3.4",
-          "page": 6,
-          "char_span": null,
-          "quote": "sufentanil (25 \u00b1 \n4.62 ug vs. 38 \u00b1 8.60 ug, P < 0.001)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c13",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "remifentanil (2.1 \u00b1 0.35 mg vs. 2.5 \u00b1 0.72 mg, P < 0.001)",
-        "location": {
-          "section": "3.4",
-          "page": 6,
-          "char_span": null,
-          "quote": "remifentanil (2.1 \u00b1 0.35 mg vs. 2.5 \u00b1 0.72 mg, P < 0.001)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c14",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "extubation time \n(35.8 \u00b1 13.02 min vs. 40.8 \u00b1 15.5 min, P < 0.05; Figure 4A)",
-        "location": {
-          "section": "3.5",
-          "page": 6,
-          "char_span": null,
-          "quote": "extubation time \n(35.8 \u00b1 13.02 min vs. 40.8 \u00b1 15.5 min, P < 0.05; Figure 4A)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c15",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "PACU stay duration (107.2 \u00b1 27.4 min vs. 118.9 \u00b1 27.2 min, P < 0.05;",
-        "location": {
-          "section": "3.5",
-          "page": 6,
-          "char_span": null,
-          "quote": "PACU stay duration (107.2 \u00b1 27.4 min vs. 118.9 \u00b1 27.2 min, P < 0.05;"
+          "quote": "increased\nmarkedly to 126.4 and 125.9 \u00b0C as a comparison with\nuncompatibilized PP/LDPE blends"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -467,12 +450,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "the incidence \nof nausea and vomiting was significantly lower in the K group than \nin the C group (10.0% vs. 21.4%, P < 0.05)",
+        "quote": "PP0 exhibited the lowest cell density (6.6 \u00d7 107\ncells/cm3) and the largest mean cell size (\u22489.4 \u03bcm)",
         "location": {
-          "section": "3.6",
-          "page": 6,
+          "section": "Structure of the Foams",
+          "page": 14,
           "char_span": null,
-          "quote": "the incidence \nof nausea and vomiting was significantly lower in the K group than \nin the C group (10.0% vs. 21.4%, P < 0.05)"
+          "quote": "PP0 exhibited the lowest cell density (6.6 \u00d7 107\ncells/cm3) and the largest mean cell size (\u22489.4 \u03bcm)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -487,17 +470,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no applicable verifier",
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "No other significant \ndifferences were observed between the two groups in the incidence \nof dizziness, headache, drowsiness, or restlessness (P > \n0.05)",
+        "quote": "PP5 showed the\nhighest cell density (1.1 \u00d7 108 cells/cm3\n) and the smallest\naverage cell diameter (\u22487.5 \u03bcm)",
         "location": {
-          "section": "3.6",
-          "page": 6,
+          "section": "Structure of the Foams",
+          "page": 14,
           "char_span": null,
-          "quote": "No other significant \ndifferences were observed between the two groups in the incidence \nof dizziness, headache, drowsiness, or restlessness (P > \n0.05)"
+          "quote": "PP5 showed the\nhighest cell density (1.1 \u00d7 108 cells/cm3\n) and the smallest\naverage cell diameter (\u22487.5 \u03bcm)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -517,12 +500,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "higher QoR-15 score on postoperative day 3 (B = 5.52, 95% CI \n3.97 to 7.06, P < 0.001)",
+        "quote": "PP7 exhibited a lower cell nucleation\ndensity (N0 = 8.7 \u00d7 107 cells/cm3\n) compared to PP5",
         "location": {
-          "section": "3.7",
-          "page": 6,
+          "section": "Structure of the Foams",
+          "page": 14,
           "char_span": null,
-          "quote": "higher QoR-15 score on postoperative day 3 (B = 5.52, 95% CI \n3.97 to 7.06, P < 0.001)"
+          "quote": "PP7 exhibited a lower cell nucleation\ndensity (N0 = 8.7 \u00d7 107 cells/cm3\n) compared to PP5"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -542,12 +525,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "sufentanil (B = \u221212.61, 95% CI \n-15.02 to \u221210.19, P < 0.001)",
+        "quote": "the density of PP1\ndecreased from 0.91 to 0.74 g/cm3",
         "location": {
-          "section": "3.7",
-          "page": 6,
+          "section": "Mechanical Properties of Foamed Materials",
+          "page": 15,
           "char_span": null,
-          "quote": "sufentanil (B = \u221212.61, 95% CI \n-15.02 to \u221210.19, P < 0.001)"
+          "quote": "the density of PP1\ndecreased from 0.91 to 0.74 g/cm3"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -567,12 +550,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "remifentanil (B = \u22120.39, 95% CI \n-0.58 to \u22120.19, P < 0.001)",
+        "quote": "for PP5, the\nmodulus decreased from 928 to 717 MPa and the yield strength from\n25.1 to 18.0 MPa",
         "location": {
-          "section": "3.7",
-          "page": 6,
+          "section": "Mechanical Properties of Foamed Materials",
+          "page": 15,
           "char_span": null,
-          "quote": "remifentanil (B = \u22120.39, 95% CI \n-0.58 to \u22120.19, P < 0.001)"
+          "quote": "for PP5, the\nmodulus decreased from 928 to 717 MPa and the yield strength from\n25.1 to 18.0 MPa"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -592,12 +575,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "lower heart rate variability (B = \u22120.027, 95% CI \n-0.042 to \u22120.012, P < 0.001)",
+        "quote": "for PP7, the modulus dropped from\n810 to 701 MPa and the yield strength from 26.2 to 17.5 MPa",
         "location": {
-          "section": "3.7",
-          "page": 6,
+          "section": "Mechanical Properties of Foamed Materials",
+          "page": 15,
           "char_span": null,
-          "quote": "lower heart rate variability (B = \u22120.027, 95% CI \n-0.042 to \u22120.012, P < 0.001)"
+          "quote": "for PP7, the modulus dropped from\n810 to 701 MPa and the yield strength from 26.2 to 17.5 MPa"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -612,17 +595,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "higher mean arterial \npressure variability (B = 0.018, 95% CI 0.001 to 0.034, P = 0.033)",
+        "quote": "the material density decreased\nby approximately 5\u221220%",
         "location": {
-          "section": "3.7",
-          "page": 6,
+          "section": "Mechanical Properties of Foamed Materials",
+          "page": 15,
           "char_span": null,
-          "quote": "higher mean arterial \npressure variability (B = 0.018, 95% CI 0.001 to 0.034, P = 0.033)"
+          "quote": "the material density decreased\nby approximately 5\u221220%"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -642,12 +625,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Norepinephrine 9 (12.9) 28 (40) <0.01",
+        "quote": "the\ntensile modulus reduced from only 1457 to 1348 MPa upon\nfoaming",
         "location": {
-          "section": "3 / Table 1",
-          "page": 5,
+          "section": "Mechanical Properties of Foamed Materials",
+          "page": 16,
           "char_span": null,
-          "quote": "Norepinephrine 9 (12.9) 28 (40) <0.01"
+          "quote": "the\ntensile modulus reduced from only 1457 to 1348 MPa upon\nfoaming"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -667,12 +650,37 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "calculations indicated \n64 patients per group were required. Accounting for a 10% \ndropout rate, the final actual enrollment per group was \n72 patients, totaling 144 patients.",
+        "quote": "its yield strength reduced by 32.2 to\n27.6 MPa and the Izod impact strength reduced by half 43.7 to\n24.7 kJ/m2",
         "location": {
-          "section": "2.5",
-          "page": 4,
+          "section": "Mechanical Properties of Foamed Materials",
+          "page": 16,
           "char_span": null,
-          "quote": "calculations indicated \n64 patients per group were required. Accounting for a 10% \ndropout rate, the final actual enrollment per group was \n72 patients, totaling 144 patients."
+          "quote": "its yield strength reduced by 32.2 to\n27.6 MPa and the Izod impact strength reduced by half 43.7 to\n24.7 kJ/m2"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c25",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "which is before foaming\n100.4 to 33.5 kJ/m2 after foaming were recorded by it",
+        "location": {
+          "section": "Mechanical Properties of Foamed Materials",
+          "page": 16,
+          "char_span": null,
+          "quote": "which is before foaming\n100.4 to 33.5 kJ/m2 after foaming were recorded by it"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -692,12 +700,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "A statistically significant, six-point higher median QoR-15 score was \nobserved in the K group compared to the C group on POD3, which \nmeets the threshold for the established minimal clinically important \ndifference (MCID) of six points",
+        "quote": "The modulus reduced\nby 796 to 615 MPa upon foaming and the impact toughness\nreduced from 94.3 to 28.4 kJ/m2",
         "location": {
-          "section": "4 Discussion",
-          "page": 6,
+          "section": "Mechanical Properties of Foamed Materials",
+          "page": 16,
           "char_span": null,
-          "quote": "A statistically significant, six-point higher median QoR-15 score was \nobserved in the K group compared to the C group on POD3, which \nmeets the threshold for the established minimal clinically important \ndifference (MCID) of six points"
+          "quote": "The modulus reduced\nby 796 to 615 MPa upon foaming and the impact toughness\nreduced from 94.3 to 28.4 kJ/m2"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -712,17 +720,92 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "rPP5 displayed the most refined cell morphology,\ncharacterized by the smallest mean cell diameter (\u223c7.8 \u03bcm)\nand the highest cell density (1.1 \u00d7 108 cells/cm3",
+        "location": {
+          "section": "Structure of the Foams",
+          "page": 15,
+          "char_span": null,
+          "quote": "rPP5 displayed the most refined cell morphology,\ncharacterized by the smallest mean cell diameter (\u223c7.8 \u03bcm)\nand the highest cell density (1.1 \u00d7 108 cells/cm3"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c28",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "Homo polypropylene (PPH, melt flow rate, MFR = 23 g/10 min)",
+        "location": {
+          "section": "Experimental / Materials",
+          "page": 3,
+          "char_span": null,
+          "quote": "Homo polypropylene (PPH, melt flow rate, MFR = 23 g/10 min)"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c29",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
       "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "an esketamine-based multimodal low-opioid anaesthesia \nregimen significantly enhances recovery quality on postoperative \nday 3 in elderly patients undergoing thoracoscopic radical lung \ncancer surgery.",
+        "quote": "with a theoretical\nretained value of 20\u221250% of virgin material market value",
         "location": {
-          "section": "5 Conclusion",
-          "page": 10,
+          "section": "Introduction",
+          "page": 2,
           "char_span": null,
-          "quote": "an esketamine-based multimodal low-opioid anaesthesia \nregimen significantly enhances recovery quality on postoperative \nday 3 in elderly patients undergoing thoracoscopic radical lung \ncancer surgery."
+          "quote": "with a theoretical\nretained value of 20\u221250% of virgin material market value"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c30",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "Table 1. Compositions of PP/LDPE and rPP/LDPE Blends",
+        "location": {
+          "section": "Table 1",
+          "page": 3,
+          "char_span": null,
+          "quote": "Table 1. Compositions of PP/LDPE and rPP/LDPE Blends"
         },
         "recompute_script": null,
         "expected_output": null,

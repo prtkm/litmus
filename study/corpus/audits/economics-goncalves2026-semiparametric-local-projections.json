@@ -1,0 +1,555 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "economics-goncalves2026-semiparametric-local-projections",
+  "meta": {
+    "executor": "local",
+    "n_claims": 21,
+    "n_verifiers": 9,
+    "synthesis_candidates": [
+      "c10",
+      "c12",
+      "c13"
+    ],
+    "confirmation": "fresh-sandbox",
+    "registry_load_errors": []
+  },
+  "summary": {
+    "n_findings": 0,
+    "n_flags": 0,
+    "n_dropped": 0,
+    "n_routed_to_human": 0,
+    "n_abstained": 21,
+    "flags_by_trust_tier": {},
+    "flags_by_severity": {}
+  },
+  "findings": [],
+  "dropped_flags": [],
+  "routed_to_human": [],
+  "abstained": [
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c1",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "The resulting estimator is \u221a\nT-consistent and asymptotically normal.",
+        "location": {
+          "section": "Abstract",
+          "page": 1,
+          "char_span": null,
+          "quote": "The resulting estimator is \u221a\nT-consistent and asymptotically normal."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c2",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "Theorem 5.1 Suppose that Assumptions 1, 2, and 3 hold. Then\n\u221a\nT(\n\u02c6\u03b8h \u2212 \u03b80,h) = 1\n\u221a\nT\nX\nT\nt=1\n\u03c8(yt+h, xt, zt\u22121, g0,h, \u03b10, \u03b80,h) + op(1) \u2192d N(0, Vh),",
+        "location": {
+          "section": "5 Estimation and inference",
+          "page": 16,
+          "char_span": null,
+          "quote": "Theorem 5.1 Suppose that Assumptions 1, 2, and 3 hold. Then\n\u221a\nT(\n\u02c6\u03b8h \u2212 \u03b80,h) = 1\n\u221a\nT\nX\nT\nt=1\n\u03c8(yt+h, xt, zt\u22121, g0,h, \u03b10, \u03b80,h) + op(1) \u2192d N(0, Vh),"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c3",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "does not affect the first-order asymptotic distribution of \u02c6\u03b8h: the estimator is asymptotically\nequivalent to the infeasible oracle estimator that uses the true nuisance functions.",
+        "location": {
+          "section": "5 Estimation and inference",
+          "page": 17,
+          "char_span": null,
+          "quote": "does not affect the first-order asymptotic distribution of \u02c6\u03b8h: the estimator is asymptotically\nequivalent to the infeasible oracle estimator that uses the true nuisance functions."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c4",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "Hence, this moment condition yields an estimator that is insensitive to misspecification of\ngh provided \u03b1 = \u03b10, and insensitive to misspecification of \u03b1 provided gh = g0,h.",
+        "location": {
+          "section": "5 Estimation and inference",
+          "page": 13,
+          "char_span": null,
+          "quote": "Hence, this moment condition yields an estimator that is insensitive to misspecification of\ngh provided \u03b1 = \u03b10, and insensitive to misspecification of \u03b1 provided gh = g0,h."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c5",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "\u03b80,h \u2261 ARFh(\u03b4) = E[g0,h(xt + \u03b4, zt\u22121) \u2212 g0,h(xt, zt\u22121)] , (3)",
+        "location": {
+          "section": "4 Identification",
+          "page": 11,
+          "char_span": null,
+          "quote": "\u03b80,h \u2261 ARFh(\u03b4) = E[g0,h(xt + \u03b4, zt\u22121) \u2212 g0,h(xt, zt\u22121)] , (3)"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c6",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "The bias is small and close to zero\nacross horizons and sample sizes, indicating that the estimator is approximately unbiased.\nRMSE decreases with T, as expected for a consistent estimator. Although coverage falls\nbelow the nominal 95%, it improves with increasing sample size.",
+        "location": {
+          "section": "7.1 Simulations for sign model",
+          "page": 20,
+          "char_span": null,
+          "quote": "The bias is small and close to zero\nacross horizons and sample sizes, indicating that the estimator is approximately unbiased.\nRMSE decreases with T, as expected for a consistent estimator. Although coverage falls\nbelow the nominal 95%, it improves with increasing sample size."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c7",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "the semiparametric DR-NLO estimator has smaller median bias at every\nhorizon and for every sample size considered, and its bias decreases with T, as predicted",
+        "location": {
+          "section": "7.2 Simulations for state dependent model",
+          "page": 21,
+          "char_span": null,
+          "quote": "the semiparametric DR-NLO estimator has smaller median bias at every\nhorizon and for every sample size considered, and its bias decreases with T, as predicted"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c8",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "Figure 3 illustrates the systematic downward bias of the traditional state-dependent\nLP (SD-LP) estimator in both expansions and recessions, which does not vanish as the\nsample size grows.",
+        "location": {
+          "section": "7.2 Simulations for state dependent model",
+          "page": 21,
+          "char_span": null,
+          "quote": "Figure 3 illustrates the systematic downward bias of the traditional state-dependent\nLP (SD-LP) estimator in both expansions and recessions, which does not vanish as the\nsample size grows."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c9",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "The SD-LP intervals exhibit substantial undercov-\nerage for all sample sizes, which worsens as T increases since the variance shrinks while the\nbias persists. DR-NLO slightly undercovers as well, but its coverage remains closer to the\nnominal 95% level and improves with T.",
+        "location": {
+          "section": "7.2 Simulations for state dependent model",
+          "page": 23,
+          "char_span": null,
+          "quote": "The SD-LP intervals exhibit substantial undercov-\nerage for all sample sizes, which worsens as T increases since the variance shrinks while the\nbias persists. DR-NLO slightly undercovers as well, but its coverage remains closer to the\nnominal 95% level and improves with T."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c10",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "Both estimates indicate that headline inflation jumps by close\nto 0.05 percentage points (not annualized) in response to a one percentage point gasoline\nprice shock, but the response declines quickly. By horizon 2, it is close to zero.",
+        "location": {
+          "section": "8 Empirical illustrations",
+          "page": 25,
+          "char_span": null,
+          "quote": "Both estimates indicate that headline inflation jumps by close\nto 0.05 percentage points (not annualized) in response to a one percentage point gasoline\nprice shock, but the response declines quickly. By horizon 2, it is close to zero."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c11",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "The\nresponse of core inflation is an order of magnitude smaller and only slightly positive. Both\nthe linear LP and the DR-NLO estimate are marginally statistically significant at horizons 1\nand 2.",
+        "location": {
+          "section": "8 Empirical illustrations",
+          "page": 25,
+          "char_span": null,
+          "quote": "The\nresponse of core inflation is an order of magnitude smaller and only slightly positive. Both\nthe linear LP and the DR-NLO estimate are marginally statistically significant at horizons 1\nand 2."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c12",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "exceeding its historical average of 3.8% (i.e., 0.32%\nmonthly) during the estimation period",
+        "location": {
+          "section": "8 Empirical illustrations",
+          "page": 25,
+          "char_span": null,
+          "quote": "exceeding its historical average of 3.8% (i.e., 0.32%\nmonthly) during the estimation period"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c13",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "At horizon 12, the linear LP estimate shows a decline\nin auto sales that is only 28% of the DR-NLO response.",
+        "location": {
+          "section": "8 Empirical illustrations",
+          "page": 27,
+          "char_span": null,
+          "quote": "At horizon 12, the linear LP estimate shows a decline\nin auto sales that is only 28% of the DR-NLO response."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c14",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "The DR-NLO impact response is positive but\nstatistically insignificant. There is no statistically significant response in sales for the first\nthree months, according to the DR-NLO estimator, followed by a persistent decline in auto",
+        "location": {
+          "section": "8 Empirical illustrations",
+          "page": 26,
+          "char_span": null,
+          "quote": "The DR-NLO impact response is positive but\nstatistically insignificant. There is no statistically significant response in sales for the first\nthree months, according to the DR-NLO estimator, followed by a persistent decline in auto"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c15",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "The linear LP estimate, in contrast, suggests a statistically\nsignificant but economically counterintuitive increase in auto sales at horizons 0, 1 and 2.",
+        "location": {
+          "section": "8 Empirical illustrations",
+          "page": 27,
+          "char_span": null,
+          "quote": "The linear LP estimate, in contrast, suggests a statistically\nsignificant but economically counterintuitive increase in auto sales at horizons 0, 1 and 2."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c16",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "each drawn i.i.d. from a Student-t distribution with \u03bd = 10\ndegrees of freedom rescaled to unit variance, so that the size of the shock can be interpreted\nas a one-standard-deviation shock.",
+        "location": {
+          "section": "7 Simulation results",
+          "page": 18,
+          "char_span": null,
+          "quote": "each drawn i.i.d. from a Student-t distribution with \u03bd = 10\ndegrees of freedom rescaled to unit variance, so that the size of the shock can be interpreted\nas a one-standard-deviation shock."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c17",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "The true impulse responses are computed by simulation from the structural model using\n5,000 counterfactual paths after a burn-in period of T0 = 500.",
+        "location": {
+          "section": "7 Simulation results",
+          "page": 19,
+          "char_span": null,
+          "quote": "The true impulse responses are computed by simulation from the structural model using\n5,000 counterfactual paths after a burn-in period of T0 = 500."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c18",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "The DR-NLO estimator uses\nK = 10 (K = 20) contiguous blocks of equal length \u230aT/K\u230b, as described in Section 5 for the\nstate-dependent (nonlinear regressor) model.",
+        "location": {
+          "section": "7 Simulation results",
+          "page": 19,
+          "char_span": null,
+          "quote": "The DR-NLO estimator uses\nK = 10 (K = 20) contiguous blocks of equal length \u230aT/K\u230b, as described in Section 5 for the\nstate-dependent (nonlinear regressor) model."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c19",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "The parameters are\nset to \u03c1x = 0.3, \u03c8x = \u22120.1, \u03b2E = 2.5, \u03b2R = 3.5,\u03b3E = 0.9, and \u03b3R = \u22120.1.",
+        "location": {
+          "section": "7.2 Simulations for state dependent model",
+          "page": 20,
+          "char_span": null,
+          "quote": "The parameters are\nset to \u03c1x = 0.3, \u03c8x = \u22120.1, \u03b2E = 2.5, \u03b2R = 3.5,\u03b3E = 0.9, and \u03b3R = \u22120.1."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c20",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "We partition\nthe index set {1, . . . , T} into K \u2265 4 non-overlapping blocks I1, . . . , IK of contiguous time\nindices, each of size T\u2113 \u2261 T/K",
+        "location": {
+          "section": "5 Estimation and inference",
+          "page": 13,
+          "char_span": null,
+          "quote": "We partition\nthe index set {1, . . . , T} into K \u2265 4 non-overlapping blocks I1, . . . , IK of contiguous time\nindices, each of size T\u2113 \u2261 T/K"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c21",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "With \u03b4 = 1 and the use of a t-distribution for generating \u03b51t, the population Riesz representer \u03b10(x) is\nuniformly bounded, satisfying Assumption 2(i).",
+        "location": {
+          "section": "7 Simulation results",
+          "page": 18,
+          "char_span": null,
+          "quote": "With \u03b4 = 1 and the use of a t-distribution for generating \u03b51t, the population Riesz representer \u03b10(x) is\nuniformly bounded, satisfying Assumption 2(i)."
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    }
+  ]
+}

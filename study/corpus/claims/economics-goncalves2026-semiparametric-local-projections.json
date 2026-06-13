@@ -1,0 +1,838 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "economics-goncalves2026-semiparametric-local-projections",
+  "meta": {
+    "paper_title": "Semiparametric Local Projections",
+    "authors": [
+      "Sílvia Gonçalves",
+      "Ana María Herrera",
+      "Lutz Kilian",
+      "Elena Pesavento",
+      "Iones Kelanemer Holban"
+    ],
+    "date": "June 12, 2026",
+    "field": "econometrics",
+    "note": "Theoretical/methodological paper with Monte Carlo simulations and two empirical illustrations. Many quantitative claims rely on figures (small plots) whose exact plotted values are not transcribed in text; figure-read evidence is given lower confidence.",
+    "extractor": "litmus.extract",
+    "model": "claude-opus-4-8",
+    "source": "opus-native-pdf"
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "text": "The proposed semiparametric local projection (DR-NLO) estimator is √T-consistent and asymptotically normal.",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "The resulting estimator is √\nT-consistent and asymptotically normal."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "estimator √T(θ̂_h - θ0,h) →d N(0, V_h) under Assumptions 1-3 (Theorem 5.1)",
+      "strength": "exact",
+      "scope": "Under Assumptions 1, 2, and 3 (geometric β-mixing, moment, and rate conditions)",
+      "evidence_refs": [
+        "ev1"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c2",
+      "text": "Theorem 5.1: under Assumptions 1, 2, 3, √T(θ̂_h - θ0,h) equals the oracle influence-function average plus op(1) and converges to N(0, V_h).",
+      "location": {
+        "section": "5 Estimation and inference",
+        "page": 16,
+        "char_span": null,
+        "quote": "Theorem 5.1 Suppose that Assumptions 1, 2, and 3 hold. Then\n√\nT(\nˆθh − θ0,h) = 1\n√\nT\nX\nT\nt=1\nψ(yt+h, xt, zt−1, g0,h, α0, θ0,h) + op(1) →d N(0, Vh),"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "decomposition √T(θ̂_h - θ0,h) = oracle term + op(1), distribution N(0, V_h)",
+      "strength": "exact",
+      "scope": "Assumptions 1, 2, 3",
+      "evidence_refs": [
+        "ev1"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c3",
+      "text": "The preliminary estimation of the nuisance functions has no effect on the first-order asymptotic distribution; the estimator is asymptotically equivalent to the infeasible oracle estimator.",
+      "location": {
+        "section": "5 Estimation and inference",
+        "page": 17,
+        "char_span": null,
+        "quote": "does not affect the first-order asymptotic distribution of ˆθh: the estimator is asymptotically\nequivalent to the infeasible oracle estimator that uses the true nuisance functions."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "first-order asymptotic distribution of θ̂_h equals that of oracle θ̃_h (remainder = op(T^{-1/2}))",
+      "strength": "qualitative",
+      "scope": "Theorem 5.1 conditions",
+      "evidence_refs": [
+        "ev1"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c4",
+      "text": "The doubly robust moment condition yields an estimator insensitive to misspecification of g_h provided α = α0, and insensitive to misspecification of α provided g_h = g0,h.",
+      "location": {
+        "section": "5 Estimation and inference",
+        "page": 13,
+        "char_span": null,
+        "quote": "Hence, this moment condition yields an estimator that is insensitive to misspecification of\ngh provided α = α0, and insensitive to misspecification of α provided gh = g0,h."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "E[ψ(...,g_h,α,θ0,h)]=0 for any g_h when α=α0 and for any α when g_h=g0,h",
+      "strength": "exact",
+      "scope": "moment condition (6), via Theorem 5 of Chernozhukov et al. (2022)",
+      "evidence_refs": [
+        "ev2"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c5",
+      "text": "Proposition 4.1: under the stated conditions, ARF_h(δ) = E[g0,h(x_t+δ, z_{t-1}) - g0,h(x_t, z_{t-1})].",
+      "location": {
+        "section": "4 Identification",
+        "page": 11,
+        "char_span": null,
+        "quote": "θ0,h ≡ ARFh(δ) = E[g0,h(xt + δ, zt−1) − g0,h(xt, zt−1)] , (3)"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "identification equation (3) holds under (1),(2) with mutually independent i.i.d.(0,Σ) shocks",
+      "strength": "exact",
+      "scope": "z_t satisfies (1),(2), ε_t i.i.d.(0,Σ), Σ=diag(σ1²,σ2²)",
+      "evidence_refs": [
+        "ev3"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c6",
+      "text": "DR-NLO performs well for the ARF in models with nonlinear regressors: bias is small and close to zero across horizons and sample sizes; RMSE decreases with T; coverage falls below nominal 95% but improves with sample size.",
+      "location": {
+        "section": "7.1 Simulations for sign model",
+        "page": 20,
+        "char_span": null,
+        "quote": "The bias is small and close to zero\nacross horizons and sample sizes, indicating that the estimator is approximately unbiased.\nRMSE decreases with T, as expected for a consistent estimator. Although coverage falls\nbelow the nominal 95%, it improves with increasing sample size."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "median absolute bias small; RMSE decreasing in T; coverage < 0.95 but increasing in T per Figure 2",
+      "strength": "comparative",
+      "scope": "Figure 2, nonlinear regressor DGP, T∈{250,500,1000,2000}, 20,000 replications",
+      "evidence_refs": [
+        "ev4",
+        "ev5"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c7",
+      "text": "The DR-NLO estimator has smaller median bias than SD-LP at every horizon and for every sample size considered in the state-dependent design, and its bias decreases with T.",
+      "location": {
+        "section": "7.2 Simulations for state dependent model",
+        "page": 21,
+        "char_span": null,
+        "quote": "the semiparametric DR-NLO estimator has smaller median bias at every\nhorizon and for every sample size considered, and its bias decreases with T, as predicted"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "median_bias(DR-NLO) < median_bias(SD-LP) for all h and all T in Figure 3",
+      "strength": "comparative",
+      "scope": "Figure 3, state-dependent model, expansion and recession, T∈{500,1000,2000}, δ=1, 30,000 replications",
+      "evidence_refs": [
+        "ev6",
+        "ev7"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c8",
+      "text": "The SD-LP estimator exhibits a systematic downward bias in both expansions and recessions that does not vanish as the sample size grows.",
+      "location": {
+        "section": "7.2 Simulations for state dependent model",
+        "page": 21,
+        "char_span": null,
+        "quote": "Figure 3 illustrates the systematic downward bias of the traditional state-dependent\nLP (SD-LP) estimator in both expansions and recessions, which does not vanish as the\nsample size grows."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "SD-LP median bias negative and non-vanishing as T increases per Figure 3",
+      "strength": "comparative",
+      "scope": "Figure 3, state-dependent model",
+      "evidence_refs": [
+        "ev6"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c9",
+      "text": "SD-LP confidence intervals exhibit substantial undercoverage that worsens as T increases, while DR-NLO coverage remains closer to nominal 95% and improves with T.",
+      "location": {
+        "section": "7.2 Simulations for state dependent model",
+        "page": 23,
+        "char_span": null,
+        "quote": "The SD-LP intervals exhibit substantial undercov-\nerage for all sample sizes, which worsens as T increases since the variance shrinks while the\nbias persists. DR-NLO slightly undercovers as well, but its coverage remains closer to the\nnominal 95% level and improves with T."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "coverage(SD-LP) decreasing in T and far below 0.95; coverage(DR-NLO) near 0.95 and increasing in T per Figure 5",
+      "strength": "comparative",
+      "scope": "Figure 5, state-dependent model, δ=1, nominal 95% intervals",
+      "evidence_refs": [
+        "ev7"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c10",
+      "text": "Headline inflation jumps by close to 0.05 percentage points (not annualized) in response to a one percentage point gasoline price shock, then declines quickly and is close to zero by horizon 2.",
+      "location": {
+        "section": "8 Empirical illustrations",
+        "page": 25,
+        "char_span": null,
+        "quote": "Both estimates indicate that headline inflation jumps by close\nto 0.05 percentage points (not annualized) in response to a one percentage point gasoline\nprice shock, but the response declines quickly. By horizon 2, it is close to zero."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "impact response of headline inflation ≈ 0.05 pp for δ=1 pp, matching Figure 6 plotted value",
+      "strength": "approximate",
+      "scope": "Figure 6, headline inflation, δ=1, sample Jan 1974–Apr 2026",
+      "evidence_refs": [
+        "ev8"
+      ],
+      "confidence": 0.8
+    },
+    {
+      "id": "c11",
+      "text": "Both linear LP and DR-NLO estimates of core inflation are marginally statistically significant at horizons 1 and 2; the core inflation response is an order of magnitude smaller than headline.",
+      "location": {
+        "section": "8 Empirical illustrations",
+        "page": 25,
+        "char_span": null,
+        "quote": "The\nresponse of core inflation is an order of magnitude smaller and only slightly positive. Both\nthe linear LP and the DR-NLO estimate are marginally statistically significant at horizons 1\nand 2."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "core inflation response statistically significant (CI excludes 0) at horizons 1 and 2 per Figure 6",
+      "strength": "qualitative",
+      "scope": "Figure 6, core inflation, horizons 1 and 2",
+      "evidence_refs": [
+        "ev8"
+      ],
+      "confidence": 0.75
+    },
+    {
+      "id": "c12",
+      "text": "The historical average annualized inflation over the estimation period is 3.8%, i.e. 0.32% monthly.",
+      "location": {
+        "section": "8 Empirical illustrations",
+        "page": 25,
+        "char_span": null,
+        "quote": "exceeding its historical average of 3.8% (i.e., 0.32%\nmonthly) during the estimation period"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "monthly_rate consistent with annualized 3.8% (0.32% monthly stated)",
+      "strength": "exact",
+      "scope": "estimation period Jan 1974–Apr 2026",
+      "evidence_refs": [
+        "ev9"
+      ],
+      "confidence": 0.85
+    },
+    {
+      "id": "c13",
+      "text": "At horizon 12, the linear LP estimate of the auto-sales response is only 28% of the DR-NLO response.",
+      "location": {
+        "section": "8 Empirical illustrations",
+        "page": 27,
+        "char_span": null,
+        "quote": "At horizon 12, the linear LP estimate shows a decline\nin auto sales that is only 28% of the DR-NLO response."
+      },
+      "epistemic_tier": "T2",
+      "predicate": "LP_horizon12 / DRNLO_horizon12 == 0.28 consistent with Figure 8 plotted values",
+      "strength": "approximate",
+      "scope": "Figure 8, motor vehicle sales, horizon 12, δ=1 s.d.",
+      "evidence_refs": [
+        "ev10"
+      ],
+      "confidence": 0.7
+    },
+    {
+      "id": "c14",
+      "text": "The DR-NLO impact response of motor vehicle sales is positive but statistically insignificant, with no statistically significant response for the first three months followed by a persistent decline starting at horizon 3.",
+      "location": {
+        "section": "8 Empirical illustrations",
+        "page": 26,
+        "char_span": null,
+        "quote": "The DR-NLO impact response is positive but\nstatistically insignificant. There is no statistically significant response in sales for the first\nthree months, according to the DR-NLO estimator, followed by a persistent decline in auto"
+      },
+      "epistemic_tier": "T4",
+      "predicate": "DR-NLO sales response CI includes 0 at horizons 0-3, negative thereafter per Figure 8",
+      "strength": "qualitative",
+      "scope": "Figure 8, motor vehicle sales, DR-NLO, δ=1 s.d.",
+      "evidence_refs": [
+        "ev10"
+      ],
+      "confidence": 0.75
+    },
+    {
+      "id": "c15",
+      "text": "The linear LP estimate suggests a statistically significant increase in auto sales at horizons 0, 1 and 2.",
+      "location": {
+        "section": "8 Empirical illustrations",
+        "page": 27,
+        "char_span": null,
+        "quote": "The linear LP estimate, in contrast, suggests a statistically\nsignificant but economically counterintuitive increase in auto sales at horizons 0, 1 and 2."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "LP sales response CI excludes 0 and positive at horizons 0,1,2 per Figure 8",
+      "strength": "qualitative",
+      "scope": "Figure 8, motor vehicle sales, linear LP",
+      "evidence_refs": [
+        "ev10"
+      ],
+      "confidence": 0.75
+    },
+    {
+      "id": "c16",
+      "text": "The structural shocks are drawn i.i.d. from a Student-t distribution with ν = 10 degrees of freedom rescaled to unit variance in the simulations.",
+      "location": {
+        "section": "7 Simulation results",
+        "page": 18,
+        "char_span": null,
+        "quote": "each drawn i.i.d. from a Student-t distribution with ν = 10\ndegrees of freedom rescaled to unit variance, so that the size of the shock can be interpreted\nas a one-standard-deviation shock."
+      },
+      "epistemic_tier": "T6",
+      "predicate": "simulation DGP uses Student-t(ν=10) shocks rescaled to unit variance",
+      "strength": "exact",
+      "scope": "Section 7 simulations",
+      "evidence_refs": [
+        "ev11"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c17",
+      "text": "True impulse responses are computed by simulation using 5,000 counterfactual paths after a burn-in period of T0 = 500.",
+      "location": {
+        "section": "7 Simulation results",
+        "page": 19,
+        "char_span": null,
+        "quote": "The true impulse responses are computed by simulation from the structural model using\n5,000 counterfactual paths after a burn-in period of T0 = 500."
+      },
+      "epistemic_tier": "T6",
+      "predicate": "n_paths == 5000; burn_in == 500",
+      "strength": "exact",
+      "scope": "Section 7 simulations",
+      "evidence_refs": [
+        "ev12"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c18",
+      "text": "The DR-NLO estimator uses K = 10 blocks for the state-dependent model and K = 20 blocks for the nonlinear regressor model.",
+      "location": {
+        "section": "7 Simulation results",
+        "page": 19,
+        "char_span": null,
+        "quote": "The DR-NLO estimator uses\nK = 10 (K = 20) contiguous blocks of equal length ⌊T/K⌋, as described in Section 5 for the\nstate-dependent (nonlinear regressor) model."
+      },
+      "epistemic_tier": "T6",
+      "predicate": "K=10 (state-dependent), K=20 (nonlinear regressor)",
+      "strength": "exact",
+      "scope": "Section 7 simulations",
+      "evidence_refs": [
+        "ev13"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c19",
+      "text": "The state-dependent simulation parameters are ρx = 0.3, ψx = −0.1, βE = 2.5, βR = 3.5, γE = 0.9, γR = −0.1.",
+      "location": {
+        "section": "7.2 Simulations for state dependent model",
+        "page": 20,
+        "char_span": null,
+        "quote": "The parameters are\nset to ρx = 0.3, ψx = −0.1, βE = 2.5, βR = 3.5,γE = 0.9, and γR = −0.1."
+      },
+      "epistemic_tier": "T6",
+      "predicate": "parameter set {ρx=0.3, ψx=-0.1, βE=2.5, βR=3.5, γE=0.9, γR=-0.1}",
+      "strength": "exact",
+      "scope": "Section 7.2 state-dependent simulation",
+      "evidence_refs": [
+        "ev14"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c20",
+      "text": "NLO cross-fitting partitions the index set into K ≥ 4 non-overlapping blocks of contiguous time indices, each of size T/K, with K kept fixed as T → ∞.",
+      "location": {
+        "section": "5 Estimation and inference",
+        "page": 13,
+        "char_span": null,
+        "quote": "We partition\nthe index set {1, . . . , T} into K ≥ 4 non-overlapping blocks I1, . . . , IK of contiguous time\nindices, each of size Tℓ ≡ T/K"
+      },
+      "epistemic_tier": "T6",
+      "predicate": "K ≥ 4 blocks, each size T/K, K fixed as T→∞",
+      "strength": "exact",
+      "scope": "Section 5 NLO cross-fitting",
+      "evidence_refs": [
+        "ev15"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c21",
+      "text": "In the sign-model simulation a one percentage point shock and the Student-t distribution make the population Riesz representer uniformly bounded, satisfying Assumption 2(i).",
+      "location": {
+        "section": "7 Simulation results",
+        "page": 18,
+        "char_span": null,
+        "quote": "With δ = 1 and the use of a t-distribution for generating ε1t, the population Riesz representer α0(x) is\nuniformly bounded, satisfying Assumption 2(i)."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "α0(x) uniformly bounded for δ=1 with Student-t shocks => Assumption 2(i) satisfied",
+      "strength": "qualitative",
+      "scope": "Section 7 simulation footnote 5",
+      "evidence_refs": [
+        "ev11"
+      ],
+      "confidence": 0.8
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev1",
+      "kind": "equation",
+      "location": {
+        "section": "5 Estimation and inference",
+        "page": 16,
+        "char_span": null,
+        "quote": "√\nT(\nˆθh − θ0,h) = 1\n√\nT\nX\nT\nt=1\nψ(yt+h, xt, zt−1, g0,h, α0, θ0,h) + op(1) →d N(0, Vh),"
+      },
+      "extracted_values": {
+        "limiting_distribution": "N(0, V_h)",
+        "rate": "sqrt(T)"
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev2",
+      "kind": "text",
+      "location": {
+        "section": "5 Estimation and inference",
+        "page": 13,
+        "char_span": null,
+        "quote": "we can show that E[ψ(yt+h, xt, zt−1, gh, α, θ0,h)] = 0 holds for any gh when α = α0 and for any\nα when gh = g0,h. This follows by an application of Theorem 5 of Chernozhukov et al. (2022)."
+      },
+      "extracted_values": {
+        "property": "double robustness",
+        "reference": "Theorem 5 of Chernozhukov et al. (2022)"
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev3",
+      "kind": "equation",
+      "location": {
+        "section": "4 Identification",
+        "page": 11,
+        "char_span": null,
+        "quote": "θ0,h ≡ ARFh(δ) = E[g0,h(xt + δ, zt−1) − g0,h(xt, zt−1)] , (3)"
+      },
+      "extracted_values": {
+        "equation_number": 3
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev4",
+      "kind": "figure",
+      "location": {
+        "section": "7.1 Simulations for sign model",
+        "page": 20,
+        "char_span": null,
+        "quote": "Figure 2: Performance of the DR-NLO estimator for the nonlinear regressor DGP"
+      },
+      "extracted_values": {
+        "metrics": [
+          "Median Absolute Bias",
+          "RMSE",
+          "95% CI Coverage"
+        ],
+        "sample_sizes": [
+          250,
+          500,
+          1000,
+          2000
+        ],
+        "horizon_range": "0 to 6",
+        "bias_axis_max": 0.12,
+        "rmse_axis_max": 0.16,
+        "coverage_axis_range": [
+          0.7,
+          1
+        ]
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "ev5",
+      "kind": "text",
+      "location": {
+        "section": "7.1 Simulations for sign model",
+        "page": 20,
+        "char_span": null,
+        "quote": "We use 20, 000 replications per sample size,\nletting T ∈ {250, 500, 1000, 2000}."
+      },
+      "extracted_values": {
+        "replications": 20000,
+        "sample_sizes": [
+          250,
+          500,
+          1000,
+          2000
+        ]
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev6",
+      "kind": "figure",
+      "location": {
+        "section": "7.2 Simulations for state dependent model",
+        "page": 21,
+        "char_span": null,
+        "quote": "Figure 3: Median Bias"
+      },
+      "extracted_values": {
+        "estimators": [
+          "SD-LP",
+          "DR-NLO"
+        ],
+        "states": [
+          "Expansion",
+          "Recession"
+        ],
+        "sample_sizes": [
+          500,
+          1000,
+          2000
+        ],
+        "horizon_range": "0 to 8",
+        "delta": 1,
+        "median_bias_axis_min": -0.4,
+        "median_bias_axis_max": 0.1
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "ev7",
+      "kind": "figure",
+      "location": {
+        "section": "7.2 Simulations for state dependent model",
+        "page": 22,
+        "char_span": null,
+        "quote": "Figure 5: Empirical coverage rates of 95% confidence intervals"
+      },
+      "extracted_values": {
+        "estimators": [
+          "SD-LP",
+          "DR-NLO"
+        ],
+        "nominal_coverage": 0.95,
+        "states": [
+          "Expansion",
+          "Recession"
+        ],
+        "sample_sizes": [
+          500,
+          1000,
+          2000
+        ],
+        "delta": 1
+      },
+      "confidence": 0.6
+    },
+    {
+      "id": "ev8",
+      "kind": "figure",
+      "location": {
+        "section": "8 Empirical illustrations",
+        "page": 25,
+        "char_span": null,
+        "quote": "Figure 6: Average Responses of Headline and Core Inflation to Gasoline Price Shocks"
+      },
+      "extracted_values": {
+        "headline_impact_response_pp": 0.05,
+        "delta_pp": 1,
+        "panels": [
+          "Headline Inflation",
+          "Core Inflation"
+        ],
+        "estimators": [
+          "LP",
+          "DR-NLO"
+        ],
+        "horizon_range": "0 to 12",
+        "confidence_bands": [
+          "68%",
+          "90%"
+        ],
+        "prose_value": 0.05,
+        "source_value": null,
+        "quantity": "headline inflation impact response (percentage points)"
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "ev9",
+      "kind": "statistic",
+      "location": {
+        "section": "8 Empirical illustrations",
+        "page": 25,
+        "char_span": null,
+        "quote": "exceeding its historical average of 3.8% (i.e., 0.32%\nmonthly) during the estimation period"
+      },
+      "extracted_values": {
+        "value_a": 3.8,
+        "unit_a": "% annualized",
+        "value_b": 0.32,
+        "unit_b": "% monthly"
+      },
+      "confidence": 0.85
+    },
+    {
+      "id": "ev10",
+      "kind": "figure",
+      "location": {
+        "section": "8 Empirical illustrations",
+        "page": 27,
+        "char_span": null,
+        "quote": "At horizon 12, the linear LP estimate shows a decline\nin auto sales that is only 28% of the DR-NLO response."
+      },
+      "extracted_values": {
+        "lp_to_drnlo_ratio_horizon12_pct": 28,
+        "horizon": 12,
+        "delta": "1 s.d.",
+        "estimators": [
+          "DR-NLO",
+          "LP"
+        ],
+        "response_axis_min": -10,
+        "response_axis_max": 4
+      },
+      "confidence": 0.7
+    },
+    {
+      "id": "ev11",
+      "kind": "text",
+      "location": {
+        "section": "7 Simulation results",
+        "page": 18,
+        "char_span": null,
+        "quote": "each drawn i.i.d. from a Student-t distribution with ν = 10\ndegrees of freedom rescaled to unit variance"
+      },
+      "extracted_values": {
+        "distribution": "Student-t",
+        "degrees_of_freedom": 10,
+        "rescaled": "unit variance"
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev12",
+      "kind": "text",
+      "location": {
+        "section": "7 Simulation results",
+        "page": 19,
+        "char_span": null,
+        "quote": "5,000 counterfactual paths after a burn-in period of T0 = 500."
+      },
+      "extracted_values": {
+        "n_paths": 5000,
+        "burn_in": 500
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev13",
+      "kind": "text",
+      "location": {
+        "section": "7 Simulation results",
+        "page": 19,
+        "char_span": null,
+        "quote": "K = 10 (K = 20) contiguous blocks of equal length ⌊T/K⌋, as described in Section 5 for the\nstate-dependent (nonlinear regressor) model."
+      },
+      "extracted_values": {
+        "K_state_dependent": 10,
+        "K_nonlinear_regressor": 20
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev14",
+      "kind": "statistic",
+      "location": {
+        "section": "7.2 Simulations for state dependent model",
+        "page": 20,
+        "char_span": null,
+        "quote": "ρx = 0.3, ψx = −0.1, βE = 2.5, βR = 3.5,γE = 0.9, and γR = −0.1."
+      },
+      "extracted_values": {
+        "rho_x": 0.3,
+        "psi_x": -0.1,
+        "beta_E": 2.5,
+        "beta_R": 3.5,
+        "gamma_E": 0.9,
+        "gamma_R": -0.1
+      },
+      "confidence": 0.92
+    },
+    {
+      "id": "ev15",
+      "kind": "text",
+      "location": {
+        "section": "5 Estimation and inference",
+        "page": 13,
+        "char_span": null,
+        "quote": "into K ≥ 4 non-overlapping blocks I1, . . . , IK of contiguous time\nindices, each of size Tℓ ≡ T/K"
+      },
+      "extracted_values": {
+        "K_min": 4,
+        "block_size": "T/K"
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev16",
+      "kind": "text",
+      "location": {
+        "section": "7.2 Simulations for state dependent model",
+        "page": 21,
+        "char_span": null,
+        "quote": "The Monte Carlo design uses 30,000 replications per sample size."
+      },
+      "extracted_values": {
+        "replications": 30000
+      },
+      "confidence": 0.92
+    }
+  ],
+  "bindings": [
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c4",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c5",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c6",
+      "evidence_id": "ev4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c6",
+      "evidence_id": "ev5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c7",
+      "evidence_id": "ev6",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c7",
+      "evidence_id": "ev16",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c8",
+      "evidence_id": "ev6",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c9",
+      "evidence_id": "ev7",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c10",
+      "evidence_id": "ev8",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c11",
+      "evidence_id": "ev8",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c12",
+      "evidence_id": "ev9",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c13",
+      "evidence_id": "ev10",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c14",
+      "evidence_id": "ev10",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c15",
+      "evidence_id": "ev10",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c16",
+      "evidence_id": "ev11",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c17",
+      "evidence_id": "ev12",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c18",
+      "evidence_id": "ev13",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c19",
+      "evidence_id": "ev14",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c20",
+      "evidence_id": "ev15",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c21",
+      "evidence_id": "ev11",
+      "relation": "rests_on"
+    }
+  ]
+}

@@ -1,0 +1,813 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "chemistry-arxiv-2606.12779-qmc-orr-adsorption-pt111",
+  "meta": {
+    "notes": "Computational chemistry paper (SD-FNDMC adsorption energies on Pt(111) and Cu(111)). Many checkable claims are internal arithmetic over the paper's own SD-FNDMC, CCSD(T)/CBS, and DFT total energies (T0), several involving cross-consistency between prose deltas and table values (T2). Supplemental tables S5, S14, etc. provide the underlying total energies enabling recomputation of corrections.",
+    "extractor": "litmus.extract",
+    "model": "claude-opus-4-8",
+    "source": "opus-native-pdf"
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "text": "For Pt(111), the Scheme 1 (hybrid-cycle) correction is small for O and OH but larger for OOH; the geometry-matched refinement gives only a secondary correction.",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "For Pt(111), the resulting correction is small for O and\nOH but larger for OOH, while the geometry-matched refinement gives only a secondary correction."
+      },
+      "epistemic_tier": "T4",
+      "predicate": "abs(delta_hyb_OOH) > abs(delta_hyb_O) and abs(delta_hyb_OOH) > abs(delta_hyb_OH); abs(delta_geom_OOH) < abs(delta_hyb_OOH)",
+      "strength": "comparative",
+      "scope": "Pt(111), SD-FNDMC hybrid cycle",
+      "evidence_refs": [
+        "ev1",
+        "ev2"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c2",
+      "text": "Applying the same cycle to HCO and COH on Cu(111) gives corrections of opposite sign.",
+      "location": {
+        "section": "Abstract",
+        "page": 1,
+        "char_span": null,
+        "quote": "Applying the same cycle to HCO and COH on Cu(111) gives corrections of opposite sign"
+      },
+      "epistemic_tier": "T2",
+      "predicate": "sign(delta_hyb_HCO) != sign(delta_hyb_COH)",
+      "strength": "comparative",
+      "scope": "Cu(111), HCO and COH",
+      "evidence_refs": [
+        "ev3"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c3",
+      "text": "The Scheme 1 correction for Pt(111) is delta_hyb(O) = -0.091 eV, delta_hyb(OH) = -0.037 eV, delta_hyb(OOH) = -0.183 eV.",
+      "location": {
+        "section": "III.C Scheme 1",
+        "page": 8,
+        "char_span": null,
+        "quote": "δhyb(O) = −0.091 eV,\nδhyb(OH) = −0.037 eV,\nδhyb(OOH) = −0.183 eV."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "delta_hyb(X) == E_form_HL(X) - E_form_QMC(X) for X in {O, OH, OOH}",
+      "strength": "exact",
+      "scope": "Pt(111) CHE-based molecular formation energies",
+      "evidence_refs": [
+        "ev1"
+      ],
+      "confidence": 0.97
+    },
+    {
+      "id": "c4",
+      "text": "The geometry-matched Scheme 2 correction for OOH relative to Scheme 1 is delta_geom(OOH) = -0.041 ± 0.007 eV.",
+      "location": {
+        "section": "III.D Scheme 2",
+        "page": 9,
+        "char_span": null,
+        "quote": "= −0.041 ± 0.007 eV."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "delta_geom_OOH == E_rlx_HL(OOH) - E_rlx_QMC(OOH)",
+      "strength": "exact",
+      "scope": "Pt(111) OOH",
+      "evidence_refs": [
+        "ev2"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "id": "c5",
+      "text": "The OOH relaxation energy evaluated with SD-FNDMC is 0.198 ± 0.007 eV and with CCSD(T)/CBS is 0.158 eV.",
+      "location": {
+        "section": "III.D Scheme 2",
+        "page": 9,
+        "char_span": null,
+        "quote": "∆E\nQMC\nrlx (OOH) = 0.198 ± 0.007 eV,\n∆E\nHL\nrlx (OOH) = 0.158 eV."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "delta_geom_OOH == E_rlx_HL - E_rlx_QMC == 0.158 - 0.198 == -0.040 (reported -0.041)",
+      "strength": "exact",
+      "scope": "Pt(111) OOH relaxation",
+      "evidence_refs": [
+        "ev2"
+      ],
+      "confidence": 0.96
+    },
+    {
+      "id": "c6",
+      "text": "For OOH on Pt(111), the O-O bond elongates from 1.35 Å (optimized gas phase) to 1.43 Å (surface-extracted) and the H-O-O angle decreases from 105.0° to 102.1°.",
+      "location": {
+        "section": "III.D Scheme 2",
+        "page": 9,
+        "char_span": null,
+        "quote": "the O–O bond elongates from 1.35 ˚A in\nthe optimized gas-phase structure to 1.43 ˚A in\nthe surface-extracted geometry, while the O–H\nbond length remains nearly unchanged and the\nH–O–O angle decreases from 105.0◦to 102.1◦."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "OO_bond_opt == 1.35 A; OO_bond_frz == 1.43 A; HOO_angle_opt == 105.0 deg; HOO_angle_frz == 102.1 deg",
+      "strength": "exact",
+      "scope": "OOH gas-phase vs surface-extracted geometry",
+      "evidence_refs": [
+        "ev4"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c7",
+      "text": "The Scheme 1 reference corrections on Cu(111) are delta_hyb(HCO) = +0.042 eV and delta_hyb(COH) = -0.063 eV.",
+      "location": {
+        "section": "III.E Transferability",
+        "page": 10,
+        "char_span": null,
+        "quote": "δhyb(HCO) = +0.042 eV,\nδhyb(COH) = −0.063 eV."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "delta_hyb(HCO) == +0.042; delta_hyb(COH) == -0.063 (signs opposite)",
+      "strength": "exact",
+      "scope": "Cu(111) HCO and COH",
+      "evidence_refs": [
+        "ev3"
+      ],
+      "confidence": 0.97
+    },
+    {
+      "id": "c8",
+      "text": "SD-FNDMC underestimates the HCO formation energy by 0.042 eV relative to the experimental reference.",
+      "location": {
+        "section": "III.E Transferability",
+        "page": 10,
+        "char_span": null,
+        "quote": "SD-FNDMC\nperforms significantly better than the density\nfunctionals but still underestimates the HCO\nformation energy by 0.042 eV."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "signed_error_SD-FNDMC_HCO == dH_calc - dH_exp == 1.536 - 1.578 == -0.042",
+      "strength": "exact",
+      "scope": "Gas-phase HCO formation, SD-FNDMC vs experiment",
+      "evidence_refs": [
+        "ev5"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c9",
+      "text": "CCSD(T)/CBS reproduces the experimental HCO formation value within numerical uncertainty, and the remaining difference to CCSDT(Q) is only 0.006 eV.",
+      "location": {
+        "section": "III.E Transferability",
+        "page": 10,
+        "char_span": null,
+        "quote": "CCSD(T)/CBS reproduces the experimental value within numerical uncertainty, and the remaining difference\nto CCSDT(Q) is only 0.006 eV."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "abs(dH_CCSD(T) - dH_exp) ~ 0; abs(dH_CCSD(T) - dH_CCSDT(Q)) == 0.006",
+      "strength": "approximate",
+      "scope": "Gas-phase HCO formation",
+      "evidence_refs": [
+        "ev5"
+      ],
+      "confidence": 0.93
+    },
+    {
+      "id": "c10",
+      "text": "Across density functionals the HCO formation errors range from about -0.43 to -0.25 eV.",
+      "location": {
+        "section": "III.E Transferability",
+        "page": 10,
+        "char_span": null,
+        "quote": "the spread across density functionals remains substantial, with errors ranging from about −0.43\nto −0.25 eV"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "min(DFT_HCO_errors) ~ -0.43; max(DFT_HCO_errors) ~ -0.25",
+      "strength": "bound",
+      "scope": "Gas-phase HCO formation, DFT functionals",
+      "evidence_refs": [
+        "ev5"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c11",
+      "text": "The finite-size-extrapolated CHE-scheme adsorption energies on Pt(111) are O_fcc 1.258(26), O_hcp 2.188(23), O_top 3.737(23), OH_fcc 0.992(22), OH_top 1.042(32), OOH_top 4.557(41) eV; Scheme 1 gives 1.168(30), 2.098(26), 3.647(29), 0.955(33), 1.006(35), 4.374(44); Scheme 2 OOH 4.333(44).",
+      "location": {
+        "section": "Table II",
+        "page": 8,
+        "char_span": null,
+        "quote": "OOHtop 4.557(41) 4.374(44) 4.333(44)"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "Scheme1(X) - CHE(X) == delta_hyb(X) for each adsorbate; Scheme2(OOH) - Scheme1(OOH) == delta_geom(OOH)",
+      "strength": "exact",
+      "scope": "Pt(111), finite-size-extrapolated adsorption energies (Table II)",
+      "evidence_refs": [
+        "ev6",
+        "ev1",
+        "ev2"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c12",
+      "text": "In Table I, the SD-FNDMC signed error for the CHE-derived OOH quantity (+0.168 eV) is much larger than for direct OOH formation (-0.025 eV).",
+      "location": {
+        "section": "Table I",
+        "page": 7,
+        "char_span": null,
+        "quote": "SD-FNDMC −2.603 [-0.097] 0.322 [-0.065] 0.102 [-0.025] 2.925 [ 0.032] 5.308 [ 0.168]"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "abs(eps_OOH_CHE_SDFNDMC) > abs(eps_OOH_direct_SDFNDMC); eps == dH_calc - dH_exp",
+      "strength": "comparative",
+      "scope": "Table I, 298.15 K gas-phase thermochemistry, SD-FNDMC",
+      "evidence_refs": [
+        "ev7"
+      ],
+      "confidence": 0.94
+    },
+    {
+      "id": "c13",
+      "text": "Scheme 2 lowers the Scheme 1 COH adsorption energies by only 0.006–0.032 eV depending on site, whereas for HCO it ranges from -0.029 eV at the bridge site to +0.045 eV at the top site.",
+      "location": {
+        "section": "III.E Transferability",
+        "page": 11,
+        "char_span": null,
+        "quote": "gies by only 0.006–0.032 eV depending on site,\nwhereas for HCO it ranges from −0.029 eV\nat the bridge site to +0.045 eV at the top\nsite."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "Scheme2(X,site) - Scheme1(X,site) within stated ranges for COH and HCO",
+      "strength": "bound",
+      "scope": "Cu(111) HCO and COH, site-resolved Scheme 2 corrections",
+      "evidence_refs": [
+        "ev8"
+      ],
+      "confidence": 0.9
+    },
+    {
+      "id": "c14",
+      "text": "The fcc Pt lattice constant optimized at the PBE-D3(BJ) level was 3.93 Å using a 16x16x16 k-point mesh.",
+      "location": {
+        "section": "II.A DFT structural models",
+        "page": 3,
+        "char_span": null,
+        "quote": "The fcc Pt lattice constant optimized at this\nlevel was 3.93 ˚A using a 16 × 16 × 16 k-point\nmesh."
+      },
+      "epistemic_tier": "T1",
+      "predicate": "Pt_fcc_lattice_constant == 3.93 A",
+      "strength": "exact",
+      "scope": "Bulk fcc Pt, PBE-D3(BJ)",
+      "evidence_refs": [
+        "ev9"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c15",
+      "text": "The Pt(111) slab was a three-layer slab containing 12 Pt atoms with cell dimensions 5.55, 5.55, and 20.54 Å.",
+      "location": {
+        "section": "II.A DFT structural models",
+        "page": 3,
+        "char_span": null,
+        "quote": "The Pt(111) slab was then constructed\nas a three-layer slab containing 12 Pt atoms\nin total, with cell dimensions of 5.55, 5.55,\nand 20.54 ˚A."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "n_layers == 3; n_Pt_atoms == 12; cell == [5.55, 5.55, 20.54] A",
+      "strength": "exact",
+      "scope": "Pt(111) slab model",
+      "evidence_refs": [
+        "ev10"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c16",
+      "text": "The CBS extrapolation uses a two-point cc-pVDZ/VTZ formula E_CBS = (27 E_VTZ - 8 E_VDZ)/(27-8).",
+      "location": {
+        "section": "II.C coupled cluster",
+        "page": 3,
+        "char_span": null,
+        "quote": "ECBS =\n3\n3EVTZ − 23EVDZ\n3\n3 − 23\n. (1)"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "E_CBS == (3^3 * E_VTZ - 2^3 * E_VDZ) / (3^3 - 2^3)",
+      "strength": "exact",
+      "scope": "CCSD(T)/CCSDT(Q) CBS extrapolation",
+      "evidence_refs": [
+        "ev11"
+      ],
+      "confidence": 0.93
+    },
+    {
+      "id": "c17",
+      "text": "The DMC time step used was Δτ = 0.005 a.u. with no time-step extrapolation.",
+      "location": {
+        "section": "II.E DMC sampling",
+        "page": 4,
+        "char_span": null,
+        "quote": "The final energies were obtained from fixednode diffusion Monte Carlo runs with a time\nstep of ∆τ = 0.005 a.u."
+      },
+      "epistemic_tier": "T0",
+      "predicate": "DMC_time_step == 0.005 a.u.",
+      "strength": "exact",
+      "scope": "DMC sampling",
+      "evidence_refs": [
+        "ev12"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c18",
+      "text": "Residual finite-size effects in adsorption energies were removed by N^(-5/4) extrapolation between the 1x1 and 2x2 surface cells.",
+      "location": {
+        "section": "II.E DMC sampling",
+        "page": 4,
+        "char_span": null,
+        "quote": "Residual finite-size effects in adsorption energies were removed by N −5/4\nextrapolation\n[84] between the 1 × 1 and 2 × 2 surface cells"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "Delta_E_inf == (N2^(-5/4)*dE1 - N1^(-5/4)*dE2)/(N2^(-5/4) - N1^(-5/4))",
+      "strength": "exact",
+      "scope": "Finite-size extrapolation, Eq. 2",
+      "evidence_refs": [
+        "ev13"
+      ],
+      "confidence": 0.92
+    },
+    {
+      "id": "c19",
+      "text": "The plane-wave cutoff was 520 eV with Gaussian smearing of 0.05 eV; slab/molecular electronic and ionic convergence were 1e-6 eV and 0.02 eV/Å; bulk Pt used 1e-8 eV and 0.002 eV/Å.",
+      "location": {
+        "section": "II.A DFT structural models",
+        "page": 3,
+        "char_span": null,
+        "quote": "a plane-wave cutoff of 520 eV, Gaussian smearing of 0.05 eV"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "cutoff == 520 eV; smearing == 0.05 eV; slab_econv == 1e-6 eV; slab_fconv == 0.02 eV/A; bulk_econv == 1e-8 eV; bulk_fconv == 0.002 eV/A",
+      "strength": "exact",
+      "scope": "VASP PBE-D3(BJ) calculations",
+      "evidence_refs": [
+        "ev14"
+      ],
+      "confidence": 0.93
+    },
+    {
+      "id": "c20",
+      "text": "The experimental reference values in Table I are H2O -2.506, OH 0.387, OOH 0.128, OH(CHE) 2.893, OOH(CHE) 5.140 eV.",
+      "location": {
+        "section": "Table I",
+        "page": 7,
+        "char_span": null,
+        "quote": "Experiment −2.506 0.387 0.128 2.893 5.140"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "experimental reference values used as denominator for signed errors eps_i = dH_calc - dH_exp",
+      "strength": "exact",
+      "scope": "Table I experimental references",
+      "evidence_refs": [
+        "ev7"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev1",
+      "kind": "statistic",
+      "location": {
+        "section": "III.C Scheme 1",
+        "page": 8,
+        "char_span": null,
+        "quote": "δhyb(O) = −0.091 eV,\nδhyb(OH) = −0.037 eV,\nδhyb(OOH) = −0.183 eV."
+      },
+      "extracted_values": {
+        "delta_hyb_O_eV": -0.091,
+        "delta_hyb_OH_eV": -0.037,
+        "delta_hyb_OOH_eV": -0.183
+      },
+      "confidence": 0.97
+    },
+    {
+      "id": "ev2",
+      "kind": "statistic",
+      "location": {
+        "section": "III.D Scheme 2",
+        "page": 9,
+        "char_span": null,
+        "quote": "∆E\nQMC\nrlx (OOH) = 0.198 ± 0.007 eV,\n∆E\nHL\nrlx (OOH) = 0.158 eV."
+      },
+      "extracted_values": {
+        "E_rlx_QMC_OOH_eV": 0.198,
+        "E_rlx_QMC_OOH_unc": 0.007,
+        "E_rlx_HL_OOH_eV": 0.158,
+        "delta_geom_OOH_eV": -0.041,
+        "delta_geom_OOH_unc": 0.007
+      },
+      "confidence": 0.96
+    },
+    {
+      "id": "ev3",
+      "kind": "statistic",
+      "location": {
+        "section": "III.E Transferability",
+        "page": 10,
+        "char_span": null,
+        "quote": "δhyb(HCO) = +0.042 eV,\nδhyb(COH) = −0.063 eV."
+      },
+      "extracted_values": {
+        "delta_hyb_HCO_eV": 0.042,
+        "delta_hyb_COH_eV": -0.063
+      },
+      "confidence": 0.97
+    },
+    {
+      "id": "ev4",
+      "kind": "number",
+      "location": {
+        "section": "III.D Scheme 2",
+        "page": 9,
+        "char_span": null,
+        "quote": "the O–O bond elongates from 1.35 ˚A in\nthe optimized gas-phase structure to 1.43 ˚A in\nthe surface-extracted geometry"
+      },
+      "extracted_values": {
+        "OO_bond_opt_A": 1.35,
+        "OO_bond_frz_A": 1.43,
+        "HOO_angle_opt_deg": 105.0,
+        "HOO_angle_frz_deg": 102.1
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev5",
+      "kind": "table",
+      "location": {
+        "section": "Table III",
+        "page": 10,
+        "char_span": null,
+        "quote": "SD-FNDMC 1.536 [-0.042] 3.385 [ 0.067]"
+      },
+      "extracted_values": {
+        "dH_HCO_SDFNDMC_eV": 1.536,
+        "err_HCO_SDFNDMC": -0.042,
+        "dE_COH_SDFNDMC_eV": 3.385,
+        "err_COH_SDFNDMC": 0.067,
+        "dH_HCO_exp_eV": 1.578,
+        "dH_HCO_CCSD(T)_eV": 1.579,
+        "err_HCO_CCSD(T)": 0.0,
+        "dH_HCO_CCSDT(Q)_eV": 1.572,
+        "err_HCO_CCSDT(Q)": -0.006,
+        "dH_HCO_PBE_eV": 1.152,
+        "err_HCO_PBE": -0.427,
+        "dH_HCO_B3LYP_eV": 1.326,
+        "err_HCO_B3LYP": -0.253,
+        "prose_value": -0.042,
+        "source_value": -0.042,
+        "quantity": "SD-FNDMC HCO formation signed error eV"
+      },
+      "confidence": 0.94
+    },
+    {
+      "id": "ev6",
+      "kind": "table",
+      "location": {
+        "section": "Table II",
+        "page": 8,
+        "char_span": null,
+        "quote": "Ofcc 1.258(26) 1.168(30) —\nOhcp 2.188(23) 2.098(26) —\nOtop 3.737(23) 3.647(29) —\nOHfcc 0.992(22) 0.955(33) —\nOHtop 1.042(32) 1.006(35) —\nOOHtop 4.557(41) 4.374(44) 4.333(44)"
+      },
+      "extracted_values": {
+        "O_fcc_CHE": 1.258,
+        "O_fcc_S1": 1.168,
+        "O_hcp_CHE": 2.188,
+        "O_hcp_S1": 2.098,
+        "O_top_CHE": 3.737,
+        "O_top_S1": 3.647,
+        "OH_fcc_CHE": 0.992,
+        "OH_fcc_S1": 0.955,
+        "OH_top_CHE": 1.042,
+        "OH_top_S1": 1.006,
+        "OOH_top_CHE": 4.557,
+        "OOH_top_S1": 4.374,
+        "OOH_top_S2": 4.333
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev7",
+      "kind": "table",
+      "location": {
+        "section": "Table I",
+        "page": 7,
+        "char_span": null,
+        "quote": "SD-FNDMC −2.603 [-0.097] 0.322 [-0.065] 0.102 [-0.025] 2.925 [ 0.032] 5.308 [ 0.168]\nExperiment −2.506 0.387 0.128 2.893 5.140"
+      },
+      "extracted_values": {
+        "SDFNDMC_H2O": -2.603,
+        "err_H2O": -0.097,
+        "SDFNDMC_OH": 0.322,
+        "err_OH": -0.065,
+        "SDFNDMC_OOH": 0.102,
+        "err_OOH_direct": -0.025,
+        "SDFNDMC_OH_CHE": 2.925,
+        "err_OH_CHE": 0.032,
+        "SDFNDMC_OOH_CHE": 5.308,
+        "err_OOH_CHE": 0.168,
+        "exp_H2O": -2.506,
+        "exp_OH": 0.387,
+        "exp_OOH": 0.128,
+        "exp_OH_CHE": 2.893,
+        "exp_OOH_CHE": 5.14
+      },
+      "confidence": 0.94
+    },
+    {
+      "id": "ev8",
+      "kind": "text",
+      "location": {
+        "section": "III.E Transferability",
+        "page": 11,
+        "char_span": null,
+        "quote": "gies by only 0.006–0.032 eV depending on site,\nwhereas for HCO it ranges from −0.029 eV\nat the bridge site to +0.045 eV at the top\nsite."
+      },
+      "extracted_values": {
+        "COH_S2_range_min_eV": 0.006,
+        "COH_S2_range_max_eV": 0.032,
+        "HCO_S2_bridge_eV": -0.029,
+        "HCO_S2_top_eV": 0.045
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev9",
+      "kind": "number",
+      "location": {
+        "section": "II.A DFT structural models",
+        "page": 3,
+        "char_span": null,
+        "quote": "The fcc Pt lattice constant optimized at this\nlevel was 3.93 ˚A using a 16 × 16 × 16 k-point\nmesh."
+      },
+      "extracted_values": {
+        "Pt_fcc_lattice_A": 3.93,
+        "kmesh": "16x16x16"
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev10",
+      "kind": "number",
+      "location": {
+        "section": "II.A DFT structural models",
+        "page": 3,
+        "char_span": null,
+        "quote": "a three-layer slab containing 12 Pt atoms\nin total, with cell dimensions of 5.55, 5.55,\nand 20.54 ˚A."
+      },
+      "extracted_values": {
+        "n_layers": 3,
+        "n_Pt_atoms": 12,
+        "cell_a_A": 5.55,
+        "cell_b_A": 5.55,
+        "cell_c_A": 20.54
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev11",
+      "kind": "equation",
+      "location": {
+        "section": "II.C coupled cluster",
+        "page": 3,
+        "char_span": null,
+        "quote": "ECBS =\n3\n3EVTZ − 23EVDZ\n3\n3 − 23\n. (1)"
+      },
+      "extracted_values": {
+        "numerator_VTZ_coeff": 27,
+        "numerator_VDZ_coeff": 8,
+        "denominator": 19
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev12",
+      "kind": "number",
+      "location": {
+        "section": "II.E DMC sampling",
+        "page": 4,
+        "char_span": null,
+        "quote": "with a time\nstep of ∆τ = 0.005 a.u."
+      },
+      "extracted_values": {
+        "DMC_time_step_au": 0.005
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev13",
+      "kind": "equation",
+      "location": {
+        "section": "II.E DMC sampling",
+        "page": 4,
+        "char_span": null,
+        "quote": "∆E∞ =\nN\n−5/4\n2 ∆E1 − N\n−5/4\n1 ∆E2\nN\n−5/4\n2 − N\n−5/4\n1\n, (2)"
+      },
+      "extracted_values": {
+        "exponent": -1.25
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev14",
+      "kind": "number",
+      "location": {
+        "section": "II.A DFT structural models",
+        "page": 3,
+        "char_span": null,
+        "quote": "a plane-wave cutoff of 520 eV, Gaussian smearing of 0.05 eV"
+      },
+      "extracted_values": {
+        "cutoff_eV": 520,
+        "smearing_eV": 0.05,
+        "slab_econv_eV": 1e-06,
+        "slab_fconv_eV_per_A": 0.02,
+        "bulk_econv_eV": 1e-08,
+        "bulk_fconv_eV_per_A": 0.002
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev15",
+      "kind": "table",
+      "location": {
+        "section": "Table S5",
+        "page": 21,
+        "char_span": null,
+        "quote": "OOHopt −32.514 694 ± 0.000 207 −150.777 321\nOOHfrz −32.507 407 ± 0.000 181 −150.771 532"
+      },
+      "extracted_values": {
+        "OOHopt_SDFNDMC_Eh": -32.514694,
+        "OOHopt_CCSD(T)_Eh": -150.777321,
+        "OOHfrz_SDFNDMC_Eh": -32.507407,
+        "OOHfrz_CCSD(T)_Eh": -150.771532,
+        "H2_SDFNDMC_Eh": -1.175206,
+        "H2_CCSD(T)_Eh": -1.17611,
+        "H2O_SDFNDMC_Eh": -17.242057,
+        "H2O_CCSD(T)_Eh": -76.370683,
+        "O2_SDFNDMC_Eh": -31.926973,
+        "O2_CCSD(T)_Eh": -150.189591,
+        "OH_SDFNDMC_Eh": -16.541035,
+        "OH_CCSD(T)_Eh": -75.670555,
+        "O_SDFNDMC_Eh": -15.869936,
+        "O_CCSD(T)_Eh": -75.000988
+      },
+      "confidence": 0.9
+    },
+    {
+      "id": "ev16",
+      "kind": "table",
+      "location": {
+        "section": "Table S14",
+        "page": 30,
+        "char_span": null,
+        "quote": "bridge 0.522 ± 0.022 0.564 ± 0.022 0.535 ± 0.023 1.274 ± 0.030 1.212 ± 0.030 1.191 ± 0.030"
+      },
+      "extracted_values": {
+        "HCO_bridge_CHE": 0.522,
+        "HCO_bridge_S1": 0.564,
+        "HCO_bridge_S2": 0.535,
+        "COH_bridge_CHE": 1.274,
+        "COH_bridge_S1": 1.212,
+        "COH_bridge_S2": 1.191,
+        "HCO_top_CHE": 0.368,
+        "HCO_top_S1": 0.41,
+        "HCO_top_S2": 0.456,
+        "COH_top_CHE": 2.021,
+        "COH_top_S1": 1.958,
+        "COH_top_S2": 1.952
+      },
+      "confidence": 0.9
+    }
+  ],
+  "bindings": [
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c4",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c5",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c6",
+      "evidence_id": "ev4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c7",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c8",
+      "evidence_id": "ev5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c9",
+      "evidence_id": "ev5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c10",
+      "evidence_id": "ev5",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c11",
+      "evidence_id": "ev6",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c11",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c11",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c12",
+      "evidence_id": "ev7",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c13",
+      "evidence_id": "ev8",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c13",
+      "evidence_id": "ev16",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c14",
+      "evidence_id": "ev9",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c15",
+      "evidence_id": "ev10",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c16",
+      "evidence_id": "ev11",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c17",
+      "evidence_id": "ev12",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c18",
+      "evidence_id": "ev13",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c19",
+      "evidence_id": "ev14",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c20",
+      "evidence_id": "ev7",
+      "relation": "rests_on"
+    }
+  ]
+}

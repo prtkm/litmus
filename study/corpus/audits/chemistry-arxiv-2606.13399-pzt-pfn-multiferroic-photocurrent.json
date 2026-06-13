@@ -1,60 +1,49 @@
 {
   "schema_version": "1.0",
-  "paper_id": "medicine-zhou2025-esketamine-low-opioid-anaesthesia",
+  "paper_id": "chemistry-arxiv-2606.13399-pzt-pfn-multiferroic-photocurrent",
   "meta": {
     "executor": "local",
-    "n_claims": 27,
+    "n_claims": 31,
     "n_verifiers": 9,
     "synthesis_candidates": [
-      "c1",
       "c2",
       "c3",
-      "c4",
       "c5",
-      "c6",
       "c7",
-      "c8",
       "c9",
       "c10",
-      "c11",
       "c12",
-      "c13",
-      "c14",
-      "c15",
-      "c16",
-      "c18",
       "c19",
-      "c20",
       "c21",
       "c22",
       "c23",
-      "c24",
-      "c26"
+      "c26",
+      "c30"
     ],
     "confirmation": "fresh-sandbox",
     "registry_load_errors": []
   },
   "summary": {
-    "n_findings": 1,
+    "n_findings": 4,
     "n_flags": 0,
     "n_dropped": 0,
     "n_routed_to_human": 0,
-    "n_abstained": 26,
+    "n_abstained": 27,
     "flags_by_trust_tier": {},
     "flags_by_severity": {}
   },
   "findings": [
     {
-      "verifier_id": "sum_check.v1",
-      "claim_id": "c25",
+      "verifier_id": "prose_vs_table.v1",
+      "claim_id": "c1",
       "status": "pass",
       "trust_tier": "deterministic_confirmed",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "reported total equals the sum of its parts (within printing precision)",
+      "message": "the prose value agrees with the value the bound source reports",
       "discrepancy": null,
-      "reported": 64,
-      "computed": 64,
+      "reported": 17,
+      "computed": 17,
       "evidence": {
         "quote": null,
         "location": {
@@ -68,43 +57,98 @@
         "script_dependencies": []
       },
       "details": {
-        "parts": [
-          37,
-          27
-        ],
-        "n_parts": 2,
-        "tolerance": 1e-09
+        "quantity": "remanent polarization (PUND)",
+        "rel_tol": 0.01
+      }
+    },
+    {
+      "verifier_id": "percent_change.v1",
+      "claim_id": "c4",
+      "status": "pass",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "reported percent change matches the recomputed old->new change",
+      "discrepancy": null,
+      "reported": -16.7,
+      "computed": -16.666666666666668,
+      "evidence": {
+        "quote": null,
+        "location": {
+          "section": null,
+          "page": null,
+          "char_span": null,
+          "quote": null
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {
+        "old_value": 3.6,
+        "new_value": 3.0
+      }
+    },
+    {
+      "verifier_id": "prose_vs_table.v1",
+      "claim_id": "c13",
+      "status": "pass",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "the prose value agrees with the value the bound source reports",
+      "discrepancy": null,
+      "reported": 17,
+      "computed": 17,
+      "evidence": {
+        "quote": null,
+        "location": {
+          "section": null,
+          "page": null,
+          "char_span": null,
+          "quote": null
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {
+        "quantity": "remanent polarization (PUND)",
+        "rel_tol": 0.01
+      }
+    },
+    {
+      "verifier_id": "prose_vs_table.v1",
+      "claim_id": "c27",
+      "status": "pass",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "the prose value agrees with the value the bound source reports",
+      "discrepancy": null,
+      "reported": 17,
+      "computed": 17,
+      "evidence": {
+        "quote": null,
+        "location": {
+          "section": null,
+          "page": null,
+          "char_span": null,
+          "quote": null
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {
+        "quantity": "remanent polarization (PUND)",
+        "rel_tol": 0.01
       }
     }
   ],
   "dropped_flags": [],
   "routed_to_human": [],
   "abstained": [
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c1",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "POD-3 QoR-15 scores 121 (117.75\u2013124) 115 (111.75\u2013118.25) <0.001",
-        "location": {
-          "section": "3.1 / Table 2",
-          "page": 7,
-          "char_span": null,
-          "quote": "POD-3 QoR-15 scores 121 (117.75\u2013124) 115 (111.75\u2013118.25) <0.001"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
     {
       "verifier_id": "litmus.planner",
       "claim_id": "c2",
@@ -117,12 +161,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Physical comfort 40 (39\u201341) 38 (37\u201340) <0.001",
+        "quote": "weak ferromagnetic behavior at room temperature (remanence 1.30 emu/cm3; coercive field 90 Oe)",
         "location": {
-          "section": "3.1 / Table 2",
-          "page": 7,
+          "section": "Abstract",
+          "page": 2,
           "char_span": null,
-          "quote": "Physical comfort 40 (39\u201341) 38 (37\u201340) <0.001"
+          "quote": "weak ferromagnetic behavior at room temperature (remanence 1.30 emu/cm3; coercive field 90 Oe)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -142,37 +186,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Emotional state 32 (30\u201333) 29 (27.75\u201331) <0.001",
+        "quote": "achieving Jsc values \nbetween \u00b120 \u00b5A/cm2",
         "location": {
-          "section": "3.1 / Table 2",
-          "page": 7,
+          "section": "Abstract",
+          "page": 2,
           "char_span": null,
-          "quote": "Emotional state 32 (30\u201333) 29 (27.75\u201331) <0.001"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c4",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Pain 18 (18\u201320) 18 (16.75\u201319) <0.001",
-        "location": {
-          "section": "3.1 / Table 2",
-          "page": 7,
-          "char_span": null,
-          "quote": "Pain 18 (18\u201320) 18 (16.75\u201319) <0.001"
+          "quote": "achieving Jsc values \nbetween \u00b120 \u00b5A/cm2"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -192,12 +211,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Statistically significant differences in QoR-15 scores between \nthe K and C groups were also observed on postoperative days 1 and 2 \n(P < 0.01)",
+        "quote": "lattice parameters a = 4.022 \u02daA, c = 4.096 \u02daA, and c/a = 1.018",
         "location": {
-          "section": "3.1 / Table 3",
-          "page": 7,
+          "section": "Results A",
+          "page": 6,
           "char_span": null,
-          "quote": "Statistically significant differences in QoR-15 scores between \nthe K and C groups were also observed on postoperative days 1 and 2 \n(P < 0.01)"
+          "quote": "lattice parameters a = 4.022 \u02daA, c = 4.096 \u02daA, and c/a = 1.018"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -212,17 +231,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "POD-3 2 (2\u20132) 2 (2\u20133) 0.006",
+        "quote": "tetragonality closely aligns with that observed in bulk ceramics, which exhibit a c/a ratio of \n1.016 [8]",
         "location": {
-          "section": "3.2 / Table 4",
+          "section": "Results A",
           "page": 7,
           "char_span": null,
-          "quote": "POD-3 2 (2\u20132) 2 (2\u20133) 0.006"
+          "quote": "tetragonality closely aligns with that observed in bulk ceramics, which exhibit a c/a ratio of \n1.016 [8]"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -242,12 +261,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "POD-3 3 (3\u20134) 4 (3\u20134) 0.02",
+        "quote": "the mismatch between the \nsubstrate (STO) and the film gives a value of around 3%, corresponding to compressive\nstrain",
         "location": {
-          "section": "3.2 / Table 4",
+          "section": "Results A",
           "page": 7,
           "char_span": null,
-          "quote": "POD-3 3 (3\u20134) 4 (3\u20134) 0.02"
+          "quote": "the mismatch between the \nsubstrate (STO) and the film gives a value of around 3%, corresponding to compressive\nstrain"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -262,17 +281,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "PCIA demand frequency 12.5 (9\u201315) 15 (12\u201317) 0.002",
+        "quote": "The SRO layer thickness determined from the \nperiod of the oscillations is approximately 20 nm for both samples",
         "location": {
-          "section": "3.2 / Table 4",
-          "page": 7,
+          "section": "Results A",
+          "page": 6,
           "char_span": null,
-          "quote": "PCIA demand frequency 12.5 (9\u201315) 15 (12\u201317) 0.002"
+          "quote": "The SRO layer thickness determined from the \nperiod of the oscillations is approximately 20 nm for both samples"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -292,12 +311,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Rescue analgesia, n (%) 10 (14.3) 23 (32.9) 0.01",
+        "quote": "The final thickness of \nthe samples was around 80 nm (growth rate \u2248 0.04 nm/pulse)",
         "location": {
-          "section": "3.2 / Table 4",
-          "page": 7,
+          "section": "Experimental",
+          "page": 5,
           "char_span": null,
-          "quote": "Rescue analgesia, n (%) 10 (14.3) 23 (32.9) 0.01"
+          "quote": "The final thickness of \nthe samples was around 80 nm (growth rate \u2248 0.04 nm/pulse)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -317,12 +336,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Rescue analgesic consumption per patient (mg) 0 (0\u20130) 0 (0\u2013100) 0.008",
+        "quote": "maximum capacitance values: 690 pF for PZT and 960 pF for PZTFN0.5",
         "location": {
-          "section": "3.2 / Table 4",
-          "page": 7,
+          "section": "Results B",
+          "page": 9,
           "char_span": null,
-          "quote": "Rescue analgesic consumption per patient (mg) 0 (0\u20130) 0 (0\u2013100) 0.008"
+          "quote": "maximum capacitance values: 690 pF for PZT and 960 pF for PZTFN0.5"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -337,17 +356,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "reduced usage of propofol (866.56 \u00b1 76.44 mg vs. \n968.36 \u00b1 68.87 mg, P < 0.05)",
+        "quote": "The estimated imprint field\nfor the PZTFN0.5 sample from P\u2013E loops is approximately 40 kV/cm",
         "location": {
-          "section": "3.4",
-          "page": 6,
+          "section": "Results B",
+          "page": 9,
           "char_span": null,
-          "quote": "reduced usage of propofol (866.56 \u00b1 76.44 mg vs. \n968.36 \u00b1 68.87 mg, P < 0.05)"
+          "quote": "The estimated imprint field\nfor the PZTFN0.5 sample from P\u2013E loops is approximately 40 kV/cm"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -367,37 +386,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "sufentanil (25 \u00b1 \n4.62 ug vs. 38 \u00b1 8.60 ug, P < 0.001)",
+        "quote": "the saturation polarization reached in PZT \nis about 30% higher than in the PZTFN0.5 sample",
         "location": {
-          "section": "3.4",
-          "page": 6,
+          "section": "Results B",
+          "page": 11,
           "char_span": null,
-          "quote": "sufentanil (25 \u00b1 \n4.62 ug vs. 38 \u00b1 8.60 ug, P < 0.001)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c13",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "remifentanil (2.1 \u00b1 0.35 mg vs. 2.5 \u00b1 0.72 mg, P < 0.001)",
-        "location": {
-          "section": "3.4",
-          "page": 6,
-          "char_span": null,
-          "quote": "remifentanil (2.1 \u00b1 0.35 mg vs. 2.5 \u00b1 0.72 mg, P < 0.001)"
+          "quote": "the saturation polarization reached in PZT \nis about 30% higher than in the PZTFN0.5 sample"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -412,17 +406,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "extubation time \n(35.8 \u00b1 13.02 min vs. 40.8 \u00b1 15.5 min, P < 0.05; Figure 4A)",
+        "quote": "the Up and Down polarization states remain \nclearly distinguishable up to 104 s",
         "location": {
-          "section": "3.5",
-          "page": 6,
+          "section": "Results B",
+          "page": 11,
           "char_span": null,
-          "quote": "extubation time \n(35.8 \u00b1 13.02 min vs. 40.8 \u00b1 15.5 min, P < 0.05; Figure 4A)"
+          "quote": "the Up and Down polarization states remain \nclearly distinguishable up to 104 s"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -437,17 +431,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "PACU stay duration (107.2 \u00b1 27.4 min vs. 118.9 \u00b1 27.2 min, P < 0.05;",
+        "quote": "The measured surface \nroughness was approximately 0.82 nm",
         "location": {
-          "section": "3.5",
-          "page": 6,
+          "section": "Results B",
+          "page": 12,
           "char_span": null,
-          "quote": "PACU stay duration (107.2 \u00b1 27.4 min vs. 118.9 \u00b1 27.2 min, P < 0.05;"
+          "quote": "The measured surface \nroughness was approximately 0.82 nm"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -462,17 +456,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "the incidence \nof nausea and vomiting was significantly lower in the K group than \nin the C group (10.0% vs. 21.4%, P < 0.05)",
+        "quote": "measured for the PZTFN0.5 epitaxial film (Mr = 1.3 emu/cm3, Hc = 90 Oe) are quite similar to \nthose reported for PZTFT0.4 epitaxial films (Mr = 1.58 emu/cm3, Hc = 108 Oe) [9]",
         "location": {
-          "section": "3.6",
-          "page": 6,
+          "section": "Results B",
+          "page": 12,
           "char_span": null,
-          "quote": "the incidence \nof nausea and vomiting was significantly lower in the K group than \nin the C group (10.0% vs. 21.4%, P < 0.05)"
+          "quote": "measured for the PZTFN0.5 epitaxial film (Mr = 1.3 emu/cm3, Hc = 90 Oe) are quite similar to \nthose reported for PZTFT0.4 epitaxial films (Mr = 1.58 emu/cm3, Hc = 108 Oe) [9]"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -492,12 +486,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "No other significant \ndifferences were observed between the two groups in the incidence \nof dizziness, headache, drowsiness, or restlessness (P > \n0.05)",
+        "quote": "a magnetic saturation of 12 emu/cm3 is observed, which is higher than that for \nPZTFT0.4 films (7 emu/cm3)",
         "location": {
-          "section": "3.6",
-          "page": 6,
+          "section": "Results B",
+          "page": 12,
           "char_span": null,
-          "quote": "No other significant \ndifferences were observed between the two groups in the incidence \nof dizziness, headache, drowsiness, or restlessness (P > \n0.05)"
+          "quote": "a magnetic saturation of 12 emu/cm3 is observed, which is higher than that for \nPZTFT0.4 films (7 emu/cm3)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -512,17 +506,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "higher QoR-15 score on postoperative day 3 (B = 5.52, 95% CI \n3.97 to 7.06, P < 0.001)",
+        "quote": "the remanences are similar (1.3 emu/cm3 and 1.8 emu/cm3 [14]), but \nthere is\na significant difference in coercive field values (90 Oe versus 1500 Oe)",
         "location": {
-          "section": "3.7",
-          "page": 6,
+          "section": "Results B",
+          "page": 12,
           "char_span": null,
-          "quote": "higher QoR-15 score on postoperative day 3 (B = 5.52, 95% CI \n3.97 to 7.06, P < 0.001)"
+          "quote": "the remanences are similar (1.3 emu/cm3 and 1.8 emu/cm3 [14]), but \nthere is\na significant difference in coercive field values (90 Oe versus 1500 Oe)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -542,12 +536,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "sufentanil (B = \u221212.61, 95% CI \n-15.02 to \u221210.19, P < 0.001)",
+        "quote": "403 \u00b1 8 nm (h\u03bd = 3.08 eV) laser source with a constant calibrated optical fluence of \n100 \u00b1 5 mW/cm2",
         "location": {
-          "section": "3.7",
+          "section": "Experimental",
           "page": 6,
           "char_span": null,
-          "quote": "sufentanil (B = \u221212.61, 95% CI \n-15.02 to \u221210.19, P < 0.001)"
+          "quote": "403 \u00b1 8 nm (h\u03bd = 3.08 eV) laser source with a constant calibrated optical fluence of \n100 \u00b1 5 mW/cm2"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -562,17 +556,17 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "remifentanil (B = \u22120.39, 95% CI \n-0.58 to \u22120.19, P < 0.001)",
+        "quote": "A notable increase in conductivity (about one order of magnitude) occurs when the light \nis switched ON compared to the OFF state",
         "location": {
-          "section": "3.7",
-          "page": 6,
+          "section": "Results C",
+          "page": 13,
           "char_span": null,
-          "quote": "remifentanil (B = \u22120.39, 95% CI \n-0.58 to \u22120.19, P < 0.001)"
+          "quote": "A notable increase in conductivity (about one order of magnitude) occurs when the light \nis switched ON compared to the OFF state"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -592,12 +586,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "lower heart rate variability (B = \u22120.027, 95% CI \n-0.042 to \u22120.012, P < 0.001)",
+        "quote": "applied \nvoltages ranging from \u22123 V to 3 V (\u00b1375 kV/cm)",
         "location": {
-          "section": "3.7",
-          "page": 6,
+          "section": "Results C",
+          "page": 13,
           "char_span": null,
-          "quote": "lower heart rate variability (B = \u22120.027, 95% CI \n-0.042 to \u22120.012, P < 0.001)"
+          "quote": "applied \nvoltages ranging from \u22123 V to 3 V (\u00b1375 kV/cm)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -617,12 +611,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "higher mean arterial \npressure variability (B = 0.018, 95% CI 0.001 to 0.034, P = 0.033)",
+        "quote": "D1 (PZTFN0.5/Au) with a barrier height of 1.2 eV, and D2 (SRO/PZTFN0.5) \nwith a barrier height of 0.7 eV",
         "location": {
-          "section": "3.7",
-          "page": 6,
+          "section": "Results C",
+          "page": 16,
           "char_span": null,
-          "quote": "higher mean arterial \npressure variability (B = 0.018, 95% CI 0.001 to 0.034, P = 0.033)"
+          "quote": "D1 (PZTFN0.5/Au) with a barrier height of 1.2 eV, and D2 (SRO/PZTFN0.5) \nwith a barrier height of 0.7 eV"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -642,12 +636,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "Norepinephrine 9 (12.9) 28 (40) <0.01",
+        "quote": "The electron affinities involved are e\u03d5SRO = 4.6 eV [23] and e\u03d5Au = 5.1 eV [24], considering a \nband gap Eg = 3.0 eV for PZTFN0.5 [14]",
         "location": {
-          "section": "3 / Table 1",
-          "page": 5,
+          "section": "Results C",
+          "page": 15,
           "char_span": null,
-          "quote": "Norepinephrine 9 (12.9) 28 (40) <0.01"
+          "quote": "The electron affinities involved are e\u03d5SRO = 4.6 eV [23] and e\u03d5Au = 5.1 eV [24], considering a \nband gap Eg = 3.0 eV for PZTFN0.5 [14]"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -662,17 +656,42 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no applicable verifier",
       "discrepancy": null,
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "calculations indicated \n64 patients per group were required. Accounting for a 10% \ndropout rate, the final actual enrollment per group was \n72 patients, totaling 144 patients.",
+        "quote": "unpoled, sputter-deposited BFO films (100 nm thick) with ITO \nelectrodes yielded JSC of 4.5 \u00b5A/cm2 under similar illumination conditions (\u03bb = 405 nm, 100 \nmW/cm2) [26]",
         "location": {
-          "section": "2.5",
-          "page": 4,
+          "section": "Results C",
+          "page": 18,
           "char_span": null,
-          "quote": "calculations indicated \n64 patients per group were required. Accounting for a 10% \ndropout rate, the final actual enrollment per group was \n72 patients, totaling 144 patients."
+          "quote": "unpoled, sputter-deposited BFO films (100 nm thick) with ITO \nelectrodes yielded JSC of 4.5 \u00b5A/cm2 under similar illumination conditions (\u03bb = 405 nm, 100 \nmW/cm2) [26]"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c25",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "higher values, up to 25 \u00b5A/cm2, have been reported for \ngraphene/BFO/Pt heterojunctions [27]",
+        "location": {
+          "section": "Results C",
+          "page": 18,
+          "char_span": null,
+          "quote": "higher values, up to 25 \u00b5A/cm2, have been reported for \ngraphene/BFO/Pt heterojunctions [27]"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -692,12 +711,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "A statistically significant, six-point higher median QoR-15 score was \nobserved in the K group compared to the C group on POD3, which \nmeets the threshold for the established minimal clinically important \ndifference (MCID) of six points",
+        "quote": "the short-circuit photocurrent density (JSC = 23 \u00b5A/cm2) and \nopencircuit voltage (VOC = \u22120.07 V)",
         "location": {
-          "section": "4 Discussion",
-          "page": 6,
+          "section": "Conclusions",
+          "page": 19,
           "char_span": null,
-          "quote": "A statistically significant, six-point higher median QoR-15 score was \nobserved in the K group compared to the C group on POD3, which \nmeets the threshold for the established minimal clinically important \ndifference (MCID) of six points"
+          "quote": "the short-circuit photocurrent density (JSC = 23 \u00b5A/cm2) and \nopencircuit voltage (VOC = \u22120.07 V)"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -707,7 +726,7 @@
     },
     {
       "verifier_id": "litmus.planner",
-      "claim_id": "c27",
+      "claim_id": "c28",
       "status": "inconclusive",
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
@@ -717,12 +736,87 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "an esketamine-based multimodal low-opioid anaesthesia \nregimen significantly enhances recovery quality on postoperative \nday 3 in elderly patients undergoing thoracoscopic radical lung \ncancer surgery.",
+        "quote": "PZTFT40/LSCO//MgO(001) films exhibit a remanent \npolarization of 13 \u00b5C/cm2 [9]. However, the coercive field is significantly lower in this case \n(Ec = 40 kV/cm)",
         "location": {
-          "section": "5 Conclusion",
-          "page": 10,
+          "section": "Results B",
+          "page": 12,
           "char_span": null,
-          "quote": "an esketamine-based multimodal low-opioid anaesthesia \nregimen significantly enhances recovery quality on postoperative \nday 3 in elderly patients undergoing thoracoscopic radical lung \ncancer surgery."
+          "quote": "PZTFT40/LSCO//MgO(001) films exhibit a remanent \npolarization of 13 \u00b5C/cm2 [9]. However, the coercive field is significantly lower in this case \n(Ec = 40 kV/cm)"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c29",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "Polycrystalline PZTFN0.5 films deposited on Pt/Ti/SiO2/Si substrates have \nreported Pr and Ec values of 10 \u00b5C/cm2 and 80 kV/cm, respectively [8]",
+        "location": {
+          "section": "Results B",
+          "page": 12,
+          "char_span": null,
+          "quote": "Polycrystalline PZTFN0.5 films deposited on Pt/Ti/SiO2/Si substrates have \nreported Pr and Ec values of 10 \u00b5C/cm2 and 80 kV/cm, respectively [8]"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c30",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "the SRO \nconductive bottom layer coherently grows on the STO substrate with in-plane parameter a \n= 3.905 \u02daA and out-of-plane parameter c = 3.945 \u02daA",
+        "location": {
+          "section": "Results A",
+          "page": 6,
+          "char_span": null,
+          "quote": "the SRO \nconductive bottom layer coherently grows on the STO substrate with in-plane parameter a \n= 3.905 \u02daA and out-of-plane parameter c = 3.945 \u02daA"
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {}
+    },
+    {
+      "verifier_id": "litmus.planner",
+      "claim_id": "c31",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "prebuilt",
+      "severity": null,
+      "message": "no applicable verifier",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "no response is detected under green light illumination of 515 nm. For the reference\nPZT film, no significant photocurrent response is observed under 403 nm illumination",
+        "location": {
+          "section": "SI Figure S6",
+          "page": 28,
+          "char_span": null,
+          "quote": "no response is detected under green light illumination of 515 nm. For the reference\nPZT film, no significant photocurrent response is observed under 403 nm illumination"
         },
         "recompute_script": null,
         "expected_output": null,
