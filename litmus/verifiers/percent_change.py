@@ -99,9 +99,21 @@ def _tolerance(old_value: float, new_value: float, reported: float) -> float:
     The sum (floored at ``TOLERANCE_FLOOR``) is the band within which a reported percent is a
     correct rounding of the recomputed one. A genuine over-claim exceeds it and still FAILs.
     """
+    # The reported percent is a rounded CLAIM, so it carries half a ULP of its printed
+    # precision. The SOURCE values do not: an integer is an exact count, and an integral
+    # ratio baseline (old=1.0) is exact — only a genuinely fractional display carries
+    # half-ULP uncertainty. (Mirrors sum_check's integer rule; without it a tiny baseline
+    # like old=1.0 — treated as ±0.5 — balloons the tolerance and swallows a real gap.)
+    def _src_half(v: float) -> float:
+        if isinstance(v, bool):
+            v = int(v)
+        if isinstance(v, int) or (isinstance(v, float) and v.is_integer()):
+            return 0.0
+        return 0.5 * 10 ** (-_decimals_of(v))
+
     rep_half = 0.5 * 10 ** (-_decimals_of(reported))
-    new_half = 0.5 * 10 ** (-_decimals_of(new_value))
-    old_half = 0.5 * 10 ** (-_decimals_of(old_value))
+    new_half = _src_half(new_value)
+    old_half = _src_half(old_value)
     input_term = 0.0
     if old_value != 0:
         input_term = 100.0 / abs(old_value) * new_half + 100.0 * abs(new_value) / (old_value * old_value) * old_half

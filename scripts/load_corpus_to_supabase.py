@@ -38,6 +38,23 @@ def _catalog_meta(pid: str) -> tuple[str | None, str | None]:
     return None, None
 
 
+def _field_from_id(pid: str) -> str:
+    head = pid.split("-")[0]
+    return head or "unknown"
+
+
+def _humanize(pid: str) -> str:
+    import re
+
+    toks = [t for t in pid.split("-") if not re.match(r"^[a-z]+\d{2,4}[a-z]?$", t)]
+    if toks and toks[0] in {
+        "nutrition", "psychology", "health", "chemistry", "biology", "medicine",
+        "economics", "physics", "ml", "econ",
+    }:
+        toks = toks[1:]
+    return " ".join(w.capitalize() for w in toks) or pid
+
+
 def main() -> None:
     manifest = _manifest()
     rows = []
@@ -48,10 +65,16 @@ def main() -> None:
         claim_graph = json.load(open(cg_f)) if os.path.exists(cg_f) else None
         title, doi = _catalog_meta(pid)
         m = manifest.get(pid, {})
-        title = title or m.get("title") or pid
-        doi = doi or m.get("doi")
-        field = m.get("field", "unknown")
-        ch = m.get("sha256") or hashlib.sha256(pid.encode()).hexdigest()
+        cg_meta = (claim_graph or {}).get("meta", {}) if claim_graph else {}
+        title = title or m.get("title") or cg_meta.get("title") or _humanize(pid)
+        doi = doi or m.get("doi") or cg_meta.get("doi")
+        field = m.get("field") or _field_from_id(pid)
+        pdf_path = f"study/corpus/pdfs/{pid}.pdf"
+        if os.path.exists(pdf_path):
+            # sha256 of the actual PDF — the §2 cache key the upload path matches on.
+            ch = hashlib.sha256(open(pdf_path, "rb").read()).hexdigest()
+        else:
+            ch = m.get("sha256") or hashlib.sha256(pid.encode()).hexdigest()
         rows.append(
             {
                 "content_hash": ch,
