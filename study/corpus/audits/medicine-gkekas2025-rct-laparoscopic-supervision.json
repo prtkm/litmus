@@ -25,14 +25,16 @@
       "c20"
     ],
     "confirmation": "fresh-sandbox",
-    "registry_load_errors": []
+    "registry_load_errors": [],
+    "enriched_by": "multi-perspective review (skeptic/domain-expert/methodologist/claims-auditor/integrity-screener)",
+    "enrichment_note": "Deterministic verdicts preserved verbatim. Bare planner abstains resolved by reasoned review; recomputable between-group p-values were reproduced with a stdlib two-sided t-test (regularized incomplete beta) before classifying. field=medicine / RCT statistics. Integrity (T7) screen of the n=20 tables surfaced no Benford/terminal-digit/duplication signal."
   },
   "summary": {
     "n_findings": 1,
     "n_flags": 0,
     "n_dropped": 0,
-    "n_routed_to_human": 0,
-    "n_abstained": 21,
+    "n_routed_to_human": 22,
+    "n_abstained": 1,
     "flags_by_trust_tier": {},
     "flags_by_severity": {}
   },
@@ -71,308 +73,141 @@
     }
   ],
   "dropped_flags": [],
-  "routed_to_human": [],
-  "abstained": [
+  "routed_to_human": [
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c1",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the Supervised group (388s vs 168s; p < 0.001)",
-        "location": {
-          "section": "3.2 Primary outcomes",
-          "page": 4,
-          "char_span": null,
-          "quote": "the Supervised group (388s vs 168s; p < 0.001)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c2",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the independent group (347s vs 213s; p = 0.020)",
-        "location": {
-          "section": "3.2 Primary outcomes",
-          "page": 4,
-          "char_span": null,
-          "quote": "the independent group (347s vs 213s; p = 0.020)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c3",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "did not reach\nstatistical significance ( p = 0.108)",
-        "location": {
-          "section": "3.2 Primary outcomes",
-          "page": 4,
-          "char_span": null,
-          "quote": "did not reach\nstatistical significance ( p = 0.108)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "between-group Welch t-test on Test1 (168±47,n=8 vs 213±72,n=12) reproduces p=0.108 (recomputed 0.1081); no over-reach.",
+      "quote": "did not reach\nstatistical significance ( p = 0.108)"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c4",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "The supervised group\ncompleted Test 1 in a mean of 168 s (SD 47), compared with\n213 s (SD 72) in the independent group. The mean difference\nwas \u221245 s, with a 95% CI ranging from \u2212108 to +18 s",
-        "location": {
-          "section": "3.2 Primary outcomes",
-          "page": 4,
-          "char_span": null,
-          "quote": "The supervised group\ncompleted Test 1 in a mean of 168 s (SD 47), compared with\n213 s (SD 72) in the independent group. The mean difference\nwas \u221245 s, with a 95% CI ranging from \u2212108 to +18 s"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "mean difference recomputes exactly (168-213=-45) and the CI crosses zero, coherent with the non-significant p=0.108; no over-reach on the point estimate. (CI magnitude itself flagged separately as an advisory.)",
+      "quote": "The supervised group\ncompleted Test 1 in a mean of 168 s (SD 47), compared with\n213 s (SD 72) in the independent group. The mean difference\nwas −45 s, with a 95% CI ranging from −108 to +18 s"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c5",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "slightly shorter\nin the supervised group compared with the independent group\n( p = 0.108 and p = 0.124, respectively)",
-        "location": {
-          "section": "3.2 Primary outcomes",
-          "page": 4,
-          "char_span": null,
-          "quote": "slightly shorter\nin the supervised group compared with the independent group\n( p = 0.108 and p = 0.124, respectively)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "between-group Welch t-tests reproduce Test1 p=0.108 (0.1081) and Test2 p=0.124 (0.1260); 'slightly shorter' is faithful to the means; no over-reach.",
+      "quote": "slightly shorter\nin the supervised group compared with the independent group\n( p = 0.108 and p = 0.124, respectively)"
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c6",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "reported significantly lower perceived difficulty after training\ncompared to pre-training (4.1 vs 3.5; p = 0.049)",
-        "location": {
-          "section": "3.3.1 Perceived difficulty",
-          "page": 4,
-          "char_span": null,
-          "quote": "reported significantly lower perceived difficulty after training\ncompared to pre-training (4.1 vs 3.5; p = 0.049)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c7",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "post-training score was significantly reduced to half of the\nbaseline value (4.6 vs 2.6; p = 0.003)",
-        "location": {
-          "section": "3.3.1",
-          "page": 4,
-          "char_span": null,
-          "quote": "post-training score was significantly reduced to half of the\nbaseline value (4.6 vs 2.6; p = 0.003)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c8",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "remaining at the\nsame level (4.5 vs 4.6; p = 0.685)",
-        "location": {
-          "section": "3.3.1",
-          "page": 5,
-          "char_span": null,
-          "quote": "remaining at the\nsame level (4.5 vs 4.6; p = 0.685)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c9",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "completed examination test 3 in a mean of\n137 s, compared to 249 s for those without such experience\n(p = 0.063)",
-        "location": {
-          "section": "3.3.1.1.1",
-          "page": 5,
-          "char_span": null,
-          "quote": "completed examination test 3 in a mean of\n137 s, compared to 249 s for those without such experience\n(p = 0.063)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "between-group Welch t-test on Test3 gaming (137±22,n=11 vs 249±155,n=9) reproduces p=0.063 (recomputed 0.0627); reported as a non-significant trend; no over-reach.",
+      "quote": "completed examination test 3 in a mean of\n137 s, compared to 249 s for those without such experience\n(p = 0.063)"
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c10",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "completed test 3 significantly faster than those who did not\n(130 \u00b1 13 s vs 207 \u00b1 130 s; p = 0.037)",
-        "location": {
-          "section": "3.3.1.1.1",
-          "page": 5,
-          "char_span": null,
-          "quote": "completed test 3 significantly faster than those who did not\n(130 \u00b1 13 s vs 207 \u00b1 130 s; p = 0.037)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c11",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "a trend toward faster\ncompletion in test 3 (p = 0.102)",
-        "location": {
-          "section": "3.3.1.1.1",
-          "page": 5,
-          "char_span": null,
-          "quote": "a trend toward faster\ncompletion in test 3 (p = 0.102)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "between-group Welch t-test on Test3 mobile (142±24,n=7 vs 212±139,n=13) reproduces p=0.102 (recomputed 0.1001); 'trend' is faithful; the prose/table mismatch (0.102 vs 0.101) is presentational.",
+      "quote": "a trend toward faster\ncompletion in test 3 (p = 0.102)"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c12",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "a trend for men to complete live test 3 slightly faster\n(140 \u00b1 33 s vs 208 \u00b1 134 s; p = 0.092)",
-        "location": {
-          "section": "3.4 Sex differences",
-          "page": 5,
-          "char_span": null,
-          "quote": "a trend for men to complete live test 3 slightly faster\n(140 \u00b1 33 s vs 208 \u00b1 134 s; p = 0.092)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "between-group Welch t-test on Test3 by sex (men 140±33,n=6 vs women 208±134,n=14) reproduces p=0.092 (recomputed 0.0944); 'trend, slightly faster' is faithful; no over-reach.",
+      "quote": "a trend for men to complete live test 3 slightly faster\n(140 ± 33 s vs 208 ± 134 s; p = 0.092)"
     },
+    {
+      "claim_id": "c16",
+      "dimension": "advisory:claims-auditor",
+      "note": "14/20 = 70.0% recomputes exactly; 'approximately 70%' is faithful; no over-reach.",
+      "quote": "Approximately 70% of participants were\nfemale"
+    },
+    {
+      "claim_id": "c17",
+      "dimension": "advisory:claims-auditor",
+      "note": "between-group Welch t-test on baseline warm-up (388±109,n=8 vs 347±172,n=12) reproduces p=0.529 (recomputed 0.522); 'no significant baseline difference' is faithful; no over-reach.",
+      "quote": "there was no significant difference in task completion \ntime between the supervision and independent groups"
+    },
+    {
+      "claim_id": "c1",
+      "dimension": "advisory:claims-auditor",
+      "note": "paired warm-up→Test1 improvement in the supervised arm (388→168, p<0.001); claim faithfully restates Table 2 and the magnitude is large and directionally unambiguous. Reviewed, no over-reach; no numeric verifier covers the paired p (within-subject SD/correlation not extracted) yet.",
+      "quote": "the Supervised group (388s vs 168s; p < 0.001)"
+    },
+    {
+      "claim_id": "c2",
+      "dimension": "advisory:claims-auditor",
+      "note": "paired warm-up→Test1 improvement in the independent arm (347→213, p=0.020); claim faithfully restates Table 2. Reviewed, no over-reach; no numeric verifier covers the paired p (within-subject SD/correlation not extracted) yet.",
+      "quote": "the independent group (347s vs 213s; p = 0.020)"
+    },
+    {
+      "claim_id": "c6",
+      "dimension": "advisory:claims-auditor",
+      "note": "within-group pre/post perceived-difficulty drop in the supervised arm (4.1→3.5, p=0.049); claim faithfully restates Table 3 and scopes it correctly ('after vs pre-training'). Reviewed, no over-reach; no numeric verifier covers the paired p yet.",
+      "quote": "reported significantly lower perceived difficulty after training\ncompared to pre-training (4.1 vs 3.5; p = 0.049)"
+    },
+    {
+      "claim_id": "c7",
+      "dimension": "advisory:claims-auditor",
+      "note": "within-group pre/post feedback-value drop in the independent arm (4.6→2.6, p=0.003); 'reduced to half' is approximate (half of 4.6 is 2.3 vs reported 2.6) but hedged and directionally faithful to Table 3. Reviewed, no over-reach; no numeric verifier covers the paired p yet.",
+      "quote": "post-training score was significantly reduced to half of the\nbaseline value (4.6 vs 2.6; p = 0.003)"
+    },
+    {
+      "claim_id": "c8",
+      "dimension": "advisory:claims-auditor",
+      "note": "within-group feedback value unchanged in the supervised arm (4.5→4.6, diff +0.1, p=0.685); claim faithfully restates Table 3 (the 0.684/0.685 prose/table rounding is noted in meta). Reviewed, no over-reach; no numeric verifier covers the paired p yet.",
+      "quote": "remaining at the\nsame level (4.5 vs 4.6; p = 0.685)"
+    },
+    {
+      "claim_id": "c14",
+      "dimension": "advisory:claims-auditor",
+      "note": "paired warm-up→Test1 by sex (women improved 173s p=0.001; men 159s p=0.058); claim faithfully restates the prose and correctly contrasts a significant vs a borderline result. Reviewed, no over-reach; no numeric verifier covers the paired p yet.",
+      "quote": "women\nimproved their times significantly (173 s; p = 0.001) whereas men\nshowed a less pronounced improvement (159 s; p = 0.058)"
+    },
+    {
+      "claim_id": "c20",
+      "dimension": "advisory:claims-auditor",
+      "note": "restatement of the prior-study effect used to power this trial (guided 2.1, control 0.6, SD 1.8 mm/s); an external (T1) fact matching the cited source's quoted values, not an internal recompute. Reviewed, no over-reach; no numeric verifier covers it yet.",
+      "quote": "improved rope test \nperformance by 2.1 mm/s, compared with a control group that \nimproved by 0.6 mm/s (4). The standard deviation of the first \ngroup was 1.8 mm/s"
+    },
+    {
+      "claim_id": "c21",
+      "dimension": "advisory:claims-auditor",
+      "note": "qualitative task description (Rope Race = thread through 8 loops); not a numeric claim. Reviewed, no over-reach; no numeric verifier covers it yet.",
+      "quote": "pass a \nthread through eight loops arranged in a circle"
+    },
+    {
+      "claim_id": "c10",
+      "dimension": "advisory:methodologist",
+      "note": "The reported p=0.037 for shooter vs non-shooter Test3 (130±13,n=5 vs 207±103,n=15) does not reproduce cleanly: a Welch t-test on those values gives p≈0.013 and a pooled t-test p≈0.119, neither close to 0.037, and the reported SD is internally inconsistent (prose gives non-shooter SD=130, Table 4 gives 103). With n=5 in one arm, normality/variance assumptions are fragile and the test used is unstated. What would confirm: the raw per-participant Test3 times, the exact test, and which SD is correct.",
+      "quote": "completed test 3 significantly faster than those who did not\n(130 ± 13 s vs 207 ± 130 s; p = 0.037)"
+    },
+    {
+      "claim_id": "c4",
+      "dimension": "advisory:claims-auditor",
+      "note": "The reported 95% CI for the Test1 mean difference (−45 s; −108 to +18 s) does not reproduce from 168±47 (n=8) vs 213±72 (n=12): a pooled-variance CI is [−106, +16] and a Welch CI is [−101, +11]. The point estimate (−45) is exact and the interval correctly crosses zero (coherent with p=0.108), so the conclusion stands, but the interval is ~10–15% wider than either standard recompute. What would confirm: the exact SE/df and CI method used.",
+      "quote": "The supervised group\ncompleted Test 1 in a mean of 168 s (SD 47), compared with\n213 s (SD 72) in the independent group. The mean difference\nwas −45 s, with a 95% CI ranging from −108 to +18 s"
+    },
+    {
+      "claim_id": "c18",
+      "dimension": "advisory:methodologist",
+      "note": "The a-priori power analysis targets only 70% power (36 trainees), below the conventional 80%, and the study then enrolled 20 — about 55% of even that reduced target. The design is underpowered by the authors' own calculation before any data were collected, which bears on every null ('no significant difference') result. What would confirm: the effect size, alpha, and allocation ratio fed into the power calculation.",
+      "quote": "a total of \n36 trainees would be required to achieve 70% power to detect a \nstatistically significant difference between the groups"
+    },
+    {
+      "claim_id": "c19",
+      "dimension": "advisory:methodologist",
+      "note": "Post-hoc 'achieved power' of 28–35% computed from the observed effect sizes is a known statistical fallacy: observed (retrospective) power is a deterministic monotone transform of the p-value and adds nothing beyond it (Hoenig & Heisey 2001). The honest framing is the wide confidence intervals, which the paper does report. What would confirm: nothing recomputable — this is a method-appropriateness concern, not an arithmetic one.",
+      "quote": "the achieved power was \napproximately 28%–35%"
+    },
+    {
+      "claim_id": "c22",
+      "dimension": "advisory:claims-auditor",
+      "note": "The abstract's causal conclusion over-reaches on two counts. (1) 'Significantly reduces perceived difficulty' rests on a within-arm pre/post change in the supervised group (4.1→3.5, p=0.049), not a supervised-vs-independent contrast, so it cannot support a comparative causal claim relative to independent practice. (2) 'Prevents the devaluation of feedback' is inferred from two separate within-arm tests (supervised stable p=0.685; independent dropped p=0.003) with no between-group or group×time interaction test reported. Both rest on n=20 at ~28–35% power. The causal/comparative verbs ('reduces','prevents') are stronger than a single underpowered RCT with un-interacted subgroup tests supports. What would confirm: a between-group (or group×time interaction) test on each questionnaire item.",
+      "quote": "Remote real-time supervision significantly reduces perceived \ndifficulty and prevents the devaluation of feedback compared to independent \npractice."
+    },
+    {
+      "claim_id": "c22",
+      "dimension": "subjective:significance",
+      "note": "Whether 'remote real-time supervision matters' for undergraduate laparoscopic training is the paper's headline take-home; its importance/worth is a value judgement (T8) that LITMUS surfaces but does not score.",
+      "quote": "Remote real-time supervision significantly reduces perceived \ndifficulty and prevents the devaluation of feedback compared to independent \npractice."
+    }
+  ],
+  "abstained": [
     {
       "verifier_id": "litmus.planner",
       "claim_id": "c13",
@@ -380,7 +215,7 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no numeric verifier covers this 'no significant difference' triple (per-sex SDs for Warm-up/Test1/Test2 not extracted); abstaining rather than absolving (DESIGN §3.4)",
       "discrepancy": null,
       "reported": null,
       "computed": null,
@@ -391,206 +226,6 @@
           "page": 5,
           "char_span": null,
           "quote": "No significant\ndifferences were found in Warm-up (p = 0.627), Test 1 (p = 0.639),\nor Test 2 (p = 0.233)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c14",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "women\nimproved their times significantly (173 s; p = 0.001) whereas men\nshowed a less pronounced improvement (159 s; p = 0.058)",
-        "location": {
-          "section": "3.4 Sex differences",
-          "page": 5,
-          "char_span": null,
-          "quote": "women\nimproved their times significantly (173 s; p = 0.001) whereas men\nshowed a less pronounced improvement (159 s; p = 0.058)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c16",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Approximately 70% of participants were\nfemale",
-        "location": {
-          "section": "3.1",
-          "page": 3,
-          "char_span": null,
-          "quote": "Approximately 70% of participants were\nfemale"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c17",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "there was no significant difference in task completion \ntime between the supervision and independent groups",
-        "location": {
-          "section": "3.1",
-          "page": 3,
-          "char_span": null,
-          "quote": "there was no significant difference in task completion \ntime between the supervision and independent groups"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c18",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "a total of \n36 trainees would be required to achieve 70% power to detect a \nstatistically significant difference between the groups",
-        "location": {
-          "section": "2.3 Sample size",
-          "page": 2,
-          "char_span": null,
-          "quote": "a total of \n36 trainees would be required to achieve 70% power to detect a \nstatistically significant difference between the groups"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c19",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the achieved power was \napproximately 28%\u201335%",
-        "location": {
-          "section": "5 Limitations",
-          "page": 6,
-          "char_span": null,
-          "quote": "the achieved power was \napproximately 28%\u201335%"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c20",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "improved rope test \nperformance by 2.1 mm/s, compared with a control group that \nimproved by 0.6 mm/s (4). The standard deviation of the first \ngroup was 1.8 mm/s",
-        "location": {
-          "section": "2.3 Sample size",
-          "page": 2,
-          "char_span": null,
-          "quote": "improved rope test \nperformance by 2.1 mm/s, compared with a control group that \nimproved by 0.6 mm/s (4). The standard deviation of the first \ngroup was 1.8 mm/s"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c21",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "pass a \nthread through eight loops arranged in a circle",
-        "location": {
-          "section": "2.5.1",
-          "page": 3,
-          "char_span": null,
-          "quote": "pass a \nthread through eight loops arranged in a circle"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c22",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Remote real-time supervision significantly reduces perceived \ndifficulty and prevents the devaluation of feedback compared to independent \npractice.",
-        "location": {
-          "section": "Abstract Conclusion",
-          "page": 1,
-          "char_span": null,
-          "quote": "Remote real-time supervision significantly reduces perceived \ndifficulty and prevents the devaluation of feedback compared to independent \npractice."
         },
         "recompute_script": null,
         "expected_output": null,

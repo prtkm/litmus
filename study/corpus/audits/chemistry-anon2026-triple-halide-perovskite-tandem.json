@@ -19,545 +19,171 @@
       "c21"
     ],
     "confirmation": "fresh-sandbox",
-    "registry_load_errors": []
+    "registry_load_errors": [],
+    "review": {
+      "kind": "multi-perspective",
+      "perspectives": [
+        "skeptic",
+        "domain-expert",
+        "methodologist",
+        "claims-auditor",
+        "integrity-screener"
+      ],
+      "field": "perovskite optoelectronics / chemistry",
+      "deterministic_verdicts_preserved": true,
+      "note": "Bare abstains resolved by review: deterministic findings + dropped_flags kept verbatim (both empty); CONFIRMED-CORRECT claims dropped with auditable advisory:claims-auditor notes; genuine concerns -> advisory:*; significance -> subjective:*. Internal numbers recomputed clean before any advisory."
+    }
   },
   "summary": {
     "n_findings": 0,
     "n_flags": 0,
     "n_dropped": 0,
-    "n_routed_to_human": 0,
-    "n_abstained": 21,
+    "n_routed_to_human": 23,
+    "n_abstained": 0,
     "flags_by_trust_tier": {},
     "flags_by_severity": {}
   },
   "findings": [],
   "dropped_flags": [],
-  "routed_to_human": [],
-  "abstained": [
+  "routed_to_human": [
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c1",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Photoluminescence quantum yields\n(up to 14% on quartz), as well as photoluminescence lifetimes (up to ~7 \u00b5s on quartz),\nindicate improved optical properties.",
-        "location": {
-          "section": "Abstract",
-          "page": 1,
-          "char_span": null,
-          "quote": "Photoluminescence quantum yields\n(up to 14% on quartz), as well as photoluminescence lifetimes (up to ~7 \u00b5s on quartz),\nindicate improved optical properties."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c2",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "photoluminescence lifetimes (up to ~7 \u00b5s on quartz)",
-        "location": {
-          "section": "Abstract",
-          "page": 1,
-          "char_span": null,
-          "quote": "photoluminescence lifetimes (up to ~7 \u00b5s on quartz)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c3",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the optimal\ntotal doping concentration of zinc ions (Zn(II)) and formate anions (Fo\u2212) is determined to\nbe 1% relative to Pb(II).",
-        "location": {
-          "section": "Abstract",
-          "page": 1,
-          "char_span": null,
-          "quote": "the optimal\ntotal doping concentration of zinc ions (Zn(II)) and formate anions (Fo\u2212) is determined to\nbe 1% relative to Pb(II)."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "T4 over-reach on the word 'optimal'. The 1% total doping (0.5% Zn + 0.5% formate) sums correctly, but 'optimal' asserts a demonstrated optimum over a doping series. The ClaimGraph carries only the single 1% point (ev3); without the doping-vs-PLQY/lifetime sweep (the other concentrations tried and their metrics) this is 'best of what was tested', not a proven optimum. What would confirm it: the full dose-response series showing 1% beats neighbouring concentrations on the headline metrics.",
+      "quote": "the optimal\ntotal doping concentration of zinc ions (Zn(II)) and formate anions (Fo−) is determined to\nbe 1% relative to Pb(II)."
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c4",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "capped at 33.7% by the Shockley\u2013Queisser (SQ) limit [1]\nand, considering Auger recombination [2], realistically limited to 29.4% for silicon (Si).",
-        "location": {
-          "section": "1. Introduction",
-          "page": 1,
-          "char_span": null,
-          "quote": "capped at 33.7% by the Shockley\u2013Queisser (SQ) limit [1]\nand, considering Auger recombination [2], realistically limited to 29.4% for silicon (Si)."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c5",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "theoretically enabling PCEs up to ~45% [3]",
-        "location": {
-          "section": "1. Introduction",
-          "page": 1,
-          "char_span": null,
-          "quote": "theoretically enabling PCEs up to ~45% [3]"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c6",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "The current certified world record obtained by LONGi stands at 35.0% PCE",
-        "location": {
-          "section": "1. Introduction",
-          "page": 1,
-          "char_span": null,
-          "quote": "The current certified world record obtained by LONGi stands at 35.0% PCE"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c7",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Mariotti et al. [6] achieved a certified efficiency of 32.5% in\ntriple-halide perovskite\u2013silicon tandem solar cells in 2022.",
-        "location": {
-          "section": "1. Introduction",
-          "page": 1,
-          "char_span": null,
-          "quote": "Mariotti et al. [6] achieved a certified efficiency of 32.5% in\ntriple-halide perovskite\u2013silicon tandem solar cells in 2022."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c8",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the addition of 2% (Fo\u2212) formate anions\nsignificantly increases cell efficiency to 25.2%",
-        "location": {
-          "section": "1. Introduction",
-          "page": 2,
-          "char_span": null,
-          "quote": "the addition of 2% (Fo\u2212) formate anions\nsignificantly increases cell efficiency to 25.2%"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c9",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the current\nworld record (27.2% PCE) [31] contains potassium binoxalate",
-        "location": {
-          "section": "1. Introduction",
-          "page": 2,
-          "char_span": null,
-          "quote": "the current\nworld record (27.2% PCE) [31] contains potassium binoxalate"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c10",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "resulting in a Si\ntandem cell with 34.58% PCE (certified)",
-        "location": {
-          "section": "1. Introduction",
-          "page": 2,
-          "char_span": null,
-          "quote": "resulting in a Si\ntandem cell with 34.58% PCE (certified)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c11",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "a maximum PLQY of 14% was\nobtained for wide-bandgap perovskite on quartz",
-        "location": {
-          "section": "2. Results and Discussion",
-          "page": 6,
-          "char_span": null,
-          "quote": "a maximum PLQY of 14% was\nobtained for wide-bandgap perovskite on quartz"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c12",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Mariotti et al. [6] reported 3.75% as PLQY for their films on\nquartz (and a PL lifetime of ~2 \u00b5s, by tail-fit)",
-        "location": {
-          "section": "2. Results and Discussion",
-          "page": 6,
-          "char_span": null,
-          "quote": "Mariotti et al. [6] reported 3.75% as PLQY for their films on\nquartz (and a PL lifetime of ~2 \u00b5s, by tail-fit)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c13",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the red\ntrace shows our 2025 material with a lifetime of 6.84 \u00b1 1.1 \u00b5s, compared to 3.65 \u00b1 0.8 \u00b5s\n(2024, blue) and 1.57 \u00b1 0.1 \u00b5s (2019, green)",
-        "location": {
-          "section": "2. Results and Discussion",
-          "page": 8,
-          "char_span": null,
-          "quote": "the red\ntrace shows our 2025 material with a lifetime of 6.84 \u00b1 1.1 \u00b5s, compared to 3.65 \u00b1 0.8 \u00b5s\n(2024, blue) and 1.57 \u00b1 0.1 \u00b5s (2019, green)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c14",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Beta values are, respectively, 0.90 (1.57 \u00b5s) [9], 0.77 (3.65 \u00b5s) [11], and 0.84 (6.84 \u00b5s),\nobtained with stretched exponential fitting.",
-        "location": {
-          "section": "Figure 6 caption",
-          "page": 7,
-          "char_span": null,
-          "quote": "Beta values are, respectively, 0.90 (1.57 \u00b5s) [9], 0.77 (3.65 \u00b5s) [11], and 0.84 (6.84 \u00b5s),\nobtained with stretched exponential fitting."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c15",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "The perovskite crystals have a dimension of\nca. 400 nm (see Figure 4\u2014left).",
-        "location": {
-          "section": "2. Results and Discussion",
-          "page": 5,
-          "char_span": null,
-          "quote": "The perovskite crystals have a dimension of\nca. 400 nm (see Figure 4\u2014left)."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c16",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "laser irradiation with 532 nm through a pinhole\nor a slit (=partial illumination) showed clear signs of permanent photodegradation after\n500 hrs",
-        "location": {
-          "section": "2. Results and Discussion",
-          "page": 8,
-          "char_span": null,
-          "quote": "laser irradiation with 532 nm through a pinhole\nor a slit (=partial illumination) showed clear signs of permanent photodegradation after\n500 hrs"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "T4 scope mismatch between two stability statements made together. 'No yellowing after >1 year' is shelf/dark stability of laminated films, whereas the paper's own data show 'permanent photodegradation after 500 hrs' under 532 nm partial illumination (1-5 suns). Reporting the favourable shelf-life alongside an operational-stability failure risks a reader conflating the two. What would confirm robustness: continuous full-area operational/MPP stability under 1-sun AM1.5 with a quantified retained-performance %.",
+      "quote": "laser irradiation with 532 nm through a pinhole\nor a slit (=partial illumination) showed clear signs of permanent photodegradation after\n500 hrs"
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c17",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Mariotti et al. reported 25% loss after 478 h\nof illumination (for \u201cundoped\u201d material) [6]",
-        "location": {
-          "section": "2. Results and Discussion",
-          "page": 8,
-          "char_span": null,
-          "quote": "Mariotti et al. reported 25% loss after 478 h\nof illumination (for \u201cundoped\u201d material) [6]"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "claim_id": "c16",
+      "dimension": "advisory:domain-expert",
+      "note": "Field plausibility (perovskite optoelectronics). Wide-bandgap triple-halide (I/Br/Cl) perovskites are known to undergo light-induced halide segregation (the Hoke effect), which is the textbook origin of exactly the 532 nm photodegradation observed here. A claim that 1% Zn/formate doping suppresses this needs direct evidence (e.g. PL-peak stability vs illumination time, or XRD showing no phase split), not just a 'no yellowing in the dark' observation. Genuinely not code-settleable from the extracted numbers.",
+      "quote": "laser irradiation with 532 nm through a pinhole\nor a slit (=partial illumination) showed clear signs of permanent photodegradation after\n500 hrs"
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c18",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "A PLQY\nof 14% has been obtained and a PL lifetime of 6.84 \u00b5s.",
-        "location": {
-          "section": "4. Conclusions",
-          "page": 9,
-          "char_span": null,
-          "quote": "A PLQY\nof 14% has been obtained and a PL lifetime of 6.84 \u00b5s."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c19",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "precursor solutions (1.4 M) were\nprepared by dissolving FAI, MACl, CsI, PbI2, PbBr2, and PbCl2 in 600 \u00b5L DMF and 150 \u00b5L\nDMSO",
-        "location": {
-          "section": "3. Experiment",
-          "page": 8,
-          "char_span": null,
-          "quote": "precursor solutions (1.4 M) were\nprepared by dissolving FAI, MACl, CsI, PbI2, PbBr2, and PbCl2 in 600 \u00b5L DMF and 150 \u00b5L\nDMSO"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c20",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "The perovskite\nfilms were spin-coated at 5000 rpm for 45 s (5 s acceleration), with 300 \u00b5L anisole dropped\nat 25 s after the start of spin-coating, and annealed on a hot plate at 100 \u00b0C for 20 min.",
-        "location": {
-          "section": "3. Experiment",
-          "page": 8,
-          "char_span": null,
-          "quote": "The perovskite\nfilms were spin-coated at 5000 rpm for 45 s (5 s acceleration), with 300 \u00b5L anisole dropped\nat 25 s after the start of spin-coating, and annealed on a hot plate at 100 \u00b0C for 20 min."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c21",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "there\nremains significant room for improvement towards the theoretical limit of 44%.",
-        "location": {
-          "section": "1. Introduction",
-          "page": 2,
-          "char_span": null,
-          "quote": "there\nremains significant room for improvement towards the theoretical limit of 44%."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:domain-expert",
+      "note": "The 44% theoretical / ~41% practical / 35.0% state-of-art chain is internally consistent (its 35.0% matches the LONGi record in c6), and 44% is a reasonable 2-terminal Si/perovskite radiative limit. The weak link is the '~41% practical' ceiling: it carries no citation or derivation in the graph (ev21 is prose only) and reads as a forward-looking projection rather than a sourced figure. What would confirm it: a cited practical-limit study or an explicit loss-budget calculation.",
+      "quote": "there\nremains significant room for improvement towards the theoretical limit of 44%."
+    },
+    {
+      "claim_id": "c18",
+      "dimension": "subjective:significance",
+      "note": "Whether obtaining 14% PLQY and a 6.84 us lifetime at 1% Zn/formate doping is an important or novel advance for wide-bandgap perovskite tandems — vs an incremental improvement over the Mariotti baseline (3.75% PLQY, ~2 us) — is a significance/novelty-worth judgment. Surfaced, explicitly not scored.",
+      "quote": "A PLQY\nof 14% has been obtained and a PL lifetime of 6.84 µs."
+    },
+    {
+      "claim_id": "c1",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach. 14% absolute PLQY on quartz is stated identically in abstract, Results (Fig 5, PLQY=14%), and Conclusions — internally consistent. Skeptic/methodologist: a single absolute-PLQY value with no spread is the weakest link, but that is a reporting-completeness note, not an over-claim. no numeric verifier covers it yet.",
+      "quote": "Photoluminescence quantum yields\n(up to 14% on quartz), as well as photoluminescence lifetimes (up to ~7 µs on quartz),\nindicate improved optical properties."
+    },
+    {
+      "claim_id": "c2",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach. Abstract '~7 us' faithfully rounds the Fig-6 headline lifetime of 6.84 us (delta 0.16 us, well within the +-1.1 us fit uncertainty); the '~' is appropriately hedged. no numeric verifier covers it yet.",
+      "quote": "photoluminescence lifetimes (up to ~7 µs on quartz)"
+    },
+    {
+      "claim_id": "c4",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach. T1 fixed external values: SQ single-junction limit 33.7% (detailed balance near the optimal ~1.34 eV gap, AM1.5G) and the silicon intrinsic/Auger (Richter) limit 29.4% are both textbook-correct and correctly ordered (33.7 > 29.4 < 100). no numeric verifier covers it yet.",
+      "quote": "capped at 33.7% by the Shockley–Queisser (SQ) limit [1]\nand, considering Auger recombination [2], realistically limited to 29.4% for silicon (Si)."
+    },
+    {
+      "claim_id": "c5",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach. '~45% theoretical PCE for tandems' is an approximate, explicitly cited (ref [3]) value consistent with the 2-terminal Si/perovskite radiative-limit literature (~44-45%); the '~' is hedged. no numeric verifier covers it yet.",
+      "quote": "theoretically enabling PCEs up to ~45% [3]"
+    },
+    {
+      "claim_id": "c6",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach BY THE PAPER. T5 external record: LONGi 35.0% certified perovskite-Si tandem is a correctly attributed, widely-reported value. Independent confirmation needs a certified-record lookup (records are time-sensitive). no numeric verifier covers it yet.",
+      "quote": "The current certified world record obtained by LONGi stands at 35.0% PCE"
+    },
+    {
+      "claim_id": "c7",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach. T5 citation: Mariotti et al. 32.5% certified triple-halide perovskite-Si tandem (2022) is correctly attributed; the value and year match the known result. Independent confirmation needs the cited source. no numeric verifier covers it yet.",
+      "quote": "Mariotti et al. [6] achieved a certified efficiency of 32.5% in\ntriple-halide perovskite–silicon tandem solar cells in 2022."
+    },
+    {
+      "claim_id": "c8",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach. T5 citation: Jeong et al., 2% formate -> 25.2% cell efficiency, is reported as someone else's result with the dopant level attached; faithful attribution. Independent confirmation needs the cited source. no numeric verifier covers it yet.",
+      "quote": "the addition of 2% (Fo−) formate anions\nsignificantly increases cell efficiency to 25.2%"
+    },
+    {
+      "claim_id": "c9",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach. T5 citation: 27.2% single-junction record (ref [31]) is correctly attributed. Independent confirmation needs the cited source. no numeric verifier covers it yet.",
+      "quote": "the current\nworld record (27.2% PCE) [31] contains potassium binoxalate"
+    },
+    {
+      "claim_id": "c10",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach. T5 citation: 34.58% certified Si tandem via asymmetric carbazole HTL (ref [16]) is faithfully attributed. Independent confirmation needs the cited source. no numeric verifier covers it yet.",
+      "quote": "resulting in a Si\ntandem cell with 34.58% PCE (certified)"
+    },
+    {
+      "claim_id": "c11",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach. Comparative claim (this work 14% PLQY vs Mariotti 3.75% on quartz): both numbers appear elsewhere in the graph (ev1/ev13), 14 > 3.75 holds, and the paper states 'higher' rather than a specific multiple — no inflated ratio. no numeric verifier covers it yet.",
+      "quote": "a maximum PLQY of 14% was\nobtained for wide-bandgap perovskite on quartz"
+    },
+    {
+      "claim_id": "c12",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach. T5 citation: Mariotti 3.75% PLQY and ~2 us (tail-fit) on quartz are reported as the comparator's values with the fit method named; faithful. Independent confirmation needs the cited source. no numeric verifier covers it yet.",
+      "quote": "Mariotti et al. [6] reported 3.75% as PLQY for their films on\nquartz (and a PL lifetime of ~2 µs, by tail-fit)"
+    },
+    {
+      "claim_id": "c13",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach. Lifetimes 6.84 / 3.65 / 1.57 us match Fig-6 inset (ev14) exactly, each with its own uncertainty; the 2025>2024>2019 ordering is internally consistent. Domain-expert: a 14% PLQY paired with a ~6.84 us lifetime is physically plausible for a wide-bandgap mixed-halide film (trap-limited but radiatively slow); tightening this would need the radiative rate k_r, which the paper does not report. no numeric verifier covers it yet.",
+      "quote": "the red\ntrace shows our 2025 material with a lifetime of 6.84 ± 1.1 µs, compared to 3.65 ± 0.8 µs\n(2024, blue) and 1.57 ± 0.1 µs (2019, green)"
+    },
+    {
+      "claim_id": "c14",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach. T0 stretched-exponential beta values 0.90 / 0.77 / 0.84 all lie in the physical (0,1] range and are paired with the matching lifetimes; the non-monotonic betas are normal for heterogeneous decay. no numeric verifier covers it yet.",
+      "quote": "Beta values are, respectively, 0.90 (1.57 µs) [9], 0.77 (3.65 µs) [11], and 0.84 (6.84 µs),\nobtained with stretched exponential fitting."
+    },
+    {
+      "claim_id": "c15",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach. 'ca. 400 nm' crystal dimension is an explicitly approximate SEM read (Fig 4 left); the 'ca.' hedges it and no exact value is asserted. no numeric verifier covers it yet.",
+      "quote": "The perovskite crystals have a dimension of\nca. 400 nm (see Figure 4—left)."
+    },
+    {
+      "claim_id": "c17",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach. T5 citation: Mariotti 25% loss after 478 h (undoped) is reported as the comparator's degradation figure with its exact hours; faithful attribution. Independent confirmation needs the cited source. no numeric verifier covers it yet.",
+      "quote": "Mariotti et al. reported 25% loss after 478 h\nof illumination (for “undoped” material) [6]"
+    },
+    {
+      "claim_id": "c18",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach on the NUMBERS. Conclusions restate PLQY 14% and lifetime 6.84 us at 1% doping, both consistent with Results (ev1/ev2). Whether this constitutes a 'significant' advance is routed separately as subjective:significance. no numeric verifier covers it yet.",
+      "quote": "A PLQY\nof 14% has been obtained and a PL lifetime of 6.84 µs."
+    },
+    {
+      "claim_id": "c19",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach. T0 experimental parameters (1.4 M precursor; 600 uL DMF / 150 uL DMSO) are a procedural recipe, internally plausible; nothing to recompute. no numeric verifier covers it yet.",
+      "quote": "precursor solutions (1.4 M) were\nprepared by dissolving FAI, MACl, CsI, PbI2, PbBr2, and PbCl2 in 600 µL DMF and 150 µL\nDMSO"
+    },
+    {
+      "claim_id": "c20",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach. T0 experimental parameters (5000 rpm, 45 s, 300 uL anisole at 25 s, 100 C / 20 min anneal) are a procedural recipe; nothing to recompute. no numeric verifier covers it yet.",
+      "quote": "The perovskite\nfilms were spin-coated at 5000 rpm for 45 s (5 s acceleration), with 300 µL anisole dropped\nat 25 s after the start of spin-coating, and annealed on a hot plate at 100 °C for 20 min."
     }
-  ]
+  ],
+  "abstained": []
 }

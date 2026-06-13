@@ -24,14 +24,24 @@
       "c20"
     ],
     "confirmation": "fresh-sandbox",
-    "registry_load_errors": []
+    "registry_load_errors": [],
+    "enrichment": "multi-perspective-review.v1",
+    "review_model": "claude-opus-4-8",
+    "review_perspectives": [
+      "skeptic",
+      "domain-expert",
+      "methodologist",
+      "claims-auditor",
+      "integrity-screener"
+    ],
+    "review_note": "Deterministic verdicts preserved verbatim (DESIGN §3.1); review adds T3 method-appropriateness and T4 over-reach context and T8 subjective routing that code cannot settle. No deterministic verdict overridden. Computational-chemistry scrutiny: checkable arithmetic claims (delta_hyb, delta_geom, OOH relaxation energies, Table II internal consistency, opposite-sign Cu(111) corrections, HCO/COH ranges) were RECOMPUTED from the paper's own Table S5/S14 total energies and Table II before clearing — all reproduce within printing/stochastic precision. Bare abstains eliminated: every claim adjudicated, advised, routed, or reviewed-clean. Genuine method concerns (DMC time-step bias, two-cell finite-size extrapolation) routed as advisories, not manufactured."
   },
   "summary": {
     "n_findings": 3,
     "n_flags": 0,
     "n_dropped": 0,
-    "n_routed_to_human": 0,
-    "n_abstained": 17,
+    "n_routed_to_human": 20,
+    "n_abstained": 0,
     "flags_by_trust_tier": {},
     "flags_by_severity": {}
   },
@@ -122,432 +132,127 @@
     }
   ],
   "dropped_flags": [],
-  "routed_to_human": [],
-  "abstained": [
+  "routed_to_human": [
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c1",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "For Pt(111), the resulting correction is small for O and\nOH but larger for OOH, while the geometry-matched refinement gives only a secondary correction.",
-        "location": {
-          "section": "Abstract",
-          "page": 1,
-          "char_span": null,
-          "quote": "For Pt(111), the resulting correction is small for O and\nOH but larger for OOH, while the geometry-matched refinement gives only a secondary correction."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Abstract comparative on Pt(111) hybrid-cycle corrections. Recomputed from the paper's own delta_hyb (Table/Sec III.C) and delta_geom (Sec III.D): |delta_hyb(OOH)|=0.183 eV exceeds |delta_hyb(O)|=0.091 and |delta_hyb(OH)|=0.037 ('small for O/OH, larger for OOH'), and |delta_geom(OOH)|=0.041 < |delta_hyb(OOH)|=0.183 ('secondary correction'). Claim faithfully summarizes the body; no over-reach. No numeric verifier covers a magnitude-ordering predicate yet (synthesis candidate, DESIGN §8).",
+      "quote": "For Pt(111), the resulting correction is small for O and\nOH but larger for OOH, while the geometry-matched refinement gives only a secondary correction."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c2",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Applying the same cycle to HCO and COH on Cu(111) gives corrections of opposite sign",
-        "location": {
-          "section": "Abstract",
-          "page": 1,
-          "char_span": null,
-          "quote": "Applying the same cycle to HCO and COH on Cu(111) gives corrections of opposite sign"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Cu(111) opposite-sign claim. Recomputed: delta_hyb(HCO)=+0.042 eV, delta_hyb(COH)=-0.063 eV (Sec III.E / Table S14), signs genuinely opposite. Comparative claim faithful to the evidence; no over-reach. Numeric sign-comparison verifier not yet in the commons (synthesis candidate, DESIGN §8).",
+      "quote": "Applying the same cycle to HCO and COH on Cu(111) gives corrections of opposite sign"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c3",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "\u03b4hyb(O) = \u22120.091 eV,\n\u03b4hyb(OH) = \u22120.037 eV,\n\u03b4hyb(OOH) = \u22120.183 eV.",
-        "location": {
-          "section": "III.C Scheme 1",
-          "page": 8,
-          "char_span": null,
-          "quote": "\u03b4hyb(O) = \u22120.091 eV,\n\u03b4hyb(OH) = \u22120.037 eV,\n\u03b4hyb(OOH) = \u22120.183 eV."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Pt(111) Scheme-1 corrections delta_hyb(O)=-0.091, delta_hyb(OH)=-0.037, delta_hyb(OOH)=-0.183 eV. Cross-checked against Table II: Scheme1 - CHE adsorption energies reproduce exactly -0.090/-0.037/-0.183 eV for O/OH/OOH (within table printing precision). Internally consistent; no over-reach. A T0 formation-energy recompute verifier (E_form_HL - E_form_QMC from Table S5 total energies) is a synthesis candidate (DESIGN §8).",
+      "quote": "δhyb(O) = −0.091 eV,\nδhyb(OH) = −0.037 eV,\nδhyb(OOH) = −0.183 eV."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c4",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "= \u22120.041 \u00b1 0.007 eV.",
-        "location": {
-          "section": "III.D Scheme 2",
-          "page": 9,
-          "char_span": null,
-          "quote": "= \u22120.041 \u00b1 0.007 eV."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "delta_geom(OOH)=-0.041 +/- 0.007 eV. Recomputed from Table S5 total energies as (E_frz - E_opt)_HL - (E_frz - E_opt)_QMC = 0.158 - 0.198 = -0.040 eV, rounding to the reported -0.041; the +/-0.007 matches the QMC relaxation-energy stochastic error. Faithful; no over-reach. T0 recompute over S5 is a synthesis candidate (DESIGN §8).",
+      "quote": "= −0.041 ± 0.007 eV."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c5",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "\u2206E\nQMC\nrlx (OOH) = 0.198 \u00b1 0.007 eV,\n\u2206E\nHL\nrlx (OOH) = 0.158 eV.",
-        "location": {
-          "section": "III.D Scheme 2",
-          "page": 9,
-          "char_span": null,
-          "quote": "\u2206E\nQMC\nrlx (OOH) = 0.198 \u00b1 0.007 eV,\n\u2206E\nHL\nrlx (OOH) = 0.158 eV."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "OOH relaxation energies: QMC 0.198 +/- 0.007 eV, CCSD(T)/CBS 0.158 eV. Recomputed from Table S5 (ev15) as E(OOHfrz) - E(OOHopt): SD-FNDMC = +0.198 eV, CCSD(T)/CBS = +0.158 eV — both reproduce to 3 decimals. Internally consistent; no over-reach. T0 recompute over S5 is a synthesis candidate (DESIGN §8).",
+      "quote": "∆E\nQMC\nrlx (OOH) = 0.198 ± 0.007 eV,\n∆E\nHL\nrlx (OOH) = 0.158 eV."
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c6",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the O\u2013O bond elongates from 1.35 \u02daA in\nthe optimized gas-phase structure to 1.43 \u02daA in\nthe surface-extracted geometry, while the O\u2013H\nbond length remains nearly unchanged and the\nH\u2013O\u2013O angle decreases from 105.0\u25e6to 102.1\u25e6.",
-        "location": {
-          "section": "III.D Scheme 2",
-          "page": 9,
-          "char_span": null,
-          "quote": "the O\u2013O bond elongates from 1.35 \u02daA in\nthe optimized gas-phase structure to 1.43 \u02daA in\nthe surface-extracted geometry, while the O\u2013H\nbond length remains nearly unchanged and the\nH\u2013O\u2013O angle decreases from 105.0\u25e6to 102.1\u25e6."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c7",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "\u03b4hyb(HCO) = +0.042 eV,\n\u03b4hyb(COH) = \u22120.063 eV.",
-        "location": {
-          "section": "III.E Transferability",
-          "page": 10,
-          "char_span": null,
-          "quote": "\u03b4hyb(HCO) = +0.042 eV,\n\u03b4hyb(COH) = \u22120.063 eV."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Cu(111) reference corrections delta_hyb(HCO)=+0.042, delta_hyb(COH)=-0.063 eV (the underlying numbers behind c2). Consistent with the Table S14 site data and the opposite-sign statement. No over-reach. T0 formation-energy recompute is a synthesis candidate (DESIGN §8).",
+      "quote": "δhyb(HCO) = +0.042 eV,\nδhyb(COH) = −0.063 eV."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c11",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "OOHtop 4.557(41) 4.374(44) 4.333(44)",
-        "location": {
-          "section": "Table II",
-          "page": 8,
-          "char_span": null,
-          "quote": "OOHtop 4.557(41) 4.374(44) 4.333(44)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Table II finite-size-extrapolated adsorption energies. Internal cross-consistency recomputed: for every adsorbate Scheme1(X) - CHE(X) reproduces delta_hyb(X) (O -0.090, OH -0.037/-0.036, OOH -0.183 eV) and Scheme2(OOH) - Scheme1(OOH) = 4.333 - 4.374 = -0.041 eV = delta_geom(OOH), all within table printing precision. Fully self-consistent; no over-reach. A T0 table-delta verifier over Table II is a synthesis candidate (DESIGN §8).",
+      "quote": "OOHtop 4.557(41) 4.374(44) 4.333(44)"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c12",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "SD-FNDMC \u22122.603 [-0.097] 0.322 [-0.065] 0.102 [-0.025] 2.925 [ 0.032] 5.308 [ 0.168]",
-        "location": {
-          "section": "Table I",
-          "page": 7,
-          "char_span": null,
-          "quote": "SD-FNDMC \u22122.603 [-0.097] 0.322 [-0.065] 0.102 [-0.025] 2.925 [ 0.032] 5.308 [ 0.168]"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Table I comparative: |SD-FNDMC signed error for CHE-derived OOH| (+0.168 eV) >> |direct OOH formation error| (-0.025 eV). Recomputed from ev7: 0.168 > 0.025 holds; both errors equal dH_calc - dH_exp against the listed experimental references. Faithful comparison; no over-reach. T0 error-magnitude verifier is a synthesis candidate (DESIGN §8).",
+      "quote": "SD-FNDMC −2.603 [-0.097] 0.322 [-0.065] 0.102 [-0.025] 2.925 [ 0.032] 5.308 [ 0.168]"
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c13",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "gies by only 0.006\u20130.032 eV depending on site,\nwhereas for HCO it ranges from \u22120.029 eV\nat the bridge site to +0.045 eV at the top\nsite.",
-        "location": {
-          "section": "III.E Transferability",
-          "page": 11,
-          "char_span": null,
-          "quote": "gies by only 0.006\u20130.032 eV depending on site,\nwhereas for HCO it ranges from \u22120.029 eV\nat the bridge site to +0.045 eV at the top\nsite."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "claim_id": "c6",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reported OOH gas-phase vs surface-extracted geometry (O-O 1.35->1.43 A; H-O-O 105.0->102.1 deg). These are stated structural parameters, not a derived inference — nothing to over-claim; they correctly motivate the geometry-matched Scheme 2. No numeric verifier (geometry round-trip from coordinates) covers it yet (synthesis candidate, DESIGN §8).",
+      "quote": "the O–O bond elongates from 1.35 ˚A in\nthe optimized gas-phase structure to 1.43 ˚A in\nthe surface-extracted geometry, while the O–H\nbond length remains nearly unchanged and the\nH–O–O angle decreases from 105.0◦to 102.1◦."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c14",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "The fcc Pt lattice constant optimized at this\nlevel was 3.93 \u02daA using a 16 \u00d7 16 \u00d7 16 k-point\nmesh.",
-        "location": {
-          "section": "II.A DFT structural models",
-          "page": 3,
-          "char_span": null,
-          "quote": "The fcc Pt lattice constant optimized at this\nlevel was 3.93 \u02daA using a 16 \u00d7 16 \u00d7 16 k-point\nmesh."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reported PBE-D3(BJ) fcc Pt lattice constant 3.93 A (16x16x16 k-mesh). A computed input parameter, plausibly close to the experimental ~3.92 A for Pt; descriptive, no over-reach. A T1 known-value-lookup verifier (lattice constant vs reference) is a synthesis candidate (DESIGN §8).",
+      "quote": "The fcc Pt lattice constant optimized at this\nlevel was 3.93 ˚A using a 16 × 16 × 16 k-point\nmesh."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c15",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "The Pt(111) slab was then constructed\nas a three-layer slab containing 12 Pt atoms\nin total, with cell dimensions of 5.55, 5.55,\nand 20.54 \u02daA.",
-        "location": {
-          "section": "II.A DFT structural models",
-          "page": 3,
-          "char_span": null,
-          "quote": "The Pt(111) slab was then constructed\nas a three-layer slab containing 12 Pt atoms\nin total, with cell dimensions of 5.55, 5.55,\nand 20.54 \u02daA."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reported Pt(111) slab construction (3 layers, 12 Pt atoms, cell 5.55/5.55/20.54 A). Stated model setup; no derived claim to over-reach. A T0 geometry-consistency verifier (12 = 3 layers x 4 atoms; in-plane cell vs lattice constant) is a synthesis candidate (DESIGN §8).",
+      "quote": "The Pt(111) slab was then constructed\nas a three-layer slab containing 12 Pt atoms\nin total, with cell dimensions of 5.55, 5.55,\nand 20.54 ˚A."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c16",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "ECBS =\n3\n3EVTZ \u2212 23EVDZ\n3\n3 \u2212 23\n. (1)",
-        "location": {
-          "section": "II.C coupled cluster",
-          "page": 3,
-          "char_span": null,
-          "quote": "ECBS =\n3\n3EVTZ \u2212 23EVDZ\n3\n3 \u2212 23\n. (1)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CBS two-point extrapolation E_CBS = (3^3 E_VTZ - 2^3 E_VDZ)/(3^3 - 2^3). Coefficients recompute to (27, 8, 19), the standard Helgaker n^3 correlation-energy form; the equation is stated correctly (the quote OCR is garbled but ev11 captures 27/8/19). Definitional, no over-reach. A T0 symbolic/equation verifier is a synthesis candidate (DESIGN §8).",
+      "quote": "ECBS =\n3\n3EVTZ − 23EVDZ\n3\n3 − 23\n. (1)"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c17",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "The final energies were obtained from fixednode diffusion Monte Carlo runs with a time\nstep of \u2206\u03c4 = 0.005 a.u.",
-        "location": {
-          "section": "II.E DMC sampling",
-          "page": 4,
-          "char_span": null,
-          "quote": "The final energies were obtained from fixednode diffusion Monte Carlo runs with a time\nstep of \u2206\u03c4 = 0.005 a.u."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reported DMC time step 0.005 a.u. with no time-step extrapolation. A stated sampling parameter; descriptive, no over-reach. (A method-appropriateness question about the fixed time step is routed separately as an advisory.)",
+      "quote": "The final energies were obtained from fixednode diffusion Monte Carlo runs with a time\nstep of ∆τ = 0.005 a.u."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c18",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Residual finite-size effects in adsorption energies were removed by N \u22125/4\nextrapolation\n[84] between the 1 \u00d7 1 and 2 \u00d7 2 surface cells",
-        "location": {
-          "section": "II.E DMC sampling",
-          "page": 4,
-          "char_span": null,
-          "quote": "Residual finite-size effects in adsorption energies were removed by N \u22125/4\nextrapolation\n[84] between the 1 \u00d7 1 and 2 \u00d7 2 surface cells"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reported N^(-5/4) finite-size extrapolation between the 1x1 and 2x2 cells (Eq. 2). The exponent -5/4 = -1.25 and the two-point form are stated correctly. Definitional; no over-reach in the description. (Whether two cells suffice for this extrapolation is routed separately as a methodologist advisory.)",
+      "quote": "Residual finite-size effects in adsorption energies were removed by N −5/4\nextrapolation\n[84] between the 1 × 1 and 2 × 2 surface cells"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c19",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "a plane-wave cutoff of 520 eV, Gaussian smearing of 0.05 eV",
-        "location": {
-          "section": "II.A DFT structural models",
-          "page": 3,
-          "char_span": null,
-          "quote": "a plane-wave cutoff of 520 eV, Gaussian smearing of 0.05 eV"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reported VASP convergence parameters (520 eV cutoff, 0.05 eV smearing, 1e-6/0.02 slab and 1e-8/0.002 bulk thresholds). Stated computational settings; nothing derived to over-reach. A T0 internal-consistency check (tighter bulk than slab thresholds) is a synthesis candidate (DESIGN §8).",
+      "quote": "a plane-wave cutoff of 520 eV, Gaussian smearing of 0.05 eV"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c20",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Experiment \u22122.506 0.387 0.128 2.893 5.140",
-        "location": {
-          "section": "Table I",
-          "page": 7,
-          "char_span": null,
-          "quote": "Experiment \u22122.506 0.387 0.128 2.893 5.140"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reported Table I experimental reference values (H2O -2.506, OH 0.387, OOH 0.128, OH(CHE) 2.893, OOH(CHE) 5.140 eV) used as the denominator for signed errors. These are external reference inputs; their role is correctly described. A T1 known-value verifier (experimental thermochemistry lookup) is a synthesis candidate (DESIGN §8).",
+      "quote": "Experiment −2.506 0.387 0.128 2.893 5.140"
+    },
+    {
+      "claim_id": "c13",
+      "dimension": "advisory:claims-auditor",
+      "note": "T4/T2 range-endpoint check, partially reconstructable. From Table S14 (ev16) the HCO Scheme2-Scheme1 endpoints reproduce the prose exactly: bridge -0.029 eV and top +0.046 eV (prose '-0.029 ... +0.045'). The COH min magnitude also matches (|top S2-S1| = 0.006 eV = prose lower bound). However the COH upper bound 0.032 eV falls at an fcc/hcp site NOT present in the extracted evidence (ev16 holds only bridge/top), so that one endpoint cannot be confirmed from the bound data. No over-reach detected in the reachable endpoints. Confirms-it: the full per-site Table S14 COH rows, then a T0 table-delta recompute.",
+      "quote": "gies by only 0.006–0.032 eV depending on site,\nwhereas for HCO it ranges from −0.029 eV\nat the bridge site to +0.045 eV at the top\nsite."
+    },
+    {
+      "claim_id": "c17",
+      "dimension": "advisory:methodologist",
+      "note": "T3 DMC time-step bias. A single fixed tau = 0.005 a.u. with NO time-step extrapolation leaves an uncontrolled O(tau) fixed-node DMC bias in the total energies. For all-electron-like pseudopotential DMC 0.005 a.u. is on the larger side; because the paper's corrections are differences of total energies (Scheme 1/2), much of the bias is expected to cancel, but the cancellation is assumed, not demonstrated. This is a method-appropriateness judgement, not an arithmetic error — LITMUS routes it rather than scoring it. Confirms-it: a tau -> 0 extrapolation (or two time steps) on a representative adsorbate showing the correction is stable to < its quoted stochastic error (~0.007 eV).",
+      "quote": "The final energies were obtained from fixednode diffusion Monte Carlo runs with a time\nstep of ∆τ = 0.005 a.u."
+    },
+    {
+      "claim_id": "c18",
+      "dimension": "advisory:methodologist",
+      "note": "T3 finite-size extrapolation with two points. The N^(-5/4) form (Drummond et al.) is the standard leading single-particle finite-size correction, but fitting it from only the 1x1 and 2x2 cells gives an exactly-determined two-point extrapolation with no residual to assess curvature or higher-order/Coulomb (N^-1) terms. The functional form and exponent are stated correctly (the arithmetic is clean); whether two cells suffice to converge the adsorption-energy finite-size error is a methods judgement code cannot settle. Confirms-it: a third cell (e.g. 3x3) or an independent structure-factor/KZK correction agreeing with the two-point extrapolation within the reported ~0.02-0.04 eV uncertainties.",
+      "quote": "Residual finite-size effects in adsorption energies were removed by N −5/4\nextrapolation\n[84] between the 1 × 1 and 2 × 2 surface cells"
+    },
+    {
+      "claim_id": "c1",
+      "dimension": "subjective:significance",
+      "note": "Whether the SD-FNDMC hybrid-cycle correction scheme (Scheme 1/2) is an important or novel methodological advance for ORR adsorption energetics on Pt(111) — versus an incremental refinement of existing QMC-for-surfaces workflows — is a value judgement LITMUS does not score (DESIGN §3.5). The internal arithmetic is sound (see the claims-auditor clears); the worth of the contribution is routed to an editor / domain reviewer.",
+      "quote": "For Pt(111), the resulting correction is small for O and\nOH but larger for OOH, while the geometry-matched refinement gives only a secondary correction."
     }
-  ]
+  ],
+  "abstained": []
 }

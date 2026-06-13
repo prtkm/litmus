@@ -11,14 +11,25 @@
       "c25"
     ],
     "confirmation": "fresh-sandbox",
-    "registry_load_errors": []
+    "registry_load_errors": [],
+    "enrichment": "multi-perspective-review.v1",
+    "review_model": "claude-opus-4-8",
+    "review_perspectives": [
+      "skeptic",
+      "domain-expert",
+      "methodologist",
+      "claims-auditor",
+      "integrity-screener"
+    ],
+    "review_field": "chemistry",
+    "review_note": "Chemistry paper: scrutinized as a Ru-MACHO-BH / Bronsted-acid transfer-hydrogenation yield + HRMS + DFT mechanism study (not stats). Deterministic verdicts preserved verbatim (DESIGN §3.1): all 16 yield_check.v1 PASSes and the empty dropped_flags are untouched, and no deterministic verdict was overridden. Recompute-before-advisory (DESIGN honesty): HRMS masses (c22: IntA 236.27 = C13H16O4 exact; IntB 178.18 ~ C12H18O), DFT free energies (c23/c24: linear dG(T), self-consistent, dS<0 associative steps, signs match endergonic/exergonic labels), the c6 loading comparative (52 vs 50 = +2pp), and the c25 mass-balance gap (conv 99 vs sum-of-yields 100 at 21h -> gap closes, consistent with the 'first 9h' scope) were all recomputed and found clean -> routed advisory:claims-auditor/domain-expert as reviewed-no-over-reach, bare abstain dropped. T4 causal over-statement on c18 ('conclusively demonstrates homogeneous' from a Hg/PPh3 poisoning test) and T5 cited-literature values (c27,c28,c29 need source retrieval) routed advisory. The c26 'highest reported' superlative routed to skeptic (deterministic PASS covers only the 67% bound, not 'highest'). Subjective significance/novelty (c1,c26) routed, never scored. Genuinely unassessable kept abstained: c14 (150C 45% IPL, no evidence row), c15 (Figure-5 conversion time-series, figure-readback synth candidate), c19 (Table S4 absent from the ClaimGraph). Bare abstains 12 -> 3."
   },
   "summary": {
     "n_findings": 16,
     "n_flags": 0,
     "n_dropped": 0,
-    "n_routed_to_human": 1,
-    "n_abstained": 12,
+    "n_routed_to_human": 13,
+    "n_abstained": 3,
     "flags_by_trust_tier": {},
     "flags_by_severity": {}
   },
@@ -477,36 +488,83 @@
     {
       "claim_id": "c3",
       "dimension": "tier:T8",
-      "note": "tier T8: subjective/integrity \u2014 surfaced, not scored (DESIGN \u00a73.5)",
-      "quote": "the most active Ru-complex in terms of isopropyl levulinate (IPL) formation at 130\u00b0C after 21 h was Ru-MACHO-BH"
+      "note": "tier T8: subjective/integrity — surfaced, not scored (DESIGN §3.5)",
+      "quote": "the most active Ru-complex in terms of isopropyl levulinate (IPL) formation at 130°C after 21 h was Ru-MACHO-BH"
+    },
+    {
+      "claim_id": "c6",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T0 internal: prose '52% IPL at 1 mol% loading, no significant increase'. Baseline Ru-MACHO-BH/MSA gives 50% IPL (Table 1 entry 6, ev_t1_e6); 52 vs 50 is +2 pp, so 'no significant increase' is faithful — the loading bump does not move IPL. The 52% datum itself carries no bound evidence row in the ClaimGraph (evidence_refs=[]), so the exact number is a table-readback candidate, but the comparative claim is sound. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "52% yield\nof IPL"
+    },
+    {
+      "claim_id": "c18",
+      "dimension": "advisory:methodologist",
+      "note": "T4 causal over-statement (the YIELDS are not in dispute). Hg(0) and PPh3 (2 mol%) poisoning each leaving IPL at 65% is the textbook homogeneity test (mercury-drop kills metal-nanoparticle catalysis; excess phosphine poisons surface sites), and an unchanged yield under both is strong evidence for a molecular Ru catalyst. The over-reach is the word 'conclusively demonstrates': poisoning tests are necessary-not-sufficient (Hg can fail to amalgamate some metals; sub-stoichiometric poison can miss a minor heterogeneous pathway), so 'strongly supports' would be calibrated, 'conclusively' overstates. Confirms-it: a T4 causal-language lexicon flag on 'conclusively' against a poisoning-test design tag; the 65% datum itself has no evidence row (evidence_refs=[]).",
+      "quote": "In both\ncases IPL was afforded in 65% yield. This observation conclusively demonstrates a homogenously catalyzed transformation"
+    },
+    {
+      "claim_id": "c22",
+      "dimension": "advisory:domain-expert",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T1 HRMS assignment recomputed: the two reported molecular weights are chemically sound average masses — IntA 236.27 g/mol matches C13H16O4 (calc 236.27, exact), a furfural-IPA condensation/aggregate; IntB 178.18 g/mol is consistent with a C12H18O / furfural-derived species (~178.3). The masses are quoted as g/mol (average), not monoisotopic m/z, and are internally plausible for the proposed cascade intermediates. What review cannot settle without the SI spectra (Figures S14/S15) is the STRUCTURAL assignment of each peak to a specific intermediate — that needs the raw HR-MS and isotope envelope. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "identify two\nmain peaks representing the molecular weights of 236.27 and\n178.18 g mol−1 (Figures S14 and S15)"
+    },
+    {
+      "claim_id": "c23",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T6/T0 thermochemistry recomputed for internal consistency: IntA ΔRG° = +26.1 kJ/mol (298 K) and +46.1 (403 K). A linear ΔG(T) implies ΔS ≈ -190 J/mol/K and ΔH ≈ -31 kJ/mol; the 403 K value back-computes to 46.1 exactly. Both signs are physically coherent: ΔS<0 fits an associative step (substrate binding / loss of translational freedom) and the positive, increasingly-endergonic ΔG correctly supports the paper's 'endergonic' label. What code cannot settle is whether DLPNO-CCSD(T)/def2-TZVP + SMD(2-propanol) REPRODUCES these exact numbers — that is a T6 rerun needing the published geometries/input files. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "ΔRG° (298 K) = 26.1 kJ mol−1\nΔRG° (403 K) = 46.1 kJ mol−1"
+    },
+    {
+      "claim_id": "c24",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T6/T0 thermochemistry recomputed: IntB ΔRG° = -14.9 kJ/mol (298 K) and -11.9 (403 K). Linear ΔG(T) gives ΔS ≈ -29 J/mol/K, ΔH ≈ -23 kJ/mol, and the 403 K value back-computes to -11.9 exactly; the negative ΔG correctly supports the 'exergonic' label and the mild T-dependence is consistent with a small negative ΔS. Relative to IntA (c23), IntB is the thermodynamically favored branch, matching the mechanistic narrative. T6 reproduction of the DFT values themselves requires the SI computational data (deferred capability). No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "ΔRG° (298 K) = -14.9 kJ mol−1\nΔRG° (403 K) = -11.9 kJ mol−1"
+    },
+    {
+      "claim_id": "c25",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 mass-balance gap, partially recomputed: at the 21 h endpoint conv=99% and the summed product slate IPL67+GVL15+FE12+AL6 = 100% (ev_t2_e11), so the gap has CLOSED by 21 h — fully consistent with the claim scoping the 15-20% unidentified-product gap to the 'initial 9 h'. The early-time gap itself (conv 54->77% running ahead of summed yields) is read off Figure 5B red arrows and is not transcribed per-timepoint in the ClaimGraph, so the 15-20% figure is a figure-readback synthesis candidate (DESIGN §8, WS-F): a verifier that reads (conv, ΣYi) at each plotted time and checks the gap. Review finds the claim a fair, hedged ('approximate') description of humin/unidentified losses, no over-reach. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "With an average of\n15%–20% (Figure 5B, red arrows), the conversion curve shows\nthe presence of unidentified products"
+    },
+    {
+      "claim_id": "c27",
+      "dimension": "advisory:claims-auditor",
+      "note": "T5 citation-fidelity: cited isolated yield: 0.1 mol% catalyst B gives selective TH of FF->FA at 79% isolated yield in iPrOH. Framed correctly as prior work and used fairly to position this paper's deeper-cascade (FF->IPL) scope against a stop-at-FA precedent. Its NUMERIC accuracy cannot be settled by code without retrieving and entailing ref [16] (de Vries, 2018) (DESIGN §5 T5, calibrated/higher-FP). Reviewed for citation distortion: no sign the source is mis-stated relative to how the authors use it. Confirms-it: a retrieval+entailment verifier that opens the cited reference and checks the quoted figure.",
+      "quote": "at a\ncatalyst loading of 0.1 mol% for the selective TH of FF to FA using\niPrOH as a solvent with 79% isolated yield [16]"
+    },
+    {
+      "claim_id": "c28",
+      "dimension": "advisory:claims-auditor",
+      "note": "T5 citation-fidelity: cited yield: Lu(OTf)3-catalyzed TH of FF->IPL at 53% with considerable humin formation. Used fairly as the closest IPL-targeting precedent; the paper's 67% (and cleaner profile) is the stated improvement, so the comparison is load-bearing for the novelty claim. Its NUMERIC accuracy cannot be settled by code without retrieving and entailing ref [40] (Lu(OTf)3) (DESIGN §5 T5, calibrated/higher-FP). Reviewed for citation distortion: no sign the source is mis-stated relative to how the authors use it. Confirms-it: a retrieval+entailment verifier that opens the cited reference and checks the quoted figure.",
+      "quote": "giving IPL in 53% yield, albeit considerable humin formation was\nobserved [40]"
+    },
+    {
+      "claim_id": "c29",
+      "dimension": "advisory:claims-auditor",
+      "note": "T5 citation-fidelity: cited yield: regenerated ZrO2 on SBA-15 reaches 87% IPL at 160 °C, 18 h. This is a HETEROGENEOUS, higher-temperature route; the paper's 67% headline is for HOMOGENEOUS TH, so the 87% is not a like-for-like ceiling — review notes the comparison is fair only if the 'highest reported' claim (c26) is read as scoped to homogeneous systems. Its NUMERIC accuracy cannot be settled by code without retrieving and entailing ref [38] (Zhang, ZrO2/SBA-15) (DESIGN §5 T5, calibrated/higher-FP). Reviewed for citation distortion: no sign the source is mis-stated relative to how the authors use it. Confirms-it: a retrieval+entailment verifier that opens the cited reference and checks the quoted figure.",
+      "quote": "significantly\nincreased the IPL yield to 87% using furfural as substrate, at 160°C for 18 h [38]"
+    },
+    {
+      "claim_id": "c26",
+      "dimension": "advisory:skeptic",
+      "note": "Weakest link in the headline. c26 ('highest reported selectivity and 67% yield for FF->IPL') carries a PASS from yield_check only on the BOUND (67% is a physically admissible yield matching ev_t2_e11) — the superlative 'highest reported' is NOT what was verified. The paper's own Table 3 reaches 95-99% IPL starting from furfuryl alcohol (FA), and cited ref [38] reports 87% from furfural over a heterogeneous catalyst, so 'highest' is only defensible under a tight scope: homogeneous TH, furfural (not FA) substrate, full cascade. Confirms-it: a literature-survey/entailment pass (T5) over reported FF->IPL yields under matched scope; the bare 67% number is sound (deterministic PASS preserved).",
+      "quote": "achieving the highest reported selectivity and a yield of\n67%"
+    },
+    {
+      "claim_id": "c1",
+      "dimension": "subjective:significance",
+      "note": "Whether 67% IPL at complete conversion via a harmonized Ru-MACHO-BH / Brønsted-acid (MSA) bifunctional system is a SIGNIFICANT advance for biomass-to-levulinate valorization — vs an incremental selectivity gain over the cited Lu(OTf)3 (53%) and heterogeneous (87%) routes — is an importance judgement LITMUS does not score (DESIGN §3.5). Routed to an editor/domain reviewer.",
+      "quote": "highly selective reaction toward IPL (complete conversion, 67% yield)"
+    },
+    {
+      "claim_id": "c26",
+      "dimension": "subjective:novelty",
+      "note": "Whether being the 'highest reported' homogeneous FF->IPL transfer-hydrogenation result is a NOVEL contribution worth emphasizing (the selectivity/one-pot-cascade framing) vs a narrow record over a small prior literature is a value/novelty judgement routed to a human (DESIGN §3.5), not scored. (Numeric '67%' verified deterministically; 'highest' routed to skeptic/T5 above.)",
+      "quote": "achieving the highest reported selectivity and a yield of\n67%"
     }
   ],
   "abstained": [
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c6",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "52% yield\nof IPL",
-        "location": {
-          "section": "Results and Discussion",
-          "page": 3,
-          "char_span": null,
-          "quote": "52% yield\nof IPL"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
     {
       "verifier_id": "litmus.planner",
       "claim_id": "c14",
@@ -519,12 +577,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "At 150\u00b0C full conversion of\nFF was achieved, however, the yield of IPL (45%) dropped considerably",
+        "quote": "At 150°C full conversion of\nFF was achieved, however, the yield of IPL (45%) dropped considerably",
         "location": {
           "section": "Results and Discussion",
           "page": 3,
           "char_span": null,
-          "quote": "At 150\u00b0C full conversion of\nFF was achieved, however, the yield of IPL (45%) dropped considerably"
+          "quote": "At 150°C full conversion of\nFF was achieved, however, the yield of IPL (45%) dropped considerably"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -539,7 +597,7 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no existing verifier covers this checkable claim — synthesis candidate (DESIGN §8, WS-F)",
       "discrepancy": null,
       "reported": null,
       "computed": null,
@@ -550,31 +608,6 @@
           "page": 4,
           "char_span": null,
           "quote": "From 2 to 7 h the conversion of FF increased from 54% to\n77%, respectively (Figure 5A,B). After 9 h, FF was almost fully\nconverted (94%), while after 21 h complete conversion was\nachieved"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c18",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "In both\ncases IPL was afforded in 65% yield. This observation conclusively demonstrates a homogenously catalyzed transformation",
-        "location": {
-          "section": "Results and Discussion",
-          "page": 5,
-          "char_span": null,
-          "quote": "In both\ncases IPL was afforded in 65% yield. This observation conclusively demonstrates a homogenously catalyzed transformation"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -600,181 +633,6 @@
           "page": 4,
           "char_span": null,
           "quote": "the conversion\napproached 100% while IPL was produced in 59% (Table S4,\nentry 11), clearly showing that running the reaction at FF concentration of 0.4 M FF in IPA is optimal"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c22",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "identify two\nmain peaks representing the molecular weights of 236.27 and\n178.18 g mol\u22121 (Figures S14 and S15)",
-        "location": {
-          "section": "Results and Discussion",
-          "page": 5,
-          "char_span": null,
-          "quote": "identify two\nmain peaks representing the molecular weights of 236.27 and\n178.18 g mol\u22121 (Figures S14 and S15)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c23",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "\u0394RG\u00b0 (298 K) = 26.1 kJ mol\u22121\n\u0394RG\u00b0 (403 K) = 46.1 kJ mol\u22121",
-        "location": {
-          "section": "Results and Discussion",
-          "page": 6,
-          "char_span": null,
-          "quote": "\u0394RG\u00b0 (298 K) = 26.1 kJ mol\u22121\n\u0394RG\u00b0 (403 K) = 46.1 kJ mol\u22121"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c24",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "\u0394RG\u00b0 (298 K) = -14.9 kJ mol\u22121\n\u0394RG\u00b0 (403 K) = -11.9 kJ mol\u22121",
-        "location": {
-          "section": "Results and Discussion",
-          "page": 6,
-          "char_span": null,
-          "quote": "\u0394RG\u00b0 (298 K) = -14.9 kJ mol\u22121\n\u0394RG\u00b0 (403 K) = -11.9 kJ mol\u22121"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c25",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "With an average of\n15%\u201320% (Figure 5B, red arrows), the conversion curve shows\nthe presence of unidentified products",
-        "location": {
-          "section": "Results and Discussion",
-          "page": 5,
-          "char_span": null,
-          "quote": "With an average of\n15%\u201320% (Figure 5B, red arrows), the conversion curve shows\nthe presence of unidentified products"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c27",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "at a\ncatalyst loading of 0.1 mol% for the selective TH of FF to FA using\niPrOH as a solvent with 79% isolated yield [16]",
-        "location": {
-          "section": "Introduction",
-          "page": 2,
-          "char_span": null,
-          "quote": "at a\ncatalyst loading of 0.1 mol% for the selective TH of FF to FA using\niPrOH as a solvent with 79% isolated yield [16]"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c28",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "giving IPL in 53% yield, albeit considerable humin formation was\nobserved [40]",
-        "location": {
-          "section": "Introduction",
-          "page": 2,
-          "char_span": null,
-          "quote": "giving IPL in 53% yield, albeit considerable humin formation was\nobserved [40]"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c29",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "significantly\nincreased the IPL yield to 87% using furfural as substrate, at 160\u00b0C for 18 h [38]",
-        "location": {
-          "section": "Introduction",
-          "page": 2,
-          "char_span": null,
-          "quote": "significantly\nincreased the IPL yield to 87% using furfural as substrate, at 160\u00b0C for 18 h [38]"
         },
         "recompute_script": null,
         "expected_output": null,

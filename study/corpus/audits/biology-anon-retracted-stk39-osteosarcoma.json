@@ -7,14 +7,26 @@
     "n_verifiers": 9,
     "synthesis_candidates": [],
     "confirmation": "fresh-sandbox",
-    "registry_load_errors": []
+    "registry_load_errors": [],
+    "review": {
+      "kind": "multi-perspective",
+      "perspectives": [
+        "skeptic",
+        "domain-expert:biology-oncology",
+        "methodologist:T3",
+        "claims-auditor:T4",
+        "integrity-screener:T7"
+      ],
+      "document_type": "retraction_notice",
+      "note": "Retraction notice, not the original article. All 4 claims are factual transcriptions of the editorial statement (T7); none is numerically recomputable, so no advisory is manufactured. Deterministic verdicts preserved exactly (none existed). 3 integrity signals routed as advisories; 1 irreducibly-private process fact abstained."
+    }
   },
   "summary": {
     "n_findings": 0,
     "n_flags": 0,
     "n_dropped": 0,
-    "n_routed_to_human": 4,
-    "n_abstained": 0,
+    "n_routed_to_human": 3,
+    "n_abstained": 1,
     "flags_by_trust_tier": {},
     "flags_by_severity": {}
   },
@@ -23,28 +35,51 @@
   "routed_to_human": [
     {
       "claim_id": "c1",
-      "dimension": "tier:T7",
-      "note": "tier T7: subjective/integrity \u2014 surfaced, not scored (DESIGN \u00a73.5)",
+      "dimension": "advisory:integrity-screener",
+      "note": "Reviewed (T7/T1). c1 asserts the original article (DOI 10.3892/ol.2017.6728, Oncol Lett 14:4599-4604, 2017) is retracted. SKEPTIC: rests on this notice's own statement, but a retraction notice is a primary-source authority on its own retraction. CLAIMS-AUDITOR: no over-reach. Retraction status is a fixed-external-knowledge lookup (DESIGN §5 T1), so it is deterministically confirmable -- but NO numeric/lookup verifier ran here (n_findings=0). WOULD CONFIRM: a Crossref/Retraction-Watch lookup on the original DOI returning relation='is-retracted-by' -> retraction DOI 10.3892/ol.2024.14510 (ONCOLOGY LETTERS 28:377, 2024). Route to human until that verifier exists.",
       "quote": "the Editor has decided that this paper \nshould be retracted from the Journal"
     },
     {
       "claim_id": "c2",
-      "dimension": "tier:T7",
-      "note": "tier T7: subjective/integrity \u2014 surfaced, not scored (DESIGN \u00a73.5)",
+      "dimension": "advisory:integrity-screener",
+      "note": "Reviewed (T7 image-duplication). c2: Transwell invasion data in Fig. 4B (p. 4602) are 'strikingly similar' to data in different form in other articles by different authors at different institutes. This is the core integrity signal that drove the retraction. DOMAIN-EXPERT (oncology): STK39 (a Ste20/SPAK kinase) modulating osteosarcoma invasion/proliferation is field-plausible biology -- plausibility is not the problem; data provenance is. METHODOLOGIST: a retraction notice has no method of its own to assess. SKEPTIC: the notice gives no panel coordinates or the specific cross-papers, so LITMUS cannot recompute a duplication verdict from this document. WOULD CONFIRM: run an image-duplication/forensic verifier on the original Fig. 4B against the named source figures (panel-level correlation / copy-move / PubPeer thread). Genuine concern, not code-settleable here -> human.",
       "quote": "certain of the \nTranswell invasion assay data shown in Fig. 4B on p. 4602 \nwere strikingly similar to data appearing in different form in \nother articles written by different authors at different research \ninstitutes"
     },
     {
       "claim_id": "c3",
-      "dimension": "tier:T7",
-      "note": "tier T7: subjective/integrity \u2014 surfaced, not scored (DESIGN \u00a73.5)",
+      "dimension": "advisory:integrity-screener",
+      "note": "Reviewed (T7 prior/duplicate publication). c3: the contentious data had already been published prior to submission to Oncology Letters. CLAIMS-AUDITOR: the notice is appropriately hedged ('contentious data'), no over-claim. SKEPTIC: the prior venue/date are not named in this notice, so the timeline cannot be reconstructed from this document alone. WOULD CONFIRM: a literature/timeline search establishing the earlier publication of the same Fig. 4B / Transwell data with submission-date ordering. A real duplicate-publication concern that code cannot settle from the notice -> human.",
       "quote": "the contentious data in the \nabove article had already been published prior to its submission \nto"
-    },
-    {
-      "claim_id": "c4",
-      "dimension": "tier:T7",
-      "note": "tier T7: subjective/integrity \u2014 surfaced, not scored (DESIGN \u00a73.5)",
-      "quote": "The authors were asked \nfor an explanation to account for these concerns, but the \nEditorial Office did not receive a reply"
     }
   ],
-  "abstained": []
+  "abstained": [
+    {
+      "verifier_id": "review.multi-perspective",
+      "claim_id": "c4",
+      "status": "inconclusive",
+      "trust_tier": "routed_to_human",
+      "verifier_kind": "assisted",
+      "severity": null,
+      "message": "Genuinely unassessable. c4 ('the authors were asked for an explanation ... but the Editorial Office did not receive a reply') is a private editorial-process fact. No verifier across T0-T7 can observe editor<->author correspondence; it carries no number to recompute and no figure/data to screen. SKEPTIC/CLAIMS-AUDITOR/METHODOLOGIST/DOMAIN-EXPERT/INTEGRITY-SCREENER all bottom out at 'not checkable from available evidence'. Abstain > guess (DESIGN §3.4).",
+      "discrepancy": null,
+      "reported": null,
+      "computed": null,
+      "evidence": {
+        "quote": "The authors were asked \nfor an explanation to account for these concerns, but the \nEditorial Office did not receive a reply",
+        "location": {
+          "section": "RETRACTION",
+          "page": 1,
+          "char_span": null,
+          "quote": null
+        },
+        "recompute_script": null,
+        "expected_output": null,
+        "script_dependencies": []
+      },
+      "details": {
+        "epistemic_tier": "T7",
+        "reason": "private editorial correspondence; no verifier observes it"
+      }
+    }
+  ]
 }

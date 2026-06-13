@@ -28,14 +28,25 @@
       "c26"
     ],
     "confirmation": "fresh-sandbox",
-    "registry_load_errors": []
+    "registry_load_errors": [],
+    "enrichment": "multi-perspective-review.v1",
+    "review_model": "claude-opus-4-8",
+    "review_perspectives": [
+      "skeptic",
+      "domain-expert",
+      "methodologist",
+      "claims-auditor",
+      "integrity-screener"
+    ],
+    "review_field": "chemistry",
+    "review_note": "Chemistry paper: scrutinized as a Lewis-acid/IL cationic-polymerization yield + HRMS-mechanism study (not stats). Deterministic verdicts preserved verbatim (DESIGN §3.1): the c7 mass-balance PASS is untouched and no deterministic verdict was overridden. Recompute-before-advisory (DESIGN honesty): mol%% ratios (c9=58x~60), Table-5 dispersities (c25=4.665~4.67, c26=2.068~2.07), the HRMS aggregate ion (c18 calc 558.1638 vs 558.1672, ~6 ppm) and the two-Cl isotope envelope (c19) were all recomputed and found clean -> CONFIRMED-CORRECT, bare abstain dropped with an auditable claims-auditor note. Two genuine T2 abstract/text-vs-table inconsistencies surfaced by recompute (c4 Tg floor 40 vs table 25 C; c21 Mw floor 1300 vs table 731) are ROUTED not hard-flagged, because the Table-5 bounds are 0.75-confidence aggregate extractions, not per-row data. T4 causal over-statement on c10 (threshold, not monotone trend) and T5 cited-literature values (c5,c6,c12,c13,c22, need source retrieval) routed advisory. Subjective novelty/significance (c1,c18) routed, never scored. Bare abstains eliminated: every claim adjudicated, advised, routed, or reviewed-clean."
   },
   "summary": {
     "n_findings": 1,
     "n_flags": 0,
     "n_dropped": 0,
-    "n_routed_to_human": 0,
-    "n_abstained": 25,
+    "n_routed_to_human": 29,
+    "n_abstained": 0,
     "flags_by_trust_tier": {},
     "flags_by_severity": {}
   },
@@ -76,632 +87,181 @@
     }
   ],
   "dropped_flags": [],
-  "routed_to_human": [],
-  "abstained": [
+  "routed_to_human": [
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c1",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "These catalytic systems were effective to polymerize styrene in the temperature range of 50\u221290 \u00b0C, obtaining\nquantitative conversions in the presence of ILs in polymerization\ncatalyzed by small amounts of Lewis acid.",
-        "location": {
-          "section": "Abstract",
-          "page": 1,
-          "char_span": null,
-          "quote": "These catalytic systems were effective to polymerize styrene in the temperature range of 50\u221290 \u00b0C, obtaining\nquantitative conversions in the presence of ILs in polymerization\ncatalyzed by small amounts of Lewis acid."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 abstract scope-claim: Table 2 gives 97-99% conversion across 50-90 C (6% only at 40 C, outside the stated range) and Table 3 gives 99% at 0.1 mol% InCl3 -> 'quantitative conversions, 50-90 C, small Lewis-acid loading' is faithful to the data. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "These catalytic systems were effective to polymerize styrene in the temperature range of 50−90 °C, obtaining\nquantitative conversions in the presence of ILs in polymerization\ncatalyzed by small amounts of Lewis acid."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c2",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "in the range of 200,000\u2212600 g mol\u22121",
-        "location": {
-          "section": "Abstract",
-          "page": 1,
-          "char_span": null,
-          "quote": "in the range of 200,000\u2212600 g mol\u22121"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 bound: abstract Mn '200,000-600 g/mol'; Table 5 extracted Mn_min=600 (EXACT match) and Mn_max=206,094 (200,000 is the rounded headline). Both endpoints supported. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "in the range of 200,000−600 g mol−1"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c3",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "ranging from 1.43 to 4.67",
-        "location": {
-          "section": "Abstract",
-          "page": 1,
-          "char_span": null,
-          "quote": "ranging from 1.43 to 4.67"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 bound: abstract DM '1.43-4.67'; Table 5 extracted DM_max=4.67 (exact) and DM_min=1.42 vs stated 1.43 (last-digit rounding/extraction noise, not a discrepancy). No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "ranging from 1.43 to 4.67"
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c4",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "glass\ntransition temperatures in the range of 40\u221271 \u00b0C",
-        "location": {
-          "section": "Abstract",
-          "page": 1,
-          "char_span": null,
-          "quote": "glass\ntransition temperatures in the range of 40\u221271 \u00b0C"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c5",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "exhibits high\ncatalytic activity, achieving 71% conversion in just 15 min at 70\n\u00b0C",
-        "location": {
-          "section": "Introduction",
-          "page": 2,
-          "char_span": null,
-          "quote": "exhibits high\ncatalytic activity, achieving 71% conversion in just 15 min at 70\n\u00b0C"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c6",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "reaching 93% conversion in the presence of\n[C4C1Im][NTf2]",
-        "location": {
-          "section": "Introduction",
-          "page": 2,
-          "char_span": null,
-          "quote": "reaching 93% conversion in the presence of\n[C4C1Im][NTf2]"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c8",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "producing\npolystyrene with 99% conversion when supported in\n[C4C1Im][NTf2]",
-        "location": {
-          "section": "Results and Discussion",
-          "page": 4,
-          "char_span": null,
-          "quote": "producing\npolystyrene with 99% conversion when supported in\n[C4C1Im][NTf2]"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 exact: Table 1 InCl3/[C4C1Im][NTf2] = 99% conversion, the row maximum; 'best result' is accurate. Recompute deferred to a table-readback verifier. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "producing\npolystyrene with 99% conversion when supported in\n[C4C1Im][NTf2]"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c9",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "they used\nhigh concentrations of AlCl3 (5.8 mol %), corresponding to a\nmolar ratio nearly 60 times higher than that employed in the\npresent study",
-        "location": {
-          "section": "Results and Discussion",
-          "page": 4,
-          "char_span": null,
-          "quote": "they used\nhigh concentrations of AlCl3 (5.8 mol %), corresponding to a\nmolar ratio nearly 60 times higher than that employed in the\npresent study"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T0 comparative recomputed: 5.8 mol% / 0.1 mol% = 58.0x, and 'nearly 60 times higher' is correct (within 3.3% of 60). No over-statement. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "they used\nhigh concentrations of AlCl3 (5.8 mol %), corresponding to a\nmolar ratio nearly 60 times higher than that employed in the\npresent study"
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c10",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "At temperatures above 50 \u00b0C, the system becomes\nso reactive that it leads to polystyrene formation in nearly\nquantitative yields.",
-        "location": {
-          "section": "Results and Discussion",
-          "page": 4,
-          "char_span": null,
-          "quote": "At temperatures above 50 \u00b0C, the system becomes\nso reactive that it leads to polystyrene formation in nearly\nquantitative yields."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c11",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "cationic polymerization with quantitative conversion was\nsuccessfully achieved using only 0.1 mol % of catalyst in 2 h at\n50 \u00b0C",
-        "location": {
-          "section": "Results and Discussion",
-          "page": 4,
-          "char_span": null,
-          "quote": "cationic polymerization with quantitative conversion was\nsuccessfully achieved using only 0.1 mol % of catalyst in 2 h at\n50 \u00b0C"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 exact: Table 3 entry at 0.1 mol% InCl3, 50 C, 2 h = 99% (quantitative); a sharp activity cliff below 0.1 mol% (2-5%) corroborates the threshold. Faithful. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "cationic polymerization with quantitative conversion was\nsuccessfully achieved using only 0.1 mol % of catalyst in 2 h at\n50 °C"
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c12",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "used approximately 2.8\u22125.0 mol % of catalyst\ufffdbisoxalatoboric acid and its derivatives\ufffdto obtain polystyrene with\nconversions above 90% via cationic polymerization, conducted",
-        "location": {
-          "section": "Results and Discussion",
-          "page": 4,
-          "char_span": null,
-          "quote": "used approximately 2.8\u22125.0 mol % of catalyst\ufffdbisoxalatoboric acid and its derivatives\ufffdto obtain polystyrene with\nconversions above 90% via cationic polymerization, conducted"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c13",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "obtained polystyrene with high conversions\n(above 80%) in just 5 min at temperatures ranging from",
-        "location": {
-          "section": "Results and Discussion",
-          "page": 5,
-          "char_span": null,
-          "quote": "obtained polystyrene with high conversions\n(above 80%) in just 5 min at temperatures ranging from"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c14",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "after which a\n99% conversion was achieved in just 40 min of reaction",
-        "location": {
-          "section": "Results and Discussion",
-          "page": 6,
-          "char_span": null,
-          "quote": "after which a\n99% conversion was achieved in just 40 min of reaction"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 exact: Figure 2A conversion at 40 min = 99%, matching the prose; 'low conversion up to 30 min then 99% at 40 min' describes the reported gel-effect kinetic curve. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "after which a\n99% conversion was achieved in just 40 min of reaction"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c15",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the dispersity (\u0110M) increases from 1.47 to 2.32\nas the polymerization time increases from 10 to 40 min",
-        "location": {
-          "section": "Results and Discussion",
-          "page": 6,
-          "char_span": null,
-          "quote": "the dispersity (\u0110M) increases from 1.47 to 2.32\nas the polymerization time increases from 10 to 40 min"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 comparative: DM 1.47->2.32 over 10->40 min; both endpoints lie inside the abstract DM range [1.43,4.67] and the monotone increase is internally consistent. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "the dispersity (ĐM) increases from 1.47 to 2.32\nas the polymerization time increases from 10 to 40 min"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c16",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "molar mass (M\u0305n) decreases from approximately 4700 to 2500 g\nmol\u22121 and the weight-average molar mass (M\u0305w) decreases from\napproximately 7000 to 5800 g mol\u22121",
-        "location": {
-          "section": "Results and Discussion",
-          "page": 6,
-          "char_span": null,
-          "quote": "molar mass (M\u0305n) decreases from approximately 4700 to 2500 g\nmol\u22121 and the weight-average molar mass (M\u0305w) decreases from\napproximately 7000 to 5800 g mol\u22121"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 approximate: Mn ~4700->2500 and Mw ~7000->5800 over 10->60 min; Mw>Mn holds at both ends (7000>4700, 5800>2500), so the dispersity ordering is physically coherent. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "molar mass (M̅n) decreases from approximately 4700 to 2500 g\nmol−1 and the weight-average molar mass (M̅w) decreases from\napproximately 7000 to 5800 g mol−1"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c17",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Very low conversions were\nobtained in polymerizations carried out in these organic\nsolvents, with only trace amounts of polystyrene being\ndetected.",
-        "location": {
-          "section": "Results and Discussion",
-          "page": 6,
-          "char_span": null,
-          "quote": "Very low conversions were\nobtained in polymerizations carried out in these organic\nsolvents, with only trace amounts of polystyrene being\ndetected."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 qualitative: Table 4 reports 0 or 'traces' for all seven organic solvents (DMF, DMSO, dioxane, toluene, MeCN, chloroform, DCM); 'very low conversions / only traces' is exactly the tabulated result. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "Very low conversions were\nobtained in polymerizations carried out in these organic\nsolvents, with only trace amounts of polystyrene being\ndetected."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c18",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "a prominent signal of m/z 558.1672,\nattributed to the IL (2 cations, 1 anion)",
-        "location": {
-          "section": "Results and Discussion",
-          "page": 8,
-          "char_span": null,
-          "quote": "a prominent signal of m/z 558.1672,\nattributed to the IL (2 cations, 1 anion)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:domain-expert",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T1 HRMS assignment recomputed: monoisotopic [2(C8H15N2)+(C2F6NO4S2)]+ = 558.1638 Da vs observed 558.1672 (~6.1 ppm), well within routine HRMS attribution tolerance; the [2 cations + 1 anion] aggregate-ion assignment for [C4C1Im][NTf2] is sound. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "a prominent signal of m/z 558.1672,\nattributed to the IL (2 cations, 1 anion)"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c19",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "revealing the appearance of an ion of m/z 313. Its isotopic\ndistribution (additional signals of m/z 314, 315, 316, and 317,\nhighlighted in red) is consistent with the formation of the\nchloronium cation",
-        "location": {
-          "section": "Results and Discussion",
-          "page": 8,
-          "char_span": null,
-          "quote": "revealing the appearance of an ion of m/z 313. Its isotopic\ndistribution (additional signals of m/z 314, 315, 316, and 317,\nhighlighted in red) is consistent with the formation of the\nchloronium cation"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:domain-expert",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T1 isotope-pattern check: a styrene-chloronium bearing two Cl gives a 35/37Cl envelope spanning ~4 u; signals at m/z 313 + 314,315,316,317 match a two-chlorine isotopologue cluster, consistent with the stated chloronium assignment. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "revealing the appearance of an ion of m/z 313. Its isotopic\ndistribution (additional signals of m/z 314, 315, 316, and 317,\nhighlighted in red) is consistent with the formation of the\nchloronium cation"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c20",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "The system was\nprepared using a 1:250 molar ratio (catalyst:monomer), which\nensured an adequate concentration of the active species for MS\ndetection.",
-        "location": {
-          "section": "Results and Discussion",
-          "page": 7,
-          "char_span": null,
-          "quote": "The system was\nprepared using a 1:250 molar ratio (catalyst:monomer), which\nensured an adequate concentration of the active species for MS\ndetection."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:methodologist",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T0 method parameter: a 1:250 catalyst:monomer ratio for ESI-MS (vs the prior 1:1000) to raise active-species concentration is a reasonable, internally-stated experimental choice; the value is a verbatim method datum, not an inference. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "The system was\nprepared using a 1:250 molar ratio (catalyst:monomer), which\nensured an adequate concentration of the active species for MS\ndetection."
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c21",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "from 200,000 to 600 g mol\u22121\n, and the weight-average molar\nmass ranging from 426,000 to 1300 g mol\u22121",
-        "location": {
-          "section": "Results and Discussion",
-          "page": 9,
-          "char_span": null,
-          "quote": "from 200,000 to 600 g mol\u22121\n, and the weight-average molar\nmass ranging from 426,000 to 1300 g mol\u22121"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c22",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "typically yield polystyrene with between 11,000 to 650 g mol\u22121\nand dispersities between 1.3 and 3.1.",
-        "location": {
-          "section": "Results and Discussion",
-          "page": 9,
-          "char_span": null,
-          "quote": "typically yield polystyrene with between 11,000 to 650 g mol\u22121\nand dispersities between 1.3 and 3.1."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c23",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Initial sample masses\nwere approximately 8.0 mg. The samples were cooled to \u221250 \u00b0C and\nthen heated to 200 \u00b0C at a rate of 10 \u00b0C/min and under an inert\nhelium atmosphere at a flow rate of 30 mL min\u22121",
-        "location": {
-          "section": "Experimental Methods",
-          "page": 2,
-          "char_span": null,
-          "quote": "Initial sample masses\nwere approximately 8.0 mg. The samples were cooled to \u221250 \u00b0C and\nthen heated to 200 \u00b0C at a rate of 10 \u00b0C/min and under an inert\nhelium atmosphere at a flow rate of 30 mL min\u22121"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:methodologist",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T0 method parameter: DSC ~8.0 mg, heat to 200 C at 10 C/min under He 30 mL/min are standard, internally-consistent DSC settings; verbatim method data, no over-reach. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "Initial sample masses\nwere approximately 8.0 mg. The samples were cooled to −50 °C and\nthen heated to 200 °C at a rate of 10 °C/min and under an inert\nhelium atmosphere at a flow rate of 30 mL min−1"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c24",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "polymerizations were performed in sealed tubes containing 2.5 mL of\nstyrene (purified by passing it through an activated aluminum oxide\ncolumn to remove inhibitors prior to use) and 0.5 mL of IL, using a\n1:1000 molar ratio of Lewis acid to monomer (i.e., 0.1 mol %\ncatalyst), at 90 \u00b0C",
-        "location": {
-          "section": "Experimental Methods",
-          "page": 3,
-          "char_span": null,
-          "quote": "polymerizations were performed in sealed tubes containing 2.5 mL of\nstyrene (purified by passing it through an activated aluminum oxide\ncolumn to remove inhibitors prior to use) and 0.5 mL of IL, using a\n1:1000 molar ratio of Lewis acid to monomer (i.e., 0.1 mol %\ncatalyst), at 90 \u00b0C"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:methodologist",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T0 method parameter: a 1:1000 Lewis-acid:monomer ratio is correctly equated to 0.1 mol% catalyst (1/1000 = 0.1%); the equivalence is arithmetically exact. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "polymerizations were performed in sealed tubes containing 2.5 mL of\nstyrene (purified by passing it through an activated aluminum oxide\ncolumn to remove inhibitors prior to use) and 0.5 mL of IL, using a\n1:1000 molar ratio of Lewis acid to monomer (i.e., 0.1 mol %\ncatalyst), at 90 °C"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c25",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "18 FeCl3 90 120 96 6232 1336 4.67",
-        "location": {
-          "section": "Table 5",
-          "page": 8,
-          "char_span": null,
-          "quote": "18 FeCl3 90 120 96 6232 1336 4.67"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T0 exact recomputed: Table 5 entry 18 (FeCl3, 90 C, no IL) DM = Mw/Mn = 6232/1336 = 4.665 ~ reported 4.67; it is the maximum DM in the table, so 'highest dispersity' is correct. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "18 FeCl3 90 120 96 6232 1336 4.67"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c26",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "1 InCl3 [C4C1Im][BF4] 90 (118 h) 54 426,155 206,094 2.07 71.8",
-        "location": {
-          "section": "Table 5",
-          "page": 8,
-          "char_span": null,
-          "quote": "1 InCl3 [C4C1Im][BF4] 90 (118 h) 54 426,155 206,094 2.07 71.8"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T0 exact recomputed: Table 5 entry 1 (InCl3/[C4C1Im][BF4]) DM = 426155/206094 = 2.068 ~ reported 2.07; Mn/Mw/Tg values are mutually consistent. No discrepancy. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "1 InCl3 [C4C1Im][BF4] 90 (118 h) 54 426,155 206,094 2.07 71.8"
+    },
+    {
+      "claim_id": "c10",
+      "dimension": "advisory:methodologist",
+      "note": "T4 causal/trend over-statement. The claim 'conversion increased with synthesis temperature' implies a monotone trend, but the supporting Table 2 is NOT monotone: conversion is 6% at 40 C then 99,97,98,98,99% at 50-90 C — i.e. a sharp THRESHOLD near 50 C, after which conversion is flat (~98%, even dipping 99->97 at 60 C), not a graded increase. The data support 'above ~50 C the system reaches near-quantitative conversion', not 'conversion increases with temperature'. Confirms-it: a monotonicity/regression check on the (T, conversion) pairs, or rephrasing to a threshold rather than a trend.",
+      "quote": "At temperatures above 50 °C, the system becomes\nso reactive that it leads to polystyrene formation in nearly\nquantitative yields."
+    },
+    {
+      "claim_id": "c10",
+      "dimension": "advisory:claims-auditor",
+      "note": "T2 minor: '~99% at 50 C' matches Table 2 (99% at 50 C) exactly; the over-reach is only in the causal framing (see methodologist note), not in the 50 C number itself.",
+      "quote": "At temperatures above 50 °C, the system becomes\nso reactive that it leads to polystyrene formation in nearly\nquantitative yields."
+    },
+    {
+      "claim_id": "c4",
+      "dimension": "advisory:claims-auditor",
+      "note": "T2 internal-consistency: abstract states Tg '40-71 C', but the extracted Table 5 bounds give Tg_min = 25.0 C (and Tg_max = 71.8 C ~ 71). The upper bound is faithful, but the abstract FLOOR of 40 C appears to exclude a ~25 C sample present in Table 5 — a 15 C gap, larger than rounding. This may be a deliberate scope restriction (e.g. excluding a low-Mn outlier) or an abstract-vs-table inconsistency. Confirms-it: a per-row Tg readback from Table 5 to a T2 prose-vs-table verifier; if the table truly contains a 25 C Tg, the abstract range '40-71' is too narrow on the low end. (Extracted Table 5 bounds carry 0.75 confidence, so this is routed, not hard-flagged.)",
+      "quote": "glass\ntransition temperatures in the range of 40−71 °C"
+    },
+    {
+      "claim_id": "c21",
+      "dimension": "advisory:claims-auditor",
+      "note": "T2 internal-consistency: text states Mw range '426,000 to 1300 g/mol'; Table 5 extracted bounds give Mw_min = 731 (and Mw_max = 426,155 ~ 426,000). The upper bound matches, but the stated LOW Mw of 1300 is ~1.78x the table minimum of 731 — not a rounding gap. Either the lowest-Mw sample was excluded from the prose range or this is an abstract/text-vs-table mismatch. Mn range '200,000-600' in the same sentence is consistent (Mn_min=600 exact). Confirms-it: a per-row Mw readback from Table 5 to a T2 verifier; if a 731 g/mol Mw exists, the prose floor 1300 is inconsistent. (Routed not flagged: ev_t5 aggregate bounds are 0.75-confidence extractions.)",
+      "quote": "from 200,000 to 600 g mol−1\n, and the weight-average molar\nmass ranging from 426,000 to 1300 g mol−1"
+    },
+    {
+      "claim_id": "c8",
+      "dimension": "advisory:domain-expert",
+      "note": "Field-plausibility framing, not an error: InCl3/[C4C1Im][NTf2] at 99% is genuinely the top result, but several other systems in Table 1/Table 5 reach 95-99% under longer times, so 'best' is a narrow margin over near-ties. Worth a domain reviewer noting the result is a small lead, not a step change. Confirms-it: none needed; a note on emphasis.",
+      "quote": "producing\npolystyrene with 99% conversion when supported in\n[C4C1Im][NTf2]"
+    },
+    {
+      "claim_id": "c5",
+      "dimension": "advisory:claims-auditor",
+      "note": "T5 citation-fidelity: this is a cited_value attributed to Rodrigues et al. (ref 19) ([C4C1Im][Fe2Cl7]: 71% conversion in 15 min at 70 C). It is correctly framed as prior work and used fairly as a comparison, but its NUMERIC accuracy cannot be settled by code without retrieving and entailing the cited source (DESIGN §5 T5, calibrated/higher-FP). Reviewed for citation distortion: no sign the source is mis-stated relative to how the authors use it. Confirms-it: a retrieval+entailment verifier that opens the cited reference and checks the quoted figure.",
+      "quote": "exhibits high\ncatalytic activity, achieving 71% conversion in just 15 min at 70\n°C"
+    },
+    {
+      "claim_id": "c6",
+      "dimension": "advisory:claims-auditor",
+      "note": "T5 citation-fidelity: this is a cited_value attributed to ref 19 ([C4C1Im][NTf2]: 93% conversion). It is correctly framed as prior work and used fairly as a comparison, but its NUMERIC accuracy cannot be settled by code without retrieving and entailing the cited source (DESIGN §5 T5, calibrated/higher-FP). Reviewed for citation distortion: no sign the source is mis-stated relative to how the authors use it. Confirms-it: a retrieval+entailment verifier that opens the cited reference and checks the quoted figure.",
+      "quote": "reaching 93% conversion in the presence of\n[C4C1Im][NTf2]"
+    },
+    {
+      "claim_id": "c12",
+      "dimension": "advisory:claims-auditor",
+      "note": "T5 citation-fidelity: this is a cited_value attributed to Vijayaraghavan & MacFarlane (refs 48-50) (~2.8-5.0 mol% catalyst, >90% conversion, 2 h, 60 C). It is correctly framed as prior work and used fairly as a comparison, but its NUMERIC accuracy cannot be settled by code without retrieving and entailing the cited source (DESIGN §5 T5, calibrated/higher-FP). Reviewed for citation distortion: no sign the source is mis-stated relative to how the authors use it. Confirms-it: a retrieval+entailment verifier that opens the cited reference and checks the quoted figure.",
+      "quote": "used approximately 2.8−5.0 mol % of catalyst�bisoxalatoboric acid and its derivatives�to obtain polystyrene with\nconversions above 90% via cationic polymerization, conducted"
+    },
+    {
+      "claim_id": "c13",
+      "dimension": "advisory:claims-auditor",
+      "note": "T5 citation-fidelity: this is a cited_value attributed to Verebelyi & Ivan (ref 51) (~53.3 mol% catalyst, >80% conversion in 5 min, -20 to 25 C). It is correctly framed as prior work and used fairly as a comparison, but its NUMERIC accuracy cannot be settled by code without retrieving and entailing the cited source (DESIGN §5 T5, calibrated/higher-FP). Reviewed for citation distortion: no sign the source is mis-stated relative to how the authors use it. Confirms-it: a retrieval+entailment verifier that opens the cited reference and checks the quoted figure.",
+      "quote": "obtained polystyrene with high conversions\n(above 80%) in just 5 min at temperatures ranging from"
+    },
+    {
+      "claim_id": "c22",
+      "dimension": "advisory:claims-auditor",
+      "note": "T5 citation-fidelity: this is a cited_value attributed to refs 28,40,45,46,48-50 (literature Mn 650-11,000 g/mol, DM 1.3-3.1). It is correctly framed as prior work and used fairly as a comparison, but its NUMERIC accuracy cannot be settled by code without retrieving and entailing the cited source (DESIGN §5 T5, calibrated/higher-FP). Reviewed for citation distortion: no sign the source is mis-stated relative to how the authors use it. Confirms-it: a retrieval+entailment verifier that opens the cited reference and checks the quoted figure.",
+      "quote": "typically yield polystyrene with between 11,000 to 650 g mol−1\nand dispersities between 1.3 and 3.1."
+    },
+    {
+      "claim_id": "c1",
+      "dimension": "subjective:novelty",
+      "note": "Whether mechanistically resolving the role of Lewis-acidic ILs in styrene cationic polymerization via ESI-MS (chloronium/aggregate-ion detection) is a NOVEL/important contribution vs incremental over the cited IL-catalyzed polymerization literature is a value judgement LITMUS does not score (DESIGN §3.5). Routed to an editor/domain reviewer.",
+      "quote": "These catalytic systems were effective to polymerize styrene in the temperature range of 50−90 °C, obtaining\nquantitative conversions in the presence of ILs in polymerization\ncatalyzed by small amounts of Lewis acid."
+    },
+    {
+      "claim_id": "c18",
+      "dimension": "subjective:significance",
+      "note": "Whether the ESI-MS mechanistic evidence (aggregate ion at m/z 558.1672 + chloronium at m/z 313) is SIGNIFICANT enough to establish the proposed cationic mechanism, vs merely consistent with it, is an importance judgement routed to a human (DESIGN §3.5), not scored.",
+      "quote": "a prominent signal of m/z 558.1672,\nattributed to the IL (2 cations, 1 anion)"
     }
-  ]
+  ],
+  "abstained": []
 }

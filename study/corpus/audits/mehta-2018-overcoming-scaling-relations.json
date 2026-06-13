@@ -16,246 +16,171 @@
       "c25"
     ],
     "confirmation": "fresh-sandbox",
-    "registry_load_errors": []
+    "registry_load_errors": [],
+    "enrichment": "multi-perspective-review.v1",
+    "review_model": "claude-opus-4-8",
+    "review_perspectives": [
+      "skeptic",
+      "domain-expert",
+      "methodologist",
+      "claims-auditor",
+      "integrity-screener"
+    ],
+    "review_field": "chemistry / heterogeneous catalysis (plasma-catalytic ammonia synthesis, DFT microkinetics)",
+    "review_note": "Chemistry/catalysis paper scrutinized as a DFT-microkinetic + DBD-plasma ammonia-synthesis study (Sabatier/BEP volcano, Treanor vibrational distribution, Fridman alpha) — not a stats paper. The deterministic audit carried 0 findings / 0 flags / 0 dropped_flags, so there was no deterministic verdict to preserve (DESIGN §3.1) and nothing was overridden; every one of the 28 claims arrived as a bare abstain. Recompute-before-advisory (DESIGN honesty): the N2 vibrational fundamental (c7 = 0.289 eV ~ '0.3 eV', clean), the Treanor populations (c12/c13: v1 reproduces 21.4% EXACTLY, but ground state recomputes ~65.5% vs the paper's 63.2% and the v8-v10 tail ~0.05-0.10% vs '~0.2%' -> close, convention-dependent, surfaced as advisory rather than confirmed or fabricated as a flag), the measured STY ordering (c20/c21: Co>Ru=Ni>Pt>Fe reproduced exactly from the transcribed yields), and the HB-conditions consistency (c4 within c5's 600-800 K / 100-200 atm) were all recomputed. 14 claims cleared as confirmed-correct (bare abstain dropped, auditable advisory note left): c2,c4,c5,c7,c8,c9,c14,c15,c16,c17,c18,c20,c21,c25. 7 genuine concerns routed advisory: the load-bearing modeling assumption that vibrational energy acts only on N2 dissociation (c1), the small-N qualitative experiment-model agreement (c3), T5 cited-literature yields (c6), the single averaged Tvib=3000 K parameter (c11), the not-exactly-reproduced Treanor numbers (c12,c13), and the signature ~5-order step/terrace TOF collapse read off Figure 4 (c19). Subjective significance/novelty routed, never scored (c19 significance, c3 novelty). Genuinely-unassessable kept abstained (pure T6 reporting/geometry, no data in the graph, no over-reach surface): c10,c22,c23,c24,c26,c27,c28. Bare abstains 28 -> 7."
   },
   "summary": {
     "n_findings": 0,
     "n_flags": 0,
     "n_dropped": 0,
-    "n_routed_to_human": 0,
-    "n_abstained": 28,
+    "n_routed_to_human": 23,
+    "n_abstained": 7,
     "flags_by_trust_tier": {},
     "flags_by_severity": {}
   },
   "findings": [],
   "dropped_flags": [],
-  "routed_to_human": [],
-  "abstained": [
+  "routed_to_human": [
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c1",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "We postulate that plasma-induced vibrational\nexcitations in N2 decrease dissociation barriers without influencing subsequent reaction steps.",
-        "location": {
-          "section": "Abstract",
-          "page": 1,
-          "char_span": null,
-          "quote": "We postulate that plasma-induced vibrational\nexcitations in N2 decrease dissociation barriers without influencing subsequent reaction steps."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c2",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "We predict plasma enhancement to be particularly great on metals that bind nitrogen too\nweakly to be active thermally.",
-        "location": {
-          "section": "Abstract",
-          "page": 1,
-          "char_span": null,
-          "quote": "We predict plasma enhancement to be particularly great on metals that bind nitrogen too\nweakly to be active thermally."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:domain-expert",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T4 prediction (plasma enhancement greatest on metals that bind N too weakly to be thermally active). Domain-expert: this is the physically correct reading of the Sabatier/BEP picture — weak-N-binding metals (right leg of the volcano) are limited by N2 dissociation, which is exactly the step plasma vibrational excitation relieves (the alpha*Ev term, eq 6), so the largest fractional rate gain belongs there. The claim rests on the Figure-4 plasma-on volcano (ev_fig4, fig-read conf 0.7) and is appropriately framed as a model prediction ('we predict'). No claim-vs-evidence over-statement. No numeric verifier covers it yet (figure-readback synthesis candidate, DESIGN §8, WS-F): a verifier that reads the plasma-on volcano peak position and confirms it sits at weak-N-binding metals.",
+      "quote": "We predict plasma enhancement to be particularly great on metals that bind nitrogen too\nweakly to be active thermally."
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c3",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Ammonia synthesis rates observed in a DBD plasma reactor are\nconsistent with predicted enhancements and with predicted changes in the optimal metal catalyst.",
-        "location": {
-          "section": "Abstract",
-          "page": 1,
-          "char_span": null,
-          "quote": "Ammonia synthesis rates observed in a DBD plasma reactor are\nconsistent with predicted enhancements and with predicted changes in the optimal metal catalyst."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c4",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "practical rates are only attainable at elevated temperatures (\u223c 700 K)\nand pressures (\u223c 100 atm)",
-        "location": {
-          "section": "Introduction",
-          "page": 2,
-          "char_span": null,
-          "quote": "practical rates are only attainable at elevated temperatures (\u223c 700 K)\nand pressures (\u223c 100 atm)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach; no numeric verifier covers it yet. T1 fixed-knowledge: HB practical rates need ~700 K and ~100 atm. Recompute-before-advisory: this is internally consistent with the paper's own wider statement c5 (600-800 K, 100-200 atm) — 700 K and 100 atm both fall inside those ranges (100 atm sits at the low edge of the industrial window, faithful as an approximate lower bound). Matches standard ammonia-synthesis references. A T1 constants/known-value verifier (DESIGN §5) that checks stated HB conditions against a reference window would settle it deterministically (synthesis candidate, DESIGN §8); review clears it of over-statement.",
+      "quote": "practical rates are only attainable at elevated temperatures (∼ 700 K)\nand pressures (∼ 100 atm)"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c5",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "rival that of the conventional Haber-Bosch process (100-200 atm, 600-800 K)",
-        "location": {
-          "section": "Introduction",
-          "page": 3,
-          "char_span": null,
-          "quote": "rival that of the conventional Haber-Bosch process (100-200 atm, 600-800 K)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach; no numeric verifier covers it yet. T1 fixed-knowledge: conventional Haber-Bosch 100-200 atm, 600-800 K. This is the textbook operating window and is internally consistent with c4 (~700 K / ~100 atm lies inside it). No claim-vs-evidence over-statement. A T1 known-value-lookup verifier against a reference HB-conditions table would confirm it deterministically (synthesis candidate, DESIGN §8).",
+      "quote": "rival that of the conventional Haber-Bosch process (100-200 atm, 600-800 K)"
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c6",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "promising yields of ammonia can be obtained at low temperature (400 to 500\nK) and atmospheric pressure when a non-thermal plasma is operated in tandem with a",
-        "location": {
-          "section": "Introduction",
-          "page": 2,
-          "char_span": null,
-          "quote": "promising yields of ammonia can be obtained at low temperature (400 to 500\nK) and atmospheric pressure when a non-thermal plasma is operated in tandem with a"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c7",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "relatively large vibrational spacing (\u223c 0.3 eV)",
-        "location": {
-          "section": "Microkinetic modeling",
-          "page": 5,
-          "char_span": null,
-          "quote": "relatively large vibrational spacing (\u223c 0.3 eV)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach; recomputed clean. T1 internal/fixed-knowledge: N2 vibrational spacing ~0.3 eV. Recompute-before-advisory: from the N2 (X 1Sigma_g+) spectroscopic constants (we=2358.57, wexe=14.324 cm^-1) the v0->v1 fundamental is G(1)-G(0) = we - 2*wexe = 2329.9 cm^-1 = 0.289 eV, i.e. '~0.3 eV' is faithful to two significant figures. No over-statement. A T0/T1 verifier that recomputes the anharmonic fundamental from tabulated constants would lock this (synthesis candidate, DESIGN §8); review clears it.",
+      "quote": "relatively large vibrational spacing (∼ 0.3 eV)"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c8",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "tative of of Haber-Bosch conditions (673 K, 100 atm) and target [9] low T and P conditions\n(473 K, 1 atm) are compared in Figure 1.",
-        "location": {
-          "section": "Microkinetic modeling",
-          "page": 4,
-          "char_span": null,
-          "quote": "tative of of Haber-Bosch conditions (673 K, 100 atm) and target [9] low T and P conditions\n(473 K, 1 atm) are compared in Figure 1."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:domain-expert",
+      "note": "Reviewed across all perspectives: no over-reach found. T4 modeled volcano result — Ru and Fe at the volcano peak under HB conditions (673 K, 100 atm); conditions also restated for the target case (473 K, 1 atm). Domain-expert: Ru and Fe topping the thermal ammonia-synthesis volcano is the canonical, well-established result (the classic Norskov ammonia volcano), so the prediction is field-consistent. Rests on Figure 1 (ev_fig1, fig-read conf 0.7). What review cannot settle is the exact peak placement off the plot — a figure-readback synthesis candidate (DESIGN §8, WS-F). No claim-vs-evidence over-statement.",
+      "quote": "tative of of Haber-Bosch conditions (673 K, 100 atm) and target [9] low T and P conditions\n(473 K, 1 atm) are compared in Figure 1."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c9",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "rates on the same stepped\nsurfaces are several orders of magnitude lower than the corresponding Haber-Bosch rates.\nRates on terrace sites are a further few orders of magnitude lower.",
-        "location": {
-          "section": "Microkinetic modeling",
-          "page": 4,
-          "char_span": null,
-          "quote": "rates on the same stepped\nsurfaces are several orders of magnitude lower than the corresponding Haber-Bosch rates.\nRates on terrace sites are a further few orders of magnitude lower."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach; no numeric verifier covers it yet. T4 comparative read off Figure 1: at 473 K/1 atm, stepped-surface rates are several orders of magnitude below the corresponding Haber-Bosch (673 K/100 atm) rates, and terrace rates a further few orders lower. This is the physically expected direction (lower T and P, and terraces bind/activate N2 far more weakly than steps), and the language is hedged ('several' / 'a further few'). The exact order-of-magnitude gaps are plot reads (ev_fig1, conf 0.7) — a figure-readback synthesis candidate (DESIGN §8, WS-F) that reads log10(TOF) at the two conditions and differences them. No over-statement.",
+      "quote": "rates on the same stepped\nsurfaces are several orders of magnitude lower than the corresponding Haber-Bosch rates.\nRates on terrace sites are a further few orders of magnitude lower."
     },
+    {
+      "claim_id": "c14",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach; no numeric verifier covers it yet. T2 self-consistency: the Treanor distribution is truncated at the Treanor minimum, defined to include the first 10 vibrationally excited states (v1..v10). This is a definitional bookkeeping statement consistent with the rest of the modeling section (c12/c13 quote populations for the ground state, v1, and the v8-v10 tail). Nothing to over-claim. A T2 verifier could check the stated count against the populations actually summed (synthesis candidate, DESIGN §8).",
+      "quote": "imum (which includes the first 10 vibrationally excited states) to compute the normalized"
+    },
+    {
+      "claim_id": "c15",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach; no numeric verifier covers it yet. T4 comparative off Figure 4: for both step and terrace sites the plasma-on volcano peaks sit several orders of magnitude above the thermal peaks at 473 K/1 atm. Consistent with the paper's mechanism (vibrational excitation lowers the N2 dissociation barrier, eq 6) and hedged ('several orders'). Exact peak heights are plot reads (ev_fig4, conf 0.7) — a figure-readback synthesis candidate (DESIGN §8, WS-F). No claim-vs-evidence over-statement.",
+      "quote": "the optimal plasma-on reaction rates\n(i.e. the peaks of the volcano curves) are several orders of magnitude higher than those for\nthermal catalysis."
+    },
+    {
+      "claim_id": "c16",
+      "dimension": "advisory:domain-expert",
+      "note": "Reviewed across all perspectives: no over-reach found. T4: the plasma-on step volcano peak shifts toward weaker N binding, placing Co and Ni near the peak. Domain-expert: this is the internally coherent consequence of c2 — relieving the N2-dissociation bottleneck moves the optimum off the strong-binding metals (Ru/Fe) toward weaker binders, and Co/Ni are the expected weak-binding neighbours. Rests on Figure 4a (ev_fig4). Exact peak location is a figure-readback synthesis candidate (DESIGN §8). No over-statement.",
+      "quote": "the peak of the plasma-on volcano curve shows\na distinct shift towards weaker nitrogen binding energies, predicting Co and Ni to be near\nthe volcano peak."
+    },
+    {
+      "claim_id": "c17",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach; no numeric verifier covers it yet. T4 cross-figure comparative: the optimal plasma-on catalyst (473 K/1 atm) reaches rates comparable to the optimal thermal catalyst (Ru steps, 673 K/100 atm). The word 'comparable' is appropriately hedged and is the load-bearing 'low-T/P rivals Haber-Bosch' framing; it rests on reading peak heights off Figures 1 and 4 (ev_fig1, ev_fig4, conf 0.7). A figure-readback synthesis candidate (DESIGN §8, WS-F) that reads both peaks and checks they are within ~1 order of magnitude would settle it; review finds no over-statement.",
+      "quote": "we find that rates on the optimal plasma-on catalyst are\ncomparable to those on the optimal thermal catalyst at 673 K and 100 atm, Ru steps."
+    },
+    {
+      "claim_id": "c18",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach; no numeric verifier covers it yet. T4 comparative off Figure 4: plasma-on Ru-terrace TOF is ~two orders of magnitude below plasma-on Co-step TOF. A specific, falsifiable figure read, consistent with steps out-performing terraces and Co sitting near the plasma-on peak (c16). Exact gap is a plot read (ev_fig4, conf 0.7) — a figure-readback synthesis candidate (DESIGN §8, WS-F). No claim-vs-evidence over-statement.",
+      "quote": "the TOF on these sites are predicted to be two orders of magnitude lower than those on Co\nsteps."
+    },
+    {
+      "claim_id": "c20",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach; recomputed clean. T2 internal cross-consistency: the measured activity trend Co > Ni = Ru > Pt > Fe is said to track the model. Recompute-before-advisory: the transcribed site-time yields (ev_fig5: Co 0.063, Ru 0.027, Ni 0.027, Pt 0.016, Fe 0.011 s^-1) sort to exactly Co > {Ru=Ni} > Pt > Fe, reproducing the stated ordering including the Ru=Ni tie. So the ordering claim is internally faithful to the paper's own numbers. The match to the MODEL ordering rests on the Figure-4 volcano (figure-read) and is a T2 verifier candidate (read both orderings, compare); the measured-side ordering checks out. No over-statement.",
+      "quote": "the observed activity trend of Co > Ni = Ru > Pt\n> Fe tracks remarkably well with model predictions."
+    },
+    {
+      "claim_id": "c21",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach; no numeric verifier covers it yet. T2 figure read: site-time yields Co ~0.063, Ru ~0.027, Ni ~0.027, Pt ~0.016, Fe ~0.011 s^-1 (Figure 5). The extraction itself flags these as approximate plot reads (confidence 0.6 / ev_fig5 0.55). Recompute-before-advisory: as transcribed they are mutually consistent and reproduce the c20 ordering (Co > Ru=Ni > Pt > Fe). What review cannot settle is whether each plotted bar/point equals these exact values — that needs the underlying data or a vision read of Figure 5 (figure-readback synthesis candidate, DESIGN §8, WS-F). No claim-vs-evidence over-statement.",
+      "quote": "Measured ammonia site-time yields in the di-\nelectric barrier discharge reactor on metal/Al2O3 catalysts as a function of the DFT-calculated\nnitrogen adsorption energy."
+    },
+    {
+      "claim_id": "c25",
+      "dimension": "advisory:domain-expert",
+      "note": "Reviewed across all perspectives: no over-reach found. T0 limiting behaviour: the Fridman alpha factor -> 0 as the forward N2 dissociation barrier -> 0 (eq 8), which occurs for EN < -1 eV on steps. Domain-expert: this is correct by construction — alpha measures the efficiency with which vibrational energy lowers an activation barrier, so when the barrier already vanishes (strong binders, non-activated dissociation) there is nothing left to lower and alpha must go to zero. Rests on Figure 2b (ev_alpha). The -1 eV threshold is a specific plot read. A T0 verifier that evaluates eq 8 in the Ea_forward->0 limit would confirm the limit deterministically (synthesis candidate, DESIGN §8). No over-statement.",
+      "quote": "α vanishes in the limit that dissociation\nis non-activated, as occurs at EN < −1 on steps."
+    },
+    {
+      "claim_id": "c1",
+      "dimension": "advisory:claims-auditor",
+      "note": "T4 over-reach risk on the central modeling assumption. The sentence 'plasma-induced vibrational excitations in N2 decrease dissociation barriers WITHOUT influencing subsequent reaction steps' is stated as a postulate but is in fact the load-bearing simplification of the whole model (predicate: alpha*Ev lowers only the N2-dissociation barrier, eq 6; rates for steps (2)-(5) are carried over unchanged from the thermal model). Skeptic/methodologist: this is an assumption, not a demonstrated result — vibrational/plasma energy could in principle also affect H-assisted N-H formation, NHx hydrogenation, or desorption, and the model assumes it does not. The paper hedges with 'we postulate', which is honest, but a reader could over-read it as a finding. What would confirm/bound it: a sensitivity study perturbing the rates of steps (2)-(5) and showing the volcano/optimal-metal conclusions are robust, or DFT evidence that vibrational energy does not couple to those steps. Code cannot settle whether the assumption holds; routed as advisory (not scored).",
+      "quote": "We postulate that plasma-induced vibrational\nexcitations in N2 decrease dissociation barriers without influencing subsequent reaction steps."
+    },
+    {
+      "claim_id": "c3",
+      "dimension": "advisory:skeptic",
+      "note": "Weakest-link review of the headline empirical claim ('observed DBD rates are consistent with predicted enhancements and the predicted change in optimal metal'). Skeptic: 'consistent with' is appropriately hedged, but the support is a five-point site-time-yield trend (Fe/Ru/Co/Ni/Pt) read off Figure 5 at low precision (extraction confidence 0.55-0.60), with Ni and Ru experimentally tied. A monotone-ish ordering across five metals is weak corroboration of a quantitative model: it confirms a TREND, not the predicted order-of-magnitude enhancements, and alternative explanations (plasma-phase gas chemistry, support/Al2O3 effects, differing dispersion/particle size, mass-transfer) are not excluded by the ordering alone. What would confirm it: per-metal absolute rate comparison (measured vs modeled TOF) with error bars, and controls isolating the catalytic contribution from gas-phase plasma activation. Routed as advisory; the experiment-model agreement is a judgement code cannot settle.",
+      "quote": "Ammonia synthesis rates observed in a DBD plasma reactor are\nconsistent with predicted enhancements and with predicted changes in the optimal metal catalyst."
+    },
+    {
+      "claim_id": "c6",
+      "dimension": "advisory:claims-auditor",
+      "note": "T5 citation-fidelity. The claim that 'promising yields of ammonia can be obtained at 400-500 K and atmospheric pressure with a non-thermal plasma + catalyst' is attributed to prior plasma-catalysis studies (refs [10-19]). Whether those sources actually report NH3 at that T/P window — and at yields fairly described as 'promising' — cannot be settled by code without retrieving and entailing the cited literature (DESIGN §5 T5, calibrated / higher-FP). Reviewed for citation distortion: the statement is general, framed as motivation, and is plausible for DBD plasma-catalysis, with no sign of misuse. What would confirm it: a retrieval+entailment pass over refs [10-19] checking the reported temperatures, pressures, and yields. Routed as advisory.",
+      "quote": "promising yields of ammonia can be obtained at low temperature (400 to 500\nK) and atmospheric pressure when a non-thermal plasma is operated in tandem with a"
+    },
+    {
+      "claim_id": "c11",
+      "dimension": "advisory:methodologist",
+      "note": "T6/method: a single average Tvib = 3000 K is used to parameterize the entire plasma-on microkinetic model. Methodologist: this is the model's most consequential input — every plasma-on rate flows from the Treanor population at this Tvib (c12/c13) — yet it is a single spatially/temporally averaged value for a filamentary DBD where Tvib is highly non-uniform (streamer cores vs bulk). The paper justifies ~3000 K from OES, but the conclusions' sensitivity to this choice is not bounded in the ClaimGraph. What would confirm/bound it: a sweep of Tvib (e.g. 2000-4000 K) showing the optimal-metal-shift and rate-enhancement conclusions are robust, plus the OES fit uncertainty on Tvib. Code cannot judge the adequacy of the single-value approximation; routed as advisory (the Tvib=3000 K number itself is a faithful transcription).",
+      "quote": "An average value of Tvib = 3000 K was used in our model."
+    },
+    {
+      "claim_id": "c12",
+      "dimension": "advisory:claims-auditor",
+      "note": "T0 recomputable — recompute-before-advisory done; close but not exact, so surfaced honestly. Claim: the Treanor distribution (Tvib=3000 K, Tgas=473 K) leaves ~63.2% of N2 in the ground vibrational state. Independent recompute of the Treanor/anharmonic-oscillator populations for N2 (we=2358.57, wexe=14.324 cm^-1), normalized over v0..v10 (the paper's stated truncation, c14), reproduces v1 = 21.4% EXACTLY but gives the ground state ~65.5%, ~2.3 percentage points above the paper's 63.2%. The discrepancy is within what a different choice of spectroscopic constants or normalization range (e.g. summing past the Treanor minimum) would produce, so this is most likely a convention difference, not an error — but it is not an exact match and review will not call it confirmed without pinning the paper's exact constants/normalization. What would settle it: a T0 Treanor verifier with the paper's stated constants and truncation reproducing 63.2%. Routed as advisory (no deterministic verdict manufactured).",
+      "quote": "only about 63.2 % of N2 remains in the ground vibrational state."
+    },
+    {
+      "claim_id": "c13",
+      "dimension": "advisory:claims-auditor",
+      "note": "T0 recomputable — recompute-before-advisory done; partially confirmed, tail surfaced honestly. Claim: Treanor v1 population = 21.4%; tail states v8-v10 ~0.2% each. Independent recompute (same setup as c12, N2 we=2358.57, wexe=14.324 cm^-1, normalized v0..v10) reproduces v1 = 21.4% EXACTLY, but the v8-v10 tail comes out ~0.05-0.10% per state, i.e. the right order of magnitude but below the paper's 'around 0.2%'. As with c12 the gap is consistent with a different constant/normalization choice rather than an error. The v1 figure is confirmed; the tail magnitude review will not call exact without the paper's exact parameters. What would settle it: the same T0 Treanor verifier evaluated at v8-v10. Routed as advisory; v1 verified, tail flagged as not-exactly-reproduced (no fabricated verdict).",
+      "quote": "The first vibrationally\nexcited state has a population of 21.4 %, while the states in the tail of the distribution (v8 -\nv10) have probabilites of around 0.2 %."
+    },
+    {
+      "claim_id": "c19",
+      "dimension": "advisory:skeptic",
+      "note": "Weakest-link review of the paper's signature 'breaking the scaling relation' result: the plasma-on TOF on Ru TERRACES is claimed to reach the same order of magnitude as on Ru STEPS, despite their plasma-off TOFs being ~5 orders of magnitude apart. Skeptic: this is the most striking and most load-bearing claim in the paper (it is the mechanism behind the title), and it rests entirely on reading and differencing four TOF points off Figure 4 (ev_fig4, fig-read conf 0.7) within a model whose key input (Tvib=3000 K, c11) and central assumption (vib energy acts only on dissociation, c1) are themselves advisory. A ~5-order collapse to near-parity is exactly the kind of dramatic result that warrants the most scrutiny of the underlying figure values and model assumptions. What would confirm it: a figure-readback verifier extracting the four TOFs and checking the two differences (plasma-on ~0 orders; plasma-off ~5 orders), plus the c1/c11 sensitivity studies. Code cannot settle it from the ClaimGraph; routed as advisory.",
+      "quote": "the plasma-on TOF on Ru terrace sites is of the same order of magnitude of\nthat on Ru steps, despite the fact that their plasma-off TOFs are five orders of magnitude\napart."
+    },
+    {
+      "claim_id": "c19",
+      "dimension": "subjective:significance",
+      "note": "Whether collapsing a ~5-order-of-magnitude step-vs-terrace activity gap to near-parity via plasma vibrational excitation — i.e. effectively 'overcoming the scaling relations' that constrain thermal ammonia catalysis — is a SIGNIFICANT advance for the field (vs an interesting but model-bound prediction) is an importance judgement LITMUS does not score (DESIGN §3.5). Routed to an editor / domain reviewer.",
+      "quote": "the plasma-on TOF on Ru terrace sites is of the same order of magnitude of\nthat on Ru steps, despite the fact that their plasma-off TOFs are five orders of magnitude\napart."
+    },
+    {
+      "claim_id": "c3",
+      "dimension": "subjective:novelty",
+      "note": "Whether the experiment-meets-model demonstration — observing a DBD-reactor activity trend that matches the predicted enhancement AND the predicted change in optimal metal (away from Ru/Fe toward Co/Ni) — constitutes a NOVEL contribution worth emphasizing, vs a qualitative corroboration of a known plasma-catalysis idea, is a novelty/value judgement routed to a human (DESIGN §3.5), not scored. (The 'consistent with' agreement itself is routed to the skeptic as advisory above; the underlying STY ordering is internally recomputed in c20.)",
+      "quote": "Ammonia synthesis rates observed in a DBD plasma reactor are\nconsistent with predicted enhancements and with predicted changes in the optimal metal catalyst."
+    }
+  ],
+  "abstained": [
     {
       "verifier_id": "litmus.planner",
       "claim_id": "c10",
@@ -268,287 +193,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "temperature (Tgas), measured using an in situ thermocouple, was 398.5 \u00b1 5 K.",
+        "quote": "temperature (Tgas), measured using an in situ thermocouple, was 398.5 ± 5 K.",
         "location": {
           "section": "Microkinetic modeling",
           "page": 7,
           "char_span": null,
-          "quote": "temperature (Tgas), measured using an in situ thermocouple, was 398.5 \u00b1 5 K."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c11",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "An average value of Tvib = 3000 K was used in our model.",
-        "location": {
-          "section": "Microkinetic modeling",
-          "page": 8,
-          "char_span": null,
-          "quote": "An average value of Tvib = 3000 K was used in our model."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c12",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "only about 63.2 % of N2 remains in the ground vibrational state.",
-        "location": {
-          "section": "Microkinetic modeling",
-          "page": 8,
-          "char_span": null,
-          "quote": "only about 63.2 % of N2 remains in the ground vibrational state."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c13",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "The first vibrationally\nexcited state has a population of 21.4 %, while the states in the tail of the distribution (v8 -\nv10) have probabilites of around 0.2 %.",
-        "location": {
-          "section": "Microkinetic modeling",
-          "page": 8,
-          "char_span": null,
-          "quote": "The first vibrationally\nexcited state has a population of 21.4 %, while the states in the tail of the distribution (v8 -\nv10) have probabilites of around 0.2 %."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c14",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "imum (which includes the first 10 vibrationally excited states) to compute the normalized",
-        "location": {
-          "section": "Microkinetic modeling",
-          "page": 8,
-          "char_span": null,
-          "quote": "imum (which includes the first 10 vibrationally excited states) to compute the normalized"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c15",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the optimal plasma-on reaction rates\n(i.e. the peaks of the volcano curves) are several orders of magnitude higher than those for\nthermal catalysis.",
-        "location": {
-          "section": "Microkinetic modeling",
-          "page": 10,
-          "char_span": null,
-          "quote": "the optimal plasma-on reaction rates\n(i.e. the peaks of the volcano curves) are several orders of magnitude higher than those for\nthermal catalysis."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c16",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the peak of the plasma-on volcano curve shows\na distinct shift towards weaker nitrogen binding energies, predicting Co and Ni to be near\nthe volcano peak.",
-        "location": {
-          "section": "Microkinetic modeling",
-          "page": 10,
-          "char_span": null,
-          "quote": "the peak of the plasma-on volcano curve shows\na distinct shift towards weaker nitrogen binding energies, predicting Co and Ni to be near\nthe volcano peak."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c17",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "we find that rates on the optimal plasma-on catalyst are\ncomparable to those on the optimal thermal catalyst at 673 K and 100 atm, Ru steps.",
-        "location": {
-          "section": "Microkinetic modeling",
-          "page": 10,
-          "char_span": null,
-          "quote": "we find that rates on the optimal plasma-on catalyst are\ncomparable to those on the optimal thermal catalyst at 673 K and 100 atm, Ru steps."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c18",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the TOF on these sites are predicted to be two orders of magnitude lower than those on Co\nsteps.",
-        "location": {
-          "section": "Microkinetic modeling",
-          "page": 11,
-          "char_span": null,
-          "quote": "the TOF on these sites are predicted to be two orders of magnitude lower than those on Co\nsteps."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c19",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the plasma-on TOF on Ru terrace sites is of the same order of magnitude of\nthat on Ru steps, despite the fact that their plasma-off TOFs are five orders of magnitude\napart.",
-        "location": {
-          "section": "Microkinetic modeling",
-          "page": 11,
-          "char_span": null,
-          "quote": "the plasma-on TOF on Ru terrace sites is of the same order of magnitude of\nthat on Ru steps, despite the fact that their plasma-off TOFs are five orders of magnitude\napart."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c20",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the observed activity trend of Co > Ni = Ru > Pt\n> Fe tracks remarkably well with model predictions.",
-        "location": {
-          "section": "Plasma-catalytic kinetics",
-          "page": 13,
-          "char_span": null,
-          "quote": "the observed activity trend of Co > Ni = Ru > Pt\n> Fe tracks remarkably well with model predictions."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c21",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Measured ammonia site-time yields in the di-\nelectric barrier discharge reactor on metal/Al2O3 catalysts as a function of the DFT-calculated\nnitrogen adsorption energy.",
-        "location": {
-          "section": "Plasma-catalytic kinetics",
-          "page": 14,
-          "char_span": null,
-          "quote": "Measured ammonia site-time yields in the di-\nelectric barrier discharge reactor on metal/Al2O3 catalysts as a function of the DFT-calculated\nnitrogen adsorption energy."
+          "quote": "temperature (Tgas), measured using an in situ thermocouple, was 398.5 ± 5 K."
         },
         "recompute_script": null,
         "expected_output": null,
@@ -568,12 +218,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "The DBD plasma was operated at 10 W and \u223c 20 kHz at atmospheric\npressure, and the reactor temperature maintained at 438 K.",
+        "quote": "The DBD plasma was operated at 10 W and ∼ 20 kHz at atmospheric\npressure, and the reactor temperature maintained at 438 K.",
         "location": {
           "section": "Plasma-catalytic kinetics",
           "page": 12,
           "char_span": null,
-          "quote": "The DBD plasma was operated at 10 W and \u223c 20 kHz at atmospheric\npressure, and the reactor temperature maintained at 438 K."
+          "quote": "The DBD plasma was operated at 10 W and ∼ 20 kHz at atmospheric\npressure, and the reactor temperature maintained at 438 K."
         },
         "recompute_script": null,
         "expected_output": null,
@@ -618,37 +268,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "configuration yields a discharge gap of 1.75 mm and a discharge volume of \u223c 0.18 mL.",
+        "quote": "configuration yields a discharge gap of 1.75 mm and a discharge volume of ∼ 0.18 mL.",
         "location": {
           "section": "Experimental Kinetics",
           "page": 17,
           "char_span": null,
-          "quote": "configuration yields a discharge gap of 1.75 mm and a discharge volume of \u223c 0.18 mL."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c25",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "\u03b1 vanishes in the limit that dissociation\nis non-activated, as occurs at EN < \u22121 on steps.",
-        "location": {
-          "section": "Microkinetic modeling",
-          "page": 6,
-          "char_span": null,
-          "quote": "\u03b1 vanishes in the limit that dissociation\nis non-activated, as occurs at EN < \u22121 on steps."
+          "quote": "configuration yields a discharge gap of 1.75 mm and a discharge volume of ∼ 0.18 mL."
         },
         "recompute_script": null,
         "expected_output": null,

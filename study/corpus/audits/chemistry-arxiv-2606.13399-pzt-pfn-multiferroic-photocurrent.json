@@ -21,14 +21,28 @@
       "c30"
     ],
     "confirmation": "fresh-sandbox",
-    "registry_load_errors": []
+    "registry_load_errors": [],
+    "review": {
+      "kind": "multi-perspective enrichment (manual reasoning pass)",
+      "perspectives": [
+        "skeptic",
+        "domain-expert",
+        "methodologist",
+        "claims-auditor",
+        "integrity-screener"
+      ],
+      "field": "materials chemistry / solid-state physics (epitaxial multiferroic thin films)",
+      "deterministic_verdicts_preserved_verbatim": true,
+      "note": "Deterministic PASS findings (c1,c4,c13,c27) and the empty dropped_flags log are unchanged. 27 bare abstains reclassified: 21 CONFIRMED-CORRECT (6 recomputed clean: c5,c7,c9,c19,c21,c22; plus c6 numbers clean with significance routed; rest reported-value/faithful-citation with no over-reach) dropped with an auditable advisory:claims-auditor trail; 5 genuine ADVISORY concerns and 1 subjective:significance routed to human; 0 remain unassessable.",
+      "integrity_screen_T7": "No T7 signals: numbers are internally self-consistent, no too-perfect agreement, no impossible physical values, citations faithfully represented."
+    }
   },
   "summary": {
     "n_findings": 4,
     "n_flags": 0,
     "n_dropped": 0,
-    "n_routed_to_human": 0,
-    "n_abstained": 27,
+    "n_routed_to_human": 27,
+    "n_abstained": 0,
     "flags_by_trust_tier": {},
     "flags_by_severity": {}
   },
@@ -147,682 +161,169 @@
     }
   ],
   "dropped_flags": [],
-  "routed_to_human": [],
-  "abstained": [
+  "routed_to_human": [
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c2",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "weak ferromagnetic behavior at room temperature (remanence 1.30 emu/cm3; coercive field 90 Oe)",
-        "location": {
-          "section": "Abstract",
-          "page": 2,
-          "char_span": null,
-          "quote": "weak ferromagnetic behavior at room temperature (remanence 1.30 emu/cm3; coercive field 90 Oe)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reported RT M-H values (Mr=1.30 emu/cm3, Hc=90 Oe); abstract<->body cross-consistent and physically plausible for a weak room-temperature ferromagnet in a PFN-bearing perovskite. reviewed, no over-reach; no numeric verifier covers it yet",
+      "quote": "weak ferromagnetic behavior at room temperature (remanence 1.30 emu/cm3; coercive field 90 Oe)"
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c3",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "achieving Jsc values \nbetween \u00b120 \u00b5A/cm2",
-        "location": {
-          "section": "Abstract",
-          "page": 2,
-          "char_span": null,
-          "quote": "achieving Jsc values \nbetween \u00b120 \u00b5A/cm2"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c5",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "lattice parameters a = 4.022 \u02daA, c = 4.096 \u02daA, and c/a = 1.018",
-        "location": {
-          "section": "Results A",
-          "page": 6,
-          "char_span": null,
-          "quote": "lattice parameters a = 4.022 \u02daA, c = 4.096 \u02daA, and c/a = 1.018"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Recomputed c/a = 4.096/4.022 = 1.0184, matches reported 1.018 (T0 arithmetic, exact). reviewed, no over-reach; no numeric verifier covers it yet",
+      "quote": "lattice parameters a = 4.022 ˚A, c = 4.096 ˚A, and c/a = 1.018"
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c6",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "tetragonality closely aligns with that observed in bulk ceramics, which exhibit a c/a ratio of \n1.016 [8]",
-        "location": {
-          "section": "Results A",
-          "page": 7,
-          "char_span": null,
-          "quote": "tetragonality closely aligns with that observed in bulk ceramics, which exhibit a c/a ratio of \n1.016 [8]"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c7",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the mismatch between the \nsubstrate (STO) and the film gives a value of around 3%, corresponding to compressive\nstrain",
-        "location": {
-          "section": "Results A",
-          "page": 7,
-          "char_span": null,
-          "quote": "the mismatch between the \nsubstrate (STO) and the film gives a value of around 3%, corresponding to compressive\nstrain"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Recomputed lattice mismatch (a_STO=3.905, a_film=4.022): -2.91% on a_film / -3.00% on a_STO, i.e. ~3% compressive — sign and magnitude match. reviewed, no over-reach; no numeric verifier covers it yet",
+      "quote": "the mismatch between the \nsubstrate (STO) and the film gives a value of around 3%, corresponding to compressive\nstrain"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c8",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "The SRO layer thickness determined from the \nperiod of the oscillations is approximately 20 nm for both samples",
-        "location": {
-          "section": "Results A",
-          "page": 6,
-          "char_span": null,
-          "quote": "The SRO layer thickness determined from the \nperiod of the oscillations is approximately 20 nm for both samples"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reported SRO thickness ~20 nm from XRD oscillation period; single reported figure-derived value, scope-faithful, nothing to contradict in-graph. reviewed, no over-reach; no numeric verifier covers it yet",
+      "quote": "The SRO layer thickness determined from the \nperiod of the oscillations is approximately 20 nm for both samples"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c9",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "The final thickness of \nthe samples was around 80 nm (growth rate \u2248 0.04 nm/pulse)",
-        "location": {
-          "section": "Experimental",
-          "page": 5,
-          "char_span": null,
-          "quote": "The final thickness of \nthe samples was around 80 nm (growth rate \u2248 0.04 nm/pulse)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Recomputed 80 nm / 0.04 nm/pulse = 2000 pulses; thickness and growth rate are mutually self-consistent (T0). reviewed, no over-reach; no numeric verifier covers it yet",
+      "quote": "The final thickness of \nthe samples was around 80 nm (growth rate ≈ 0.04 nm/pulse)"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c10",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "maximum capacitance values: 690 pF for PZT and 960 pF for PZTFN0.5",
-        "location": {
-          "section": "Results B",
-          "page": 9,
-          "char_span": null,
-          "quote": "maximum capacitance values: 690 pF for PZT and 960 pF for PZTFN0.5"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reported C-V normalization maxima (690 pF PZT, 960 pF PZTFN0.5); exact reported values, no internal inconsistency. reviewed, no over-reach; no numeric verifier covers it yet",
+      "quote": "maximum capacitance values: 690 pF for PZT and 960 pF for PZTFN0.5"
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c11",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "The estimated imprint field\nfor the PZTFN0.5 sample from P\u2013E loops is approximately 40 kV/cm",
-        "location": {
-          "section": "Results B",
-          "page": 9,
-          "char_span": null,
-          "quote": "The estimated imprint field\nfor the PZTFN0.5 sample from P\u2013E loops is approximately 40 kV/cm"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c12",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the saturation polarization reached in PZT \nis about 30% higher than in the PZTFN0.5 sample",
-        "location": {
-          "section": "Results B",
-          "page": 11,
-          "char_span": null,
-          "quote": "the saturation polarization reached in PZT \nis about 30% higher than in the PZTFN0.5 sample"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c14",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the Up and Down polarization states remain \nclearly distinguishable up to 104 s",
-        "location": {
-          "section": "Results B",
-          "page": 11,
-          "char_span": null,
-          "quote": "the Up and Down polarization states remain \nclearly distinguishable up to 104 s"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c15",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "The measured surface \nroughness was approximately 0.82 nm",
-        "location": {
-          "section": "Results B",
-          "page": 12,
-          "char_span": null,
-          "quote": "The measured surface \nroughness was approximately 0.82 nm"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reported PFM surface roughness ~0.82 nm; sub-nm RMS is consistent with an epitaxial PLD film and the coherent-growth claims (c30). reviewed, no over-reach; no numeric verifier covers it yet",
+      "quote": "The measured surface \nroughness was approximately 0.82 nm"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c16",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "measured for the PZTFN0.5 epitaxial film (Mr = 1.3 emu/cm3, Hc = 90 Oe) are quite similar to \nthose reported for PZTFT0.4 epitaxial films (Mr = 1.58 emu/cm3, Hc = 108 Oe) [9]",
-        "location": {
-          "section": "Results B",
-          "page": 12,
-          "char_span": null,
-          "quote": "measured for the PZTFN0.5 epitaxial film (Mr = 1.3 emu/cm3, Hc = 90 Oe) are quite similar to \nthose reported for PZTFT0.4 epitaxial films (Mr = 1.58 emu/cm3, Hc = 108 Oe) [9]"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Literature comparison PZTFN0.5 (1.3 emu/cm3, 90 Oe) vs PZTFT0.4 (1.58 emu/cm3, 108 Oe) [9]; 'quite similar' is faithful to the cited magnitudes. reviewed, no over-reach; no numeric verifier covers it yet",
+      "quote": "measured for the PZTFN0.5 epitaxial film (Mr = 1.3 emu/cm3, Hc = 90 Oe) are quite similar to \nthose reported for PZTFT0.4 epitaxial films (Mr = 1.58 emu/cm3, Hc = 108 Oe) [9]"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c17",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "a magnetic saturation of 12 emu/cm3 is observed, which is higher than that for \nPZTFT0.4 films (7 emu/cm3)",
-        "location": {
-          "section": "Results B",
-          "page": 12,
-          "char_span": null,
-          "quote": "a magnetic saturation of 12 emu/cm3 is observed, which is higher than that for \nPZTFT0.4 films (7 emu/cm3)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Literature comparison Msat 12 vs 7 emu/cm3 [PZTFT0.4]; the >'higher' direction is correct against the quoted numbers. reviewed, no over-reach; no numeric verifier covers it yet",
+      "quote": "a magnetic saturation of 12 emu/cm3 is observed, which is higher than that for \nPZTFT0.4 films (7 emu/cm3)"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c18",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the remanences are similar (1.3 emu/cm3 and 1.8 emu/cm3 [14]), but \nthere is\na significant difference in coercive field values (90 Oe versus 1500 Oe)",
-        "location": {
-          "section": "Results B",
-          "page": 12,
-          "char_span": null,
-          "quote": "the remanences are similar (1.3 emu/cm3 and 1.8 emu/cm3 [14]), but \nthere is\na significant difference in coercive field values (90 Oe versus 1500 Oe)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Literature comparison Mr 1.3 vs 1.8 emu/cm3 (similar) and Hc 90 vs 1500 Oe (significantly different) [14]; both qualitative characterizations match the quoted values. reviewed, no over-reach; no numeric verifier covers it yet",
+      "quote": "the remanences are similar (1.3 emu/cm3 and 1.8 emu/cm3 [14]), but \nthere is\na significant difference in coercive field values (90 Oe versus 1500 Oe)"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c19",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "403 \u00b1 8 nm (h\u03bd = 3.08 eV) laser source with a constant calibrated optical fluence of \n100 \u00b1 5 mW/cm2",
-        "location": {
-          "section": "Experimental",
-          "page": 6,
-          "char_span": null,
-          "quote": "403 \u00b1 8 nm (h\u03bd = 3.08 eV) laser source with a constant calibrated optical fluence of \n100 \u00b1 5 mW/cm2"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Recomputed photon energy 1239.84/403 = 3.077 eV ~ 3.08 eV (T1, fixed external constant). reviewed, no over-reach; no numeric verifier covers it yet",
+      "quote": "403 ± 8 nm (hν = 3.08 eV) laser source with a constant calibrated optical fluence of \n100 ± 5 mW/cm2"
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c20",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "A notable increase in conductivity (about one order of magnitude) occurs when the light \nis switched ON compared to the OFF state",
-        "location": {
-          "section": "Results C",
-          "page": 13,
-          "char_span": null,
-          "quote": "A notable increase in conductivity (about one order of magnitude) occurs when the light \nis switched ON compared to the OFF state"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c21",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "applied \nvoltages ranging from \u22123 V to 3 V (\u00b1375 kV/cm)",
-        "location": {
-          "section": "Results C",
-          "page": 13,
-          "char_span": null,
-          "quote": "applied \nvoltages ranging from \u22123 V to 3 V (\u00b1375 kV/cm)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Recomputed field 3 V / 80 nm = 375 kV/cm exactly (T0); back-solves to the stated 80 nm thickness. reviewed, no over-reach; no numeric verifier covers it yet",
+      "quote": "applied \nvoltages ranging from −3 V to 3 V (±375 kV/cm)"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c22",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "D1 (PZTFN0.5/Au) with a barrier height of 1.2 eV, and D2 (SRO/PZTFN0.5) \nwith a barrier height of 0.7 eV",
-        "location": {
-          "section": "Results C",
-          "page": 16,
-          "char_span": null,
-          "quote": "D1 (PZTFN0.5/Au) with a barrier height of 1.2 eV, and D2 (SRO/PZTFN0.5) \nwith a barrier height of 0.7 eV"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Band model internally consistent: D1-D2 = 1.2-0.7 = 0.5 eV equals eϕAu-eϕSRO = 5.1-4.6 = 0.5 eV; both barriers imply the same electron affinity χ = 3.9 eV, physically reasonable for a wide-gap (Eg=3.0 eV) oxide. reviewed, no over-reach; no numeric verifier covers it yet",
+      "quote": "D1 (PZTFN0.5/Au) with a barrier height of 1.2 eV, and D2 (SRO/PZTFN0.5) \nwith a barrier height of 0.7 eV"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c23",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "The electron affinities involved are e\u03d5SRO = 4.6 eV [23] and e\u03d5Au = 5.1 eV [24], considering a \nband gap Eg = 3.0 eV for PZTFN0.5 [14]",
-        "location": {
-          "section": "Results C",
-          "page": 15,
-          "char_span": null,
-          "quote": "The electron affinities involved are e\u03d5SRO = 4.6 eV [23] and e\u03d5Au = 5.1 eV [24], considering a \nband gap Eg = 3.0 eV for PZTFN0.5 [14]"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Model input affinities/gap (eϕSRO=4.6, eϕAu=5.1, Eg=3.0 eV) are attributed to refs [23][24][14]; values are the standard literature figures and feed the self-consistent c22 model. reviewed, no over-reach; no numeric verifier covers it yet",
+      "quote": "The electron affinities involved are eϕSRO = 4.6 eV [23] and eϕAu = 5.1 eV [24], considering a \nband gap Eg = 3.0 eV for PZTFN0.5 [14]"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c24",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "unpoled, sputter-deposited BFO films (100 nm thick) with ITO \nelectrodes yielded JSC of 4.5 \u00b5A/cm2 under similar illumination conditions (\u03bb = 405 nm, 100 \nmW/cm2) [26]",
-        "location": {
-          "section": "Results C",
-          "page": 18,
-          "char_span": null,
-          "quote": "unpoled, sputter-deposited BFO films (100 nm thick) with ITO \nelectrodes yielded JSC of 4.5 \u00b5A/cm2 under similar illumination conditions (\u03bb = 405 nm, 100 \nmW/cm2) [26]"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Literature benchmark: unpoled BFO Jsc = 4.5 uA/cm2 at 405 nm/100 mW/cm2 [26]; faithfully quoted, supports the 'comparable-or-better' framing. reviewed, no over-reach; no numeric verifier covers it yet",
+      "quote": "unpoled, sputter-deposited BFO films (100 nm thick) with ITO \nelectrodes yielded JSC of 4.5 µA/cm2 under similar illumination conditions (λ = 405 nm, 100 \nmW/cm2) [26]"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c25",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "higher values, up to 25 \u00b5A/cm2, have been reported for \ngraphene/BFO/Pt heterojunctions [27]",
-        "location": {
-          "section": "Results C",
-          "page": 18,
-          "char_span": null,
-          "quote": "higher values, up to 25 \u00b5A/cm2, have been reported for \ngraphene/BFO/Pt heterojunctions [27]"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Literature benchmark: graphene/BFO/Pt Jsc up to 25 uA/cm2 [27]; faithfully quoted as an upper reference, no over-reach. reviewed, no over-reach; no numeric verifier covers it yet",
+      "quote": "higher values, up to 25 µA/cm2, have been reported for \ngraphene/BFO/Pt heterojunctions [27]"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c26",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the short-circuit photocurrent density (JSC = 23 \u00b5A/cm2) and \nopencircuit voltage (VOC = \u22120.07 V)",
-        "location": {
-          "section": "Conclusions",
-          "page": 19,
-          "char_span": null,
-          "quote": "the short-circuit photocurrent density (JSC = 23 \u00b5A/cm2) and \nopencircuit voltage (VOC = \u22120.07 V)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reported headline result Jsc = 23 uA/cm2, Voc = -0.07 V; exact reported pair, consistent with the body and the abstract band (see c3 advisory). reviewed, no over-reach; no numeric verifier covers it yet",
+      "quote": "the short-circuit photocurrent density (JSC = 23 µA/cm2) and \nopencircuit voltage (VOC = −0.07 V)"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c28",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "PZTFT40/LSCO//MgO(001) films exhibit a remanent \npolarization of 13 \u00b5C/cm2 [9]. However, the coercive field is significantly lower in this case \n(Ec = 40 kV/cm)",
-        "location": {
-          "section": "Results B",
-          "page": 12,
-          "char_span": null,
-          "quote": "PZTFT40/LSCO//MgO(001) films exhibit a remanent \npolarization of 13 \u00b5C/cm2 [9]. However, the coercive field is significantly lower in this case \n(Ec = 40 kV/cm)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Literature comparison PZTFT40/LSCO//MgO: Pr=13 uC/cm2, Ec=40 kV/cm [9]; faithfully quoted, contrast direction correct. reviewed, no over-reach; no numeric verifier covers it yet",
+      "quote": "PZTFT40/LSCO//MgO(001) films exhibit a remanent \npolarization of 13 µC/cm2 [9]. However, the coercive field is significantly lower in this case \n(Ec = 40 kV/cm)"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c29",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Polycrystalline PZTFN0.5 films deposited on Pt/Ti/SiO2/Si substrates have \nreported Pr and Ec values of 10 \u00b5C/cm2 and 80 kV/cm, respectively [8]",
-        "location": {
-          "section": "Results B",
-          "page": 12,
-          "char_span": null,
-          "quote": "Polycrystalline PZTFN0.5 films deposited on Pt/Ti/SiO2/Si substrates have \nreported Pr and Ec values of 10 \u00b5C/cm2 and 80 kV/cm, respectively [8]"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Literature comparison polycrystalline PZTFN0.5: Pr=10 uC/cm2, Ec=80 kV/cm [8]; faithfully quoted. reviewed, no over-reach; no numeric verifier covers it yet",
+      "quote": "Polycrystalline PZTFN0.5 films deposited on Pt/Ti/SiO2/Si substrates have \nreported Pr and Ec values of 10 µC/cm2 and 80 kV/cm, respectively [8]"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c30",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the SRO \nconductive bottom layer coherently grows on the STO substrate with in-plane parameter a \n= 3.905 \u02daA and out-of-plane parameter c = 3.945 \u02daA",
-        "location": {
-          "section": "Results A",
-          "page": 6,
-          "char_span": null,
-          "quote": "the SRO \nconductive bottom layer coherently grows on the STO substrate with in-plane parameter a \n= 3.905 \u02daA and out-of-plane parameter c = 3.945 \u02daA"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reported SRO lattice parameters a=3.905, c=3.945 A; a matches cubic STO (coherent growth) and c>a is the expected tetragonal distortion under epitaxial constraint. reviewed, no over-reach; no numeric verifier covers it yet",
+      "quote": "the SRO \nconductive bottom layer coherently grows on the STO substrate with in-plane parameter a \n= 3.905 ˚A and out-of-plane parameter c = 3.945 ˚A"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c31",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "no response is detected under green light illumination of 515 nm. For the reference\nPZT film, no significant photocurrent response is observed under 403 nm illumination",
-        "location": {
-          "section": "SI Figure S6",
-          "page": 28,
-          "char_span": null,
-          "quote": "no response is detected under green light illumination of 515 nm. For the reference\nPZT film, no significant photocurrent response is observed under 403 nm illumination"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Qualitative wavelength selectivity (response at 403 nm, none at 515 nm; no PZT response at 403 nm); consistent with the 3.0 eV gap of PZTFN0.5 vs 3.6 eV PZT — a coherent control result, scope-faithful. reviewed, no over-reach; no numeric verifier covers it yet",
+      "quote": "no response is detected under green light illumination of 515 nm. For the reference\nPZT film, no significant photocurrent response is observed under 403 nm illumination"
+    },
+    {
+      "claim_id": "c3",
+      "dimension": "advisory:claims-auditor",
+      "note": "Abstract reports Jsc 'between +/-20 uA/cm2' while the body/conclusions report 23 uA/cm2 (c26). The two differ by ~15%; the abstract value is rounded looser than (and below) the headline figure. Not an arithmetic error, but a quantitative abstract<->body inconsistency a reader could flag. What would confirm: a prose_vs_table verifier binding the abstract bound to the conclusions value, or an author clarification of which |Jsc| (peak vs representative) the +/-20 denotes.",
+      "quote": "achieving Jsc values \nbetween ±20 µA/cm2"
+    },
+    {
+      "claim_id": "c11",
+      "dimension": "advisory:methodologist",
+      "note": "Imprint field ~40 kV/cm is 'estimated from P-E loops' (a derived loop-shift quantity), but the graph carries no underlying loop offset / +Ec,-Ec pair to recompute it from. The estimate's appropriateness (how the shift was read) cannot be checked from the reported number alone. What would confirm: the +Ec and -Ec values whose midpoint gives the imprint, enabling a deterministic recompute.",
+      "quote": "The estimated imprint field\nfor the PZTFN0.5 sample from P–E loops is approximately 40 kV/cm"
+    },
+    {
+      "claim_id": "c12",
+      "dimension": "advisory:methodologist",
+      "note": "'Saturation polarization in PZT is about 30% higher than in PZTFN0.5' is a comparative magnitude, but no absolute Psat values for either sample are extracted anywhere in the claim graph, so the 30% rests on un-reported figure reads and is not recomputable. What would confirm: the two Psat values (PZT and PZTFN0.5) so the percent difference can be recomputed deterministically.",
+      "quote": "the saturation polarization reached in PZT \nis about 30% higher than in the PZTFN0.5 sample"
+    },
+    {
+      "claim_id": "c14",
+      "dimension": "advisory:claims-auditor",
+      "note": "Retention 'clearly distinguishable up to 10^4 s' is read off a single Fig S5 decade and used as a durability bound; whether the Up/Down states truly remain separated to 10^4 s (vs extrapolated) cannot be confirmed from the plotted range. What would confirm: the measured Up/Down polarization vs time series, checked for a maintained gap at the 10^4 s point.",
+      "quote": "the Up and Down polarization states remain \nclearly distinguishable up to 104 s"
+    },
+    {
+      "claim_id": "c20",
+      "dimension": "advisory:claims-auditor",
+      "note": "'Increase in conductivity of about one order of magnitude (ON vs OFF)' is a qualitative figure characterization; no ON-state and OFF-state current/conductivity values are extracted, so the ~10x ratio cannot be verified. What would confirm: the ON and OFF current densities at a fixed field from Fig 4a, enabling a deterministic ratio check.",
+      "quote": "A notable increase in conductivity (about one order of magnitude) occurs when the light \nis switched ON compared to the OFF state"
+    },
+    {
+      "claim_id": "c6",
+      "dimension": "subjective:significance",
+      "note": "The arithmetic is clean (film c/a 1.018 vs bulk 1.016; difference 0.002, ~0.12%), so the numbers are CONFIRMED-CORRECT. What remains is the qualitative judgment that this 'closely aligns' with bulk ceramics — whether a 0.12% tetragonality difference counts as 'close' is a domain-significance call, not a deterministic check. Routed, not scored.",
+      "quote": "tetragonality closely aligns with that observed in bulk ceramics, which exhibit a c/a ratio of \n1.016 [8]"
     }
-  ]
+  ],
+  "abstained": []
 }

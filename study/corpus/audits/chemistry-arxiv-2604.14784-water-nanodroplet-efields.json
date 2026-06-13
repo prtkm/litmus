@@ -15,396 +15,149 @@
       "c18"
     ],
     "confirmation": "fresh-sandbox",
-    "registry_load_errors": []
+    "registry_load_errors": [],
+    "multi_perspective_review": {
+      "reviewer": "claude-opus-4-8",
+      "perspectives": [
+        "skeptic",
+        "domain-expert",
+        "methodologist",
+        "claims-auditor",
+        "integrity-screener"
+      ],
+      "field": "chemistry (computational / DPMD + DFT)",
+      "deterministic_verdicts_preserved": true,
+      "note": "Bare planner abstains reasoned from 5 perspectives. Findings + dropped_flags kept verbatim (both empty: the deterministic pass emitted no flags). Recomputable numbers (c6 ratio, c9 pH/Rayleigh, c13 R^2<->r, c17/c18 geometry) were recomputed and found clean -> CONFIRMED-CORRECT with an auditable advisory:claims-auditor drop-note; genuine model-judgement concerns -> advisory:<perspective>; significance/novelty -> subjective; only c16 (robustness vs unavailable SI Fig S8, no evidence record) remains abstained."
+    }
   },
   "summary": {
     "n_findings": 0,
     "n_flags": 0,
     "n_dropped": 0,
-    "n_routed_to_human": 0,
-    "n_abstained": 18,
+    "n_routed_to_human": 19,
+    "n_abstained": 1,
     "flags_by_trust_tier": {},
     "flags_by_severity": {}
   },
   "findings": [],
   "dropped_flags": [],
-  "routed_to_human": [],
-  "abstained": [
+  "routed_to_human": [
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c1",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "find an outward-oriented field of \u223c 1.0\u20131.2 V/\u02daA along the intrinsic surface normal",
-        "location": {
-          "section": "Abstract",
-          "page": 2,
-          "char_span": null,
-          "quote": "find an outward-oriented field of \u223c 1.0\u20131.2 V/\u02daA along the intrinsic surface normal"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:domain-expert",
+      "note": "Central result: an outward IEF of ~1.0-1.2 V/Aa along the Willard-Chandler surface normal, ~5-6x larger than prior computational estimates (~0.2 V/Aa, c5). In chemistry terms the magnitude is physically large but not impossible for a DFT-derived local field at a sharp instantaneous interface; the WC-normal projection and the choice of where the 'interface' sits strongly affect the magnitude. CONFIRM: independent recompute of the field on the released DPMD/DFT configurations, and a sensitivity check of the value to the interface (WC) definition and to the averaging volume. No numeric verifier regenerates a DFT field distribution from the paper text alone.",
+      "quote": "find an outward-oriented field of ∼ 1.0–1.2 V/˚A along the intrinsic surface normal"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c2",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "its magnitude scales linearly with the average number of hydrogen bonds per\ninterfacial molecule",
-        "location": {
-          "section": "Abstract",
-          "page": 2,
-          "char_span": null,
-          "quote": "its magnitude scales linearly with the average number of hydrogen bonds per\ninterfacial molecule"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Mechanistic claim that IEF magnitude scales LINEARLY with average H-bonds per interfacial molecule, resting on the Fig 2b fit (R^2=0.994). The internal fit statistic is self-consistent (see c13), but 'linear scaling' is generalized from a handful of system sizes spanning a narrow H-bond range; linearity over that window does not establish a globally linear law. CONFIRM: the per-system (H-bond, IEF) table plus residuals across the full curvature series. Concern is a possible over-generalization of a narrow-range correlation, not a numeric error.",
+      "quote": "its magnitude scales linearly with the average number of hydrogen bonds per\ninterfacial molecule"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c3",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "which changes by a factor\nof only \u223c 10\u22125 between 3 and 40\u00b5m-sized droplets",
-        "location": {
-          "section": "Abstract",
-          "page": 2,
-          "char_span": null,
-          "quote": "which changes by a factor\nof only \u223c 10\u22125 between 3 and 40\u00b5m-sized droplets"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "The ~1e-5 change in IEF between 3 and 40 um droplets is an EXTRAPOLATION ~3 orders of magnitude beyond the simulated size range (44-68 Aa = 0.0044-0.0068 um) using a fitted curvature dependence (c15). The simulated trend may be sound, but the headline 'effectively curvature-independent up to 40 um' rests on the assumed extrapolation functional form, not on data at those sizes. CONFIRM: the curvature fit, its uncertainty band, and a stated justification for the 1/R extrapolation law to micron scale. Not recomputable from the released nanoscale data.",
+      "quote": "which changes by a factor\nof only ∼ 10−5 between 3 and 40µm-sized droplets"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c4",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the IEF is localized\ninside the interfacial region and rapidly vanishes within a few \u02daA",
-        "location": {
-          "section": "Abstract",
-          "page": 2,
-          "char_span": null,
-          "quote": "the IEF is localized\ninside the interfacial region and rapidly vanishes within a few \u02daA"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:domain-expert",
+      "note": "Qualitative spatial claim that the IEF is localized to the interface and decays within a few Aa. Consistent with the field definition and with the vapor1/vapor2 profile (c11). Plausible and field-standard for an interfacial field, but 'a few Aa' and 'rapidly vanishes' are imprecise; the apparent decay length depends on the chosen bin width and interface reference. CONFIRM: the field-vs-distance profile with bin sizes and the decay length read off it.",
+      "quote": "the IEF is localized\ninside the interfacial region and rapidly vanishes within a few ˚A"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c5",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "that the air-water boundary may sustain electric fields on the order of \u223c 0.2 V/\u02daA",
-        "location": {
-          "section": "Introduction",
-          "page": 3,
-          "char_span": null,
-          "quote": "that the air-water boundary may sustain electric fields on the order of \u223c 0.2 V/\u02daA"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "This ~0.2 V/Aa value is attributed to prior literature (refs 6,9,11-13), not produced by this work; it anchors the 5-6x novelty claim (c6). T5 external-literature check: whether 0.2 V/Aa faithfully represents those sources (same field definition, same WC-normal projection, same averaging) cannot be settled from this paper. A definitional mismatch (e.g. macroscopic vs instantaneous-interface field) would deflate the 5-6x comparison. CONFIRM: read the cited sources and match field definitions.",
+      "quote": "that the air-water boundary may sustain electric fields on the order of ∼ 0.2 V/˚A"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c6",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "i.e., about 5-6 times larger than previous computational\nestimates.",
-        "location": {
-          "section": "Results and discussion",
-          "page": 11,
-          "char_span": null,
-          "quote": "i.e., about 5-6 times larger than previous computational\nestimates."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed: the stated '5-6 times larger' is arithmetically exact for the reported numbers (1.0/0.2 = 5.0 and 1.2/0.2 = 6.0), so the ratio itself is CONFIRMED-CORRECT; no numeric verifier currently emits this T2 ratio check. Residual (non-numeric) concern: the comparison is only meaningful if this work's IEF and the ~0.2 V/Aa prior estimate use the same field definition (see c5). The number is not over-reaching; the like-for-like comparability is what a human should confirm.",
+      "quote": "i.e., about 5-6 times larger than previous computational\nestimates."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c7",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Each DPMD simulation was\ncarried out in the NVT canonical ensemble for at least 1 ns. The temperature was kept fixed\nat 300 K via the canonical-sampling-velocity-rescaling (CSVR) thermostat 55 with a damping\nfactor of 0.04 ps.",
-        "location": {
-          "section": "Methods",
-          "page": 5,
-          "char_span": null,
-          "quote": "Each DPMD simulation was\ncarried out in the NVT canonical ensemble for at least 1 ns. The temperature was kept fixed\nat 300 K via the canonical-sampling-velocity-rescaling (CSVR) thermostat 55 with a damping\nfactor of 0.04 ps."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:methodologist",
+      "note": "Simulation protocol (NVT, 300 K, CSVR thermostat, damping 0.04 ps) is standard and internally consistent. METHODOLOGIST concern: 'at least 1 ns' of DPMD per system is on the short side for converging interfacial field and H-bond statistics, especially for the larger droplets; sampling adequacy bears on the precision of c1/c2/c14. CONFIRM: block-averaged error bars or a convergence-vs-time plot for the IEF. Parameter values themselves are not in dispute.",
+      "quote": "Each DPMD simulation was\ncarried out in the NVT canonical ensemble for at least 1 ns. The temperature was kept fixed\nat 300 K via the canonical-sampling-velocity-rescaling (CSVR) thermostat 55 with a damping\nfactor of 0.04 ps."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c8",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "500 randomly chosen configurations were extracted from all DPMD trajectories and re-\nsampled via ab initio calculations at the PBE+D3",
-        "location": {
-          "section": "Methods",
-          "page": 5,
-          "char_span": null,
-          "quote": "500 randomly chosen configurations were extracted from all DPMD trajectories and re-\nsampled via ab initio calculations at the PBE+D3"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed: N=500 randomly chosen configurations re-sampled at PBE+D3 is a transcribed methods parameter with no internal arithmetic to violate; CONFIRMED-CORRECT on its face. No numeric verifier covers it yet. Minor methodological footnote (for a human, not a flag): whether 500 single-point DFT frames suffice for the reported distribution widths is a sampling-adequacy question tied to c7, addressable via the released configuration set.",
+      "quote": "500 randomly chosen configurations were extracted from all DPMD trajectories and re-\nsampled via ab initio calculations at the PBE+D3"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c9",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "charge states corresponding to \u22125e\n\u2212, \u2212e\u2212, +e\u2212, and +5e\u2212, hence probing regimes of 13%\nand 66% of the Rayleigh limit for Coulomb fission. These charge states approximately cor-\nrespond to net pH values of 13.74, 13.0, 0.96, and 0.26, respectively.",
-        "location": {
-          "section": "pH Effects on the Interfacial Electric Field",
-          "page": 13,
-          "char_span": null,
-          "quote": "charge states corresponding to \u22125e\n\u2212, \u2212e\u2212, +e\u2212, and +5e\u2212, hence probing regimes of 13%\nand 66% of the Rayleigh limit for Coulomb fission. These charge states approximately cor-\nrespond to net pH values of 13.74, 13.0, 0.96, and 0.26, respectively."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed and internally cross-checked: the four charge states [-5e,-1e,+1e,+5e] map to four pH values, and the conjugate pairs sum to ~14 (13.74+0.26=14.00; 13.0+0.96=13.96), consistent with water's Kw; the 13% and 66% Rayleigh-limit fractions track the 5x charge ratio (13x5=65 ~ 66). All CONFIRMED-CORRECT; no numeric verifier emits this pH/Rayleigh consistency check yet. The 'approximately correspond to net pH' mapping (excess charge -> bulk-equivalent pH for a finite nanodroplet) is a modeling convention a human may wish to note, but it is not an arithmetic error.",
+      "quote": "charge states corresponding to −5e\n−, −e−, +e−, and +5e−, hence probing regimes of 13%\nand 66% of the Rayleigh limit for Coulomb fission. These charge states approximately cor-\nrespond to net pH values of 13.74, 13.0, 0.96, and 0.26, respectively."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c10",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "that the IEF linearly increases with the total excess charge",
-        "location": {
-          "section": "pH Effects",
-          "page": 14,
-          "char_span": null,
-          "quote": "that the IEF linearly increases with the total excess charge"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Claim of LINEAR increase of IEF with total excess charge, resting on the Fig 3a linear fit over only four charge states (-5e,-1e,+1e,+5e). Four points can be fit by a line almost regardless of the true functional form; linearity is asserted, not demonstrated against a non-linear alternative. CONFIRM: the four (charge, IEF) values with uncertainties and the fit residuals. Possible over-reach from sparse sampling, not a numeric mistake.",
+      "quote": "that the IEF linearly increases with the total excess charge"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c11",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "In the vapor1 region the typical field values drop to smaller\nvalues of approximately \u223c 0.3 V/\u02daA, while in the vapor2 region the field vanishes within\nthe statistical uncertainty.",
-        "location": {
-          "section": "Spatial Extension",
-          "page": 16,
-          "char_span": null,
-          "quote": "In the vapor1 region the typical field values drop to smaller\nvalues of approximately \u223c 0.3 V/\u02daA, while in the vapor2 region the field vanishes within\nthe statistical uncertainty."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed: vapor1 ~0.3 V/Aa and vapor2 vanishing-within-uncertainty are transcribed region-averaged values supporting the decay claim (c4); on their face CONFIRMED-CORRECT with no numeric verifier covering them. Residual concern for a human: the values depend on how the vapor1/vapor2 region boundaries are drawn relative to the interface, which is a binning choice rather than a computed quantity. CONFIRM via the field-vs-distance profile with region definitions.",
+      "quote": "In the vapor1 region the typical field values drop to smaller\nvalues of approximately ∼ 0.3 V/˚A, while in the vapor2 region the field vanishes within\nthe statistical uncertainty."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c12",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "The corresponding distributions peak at approximately\n1.2\u20131.4 V/\u02daA",
-        "location": {
-          "section": "Spatial Extension",
-          "page": 15,
-          "char_span": null,
-          "quote": "The corresponding distributions peak at approximately\n1.2\u20131.4 V/\u02daA"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "The interfacial field DISTRIBUTION peaks at 1.2-1.4 V/Aa, while the headline reported field (c1) is 1.0-1.2 V/Aa. These are different statistics (modal peak of a broad distribution vs the reported representative value), so they need not coincide, but the ~0.2 V/Aa offset and the choice of which statistic to headline should be reconciled so readers don't conflate them. CONFIRM: the distribution with its peak and mean/median marked. Not a numeric error; a presentation/consistency point.",
+      "quote": "The corresponding distributions peak at approximately\n1.2–1.4 V/˚A"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c13",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": null,
-        "location": {
-          "section": "Results and discussion",
-          "page": 11,
-          "char_span": null,
-          "quote": null
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed and recomputed: for a simple linear fit R^2 = r^2, and (-0.997)^2 = 0.994009, which rounds to the reported R^2=0.994; equivalently sqrt(0.994)=0.99700 rounds to |r|=0.997. The reported R^2 and Pearson r are fully internally CONSISTENT -> CONFIRMED-CORRECT. No numeric verifier currently emits this R^2<->r coherence check (a clean T0 synthesis candidate, DESIGN S8/WS-F). Drop recorded here so the resolution is auditable rather than silent.",
+      "quote": null
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c14",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "leading to an\naverage \u03b1 \u223c 96\u25e6in the droplet (\u03b1 \u223c 94\u25e6in the slab), implies a net electric field directed\noutward from the liquid toward the vapor.",
-        "location": {
-          "section": "Results and discussion",
-          "page": 8,
-          "char_span": null,
-          "quote": "leading to an\naverage \u03b1 \u223c 96\u25e6in the droplet (\u03b1 \u223c 94\u25e6in the slab), implies a net electric field directed\noutward from the liquid toward the vapor."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:domain-expert",
+      "note": "Reviewed: mean dipole tilt alpha ~96 deg (droplet) / ~94 deg (slab) relative to the outward normal gives cos(alpha)<0, consistent with the stated net-outward field direction; the direction logic is self-consistent. Both angles sit only 4-6 deg past 90 deg, i.e. a weak average orientational preference, so the qualitative 'net outward' conclusion is direction-correct but rests on a small mean asymmetry whose statistical significance depends on the (short, c7) sampling. CONFIRM: the alpha distribution width / standard error. Not a numeric error.",
+      "quote": "leading to an\naverage α ∼ 96◦in the droplet (α ∼ 94◦in the slab), implies a net electric field directed\noutward from the liquid toward the vapor."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c15",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "reveals variations on the order of 10\u22125 V/\u02daA, i.e., five orders of magnitude smaller than\nthe field itself.",
-        "location": {
-          "section": "Results and discussion",
-          "page": 12,
-          "char_span": null,
-          "quote": "reveals variations on the order of 10\u22125 V/\u02daA, i.e., five orders of magnitude smaller than\nthe field itself."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Quantitative restatement of the curvature extrapolation (c3): a ~1e-5 V/Aa variation, '5 orders of magnitude smaller than the field.' This depends entirely on the fitted curvature law extended from ~5 nm droplets to 3-40 um (a >1000x reach). The order-of-magnitude conclusion is only as good as the assumed 1/R-type form and its uncertainty. CONFIRM: the fit, its error band, and the physical justification for extrapolating it three decades in size. Not recomputable from the released data.",
+      "quote": "reveals variations on the order of 10−5 V/˚A, i.e., five orders of magnitude smaller than\nthe field itself."
     },
+    {
+      "claim_id": "c16",
+      "dimension": "advisory:methodologist",
+      "note": "Functional-robustness claim: PBE+D3, SCAN and r2SCAN yield 'essentially indistinguishable' IEF distributions. This is the key defense that the surprisingly large field is not a GGA/PBE artifact, but the supporting evidence (Fig S8) is in the unavailable SI and no evidence record backs the claim, so it cannot be assessed here. CONFIRM: obtain Fig S8 and quantify 'indistinguishable' (distribution overlap / shift in the peak field). Flagged advisory; also retained in abstained as genuinely unassessable pending the SI.",
+      "quote": "which yield essentially indistinguishable IEF distributions (see Fig. S8 of the SI)"
+    },
+    {
+      "claim_id": "c17",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed: the 256/512-molecule slab box edges (a=b=19.641, c=45.000 Aa; a=b=24.830, c=60.000 Aa) are transcribed methods values with no internal arithmetic to violate -> CONFIRMED-CORRECT. No numeric verifier covers it yet. (A density cross-check against the molecule count would require the released coordinates.) Drop recorded for auditability.",
+      "quote": "samples composed of 256 and 512 H2O molecules were considered with box edges of\na = b = 19.641, c = 45.000 ˚A and a = b = 24.830, c = 60.000 ˚A, respectively"
+    },
+    {
+      "claim_id": "c18",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed and sanity-checked: 7 droplet sizes [256..1024] pair 1:1 with 7 box edges [44..68 Aa]; both lists are monotonically increasing, and the bulk-density-equivalent droplet diameters (~24-39 Aa) all fit inside their cubic boxes with vacuum padding, so the geometry is self-consistent -> CONFIRMED-CORRECT. No numeric verifier emits this list-coherence/geometry check yet. Drop recorded for auditability.",
+      "quote": "nanodroplets composed of 256, 384, 512, 640, 768, 896, and 1024 H2O molecules were simu-\nlated in cubic boxes with edges of 44, 48, 60, 63, 65, 67, and 68 ˚A, respectively"
+    },
+    {
+      "claim_id": "c1",
+      "dimension": "subjective:significance",
+      "note": "Whether a 5-6x-larger interfacial field that is near-independent of curvature and pH is an important advance for electrospray/microdroplet chemistry and interfacial reactivity is a significance/novelty judgement (T8) - surfaced, not scored. Routed to a domain human.",
+      "quote": null
+    }
+  ],
+  "abstained": [
     {
       "verifier_id": "litmus.planner",
       "claim_id": "c16",
@@ -423,56 +176,6 @@
           "page": 5,
           "char_span": null,
           "quote": "which yield essentially indistinguishable IEF distributions (see Fig. S8 of the SI)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c17",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "samples composed of 256 and 512 H2O molecules were considered with box edges of\na = b = 19.641, c = 45.000 \u02daA and a = b = 24.830, c = 60.000 \u02daA, respectively",
-        "location": {
-          "section": "Methods",
-          "page": 5,
-          "char_span": null,
-          "quote": "samples composed of 256 and 512 H2O molecules were considered with box edges of\na = b = 19.641, c = 45.000 \u02daA and a = b = 24.830, c = 60.000 \u02daA, respectively"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c18",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "nanodroplets composed of 256, 384, 512, 640, 768, 896, and 1024 H2O molecules were simu-\nlated in cubic boxes with edges of 44, 48, 60, 63, 65, 67, and 68 \u02daA, respectively",
-        "location": {
-          "section": "Methods",
-          "page": 5,
-          "char_span": null,
-          "quote": "nanodroplets composed of 256, 384, 512, 640, 768, 896, and 1024 H2O molecules were simu-\nlated in cubic boxes with edges of 44, 48, 60, 63, 65, 67, and 68 \u02daA, respectively"
         },
         "recompute_script": null,
         "expected_output": null,

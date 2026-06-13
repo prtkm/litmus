@@ -10,14 +10,28 @@
       "c3"
     ],
     "confirmation": "fresh-sandbox",
-    "registry_load_errors": []
+    "registry_load_errors": [],
+    "enrichment": {
+      "pass": "multi-perspective-review",
+      "perspectives": [
+        "skeptic",
+        "domain-expert",
+        "methodologist",
+        "claims-auditor",
+        "integrity-screener"
+      ],
+      "field": "biology/medicine",
+      "deterministic_verdicts_preserved": true,
+      "abstained_before": 2,
+      "note": "Retraction notice with no quantitative results; nothing recomputable. c1/c3 reviewed as CONFIRMED-CORRECT (qualitative T1, no over-reach); c2 integrity signal kept as T7 route + advisory; abstained shrunk to the genuinely-unassessable (empty)."
+    }
   },
   "summary": {
     "n_findings": 0,
     "n_flags": 0,
     "n_dropped": 0,
-    "n_routed_to_human": 1,
-    "n_abstained": 2,
+    "n_routed_to_human": 6,
+    "n_abstained": 0,
     "flags_by_trust_tier": {},
     "flags_by_severity": {}
   },
@@ -27,60 +41,39 @@
     {
       "claim_id": "c2",
       "dimension": "tier:T7",
-      "note": "tier T7: subjective/integrity \u2014 surfaced, not scored (DESIGN \u00a73.5)",
+      "note": "tier T7: subjective/integrity — surfaced, not scored (DESIGN §3.5)",
       "quote": "the\nimmunohistochemical image shown in Fig. 1C on p. 1434 and \ncertain of the western blot data featured in Figs. 3B and 4B \nwere strikingly similar to data that had already appeared \npreviously in articles written by different authors at different \nresearch institutes."
-    }
-  ],
-  "abstained": [
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c1",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Oblongifolin C reverses GEM resistance via suppressing \nautophagy flux in bladder cancer cells",
-        "location": {
-          "section": "RETRACTION",
-          "page": 1,
-          "char_span": null,
-          "quote": "Oblongifolin C reverses GEM resistance via suppressing \nautophagy flux in bladder cancer cells"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
     },
     {
-      "verifier_id": "litmus.planner",
+      "claim_id": "c1",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across 5 perspectives, no over-reach. c1 is a T1 bibliographic claim stating the retracted article's title/journal/DOI (Exp Ther Med 20:1431-1440, 2020; DOI 10.3892/etm.2020.8856) -- it merely transcribes the masthead of the document being audited (a retraction notice), so the claim cannot exceed its evidence. SKEPTIC: the only failure mode is a transcription error in the title/DOI, and ev1's quote matches the claim verbatim. CLAIMS-AUDITOR: claim strength (qualitative existence) == evidence strength; no quantitative result is asserted (the document reports none). No numeric verifier covers it yet -- abstain dropped as CONFIRMED-CORRECT, not silently.",
+      "quote": "Oblongifolin C reverses GEM resistance via suppressing \nautophagy flux in bladder cancer cells"
+    },
+    {
+      "claim_id": "c1",
+      "dimension": "advisory:domain-expert",
+      "note": "DOMAIN-EXPERT (biomedical literature) / would-confirm: the original DOI 10.3892/etm.2020.8856 and its retracted status are externally checkable as a T1 fixed-knowledge lookup (Crossref / Retraction Watch DB / PubMed retraction flag). LITMUS has no citation-exists/retracted verifier in the library yet (DESIGN §5 T1, §19 WS-D), so this stays advisory rather than a scored verdict. Confirming step: resolve the DOI and assert Crossref 'update-to' / RW lists it as retracted; that would promote c1 from advisory to a deterministic_confirmed T1 verdict.",
+      "quote": "Oblongifolin C reverses GEM resistance via suppressing \nautophagy flux in bladder cancer cells"
+    },
+    {
+      "claim_id": "c2",
+      "dimension": "advisory:integrity-screener",
+      "note": "INTEGRITY-SCREENER (T7): this is the stated grounds for retraction -- an immunohistochemical image (Fig. 1C, p. 1434) and western-blot panels (Figs. 3B, 4B) reported by a concerned reader as strikingly similar to data previously published by different authors at different institutes (i.e. cross-paper image reuse / duplication). Per DESIGN §3.5 and §5 T7, image-duplication is a screening signal surfaced to a human, explicitly NOT scored: LITMUS ships no image-forensics verifier and the source figures are not in this corpus, so code cannot settle it. SKEPTIC note: the notice itself reports the allegation (it does not independently re-prove the overlap), and the authors did not reply -- so the integrity concern is corroborated by an editorial decision but the pixel-level match remains human-verifiable. Would-confirm: side-by-side panel overlay / copy-move + ELA forensics against the named prior articles, or a PubPeer thread documenting the duplicated source panels.",
+      "quote": "the\nimmunohistochemical image shown in Fig. 1C on p. 1434 and \ncertain of the western blot data featured in Figs. 3B and 4B \nwere strikingly similar to data that had already appeared \npreviously in articles written by different authors at different \nresearch institutes."
+    },
+    {
       "claim_id": "c3",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "has decided that this \npaper should be retracted from the Journal. The authors were \nasked for an explanation to account for these concerns, but the \nEditorial Office did not receive a reply.",
-        "location": {
-          "section": "RETRACTION",
-          "page": 1,
-          "char_span": null,
-          "quote": "has decided that this \npaper should be retracted from the Journal. The authors were \nasked for an explanation to account for these concerns, but the \nEditorial Office did not receive a reply."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across 5 perspectives, no over-reach; no numeric verifier covers it yet. c3 is a T1 procedural claim about the editorial process (Editor decided to retract; authors asked for an explanation; no reply received) -- a direct transcription of the notice's own statement, so claim cannot exceed evidence (ev1). METHODOLOGIST (T3): n/a -- the document reports no study method or numeric result to assess. CLAIMS-AUDITOR (T4): no causal or quantitative over-claim; 'did not receive a reply' is an absence-of-event the Editorial Office is the authoritative source for. SKEPTIC: weakest link is whether 'no reply' is literally true, which is unfalsifiable from outside the editorial office and not a paper defect. Abstain dropped as CONFIRMED-CORRECT, made auditable here rather than silently.",
+      "quote": "has decided that this \npaper should be retracted from the Journal. The authors were \nasked for an explanation to account for these concerns, but the \nEditorial Office did not receive a reply."
+    },
+    {
+      "claim_id": "c1",
+      "dimension": "subjective:significance",
+      "note": "ROUTE-TO-HUMAN (DESIGN §3.5, §5 T8): whether the (now-retracted) finding that Oblongifolin C reverses gemcitabine resistance by suppressing autophagy flux in bladder cancer would be significant/important *if true* is irreducibly subjective and is explicitly not scored. Surfaced for completeness; moot given the retraction, but recorded so the dimension is routed rather than silently judged.",
+      "quote": "Oblongifolin C reverses GEM resistance via suppressing \nautophagy flux in bladder cancer cells"
     }
-  ]
+  ],
+  "abstained": []
 }

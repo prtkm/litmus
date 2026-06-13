@@ -19,14 +19,25 @@
       "c24"
     ],
     "confirmation": "fresh-sandbox",
-    "registry_load_errors": []
+    "registry_load_errors": [],
+    "enrichment": "multi-perspective-review.v1",
+    "review_model": "claude-opus-4-8",
+    "review_perspectives": [
+      "skeptic",
+      "domain-expert",
+      "methodologist",
+      "claims-auditor",
+      "integrity-screener"
+    ],
+    "review_field": "biology/bioinformatics/cell-biology (ER+ breast cancer, BRD4 PROTAC, ChIP-seq)",
+    "review_note": "Source deterministic audit had 0 findings / 0 dropped_flags (all 24 claims abstained; only c8 planner-routed at T8). Deterministic verdicts preserved verbatim (DESIGN §3.1) -- none overridden, none synthesized. Review adjudicated every abstain: advisory (genuine concerns code can't settle, with recompute done first where a number existed -- c14 61.0% reproduced from the Venn, c3 0.70-not->0.7, c6 CI lower bound=1.0), subjective T8 routing, or reviewed-clean (bare abstain dropped, advisory:claims-auditor note left so the drop is auditable). Integrity screen (T7) found no duplication / digit-anomaly / tortured-phrasing signal to route. No bare abstains remain."
   },
   "summary": {
     "n_findings": 0,
     "n_flags": 0,
     "n_dropped": 0,
-    "n_routed_to_human": 1,
-    "n_abstained": 23,
+    "n_routed_to_human": 25,
+    "n_abstained": 0,
     "flags_by_trust_tier": {},
     "flags_by_severity": {}
   },
@@ -36,585 +47,153 @@
     {
       "claim_id": "c8",
       "dimension": "tier:T8",
-      "note": "tier T8: subjective/integrity \u2014 surfaced, not scored (DESIGN \u00a73.5)",
+      "note": "tier T8: subjective/integrity — surfaced, not scored (DESIGN §3.5)",
       "quote": "we first screened a panel of compounds and identified ZBC260 as the most potent degrader (Figure 3A)"
+    },
+    {
+      "claim_id": "c3",
+      "dimension": "advisory:claims-auditor",
+      "note": "T2/T4 borderline over-statement, surfaced by recompute against the extracted figure values. Prose says correlation coefficients 'all exceeding 0.7', but the values read off Figures 1F-J (ev3) include a 0.70 -- which is NOT strictly >0.7 (min(0.71,0.70,0.72,0.75,0.77,0.83,0.77,0.73,0.77)=0.70). 'all >=0.7' holds; 'all exceeding 0.7' is off by the boundary case. Minor and figure-derived (ev3 confidence 0.6), so not a deterministic flag. Confirms-it: the exact correlation matrix / the 0.70 cell's true value at full precision.",
+      "quote": "These co-localization events were supported by\nstrong correlation coefficients, all exceeding 0.7 (Figures 1F–J)"
+    },
+    {
+      "claim_id": "c6",
+      "dimension": "advisory:claims-auditor",
+      "note": "T2/T4 borderline-significance over-read. 'Elevated BRD4 expression also predicted poor prognosis in patients undergoing endocrine therapy' is supported by HR=1.4 with logrank p=0.047 -- but the reported 95% CI is (1, 1.95): the LOWER BOUND sits exactly on the null (HR=1). A CI whose lower limit is 1.0 paired with p just under 0.05 is the weakest tier of 'significant', and a directional prognosis claim leans on it as if firm. Not an arithmetic error (p<0.05 and CI are mutually consistent at the boundary), so no deterministic flag. Confirms-it: the un-rounded CI lower bound and event counts per arm; if the true lower bound is <=1.00 the association is not significant.\n(Contrast c4 HR=1.61 CI (1.28-2.03) p=4.8e-05 and c5 HR=1.35 CI (1.04-1.75) p=0.023, both with CIs clearly excluding 1 -- those are clean.)",
+      "quote": "elevated BRD4 expression also predicted poor\nprognosis in patients undergoing endocrine therapy (Figure 2C)"
+    },
+    {
+      "claim_id": "c10",
+      "dimension": "advisory:methodologist",
+      "note": "T3 quantification gap. 'Dose- and time-dependent' (implying monotonic decrease over 0-50 nM and 0-48 h) is asserted from Western blots at four dose points (0,5,25,50 nM) and four time points (0,12,24,48 h) with n=3 (ev10), but no densitometry, normalization to a loading control, or trend statistic is reported in the claim's evidence -- the monotonicity is read from band intensity by eye. Standard for a PROTAC degradation panel and very likely correct, but 'dependent' is a quantitative/causal word resting on a qualitative readout. Confirms-it: loading-control-normalized densitometry per lane with a monotonic-trend test (or hook-effect check at the top dose).",
+      "quote": "ZBC260 also\nled to a marked reduction in BRD4 protein levels in a dose- and\ntime-dependent manner (Figures 3C, D)"
+    },
+    {
+      "claim_id": "c7",
+      "dimension": "advisory:domain-expert",
+      "note": "Field-plausibility / evidence-strength note. 'BRD4 is significantly upregulated in the fulvestrant-resistant cell line' rests on a single re-analyzed public dataset (GSE118713) shown as a volcano plot (ev7), i.e. one resistant MCF7 line vs parental. Biologically coherent with the paper's BRD4-resistance thesis, but a one-dataset, one-cell-line differential-expression result is the kind of claim usually corroborated by protein-level data or a second resistance model before being stated as a general fact. Confirms-it: adjusted p / log2FC for BRD4 in GSE118713 and an orthogonal confirmation (qPCR/WB in the lab's own resistant line).",
+      "quote": "BRD4 expression is\nsignificantly upregulated in the fulvestrant-resistant cell line\n(Figure 2D, Supplementary Table 1)"
+    },
+    {
+      "claim_id": "c21",
+      "dimension": "advisory:claims-auditor",
+      "note": "T4 causal-chain over-reach. The claim packs three directional effects -- ZBC260 lowers BRD4 occupancy on the GREB1 promoter, ZBC260+fulvestrant lowers it further, and estrogen RESCUES it -- onto one ChIP-qPCR bar graph (Fig 8B, n=3, p<0.05; ev21). The 'rescue' step in particular is a mechanistic causal statement; pairwise significance across four conditions does not by itself establish the ordered chain or the rescue direction without the relevant contrasts. Plausible given the ER/estrogen axis, but the wording outruns a single-locus n=3 assay. Confirms-it: per-contrast statistics (vehicle vs ZBC260; ZBC260 vs +Ful; ZBC260 vs +E2) with the specific comparison and correction stated.",
+      "quote": "ZBC260\ninduce BRD4 less chromatin binding events on the promoter\nregions of GREB1, and ZBC260 combined with fulvestrant more\nimpair the events, but estrogen rescue the events (Figure 8B)"
+    },
+    {
+      "claim_id": "c1",
+      "dimension": "advisory:methodologist",
+      "note": "T3 'significant' without a reported test. All five factors' promoter binding densities are said to be 'significantly elevated' in MCF7 vs MCF10A (Figs 1A-E, ev1, TSS +/- 5 kb metagene profiles), but no test, n, or p accompanies the comparison in the claim's evidence -- 'significantly' reads as visual rather than statistical. Comparing aggregate ChIP-seq density between two cell lines is also sensitive to read-depth / spike-in normalization, which the claim does not address. Likely directionally right. Confirms-it: the normalization scheme and a quantitative test (e.g. per-gene density distributions with an effect size / p) rather than landscape overlays.",
+      "quote": "the chromatin\nbinding densities of all five factors were significantly elevated in\npromoter regions of MCF7 cells compared to MCF10A cells"
+    },
+    {
+      "claim_id": "c19",
+      "dimension": "subjective:significance",
+      "note": "Whether singling out GREB1 -- as THE core BRD4/ER-shared, super-enhancer-driven effector whose combined ZBC260+fulvestrant suppression matters therapeutically -- is an important and novel contribution (vs GREB1 already being a well-known estrogen-induced ER target) is an irreducibly subjective significance/novelty judgement LITMUS does not score (DESIGN §3.5, §5 T8). The underlying suppression is empirically checkable (see the claims-auditor note on c19); only its IMPORTANCE is routed. For an editor / domain reviewer.",
+      "quote": "combined ZBC260 and fulvestrant treatment potently inhibited the expression of GREB1 (Figures 6F, G)"
+    },
+    {
+      "claim_id": "c2",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach found. The '>=78%' summary is exactly consistent with the four stated overlaps (min(93.93,88.42,83.18,78.00)=78.00), so the bound is faithful, not inflated. The percentages themselves are figure-derived (Figs 1F-J) and not independently recomputable from the graph here. Reviewed, no over-reach found. Internal count/percentage claim, correctly scoped to its figure/table; no claim-vs-evidence over-statement. No numeric verifier covers it yet (synthesis candidate, DESIGN §8, WS-F); numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "a substantial majority (≥78%) of\nBRD4 binding sites coincided with histone acetylation sites, specifically H3K27ac (93.93%), H3K4ac (88.42%), H3K9ac (83.18%), and\nH3K23ac (78.00%)"
+    },
+    {
+      "claim_id": "c14",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed and RECOMPUTED clean. The '61.0%' is reproducible from the Fig 6A Venn counts in ev14: overlap/(overlap+ER_only) = 5951/(5951+3812) = 60.95% ~ 61.0% (and the Venn's own 43.2/34.6/22.2 percentages reproduce exactly from 7416/5951/3812). Prose, figure label, and arithmetic agree -- no over-reach. A T0/T2 overlap-percentage verifier would confirm this deterministically; none is wired up yet (DESIGN §8).",
+      "quote": "61.0% of ER promoter-binding genes overlapped with BRD4"
+    },
+    {
+      "claim_id": "c23",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach found. Discussion restatement: 'over 60%' promoter-binding overlap is consistent with the recomputed 60.95% from c14/ev14 (rounds to 61%, i.e. >60%), and '50% transcriptome overlap' restates c15. Approximate wording ('over 60%') is appropriately hedged relative to the exact figure. Reviewed, no over-reach found. Internal count/percentage claim, correctly scoped to its figure/table; no claim-vs-evidence over-statement. No numeric verifier covers it yet (synthesis candidate, DESIGN §8, WS-F); numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "over 60% of ER\npromoter-binding events and 50% of its transcriptome overlap with\nthat of BRD4"
+    },
+    {
+      "claim_id": "c12",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach found. 'Approximately 50%' is explicitly approximate and matches the extracted BRD4 promoter fraction 0.50 (ev12, Fig 5A bar plot). Hedging fits a figure-read value. Reviewed, no over-reach found. Internal count/percentage claim, correctly scoped to its figure/table; no claim-vs-evidence over-statement. No numeric verifier covers it yet (synthesis candidate, DESIGN §8, WS-F); numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "approximately 50% of BRD4\nbinding sites are located in promoter regions (Figure 5A)"
+    },
+    {
+      "claim_id": "c13",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach found. 'About one-third' is appropriately approximate and matches the extracted ER promoter fraction 0.33 (ev13, Fig 5E bar plot). Reviewed, no over-reach found. Internal count/percentage claim, correctly scoped to its figure/table; no claim-vs-evidence over-statement. No numeric verifier covers it yet (synthesis candidate, DESIGN §8, WS-F); numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "About onethird of ER binding sites were found in promoter regions\n(Figure 5E)"
+    },
+    {
+      "claim_id": "c15",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach found. '50% of fulvestrant-downregulated genes also suppressed by JQ1' is a stated overlap (ev15, Suppl. Table 2) used to motivate the BRD4/ER convergence; not over-generalized. The underlying gene lists are not in the ClaimGraph, so exact recompute needs the supplementary tables. Reviewed, no over-reach found. Internal count/percentage claim, correctly scoped to its figure/table; no claim-vs-evidence over-statement. No numeric verifier covers it yet (synthesis candidate, DESIGN §8, WS-F); numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "50% of fulvestrant-downregulated\ngenes were also suppressed by JQ1"
+    },
+    {
+      "claim_id": "c16",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach found. '58 candidate genes' is an exact intersection count (Fig 6C, ev16; the 1.5% label implies a ~3,870-gene union, internally consistent). Recompute needs the three input gene sets. Reviewed, no over-reach found. Internal count/percentage claim, correctly scoped to its figure/table; no claim-vs-evidence over-statement. No numeric verifier covers it yet (synthesis candidate, DESIGN §8, WS-F); numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "identifying 58\ncandidate genes potentially core to BRD4 and ER function as well as\ntherapy resistance (Figure 6C)"
+    },
+    {
+      "claim_id": "c17",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach found. '450 super-enhancers' is an exact count from the ROSE output (Suppl. Table 3, ev17), tied to the stated BRD4 cutoff in c24. Reviewed, no over-reach found. Internal count/percentage claim, correctly scoped to its figure/table; no claim-vs-evidence over-statement. No numeric verifier covers it yet (synthesis candidate, DESIGN §8, WS-F); numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "we mapped its downstream SE\nlandscape and identified 450 SEs (Supplementary Table 3)"
+    },
+    {
+      "claim_id": "c18",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach found. '12 of the 58 shortlisted genes' is an exact SE-association count (Fig 6D, ev18), correctly scoped to the c16 shortlist. Reviewed, no over-reach found. Internal count/percentage claim, correctly scoped to its figure/table; no claim-vs-evidence over-statement. No numeric verifier covers it yet (synthesis candidate, DESIGN §8, WS-F); numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "these SEs were\nassociated with 12 of the 58 shortlisted genes (Figure 6D)"
+    },
+    {
+      "claim_id": "c24",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach found. The BRD4 super-enhancer cutoff 8034.7455 is a methods parameter (ROSE inflection point, ev23) reported to full precision; nothing to over-claim. Reproducing it requires re-running ROSE on the BRD4 signal. Reviewed, no over-reach found. Internal count/percentage claim, correctly scoped to its figure/table; no claim-vs-evidence over-statement. No numeric verifier covers it yet (synthesis candidate, DESIGN §8, WS-F); numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "Enhancers above the inflection point of the curve\nwere defined as super-enhancers (BRD4 cut-off, 8034.7455)"
+    },
+    {
+      "claim_id": "c4",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed and RECOMPUTED clean. 'High BRD4 expression associated with reduced survival (HR=1.61)' is internally coherent: the reported 95% CI (1.28-2.03) excludes 1 and logrank p=4.8e-05 << 0.05 agree on a significant adverse association (ev4, KM Fig 2A). Direction and strength of the prose match the statistic -- no over-reach. (Contrast the borderline c6.) A T2/T1 HR<->CI<->p coherence verifier would confirm deterministically; none is wired up yet (DESIGN §8).",
+      "quote": "a high expression level of BRD4 was significantly\nassociated with reduced survival probability in breast cancer\npatients"
+    },
+    {
+      "claim_id": "c5",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed and RECOMPUTED clean. 'High BRD4 predicts poor prognosis in luminal subtype (HR=1.35)' is coherent: CI (1.04-1.75) excludes 1 and logrank p=0.023<0.05 agree (ev5, KM Fig 2B). Modest but genuinely significant; the claim is scoped to the luminal subtype and not over-extended. HR<->CI<->p coherence verifier deferred (DESIGN §8).",
+      "quote": "including those with the luminal subtype (Figures 2A,\nB)"
+    },
+    {
+      "claim_id": "c9",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach found. The MG132 rescue of ZBC260-induced degradation is the standard proteasome-dependence control for a PROTAC; the claim states exactly what the blot shows (Fig 3B) and does not over-extend. Reviewed, no over-reach found. Qualitative within-paper effect, correctly described and not over-generalized beyond the figure it rests on. No deterministic verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement.",
+      "quote": "pre-treatment with the proteasome inhibitor\nMG132 abrogated ZBC260-induced BRD4 degradation\n(Figure 3B)"
+    },
+    {
+      "claim_id": "c11",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach found. 'ZBC260 enhanced fulvestrant's effect on migration / proliferation / apoptosis' is supported by the labelled p<0.05 contrasts in Fig 4B-E (ev11: # marks Ful+ZBC260 vs Ful), i.e. the combination-vs-single comparison the claim actually makes. Not over-stated. Reviewed, no over-reach found. Qualitative within-paper effect, correctly described and not over-generalized beyond the figure it rests on. No deterministic verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement.",
+      "quote": "ZBC260 enhanced the inhibitory effect of fulvestrant to\nmore profoundly inhibit cell migration and proliferation and to\ninduce apoptosis (Figures 4B–E)"
+    },
+    {
+      "claim_id": "c19",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach found (empirics only; IMPORTANCE routed separately as subjective:significance). 'Combined ZBC260+fulvestrant potently inhibited GREB1' is supported by the immunofluorescence panel (Fig 6F-G, ev19) and stated as a within-paper observation, not a clinical claim. Reviewed, no over-reach found. Qualitative within-paper effect, correctly described and not over-generalized beyond the figure it rests on. No deterministic verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement.",
+      "quote": "combined ZBC260 and fulvestrant treatment potently inhibited the expression of GREB1 (Figures 6F, G)"
+    },
+    {
+      "claim_id": "c20",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed, no over-reach found. 'GREB1 knockdown enhanced ZBC260's effect on migration / proliferation / apoptosis' restates the Fig 7A-D comparisons (ev20, si-GREB1+ZBC260 vs ZBC260); a clean epistatic/additivity statement, not over-generalized. Reviewed, no over-reach found. Qualitative within-paper effect, correctly described and not over-generalized beyond the figure it rests on. No deterministic verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement.",
+      "quote": "GREB1 knock down also enhanced the\ninhibitory effect of ZBC260 to more profoundly inhibit cell migration and proliferation and to induce apoptosis (Figures 7A–D)"
+    },
+    {
+      "claim_id": "c22",
+      "dimension": "advisory:domain-expert",
+      "note": "Reviewed, field-plausible, no over-reach. Background claim that ER+ disease is ~75% of breast cancers and acquired resistance drives relapse in up to 30% (Discussion, cited ref 7; ev22). Both figures are consistent with established clinical epidemiology and are presented as cited background, not as this study's finding. A T5/T1 literature-citation verifier (does ref 7 support 75% / 30%?) is the right check; not built yet (DESIGN §5 T5).",
+      "quote": "which accounts for about 75% of all\ncases, acquired resistance drives relapse in up to 30% of patients (7)"
     }
   ],
-  "abstained": [
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c1",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the chromatin\nbinding densities of all five factors were significantly elevated in\npromoter regions of MCF7 cells compared to MCF10A cells",
-        "location": {
-          "section": "3.1",
-          "page": 4,
-          "char_span": null,
-          "quote": "the chromatin\nbinding densities of all five factors were significantly elevated in\npromoter regions of MCF7 cells compared to MCF10A cells"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c2",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "a substantial majority (\u226578%) of\nBRD4 binding sites coincided with histone acetylation sites, specifically H3K27ac (93.93%), H3K4ac (88.42%), H3K9ac (83.18%), and\nH3K23ac (78.00%)",
-        "location": {
-          "section": "3.1",
-          "page": 4,
-          "char_span": null,
-          "quote": "a substantial majority (\u226578%) of\nBRD4 binding sites coincided with histone acetylation sites, specifically H3K27ac (93.93%), H3K4ac (88.42%), H3K9ac (83.18%), and\nH3K23ac (78.00%)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c3",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "These co-localization events were supported by\nstrong correlation coefficients, all exceeding 0.7 (Figures 1F\u2013J)",
-        "location": {
-          "section": "3.1",
-          "page": 4,
-          "char_span": null,
-          "quote": "These co-localization events were supported by\nstrong correlation coefficients, all exceeding 0.7 (Figures 1F\u2013J)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c4",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "a high expression level of BRD4 was significantly\nassociated with reduced survival probability in breast cancer\npatients",
-        "location": {
-          "section": "3.2",
-          "page": 5,
-          "char_span": null,
-          "quote": "a high expression level of BRD4 was significantly\nassociated with reduced survival probability in breast cancer\npatients"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c5",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "including those with the luminal subtype (Figures 2A,\nB)",
-        "location": {
-          "section": "3.2",
-          "page": 5,
-          "char_span": null,
-          "quote": "including those with the luminal subtype (Figures 2A,\nB)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c6",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "elevated BRD4 expression also predicted poor\nprognosis in patients undergoing endocrine therapy (Figure 2C)",
-        "location": {
-          "section": "3.2",
-          "page": 5,
-          "char_span": null,
-          "quote": "elevated BRD4 expression also predicted poor\nprognosis in patients undergoing endocrine therapy (Figure 2C)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c7",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "BRD4 expression is\nsignificantly upregulated in the fulvestrant-resistant cell line\n(Figure 2D, Supplementary Table 1)",
-        "location": {
-          "section": "3.2",
-          "page": 5,
-          "char_span": null,
-          "quote": "BRD4 expression is\nsignificantly upregulated in the fulvestrant-resistant cell line\n(Figure 2D, Supplementary Table 1)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c9",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "pre-treatment with the proteasome inhibitor\nMG132 abrogated ZBC260-induced BRD4 degradation\n(Figure 3B)",
-        "location": {
-          "section": "3.3",
-          "page": 4,
-          "char_span": null,
-          "quote": "pre-treatment with the proteasome inhibitor\nMG132 abrogated ZBC260-induced BRD4 degradation\n(Figure 3B)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c10",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "ZBC260 also\nled to a marked reduction in BRD4 protein levels in a dose- and\ntime-dependent manner (Figures 3C, D)",
-        "location": {
-          "section": "3.3",
-          "page": 4,
-          "char_span": null,
-          "quote": "ZBC260 also\nled to a marked reduction in BRD4 protein levels in a dose- and\ntime-dependent manner (Figures 3C, D)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c11",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "ZBC260 enhanced the inhibitory effect of fulvestrant to\nmore profoundly inhibit cell migration and proliferation and to\ninduce apoptosis (Figures 4B\u2013E)",
-        "location": {
-          "section": "3.3",
-          "page": 4,
-          "char_span": null,
-          "quote": "ZBC260 enhanced the inhibitory effect of fulvestrant to\nmore profoundly inhibit cell migration and proliferation and to\ninduce apoptosis (Figures 4B\u2013E)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c12",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "approximately 50% of BRD4\nbinding sites are located in promoter regions (Figure 5A)",
-        "location": {
-          "section": "3.4",
-          "page": 5,
-          "char_span": null,
-          "quote": "approximately 50% of BRD4\nbinding sites are located in promoter regions (Figure 5A)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c13",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "About onethird of ER binding sites were found in promoter regions\n(Figure 5E)",
-        "location": {
-          "section": "3.4",
-          "page": 6,
-          "char_span": null,
-          "quote": "About onethird of ER binding sites were found in promoter regions\n(Figure 5E)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c14",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "61.0% of ER promoter-binding genes overlapped with BRD4",
-        "location": {
-          "section": "3.5",
-          "page": 6,
-          "char_span": null,
-          "quote": "61.0% of ER promoter-binding genes overlapped with BRD4"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c15",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "50% of fulvestrant-downregulated\ngenes were also suppressed by JQ1",
-        "location": {
-          "section": "3.5",
-          "page": 7,
-          "char_span": null,
-          "quote": "50% of fulvestrant-downregulated\ngenes were also suppressed by JQ1"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c16",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "identifying 58\ncandidate genes potentially core to BRD4 and ER function as well as\ntherapy resistance (Figure 6C)",
-        "location": {
-          "section": "3.5",
-          "page": 7,
-          "char_span": null,
-          "quote": "identifying 58\ncandidate genes potentially core to BRD4 and ER function as well as\ntherapy resistance (Figure 6C)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c17",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "we mapped its downstream SE\nlandscape and identified 450 SEs (Supplementary Table 3)",
-        "location": {
-          "section": "3.5",
-          "page": 7,
-          "char_span": null,
-          "quote": "we mapped its downstream SE\nlandscape and identified 450 SEs (Supplementary Table 3)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c18",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "these SEs were\nassociated with 12 of the 58 shortlisted genes (Figure 6D)",
-        "location": {
-          "section": "3.5",
-          "page": 7,
-          "char_span": null,
-          "quote": "these SEs were\nassociated with 12 of the 58 shortlisted genes (Figure 6D)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c19",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "combined ZBC260 and fulvestrant treatment potently inhibited the expression of GREB1 (Figures 6F, G)",
-        "location": {
-          "section": "3.5",
-          "page": 7,
-          "char_span": null,
-          "quote": "combined ZBC260 and fulvestrant treatment potently inhibited the expression of GREB1 (Figures 6F, G)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c20",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "GREB1 knock down also enhanced the\ninhibitory effect of ZBC260 to more profoundly inhibit cell migration and proliferation and to induce apoptosis (Figures 7A\u2013D)",
-        "location": {
-          "section": "3.5",
-          "page": 7,
-          "char_span": null,
-          "quote": "GREB1 knock down also enhanced the\ninhibitory effect of ZBC260 to more profoundly inhibit cell migration and proliferation and to induce apoptosis (Figures 7A\u2013D)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c21",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "ZBC260\ninduce BRD4 less chromatin binding events on the promoter\nregions of GREB1, and ZBC260 combined with fulvestrant more\nimpair the events, but estrogen rescue the events (Figure 8B)",
-        "location": {
-          "section": "3.6",
-          "page": 7,
-          "char_span": null,
-          "quote": "ZBC260\ninduce BRD4 less chromatin binding events on the promoter\nregions of GREB1, and ZBC260 combined with fulvestrant more\nimpair the events, but estrogen rescue the events (Figure 8B)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c22",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "which accounts for about 75% of all\ncases, acquired resistance drives relapse in up to 30% of patients (7)",
-        "location": {
-          "section": "4",
-          "page": 7,
-          "char_span": null,
-          "quote": "which accounts for about 75% of all\ncases, acquired resistance drives relapse in up to 30% of patients (7)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c23",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "over 60% of ER\npromoter-binding events and 50% of its transcriptome overlap with\nthat of BRD4",
-        "location": {
-          "section": "4",
-          "page": 9,
-          "char_span": null,
-          "quote": "over 60% of ER\npromoter-binding events and 50% of its transcriptome overlap with\nthat of BRD4"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c24",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Enhancers above the inflection point of the curve\nwere defined as super-enhancers (BRD4 cut-off, 8034.7455)",
-        "location": {
-          "section": "2.5",
-          "page": 2,
-          "char_span": null,
-          "quote": "Enhancers above the inflection point of the curve\nwere defined as super-enhancers (BRD4 cut-off, 8034.7455)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    }
-  ]
+  "abstained": []
 }

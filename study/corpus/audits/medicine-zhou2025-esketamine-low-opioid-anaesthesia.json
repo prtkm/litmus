@@ -32,14 +32,35 @@
       "c26"
     ],
     "confirmation": "fresh-sandbox",
-    "registry_load_errors": []
+    "registry_load_errors": [],
+    "review": {
+      "kind": "multi-perspective enrichment",
+      "perspectives": [
+        "skeptic",
+        "domain-expert:anaesthesiology",
+        "methodologist",
+        "claims-auditor",
+        "integrity-screener"
+      ],
+      "field": "medicine / anaesthesiology RCT",
+      "deterministic_verdicts": "unchanged (1 PASS finding c25 kept verbatim; 0 flags; 0 dropped)",
+      "recomputed_clean": [
+        "c9 14.3%/32.9%",
+        "c16 10.0%/21.4%",
+        "c23 12.9%/40.0%",
+        "c24 72/group & 144 total",
+        "c26 121-115=6",
+        "c18-c22 regression CI/sign coherence"
+      ],
+      "note": "Bare abstains converted to reasoned assessments: numerically-clean claims -> CONFIRMED-CORRECT (dropped from abstained, each with an auditable advisory:claims-auditor trail); genuine code-unsettleable concerns -> advisory; clinical importance/novelty -> subjective. No concern manufactured where the numbers recompute clean."
+    }
   },
   "summary": {
     "n_findings": 1,
     "n_flags": 0,
     "n_dropped": 0,
-    "n_routed_to_human": 0,
-    "n_abstained": 26,
+    "n_routed_to_human": 28,
+    "n_abstained": 0,
     "flags_by_trust_tier": {},
     "flags_by_severity": {}
   },
@@ -78,657 +99,175 @@
     }
   ],
   "dropped_flags": [],
-  "routed_to_human": [],
-  "abstained": [
+  "routed_to_human": [
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c1",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "POD-3 QoR-15 scores 121 (117.75\u2013124) 115 (111.75\u2013118.25) <0.001",
-        "location": {
-          "section": "3.1 / Table 2",
-          "page": 7,
-          "char_span": null,
-          "quote": "POD-3 QoR-15 scores 121 (117.75\u2013124) 115 (111.75\u2013118.25) <0.001"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT (bare abstain dropped). reviewed across skeptic/domain-expert(anaesthesiology)/methodologist/claims-auditor/integrity perspectives: claim is scoped to the reported value, no strength/scope over-reach; no numeric verifier covers this between-group/derived statistic yet. Specifics: primary POD3 QoR-15 121[117.75-124] vs 115[111.75-118.25]; IQRs near-disjoint, p<0.001 plausible for n=70/grp; between-group attribution rests on the adjusted model (c18) given the norepinephrine baseline imbalance flagged as advisory on c23.",
+      "quote": null
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c2",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Physical comfort 40 (39\u201341) 38 (37\u201340) <0.001",
-        "location": {
-          "section": "3.1 / Table 2",
-          "page": 7,
-          "char_span": null,
-          "quote": "Physical comfort 40 (39\u201341) 38 (37\u201340) <0.001"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT (bare abstain dropped). reviewed across skeptic/domain-expert(anaesthesiology)/methodologist/claims-auditor/integrity perspectives: claim is scoped to the reported value, no strength/scope over-reach; no numeric verifier covers this between-group/derived statistic yet. Specifics: physical-comfort 40 vs 38; consistent, no over-reach.",
+      "quote": null
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c3",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Emotional state 32 (30\u201333) 29 (27.75\u201331) <0.001",
-        "location": {
-          "section": "3.1 / Table 2",
-          "page": 7,
-          "char_span": null,
-          "quote": "Emotional state 32 (30\u201333) 29 (27.75\u201331) <0.001"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT (bare abstain dropped). reviewed across skeptic/domain-expert(anaesthesiology)/methodologist/claims-auditor/integrity perspectives: claim is scoped to the reported value, no strength/scope over-reach; no numeric verifier covers this between-group/derived statistic yet. Specifics: emotional-state 32 vs 29; consistent, no over-reach.",
+      "quote": null
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c4",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Pain 18 (18\u201320) 18 (16.75\u201319) <0.001",
-        "location": {
-          "section": "3.1 / Table 2",
-          "page": 7,
-          "char_span": null,
-          "quote": "Pain 18 (18\u201320) 18 (16.75\u201319) <0.001"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c5",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Statistically significant differences in QoR-15 scores between \nthe K and C groups were also observed on postoperative days 1 and 2 \n(P < 0.01)",
-        "location": {
-          "section": "3.1 / Table 3",
-          "page": 7,
-          "char_span": null,
-          "quote": "Statistically significant differences in QoR-15 scores between \nthe K and C groups were also observed on postoperative days 1 and 2 \n(P < 0.01)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT (bare abstain dropped). reviewed across skeptic/domain-expert(anaesthesiology)/methodologist/claims-auditor/integrity perspectives: claim is scoped to the reported value, no strength/scope over-reach; no numeric verifier covers this between-group/derived statistic yet. Specifics: POD1 p=0.002 and POD2 p<0.001 (ev5/ev6) both satisfy the stated p<0.01; consistent.",
+      "quote": null
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c6",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "POD-3 2 (2\u20132) 2 (2\u20133) 0.006",
-        "location": {
-          "section": "3.2 / Table 4",
-          "page": 7,
-          "char_span": null,
-          "quote": "POD-3 2 (2\u20132) 2 (2\u20133) 0.006"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT (bare abstain dropped). reviewed across skeptic/domain-expert(anaesthesiology)/methodologist/claims-auditor/integrity perspectives: claim is scoped to the reported value, no strength/scope over-reach; no numeric verifier covers this between-group/derived statistic yet. Specifics: rest-NRS POD3 2[2-2] vs 2[2-3], p=0.006; consistent (distribution shift with equal medians is legitimate for Mann-Whitney).",
+      "quote": null
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c7",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "POD-3 3 (3\u20134) 4 (3\u20134) 0.02",
-        "location": {
-          "section": "3.2 / Table 4",
-          "page": 7,
-          "char_span": null,
-          "quote": "POD-3 3 (3\u20134) 4 (3\u20134) 0.02"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT (bare abstain dropped). reviewed across skeptic/domain-expert(anaesthesiology)/methodologist/claims-auditor/integrity perspectives: claim is scoped to the reported value, no strength/scope over-reach; no numeric verifier covers this between-group/derived statistic yet. Specifics: movement-NRS POD3 3[3-4] vs 4[3-4], p=0.02; consistent.",
+      "quote": null
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c8",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "PCIA demand frequency 12.5 (9\u201315) 15 (12\u201317) 0.002",
-        "location": {
-          "section": "3.2 / Table 4",
-          "page": 7,
-          "char_span": null,
-          "quote": "PCIA demand frequency 12.5 (9\u201315) 15 (12\u201317) 0.002"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT (bare abstain dropped). reviewed across skeptic/domain-expert(anaesthesiology)/methodologist/claims-auditor/integrity perspectives: claim is scoped to the reported value, no strength/scope over-reach; no numeric verifier covers this between-group/derived statistic yet. Specifics: PCIA demand 12.5[9-15] vs 15[12-17], p=0.002; consistent.",
+      "quote": null
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c9",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Rescue analgesia, n (%) 10 (14.3) 23 (32.9) 0.01",
-        "location": {
-          "section": "3.2 / Table 4",
-          "page": 7,
-          "char_span": null,
-          "quote": "Rescue analgesia, n (%) 10 (14.3) 23 (32.9) 0.01"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT (bare abstain dropped). reviewed across skeptic/domain-expert(anaesthesiology)/methodologist/claims-auditor/integrity perspectives: claim is scoped to the reported value, no strength/scope over-reach; no numeric verifier covers this between-group/derived statistic yet. Specifics: rescue-analgesia rates recomputed: 10/70=14.3%, 23/70=32.9% (exact match); consistent.",
+      "quote": null
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c10",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Rescue analgesic consumption per patient (mg) 0 (0\u20130) 0 (0\u2013100) 0.008",
-        "location": {
-          "section": "3.2 / Table 4",
-          "page": 7,
-          "char_span": null,
-          "quote": "Rescue analgesic consumption per patient (mg) 0 (0\u20130) 0 (0\u2013100) 0.008"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c11",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "reduced usage of propofol (866.56 \u00b1 76.44 mg vs. \n968.36 \u00b1 68.87 mg, P < 0.05)",
-        "location": {
-          "section": "3.4",
-          "page": 6,
-          "char_span": null,
-          "quote": "reduced usage of propofol (866.56 \u00b1 76.44 mg vs. \n968.36 \u00b1 68.87 mg, P < 0.05)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c12",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "sufentanil (25 \u00b1 \n4.62 ug vs. 38 \u00b1 8.60 ug, P < 0.001)",
-        "location": {
-          "section": "3.4",
-          "page": 6,
-          "char_span": null,
-          "quote": "sufentanil (25 \u00b1 \n4.62 ug vs. 38 \u00b1 8.60 ug, P < 0.001)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT (bare abstain dropped). reviewed across skeptic/domain-expert(anaesthesiology)/methodologist/claims-auditor/integrity perspectives: claim is scoped to the reported value, no strength/scope over-reach; no numeric verifier covers this between-group/derived statistic yet. Specifics: sufentanil 25+/-4.62 vs 38+/-8.60 ug; large separation vs SDs, p<0.001 plausible.",
+      "quote": null
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c13",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "remifentanil (2.1 \u00b1 0.35 mg vs. 2.5 \u00b1 0.72 mg, P < 0.001)",
-        "location": {
-          "section": "3.4",
-          "page": 6,
-          "char_span": null,
-          "quote": "remifentanil (2.1 \u00b1 0.35 mg vs. 2.5 \u00b1 0.72 mg, P < 0.001)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT (bare abstain dropped). reviewed across skeptic/domain-expert(anaesthesiology)/methodologist/claims-auditor/integrity perspectives: claim is scoped to the reported value, no strength/scope over-reach; no numeric verifier covers this between-group/derived statistic yet. Specifics: remifentanil 2.1+/-0.35 vs 2.5+/-0.72 mg; consistent.",
+      "quote": null
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c14",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "extubation time \n(35.8 \u00b1 13.02 min vs. 40.8 \u00b1 15.5 min, P < 0.05; Figure 4A)",
-        "location": {
-          "section": "3.5",
-          "page": 6,
-          "char_span": null,
-          "quote": "extubation time \n(35.8 \u00b1 13.02 min vs. 40.8 \u00b1 15.5 min, P < 0.05; Figure 4A)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT (bare abstain dropped). reviewed across skeptic/domain-expert(anaesthesiology)/methodologist/claims-auditor/integrity perspectives: claim is scoped to the reported value, no strength/scope over-reach; no numeric verifier covers this between-group/derived statistic yet. Specifics: extubation 35.8+/-13.02 vs 40.8+/-15.5 min, p<0.05; consistent.",
+      "quote": null
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c15",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "PACU stay duration (107.2 \u00b1 27.4 min vs. 118.9 \u00b1 27.2 min, P < 0.05;",
-        "location": {
-          "section": "3.5",
-          "page": 6,
-          "char_span": null,
-          "quote": "PACU stay duration (107.2 \u00b1 27.4 min vs. 118.9 \u00b1 27.2 min, P < 0.05;"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT (bare abstain dropped). reviewed across skeptic/domain-expert(anaesthesiology)/methodologist/claims-auditor/integrity perspectives: claim is scoped to the reported value, no strength/scope over-reach; no numeric verifier covers this between-group/derived statistic yet. Specifics: PACU 107.2+/-27.4 vs 118.9+/-27.2 min, p<0.05; consistent.",
+      "quote": null
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c16",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the incidence \nof nausea and vomiting was significantly lower in the K group than \nin the C group (10.0% vs. 21.4%, P < 0.05)",
-        "location": {
-          "section": "3.6",
-          "page": 6,
-          "char_span": null,
-          "quote": "the incidence \nof nausea and vomiting was significantly lower in the K group than \nin the C group (10.0% vs. 21.4%, P < 0.05)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT (bare abstain dropped). reviewed across skeptic/domain-expert(anaesthesiology)/methodologist/claims-auditor/integrity perspectives: claim is scoped to the reported value, no strength/scope over-reach; no numeric verifier covers this between-group/derived statistic yet. Specifics: PONV rates recomputed: 7/70=10.0%, 15/70=21.4% (exact match); consistent.",
+      "quote": null
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c17",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "No other significant \ndifferences were observed between the two groups in the incidence \nof dizziness, headache, drowsiness, or restlessness (P > \n0.05)",
-        "location": {
-          "section": "3.6",
-          "page": 6,
-          "char_span": null,
-          "quote": "No other significant \ndifferences were observed between the two groups in the incidence \nof dizziness, headache, drowsiness, or restlessness (P > \n0.05)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c18",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "higher QoR-15 score on postoperative day 3 (B = 5.52, 95% CI \n3.97 to 7.06, P < 0.001)",
-        "location": {
-          "section": "3.7",
-          "page": 6,
-          "char_span": null,
-          "quote": "higher QoR-15 score on postoperative day 3 (B = 5.52, 95% CI \n3.97 to 7.06, P < 0.001)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT (bare abstain dropped). reviewed across skeptic/domain-expert(anaesthesiology)/methodologist/claims-auditor/integrity perspectives: claim is scoped to the reported value, no strength/scope over-reach; no numeric verifier covers this between-group/derived statistic yet. Specifics: adjusted B=5.52, 95% CI [3.97,7.06]; CI excludes 0 and contains B -> coherent with p<0.001.",
+      "quote": null
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c19",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "sufentanil (B = \u221212.61, 95% CI \n-15.02 to \u221210.19, P < 0.001)",
-        "location": {
-          "section": "3.7",
-          "page": 6,
-          "char_span": null,
-          "quote": "sufentanil (B = \u221212.61, 95% CI \n-15.02 to \u221210.19, P < 0.001)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT (bare abstain dropped). reviewed across skeptic/domain-expert(anaesthesiology)/methodologist/claims-auditor/integrity perspectives: claim is scoped to the reported value, no strength/scope over-reach; no numeric verifier covers this between-group/derived statistic yet. Specifics: adjusted B=-12.61, 95% CI [-15.02,-10.19]; CI excludes 0, coherent.",
+      "quote": null
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c20",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "remifentanil (B = \u22120.39, 95% CI \n-0.58 to \u22120.19, P < 0.001)",
-        "location": {
-          "section": "3.7",
-          "page": 6,
-          "char_span": null,
-          "quote": "remifentanil (B = \u22120.39, 95% CI \n-0.58 to \u22120.19, P < 0.001)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT (bare abstain dropped). reviewed across skeptic/domain-expert(anaesthesiology)/methodologist/claims-auditor/integrity perspectives: claim is scoped to the reported value, no strength/scope over-reach; no numeric verifier covers this between-group/derived statistic yet. Specifics: adjusted B=-0.39, 95% CI [-0.58,-0.19]; CI excludes 0, coherent.",
+      "quote": null
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c21",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "lower heart rate variability (B = \u22120.027, 95% CI \n-0.042 to \u22120.012, P < 0.001)",
-        "location": {
-          "section": "3.7",
-          "page": 6,
-          "char_span": null,
-          "quote": "lower heart rate variability (B = \u22120.027, 95% CI \n-0.042 to \u22120.012, P < 0.001)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT (bare abstain dropped). reviewed across skeptic/domain-expert(anaesthesiology)/methodologist/claims-auditor/integrity perspectives: claim is scoped to the reported value, no strength/scope over-reach; no numeric verifier covers this between-group/derived statistic yet. Specifics: adjusted B=-0.027, 95% CI [-0.042,-0.012]; CI excludes 0, coherent.",
+      "quote": null
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c22",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "higher mean arterial \npressure variability (B = 0.018, 95% CI 0.001 to 0.034, P = 0.033)",
-        "location": {
-          "section": "3.7",
-          "page": 6,
-          "char_span": null,
-          "quote": "higher mean arterial \npressure variability (B = 0.018, 95% CI 0.001 to 0.034, P = 0.033)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT (bare abstain dropped). reviewed across skeptic/domain-expert(anaesthesiology)/methodologist/claims-auditor/integrity perspectives: claim is scoped to the reported value, no strength/scope over-reach; no numeric verifier covers this between-group/derived statistic yet. Specifics: adjusted B=0.018, 95% CI [0.001,0.034], p=0.033; CI excludes 0 (lower bound 0.001 borderline but coherent).",
+      "quote": null
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c23",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Norepinephrine 9 (12.9) 28 (40) <0.01",
-        "location": {
-          "section": "3 / Table 1",
-          "page": 5,
-          "char_span": null,
-          "quote": "Norepinephrine 9 (12.9) 28 (40) <0.01"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT (bare abstain dropped). reviewed across skeptic/domain-expert(anaesthesiology)/methodologist/claims-auditor/integrity perspectives: claim is scoped to the reported value, no strength/scope over-reach; no numeric verifier covers this between-group/derived statistic yet. Specifics: baseline norepinephrine recomputed: 9/70=12.9%, 28/70=40.0% (exact match); arithmetic confirmed -- the imbalance itself is raised as a methodological advisory below.",
+      "quote": null
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c24",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "calculations indicated \n64 patients per group were required. Accounting for a 10% \ndropout rate, the final actual enrollment per group was \n72 patients, totaling 144 patients.",
-        "location": {
-          "section": "2.5",
-          "page": 4,
-          "char_span": null,
-          "quote": "calculations indicated \n64 patients per group were required. Accounting for a 10% \ndropout rate, the final actual enrollment per group was \n72 patients, totaling 144 patients."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT (bare abstain dropped). reviewed across skeptic/domain-expert(anaesthesiology)/methodologist/claims-auditor/integrity perspectives: claim is scoped to the reported value, no strength/scope over-reach; no numeric verifier covers this between-group/derived statistic yet. Specifics: sample size: 64/(1-0.10)=71.1 -> 72/group (ceil), 72*2=144; arithmetic confirmed; the 140 analyzed still exceed the 64/group the study was powered for.",
+      "quote": null
     },
     {
-      "verifier_id": "litmus.planner",
+      "claim_id": "c4",
+      "dimension": "advisory:claims-auditor",
+      "note": "Strength/scope over-reach in wording: the pain subscale is reported as 'significantly HIGHER' in K (18 [18-20]) vs C (18 [16.75-19]) with IDENTICAL medians of 18. A Mann-Whitney p<0.001 from a distribution shift with equal medians is statistically possible, but stating the K group scored 'higher' is not supported by the reported point estimates and risks misreading. Confirm by recomputing the test from the raw POD3 pain-subscale distributions, or rephrase as a distributional difference.",
+      "quote": "Pain 18 (18-20) 18 (16.75-19) <0.001"
+    },
+    {
+      "claim_id": "c10",
+      "dimension": "advisory:claims-auditor",
+      "note": "Equal-median 'lower' wording (mirrors c4): rescue-analgesic consumption is 0 [0-0] in K vs 0 [0-100] in C, both medians 0, described as 'lower'. The difference lives entirely in the upper tail, so a median-based 'lower consumption' statement is imprecise. Confirm via the underlying distribution; consider reporting the proportion needing any rescue (already in c9) instead.",
+      "quote": "Rescue analgesic consumption per patient (mg) 0 (0-0) 0 (0-100) 0.008"
+    },
+    {
+      "claim_id": "c11",
+      "dimension": "advisory:claims-auditor",
+      "note": "Internal abstract-vs-body inconsistency (T2): the SAME propofol comparison is reported as P<0.001 in the abstract but P<0.05 in the Results (ev12 records both p_upper_bound 0.05 and p_upper_bound_abstract 0.001). Code cannot decide which p-value is correct without the raw propofol data. The mean separation (~102 mg, ~1.4 pooled SD) makes high significance plausible, but the two reported thresholds should be reconciled. Recompute the t-test from per-arm propofol values to settle it.",
+      "quote": "reduced usage of propofol (866.56 +/- 76.44 mg vs. 968.36 +/- 68.87 mg, P < 0.05)"
+    },
+    {
+      "claim_id": "c17",
+      "dimension": "advisory:claims-auditor",
+      "note": "Underpowered-null / absence-of-evidence over-reach (T4): 'no significant differences' is asserted from very small event counts (dizziness 1 vs 2, headache 2 vs 3). With n=70/group and single-digit events the study has little power to detect realistic between-group differences in these AEs, so P>0.05 does not establish equivalence. Confirm by reporting the achieved power / CI width for each AE; treat as 'no detected difference', not 'no difference'.",
+      "quote": "No other significant differences were observed between the two groups in the incidence of dizziness, headache, drowsiness, or restlessness (P > 0.05)"
+    },
+    {
+      "claim_id": "c23",
+      "dimension": "advisory:methodologist",
+      "note": "Methodological concern at the trial level: a large, statistically significant BASELINE imbalance in intraoperative norepinephrine use (12.9% K vs 40% C, P<0.01) in a randomized trial. Two issues code cannot settle: (1) an imbalance this size on a vasopressor that tracks haemodynamic/anaesthetic management raises a question about randomization integrity / allocation concealment (or whether norepinephrine is a post-randomization treatment rather than a baseline covariate); (2) the primary between-group inference is then conditioned on this variable in the adjusted model (c18), so the headline effect depends on covariate selection. Would be confirmed/refuted by the randomization method, allocation-concealment detail, and a pre-specified vs post-hoc analysis plan.",
+      "quote": "Norepinephrine 9 (12.9) 28 (40) <0.01"
+    },
+    {
       "claim_id": "c26",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "A statistically significant, six-point higher median QoR-15 score was \nobserved in the K group compared to the C group on POD3, which \nmeets the threshold for the established minimal clinically important \ndifference (MCID) of six points",
-        "location": {
-          "section": "4 Discussion",
-          "page": 6,
-          "char_span": null,
-          "quote": "A statistically significant, six-point higher median QoR-15 score was \nobserved in the K group compared to the C group on POD3, which \nmeets the threshold for the established minimal clinically important \ndifference (MCID) of six points"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Interpretive over-reach at threshold: the claim that the result 'meets the MCID of 6' rests on a between-group difference of MEDIANS (121-115=6) that exactly equals the MCID. The arithmetic (6=6) is correct, but (a) it sits exactly on the threshold with no margin, and (b) the QoR-15 MCID is conventionally defined on a change/effect estimate, whereas this is a difference of group medians -- not the same quantity. The adjusted mean effect (B=5.52, c18) is actually BELOW 6, so 'meets the MCID' is sensitive to which estimate is used. Confirm against the mean between-group difference and its CI relative to 6.",
+      "quote": "six-point higher median QoR-15 score ... meets the threshold for the established minimal clinically important difference (MCID) of six points"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c27",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "an esketamine-based multimodal low-opioid anaesthesia \nregimen significantly enhances recovery quality on postoperative \nday 3 in elderly patients undergoing thoracoscopic radical lung \ncancer surgery.",
-        "location": {
-          "section": "5 Conclusion",
-          "page": 10,
-          "char_span": null,
-          "quote": "an esketamine-based multimodal low-opioid anaesthesia \nregimen significantly enhances recovery quality on postoperative \nday 3 in elderly patients undergoing thoracoscopic radical lung \ncancer surgery."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Causal-strength + generalization over-reach (T4): the conclusion uses causal/efficacy language ('effectively improves' / 'significantly enhances recovery') and generalizes to 'elderly patients undergoing thoracoscopic radical lung cancer resection' from a SINGLE-CENTRE RCT whose primary effect is entangled with the norepinephrine baseline imbalance (c23/c18). The POD3 primary outcome does support a causal claim in principle, but the breadth ('effectively', single-centre -> a whole patient class) and the confounding caveat warrant tempering. Whether the effect size is clinically meaningful is also routed as subjective below.",
+      "quote": "an esketamine-based multimodal low-opioid anaesthesia regimen significantly enhances recovery quality on postoperative day 3"
+    },
+    {
+      "claim_id": "c27",
+      "dimension": "subjective:significance",
+      "note": "Irreducibly subjective (T8, DESIGN 3.5 -- surfaced, NOT scored): whether a 6-point POD3 QoR-15 gain (adjusted ~5.5) and the opioid-sparing profile constitute a clinically IMPORTANT advance worth adopting, and how novel the esketamine multimodal regimen is versus existing low-opioid protocols, are matters of clinical judgement and importance, not arithmetic. Routed to a human reviewer.",
+      "quote": "an esketamine-based multimodal low-opioid anaesthesia regimen significantly enhances recovery quality on postoperative day 3"
     }
-  ]
+  ],
+  "abstained": []
 }

@@ -18,14 +18,16 @@
       "c20"
     ],
     "confirmation": "fresh-sandbox",
-    "registry_load_errors": []
+    "registry_load_errors": [],
+    "enrichment": "multi-perspective review (skeptic/domain-expert/methodologist/claims-auditor/integrity-screener); deterministic verdicts preserved verbatim; bare abstains resolved to confirmed-correct (dropped, with auditable advisory note) or advisory; numbers recomputed before any advisory.",
+    "reviewer_model": "claude-opus-4-8"
   },
   "summary": {
     "n_findings": 9,
     "n_flags": 0,
     "n_dropped": 0,
-    "n_routed_to_human": 0,
-    "n_abstained": 12,
+    "n_routed_to_human": 11,
+    "n_abstained": 1,
     "flags_by_trust_tier": {},
     "flags_by_severity": {}
   },
@@ -284,233 +286,75 @@
     }
   ],
   "dropped_flags": [],
-  "routed_to_human": [],
-  "abstained": [
+  "routed_to_human": [
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c1",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "achieving yields of 80\u201395%, excellent diastereoselectivities (1:69 syn/anti), and\nenantiomeric excesses greater than 99%",
-        "location": {
-          "section": "Abstract",
-          "page": 1,
-          "char_span": null,
-          "quote": "achieving yields of 80\u201395%, excellent diastereoselectivities (1:69 syn/anti), and\nenantiomeric excesses greater than 99%"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c2",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "The\nbest results were obtained when the metal was stirred with the solvent for 24 h (Table 1,\nentries 2 and 6).",
-        "location": {
-          "section": "2. Results",
-          "page": 3,
-          "char_span": null,
-          "quote": "The\nbest results were obtained when the metal was stirred with the solvent for 24 h (Table 1,\nentries 2 and 6)."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed (skeptic/methodologist/claims-auditor): comparative claim 'best 34% at DMF/24h' matches Table 1 (max of {15,19,19,34}=34 at entry 6). No over-reach; T2 prose-vs-table comparison has no numeric verifier in the registry yet.",
+      "quote": null
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c4",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "efficiently\npromoted the reaction, achieving yields above 85% and enantiomeric excesses greater than\n95% (Table 3, entries 1, 3, 5, 7, 9 and 10)",
-        "location": {
-          "section": "2. Results",
-          "page": 5,
-          "char_span": null,
-          "quote": "efficiently\npromoted the reaction, achieving yields above 85% and enantiomeric excesses greater than\n95% (Table 3, entries 1, 3, 5, 7, 9 and 10)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c5",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "a syn/anti diastereomeric ratio of up to 1:69 was obtained (Table 3, entry 3)",
-        "location": {
-          "section": "2. Results",
-          "page": 6,
-          "char_span": null,
-          "quote": "a syn/anti diastereomeric ratio of up to 1:69 was obtained (Table 3, entry 3)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed: 'syn/anti up to 1:69 at Table 3 entry 3' matches the extracted table (entry 3 dr=1:69 is the max anti ratio). No over-reach; no numeric dr-extremum verifier exists yet.",
+      "quote": null
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c6",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "with activation barriers of 7.1 and 6.7 kcal/mol, respectively",
-        "location": {
-          "section": "2. Results",
-          "page": 7,
-          "char_span": null,
-          "quote": "with activation barriers of 7.1 and 6.7 kcal/mol, respectively"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed (domain-expert/methodologist): DFT activation barriers 7.1 (gas) / 6.7 (DMSO) kcal/mol reproduce Table 4 exactly; magnitudes are physically reasonable for an organocatalytic aldol TS. No numeric DFT-energy verifier covers it yet.",
+      "quote": null
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c7",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "is slightly endothermic in the\ngas phase (+0.4 kcal/mol), whereas in DMSO it is significantly stabilized",
-        "location": {
-          "section": "2. Results",
-          "page": 7,
-          "char_span": null,
-          "quote": "is slightly endothermic in the\ngas phase (+0.4 kcal/mol), whereas in DMSO it is significantly stabilized"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed: intermediate energies +0.4 (gas, endothermic) / -2.3 (DMSO) kcal/mol reproduce Table 4 / Figure 3; sign and solvent-stabilization narrative are internally consistent. No numeric verifier covers it yet.",
+      "quote": null
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c8",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "each MBH adduct was obtained as a racemic mixture in all cases",
-        "location": {
-          "section": "2. Results",
-          "page": 8,
-          "char_span": null,
-          "quote": "each MBH adduct was obtained as a racemic mixture in all cases"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c9",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "reaching yields of up to 90% when 4-iodophenol was used as the aryl halide\n(Table 6, entry 3)",
-        "location": {
-          "section": "2. Results",
-          "page": 9,
-          "char_span": null,
-          "quote": "reaching yields of up to 90% when 4-iodophenol was used as the aryl halide\n(Table 6, entry 3)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed: 'up to 90% with 4-iodophenol (Table 6 entry 3)' matches the extracted table (max Heck yield=90 at entry 3, cat 4). No over-reach; no numeric verifier covers it yet.",
+      "quote": null
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c10",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the yields were significantly higher when the process was\ncarried out by microwave irradiation",
-        "location": {
-          "section": "2. Results",
-          "page": 9,
-          "char_span": null,
-          "quote": "the yields were significantly higher when the process was\ncarried out by microwave irradiation"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed: 'MW yields significantly higher than reflux' supported by Table 6 same-substrate pair (4-OH, cat 3: reflux 43% vs MW 81%). Comparative claim holds; no numeric verifier covers it yet.",
+      "quote": null
     },
+    {
+      "claim_id": "c1",
+      "dimension": "advisory:claims-auditor",
+      "note": "Abstract framing vs Table 3 ((S)-4): (a) the '80–95%' yield range understates the actual spread — tabulated (S)-4 yields run 59–98% (entries 8,11,13 fall below 80; entries 5,10 reach 91–98), so '80–95%' is neither the min nor the max. (b) 'ee greater than 99%' rests on qualitative '>99' cells (entries 1,3,7); the highest *numeric* ee in the table is 98%. Defensible as a best-case bound but the abstract reads as a typical-case range. Confirm by reconciling the abstract range against the full Table 3 column once a T2 prose-vs-table extremum verifier exists.",
+      "quote": "achieving yields of 80–95%, excellent diastereoselectivities (1:69 syn/anti), and enantiomeric excesses greater than 99%"
+    },
+    {
+      "claim_id": "c4",
+      "dimension": "advisory:claims-auditor",
+      "note": "Over-reach against the cited entries themselves: for {1,3,5,7,9,10} the bound 'yield > 85%' fails at entry 3 (84%), and 'ee > 95%' fails at entry 5 (92%). The other cited entries satisfy both (ee cells are '>99' or 98%). Tight, two-entry boundary violation — surfaced as advisory, not a hard flag, because no calibrated T2/T4 prose-vs-table verifier is admitted yet and I must not manufacture a deterministic verdict. Confirm by checking each cited entry against the bound.",
+      "quote": "achieving yields above 85% and enantiomeric excesses greater than 95% (Table 3, entries 1, 3, 5, 7, 9 and 10)"
+    },
+    {
+      "claim_id": "c8",
+      "dimension": "advisory:claims-auditor",
+      "note": "Evidence-binding gap (T4): Table 5 reports only yields for the MBH adducts — no ee, dr, or chiral-HPLC column. The 'racemic in all cases' assertion is therefore not supported by the bound evidence; it needs the chiral analysis (ee≈0 or HPLC traces showing 1:1 enantiomers) to be checkable. Confirm by locating the MBH ee data; if absent, the claim is unsubstantiated.",
+      "quote": "each MBH adduct was obtained as a racemic mixture in all cases"
+    },
+    {
+      "claim_id": "c19",
+      "dimension": "advisory:claims-auditor",
+      "note": "Same qualitative-bound caveat as the abstract (c1): the Conclusions' 'ee > 99%' is carried by Table 3 '>99' cells (entries 1,3,7); the largest numeric ee reported is 98%. Internally consistent with the table as a ceiling, but a reader should know '>99%' is a reported bound on a subset, not a measured maximum across all substrates.",
+      "quote": "achieving enantiomeric excesses greater than 99%"
+    },
+    {
+      "claim_id": "c20",
+      "dimension": "advisory:domain-expert",
+      "note": "EDS line check (T1 external-knowledge): Cl Kα at 2.622 keV is correct (tabulated Cl Kα1 = 2.622 keV). The Pd line quoted at 3.382 keV does NOT match any tabulated Pd emission line — Pd Lα1≈2.84, Lβ1≈2.99, Lβ2≈3.17, Kα≈21.18 keV; the nearest (Lβ2) is ~0.21 keV away. m/z 289/307 (FAB+) are plausible Pd-Lys fragments but not recomputed here. Confirm the Pd Kα/L assignment against the actual EDS spectrum; the energy as transcribed is anomalous. No emission-line verifier exists yet.",
+      "quote": "the presence of chlorine atoms, detected in the EDS spectrum (Kα emission) at 2.622 keV, and of palladium at 3.382 keV"
+    }
+  ],
+  "abstained": [
     {
       "verifier_id": "litmus.planner",
       "claim_id": "c18",
@@ -529,56 +373,6 @@
           "page": 2,
           "char_span": null,
           "quote": "List reported the synthesis\nof aromatic aldol adducts in good yields and enantiomeric excesses approaching 80%, by\ncatalyzing the reactions with L-proline (30 mol%)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c19",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "high diastereoselectivity (r.d.\nup to 1:69), favoring the formation of the anti diastereomer in all cases. Furthermore, the\ncomplexes (S)-3 and (S)-4 demonstrated the ability to induce high enantioselectivity and\nachieving enantiomeric excesses greater than 99%",
-        "location": {
-          "section": "4. Conclusions",
-          "page": 15,
-          "char_span": null,
-          "quote": "high diastereoselectivity (r.d.\nup to 1:69), favoring the formation of the anti diastereomer in all cases. Furthermore, the\ncomplexes (S)-3 and (S)-4 demonstrated the ability to induce high enantioselectivity and\nachieving enantiomeric excesses greater than 99%"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c20",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the\nfragmentation signals detected at m/z 289 and 307 are consistent with metal coordination\nwith S-Lys fragment",
-        "location": {
-          "section": "2. Results",
-          "page": 4,
-          "char_span": null,
-          "quote": "the\nfragmentation signals detected at m/z 289 and 307 are consistent with metal coordination\nwith S-Lys fragment"
         },
         "recompute_script": null,
         "expected_output": null,

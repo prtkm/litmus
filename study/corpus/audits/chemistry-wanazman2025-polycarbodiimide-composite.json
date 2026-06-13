@@ -25,620 +25,187 @@
       "c24"
     ],
     "confirmation": "fresh-sandbox",
-    "registry_load_errors": []
+    "registry_load_errors": [],
+    "enrichment": "multi-perspective-review.v1",
+    "review_model": "claude-opus-4-8",
+    "review_perspectives": [
+      "skeptic",
+      "domain-expert",
+      "methodologist",
+      "claims-auditor",
+      "integrity-screener"
+    ],
+    "review_field": "chemistry",
+    "review_note": "Chemistry paper: scrutinized as a low-temperature XNBR/polycarbodiimide glove-curing study (mechanical properties, swelling/cross-link density, durability) — NOT a stats paper. No deterministic verdict existed to preserve (all 24 claims had abstained: 0 findings, 0 dropped); none was created or overridden (DESIGN §3.1). Recompute-before-advisory (DESIGN honesty): the T2 internal-consistency claims were recomputed against the paper's own tables and found CLEAN -> CONFIRMED-CORRECT (bare abstain dropped, auditable claims-auditor note kept): c7 (NL117 cross-link min 10.2 > others max 7.2, argmax holds every condition, Table 4); c8 (K834 crotch 35.8-56.7 == ~36-57), c9 (NL129 68.3-92.5 == 68-93), c10 (NL117 95.8-102.6, best of three & >=100, Table 6); c5/c6/c22 structure-property coherence (NL117 highest ACN -> highest cross-link -> lowest swelling). Figure-read claims c11,c12,c13 reviewed clean but not yet deterministically recomputable (plotted, not tabulated). Genuine concerns routed, not hard-flagged: T3 statistics on c4/c14/c15 (significance asserted with the test unnamed; non-significance used to claim grade/temperature EQUIVALENCE — absence-of-evidence; no multiplicity correction across 3 grades x 3 temperatures); T4 scope on c1 ('ASTM D6319-compliant performance' is broader than the two mechanical gates actually evidenced); T0/T1 on c19 (Flory-Rehner Vs=105.91 vs M/rho-implied 106.89 and lit ~106.3 -> ~1% low, a precision note). T5 cited-literature values (c16,c17,c18) routed for source retrieval+entailment. Subjective significance/novelty (c1,c13) routed, never scored. Bare abstains eliminated: every claim adjudicated, advised, routed, or reviewed-clean (24 -> 0)."
   },
   "summary": {
     "n_findings": 0,
     "n_flags": 0,
     "n_dropped": 0,
-    "n_routed_to_human": 0,
-    "n_abstained": 24,
+    "n_routed_to_human": 26,
+    "n_abstained": 0,
     "flags_by_trust_tier": {},
     "flags_by_severity": {}
   },
   "findings": [],
   "dropped_flags": [],
-  "routed_to_human": [],
-  "abstained": [
+  "routed_to_human": [
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c1",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "AF-XNBR gloves can achieve compliant\nperformance even under low-temperature curing conditions",
-        "location": {
-          "section": "Abstract",
-          "page": 1,
-          "char_span": null,
-          "quote": "AF-XNBR gloves can achieve compliant\nperformance even under low-temperature curing conditions"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "T4 claim-vs-evidence scope. The abstract asserts gloves 'can achieve ASTM D6319-compliant performance' at low-temperature (65 C) curing, but D6319 was operationalized here as only two of the standard's criteria: tensile >=14 MPa (Fig 6: ~30 MPa at 65 C, ev9) and elongation >=500% (Fig 7: >500%, ev10). Both gates ARE met by the paper's own reported figure values, so the core inference is supported — BUT 'compliant performance' is a stronger, fuller-standard phrasing than the evidence (two mechanical properties on 55 um films) establishes; D6319 also covers dimensions, freedom-from-holes (AQL), and aging that are not part of this compliance argument, and the K834-at-65C durability/crotch-retention is weak (c8: ~36%). Confirms-it: a T2 readback verifier checking reported 65C tensile/elongation against the 14 MPa/500% thresholds, plus an explicit scope-narrowing of 'compliant' to 'tensile + elongation per D6319 sect 7'. Not hard-flagged: figure-read evidence (0.8-0.85 conf), no per-row numeric table.",
+      "quote": "AF-XNBR gloves can achieve compliant\nperformance even under low-temperature curing conditions"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c2",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "which\nspecifies a minimum tensile strength of 14 MPa and a minimum\nelongation at break of 500% for nitrile examination gloves.",
-        "location": {
-          "section": "3.7 Tensile Properties and Tear Strength Test",
-          "page": 4,
-          "char_span": null,
-          "quote": "which\nspecifies a minimum tensile strength of 14 MPa and a minimum\nelongation at break of 500% for nitrile examination gloves."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T1 fixed-external-knowledge: ASTM D6319-19 min tensile 14 MPa and min elongation 500% for nitrile examination gloves are correctly transcribed (the values match the widely cited D6319 specification). Verdict basis is a trusted-reference lookup (DESIGN §5 T1), not internally recomputable from this paper; a citation/standard-lookup verifier would confirm against the published ASTM table. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "which\nspecifies a minimum tensile strength of 14 MPa and a minimum\nelongation at break of 500% for nitrile examination gloves."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c3",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "A 5% KOH aqueous solution was used to\nbring the compound\u2019s pH down to roughly 10.",
-        "location": {
-          "section": "3.2",
-          "page": 3,
-          "char_span": null,
-          "quote": "A 5% KOH aqueous solution was used to\nbring the compound\u2019s pH down to roughly 10."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T0 reported quantity: target pH ~10 reached with 5% KOH is a single process set-point (approximate, hedged 'roughly'), internally consistent with using KOH (a strong base) to raise latex pH for colloidal stability. No internal arithmetic links other numbers to it, so there is nothing to recompute; review finds no over-statement. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "A 5% KOH aqueous solution was used to\nbring the compound’s pH down to roughly 10."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c4",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "This reduction was found to\nbe statistically significant (p < 0.05), signifying that aging leads\nto a measurable decrease in solvent uptake.",
-        "location": {
-          "section": "4.1.2",
-          "page": 4,
-          "char_span": null,
-          "quote": "This reduction was found to\nbe statistically significant (p < 0.05), signifying that aging leads\nto a measurable decrease in solvent uptake."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:methodologist",
+      "note": "T3 method appropriateness / transparency. The claim that aged-vs-unaged swelling-index reduction is 'statistically significant (p < 0.05)' across all grades and curing temperatures is asserted, but the extracted statistic carries test == null: the paper does not name the test, report the statistic, df, n, or whether a correction was applied for the many grade x temperature x aging comparisons. With 3 grades x 3 temperatures, a single 'p<0.05' over pooled comparisons risks multiplicity inflation. Cannot be settled by code without the underlying per-sample swelling data (DESIGN §5 T3, partial reproducibility). Confirms-it: report the test name + statistic + df + n and a multiple-comparison correction, or release the swelling dataset so a paired-test recompute can run.",
+      "quote": "This reduction was found to\nbe statistically significant (p < 0.05), signifying that aging leads\nto a measurable decrease in solvent uptake."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c5",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "XNBR gloves with latex K834 and NL129 for all three\ncuring conditions show high swelling (\u223c250\u2212275%) when\nunaged. After aging, swelling decreases moderately (\u223c210\u2212\n230%)",
-        "location": {
-          "section": "4.1.2",
-          "page": 5,
-          "char_span": null,
-          "quote": "XNBR gloves with latex K834 and NL129 for all three\ncuring conditions show high swelling (\u223c250\u2212275%) when\nunaged. After aging, swelling decreases moderately (\u223c210\u2212\n230%)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 figure-read (Fig 3, 0.8 conf): K834/NL129 unaged ~250-275%, aged ~210-230%. The aging-reduces-swelling direction is internally consistent with the cross-link-density increase on aging in Table 4 (c7 evidence) and with NL117's lower swelling tracking its higher cross-link density. No numeric over-reach; values are bounded ranges, not point claims. Numeric readback awaits a figure-data verifier. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "XNBR gloves with latex K834 and NL129 for all three\ncuring conditions show high swelling (∼250−275%) when\nunaged. After aging, swelling decreases moderately (∼210−\n230%)"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c6",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "XNBR gloves using latex NL117 show much lower\ninitial swelling (\u223c140\u2212150%) compared to other latexes\nthroughout all curing conditions. Slight further reduction after\naging (\u223c125\u2212135%)",
-        "location": {
-          "section": "4.1.2",
-          "page": 5,
-          "char_span": null,
-          "quote": "XNBR gloves using latex NL117 show much lower\ninitial swelling (\u223c140\u2212150%) compared to other latexes\nthroughout all curing conditions. Slight further reduction after\naging (\u223c125\u2212135%)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 figure-read (Fig 3, 0.8 conf): NL117 unaged ~140-150%, aged ~125-135% — the lowest of the three grades. This is physically coherent: NL117 has the highest ACN content (~45%, c22) and the highest calculated cross-link density (Table 4, c7), both of which predict the lowest solvent uptake. Recompute of the cross-consistency (higher xld => lower swelling) holds. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "XNBR gloves using latex NL117 show much lower\ninitial swelling (∼140−150%) compared to other latexes\nthroughout all curing conditions. Slight further reduction after\naging (∼125−135%)"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c7",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "NL117 consistently exhibiting the highest values",
-        "location": {
-          "section": "4.1.3 / Table 4",
-          "page": 6,
-          "char_span": null,
-          "quote": "NL117 consistently exhibiting the highest values"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 comparative RECOMPUTED against Table 4 (ev6): the minimum NL117 cross-link density across all six condition cells (10.2 x1e-5 mol/cm3) exceeds the maximum of K834 and NL129 across all their cells (7.2), so 'NL117 consistently exhibits the highest values' is exactly true for every condition, not just on average. No over-statement. A table-readback verifier would reproduce this argmax check deterministically. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "NL117 consistently exhibiting the highest values"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c8",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "K834 latex shows lower retention after aging (crotch\nretention: \u223c 36\u221257%)",
-        "location": {
-          "section": "4.1.3",
-          "page": 6,
-          "char_span": null,
-          "quote": "K834 latex shows lower retention after aging (crotch\nretention: \u223c 36\u221257%)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 approximate RECOMPUTED against Table 6 crotch_retention (ev7): K834 = {35.8, 45.8, 56.7}, spanning 35.8-56.7%, which matches the stated '~36-57%' (the 35.8 rounds to 36). Faithful. A table-readback verifier reproduces the min/max. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "K834 latex shows lower retention after aging (crotch\nretention: ∼ 36−57%)"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c9",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "NL129 latex\nhas moderate-to-high retention (68\u221293%)",
-        "location": {
-          "section": "4.1.3",
-          "page": 6,
-          "char_span": null,
-          "quote": "NL129 latex\nhas moderate-to-high retention (68\u221293%)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 approximate RECOMPUTED against Table 6 (ev7): NL129 crotch retention = {68.3, 75.0, 92.5}, spanning 68.3-92.5%, matching the stated '68-93%' (92.5 rounds to 93). Faithful. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "NL129 latex\nhas moderate-to-high retention (68−93%)"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c10",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "NL117 latex performs\nthe best, with retention values approaching or exceeding 100%.",
-        "location": {
-          "section": "4.1.3",
-          "page": 6,
-          "char_span": null,
-          "quote": "NL117 latex performs\nthe best, with retention values approaching or exceeding 100%."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 comparative RECOMPUTED against Table 6 (ev7): NL117 crotch retention = {95.8, 100.0, 102.6}; its minimum (95.8) exceeds NL129's maximum (92.5), so NL117 is best of the three, and values 'approaching or exceeding 100%' is accurate (two of three are >=100). The >100% retention is physically possible for a stretch-recovery ratio (sample slightly longer than the gauge after the protocol) and is not an impossible-value violation. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "NL117 latex performs\nthe best, with retention values approaching or exceeding 100%."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c11",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "K834 at 70 \u03bcm increases from \u223c65 kN/m (unaged)\nto \u223c150 kN/m (aged)",
-        "location": {
-          "section": "4.2.2",
-          "page": 7,
-          "char_span": null,
-          "quote": "K834 at 70 \u03bcm increases from \u223c65 kN/m (unaged)\nto \u223c150 kN/m (aged)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 figure-read (Fig 5, ev8, 0.8 conf): K834 at 70 um tear strength rises from ~65 kN/m (unaged) to ~150 kN/m (aged). The aging-increases-tear-strength direction is consistent with the cross-link-density increase on aging (Table 4). Values are read off a plot, not tabulated, so no deterministic recompute is possible yet. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "K834 at 70 μm increases from ∼65 kN/m (unaged)\nto ∼150 kN/m (aged)"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c12",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "K834 at 90 \u03bcm shows the highest values\n(\u223c160 kN/m aged)",
-        "location": {
-          "section": "4.2.2",
-          "page": 7,
-          "char_span": null,
-          "quote": "K834 at 90 \u03bcm shows the highest values\n(\u223c160 kN/m aged)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 figure-read (Fig 5, ev8, 0.8 conf): K834 at 90 um shows the highest aged tear strength (~160 kN/m), consistent with the 70 um value (~150 kN/m) and the monotone aging trend in c11. 'Highest' is a within-figure argmax that a figure-data verifier could confirm; not tabulated here. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "K834 at 90 μm shows the highest values\n(∼160 kN/m aged)"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c13",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the tensile\nstrength of the latex films cured at 65 \u00b0C reached about 30\nMPa, which is similar to 110 \u00b0C. In particular, K834 latex\nshows consistently high tensile strength across all curing\ntemperatures (\u223c30 MPa).",
-        "location": {
-          "section": "4.3.1",
-          "page": 8,
-          "char_span": null,
-          "quote": "the tensile\nstrength of the latex films cured at 65 \u00b0C reached about 30\nMPa, which is similar to 110 \u00b0C. In particular, K834 latex\nshows consistently high tensile strength across all curing\ntemperatures (\u223c30 MPa)."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 figure-read (Fig 6, ev9, 0.8 conf): tensile strength at 65 C reaches ~30 MPa, similar to 110 C, and K834 holds ~30 MPa across all curing temperatures. This is the central low-temperature-curing result and is internally consistent with the c1 compliance argument (30 MPa is comfortably above the 14 MPa D6319 floor). Values are plotted, not tabulated; numeric readback awaits a figure-data verifier. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "the tensile\nstrength of the latex films cured at 65 °C reached about 30\nMPa, which is similar to 110 °C. In particular, K834 latex\nshows consistently high tensile strength across all curing\ntemperatures (∼30 MPa)."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c14",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "demonstrated elongation at break values\nexceeding 500%. Statistical analysis using an independent t test\nconfirmed that there were no significant differences (p > 0.05)\nin elongation at break among the different latex grades and\ncuring temperatures.",
-        "location": {
-          "section": "4.3.1",
-          "page": 9,
-          "char_span": null,
-          "quote": "demonstrated elongation at break values\nexceeding 500%. Statistical analysis using an independent t test\nconfirmed that there were no significant differences (p > 0.05)\nin elongation at break among the different latex grades and\ncuring temperatures."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:methodologist",
+      "note": "T3 method appropriateness. Two parts: (a) 'all gloves elongation >500%' is a T2 figure-read claim (Fig 7) supported by ev10; (b) the inference that there are 'no significant differences (p > 0.05) among grades and curing temperatures' is used to assert grade/temperature EQUIVALENCE in elongation. This is absence-of-evidence treated as evidence-of-absence: a non-significant independent t-test does not establish equivalence, especially without a reported power/effect-size or an equivalence (TOST) test, and an independent (unpaired) t-test across multiple grades x temperatures invites multiplicity. Cannot be settled by code without per-sample elongation data (DESIGN §5 T3). Confirms-it: report n, the test statistic and df, a power or TOST analysis, or release the data for a recompute.",
+      "quote": "demonstrated elongation at break values\nexceeding 500%. Statistical analysis using an independent t test\nconfirmed that there were no significant differences (p > 0.05)\nin elongation at break among the different latex grades and\ncuring temperatures."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c15",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "aging resulted in a\nsignificant increase in tensile strength (p < 0.05) for all latex\ngrades, while no significant differences (p > 0.05) were\nobserved between the different latex grades within the same\naging condition.",
-        "location": {
-          "section": "4.3.1",
-          "page": 9,
-          "char_span": null,
-          "quote": "aging resulted in a\nsignificant increase in tensile strength (p < 0.05) for all latex\ngrades, while no significant differences (p > 0.05) were\nobserved between the different latex grades within the same\naging condition."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:methodologist",
+      "note": "T3 method appropriateness. The aging effect ('significant increase in tensile strength, p < 0.05, for all grades') is a directional causal claim from a t-test; acceptable if paired pre/post, but the test/df/n and pairing are not reported. The companion claim — 'no significant differences (p > 0.05) between grades within an aging condition' — again converts non-significance into equivalence (see c14). With 3 grades x aging states the comparison set is large and no multiple-comparison correction is mentioned. Not settleable by code without the per-sample tensile data (DESIGN §5 T3). Confirms-it: report the paired test + df + n and an equivalence test, or release the data.",
+      "quote": "aging resulted in a\nsignificant increase in tensile strength (p < 0.05) for all latex\ngrades, while no significant differences (p > 0.05) were\nobserved between the different latex grades within the same\naging condition."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c16",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "virgin XNBR films exhibit an elongation at break of\napproximately 530%",
-        "location": {
-          "section": "4.3.1",
-          "page": 9,
-          "char_span": null,
-          "quote": "virgin XNBR films exhibit an elongation at break of\napproximately 530%"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "T5 citation-fidelity: '~530% elongation for virgin XNBR films' is a cited_value attributed to ref 27 and used as a literature anchor for the >500% result. Its numeric accuracy cannot be settled by code without retrieving and entailing the cited source (DESIGN §5 T5, calibrated/higher-FP). Reviewed for distortion: the value is used fairly as corroboration and is consistent with the paper's own >500% data; no sign the source is mis-stated. Confirms-it: a retrieval+entailment verifier that opens ref 27 and checks the figure.",
+      "quote": "virgin XNBR films exhibit an elongation at break of\napproximately 530%"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c17",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "with\nenhancements up to 46%",
-        "location": {
-          "section": "4.3.1",
-          "page": 9,
-          "char_span": null,
-          "quote": "with\nenhancements up to 46%"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "T5 citation-fidelity: 'elongation-at-break improvements up to 46%' is a cited_value attributed to ref 28. Numeric accuracy needs source retrieval+entailment (DESIGN §5 T5); not internally recomputable. Reviewed for distortion: framed correctly as prior work, used as a bound ('up to'), no sign of mis-statement. Confirms-it: a retrieval+entailment verifier on ref 28.",
+      "quote": "with\nenhancements up to 46%"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c18",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "can also reduce thermal\nload by up to 30%",
-        "location": {
-          "section": "ESG",
-          "page": 10,
-          "char_span": null,
-          "quote": "can also reduce thermal\nload by up to 30%"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "T5 citation-fidelity: 'multifunctional-epoxide curing can reduce thermal load by up to 30%' is a cited_value attributed to ref 18, in the ESG discussion. Numeric accuracy needs source retrieval+entailment (DESIGN §5 T5); not internally recomputable, and this is an external comparison rather than a result of this study. Reviewed for distortion: framed as a literature pointer ('up to'), used to motivate energy savings; no sign of mis-statement. Confirms-it: a retrieval+entailment verifier on ref 18.",
+      "quote": "can also reduce thermal\nload by up to 30%"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c19",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Vs is the molar volume of toluene (105.91 cm3\n/mol),\nand \u03c7 is the Flory\u2212Huggins polymer\u2212solvent interaction parameter,\ntaken as 0.39.",
-        "location": {
-          "section": "3.5",
-          "page": 3,
-          "char_span": null,
-          "quote": "Vs is the molar volume of toluene (105.91 cm3\n/mol),\nand \u03c7 is the Flory\u2212Huggins polymer\u2212solvent interaction parameter,\ntaken as 0.39."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:domain-expert",
+      "note": "T0/T1 constant consistency (RECOMPUTED). The Flory-Rehner inputs Vs(toluene)=105.91 cm3/mol, chi=0.39, rho(toluene)=0.862 g/cm3 are field-standard, but there is a small internal tension: Vs implied by the paper's own toluene density and toluene's molar mass (92.14 g/mol / 0.862 g/cm3 = 106.89 cm3/mol) is ~0.9% above the stated 105.91, and the accepted literature molar volume of toluene at 25 C is ~106.3 cm3/mol. The stated Vs is therefore slightly low (it nudges every calculated cross-link density up by ~1%), but it is within the range of values papers quote and chi=0.39 is a standard XNBR/toluene interaction parameter, so this is a precision note, not an error. Confirms-it: a T0 verifier that checks Vs == M/rho for the cited density, or re-derives cross-link density with the literature Vs and shows the <=1% shift. Not hard-flagged: the discrepancy is within reported-value spread and does not change any qualitative conclusion.",
+      "quote": "Vs is the molar volume of toluene (105.91 cm3\n/mol),\nand χ is the Flory−Huggins polymer−solvent interaction parameter,\ntaken as 0.39."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c20",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the\ndurability time must be at least 42 min.",
-        "location": {
-          "section": "3.6 / 4.1.3",
-          "page": 3,
-          "char_span": null,
-          "quote": "the\ndurability time must be at least 42 min."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T1 fixed-internal-standard: the 42 min durability threshold and 120 min study cap are transcribed from the Midori Anzen internal standard. Because the threshold is proprietary (not a public spec like ASTM), it cannot be verified against an external reference table; review confirms it is reported as a stated criterion, not an inferred result, with no over-statement. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "the\ndurability time must be at least 42 min."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c21",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "phr 100 2 1 0.2 2 0.5",
-        "location": {
-          "section": "Table 2",
-          "page": 3,
-          "char_span": null,
-          "quote": "phr 100 2 1 0.2 2 0.5"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T0 exact: the XNBR formulation phr values [100, 2, 1, 0.2, 2, 0.5] for [XNBR, KOH, ZnO, antioxidant, TiO2, PCDI] are a direct transcription of Table 2; 100 phr base rubber with minor additives is a standard compounding recipe and the 0.5 phr PCDI cross-linker is the paper's key variable. No internal arithmetic to recompute; a table-readback verifier would confirm the row. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "phr 100 2 1 0.2 2 0.5"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c22",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "K834 (\u223c27% ACN\ncontent), NL129 (\u223c20% ACN\ncontent), and NL117 (\u223c45% ACN\ncontent)",
-        "location": {
-          "section": "3.1",
-          "page": 3,
-          "char_span": null,
-          "quote": "K834 (\u223c27% ACN\ncontent), NL129 (\u223c20% ACN\ncontent), and NL117 (\u223c45% ACN\ncontent)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T0/materials: ACN contents K834~27%, NL129~20%, NL117~45% are transcribed grade specifications. They are internally coherent with downstream results — NL117 (highest ACN) shows the highest cross-link density (c7) and lowest swelling (c6), the expected structure-property ordering. No over-statement. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "K834 (∼27% ACN\ncontent), NL129 (∼20% ACN\ncontent), and NL117 (∼45% ACN\ncontent)"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c23",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "20 g of sodium\nchloride, 17.05 g of lactic acid, 5.01 g of acetic acid, 17.5 g of\nammonium chloride, and 2 N sodium hydroxide solution.",
-        "location": {
-          "section": "3.6",
-          "page": 3,
-          "char_span": null,
-          "quote": "20 g of sodium\nchloride, 17.05 g of lactic acid, 5.01 g of acetic acid, 17.5 g of\nammonium chloride, and 2 N sodium hydroxide solution."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T0 exact: the artificial-sweat recipe (per 1 L: 20 g NaCl, 17.05 g lactic acid, 5.01 g acetic acid, 17.5 g NH4Cl, 2 N NaOH) is a method transcription resembling a modified acidic artificial-perspiration formulation; the masses are reported reagent quantities, not a computed result. Review finds no over-statement; a table/recipe-readback verifier would confirm the values. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "20 g of sodium\nchloride, 17.05 g of lactic acid, 5.01 g of acetic acid, 17.5 g of\nammonium chloride, and 2 N sodium hydroxide solution."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c24",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "maintained\nin its typical state of 147 mm for 11 s and then stretched to 195 mm\nin length before returning to its initial shape for 1.5 s.",
-        "location": {
-          "section": "3.6",
-          "page": 3,
-          "char_span": null,
-          "quote": "maintained\nin its typical state of 147 mm for 11 s and then stretched to 195 mm\nin length before returning to its initial shape for 1.5 s."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T0 exact: the durability-cycle parameters (baseline 147 mm held 11 s, stretched to 195 mm, 1.5 s return) are verbatim method data. 147->195 mm is ~33% extension, a physically reasonable cyclic-fatigue stretch for an examination glove; nothing to recompute beyond the transcription. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "maintained\nin its typical state of 147 mm for 11 s and then stretched to 195 mm\nin length before returning to its initial shape for 1.5 s."
+    },
+    {
+      "claim_id": "c1",
+      "dimension": "subjective:significance",
+      "note": "Whether demonstrating that AF-XNBR gloves can meet ASTM D6319 tensile/elongation criteria under LOW-TEMPERATURE (65 C) curing is a SIGNIFICANT/important advance (energy-saving manufacturing) vs an incremental process tweak is a value judgement LITMUS does not score (DESIGN §3.5). Routed to an editor/domain reviewer.",
+      "quote": "AF-XNBR gloves can achieve compliant\nperformance even under low-temperature curing conditions"
+    },
+    {
+      "claim_id": "c13",
+      "dimension": "subjective:novelty",
+      "note": "Whether the polycarbodiimide (PCDI) cross-linking route achieving ~30 MPa tensile at 65 C — comparable to 110 C curing — is a NOVEL contribution to low-temperature XNBR glove curing vs known epoxide/sulfur alternatives is a novelty-worth judgement routed to a human (DESIGN §3.5), not scored.",
+      "quote": "the tensile\nstrength of the latex films cured at 65 °C reached about 30\nMPa, which is similar to 110 °C. In particular, K834 latex\nshows consistently high tensile strength across all curing\ntemperatures (∼30 MPa)."
     }
-  ]
+  ],
+  "abstained": []
 }

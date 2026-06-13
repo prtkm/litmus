@@ -15,395 +15,303 @@
       "c12"
     ],
     "confirmation": "fresh-sandbox",
-    "registry_load_errors": []
+    "registry_load_errors": [],
+    "enrichment": "multi-perspective-review.v1",
+    "review_model": "claude-opus-4-8",
+    "review_perspectives": [
+      "skeptic",
+      "domain-expert",
+      "methodologist",
+      "claims-auditor",
+      "integrity-screener"
+    ],
+    "review_note": "Field = chemistry / metallurgy (Fe-Co-Ni-B-Si-Be high-entropy alloy; melt-quenching, XRD phase ID, microhardness, magnetometry). Prior audit was 15 bare planner abstains (no deterministic verdict existed to override; DESIGN §3.1 preserved trivially). Every claim adjudicated from 5 perspectives. Numbers RECOMPUTED before any advisory: composition sums to exactly 100 at.% (c5); abstract<->body<->figure pairs for microhardness 10400/8900 MPa (c3,c11), coercive field 17500/5200 A/m (c4) and saturation magnetization 71/73 A.m2/kg (c12) all agree -> PASS findings; Table 1 parameters reproduce from composition (ideal dSmix=14.397->14.4, VEC=6.460->6.46, and Omega=1.5 implies a physical Tm~1802 K) -> reviewed clean (c7). Genuine method concerns routed, not manufactured: 1-D cooling-rate estimate adequacy (c1) and the unmeasured refinement/microstress causal attribution for higher Hc (c15) -> methodologist advisories; a mild terminal-digit precision mismatch (dchi=7.838%) -> integrity-screener. Over-reach watch-point: Hc=17500 A/m (220 Oe) is semi-hard, only ~2% of the permanent-magnet range, so 'hard magnetic material' (c13) -> claims-auditor + subjective. Bare abstains eliminated: abstained 15 -> 0."
   },
   "summary": {
-    "n_findings": 0,
+    "n_findings": 5,
     "n_flags": 0,
     "n_dropped": 0,
-    "n_routed_to_human": 0,
-    "n_abstained": 15,
+    "n_routed_to_human": 15,
+    "n_abstained": 0,
     "flags_by_trust_tier": {},
     "flags_by_severity": {}
   },
-  "findings": [],
-  "dropped_flags": [],
-  "routed_to_human": [],
-  "abstained": [
+  "findings": [
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c1",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "The cooling rate of the melt-quenched films was estimated to be ~ 106 K/s based on the film thickness.",
-        "location": {
-          "section": "Abstract",
-          "page": 1,
-          "char_span": null,
-          "quote": "The cooling rate of the melt-quenched films was estimated to be ~ 106 K/s based on the film thickness."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c2",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "X-ray analysis revealed a multiphase structure, including a BCC-type ordered phase (structural type B2) and intermetallic compounds (Fe, Ni, Co)2B.",
-        "location": {
-          "section": "Abstract",
-          "page": 1,
-          "char_span": null,
-          "quote": "X-ray analysis revealed a multiphase structure, including a BCC-type ordered phase (structural type B2) and intermetallic compounds (Fe, Ni, Co)2B."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c3",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the fraction of the B2 phase increased, leading to a decrease in microhardness (from 10400 MPa in as-cast to 8900 MPa in melt-quenched samples)",
-        "location": {
-          "section": "Abstract",
-          "page": 1,
-          "char_span": null,
-          "quote": "the fraction of the B2 phase increased, leading to a decrease in microhardness (from 10400 MPa in as-cast to 8900 MPa in melt-quenched samples)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c4",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "The coercive field of melt-quenched samples (17500 A/m) was significantly higher than that of the as-cast ones (5200 A/m)",
-        "location": {
-          "section": "Abstract",
-          "page": 1,
-          "char_span": null,
-          "quote": "The coercive field of melt-quenched samples (17500 A/m) was significantly higher than that of the as-cast ones (5200 A/m)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
+      "verifier_id": "sum_check.v1",
       "claim_id": "c5",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
+      "status": "pass",
+      "trust_tier": "deterministic_confirmed",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "reported total equals the sum of its parts (within printing precision)",
       "discrepancy": null,
-      "reported": null,
-      "computed": null,
+      "reported": 100,
+      "computed": 100,
       "evidence": {
-        "quote": "20 at.% Fe, 20 at.% Co, 20 at.% Ni, 14 at.% B, 6 at.% Si and 20 at.% Be",
+        "quote": null,
         "location": {
-          "section": "Experimental",
-          "page": 3,
+          "section": null,
+          "page": null,
           "char_span": null,
-          "quote": "20 at.% Fe, 20 at.% Co, 20 at.% Ni, 14 at.% B, 6 at.% Si and 20 at.% Be"
+          "quote": null
         },
         "recompute_script": null,
         "expected_output": null,
         "script_dependencies": []
       },
-      "details": {}
+      "details": {
+        "parts": [
+          20,
+          20,
+          20,
+          14,
+          6,
+          20
+        ],
+        "n_parts": 6,
+        "reported_total": 100,
+        "tolerance": 1e-09,
+        "elements": [
+          "Fe",
+          "Co",
+          "Ni",
+          "B",
+          "Si",
+          "Be"
+        ],
+        "unit": "at.%"
+      }
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c6",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
+      "verifier_id": "prose_vs_table.v1",
+      "claim_id": "c3",
+      "status": "pass",
+      "trust_tier": "deterministic_confirmed",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no applicable verifier",
+      "message": "the prose value agrees with the value the bound source reports",
       "discrepancy": null,
-      "reported": null,
-      "computed": null,
+      "reported": [
+        10400,
+        8900
+      ],
+      "computed": [
+        10400,
+        8900
+      ],
       "evidence": {
-        "quote": "The average cooling rate in the copper mold was approximately ~102 K/s.",
+        "quote": null,
         "location": {
-          "section": "Experimental",
-          "page": 3,
+          "section": null,
+          "page": null,
           "char_span": null,
-          "quote": "The average cooling rate in the copper mold was approximately ~102 K/s."
+          "quote": null
         },
         "recompute_script": null,
         "expected_output": null,
         "script_dependencies": []
       },
-      "details": {}
+      "details": {
+        "quantity": "microhardness as-cast / MQ (MPa), abstract vs Results body",
+        "rel_tol": 0.0
+      }
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c7",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
+      "verifier_id": "prose_vs_table.v1",
+      "claim_id": "c4",
+      "status": "pass",
+      "trust_tier": "deterministic_confirmed",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "the prose value agrees with the value the bound source reports",
       "discrepancy": null,
-      "reported": null,
-      "computed": null,
+      "reported": [
+        17500,
+        5200
+      ],
+      "computed": [
+        17500,
+        5200
+      ],
       "evidence": {
-        "quote": "14.4 -17.3 1.5 6.46 12.47 7.838",
+        "quote": null,
         "location": {
-          "section": "Results and Discussions",
-          "page": 5,
+          "section": null,
+          "page": null,
           "char_span": null,
-          "quote": "14.4 -17.3 1.5 6.46 12.47 7.838"
+          "quote": null
         },
         "recompute_script": null,
         "expected_output": null,
         "script_dependencies": []
       },
-      "details": {}
+      "details": {
+        "quantity": "coercive field MQ / as-cast (A/m), abstract vs Results body",
+        "rel_tol": 0.0
+      }
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c8",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the FeCoNiB0.7Si0.3Be alloy should contain amorphous or intermetallic phases as well as a BCC-type solid solution",
-        "location": {
-          "section": "Results and Discussions",
-          "page": 5,
-          "char_span": null,
-          "quote": "the FeCoNiB0.7Si0.3Be alloy should contain amorphous or intermetallic phases as well as a BCC-type solid solution"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c9",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "lattice parameter a = 0.2655 nm",
-        "location": {
-          "section": "Results and Discussions",
-          "page": 6,
-          "char_span": null,
-          "quote": "lattice parameter a = 0.2655 nm"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c10",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the MQ sample had a higher content of the B2 phase compared to the (Fe, Ni, Co)2B phase",
-        "location": {
-          "section": "Results and Discussions",
-          "page": 6,
-          "char_span": null,
-          "quote": "the MQ sample had a higher content of the B2 phase compared to the (Fe, Ni, Co)2B phase"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
+      "verifier_id": "prose_vs_table.v1",
       "claim_id": "c11",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
+      "status": "pass",
+      "trust_tier": "deterministic_confirmed",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "the prose value agrees with the value the bound source reports",
       "discrepancy": null,
-      "reported": null,
-      "computed": null,
+      "reported": [
+        10400,
+        8900
+      ],
+      "computed": [
+        10400,
+        8900
+      ],
       "evidence": {
-        "quote": "The as-cast samples exhibited a microhardness of H\u03bc = 10400\u00b1300 MPa, which exceeds the values of the MQ samples (8900\u00b1300 MPa).",
+        "quote": null,
         "location": {
-          "section": "Results and Discussions",
-          "page": 7,
+          "section": null,
+          "page": null,
           "char_span": null,
-          "quote": "The as-cast samples exhibited a microhardness of H\u03bc = 10400\u00b1300 MPa, which exceeds the values of the MQ samples (8900\u00b1300 MPa)."
+          "quote": null
         },
         "recompute_script": null,
         "expected_output": null,
         "script_dependencies": []
       },
-      "details": {}
+      "details": {
+        "quantity": "microhardness Hmu as-cast / MQ (MPa), body vs abstract; 10400-300=10100 > 8900+300=9200 so ordering is robust",
+        "rel_tol": 0.0
+      }
     },
     {
-      "verifier_id": "litmus.planner",
+      "verifier_id": "prose_vs_table.v1",
       "claim_id": "c12",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
+      "status": "pass",
+      "trust_tier": "deterministic_confirmed",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "the prose value agrees with the value the bound source reports",
       "discrepancy": null,
-      "reported": null,
-      "computed": null,
+      "reported": [
+        71,
+        73
+      ],
+      "computed": [
+        71,
+        73
+      ],
       "evidence": {
-        "quote": "being 71 A\u00b7m2/kg for as-cast and 73 A\u00b7m2/kg for MQ samples",
+        "quote": null,
         "location": {
-          "section": "Results and Discussions",
-          "page": 9,
+          "section": null,
+          "page": null,
           "char_span": null,
-          "quote": "being 71 A\u00b7m2/kg for as-cast and 73 A\u00b7m2/kg for MQ samples"
+          "quote": null
         },
         "recompute_script": null,
         "expected_output": null,
         "script_dependencies": []
       },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c13",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the FeCoNiB0.7Si0.3Be HEA can be classified as a hard magnetic material",
-        "location": {
-          "section": "Conclusions",
-          "page": 9,
-          "char_span": null,
-          "quote": "the FeCoNiB0.7Si0.3Be HEA can be classified as a hard magnetic material"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c14",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Rapid quenching (up to 106 K/s) increases the fraction of the B2 phase and reduces the content of the intermetallic phase.",
-        "location": {
-          "section": "Conclusions",
-          "page": 9,
-          "char_span": null,
-          "quote": "Rapid quenching (up to 106 K/s) increases the fraction of the B2 phase and reduces the content of the intermetallic phase."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c15",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "The coercive field magnitude of the studied alloy increases with the cooling rate of the melt",
-        "location": {
-          "section": "Conclusions",
-          "page": 9,
-          "char_span": null,
-          "quote": "The coercive field magnitude of the studied alloy increases with the cooling rate of the melt"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "details": {
+        "quantity": "saturation magnetization Ms as-cast / MQ (A.m2/kg), prose vs Fig.3 plot",
+        "rel_tol": 0.0
+      }
     }
-  ]
+  ],
+  "dropped_flags": [],
+  "routed_to_human": [
+    {
+      "claim_id": "c1",
+      "dimension": "advisory:claims-auditor",
+      "note": "Abstract estimate: melt-quenched cooling rate ~10^6 K/s from ~40 um film thickness via Eq.(1) Vc = (alpha/(c*rho*delta))*(T-T0). The claim is correctly hedged ('estimated', '~') and consistent with the Experimental-section restatement (ev7: 40 um -> ~10^6 K/s). An order-of-magnitude Vc ~ 10^6 K/s for a ~40 um melt-spun ribbon is the textbook range for this thickness, so no over-reach in the magnitude itself. The numeric inputs (alpha, c, rho, T-T0) are NOT printed, so the recompute cannot be closed from the ClaimGraph; a T0 equation-recompute verifier over Eq.(1) is a synthesis candidate (DESIGN §8). The method-appropriateness of the 1-D estimate is routed separately (methodologist).",
+      "quote": "The cooling rate of the melt-quenched films was estimated to be ~ 106 K/s based on the film thickness."
+    },
+    {
+      "claim_id": "c2",
+      "dimension": "advisory:claims-auditor",
+      "note": "Qualitative phase-identification claim: XRD shows a B2-ordered BCC phase plus (Fe,Ni,Co)2B intermetallic. This is a structural assignment, not a derived number — it rests on indexing the diffractogram (ev11/ev12 give the BCC lattice parameter a~0.265 nm, consistent with a B2 ordered cell). The text matches the figure description; no strength/scope over-reach (it says 'multiphase ... including', not 'only these phases'). Confirming the specific space group/ordering (B2 vs disordered A2) from peak positions is an XRD-pattern judgement code cannot settle from transcribed scalars; routed rather than scored (DESIGN §5 T4).",
+      "quote": "X-ray analysis revealed a multiphase structure, including a BCC-type ordered phase (structural type B2) and intermetallic compounds (Fe, Ni, Co)2B."
+    },
+    {
+      "claim_id": "c6",
+      "dimension": "advisory:claims-auditor",
+      "note": "Experimental-section value: as-cast copper-mold cooling rate ~10^2 K/s. Stated as an approximate input parameter ('approximately ~10^2 K/s'), correctly hedged; ~10^2 K/s is the standard order for copper-mold casting and is internally consistent with the ~10^6 K/s melt-quenched figure (four orders faster for the thin ribbon). Descriptive, no over-reach. Not independently recomputable from the printed data (no mold-geometry/heat-transfer inputs); a T0/T1 plausibility verifier is a synthesis candidate (DESIGN §8).",
+      "quote": "The average cooling rate in the copper mold was approximately ~102 K/s."
+    },
+    {
+      "claim_id": "c7",
+      "dimension": "advisory:claims-auditor",
+      "note": "Table 1 thermodynamic/electronic parameters (dSmix=14.4 J/mol/K, dHmix=-17.3 kJ/mol, Omega=1.5, VEC=6.46, dr=12.47%, dchi=7.838%). RECOMPUTED from the composition Fe20Co20Ni20B14Si6Be20 before clearing: ideal configurational dSmix = -R*sum(x ln x) = 14.397 J/mol/K -> rounds to 14.4 (exact); VEC = sum(x*group-electrons; Fe8 Co9 Ni10 B3 Si4 Be2) = 6.460 = 6.46 (exact); and Omega = Tm*dSmix/|dHmix| = 1.5 implies Tm ~ 1802 K (~1529 C), a physically reasonable solidus for a Fe-Co-Ni-rich alloy. All three independently reproduce the printed values, so the parameter block is internally self-consistent; no over-reach. dHmix, dr and dchi depend on tabulated binary mixing enthalpies / atomic radii / electronegativities not in the ClaimGraph, so a full T0 recompute (Miedema dHmix, radius/electronegativity mismatch) is a synthesis candidate (DESIGN §8).",
+      "quote": "14.4 -17.3 1.5 6.46 12.47 7.838"
+    },
+    {
+      "claim_id": "c8",
+      "dimension": "advisory:claims-auditor",
+      "note": "Phase prediction from the Table 1 parameters: the alloy 'should contain amorphous or intermetallic phases as well as a BCC-type solid solution'. Properly hedged ('should'), and the disjunctive prediction is broad enough to be well-supported by the recomputed parameters (Omega=1.5 < ~1.1 solid-solution threshold favours compound/amorphous formation; dr=12.47% >6.6% also disfavours a single solid solution) AND it matches the observed multiphase XRD (c2). No over-reach — the prediction is consistent with both the criteria and the data. Whether the specific empirical thresholds (Omega/dr/VEC) are the right predictor for THIS system is a T5 literature-criterion judgement routed, not scored (DESIGN §5).",
+      "quote": "the FeCoNiB0.7Si0.3Be alloy should contain amorphous or intermetallic phases as well as a BCC-type solid solution"
+    },
+    {
+      "claim_id": "c9",
+      "dimension": "advisory:claims-auditor",
+      "note": "B2 BCC lattice parameter: a(as-cast)=0.2655 nm, a(MQ)=0.2653 nm. Cross-checked: the two values differ by 0.0002 nm (~0.08%), i.e. essentially unchanged within typical XRD lattice-parameter precision, which is consistent with the same B2 phase persisting through quenching (supports c14). The numbers are direct transcriptions from ev11/ev12 and match the body text; no over-reach. A T0 verifier recomputing a from the indexed (hkl) peak positions / 2-theta is a synthesis candidate (DESIGN §8) — the raw diffraction angles are not in the ClaimGraph.",
+      "quote": "lattice parameter a = 0.2655 nm"
+    },
+    {
+      "claim_id": "c10",
+      "dimension": "advisory:claims-auditor",
+      "note": "Comparative from XRD: the MQ sample has higher B2 content than (Fe,Ni,Co)2B content, 'indicating rapid cooling can prevent formation of complex intermetallics'. The phase-fraction half rests on relative peak intensities (ev16, Fig.1) — a reasonable qualitative read — and the descriptive comparison is faithful. The appended causal generalization ('rapid cooling can prevent ... complex intermetallics') is the mild over-reach watch-point: it is softened by 'can' and is mechanistically standard for rapid solidification, so it stays advisory rather than a flag. Quantitative phase fractions (Rietveld) would settle the intensity-to-fraction step; routed, not scored (DESIGN §5 T4).",
+      "quote": "the MQ sample had a higher content of the B2 phase compared to the (Fe, Ni, Co)2B phase"
+    },
+    {
+      "claim_id": "c13",
+      "dimension": "advisory:claims-auditor",
+      "note": "T4 over-reach watch-point. 'Can be classified as a hard magnetic material' rests on Hc(MQ)=17500 A/m. Converted: 17500 A/m = 220 Oe. Conventional thresholds put soft magnets at Hc < ~1 kA/m and true hard/permanent magnets (e.g. NdFeB, ferrites) at Hc ~ 10^5-10^6 A/m; 220 Oe is only ~2% of the low end of the permanent-magnet range and is normally termed SEMI-HARD, not hard. The classification therefore over-states the category the coercivity supports. This is a taxonomy/threshold judgement, not an arithmetic error, so LITMUS routes it (and a parallel subjective:significance item) rather than scoring a flag. What would confirm/resolve it: an explicit Hc cutoff and the energy product (BH)max placing the material on the soft/semi-hard/hard scale.",
+      "quote": "the FeCoNiB0.7Si0.3Be HEA can be classified as a hard magnetic material"
+    },
+    {
+      "claim_id": "c14",
+      "dimension": "advisory:claims-auditor",
+      "note": "Conclusion causal claim: rapid quenching (up to 10^6 K/s) increases the B2 fraction and reduces the intermetallic fraction. Direction is internally supported — the lattice parameter is essentially unchanged (c9) while the relative B2/(Fe,Ni,Co)2B intensity shifts toward B2 (c10), and faster cooling suppressing complex intermetallics is the expected rapid-solidification behaviour. The claim is scoped to this alloy and not over-generalized. The causal/quantitative 'increase/reduce' rests on a two-sample (as-cast vs MQ) qualitative intensity comparison; quantitative phase fractions would close it. Routed, not scored (DESIGN §5 T4).",
+      "quote": "Rapid quenching (up to 106 K/s) increases the fraction of the B2 phase and reduces the content of the intermetallic phase."
+    },
+    {
+      "claim_id": "c15",
+      "dimension": "advisory:claims-auditor",
+      "note": "Conclusion descriptive half: coercive field increases with cooling rate. The monotone as-cast(5200) -> MQ(17500) A/m increase is real and matches c4 (recomputed: 3.37x, abstract==body==Fig.3 inset). As a two-point empirical trend the descriptive statement is faithful and not over-reaching. The mechanistic attribution ('structure refinement and increased microstresses') is the part code cannot settle — routed separately as a methodologist advisory.",
+      "quote": "The coercive field magnitude of the studied alloy increases with the cooling rate of the melt"
+    },
+    {
+      "claim_id": "c1",
+      "dimension": "advisory:methodologist",
+      "note": "T3 method-appropriateness of the cooling-rate estimate. Vc ~ 10^6 K/s is obtained from a 1-D Newtonian/conductive heat-flow expression Eq.(1) with a single film thickness and (unstated) constant alpha, c, rho and (T-T0). For melt-spun ribbons this lumped 1-D estimate ignores interfacial (Biot-number) heat-transfer resistance, the wheel-contact vs free-surface asymmetry, and the temperature dependence of the thermophysical properties, so the result is an order-of-magnitude bound, not a measured rate — the paper presents it as such ('estimated'). Whether the 1-D model is adequate for this geometry is a methods judgement LITMUS routes rather than scores. What would confirm it: the assumed alpha/c/rho/(T-T0) values printed, or an independent cooling-rate proxy (e.g. secondary-dendrite-arm spacing or measured ribbon microstructure scale).",
+      "quote": "Given the obtained film thickness of ~40 μm, the calculated cooling rate was approximately ~106 K/s."
+    },
+    {
+      "claim_id": "c15",
+      "dimension": "advisory:methodologist",
+      "note": "T3 causal attribution. The higher coercivity of the MQ sample is attributed to 'structure refinement and increased microstresses', but the paper reports neither a grain/crystallite-size measurement (e.g. Scherrer/Williamson-Hall from the XRD peak broadening) nor a quantified microstrain, so the named mechanism is asserted, not demonstrated. Competing explanations for higher Hc (changed B2/(Fe,Ni,Co)2B phase balance and the associated magnetocrystalline anisotropy, domain-wall pinning at phase boundaries, residual stress vs grain refinement) are not separated. This is a mechanism-attribution judgement code cannot settle. What would confirm it: Williamson-Hall crystallite-size + microstrain from the same diffractograms, correlated with the measured Hc.",
+      "quote": "The coercive field magnitude of the studied alloy increases with the cooling rate of the melt"
+    },
+    {
+      "claim_id": "c7",
+      "dimension": "advisory:integrity-screener",
+      "note": "T7 terminal-digit / significant-figure signal (low severity, surfaced not scored). In the Table 1 parameter row the electronegativity mismatch is printed as dchi=7.838% (4 significant figures / 3 decimals) while its companions are given to 2-3 sig figs (dSmix 14.4, dHmix -17.3, Omega 1.5, VEC 6.46, dr 12.47). A single parameter carried to markedly higher precision than the inputs it is derived from is a mild presentation inconsistency worth a human glance; it is not evidence of misconduct and does not affect any verdict. What would resolve it: report all Table 1 parameters to a consistent, input-justified precision.",
+      "quote": "14.4 -17.3 1.5 6.46 12.47 7.838"
+    },
+    {
+      "claim_id": "c13",
+      "dimension": "subjective:significance",
+      "note": "Whether a Hc ~ 220 Oe (17500 A/m) material genuinely merits the label 'hard magnetic material' — versus 'semi-hard' — is partly a field-convention/taste judgement about where the soft/semi-hard/hard boundary sits, which LITMUS does not score (DESIGN §3.5). The underlying coercivity numbers are sound and internally consistent (see the claims-auditor clears on c4 and c13); the appropriateness of the category label is routed to a domain reviewer.",
+      "quote": "the FeCoNiB0.7Si0.3Be HEA can be classified as a hard magnetic material"
+    },
+    {
+      "claim_id": null,
+      "dimension": "subjective:novelty",
+      "note": "The importance/novelty of this specific FeCoNiB0.7Si0.3Be (Be-bearing, B/Si-modified) high-entropy-alloy composition and of the melt-quenching-vs-as-cast comparison — relative to the broad existing FeCoNi(B,Si) HEA and metallic-glass literature — is an irreducibly subjective worth judgement (DESIGN §5 T8). LITMUS surfaces it for an editor/reviewer and does not score it. Note (not a scored verdict): Be is toxic and the safety/handling rationale for its inclusion is not discussed, which a domain reviewer may wish to weigh.",
+      "quote": null
+    }
+  ],
+  "abstained": []
 }

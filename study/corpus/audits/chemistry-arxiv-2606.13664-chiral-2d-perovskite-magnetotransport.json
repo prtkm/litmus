@@ -24,595 +24,170 @@
       "c22"
     ],
     "confirmation": "fresh-sandbox",
-    "registry_load_errors": []
+    "registry_load_errors": [],
+    "enrichment": {
+      "pass": "multi-perspective-review",
+      "perspectives": [
+        "skeptic",
+        "domain-expert(chemistry)",
+        "methodologist",
+        "claims-auditor",
+        "integrity-screener"
+      ],
+      "deterministic_verdicts_preserved": "findings=0, dropped_flags=0 (none existed; none overridden) per DESIGN §3.1",
+      "note": "Bare planner abstains replaced by reasoned assessments. CONFIRMED-CORRECT claims drop the abstain and carry an auditable advisory:claims-auditor note. Numbers recomputed before any advisory was raised (c3,c5,c8,c12,c22 recomputed clean; c4/c14 resistance!=resistivity and c23/c10 field tension are genuine, recomputed concerns)."
+    }
   },
   "summary": {
     "n_findings": 0,
     "n_flags": 0,
     "n_dropped": 0,
-    "n_routed_to_human": 0,
-    "n_abstained": 23,
+    "n_routed_to_human": 23,
+    "n_abstained": 0,
     "flags_by_trust_tier": {},
     "flags_by_severity": {}
   },
   "findings": [],
   "dropped_flags": [],
-  "routed_to_human": [],
-  "abstained": [
+  "routed_to_human": [
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c1",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "unambiguously identifying p-type conduction with a Hall mobility of \u223c 0.2cm2V",
-        "location": {
-          "section": "Abstract",
-          "page": 1,
-          "char_span": null,
-          "quote": "unambiguously identifying p-type conduction with a Hall mobility of \u223c 0.2cm2V"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT. Abstract '~0.2 cm2/V·s' rounds the body value 0.207 (c3/ev7); p-type sign and mobility magnitude are internally consistent. SKEPTIC: weakest link is single-device, single-geometry Hall; DOMAIN-EXPERT (chemistry/perovskite transport): 0.2 cm2/V·s is the expected order for an undoped 2D Pb-iodide. Reviewed, no over-reach; no numeric verifier covers abstract<->body rounding yet (would be a T2 equality check).",
+      "quote": "unambiguously identifying p-type conduction with a Hall mobility of ~ 0.2cm2V"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c2",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "a carrier density of \u223c 3\u00d71014 cm\u22122",
-        "location": {
-          "section": "Abstract",
-          "page": 1,
-          "char_span": null,
-          "quote": "a carrier density of \u223c 3\u00d71014 cm\u22122"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT. Abstract '~3e14 cm-2' rounds body 3.29e14 (c3/ev7); consistent. DOMAIN-EXPERT: a 2D sheet density ~3e14 cm-2 is physically reasonable for these films. Reviewed, no over-reach; no T2 abstract<->body numeric verifier covers it yet.",
+      "quote": "a carrier density of ~ 3x1014 cm-2"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c3",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the measured Hall coefficient corresponds to a mobility \u00b5H = 0.207 cm2/V\u00b7s and a sheet\ncarrier density p = 3.29 \u00d7 1014 cm\u22122",
-        "location": {
-          "section": "3.4 Hall Transport",
-          "page": 17,
-          "char_span": null,
-          "quote": "the measured Hall coefficient corresponds to a mobility \u00b5H = 0.207 cm2/V\u00b7s and a sheet\ncarrier density p = 3.29 \u00d7 1014 cm\u22122"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT (with one anchor a code verifier would need). Recompute: for p=3.29e14 cm-2 the sheet Hall coefficient R_H,sheet=1/(q·p)=1.90 Ohm/T; pairing with uH=0.207 cm2/V·s implies a sheet resistance R_s≈9.2e4 Ohm/sq, a sensible value, so the (uH, p) pair is mutually consistent given p_2D=1/(qR_H) and uH=|R_H|σ. METHODOLOGIST/CLAIMS-AUDITOR: no over-reach. A full T0 closure needs the measured R_s (figure-read) to verify uH independently of p; flagged so the pass is auditable rather than silent.",
+      "quote": "the measured Hall coefficient corresponds to a mobility uH = 0.207 cm2/V·s and a sheet carrier density p = 3.29 x 1014 cm-2"
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c4",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the\nmuch larger observed increase (R4000rpm/R1500rpm \u2248 850 at 1.5V)",
-        "location": {
-          "section": "3.1",
-          "page": 7,
-          "char_span": null,
-          "quote": "the\nmuch larger observed increase (R4000rpm/R1500rpm \u2248 850 at 1.5V)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c5",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "thickness alone would\npredict only an approximately threefold increase in resistance between the 1500 rpm and\n4000 rpm films if the resistivity were unchanged",
-        "location": {
-          "section": "3.1",
-          "page": 7,
-          "char_span": null,
-          "quote": "thickness alone would\npredict only an approximately threefold increase in resistance between the 1500 rpm and\n4000 rpm films if the resistivity were unchanged"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT. Recompute of the stated thickness ratio 300nm/100nm = 3.0 exactly matches the 'approximately threefold' prediction (ev4). METHODOLOGIST: the 'if resistivity unchanged' conditional is correctly scoped. Reviewed, no over-reach; a T0 ratio verifier would pass.",
+      "quote": "thickness alone would predict only an approximately threefold increase in resistance between the 1500 rpm and 4000 rpm films if the resistivity were unchanged"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c6",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the resulting film had an average thickness of \u223c 300 nm (Figure 1a) and exhibited large,",
-        "location": {
-          "section": "3.1",
-          "page": 7,
-          "char_span": null,
-          "quote": "the resulting film had an average thickness of \u223c 300 nm (Figure 1a) and exhibited large,"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT. 1500rpm thickness ~300 nm and lowest resistance ~10 MOhm are figure-read (Fig1a/1f, ev4/ev5) and self-consistent with the spin-speed series (thicker, most connected film = lowest R). SKEPTIC: values are plot reads (~ confidence), not a tension. Reviewed, no over-reach; a numeric verifier would need the digitized Fig-1f trace.",
+      "quote": "the resulting film had an average thickness of ~ 300 nm (Figure 1a)"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c7",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "produced thinner films (\u223c225 nm) with slightly\nsmaller grains and reduced domain connectivity",
-        "location": {
-          "section": "3.1",
-          "page": 7,
-          "char_span": null,
-          "quote": "produced thinner films (\u223c225 nm) with slightly\nsmaller grains and reduced domain connectivity"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT. Thickness series 2000/3000/4000 rpm = 225/165/100 nm is monotonically decreasing with spin speed (recomputed ordering holds), as expected from spin-coating physics (DOMAIN-EXPERT). Reviewed, no over-reach; transcription-only (T1), no numeric verifier yet.",
+      "quote": "at 3000 rpm (~165 nm) and 4000 rpm (~100 nm)"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c8",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "at high temperatures (T > 140 K), the slope yields Ea \u2248 0.11 eV, whereas at low temperatures (T < 70 K), Ea \u2248 0.015 eV is extracted",
-        "location": {
-          "section": "3.2 / Fig 2 caption",
-          "page": 11,
-          "char_span": null,
-          "quote": "at high temperatures (T > 140 K), the slope yields Ea \u2248 0.11 eV, whereas at low temperatures (T < 70 K), Ea \u2248 0.015 eV is extracted"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT. Two-regime Arrhenius with Ea(high-T)=0.11 eV > Ea(low-T)=0.015 eV has the correct physical ordering (activation weakens toward a low-T hopping/freeze-out regime). Cross-check vs SI Fig-6 (ev17): the N=9 low-T ln R-vs-1/T slope m=124 K gives Ea=m·kB=0.0107 eV, same order as the quoted 0.015 eV (kB=8.617e-5 eV/K). METHODOLOGIST: extracting Ea from a local slope is standard. Reviewed, no over-reach; a T0 Ea=slope·kB verifier would need the digitized fit segment to close to 2 sig-figs.",
+      "quote": "at high temperatures (T > 140 K), the slope yields Ea ≈ 0.11 eV, whereas at low temperatures (T < 70 K), Ea ≈ 0.015 eV is extracted"
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c9",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "in prior temperature-dependent chiralHOIP FET studies measurements were reported down to 77\u201378 K",
-        "location": {
-          "section": "3.2",
-          "page": 11,
-          "char_span": null,
-          "quote": "in prior temperature-dependent chiralHOIP FET studies measurements were reported down to 77\u201378 K"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c10",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Large positive MR of 10% at 3T is observed at room-temperature, whereas large negative\nMR of approximately -9% at 3T is observed at 78.2 K",
-        "location": {
-          "section": "3.3",
-          "page": 13,
-          "char_span": null,
-          "quote": "Large positive MR of 10% at 3T is observed at room-temperature, whereas large negative\nMR of approximately -9% at 3T is observed at 78.2 K"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT. Sign reversal of MR (+10% at 3T at RT -> -9% at 3T at 78.2 K) is figure-read (ev9) and internally consistent with the paper's grain-boundary-scattering narrative. DOMAIN-EXPERT: a temperature-driven MR sign change is plausible in disordered hybrid perovskites. Reviewed, no over-reach. (See c23 advisory for a field-value tension with the 1 T magnitude.)",
+      "quote": "Large positive MR of 10% at 3T is observed at room-temperature, whereas large negative MR of approximately -9% at 3T is observed at 78.2 K"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c11",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "measurement paths that traversed\nacross the observed grain boundary exhibit a much larger MR of 6-8%, comparable with\nthat observed in the FET sample. However, the low resistance current paths that avoided\nthis boundary exhibited a much smaller MR in the range of 0.05-0.2%",
-        "location": {
-          "section": "3.3",
-          "page": 14,
-          "char_span": null,
-          "quote": "measurement paths that traversed\nacross the observed grain boundary exhibit a much larger MR of 6-8%, comparable with\nthat observed in the FET sample. However, the low resistance current paths that avoided\nthis boundary exhibited a much smaller MR in the range of 0.05-0.2%"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT. Path-dependent MR (crossing 6-8% vs avoiding 0.05-0.2%, ~30-160x) is consistent with the claim that the grain boundary dominates MR, and the 6-8% crossing value is 'comparable' to the FET's ~10% (c10). METHODOLOGIST: comparing co-fabricated current paths is a sound within-sample control. Reviewed, no over-reach; bounds are figure-read, no numeric verifier yet.",
+      "quote": "measurement paths that traversed across the observed grain boundary exhibit a much larger MR of 6-8%; the low resistance current paths that avoided this boundary exhibited a much smaller MR in the range of 0.05-0.2%"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c12",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "At 1V, paths avoiding the grain boundary showed resistances of approximately 10\u201350 M\u03a9, whereas paths crossing the boundary showed resistances",
-        "location": {
-          "section": "3.2",
-          "page": 12,
-          "char_span": null,
-          "quote": "At 1V, paths avoiding the grain boundary showed resistances of approximately 10\u201350 M\u03a9, whereas paths crossing the boundary showed resistances"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT. Recompute: 1.5 GOhm / (10-50 MOhm) = 30-150x = 1.48-2.18 orders of magnitude, which brackets the claimed 'roughly two orders' (ev11). No over-reach. A T0 order-of-magnitude verifier would pass.",
+      "quote": "At 1V, paths avoiding the grain boundary showed resistances of approximately 10-50 MOhm, whereas paths crossing the boundary showed resistances ... an increase of roughly two orders of magnitude"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c13",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the Hall-bar geometry is expected to be\napproximately 500 times more resistive than the three-terminal channel for the same film\nthickness and resistivity",
-        "location": {
-          "section": "3.3",
-          "page": 13,
-          "char_span": null,
-          "quote": "the Hall-bar geometry is expected to be\napproximately 500 times more resistive than the three-terminal channel for the same film\nthickness and resistivity"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT as a clearly-labelled geometric *expectation* ('expected to be approximately 500x'). It is a sum-of-(L/W) aspect-ratio estimate, scoped to 'same thickness and resistivity', and is O(100s) which is plausible for a Hall-bar vs three-terminal channel. METHODOLOGIST: not presented as a measurement. Reviewed, no over-reach; exact closure needs the device L/W dimensions (not in the ClaimGraph).",
+      "quote": "the Hall-bar geometry is expected to be approximately 500 times more resistive than the three-terminal channel for the same film thickness and resistivity"
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c14",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the in-plane resistivity was reduced by more than three\norders of magnitude, enabling reliable lateral device operation",
-        "location": {
-          "section": "Conclusion",
-          "page": 18,
-          "char_span": null,
-          "quote": "the in-plane resistivity was reduced by more than three\norders of magnitude, enabling reliable lateral device operation"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c15",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "VH(B) varies linearly\nwith B over the full range, and the positive\nslope of VH confirms p-type transport in the\nfilm",
-        "location": {
-          "section": "3.4",
-          "page": 16,
-          "char_span": null,
-          "quote": "VH(B) varies linearly\nwith B over the full range, and the positive\nslope of VH confirms p-type transport in the\nfilm"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c16",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "undoped 2D lead-iodide perovskites such as (PEA)2PbI4 typically exhibit mobilities on the order of \u223c0.1\u20131 cm2/V\u00b7s",
-        "location": {
-          "section": "3.4",
-          "page": 17,
-          "char_span": null,
-          "quote": "undoped 2D lead-iodide perovskites such as (PEA)2PbI4 typically exhibit mobilities on the order of \u223c0.1\u20131 cm2/V\u00b7s"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT. Recompute: measured uH=0.207 falls inside the cited (PEA)2PbI4 range 0.1-1 cm2/V·s (ev14). DOMAIN-EXPERT (perovskite literature): the comparison family and range are apt. Reviewed, no over-reach; a T5 range-membership check would pass, though the literature range itself is author-asserted.",
+      "quote": "undoped 2D lead-iodide perovskites such as (PEA)2PbI4 typically exhibit mobilities on the order of ~0.1-1 cm2/V·s"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c17",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "The contact resistance extracted from multi-terminal structures averaged \u223c 50 k\u03a9 and was\nnegligible compared to the film resistance",
-        "location": {
-          "section": "3.1",
-          "page": 6,
-          "char_span": null,
-          "quote": "The contact resistance extracted from multi-terminal structures averaged \u223c 50 k\u03a9 and was\nnegligible compared to the film resistance"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT and mutually consistent with c18: ~50 kOhm contact resistance against ~10 MOhm-1.5 GOhm film resistances is indeed <=5% (c18 bound), so 'negligible' is justified. METHODOLOGIST: multi-terminal extraction of R_contact is the correct method. Reviewed, no over-reach.",
+      "quote": "The contact resistance extracted from multi-terminal structures averaged ~ 50 kOhm and was negligible compared to the film resistance"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c18",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Three and four-wire measurements showed that contact resistance never exceeded 5% for\nany current path",
-        "location": {
-          "section": "3.2",
-          "page": 12,
-          "char_span": null,
-          "quote": "Three and four-wire measurements showed that contact resistance never exceeded 5% for\nany current path"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT. The <=5% contact-resistance bound is consistent with the ~50 kOhm value in c17 relative to the MOhm-GOhm film resistances. METHODOLOGIST: three/four-wire measurement is the appropriate technique for this bound. Reviewed, no over-reach.",
+      "quote": "Three and four-wire measurements showed that contact resistance never exceeded 5% for any current path"
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c19",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "these measurements represent\nthe first Hall-effect characterization of R-(MBA)2PbI4 thin films under dark conditions",
-        "location": {
-          "section": "Conclusion",
-          "page": 19,
-          "char_span": null,
-          "quote": "these measurements represent\nthe first Hall-effect characterization of R-(MBA)2PbI4 thin films under dark conditions"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c20",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the present data do not show an obvious improvement in linearization in this regime compared with the Arrhenius plot, and thus do not\nconclusively distinguish a VRH mechanism from Arrhenius-type transport",
-        "location": {
-          "section": "SI Fig 6",
-          "page": 28,
-          "char_span": null,
-          "quote": "the present data do not show an obvious improvement in linearization in this regime compared with the Arrhenius plot, and thus do not\nconclusively distinguish a VRH mechanism from Arrhenius-type transport"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c21",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "with films spun above\n1000 rpm showing clear (002) reflections, with the 1500 rpm film giving the highest intensity",
-        "location": {
-          "section": "Fig 1 caption",
-          "page": 8,
-          "char_span": null,
-          "quote": "with films spun above\n1000 rpm showing clear (002) reflections, with the 1500 rpm film giving the highest intensity"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT as stated: a qualitative XRD ordering ('1500 rpm gives the highest (002) intensity', ev18), consistent with c6 (1500 rpm = thickest, most connected, lowest-R film). DOMAIN-EXPERT: stronger (002) for the best-oriented film is expected. Reviewed, no over-reach; intensity is figure-read, so an absolute-intensity verifier would need the digitized Fig-1e pattern.",
+      "quote": "with films spun above 1000 rpm showing clear (002) reflections, with the 1500 rpm film giving the highest intensity"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c22",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "lead (II) iodide (413 mg, 0.895 mmol; Sigma Aldrich)",
-        "location": {
-          "section": "Sample Preparation",
-          "page": 5,
-          "char_span": null,
-          "quote": "lead (II) iodide (413 mg, 0.895 mmol; Sigma Aldrich)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT (chemistry T0 recompute). PbI2: 413 mg / M(461.01 g/mol) = 0.896 mmol vs reported 0.895 (exact). MBA: 228 uL x 0.940 g/mL / 121.18 g/mol = 1.77 mmol vs reported 1.80 (<2% off, consistent with density rounding). Molar ratio MBA:PbI2 = 1.97 ≈ 2:1, the correct stoichiometry for (MBA)2PbI4. Reviewed, no over-reach; a T0 mass/molar-mass verifier would pass on PbI2 and pass-within-tolerance on MBA.",
+      "quote": "lead (II) iodide (413 mg, 0.895 mmol; Sigma Aldrich)"
     },
     {
-      "verifier_id": "litmus.planner",
+      "claim_id": "c4",
+      "dimension": "advisory:claims-auditor",
+      "note": "GENUINE CONCERN (resistance vs resistivity). The 850x ratio (ev3) is a *device resistance* ratio at 1.5 V for one 4000<->1500 rpm pair. Converting to resistivity removes the 3x thickness factor: rho_4000/rho_1500 = 850 x (100nm/300nm) = 283x ≈ 2.45 orders of magnitude, NOT three. The claim itself is fine (it says resistance), but it is the sole support cited for c14's '>3 orders of magnitude resistivity' reduction (both rest on ev3) - see c14. What would confirm: the measured sheet resistances / resistivities for the full spin-speed series so the 850x and the >1000x resistivity claim can be reconciled.",
+      "quote": "the much larger observed increase (R4000rpm/R1500rpm ≈ 850 at 1.5V)"
+    },
+    {
+      "claim_id": "c14",
+      "dimension": "advisory:claims-auditor",
+      "note": "GENUINE OVER-REACH RISK (T4). 'In-plane resistivity reduced by more than three orders of magnitude' (>1000x) rests only on ev3, the 850x *resistance* ratio. Recompute: 850x resistance x (100/300) thickness = 283x resistivity = 2.45 orders < 3. The >3-orders claim is therefore not entailed by its cited evidence for the 1500<->4000 rpm pair; it can only hold if it silently spans a broader morphology range (e.g. the near-insulating sub-1000 rpm / discontinuous films whose resistance is off-scale), which is not quantified in the ClaimGraph. METHODOLOGIST/CLAIMS-AUDITOR: resistance ≠ resistivity and the cited number undershoots. What would confirm: resistivity values (R normalized by geometry+thickness) across the full series.",
+      "quote": "the in-plane resistivity was reduced by more than three orders of magnitude, enabling reliable lateral device operation"
+    },
+    {
+      "claim_id": "c15",
+      "dimension": "advisory:methodologist",
+      "note": "GENUINE CONCERN (T4, figure-grounded). 'VH(B) linear over the full range with positive slope -> p-type' is asserted qualitatively from Fig-4 (ev13) with no reported fit R^2, residuals, or slope uncertainty. The p-type *sign* conclusion is robust (sign of the Hall slope), but 'linear over the full range' is an eyeball claim. SKEPTIC: a weak nonlinearity or an anomalous/ordinary-Hall mixture would not show at this resolution. What would confirm: a linear fit to the digitized VH(B) trace with reported R^2 and a check that the extracted slope reproduces R_H = 1/(q·p) for the p in c3 (then it promotes to a T0 check).",
+      "quote": "VH(B) varies linearly with B over the full range, and the positive slope of VH confirms p-type transport in the film"
+    },
+    {
+      "claim_id": "c20",
+      "dimension": "advisory:methodologist",
+      "note": "GENUINE CONCERN, and the paper is appropriately cautious. SI Fig-6 R^2 values are 0.9866 (T^-1), 0.9876 (T^-1/2), 0.9887 (T^-1/3), 0.9893 (T^-1/4) (ev17) - a monotone but trivially small spread (ΔR^2≈0.0027). METHODOLOGIST: R^2 increasing toward the 3D-Mott T^-1/4 exponent is exactly what you'd expect from adding a softer nonlinearity to ANY of these fits over a narrow T window; it is NOT evidence for VRH, and the authors correctly decline to claim a mechanism. The genuine concern is only that R^2-ranking is the wrong discriminator here (all four fits are near-degenerate). What would confirm a mechanism: a wider low-T range, a reduced-activation-energy / w = d ln R / d ln T plot, or a physically sensible characteristic temperature T_0 from the T^-1/4 slope. No over-reach in the claim as written; routed as a method note.",
+      "quote": "the present data do not show an obvious improvement in linearization ... and thus do not conclusively distinguish a VRH mechanism from Arrhenius-type transport"
+    },
+    {
       "claim_id": "c23",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the magnitude of the low-field MR in our devices (|\u2206R|/R \u223c 10% at\n|B|\u223c 1 T) is comparable to that reported for other hybrid lead\u2013halide perovskites",
-        "location": {
-          "section": "3.3",
-          "page": 13,
-          "char_span": null,
-          "quote": "the magnitude of the low-field MR in our devices (|\u2206R|/R \u223c 10% at\n|B|\u223c 1 T) is comparable to that reported for other hybrid lead\u2013halide perovskites"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "GENUINE CONCERN (internal field-value tension with c10). Here MR ≈ 10% at |B| ~ 1 T (RT, ev9); c10 reports +10% at 3 T (RT) from the same FET data. If MR is ~10% at both 1 T and 3 T, MR(B) has essentially saturated by 1 T - possible, but the two statements quote the same magnitude at a 3x-different field, so one of the field labels (1 T vs 3 T) is loose. The literature-comparison conclusion ('comparable to other hybrid lead-halide perovskites') is unaffected. What would confirm: the MR(B) curve value at exactly 1 T vs 3 T (figure-read) to verify the field at which |dR|/R reaches 10%.",
+      "quote": "the magnitude of the low-field MR in our devices (|dR|/R ~ 10% at |B|~ 1 T) is comparable to that reported for other hybrid lead-halide perovskites"
+    },
+    {
+      "claim_id": "c9",
+      "dimension": "subjective:significance",
+      "note": "Priority/significance claim: 38 K is asserted as 'the lowest temperature reported for in-plane transport in this material', vs prior chiral-HOIP FET studies at 77-78 K (ev8). That 38 K < 78 K is arithmetic, but whether being the lowest-temperature measurement is *significant/important* - and whether the 77-78 K prior bound is the true state of the art - is a literature-survey + value judgment. Not scored (DESIGN §3.5); needs a domain expert's read of the prior-art landscape.",
+      "quote": "in prior temperature-dependent chiral-HOIP FET studies measurements were reported down to 77-78 K"
+    },
+    {
+      "claim_id": "c19",
+      "dimension": "subjective:novelty",
+      "note": "Novelty/priority claim: 'the first Hall-effect characterization of R-(MBA)2PbI4 thin films under dark conditions' (no evidence_refs - a self-asserted first). A 'first' is irreducibly a prior-art question, not a recomputable one. Not scored (DESIGN §3.5); route to a human/literature search to confirm no prior dark Hall measurement on this material exists.",
+      "quote": "these measurements represent the first Hall-effect characterization of R-(MBA)2PbI4 thin films under dark conditions"
     }
-  ]
+  ],
+  "abstained": []
 }

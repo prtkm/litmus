@@ -26,14 +26,55 @@
       "c30"
     ],
     "confirmation": "fresh-sandbox",
-    "registry_load_errors": []
+    "registry_load_errors": [],
+    "multi_perspective_review": {
+      "reviewer": "litmus.multi_perspective (SKEPTIC, DOMAIN-EXPERT[chemistry/materials], METHODOLOGIST[T3], CLAIMS-AUDITOR[T4], INTEGRITY-SCREENER[T7])",
+      "policy": "deterministic verdicts (findings + dropped_flags) preserved verbatim; bare abstains triaged into confirmed-correct (advisory note) / advisory / subjective; numbers recomputed before any advisory.",
+      "field": "polymer chemistry / materials science",
+      "classification": {
+        "confirmed_correct": [
+          "c2",
+          "c3",
+          "c4",
+          "c11",
+          "c16",
+          "c17",
+          "c18",
+          "c19",
+          "c20",
+          "c21",
+          "c23",
+          "c24",
+          "c25",
+          "c26",
+          "c30"
+        ],
+        "advisory": [
+          "c1",
+          "c5",
+          "c6",
+          "c7"
+        ],
+        "subjective": [
+          "c29"
+        ],
+        "still_abstained": [
+          "c22",
+          "c28"
+        ],
+        "still_abstained_reason": {
+          "c22": "'~5-20%' is a hedged qualitative band over all samples with no bound evidence_refs; not a single recomputable number.",
+          "c28": "MFR 23/22/25 g/10min are manufacturer datasheet specs (T1 fixed-external) with no reference DB bound in the graph to check against."
+        }
+      }
+    }
   },
   "summary": {
     "n_findings": 7,
     "n_flags": 0,
     "n_dropped": 0,
-    "n_routed_to_human": 0,
-    "n_abstained": 23,
+    "n_routed_to_human": 20,
+    "n_abstained": 2,
     "flags_by_trust_tier": {},
     "flags_by_severity": {}
   },
@@ -236,358 +277,129 @@
     }
   ],
   "dropped_flags": [],
-  "routed_to_human": [],
-  "abstained": [
+  "routed_to_human": [
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c1",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "revealed cell densities up to 1.1 \u00d7 108 cells/\ncm3 and reduced average cell sizes of 7.48 \u03bcm",
-        "location": {
-          "section": "Introduction",
-          "page": 3,
-          "char_span": null,
-          "quote": "revealed cell densities up to 1.1 \u00d7 108 cells/\ncm3 and reduced average cell sizes of 7.48 \u03bcm"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c2",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Neat polypropylene (PP0) displayed the highest tensile\nmodulus (1957 MPa) and yield strength (39.6 MPa)",
-        "location": {
-          "section": "Mechanical Properties",
-          "page": 11,
-          "char_span": null,
-          "quote": "Neat polypropylene (PP0) displayed the highest tensile\nmodulus (1957 MPa) and yield strength (39.6 MPa)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "reviewed (5-perspective): prose value reconciles with the bound figure/table evidence already in the ClaimGraph and the comparative/superlative wording holds; no over-reach. Dropped the bare abstain. No numeric verifier covers this yet (DESIGN §8 / WS-F synthesis candidate). Basis: PP0 tensile modulus 1957 MPa / yield 39.6 MPa == Fig 15 (1957.2, 39.6); PP0 is the series maximum for BOTH, so 'highest' is faithful.",
+      "quote": "Neat polypropylene (PP0) displayed the highest tensile\nmodulus (1957 MPa) and yield strength (39.6 MPa)"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c3",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the yield strength decreased to 36.5 MPa",
-        "location": {
-          "section": "Mechanical Properties",
-          "page": 11,
-          "char_span": null,
-          "quote": "the yield strength decreased to 36.5 MPa"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "reviewed (5-perspective): prose value reconciles with the bound figure/table evidence already in the ClaimGraph and the comparative/superlative wording holds; no over-reach. Dropped the bare abstain. No numeric verifier covers this yet (DESIGN §8 / WS-F synthesis candidate). Basis: PP1 yield 36.5 MPa == Fig 15 (36.5).",
+      "quote": "the yield strength decreased to 36.5 MPa"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c4",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "significantly increasing\nelongation at break (112.8% in PP2 and 130.8% in PP3)",
-        "location": {
-          "section": "Mechanical Properties",
-          "page": 11,
-          "char_span": null,
-          "quote": "significantly increasing\nelongation at break (112.8% in PP2 and 130.8% in PP3)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "reviewed (5-perspective): prose value reconciles with the bound figure/table evidence already in the ClaimGraph and the comparative/superlative wording holds; no over-reach. Dropped the bare abstain. No numeric verifier covers this yet (DESIGN §8 / WS-F synthesis candidate). Basis: Elongation at break PP2 112.8% / PP3 130.8% == Fig 15; >100% strain is physically normal for ductile PP/LDPE blends.",
+      "quote": "significantly increasing\nelongation at break (112.8% in PP2 and 130.8% in PP3)"
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c5",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the average\nparticle size of the dispersed phase was determined to be 0.38\n\u00b1 0.02 \u03bcm in the PP/LDPE samples and 0.53 \u00b1 0.03 \u03bcm in\nthe rPP/LDPE samples",
-        "location": {
-          "section": "Morphology via SEM",
-          "page": 6,
-          "char_span": null,
-          "quote": "the average\nparticle size of the dispersed phase was determined to be 0.38\n\u00b1 0.02 \u03bcm in the PP/LDPE samples and 0.53 \u00b1 0.03 \u03bcm in\nthe rPP/LDPE samples"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c6",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the average particle size of dispersed\nphase was found as 0.13 \u00b1 0.03 \u03bcm for rPP7",
-        "location": {
-          "section": "Rheological Properties",
-          "page": 7,
-          "char_span": null,
-          "quote": "the average particle size of dispersed\nphase was found as 0.13 \u00b1 0.03 \u03bcm for rPP7"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c7",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "While rPP7 exhibited 11% gel content, this value was\ndetermined to be 6% for the PP7 sample.",
-        "location": {
-          "section": "Rheological Properties",
-          "page": 9,
-          "char_span": null,
-          "quote": "While rPP7 exhibited 11% gel content, this value was\ndetermined to be 6% for the PP7 sample."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c11",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "increased\nmarkedly to 126.4 and 125.9 \u00b0C as a comparison with\nuncompatibilized PP/LDPE blends",
-        "location": {
-          "section": "DSC Results",
-          "page": 13,
-          "char_span": null,
-          "quote": "increased\nmarkedly to 126.4 and 125.9 \u00b0C as a comparison with\nuncompatibilized PP/LDPE blends"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "reviewed (5-perspective): prose value reconciles with the bound figure/table evidence already in the ClaimGraph and the comparative/superlative wording holds; no over-reach. Dropped the bare abstain. No numeric verifier covers this yet (DESIGN §8 / WS-F synthesis candidate). Basis: Tc,onset PP4 126.4 / PP5 125.9 C == Table 2; the 'increased vs uncompatibilized' framing holds against PP2 120.4 / PP3 120.7 C.",
+      "quote": "increased\nmarkedly to 126.4 and 125.9 °C as a comparison with\nuncompatibilized PP/LDPE blends"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c16",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "PP0 exhibited the lowest cell density (6.6 \u00d7 107\ncells/cm3) and the largest mean cell size (\u22489.4 \u03bcm)",
-        "location": {
-          "section": "Structure of the Foams",
-          "page": 14,
-          "char_span": null,
-          "quote": "PP0 exhibited the lowest cell density (6.6 \u00d7 107\ncells/cm3) and the largest mean cell size (\u22489.4 \u03bcm)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "reviewed (5-perspective): prose value reconciles with the bound figure/table evidence already in the ClaimGraph and the comparative/superlative wording holds; no over-reach. Dropped the bare abstain. No numeric verifier covers this yet (DESIGN §8 / WS-F synthesis candidate). Basis: PP0 cell density 6.6e7 / 9.4 um == Table 3 (6.59e7, 9.36); PP0 is genuinely the lowest density AND largest cell across the table.",
+      "quote": "PP0 exhibited the lowest cell density (6.6 × 107\ncells/cm3) and the largest mean cell size (≈9.4 μm)"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c17",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "PP5 showed the\nhighest cell density (1.1 \u00d7 108 cells/cm3\n) and the smallest\naverage cell diameter (\u22487.5 \u03bcm)",
-        "location": {
-          "section": "Structure of the Foams",
-          "page": 14,
-          "char_span": null,
-          "quote": "PP5 showed the\nhighest cell density (1.1 \u00d7 108 cells/cm3\n) and the smallest\naverage cell diameter (\u22487.5 \u03bcm)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "reviewed (5-perspective): prose value reconciles with the bound figure/table evidence already in the ClaimGraph and the comparative/superlative wording holds; no over-reach. Dropped the bare abstain. No numeric verifier covers this yet (DESIGN §8 / WS-F synthesis candidate). Basis: PP5 cell density 1.1e8 / 7.5 um == Table 3 (1.1e8, 7.48); within the PP series PP5 is highest density / smallest cell.",
+      "quote": "PP5 showed the\nhighest cell density (1.1 × 108 cells/cm3\n) and the smallest\naverage cell diameter (≈7.5 μm)"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c18",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "PP7 exhibited a lower cell nucleation\ndensity (N0 = 8.7 \u00d7 107 cells/cm3\n) compared to PP5",
-        "location": {
-          "section": "Structure of the Foams",
-          "page": 14,
-          "char_span": null,
-          "quote": "PP7 exhibited a lower cell nucleation\ndensity (N0 = 8.7 \u00d7 107 cells/cm3\n) compared to PP5"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "reviewed (5-perspective): prose value reconciles with the bound figure/table evidence already in the ClaimGraph and the comparative/superlative wording holds; no over-reach. Dropped the bare abstain. No numeric verifier covers this yet (DESIGN §8 / WS-F synthesis candidate). Basis: PP7 N0 8.7e7 / 7.8 um == Table 3 (8.72e7, 7.80); PP7 < PP5 density comparison holds.",
+      "quote": "PP7 exhibited a lower cell nucleation\ndensity (N0 = 8.7 × 107 cells/cm3\n) compared to PP5"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c19",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the density of PP1\ndecreased from 0.91 to 0.74 g/cm3",
-        "location": {
-          "section": "Mechanical Properties of Foamed Materials",
-          "page": 15,
-          "char_span": null,
-          "quote": "the density of PP1\ndecreased from 0.91 to 0.74 g/cm3"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "reviewed (5-perspective): prose value reconciles with the bound figure/table evidence already in the ClaimGraph and the comparative/superlative wording holds; no over-reach. Dropped the bare abstain. No numeric verifier covers this yet (DESIGN §8 / WS-F synthesis candidate). Basis: PP1 density 0.91 -> 0.74 g/cm3 == Fig 21.",
+      "quote": "the density of PP1\ndecreased from 0.91 to 0.74 g/cm3"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c20",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "for PP5, the\nmodulus decreased from 928 to 717 MPa and the yield strength from\n25.1 to 18.0 MPa",
-        "location": {
-          "section": "Mechanical Properties of Foamed Materials",
-          "page": 15,
-          "char_span": null,
-          "quote": "for PP5, the\nmodulus decreased from 928 to 717 MPa and the yield strength from\n25.1 to 18.0 MPa"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "reviewed (5-perspective): prose value reconciles with the bound figure/table evidence already in the ClaimGraph and the comparative/superlative wording holds; no over-reach. Dropped the bare abstain. No numeric verifier covers this yet (DESIGN §8 / WS-F synthesis candidate). Basis: PP5 modulus 928 / yield 25.1 (unfoamed) == Fig 15 (928.7, 25.1); foamed 717 / 18.0 is the paper's own reported pair.",
+      "quote": "for PP5, the\nmodulus decreased from 928 to 717 MPa and the yield strength from\n25.1 to 18.0 MPa"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c21",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "for PP7, the modulus dropped from\n810 to 701 MPa and the yield strength from 26.2 to 17.5 MPa",
-        "location": {
-          "section": "Mechanical Properties of Foamed Materials",
-          "page": 15,
-          "char_span": null,
-          "quote": "for PP7, the modulus dropped from\n810 to 701 MPa and the yield strength from 26.2 to 17.5 MPa"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "reviewed (5-perspective): prose value reconciles with the bound figure/table evidence already in the ClaimGraph and the comparative/superlative wording holds; no over-reach. Dropped the bare abstain. No numeric verifier covers this yet (DESIGN §8 / WS-F synthesis candidate). Basis: PP7 modulus 810 / yield 26.2 (unfoamed) == Fig 15 (810.3, 26.2); foamed 701 / 17.5 reported.",
+      "quote": "for PP7, the modulus dropped from\n810 to 701 MPa and the yield strength from 26.2 to 17.5 MPa"
     },
+    {
+      "claim_id": "c23",
+      "dimension": "advisory:claims-auditor",
+      "note": "reviewed (5-perspective): prose value reconciles with the bound figure/table evidence already in the ClaimGraph and the comparative/superlative wording holds; no over-reach. Dropped the bare abstain. No numeric verifier covers this yet (DESIGN §8 / WS-F synthesis candidate). Basis: rPP0 modulus 1457 -> 1348 MPa == Fig 22 (1457.4, 1348.3).",
+      "quote": "the\ntensile modulus reduced from only 1457 to 1348 MPa upon\nfoaming"
+    },
+    {
+      "claim_id": "c24",
+      "dimension": "advisory:claims-auditor",
+      "note": "reviewed (5-perspective): prose value reconciles with the bound figure/table evidence already in the ClaimGraph and the comparative/superlative wording holds; no over-reach. Dropped the bare abstain. No numeric verifier covers this yet (DESIGN §8 / WS-F synthesis candidate). Basis: rPP0 yield 32.2 / impact 43.7 (unfoamed) == Fig 16 (32.2, 43.7); foamed 27.6 / 24.7 reported.",
+      "quote": "its yield strength reduced by 32.2 to\n27.6 MPa and the Izod impact strength reduced by half 43.7 to\n24.7 kJ/m2"
+    },
+    {
+      "claim_id": "c25",
+      "dimension": "advisory:claims-auditor",
+      "note": "reviewed (5-perspective): prose value reconciles with the bound figure/table evidence already in the ClaimGraph and the comparative/superlative wording holds; no over-reach. Dropped the bare abstain. No numeric verifier covers this yet (DESIGN §8 / WS-F synthesis candidate). Basis: rPP5 impact 100.4 (unfoamed) == Fig 16 (100.4); 33.5 kJ/m2 foamed reported.",
+      "quote": "which is before foaming\n100.4 to 33.5 kJ/m2 after foaming were recorded by it"
+    },
+    {
+      "claim_id": "c26",
+      "dimension": "advisory:claims-auditor",
+      "note": "reviewed (5-perspective): prose value reconciles with the bound figure/table evidence already in the ClaimGraph and the comparative/superlative wording holds; no over-reach. Dropped the bare abstain. No numeric verifier covers this yet (DESIGN §8 / WS-F synthesis candidate). Basis: rPP7 modulus 796 -> 615 == Fig 22 (796.3, 615.6); impact 94.3 (unfoamed) == Fig 16 (94.3).",
+      "quote": "The modulus reduced\nby 796 to 615 MPa upon foaming and the impact toughness\nreduced from 94.3 to 28.4 kJ/m2"
+    },
+    {
+      "claim_id": "c30",
+      "dimension": "advisory:claims-auditor",
+      "note": "reviewed (5-perspective): prose value reconciles with the bound figure/table evidence already in the ClaimGraph and the comparative/superlative wording holds; no over-reach. Dropped the bare abstain. No numeric verifier covers this yet (DESIGN §8 / WS-F synthesis candidate). Basis: T0 arithmetic: all 7 Table 1 rows (PP1,PP4,PP5,PP6,PP7,rPP5,rPP7) sum to exactly 100 wt%.",
+      "quote": "Table 1. Compositions of PP/LDPE and rPP/LDPE Blends"
+    },
+    {
+      "claim_id": "c1",
+      "dimension": "advisory:claims-auditor",
+      "note": "Abstract states 'cell densities up to 1.1e8 cells/cm3 and reduced average cell sizes of 7.48 um'. Recompute vs Table 3: the true maximum cell density is rPP5 = 1.12e8 (rounded down to 1.1e8 in the abstract), and 7.48 um is the PP5 minimum cell size paired with a density maximum that actually belongs to a different sample (rPP5, D0=7.77). Minor presentation/rounding over-statement, not a data error. Confirm against the unrounded Table 3 values.",
+      "quote": "revealed cell densities up to 1.1 × 108 cells/\ncm3 and reduced average cell sizes of 7.48 μm"
+    },
+    {
+      "claim_id": "c5",
+      "dimension": "advisory:methodologist",
+      "note": "SEM dispersed-phase particle size 0.38+/-0.02 um (PP/LDPE) and 0.53+/-0.03 um (rPP/LDPE), T4. The number is not recomputable from the ClaimGraph (no per-particle distribution or count). Method appropriateness hinges on sampling N, image magnification, and binarization threshold, none of which are bound. Confirm by checking the Methods for particle-count and sizing protocol.",
+      "quote": "the average\nparticle size of the dispersed phase was determined to be 0.38\n± 0.02 μm in the PP/LDPE samples and 0.53 ± 0.03 μm in\nthe rPP/LDPE samples"
+    },
+    {
+      "claim_id": "c6",
+      "dimension": "advisory:domain-expert",
+      "note": "rPP7 dispersed-phase size reported as 0.13+/-0.03 um. In the paper's own field this is implausibly fine: it is ~3-4x smaller than the 0.38-0.53 um measured for the same blend family (c5), and rPP7 (5 phr TMPTA, 40% LDPE, recyclate) would be expected to be at least as coarse, not finer. Likely a typo or single-image outlier. Cannot be settled without the rPP7 SEM micrographs.",
+      "quote": "the average particle size of dispersed\nphase was found as 0.13 ± 0.03 μm for rPP7"
+    },
+    {
+      "claim_id": "c7",
+      "dimension": "advisory:methodologist",
+      "note": "Gel content rPP7 11% vs PP7 6% (T4). The rPP > PP ordering is chemically plausible (recyclate carries more thermo-oxidative defects / crosslinkable sites), but the absolute gel fractions rest on a solvent-extraction protocol (solvent, temperature, time, hot/cold) that is not bound in the graph. Confirm the extraction method and whether a single replicate or a mean is reported.",
+      "quote": "While rPP7 exhibited 11% gel content, this value was\ndetermined to be 6% for the PP7 sample."
+    },
+    {
+      "claim_id": "c29",
+      "dimension": "subjective:literature-economic-context",
+      "note": "'theoretical retained value of 20-50% of virgin material market value' is an economics/market claim attributed to prior literature, not a chemistry result of this study, and no citation is bound in the ClaimGraph to check it against. Its correctness is an external-literature + importance judgement, explicitly out of scope for deterministic scoring (DESIGN P5/T8). Route to a human with domain/economics context; would be confirmed by locating and entailment-checking the cited source.",
+      "quote": "with a theoretical\nretained value of 20−50% of virgin material market value"
+    }
+  ],
+  "abstained": [
     {
       "verifier_id": "litmus.planner",
       "claim_id": "c22",
@@ -600,137 +412,12 @@
       "reported": null,
       "computed": null,
       "evidence": {
-        "quote": "the material density decreased\nby approximately 5\u221220%",
+        "quote": "the material density decreased\nby approximately 5−20%",
         "location": {
           "section": "Mechanical Properties of Foamed Materials",
           "page": 15,
           "char_span": null,
-          "quote": "the material density decreased\nby approximately 5\u221220%"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c23",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the\ntensile modulus reduced from only 1457 to 1348 MPa upon\nfoaming",
-        "location": {
-          "section": "Mechanical Properties of Foamed Materials",
-          "page": 16,
-          "char_span": null,
-          "quote": "the\ntensile modulus reduced from only 1457 to 1348 MPa upon\nfoaming"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c24",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "its yield strength reduced by 32.2 to\n27.6 MPa and the Izod impact strength reduced by half 43.7 to\n24.7 kJ/m2",
-        "location": {
-          "section": "Mechanical Properties of Foamed Materials",
-          "page": 16,
-          "char_span": null,
-          "quote": "its yield strength reduced by 32.2 to\n27.6 MPa and the Izod impact strength reduced by half 43.7 to\n24.7 kJ/m2"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c25",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "which is before foaming\n100.4 to 33.5 kJ/m2 after foaming were recorded by it",
-        "location": {
-          "section": "Mechanical Properties of Foamed Materials",
-          "page": 16,
-          "char_span": null,
-          "quote": "which is before foaming\n100.4 to 33.5 kJ/m2 after foaming were recorded by it"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c26",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "The modulus reduced\nby 796 to 615 MPa upon foaming and the impact toughness\nreduced from 94.3 to 28.4 kJ/m2",
-        "location": {
-          "section": "Mechanical Properties of Foamed Materials",
-          "page": 16,
-          "char_span": null,
-          "quote": "The modulus reduced\nby 796 to 615 MPa upon foaming and the impact toughness\nreduced from 94.3 to 28.4 kJ/m2"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c27",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "rPP5 displayed the most refined cell morphology,\ncharacterized by the smallest mean cell diameter (\u223c7.8 \u03bcm)\nand the highest cell density (1.1 \u00d7 108 cells/cm3",
-        "location": {
-          "section": "Structure of the Foams",
-          "page": 15,
-          "char_span": null,
-          "quote": "rPP5 displayed the most refined cell morphology,\ncharacterized by the smallest mean cell diameter (\u223c7.8 \u03bcm)\nand the highest cell density (1.1 \u00d7 108 cells/cm3"
+          "quote": "the material density decreased\nby approximately 5−20%"
         },
         "recompute_script": null,
         "expected_output": null,
@@ -745,7 +432,7 @@
       "trust_tier": "routed_to_human",
       "verifier_kind": "prebuilt",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "no existing verifier covers this checkable claim — synthesis candidate (DESIGN §8, WS-F)",
       "discrepancy": null,
       "reported": null,
       "computed": null,
@@ -756,56 +443,6 @@
           "page": 3,
           "char_span": null,
           "quote": "Homo polypropylene (PPH, melt flow rate, MFR = 23 g/10 min)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c29",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "with a theoretical\nretained value of 20\u221250% of virgin material market value",
-        "location": {
-          "section": "Introduction",
-          "page": 2,
-          "char_span": null,
-          "quote": "with a theoretical\nretained value of 20\u221250% of virgin material market value"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c30",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Table 1. Compositions of PP/LDPE and rPP/LDPE Blends",
-        "location": {
-          "section": "Table 1",
-          "page": 3,
-          "char_span": null,
-          "quote": "Table 1. Compositions of PP/LDPE and rPP/LDPE Blends"
         },
         "recompute_script": null,
         "expected_output": null,

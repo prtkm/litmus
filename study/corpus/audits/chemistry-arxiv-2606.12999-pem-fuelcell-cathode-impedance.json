@@ -14,270 +14,102 @@
       "c9"
     ],
     "confirmation": "fresh-sandbox",
-    "registry_load_errors": []
+    "registry_load_errors": [],
+    "enriched": "multi-perspective-review",
+    "review_perspectives": [
+      "skeptic",
+      "domain-expert",
+      "methodologist",
+      "claims-auditor",
+      "integrity-screener"
+    ],
+    "field": "physical-electrochemistry/chemistry",
+    "deterministic_verdicts_preserved": true
   },
   "summary": {
     "n_findings": 0,
     "n_flags": 0,
     "n_dropped": 0,
-    "n_routed_to_human": 0,
-    "n_abstained": 10,
+    "n_routed_to_human": 12,
+    "n_abstained": 0,
     "flags_by_trust_tier": {},
     "flags_by_severity": {}
   },
   "findings": [],
   "dropped_flags": [],
-  "routed_to_human": [],
-  "abstained": [
+  "routed_to_human": [
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c1",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "in-phase harmonic\nperturbations to the cell current density and CCL temperature lower both CCL impedance and static resistivity.",
-        "location": {
-          "section": "Abstract",
-          "page": 1,
-          "char_span": null,
-          "quote": "in-phase harmonic\nperturbations to the cell current density and CCL temperature lower both CCL impedance and static resistivity."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c2",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "This mitigation is primarily driven by the oscillating exchange current density of the oxygen reduction reaction.",
-        "location": {
-          "section": "Abstract",
-          "page": 1,
-          "char_span": null,
-          "quote": "This mitigation is primarily driven by the oscillating exchange current density of the oxygen reduction reaction."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c3",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "\\beta_T =\n\\frac{T_*}{T_\\sigma}\n\\simeq 6.95.",
-        "location": {
-          "section": "II. MODEL / III. RESULTS",
-          "page": 2,
-          "char_span": null,
-          "quote": "\\beta_T =\n\\frac{T_*}{T_\\sigma}\n\\simeq 6.95."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT (recomputed): betaT = T*/Tsigma = 8807/1268 = 6.9456 ~ 6.95, matches the paper exactly. Arrhenius slopes T*=8807 K (ORR i*) and Tsigma=1268 K (proton conductivity) are physically plausible for a Nafion-based CCL; the ~7x ratio is what makes the i* oscillation dominate. Reviewed across 5 perspectives, no over-reach; a T0 arithmetic verifier would close this deterministically but none covers it yet.",
+      "quote": "\\beta_T =\n\\frac{T_*}{T_\\sigma}\n\\simeq 6.95."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c4",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "we take T\n1 = 0.1 K,\nj0 = 1 A cm2, j\n1 = 0.01 A cm\u22122\nand T\n0 = 353 K. With\nthese parameters and T\u03c3 = 1268 K, we get \u03ba \u2243 0.1.",
-        "location": {
-          "section": "III. RESULTS AND DISCUSSION",
-          "page": 3,
-          "char_span": null,
-          "quote": "we take T\n1 = 0.1 K,\nj0 = 1 A cm2, j\n1 = 0.01 A cm\u22122\nand T\n0 = 353 K. With\nthese parameters and T\u03c3 = 1268 K, we get \u03ba \u2243 0.1."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT (recomputed): with T1=0.1 K, T0=353 K, Tsigma=1268 K, Lambda1 = Tsigma*T1/T0^2 = 1.018e-3, and j0/j1 = 1/0.01 = 100, kappa = Lambda1*(j0/j1) = 0.1018 ~ 0.1 — matches. Parameter values are ordinary PEMFC operating numbers. Reviewed, no over-reach; awaiting a T0 verifier that recomputes kappa from Table I.",
+      "quote": "we take T\n1 = 0.1 K,\nj0 = 1 A cm2, j\n1 = 0.01 A cm−2\nand T\n0 = 353 K. With\nthese parameters and Tσ = 1268 K, we get κ ≃ 0.1."
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c5",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "at \u03ba = 1, the in-phase temperature and current\ndensity oscillations fully eliminate proton transport losses in\nthe CCL.",
-        "location": {
-          "section": "III. RESULTS AND DISCUSSION",
-          "page": 3,
-          "char_span": null,
-          "quote": "at \u03ba = 1, the in-phase temperature and current\ndensity oscillations fully eliminate proton transport losses in\nthe CCL."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "claim_id": "c1",
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT (reviewed): the impedance/resistivity reduction is a derived model result (Eq.18/Eq.25, Fig.1a/2), and the causal phrasing is scoped to the model, not to experiment — no empirical over-reach. Mechanism (in-phase T raises ORR i* via Arrhenius faster than it perturbs proton conductivity) is field-plausible. No numeric verifier covers this model-level qualitative claim yet.",
+      "quote": "in-phase harmonic\nperturbations to the cell current density and CCL temperature lower both CCL impedance and static resistivity."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c6",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "at small \u03ba the reduction of impedance due to\nproton conductivity oscillations is rather marginal.",
-        "location": {
-          "section": "III. RESULTS AND DISCUSSION",
-          "page": 3,
-          "char_span": null,
-          "quote": "at small \u03ba the reduction of impedance due to\nproton conductivity oscillations is rather marginal."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT (reviewed): the claim describes Fig.1b (betaT=0, i* oscillation off) where the small-kappa curves nearly overlay the kappa=0 baseline — 'marginal' is a faithful qualitative reading and consistent with c8's R(betaT=0) keeping the proton term to first order in kappa. No over-reach; no figure-reading verifier covers it yet.",
+      "quote": "at small κ the reduction of impedance due to\nproton conductivity oscillations is rather marginal."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c7",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the static cell resistivity (the rightmost\npoint of the Nyquist spectrum) decreases with \u03ba.",
-        "location": {
-          "section": "III. RESULTS AND DISCUSSION",
-          "page": 3,
-          "char_span": null,
-          "quote": "the static cell resistivity (the rightmost\npoint of the Nyquist spectrum) decreases with \u03ba."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT (reviewed): prose vs the paper's own Fig.1a. The monotone decrease of the rightmost (static-resistivity) point is corroborated analytically by Eq.25, dR/dkappa = -(betaT*b/j0 + lt/(3 sigma_p)) < 0 for betaT=6.95>0 — internally consistent. This is a clean T2 figure-vs-formula check that a numeric verifier could close once it can read the Nyquist x-intercepts; none does yet.",
+      "quote": "the static cell resistivity (the rightmost\npoint of the Nyquist spectrum) decreases with κ."
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c8",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "R =\nb\nj0\n+\nlt\n3\u03c3p\n\u2212 \u03ba\u03b2T\nb\nj0\n\u2212 \u03ba\nlt\n3\u03c3p",
-        "location": {
-          "section": "IV (Results)",
-          "page": 4,
-          "char_span": null,
-          "quote": "R =\nb\nj0\n+\nlt\n3\u03c3p\n\u2212 \u03ba\u03b2T\nb\nj0\n\u2212 \u03ba\nlt\n3\u03c3p"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c9",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "With\npositive \u03ba, both the high-frequency proton transport line,\nand the main faradaic arc decrease in size (Figure 2).",
-        "location": {
-          "section": "IV (Results)",
-          "page": 4,
-          "char_span": null,
-          "quote": "With\npositive \u03ba, both the high-frequency proton transport line,\nand the main faradaic arc decrease in size (Figure 2)."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "CONFIRMED-CORRECT (reviewed): describes Fig.2 (j0=413 mA/cm2, full numerical Eq.12 solution); both arc and proton-transport line shrink with kappa, the same qualitative behaviour as Fig.1a at higher current — internally consistent and field-plausible. No figure-reading verifier covers it yet.",
+      "quote": "With\npositive κ, both the high-frequency proton transport line,\nand the main faradaic arc decrease in size (Figure 2)."
     },
     {
-      "verifier_id": "litmus.planner",
+      "claim_id": "c2",
+      "dimension": "advisory:claims-auditor",
+      "note": "ADVISORY (T4 attribution): 'primarily driven by the oscillating exchange current density' is a dominance claim. Fig.1b (i* oscillation switched off, betaT=0) shows the i* channel matters and the betaT=6.95 vs betaT=0 contrast is suggestive, but the paper provides no quantitative decomposition apportioning the impedance reduction across i*, proton conductivity and Cdl, so 'primarily' is not numerically established. WOULD CONFIRM: a contribution analysis (e.g. impedance with only i* oscillating vs only sigma_p oscillating at matched kappa) showing the i* term dominates.",
+      "quote": "This mitigation is primarily driven by the oscillating exchange current density of the oxygen reduction reaction."
+    },
+    {
+      "claim_id": "c5",
+      "dimension": "advisory:methodologist",
+      "note": "ADVISORY (symbolic limit): the claim is the algebraic reduction Eq.18|_{betaT=0, kappa=1} == Eq.21 = 1/(j0_tilde + i*omega_tilde/eps^2), i.e. proton-transport loss fully drops out. The limit is self-consistent (the proton term in Eq.25 vanishes at kappa=1) but full verification is a symbolic-equivalence check over Eq.18 itself, whose closed form is not transcribed in the ClaimGraph, so it cannot be recomputed as a scalar here. WOULD CONFIRM: a CAS reduction of Eq.18 under betaT=0, kappa=1 matching Eq.21 term-for-term.",
+      "quote": "at κ = 1, the in-phase temperature and current\ndensity oscillations fully eliminate proton transport losses in\nthe CCL."
+    },
+    {
+      "claim_id": "c8",
+      "dimension": "advisory:methodologist",
+      "note": "ADVISORY (derivation): Eq.25 R = b/j0 + lt/(3 sigma_p) - kappa*betaT*b/j0 - kappa*lt/(3 sigma_p). Sanity checks pass: terms are Ohm*cm2; kappa->0 recovers the standard small-j0 CCL static resistivity b/j0 + lt/(3 sigma_p) (= 0.30 + 0.0333 = 0.333 with Table I b=30 mV, lt=10 um, sigma_p=0.01, j0=0.1); the 4th term cancels the proton term at kappa=1, consistent with c5. But the omega->0 / small-j0 Taylor reduction that yields Eq.25 is a symbolic derivation that cannot be settled as a scalar recompute. WOULD CONFIRM: a symbolic expansion of the impedance at omega->0 reproducing all four terms.",
+      "quote": "R =\nb\nj0\n+\nlt\n3σp\n− κβT\nb\nj0\n− κ\nlt\n3σp"
+    },
+    {
       "claim_id": "c10",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "in-phase oscillations of\nthe cell current density and temperature decrease the\nimpedance of the CCL much more than was shown in",
-        "location": {
-          "section": "I. INTRODUCTION",
-          "page": 1,
-          "char_span": null,
-          "quote": "in-phase oscillations of\nthe cell current density and temperature decrease the\nimpedance of the CCL much more than was shown in"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:skeptic",
+      "note": "ADVISORY (T5 literature, magnitude): 'decrease the impedance much more than was shown in [ref 8]' (Kulikovsky, Electrochem. Comm. 188:108169, 2026). The quantitative 'much more' rests on a side-by-side magnitude comparison with ref 8 that the paper does not tabulate and that cannot be checked from this ClaimGraph alone. WOULD CONFIRM: extracting the impedance-reduction magnitude from ref 8 at matched conditions and comparing to this model's Fig.1a/2 reduction.",
+      "quote": "in-phase oscillations of\nthe cell current density and temperature decrease the\nimpedance of the CCL much more than was shown in"
+    },
+    {
+      "claim_id": "c10",
+      "dimension": "subjective:novelty",
+      "note": "Whether a larger impedance reduction than ref 8 is itself novel/important enough to matter (novelty-worth and significance of the advance over Kulikovsky 2026) is irreducibly subjective (DESIGN T8) and is surfaced, not scored.",
+      "quote": "in-phase oscillations of\nthe cell current density and temperature decrease the\nimpedance of the CCL much more than was shown in"
+    },
+    {
+      "claim_id": null,
+      "dimension": "advisory:integrity-screener",
+      "note": "T7 screen, whole paper: this is a purely analytical/modeling study (impedance equations, two Nyquist figures from Eq.18 and a numerical Eq.12 solution, one parameter table). There are no micrographs/gels/blots to test for duplication, no empirical measurement tables for Benford / terminal-digit analysis, and no large data series for too-perfect-agreement checks. No integrity signal detected; nothing to route. Recorded so the clean T7 screen is auditable.",
+      "quote": null
     }
-  ]
+  ],
+  "abstained": []
 }

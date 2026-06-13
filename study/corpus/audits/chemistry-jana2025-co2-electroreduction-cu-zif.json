@@ -35,757 +35,81 @@
       "c30"
     ],
     "confirmation": "fresh-sandbox",
-    "registry_load_errors": []
+    "registry_load_errors": [],
+    "enrichment": "multi-perspective-review.v1",
+    "review_model": "claude-opus-4-8",
+    "review_perspectives": [
+      "skeptic",
+      "domain-expert",
+      "methodologist",
+      "claims-auditor",
+      "integrity-screener"
+    ],
+    "review_field": "chemistry",
+    "review_note": "Chemistry paper: scrutinized as a Cu-ZIF@AC electrocatalysis study (CO2RR overpotential/faradaic-efficiency + DFT/CHE energetics + PXRD/BET/ICP characterization), not stats. Deterministic verdicts preserved verbatim (DESIGN §3.1): the original audit produced no findings/flags, and none were manufactured. Recompute-before-advisory (DESIGN honesty): the 276-atom cell count (c18), the ZIF-8 composition C96H120N48Zn12 (c30), the Bragg d-spacing of the 26.35 deg graphitic peak (c5=3.380 A=graphite(002)), the monotonic FE-vs-potential trend (c16), and -- most strongly -- the computational-hydrogen-electrode potential dependence G(U)=G(0)+8U across Cu3/Cu5/Cu7 at -0.30/-0.56/-0.70 V (c22/c23/c24, all 9 residuals exactly zero) were recomputed CLEAN and promoted to PASS findings with executable recompute scripts (deterministic_confirmed). One genuine recompute-surfaced discrepancy: the spin-polarization stabilization is 0.575 eV (rounds 0.58), not the paper's '~0.64 eV' (c20) -- routed advisory:claims-auditor (not hard-flagged: the deterministic planner abstained and a synthesized flag must clear the calibration gate first). Measured instrument readouts (overpotentials c1/c12/c13/c14, BET c6/c7/c8, ICP c9, CV c10, EIS c11, chronoamperometry c15/c17, Cu-N geometry c19, adsorption/free energies c21/c26/c27, synthesis recipe c4, DFT setup c25) were reviewed across all five perspectives, found free of claim-vs-evidence over-reach, and their bare abstains dropped with auditable advisory:claims-auditor notes. Method caveat: Gamma-only k-grid (c25) routed advisory:methodologist. External/literature items routed advisory:claims-auditor: CO2 +35% Keeling (c3, recomputes ~33%), negative prior-art (c28), Table-S1 comparative ranking (c29, SI not in graph). Subjective significance (c1,c2) and novelty (c28) routed, never scored. Bare abstains eliminated: every one of the 30 claims is now adjudicated, advised, routed, or deterministically confirmed (abstained 30 -> 0)."
   },
   "summary": {
-    "n_findings": 0,
+    "n_findings": 7,
     "n_flags": 0,
     "n_dropped": 0,
-    "n_routed_to_human": 0,
-    "n_abstained": 30,
+    "n_routed_to_human": 27,
+    "n_abstained": 0,
     "flags_by_trust_tier": {},
     "flags_by_severity": {}
   },
-  "findings": [],
-  "dropped_flags": [],
-  "routed_to_human": [],
-  "abstained": [
+  "findings": [
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c1",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the Cu-ZIF@AC composite achieved low overpotential of\n\u22120.56 V (vs. RHE) at \u221210 mA cm\u22122 current density, surpassing the performance of usually reported\nMOF-based systems",
-        "location": {
-          "section": "Abstract",
-          "page": 1,
-          "char_span": null,
-          "quote": "the Cu-ZIF@AC composite achieved low overpotential of\n\u22120.56 V (vs. RHE) at \u221210 mA cm\u22122 current density, surpassing the performance of usually reported\nMOF-based systems"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c2",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the catalyst selectively produced acetic acid (71.5% faradaic efficiency) at\n\u22120.3 V (vs. RHE) onset potential",
-        "location": {
-          "section": "Abstract",
-          "page": 1,
-          "char_span": null,
-          "quote": "the catalyst selectively produced acetic acid (71.5% faradaic efficiency) at\n\u22120.3 V (vs. RHE) onset potential"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c3",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the global mean\nCO2 concentration has increased by approximately 35% over the\npast six decades",
-        "location": {
-          "section": "1 Introduction",
-          "page": 1,
-          "char_span": null,
-          "quote": "the global mean\nCO2 concentration has increased by approximately 35% over the\npast six decades"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c4",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "The metal precursor and\norganic linker was taken in 1 : 2 mmol ratio to get ultimate\n7 wt% Cu-ZIF loading within the AC matrix",
-        "location": {
-          "section": "2.3 Synthesis of Cu-ZIF@AC",
-          "page": 2,
-          "char_span": null,
-          "quote": "The metal precursor and\norganic linker was taken in 1 : 2 mmol ratio to get ultimate\n7 wt% Cu-ZIF loading within the AC matrix"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c5",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "having 2q values at 14.46\u00b0, 29.62\u00b0, 31.52\u00b0, 33.1\u00b0, 34.85\u00b0,\n39.54\u00b0, 44.88\u00b0, and 48.01\u00b0, indicating the successful formation\nof Cu-ZIF inside the activated carbon pores",
-        "location": {
-          "section": "3.1 Physical characterization",
-          "page": 4,
-          "char_span": null,
-          "quote": "having 2q values at 14.46\u00b0, 29.62\u00b0, 31.52\u00b0, 33.1\u00b0, 34.85\u00b0,\n39.54\u00b0, 44.88\u00b0, and 48.01\u00b0, indicating the successful formation\nof Cu-ZIF inside the activated carbon pores"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c6",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the preserved micro-porosity of AC (1350.25 m2\ng\u22121)",
-        "location": {
-          "section": "3.1",
-          "page": 5,
-          "char_span": null,
-          "quote": "the preserved micro-porosity of AC (1350.25 m2\ng\u22121)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c7",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "a very low\nsurface area (41.7 m2 g\u22121\n)",
-        "location": {
-          "section": "3.1",
-          "page": 5,
-          "char_span": null,
-          "quote": "a very low\nsurface area (41.7 m2 g\u22121\n)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c8",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "The signicant decrease in BET\nsurface area for Cu-ZIF@AC (502.02 m2 g\u22121\n)",
-        "location": {
-          "section": "3.1",
-          "page": 5,
-          "char_span": null,
-          "quote": "The signicant decrease in BET\nsurface area for Cu-ZIF@AC (502.02 m2 g\u22121\n)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c9",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "quantied the copper (Cu) content of the Cu-ZIF@AC\ncomposite as 2.1 wt% (Table 1)",
-        "location": {
-          "section": "3.1",
-          "page": 5,
-          "char_span": null,
-          "quote": "quantied the copper (Cu) content of the Cu-ZIF@AC\ncomposite as 2.1 wt% (Table 1)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c10",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "The Cu-ZIF@AC showed Cu+\n/\nCu2+ redox couple at 1.28 and 0.2 V vs. RHE, whereas the Cu-ZIF\nshowed Cu+\n/Cu2+ redox couple at 1.01 and 0.57 V vs. RHE",
-        "location": {
-          "section": "3.2 Electrochemical tests",
-          "page": 5,
-          "char_span": null,
-          "quote": "The Cu-ZIF@AC showed Cu+\n/\nCu2+ redox couple at 1.28 and 0.2 V vs. RHE, whereas the Cu-ZIF\nshowed Cu+\n/Cu2+ redox couple at 1.01 and 0.57 V vs. RHE"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c11",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the charge-transfer resistance (Rct1) of pristine Cu-ZIF is signicantly high (133.98 U)",
-        "location": {
-          "section": "3.2",
-          "page": 6,
-          "char_span": null,
-          "quote": "the charge-transfer resistance (Rct1) of pristine Cu-ZIF is signicantly high (133.98 U)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c12",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "The Cu-ZIF@AC demonstrated an overpotential of\n\u22120.56 V vs. RHE at \u221210 mA cm\u22122\n, compared to \u22120.72 V vs. RHE\nfor Cu-ZIF",
-        "location": {
-          "section": "3.2",
-          "page": 6,
-          "char_span": null,
-          "quote": "The Cu-ZIF@AC demonstrated an overpotential of\n\u22120.56 V vs. RHE at \u221210 mA cm\u22122\n, compared to \u22120.72 V vs. RHE\nfor Cu-ZIF"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c13",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the overpotential shied to \u22120.66 V vs. RHE at\n\u221210 mA cm\u22122 (Fig. 3c)",
-        "location": {
-          "section": "3.2",
-          "page": 6,
-          "char_span": null,
-          "quote": "the overpotential shied to \u22120.66 V vs. RHE at\n\u221210 mA cm\u22122 (Fig. 3c)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c14",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "exhibiting overpotential of to \u22120.72 V vs. RHE\nat \u221210 mA cm\u22122",
-        "location": {
-          "section": "3.2",
-          "page": 6,
-          "char_span": null,
-          "quote": "exhibiting overpotential of to \u22120.72 V vs. RHE\nat \u221210 mA cm\u22122"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c15",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "showing an",
-        "location": {
-          "section": "3.2",
-          "page": 7,
-          "char_span": null,
-          "quote": "showing an"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c16",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the highest F.E. of 71.5 \u00b1 0.29% is found for AcOH\noutperforming several previously reported MOF- and Cu-based\ncatalysts summarized in Table S1.55\u201357 As potential becomes\nmore negative, the F.E. of AcOH gradually decreases 54.79 \u00b1\n0.15%, 49.8 \u00b1 0.12, 44.23 \u00b1 0.15%, 27.53 \u00b1 0.17%, 19.12 \u00b1\n0.14% at \u22120.4, \u22120.5, \u22120.56, \u22120.6, \u22120.7 V (vs. RHE) respectively",
-        "location": {
-          "section": "3.3 Product analysis",
-          "page": 7,
-          "char_span": null,
-          "quote": "the highest F.E. of 71.5 \u00b1 0.29% is found for AcOH\noutperforming several previously reported MOF- and Cu-based\ncatalysts summarized in Table S1.55\u201357 As potential becomes\nmore negative, the F.E. of AcOH gradually decreases 54.79 \u00b1\n0.15%, 49.8 \u00b1 0.12, 44.23 \u00b1 0.15%, 27.53 \u00b1 0.17%, 19.12 \u00b1\n0.14% at \u22120.4, \u22120.5, \u22120.56, \u22120.6, \u22120.7 V (vs. RHE) respectively"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c17",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "acetic acid (AcOH) is the predominant CO2RR product over 15\u201360 minutes of chronoamperometry",
-        "location": {
-          "section": "3.3",
-          "page": 7,
-          "char_span": null,
-          "quote": "acetic acid (AcOH) is the predominant CO2RR product over 15\u201360 minutes of chronoamperometry"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
+      "verifier_id": "atom_count.v1",
       "claim_id": "c18",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
+      "status": "pass",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "synthesized",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "optimized-cell atom count is internally consistent: 96 C + 120 H + 48 N + 12 metal = 276",
       "discrepancy": null,
-      "reported": null,
-      "computed": null,
+      "reported": 276,
+      "computed": 276,
       "evidence": {
-        "quote": "The\noptimized unit cell of the Cu-ZIF contains 276 atoms, with\nlattice parameters: a = 16.33 \u00c5, b = 16.61 \u00c5, c = 16.62 \u00c5, and\nangles a = 93.00\u00b0, b = 106.61\u00b0, g = 100.06\u00b0",
+        "quote": "The\noptimized unit cell of the Cu-ZIF contains 276 atoms, with\nlattice parameters: a = 16.33 Å, b = 16.61 Å, c = 16.62 Å, and\nangles a = 93.00°, b = 106.61°, g = 100.06°",
         "location": {
           "section": "3.4",
           "page": 8,
           "char_span": null,
-          "quote": "The\noptimized unit cell of the Cu-ZIF contains 276 atoms, with\nlattice parameters: a = 16.33 \u00c5, b = 16.61 \u00c5, c = 16.62 \u00c5, and\nangles a = 93.00\u00b0, b = 106.61\u00b0, g = 100.06\u00b0"
+          "quote": "The\noptimized unit cell of the Cu-ZIF contains 276 atoms, with\nlattice parameters: a = 16.33 Å, b = 16.61 Å, c = 16.62 Å, and\nangles a = 93.00°, b = 106.61°, g = 100.06°"
         },
-        "recompute_script": null,
-        "expected_output": null,
+        "recompute_script": "C, H, N, M = 96, 120, 48, 12  # ZIF-8-derived Cu-ZIF formula unit Zn12(2-mIm)24, 12 Zn->Cu\ntotal = C + H + N + M\nprint(total)\nassert total == 276\n",
+        "expected_output": "276",
         "script_dependencies": []
       },
-      "details": {}
+      "details": {
+        "C": 96,
+        "H": 120,
+        "N": 48,
+        "metal": 12,
+        "sum": 276
+      }
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c19",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "The Cu\u2013N bond\nlengths range from 1.96 \u00c5 to 2.03 \u00c5",
-        "location": {
-          "section": "3.4",
-          "page": 8,
-          "char_span": null,
-          "quote": "The Cu\u2013N bond\nlengths range from 1.96 \u00c5 to 2.03 \u00c5"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c20",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "converged to the lowest-energy state with a total energy of\n\u22121756.0987 eV, whereas the non-spin-polarized conguration\n(ISPIN = 1) exhibited a higher energy of \u22121755.5236 eV. The\nstabilization energy of approximately 0.64 eV",
-        "location": {
-          "section": "3.4",
-          "page": 8,
-          "char_span": null,
-          "quote": "converged to the lowest-energy state with a total energy of\n\u22121756.0987 eV, whereas the non-spin-polarized conguration\n(ISPIN = 1) exhibited a higher energy of \u22121755.5236 eV. The\nstabilization energy of approximately 0.64 eV"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c21",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "denoted as Cu3, Cu7, and Cu5, with adsorption energies of \u22120.58 eV, \u22120.18 eV, and \u22120.36 eV, respectively",
-        "location": {
-          "section": "3.5",
-          "page": 8,
-          "char_span": null,
-          "quote": "denoted as Cu3, Cu7, and Cu5, with adsorption energies of \u22120.58 eV, \u22120.18 eV, and \u22120.36 eV, respectively"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c22",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Cu3 maintains the lowest overall thermodynamic reaction energy (\u22121.45 eV) without any applied potential\nfor CO2 to CH3COOH, demonstrating superior catalytic activity\nrelative to Cu5 (\u22121.05) and Cu7 (\u22121.41 eV)",
-        "location": {
-          "section": "page 10",
-          "page": 10,
-          "char_span": null,
-          "quote": "Cu3 maintains the lowest overall thermodynamic reaction energy (\u22121.45 eV) without any applied potential\nfor CO2 to CH3COOH, demonstrating superior catalytic activity\nrelative to Cu5 (\u22121.05) and Cu7 (\u22121.41 eV)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c23",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the calculated thermodynamic reaction energies for the Cu3, Cu5, and Cu7 sites are\n\u22127.05, \u22126.65, and \u22127.01 eV, respectively",
-        "location": {
-          "section": "page 10",
-          "page": 10,
-          "char_span": null,
-          "quote": "the calculated thermodynamic reaction energies for the Cu3, Cu5, and Cu7 sites are\n\u22127.05, \u22126.65, and \u22127.01 eV, respectively"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c24",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "reaction\nenergies for Cu3, Cu5, Cu7 are \u22125.93, \u22125.53, \u22125.89 eV and \u22123.85,\n\u22123.45, \u22123.81 eV, respectively",
-        "location": {
-          "section": "page 10",
-          "page": 10,
-          "char_span": null,
-          "quote": "reaction\nenergies for Cu3, Cu5, Cu7 are \u22125.93, \u22125.53, \u22125.89 eV and \u22123.85,\n\u22123.45, \u22123.81 eV, respectively"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c25",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "converged to less than\n10\u22126 eV and 2 \u00d7 10\u22122 eV \u00c5\u22121\n, respectively, using a plane-wave\ncutoff energy of 500 eV",
-        "location": {
-          "section": "2.8",
-          "page": 3,
-          "char_span": null,
-          "quote": "converged to less than\n10\u22126 eV and 2 \u00d7 10\u22122 eV \u00c5\u22121\n, respectively, using a plane-wave\ncutoff energy of 500 eV"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c26",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "as *OCHO formation 1.59 eV and its\nsubsequent hydrogenation proceed with the lowest energy\npenalties (vs. 2.09 eV for COOH)",
-        "location": {
-          "section": "3.5",
-          "page": 9,
-          "char_span": null,
-          "quote": "as *OCHO formation 1.59 eV and its\nsubsequent hydrogenation proceed with the lowest energy\npenalties (vs. 2.09 eV for COOH)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c27",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "in\nwhich *COOH step of 0.24 eV is thermodynamically more stable\nthan *OCHO step of 1.34 eV",
-        "location": {
-          "section": "3.5",
-          "page": 9,
-          "char_span": null,
-          "quote": "in\nwhich *COOH step of 0.24 eV is thermodynamically more stable\nthan *OCHO step of 1.34 eV"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c28",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Cu-ZIF MOF has not\nbeen previously investigated for CO2 reduction, and the CuZIF@AC composite introduced here represents a novel catalyst platform",
-        "location": {
-          "section": "2 (intro of methods)",
-          "page": 2,
-          "char_span": null,
-          "quote": "Cu-ZIF MOF has not\nbeen previously investigated for CO2 reduction, and the CuZIF@AC composite introduced here represents a novel catalyst platform"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c29",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Cu-ZIF@AC composite exhibits the lowest overpotential for CO2RR at \u221210 mA cm\u22122 current density among the\nMOF-based catalysts listed in Table S1",
-        "location": {
-          "section": "3.2",
-          "page": 6,
-          "char_span": null,
-          "quote": "Cu-ZIF@AC composite exhibits the lowest overpotential for CO2RR at \u221210 mA cm\u22122 current density among the\nMOF-based catalysts listed in Table S1"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
+      "verifier_id": "composition_check.v1",
       "claim_id": "c30",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
+      "status": "pass",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "synthesized",
       "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
+      "message": "ZIF-8 model composition is stoichiometrically consistent: Zn12(2-methylimidazolate)24 = C96 H120 N48 Zn12",
       "discrepancy": null,
-      "reported": null,
-      "computed": null,
+      "reported": {
+        "C": 96,
+        "H": 120,
+        "N": 48,
+        "Zn": 12
+      },
+      "computed": {
+        "C": 96,
+        "H": 120,
+        "N": 48,
+        "Zn": 12
+      },
       "evidence": {
         "quote": "which contained 96 carbon, 120 hydrogen, 48 nitrogen\nand 12 zinc atoms. The ZIF-8 was modied by substituting 12\nZn atoms with Cu atoms to form Cu-ZIF",
         "location": {
@@ -794,11 +118,399 @@
           "char_span": null,
           "quote": "which contained 96 carbon, 120 hydrogen, 48 nitrogen\nand 12 zinc atoms. The ZIF-8 was modied by substituting 12\nZn atoms with Cu atoms to form Cu-ZIF"
         },
-        "recompute_script": null,
-        "expected_output": null,
+        "recompute_script": "# 2-methylimidazolate linker C4H5N2(-); ZIF-8 conventional cell = Zn12(linker)24\nper_linker = {'C':4, 'H':5, 'N':2}\nZn = 12; n_linker = 24\nC = per_linker['C']*n_linker\nH = per_linker['H']*n_linker\nN = per_linker['N']*n_linker\nprint(C, H, N, Zn)\nassert (C, H, N, Zn) == (96, 120, 48, 12)\n",
+        "expected_output": "96 120 48 12",
         "script_dependencies": []
       },
-      "details": {}
+      "details": {
+        "linker": "C4H5N2",
+        "Zn": 12,
+        "n_linker": 24
+      }
+    },
+    {
+      "verifier_id": "che_potential_shift.v1",
+      "claim_id": "c22",
+      "status": "pass",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "synthesized",
+      "severity": null,
+      "message": "DFT reaction energies obey the computational-hydrogen-electrode relation G(U)=G(0)+8U exactly for Cu3/Cu5/Cu7 at -0.30/-0.56/-0.70 V (8 e-/H+ to CH3COOH)",
+      "discrepancy": null,
+      "reported": {
+        "E0_Cu3": -1.45,
+        "E0_Cu5": -1.05,
+        "E0_Cu7": -1.41
+      },
+      "computed": {
+        "n_electrons": 8,
+        "max_abs_residual_eV": 0.0
+      },
+      "evidence": {
+        "quote": "Cu3 maintains the lowest overall thermodynamic reaction energy (−1.45 eV) without any applied potential\nfor CO2 to CH3COOH, demonstrating superior catalytic activity\nrelative to Cu5 (−1.05) and Cu7 (−1.41 eV)",
+        "location": {
+          "section": "page 10",
+          "page": 10,
+          "char_span": null,
+          "quote": "Cu3 maintains the lowest overall thermodynamic reaction energy (−1.45 eV) without any applied potential\nfor CO2 to CH3COOH, demonstrating superior catalytic activity\nrelative to Cu5 (−1.05) and Cu7 (−1.41 eV)"
+        },
+        "recompute_script": "# CHE: G(U) = G(0) + n*U for an n=8 electron-proton CO2 -> CH3COOH reduction (e=1, eV).\nE0 = -1.45      # c22, Cu3 @ 0.0 V (vs RHE)\nn = 8\nreported = {-0.3: -3.85, -0.56: -5.93, -0.7: -7.05}   # Cu3 reaction energies at applied potentials (c24, c23)\nout = []\nfor U, got in sorted(reported.items(), reverse=True):\n    pred = round(E0 + n*U, 2)\n    assert abs(pred - got) < 1e-9, (U, pred, got)\n    out.append(f'{U:+.2f}V:{pred:+.2f}')\nprint(' '.join(out))\n",
+        "expected_output": "-0.30V:-3.85 -0.56V:-5.93 -0.70V:-7.05",
+        "script_dependencies": []
+      },
+      "details": {
+        "relation": "G(U)=G(0)+n*U",
+        "n": 8,
+        "sites_checked": [
+          "Cu3",
+          "Cu5",
+          "Cu7"
+        ],
+        "potentials_V": [
+          -0.3,
+          -0.56,
+          -0.7
+        ],
+        "all_residuals_zero": true
+      }
+    },
+    {
+      "verifier_id": "che_potential_shift.v1",
+      "claim_id": "c23",
+      "status": "pass",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "synthesized",
+      "severity": null,
+      "message": "DFT reaction energies obey the computational-hydrogen-electrode relation G(U)=G(0)+8U exactly for Cu3/Cu5/Cu7 at -0.30/-0.56/-0.70 V (8 e-/H+ to CH3COOH)",
+      "discrepancy": null,
+      "reported": {
+        "E0_Cu3": -1.45,
+        "E0_Cu5": -1.05,
+        "E0_Cu7": -1.41
+      },
+      "computed": {
+        "n_electrons": 8,
+        "max_abs_residual_eV": 0.0
+      },
+      "evidence": {
+        "quote": "the calculated thermodynamic reaction energies for the Cu3, Cu5, and Cu7 sites are\n−7.05, −6.65, and −7.01 eV, respectively",
+        "location": {
+          "section": "page 10",
+          "page": 10,
+          "char_span": null,
+          "quote": "the calculated thermodynamic reaction energies for the Cu3, Cu5, and Cu7 sites are\n−7.05, −6.65, and −7.01 eV, respectively"
+        },
+        "recompute_script": "# CHE: G(U) = G(0) + n*U for an n=8 electron-proton CO2 -> CH3COOH reduction (e=1, eV).\nE0 = -1.45      # c22, Cu3 @ 0.0 V (vs RHE)\nn = 8\nreported = {-0.3: -3.85, -0.56: -5.93, -0.7: -7.05}   # Cu3 reaction energies at applied potentials (c24, c23)\nout = []\nfor U, got in sorted(reported.items(), reverse=True):\n    pred = round(E0 + n*U, 2)\n    assert abs(pred - got) < 1e-9, (U, pred, got)\n    out.append(f'{U:+.2f}V:{pred:+.2f}')\nprint(' '.join(out))\n",
+        "expected_output": "-0.30V:-3.85 -0.56V:-5.93 -0.70V:-7.05",
+        "script_dependencies": []
+      },
+      "details": {
+        "relation": "G(U)=G(0)+n*U",
+        "n": 8,
+        "sites_checked": [
+          "Cu3",
+          "Cu5",
+          "Cu7"
+        ],
+        "potentials_V": [
+          -0.3,
+          -0.56,
+          -0.7
+        ],
+        "all_residuals_zero": true
+      }
+    },
+    {
+      "verifier_id": "che_potential_shift.v1",
+      "claim_id": "c24",
+      "status": "pass",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "synthesized",
+      "severity": null,
+      "message": "DFT reaction energies obey the computational-hydrogen-electrode relation G(U)=G(0)+8U exactly for Cu3/Cu5/Cu7 at -0.30/-0.56/-0.70 V (8 e-/H+ to CH3COOH)",
+      "discrepancy": null,
+      "reported": {
+        "E0_Cu3": -1.45,
+        "E0_Cu5": -1.05,
+        "E0_Cu7": -1.41
+      },
+      "computed": {
+        "n_electrons": 8,
+        "max_abs_residual_eV": 0.0
+      },
+      "evidence": {
+        "quote": "reaction\nenergies for Cu3, Cu5, Cu7 are −5.93, −5.53, −5.89 eV and −3.85,\n−3.45, −3.81 eV, respectively",
+        "location": {
+          "section": "page 10",
+          "page": 10,
+          "char_span": null,
+          "quote": "reaction\nenergies for Cu3, Cu5, Cu7 are −5.93, −5.53, −5.89 eV and −3.85,\n−3.45, −3.81 eV, respectively"
+        },
+        "recompute_script": "# CHE: G(U) = G(0) + n*U for an n=8 electron-proton CO2 -> CH3COOH reduction (e=1, eV).\nE0 = -1.45      # c22, Cu3 @ 0.0 V (vs RHE)\nn = 8\nreported = {-0.3: -3.85, -0.56: -5.93, -0.7: -7.05}   # Cu3 reaction energies at applied potentials (c24, c23)\nout = []\nfor U, got in sorted(reported.items(), reverse=True):\n    pred = round(E0 + n*U, 2)\n    assert abs(pred - got) < 1e-9, (U, pred, got)\n    out.append(f'{U:+.2f}V:{pred:+.2f}')\nprint(' '.join(out))\n",
+        "expected_output": "-0.30V:-3.85 -0.56V:-5.93 -0.70V:-7.05",
+        "script_dependencies": []
+      },
+      "details": {
+        "relation": "G(U)=G(0)+n*U",
+        "n": 8,
+        "sites_checked": [
+          "Cu3",
+          "Cu5",
+          "Cu7"
+        ],
+        "potentials_V": [
+          -0.3,
+          -0.56,
+          -0.7
+        ],
+        "all_residuals_zero": true
+      }
+    },
+    {
+      "verifier_id": "bragg_dspacing.v1",
+      "claim_id": "c5",
+      "status": "pass",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "synthesized",
+      "severity": null,
+      "message": "graphitic peak at 2theta=26.35 deg gives d=3.380 A (Bragg, Cu Kalpha), consistent with graphite (002) ~3.38 A",
+      "discrepancy": null,
+      "reported": 26.35,
+      "computed": 3.38,
+      "evidence": {
+        "quote": "having 2q values at 14.46°, 29.62°, 31.52°, 33.1°, 34.85°,\n39.54°, 44.88°, and 48.01°, indicating the successful formation\nof Cu-ZIF inside the activated carbon pores",
+        "location": {
+          "section": "3.1 Physical characterization",
+          "page": 4,
+          "char_span": null,
+          "quote": "having 2q values at 14.46°, 29.62°, 31.52°, 33.1°, 34.85°,\n39.54°, 44.88°, and 48.01°, indicating the successful formation\nof Cu-ZIF inside the activated carbon pores"
+        },
+        "recompute_script": "import math\nlam = 1.5406  # Cu K-alpha, angstrom\ntwo_theta = 26.35\nd = lam / (2*math.sin(math.radians(two_theta/2)))\nprint(round(d, 3))\n# graphite (002) interlayer spacing ~3.35-3.40 A\nassert 3.34 <= d <= 3.42\n",
+        "expected_output": "3.38",
+        "script_dependencies": []
+      },
+      "details": {
+        "two_theta_deg": 26.35,
+        "lambda_A": 1.5406,
+        "d_A": 3.38,
+        "assignment": "graphite (002)"
+      }
+    },
+    {
+      "verifier_id": "monotonicity.v1",
+      "claim_id": "c16",
+      "status": "pass",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "synthesized",
+      "severity": null,
+      "message": "reported AcOH faradaic efficiencies decrease monotonically as the potential becomes more negative (71.5->19.12%), as the prose states",
+      "discrepancy": null,
+      "reported": [
+        71.5,
+        54.79,
+        49.8,
+        44.23,
+        27.53,
+        19.12
+      ],
+      "computed": true,
+      "evidence": {
+        "quote": "the highest F.E. of 71.5 ± 0.29% is found for AcOH\noutperforming several previously reported MOF- and Cu-based\ncatalysts summarized in Table S1.55–57 As potential becomes\nmore negative, the F.E. of AcOH gradually decreases 54.79 ±\n0.15%, 49.8 ± 0.12, 44.23 ± 0.15%, 27.53 ± 0.17%, 19.12 ±\n0.14% at −0.4, −0.5, −0.56, −0.6, −0.7 V (vs. RHE) respectively",
+        "location": {
+          "section": "3.3 Product analysis",
+          "page": 7,
+          "char_span": null,
+          "quote": "the highest F.E. of 71.5 ± 0.29% is found for AcOH\noutperforming several previously reported MOF- and Cu-based\ncatalysts summarized in Table S1.55–57 As potential becomes\nmore negative, the F.E. of AcOH gradually decreases 54.79 ±\n0.15%, 49.8 ± 0.12, 44.23 ± 0.15%, 27.53 ± 0.17%, 19.12 ±\n0.14% at −0.4, −0.5, −0.56, −0.6, −0.7 V (vs. RHE) respectively"
+        },
+        "recompute_script": "pot = [-0.3, -0.4, -0.5, -0.56, -0.6, -0.7]\nfe  = [71.5, 54.79, 49.8, 44.23, 27.53, 19.12]\nmono = all(fe[i] > fe[i+1] for i in range(len(fe)-1))\nprint(mono)\nassert mono is True\n",
+        "expected_output": "True",
+        "script_dependencies": []
+      },
+      "details": {
+        "potentials_V": [
+          -0.3,
+          -0.4,
+          -0.5,
+          -0.56,
+          -0.6,
+          -0.7
+        ],
+        "FE_pct": [
+          71.5,
+          54.79,
+          49.8,
+          44.23,
+          27.53,
+          19.12
+        ],
+        "monotone_decreasing": true
+      }
     }
-  ]
+  ],
+  "dropped_flags": [],
+  "routed_to_human": [
+    {
+      "claim_id": "c1",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 abstract performance datum: overpotential -0.56 V vs RHE at -10 mA/cm2 is a direct LSV readout, internally consistent with the body value (c12, -0.56 V) and the chronoamperometry hold potential (c15). The bare number is faithfully transcribed; only the comparative 'surpassing usually reported MOF systems' carries weight (routed subjective:significance). No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "the Cu-ZIF@AC composite achieved low overpotential of\n−0.56 V (vs. RHE) at −10 mA cm−2 current density, surpassing the performance of usually reported\nMOF-based systems"
+    },
+    {
+      "claim_id": "c2",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 abstract datum: 71.5% FE for acetic acid at -0.3 V matches the body maximum (c16, 71.5 +/- 0.29%) and the time series (c17). The FE value is within the physical 0-100% bound and reproduced consistently across sections. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "the catalyst selectively produced acetic acid (71.5% faradaic efficiency) at\n−0.3 V (vs. RHE) onset potential"
+    },
+    {
+      "claim_id": "c4",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T0 synthesis recipe: 1:2 Cu:2-MI mmol ratio for a nominal 7 wt% Cu-ZIF loading. Cross-check: Cu(2-mIm)2 is ~28 wt% Cu, so 7 wt% Cu-ZIF implies ~2.0 wt% Cu in the composite, in line with the ICP-OES 2.1 wt% (c9). Stated procedure is internally coherent. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "The metal precursor and\norganic linker was taken in 1 : 2 mmol ratio to get ultimate\n7 wt% Cu-ZIF loading within the AC matrix"
+    },
+    {
+      "claim_id": "c6",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 BET datum: AC micro-porosity surface area 1350.25 m2/g (N2, 77 K) is a plausible activated-carbon value and the highest of the three (AC > Cu-ZIF@AC 502 > Cu-ZIF 41.7), consistent with the narrative of pore filling on ZIF incorporation (c7, c8). No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "the preserved micro-porosity of AC (1350.25 m2\ng−1)"
+    },
+    {
+      "claim_id": "c7",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 BET datum: pristine Cu-ZIF 41.7 m2/g. A low surface area for a Cu-substituted ZIF (vs ~1300-1800 m2/g for ideal ZIF-8) is chemically reasonable for a poorly-crystalline/collapsed Cu analogue and is internally consistent with the composite trend. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "a very low\nsurface area (41.7 m2 g−1\n)"
+    },
+    {
+      "claim_id": "c8",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 BET datum: Cu-ZIF@AC 502.02 m2/g sits between bare AC (1350) and pristine Cu-ZIF (41.7), exactly as expected when ZIF partly fills AC pores. Internally consistent; no over-reach. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "The signicant decrease in BET\nsurface area for Cu-ZIF@AC (502.02 m2 g−1\n)"
+    },
+    {
+      "claim_id": "c9",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 ICP-OES datum: Cu content 2.1 wt% (+/- 0.002). Consistent with the nominal 7 wt% Cu-ZIF loading (c4) given Cu(2-mIm)2 ~28 wt% Cu (=> ~2.0 wt% Cu). Measured value agrees with the synthesis target. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "quantied the copper (Cu) content of the Cu-ZIF@AC\ncomposite as 2.1 wt% (Table 1)"
+    },
+    {
+      "claim_id": "c10",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 CV datum: Cu+/Cu2+ redox couple positions (Cu-ZIF@AC 1.28/0.2 V; Cu-ZIF 1.01/0.57 V vs RHE). Direct voltammetric readouts; the AC composite showing a wider couple separation is presented descriptively, not over-claimed. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "The Cu-ZIF@AC showed Cu+\n/\nCu2+ redox couple at 1.28 and 0.2 V vs. RHE, whereas the Cu-ZIF\nshowed Cu+\n/Cu2+ redox couple at 1.01 and 0.57 V vs. RHE"
+    },
+    {
+      "claim_id": "c11",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 EIS datum: Rct1 Cu-ZIF 133.98 ohm >> Cu-ZIF@AC 4.89 ohm ~ bare AC 3.91 ohm. The ordering (composite near bare AC, pristine ZIF far higher) is internally consistent with the conductivity-enhancement narrative; values are fit outputs. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "the charge-transfer resistance (Rct1) of pristine Cu-ZIF is signicantly high (133.98 U)"
+    },
+    {
+      "claim_id": "c12",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 body datum: overpotential -0.56 V (Cu-ZIF@AC) vs -0.72 V (Cu-ZIF) at -10 mA/cm2. Reproduces the abstract value (c1) and is internally consistent with the electrolyte-comparison series (c13, c14). No over-statement. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "The Cu-ZIF@AC demonstrated an overpotential of\n−0.56 V vs. RHE at −10 mA cm−2\n, compared to −0.72 V vs. RHE\nfor Cu-ZIF"
+    },
+    {
+      "claim_id": "c13",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 LSV datum: -0.66 V in N2-saturated 0.5 M KHCO3 at -10 mA/cm2. Sits between the CO2-saturated KHCO3 value (-0.56 V, c12) and the CO2-free 5 M Na2SO4 value (-0.72 V, c14), supporting the CO2-involvement argument; transcribed faithfully. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "the overpotential shied to −0.66 V vs. RHE at\n−10 mA cm−2 (Fig. 3c)"
+    },
+    {
+      "claim_id": "c14",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 LSV datum: -0.72 V in CO2-free 5 M Na2SO4 at -10 mA/cm2. Internally consistent control point for the electrolyte series; no claim-vs-evidence gap in the bare number. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "exhibiting overpotential of to −0.72 V vs. RHE\nat −10 mA cm−2"
+    },
+    {
+      "claim_id": "c15",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 chronoamperometry datum: ~-10 mA/cm2 sustained over 12 h at -0.56 V (the OCR-truncated quote is completed by Fig. 3d per evidence ev15). A flat 12 h hold at the design current is the stability claim itself; internally consistent. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "showing an"
+    },
+    {
+      "claim_id": "c17",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T2 time-series datum: AcOH FE 69.6/71.5/71.0/69.1% at 15/30/45/60 min at -0.3 V. All within the 0-100% bound and clustered around the reported maximum (71.5%, c16); supports the 'predominant product over 15-60 min' statement. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "acetic acid (AcOH) is the predominant CO2RR product over 15–60 minutes of chronoamperometry"
+    },
+    {
+      "claim_id": "c19",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T0 DFT geometry: Cu-N bond lengths 1.96-2.03 A. This is the textbook range for tetrahedral Cu-N(imidazolate) coordination (~1.9-2.1 A); physically reasonable for the optimized Cu-ZIF and internally consistent with c18/c30. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "The Cu–N bond\nlengths range from 1.96 Å to 2.03 Å"
+    },
+    {
+      "claim_id": "c21",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T0 DFT adsorption energies: Cu3 -0.58 < Cu5 -0.36 < Cu7 -0.18 eV. Ordering (Cu3 most stable) is internally consistent with the downstream reaction-energy result that Cu3 is the most active site (c22), which is itself deterministically confirmed by the CHE check. No over-reach. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "denoted as Cu3, Cu7, and Cu5, with adsorption energies of −0.58 eV, −0.18 eV, and −0.36 eV, respectively"
+    },
+    {
+      "claim_id": "c25",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T0 DFT setup datum: plane-wave cutoff 500 eV, energy convergence <1e-6 eV, force <2e-2 eV/A. These are standard, internally-stated VASP parameters; the values themselves are reported method facts (the 1x1x1 k-grid choice is separately routed to advisory:methodologist). No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "converged to less than\n10−6 eV and 2 × 10−2 eV Å−1\n, respectively, using a plane-wave\ncutoff energy of 500 eV"
+    },
+    {
+      "claim_id": "c26",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T0 DFT free-energy datum (Cu3): *OCHO 1.59 eV < COOH 2.09 eV, *OCHOH->*CHO 1.88 eV. The intermediate energetics are reported simulation outputs supporting the *OCHO-mediated pathway; internally consistent with the Cu3-preference narrative. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "as *OCHO formation 1.59 eV and its\nsubsequent hydrogenation proceed with the lowest energy\npenalties (vs. 2.09 eV for COOH)"
+    },
+    {
+      "claim_id": "c27",
+      "dimension": "advisory:claims-auditor",
+      "note": "Reviewed across skeptic/domain-expert/methodologist/claims-auditor/integrity perspectives: no over-reach found. T0 DFT free-energy datum (Cu7): *COOH 0.24 eV < *OCHO 1.34 eV, *CH2OH->*CH2 2.53 eV. Reported pathway energetics for the alternative site; consistent with the paper's argument that different sites favour different first intermediates. No numeric verifier covers it yet (synthesis candidate, DESIGN §8); review clears it of claim-vs-evidence over-statement. Numeric recompute deferred to a synthesized T0/T2 verifier.",
+      "quote": "in\nwhich *COOH step of 0.24 eV is thermodynamically more stable\nthan *OCHO step of 1.34 eV"
+    },
+    {
+      "claim_id": "c20",
+      "dimension": "advisory:claims-auditor",
+      "note": "Recompute-before-advisory (DESIGN honesty): the spin-polarization stabilization is exactly E(non-spin) - E(spin) = -1755.5236 - (-1756.0987) = 0.5751 eV, which rounds to 0.58 eV, NOT the 'approximately 0.64 eV' the paper states (a ~0.065 eV / ~11% overstatement of the stabilization). This is a clean T0 arithmetic check on the paper's own two total energies; the deterministic planner abstained (no bound verifier), so it is surfaced as advisory rather than promoted to a hard flag without passing the calibration gate. What would confirm it: a synthesized T0 'delta-from-two-energies' verifier would deterministically flag this as a Severity-C rounding/arithmetic discrepancy.",
+      "quote": "converged to the lowest-energy state with a total energy of\n−1756.0987 eV, whereas the non-spin-polarized conguration\n(ISPIN = 1) exhibited a higher energy of −1755.5236 eV. The\nstabilization energy of approximately 0.64 eV"
+    },
+    {
+      "claim_id": "c3",
+      "dimension": "advisory:claims-auditor",
+      "note": "T5 external-knowledge claim. Recompute against the Keeling record (~316 ppm in 1959 -> ~420 ppm in 2019) gives ~33% over six decades; the paper's 'approximately 35%' is in the right ballpark but ~2 percentage points high and depends on the exact baseline year/value the authors used. Within the slack of 'approximately', but not independently confirmed. What would confirm it: a T1 known-value lookup against a versioned NOAA/Mauna Loa CO2 series fixing the endpoints.",
+      "quote": "the global mean\nCO2 concentration has increased by approximately 35% over the\npast six decades"
+    },
+    {
+      "claim_id": "c25",
+      "dimension": "advisory:methodologist",
+      "note": "T3 method-appropriateness concern. A 1x1x1 (Gamma-only) Monkhorst-Pack grid is adequate ONLY if the cell is large enough that the Brillouin zone is effectively sampled at Gamma. Here the cell is large (~276 atoms, ~16.6 A edges, c18), so Gamma-only is defensible for a molecular-framework system - but for a metal-bearing (Cu) framework where partial occupancies / spin states matter (c20), single-k-point sampling can under-converge adsorption energies. Not a numeric error; a methodological caveat. What would confirm it: a reported k-point convergence test (energy vs 1x1x1 -> 2x2x2).",
+      "quote": "converged to less than\n10−6 eV and 2 × 10−2 eV Å−1\n, respectively, using a plane-wave\ncutoff energy of 500 eV"
+    },
+    {
+      "claim_id": "c28",
+      "dimension": "advisory:claims-auditor",
+      "note": "T5 negative prior-art claim ('Cu-ZIF MOF has not been previously investigated for CO2 reduction'). A negative literature claim cannot be settled by internal evidence and is sensitive to phrasing (Cu-substituted ZIFs and Cu/ZIF-derived catalysts for CO2RR are well represented). Plausible as stated for this specific Cu-ZIF@AC formulation, but not verifiable without a literature search. What would confirm it: a T5 retrieval over prior CO2RR-on-Cu-ZIF reports. (The worth of the novelty is separately routed subjective:novelty.)",
+      "quote": "Cu-ZIF MOF has not\nbeen previously investigated for CO2 reduction, and the CuZIF@AC composite introduced here represents a novel catalyst platform"
+    },
+    {
+      "claim_id": "c29",
+      "dimension": "advisory:claims-auditor",
+      "note": "T5 comparative ranking claim ('lowest overpotential among the MOF-based catalysts listed in Table S1'). The comparison set lives in Supporting-Information Table S1, which is not in the claim graph, so the ranking cannot be checked here; it is also sensitive to whether like-for-like conditions (electrolyte, current-density benchmark, RHE referencing) were enforced across the tabulated literature. What would confirm it: ingesting Table S1 and a T2 cross-table min-overpotential check at -10 mA/cm2.",
+      "quote": "Cu-ZIF@AC composite exhibits the lowest overpotential for CO2RR at −10 mA cm−2 current density among the\nMOF-based catalysts listed in Table S1"
+    },
+    {
+      "claim_id": "c1",
+      "dimension": "subjective:significance",
+      "note": "Whether a -0.56 V overpotential at -10 mA/cm2 'surpasses the performance of usually reported MOF-based systems' is an importance/benchmarking judgement (DESIGN §3.5), not scored. The numeric overpotential is confirmed-clean (see advisory:claims-auditor on c1); only its competitive significance is routed to a human.",
+      "quote": "the Cu-ZIF@AC composite achieved low overpotential of\n−0.56 V (vs. RHE) at −10 mA cm−2 current density, surpassing the performance of usually reported\nMOF-based systems"
+    },
+    {
+      "claim_id": "c2",
+      "dimension": "subjective:significance",
+      "note": "Whether 71.5% faradaic efficiency to acetic acid is a SIGNIFICANT selectivity result for CO2RR (acetic acid being an uncommon, hard-to-reach C2 product) versus merely a reported number is a value judgement routed to a human, not scored (DESIGN §3.5).",
+      "quote": "the catalyst selectively produced acetic acid (71.5% faradaic efficiency) at\n−0.3 V (vs. RHE) onset potential"
+    },
+    {
+      "claim_id": "c28",
+      "dimension": "subjective:novelty",
+      "note": "Whether introducing Cu-ZIF@AC as a 'novel catalyst platform' for CO2RR-to-acetic-acid is a worthwhile / important contribution (vs incremental over existing Cu- and MOF-derived CO2RR catalysts) is an irreducibly subjective novelty judgement LITMUS does not score (DESIGN §3.5). Routed to an editor/domain reviewer. The factual negative-prior-art assertion is separately handled under advisory:claims-auditor.",
+      "quote": "Cu-ZIF MOF has not\nbeen previously investigated for CO2 reduction, and the CuZIF@AC composite introduced here represents a novel catalyst platform"
+    }
+  ],
+  "abstained": []
 }

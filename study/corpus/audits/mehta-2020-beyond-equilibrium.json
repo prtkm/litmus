@@ -35,870 +35,226 @@
       "c31"
     ],
     "confirmation": "fresh-sandbox",
-    "registry_load_errors": []
+    "registry_load_errors": [],
+    "enriched_by": "multi-perspective-review (skeptic/domain-expert/methodologist/claims-auditor/integrity)",
+    "enrichment_note": "Deterministic verdicts preserved verbatim (0 findings, 0 dropped). Bare abstains converted to reasoned assessments; recomputable numbers (c1,c11,c19,c27 thermo/SEI/vib-quanta) recomputed clean before any advisory."
   },
   "summary": {
     "n_findings": 0,
     "n_flags": 0,
     "n_dropped": 0,
-    "n_routed_to_human": 0,
-    "n_abstained": 34,
+    "n_routed_to_human": 34,
+    "n_abstained": 0,
     "flags_by_trust_tier": {},
     "flags_by_severity": {}
   },
   "findings": [],
   "dropped_flags": [],
-  "routed_to_human": [],
-  "abstained": [
+  "routed_to_human": [
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c1",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "(\u2206G\u25e6(298 K) = \u221232.8 kJ mol\u22121)",
-        "location": {
-          "section": "INTRODUCTION",
-          "page": 2,
-          "char_span": null,
-          "quote": "(\u2206G\u25e6(298 K) = \u221232.8 kJ mol\u22121)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Thermodynamics recomputed: on the N2+3H2->2NH3 basis, 2x NIST dGf(NH3,298)=2*(-16.4)=-32.8 kJ/mol matches the reported value exactly, and is consistent with c27's dH=-91.8 (=2*dHf). Reviewed, no over-reach; no numeric verifier covers it yet.",
+      "quote": "(∆G◦(298 K) = −32.8 kJ mol−1)"
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c2",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "synthesis processes thus operate at temperatures in the range of 700\u2013800 K and pressures of\n100\u2013200 atm",
-        "location": {
-          "section": "INTRODUCTION",
-          "page": 2,
-          "char_span": null,
-          "quote": "synthesis processes thus operate at temperatures in the range of 700\u2013800 K and pressures of\n100\u2013200 atm"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c3",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "ammonia synthesis can be performed at milder temperatures and pressures (\u223c473 K, 1 atm) when catalysts are operated alongside non-thermal plas-\nmas",
-        "location": {
-          "section": "INTRODUCTION",
-          "page": 2,
-          "char_span": null,
-          "quote": "ammonia synthesis can be performed at milder temperatures and pressures (\u223c473 K, 1 atm) when catalysts are operated alongside non-thermal plas-\nmas"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c4",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "showed elevated site-time yields of NH3 at atmospheric pressure\nand 438 K, as well as a shift in optimal catalyst material",
-        "location": {
-          "section": "RESULTS/INTRODUCTION",
-          "page": 3,
-          "char_span": null,
-          "quote": "showed elevated site-time yields of NH3 at atmospheric pressure\nand 438 K, as well as a shift in optimal catalyst material"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c5",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "NH3 yields are predicted\nto exceed bulk thermodynamic equilibrium limits on materials that are thermal-rate-limited by N2\ndissociation.",
-        "location": {
-          "section": "Abstract",
-          "page": 1,
-          "char_span": null,
-          "quote": "NH3 yields are predicted\nto exceed bulk thermodynamic equilibrium limits on materials that are thermal-rate-limited by N2\ndissociation."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c6",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "continuously stirred tank reactor (CSTR) operating at atmospheric pressure and constant\nvolume (1 mL). The reactants are introduced into the reactor in their stoichiometric ratio,\nat a flow rate of 10 mL min\u22121.",
-        "location": {
-          "section": "RESULTS/Kinetic model",
-          "page": 7,
-          "char_span": null,
-          "quote": "continuously stirred tank reactor (CSTR) operating at atmospheric pressure and constant\nvolume (1 mL). The reactants are introduced into the reactor in their stoichiometric ratio,\nat a flow rate of 10 mL min\u22121."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c7",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "with a total site density of 10\u22123 mol mL\u22121",
-        "location": {
-          "section": "RESULTS/Kinetic model",
-          "page": 7,
-          "char_span": null,
-          "quote": "with a total site density of 10\u22123 mol mL\u22121"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c8",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "N with intermediate strength (EN = \u22120.6 eV), sits at the top of the volcano curve (see inset)\nand provides the optimal balance between N2 activation and its subsequent hydrogenation.",
-        "location": {
-          "section": "RESULTS/Kinetic model",
-          "page": 7,
-          "char_span": null,
-          "quote": "N with intermediate strength (EN = \u22120.6 eV), sits at the top of the volcano curve (see inset)\nand provides the optimal balance between N2 activation and its subsequent hydrogenation."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c9",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "characterized by strong (EN = \u22121.2 eV),\nintermediate (EN = \u22120.6 eV), and weak (EN = 0.0 eV) nitrogen binding energies.",
-        "location": {
-          "section": "Figure 2 caption",
-          "page": 8,
-          "char_span": null,
-          "quote": "characterized by strong (EN = \u22121.2 eV),\nintermediate (EN = \u22120.6 eV), and weak (EN = 0.0 eV) nitrogen binding energies."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c10",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "The inset shows the volcano curve for NH3 synthesis\ncalculated at 473 K, 1 atm, and 5% conversion of N2.",
-        "location": {
-          "section": "Figure 2 caption",
-          "page": 8,
-          "char_span": null,
-          "quote": "The inset shows the volcano curve for NH3 synthesis\ncalculated at 473 K, 1 atm, and 5% conversion of N2."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c11",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the N2 dissociation\nbarrier is reduced by 1 eV, corresponding to roughly three N2 vibrational quanta.",
-        "location": {
-          "section": "RESULTS",
-          "page": 8,
-          "char_span": null,
-          "quote": "the N2 dissociation\nbarrier is reduced by 1 eV, corresponding to roughly three N2 vibrational quanta."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Recomputed: 1 eV / (N2 vibrational quantum ~0.2925 eV, omega_e~2359 cm^-1) = 3.42 quanta, consistent with the hedged 'roughly three'. Reviewed, no over-reach; no numeric verifier covers it yet.",
+      "quote": "the N2 dissociation\nbarrier is reduced by 1 eV, corresponding to roughly three N2 vibrational quanta."
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c12",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "electron impact reactions are only expected to occur during short-lived (\u223c 10 ns) filamentary\nmicrodischarges, followed by an afterglow period on the order of 1 \u00b5s",
-        "location": {
-          "section": "RESULTS",
-          "page": 9,
-          "char_span": null,
-          "quote": "electron impact reactions are only expected to occur during short-lived (\u223c 10 ns) filamentary\nmicrodischarges, followed by an afterglow period on the order of 1 \u00b5s"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c13",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "NH3 yields\nexceeding equilibrium for the optimal thermal catalyst are observed at kene = 10\u22121s\n\u22121\n, in\nthe temperature window of 475\u2013600 K.",
-        "location": {
-          "section": "RESULTS",
-          "page": 9,
-          "char_span": null,
-          "quote": "NH3 yields\nexceeding equilibrium for the optimal thermal catalyst are observed at kene = 10\u22121s\n\u22121\n, in\nthe temperature window of 475\u2013600 K."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c14",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "plasma-on models predict enhancements in NH3 produced over thermal catalysis for both\nmaterials if the rate of plasma-activation of N2 is sufficiently high (kene \u2265 10\u22122s\n\u22121\n)",
-        "location": {
-          "section": "RESULTS",
-          "page": 9,
-          "char_span": null,
-          "quote": "plasma-on models predict enhancements in NH3 produced over thermal catalysis for both\nmaterials if the rate of plasma-activation of N2 is sufficiently high (kene \u2265 10\u22122s\n\u22121\n)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c15",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "NH3 pressures are\npredicted to go beyond the equilibrium limit for kene \u2265 10\u22122s\n\u22121\n.",
-        "location": {
-          "section": "RESULTS",
-          "page": 9,
-          "char_span": null,
-          "quote": "NH3 pressures are\npredicted to go beyond the equilibrium limit for kene \u2265 10\u22122s\n\u22121\n."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c16",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "We\nintroduced N2 and H2 into the reactor in a 2:1 ratio at a total flow rate of 40 SCCM.",
-        "location": {
-          "section": "Experimental",
-          "page": 11,
-          "char_span": null,
-          "quote": "We\nintroduced N2 and H2 into the reactor in a 2:1 ratio at a total flow rate of 40 SCCM."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c17",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "These background measurements were made in a reactor packed with bare support material\n(100 mg \u03b3-Al2O3)",
-        "location": {
-          "section": "Experimental",
-          "page": 11,
-          "char_span": null,
-          "quote": "These background measurements were made in a reactor packed with bare support material\n(100 mg \u03b3-Al2O3)"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c18",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "The bulk reactor temperature was varied between\n423\u20131123 K.",
-        "location": {
-          "section": "Experimental",
-          "page": 11,
-          "char_span": null,
-          "quote": "The bulk reactor temperature was varied between\n423\u20131123 K."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c19",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Reaction performance was evaluated at plasma powers of 5, 10, and 15 W,\ncorresponding to specific energy inputs of 7.5, 15, and 22.5 kJ L\u22121.",
-        "location": {
-          "section": "Experimental",
-          "page": 11,
-          "char_span": null,
-          "quote": "Reaction performance was evaluated at plasma powers of 5, 10, and 15 W,\ncorresponding to specific energy inputs of 7.5, 15, and 22.5 kJ L\u22121."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "SEI recomputed deterministically: P/flow at 40 SCCM gives 5/10/15 W -> 7.5/15.0/22.5 kJ/L, matching the reported specific energy inputs exactly. Reviewed, no over-reach; no numeric verifier covers it yet.",
+      "quote": "Reaction performance was evaluated at plasma powers of 5, 10, and 15 W,\ncorresponding to specific energy inputs of 7.5, 15, and 22.5 kJ L−1."
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c20",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "At all plasma powers, NH3 yields maximized at about 920 K, after which they\ndecreased.",
-        "location": {
-          "section": "Experimental",
-          "page": 11,
-          "char_span": null,
-          "quote": "At all plasma powers, NH3 yields maximized at about 920 K, after which they\ndecreased."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c21",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Ni and Pt catalysts supported on \u03b3-Al2O3 (100 mg material, 5 wt% metal).",
-        "location": {
-          "section": "Experimental",
-          "page": 12,
-          "char_span": null,
-          "quote": "Ni and Pt catalysts supported on \u03b3-Al2O3 (100 mg material, 5 wt% metal)."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c22",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "the N-metal bond strength follows the order Ru > Ni > Pt",
-        "location": {
-          "section": "Experimental",
-          "page": 12,
-          "char_span": null,
-          "quote": "the N-metal bond strength follows the order Ru > Ni > Pt"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c23",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "we plot plasma-catalytic NH3 yields on these two catalysts as a function of\nbulk gas temperature at 10 W plasma power.",
-        "location": {
-          "section": "Experimental",
-          "page": 12,
-          "char_span": null,
-          "quote": "we plot plasma-catalytic NH3 yields on these two catalysts as a function of\nbulk gas temperature at 10 W plasma power."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c24",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Pt continued to enhance NH3 production over the background\nat higher temperatures until about 1000 K, after which the yields converged.",
-        "location": {
-          "section": "Experimental",
-          "page": 12,
-          "char_span": null,
-          "quote": "Pt continued to enhance NH3 production over the background\nat higher temperatures until about 1000 K, after which the yields converged."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c25",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Inlet gas composition: 0.5%\nNH3, 9.5% He, and balance of 2:1 N2 and H2.",
-        "location": {
-          "section": "Experimental / Figure 5 caption",
-          "page": 13,
-          "char_span": null,
-          "quote": "Inlet gas composition: 0.5%\nNH3, 9.5% He, and balance of 2:1 N2 and H2."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c26",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Ni/Al2O3 is the most active for NH3\ndecomposition, lighting off at around 750 K. The decomposition curves for Pt/\u03b3-Al2O3 and\nmetal-free \u03b3-Al2O3 are nearly identical, lighting off at approximately 900 K.",
-        "location": {
-          "section": "Experimental",
-          "page": 13,
-          "char_span": null,
-          "quote": "Ni/Al2O3 is the most active for NH3\ndecomposition, lighting off at around 750 K. The decomposition curves for Pt/\u03b3-Al2O3 and\nmetal-free \u03b3-Al2O3 are nearly identical, lighting off at approximately 900 K."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
-    },
-    {
-      "verifier_id": "litmus.planner",
       "claim_id": "c27",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "The ammonia synthesis reaction was modeled with \u2206H (298 K) = \u221291.8 kJ/mol.",
-        "location": {
-          "section": "METHODS/Computational details",
-          "page": 15,
-          "char_span": null,
-          "quote": "The ammonia synthesis reaction was modeled with \u2206H (298 K) = \u221291.8 kJ/mol."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Thermodynamics recomputed: -91.8 kJ/mol = 2x NIST dHf(NH3,298)=2*(-45.9) on the 2-mol-NH3 basis, internally consistent with c1's dG=-32.8. Reviewed, no over-reach; no numeric verifier covers it yet.",
+      "quote": "The ammonia synthesis reaction was modeled with ∆H (298 K) = −91.8 kJ/mol."
     },
     {
-      "verifier_id": "litmus.planner",
+      "claim_id": "c2",
+      "dimension": "advisory:claims-auditor",
+      "note": "Faithful transcription of a reported experimental/model parameter; multi-perspective review (skeptic, domain-expert, methodologist, claims-auditor, integrity) finds no over-reach and no internal/external inconsistency. Reviewed, no over-reach; no numeric verifier covers it yet.",
+      "quote": "synthesis processes thus operate at temperatures in the range of 700–800 K and pressures of\n100–200 atm"
+    },
+    {
+      "claim_id": "c6",
+      "dimension": "advisory:claims-auditor",
+      "note": "Faithful transcription of a reported experimental/model parameter; multi-perspective review (skeptic, domain-expert, methodologist, claims-auditor, integrity) finds no over-reach and no internal/external inconsistency. Reviewed, no over-reach; no numeric verifier covers it yet.",
+      "quote": "continuously stirred tank reactor (CSTR) operating at atmospheric pressure and constant\nvolume (1 mL). The reactants are introduced into the reactor in their stoichiometric ratio,\nat a flow rate of 10 mL min−1."
+    },
+    {
+      "claim_id": "c7",
+      "dimension": "advisory:claims-auditor",
+      "note": "Faithful transcription of a reported experimental/model parameter; multi-perspective review (skeptic, domain-expert, methodologist, claims-auditor, integrity) finds no over-reach and no internal/external inconsistency. Reviewed, no over-reach; no numeric verifier covers it yet.",
+      "quote": "with a total site density of 10−3 mol mL−1"
+    },
+    {
+      "claim_id": "c9",
+      "dimension": "advisory:claims-auditor",
+      "note": "Faithful transcription of a reported experimental/model parameter; multi-perspective review (skeptic, domain-expert, methodologist, claims-auditor, integrity) finds no over-reach and no internal/external inconsistency. Reviewed, no over-reach; no numeric verifier covers it yet.",
+      "quote": "characterized by strong (EN = −1.2 eV),\nintermediate (EN = −0.6 eV), and weak (EN = 0.0 eV) nitrogen binding energies."
+    },
+    {
+      "claim_id": "c10",
+      "dimension": "advisory:claims-auditor",
+      "note": "Faithful transcription of a reported experimental/model parameter; multi-perspective review (skeptic, domain-expert, methodologist, claims-auditor, integrity) finds no over-reach and no internal/external inconsistency. Reviewed, no over-reach; no numeric verifier covers it yet.",
+      "quote": "The inset shows the volcano curve for NH3 synthesis\ncalculated at 473 K, 1 atm, and 5% conversion of N2."
+    },
+    {
+      "claim_id": "c12",
+      "dimension": "advisory:claims-auditor",
+      "note": "Faithful transcription of a reported experimental/model parameter; multi-perspective review (skeptic, domain-expert, methodologist, claims-auditor, integrity) finds no over-reach and no internal/external inconsistency. Reviewed, no over-reach; no numeric verifier covers it yet.",
+      "quote": "electron impact reactions are only expected to occur during short-lived (∼ 10 ns) filamentary\nmicrodischarges, followed by an afterglow period on the order of 1 µs"
+    },
+    {
+      "claim_id": "c16",
+      "dimension": "advisory:claims-auditor",
+      "note": "Faithful transcription of a reported experimental/model parameter; multi-perspective review (skeptic, domain-expert, methodologist, claims-auditor, integrity) finds no over-reach and no internal/external inconsistency. Reviewed, no over-reach; no numeric verifier covers it yet.",
+      "quote": "We\nintroduced N2 and H2 into the reactor in a 2:1 ratio at a total flow rate of 40 SCCM."
+    },
+    {
+      "claim_id": "c17",
+      "dimension": "advisory:claims-auditor",
+      "note": "Faithful transcription of a reported experimental/model parameter; multi-perspective review (skeptic, domain-expert, methodologist, claims-auditor, integrity) finds no over-reach and no internal/external inconsistency. Reviewed, no over-reach; no numeric verifier covers it yet.",
+      "quote": "These background measurements were made in a reactor packed with bare support material\n(100 mg γ-Al2O3)"
+    },
+    {
+      "claim_id": "c18",
+      "dimension": "advisory:claims-auditor",
+      "note": "Faithful transcription of a reported experimental/model parameter; multi-perspective review (skeptic, domain-expert, methodologist, claims-auditor, integrity) finds no over-reach and no internal/external inconsistency. Reviewed, no over-reach; no numeric verifier covers it yet.",
+      "quote": "The bulk reactor temperature was varied between\n423–1123 K."
+    },
+    {
+      "claim_id": "c21",
+      "dimension": "advisory:claims-auditor",
+      "note": "Faithful transcription of a reported experimental/model parameter; multi-perspective review (skeptic, domain-expert, methodologist, claims-auditor, integrity) finds no over-reach and no internal/external inconsistency. Reviewed, no over-reach; no numeric verifier covers it yet.",
+      "quote": "Ni and Pt catalysts supported on γ-Al2O3 (100 mg material, 5 wt% metal)."
+    },
+    {
+      "claim_id": "c23",
+      "dimension": "advisory:claims-auditor",
+      "note": "Faithful transcription of a reported experimental/model parameter; multi-perspective review (skeptic, domain-expert, methodologist, claims-auditor, integrity) finds no over-reach and no internal/external inconsistency. Reviewed, no over-reach; no numeric verifier covers it yet.",
+      "quote": "we plot plasma-catalytic NH3 yields on these two catalysts as a function of\nbulk gas temperature at 10 W plasma power."
+    },
+    {
+      "claim_id": "c25",
+      "dimension": "advisory:claims-auditor",
+      "note": "Faithful transcription of a reported experimental/model parameter; multi-perspective review (skeptic, domain-expert, methodologist, claims-auditor, integrity) finds no over-reach and no internal/external inconsistency. Reviewed, no over-reach; no numeric verifier covers it yet.",
+      "quote": "Inlet gas composition: 0.5%\nNH3, 9.5% He, and balance of 2:1 N2 and H2."
+    },
+    {
       "claim_id": "c28",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "for a N2 plasma at a reduced electric field of 100 Td",
-        "location": {
-          "section": "METHODS/Computational details",
-          "page": 15,
-          "char_span": null,
-          "quote": "for a N2 plasma at a reduced electric field of 100 Td"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Faithful transcription of a reported experimental/model parameter; multi-perspective review (skeptic, domain-expert, methodologist, claims-auditor, integrity) finds no over-reach and no internal/external inconsistency. Reviewed, no over-reach; no numeric verifier covers it yet.",
+      "quote": "for a N2 plasma at a reduced electric field of 100 Td"
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c29",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Within this setup, the discharge gap\nis 1.75 mm, and the discharge volume is 1.07 cm3.",
-        "location": {
-          "section": "METHODS/Experimental details",
-          "page": 16,
-          "char_span": null,
-          "quote": "Within this setup, the discharge gap\nis 1.75 mm, and the discharge volume is 1.07 cm3."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Faithful transcription of a reported experimental/model parameter; multi-perspective review (skeptic, domain-expert, methodologist, claims-auditor, integrity) finds no over-reach and no internal/external inconsistency. Reviewed, no over-reach; no numeric verifier covers it yet.",
+      "quote": "Within this setup, the discharge gap\nis 1.75 mm, and the discharge volume is 1.07 cm3."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c30",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "All particle sizes were based on at least 300 particles.",
-        "location": {
-          "section": "METHODS/Experimental details",
-          "page": 16,
-          "char_span": null,
-          "quote": "All particle sizes were based on at least 300 particles."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Faithful transcription of a reported experimental/model parameter; multi-perspective review (skeptic, domain-expert, methodologist, claims-auditor, integrity) finds no over-reach and no internal/external inconsistency. Reviewed, no over-reach; no numeric verifier covers it yet.",
+      "quote": "All particle sizes were based on at least 300 particles."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c31",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no existing verifier covers this checkable claim \u2014 synthesis candidate (DESIGN \u00a78, WS-F)",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Catalysts were pretreated in 20 SCCM (standard cubic centimeter per minute) H2 at 773 K\nfor 30 min followed by 30 min in 20 SCCM He at 773 K",
-        "location": {
-          "section": "METHODS/Experimental details",
-          "page": 16,
-          "char_span": null,
-          "quote": "Catalysts were pretreated in 20 SCCM (standard cubic centimeter per minute) H2 at 773 K\nfor 30 min followed by 30 min in 20 SCCM He at 773 K"
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Faithful transcription of a reported experimental/model parameter; multi-perspective review (skeptic, domain-expert, methodologist, claims-auditor, integrity) finds no over-reach and no internal/external inconsistency. Reviewed, no over-reach; no numeric verifier covers it yet.",
+      "quote": "Catalysts were pretreated in 20 SCCM (standard cubic centimeter per minute) H2 at 773 K\nfor 30 min followed by 30 min in 20 SCCM He at 773 K"
     },
     {
-      "verifier_id": "litmus.planner",
-      "claim_id": "c32",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "Each data point is based off\nof an average of three injections by the GC and the error bars shown correspond to the\nstandard deviation of these three measurements.",
-        "location": {
-          "section": "METHODS/Experimental details",
-          "page": 17,
-          "char_span": null,
-          "quote": "Each data point is based off\nof an average of three injections by the GC and the error bars shown correspond to the\nstandard deviation of these three measurements."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "claim_id": "c5",
+      "dimension": "advisory:claims-auditor",
+      "note": "Headline T4 claim that NH3 yields EXCEED bulk thermodynamic equilibrium. Extraordinary by chemistry standards (apparent violation of equilibrium is really a non-equilibrium plasma-driven steady state). The verdict rests entirely on the microkinetic model's 1 eV barrier-reduction assumption (c11) and the chosen equilibrium reference. CONFIRM: re-derive the equilibrium NH3 partial pressure at the stated T,P and show the model's predicted P_NH3 strictly exceeds it under the same conditions; check the claim is scoped to 'bulk thermodynamic equilibrium of the unexcited gas', not a true 2nd-law violation.",
+      "quote": "NH3 yields are predicted\nto exceed bulk thermodynamic equilibrium limits on materials that are thermal-rate-limited by N2\ndissociation."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c33",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "NH3 yields exceeding the\nbulk equilibrium limit are observed and are greater on materials with weaker N binding en-\nergies (e.g. Pt) that are inactive for thermal ammonia synthesis.",
-        "location": {
-          "section": "RESULTS/INTRODUCTION",
-          "page": 4,
-          "char_span": null,
-          "quote": "NH3 yields exceeding the\nbulk equilibrium limit are observed and are greater on materials with weaker N binding en-\nergies (e.g. Pt) that are inactive for thermal ammonia synthesis."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:domain-expert",
+      "note": "Central experimental T4 causal claim: beyond-equilibrium NH3 observed and greater on weak-N-binding Pt that is thermally inactive. Physically plausible for plasma activation, but 'exceeding the bulk equilibrium limit' depends on which equilibrium curve is overlaid in Fig 5a and on GC calibration. CONFIRM: validate the plotted equilibrium reference line and verify the measured Pt yield sits above it with the n=3 error bars (c32) not crossing the line.",
+      "quote": "NH3 yields exceeding the\nbulk equilibrium limit are observed and are greater on materials with weaker N binding en-\nergies (e.g. Pt) that are inactive for thermal ammonia synthesis."
     },
     {
-      "verifier_id": "litmus.planner",
       "claim_id": "c34",
-      "status": "inconclusive",
-      "trust_tier": "routed_to_human",
-      "verifier_kind": "prebuilt",
-      "severity": null,
-      "message": "no applicable verifier",
-      "discrepancy": null,
-      "reported": null,
-      "computed": null,
-      "evidence": {
-        "quote": "with increasing\nplasma power, ammonia yields extend further beyond the equilibrium limit, while yields\nre-equilibrate at temperatures at which thermal chemistry becomes dominant.",
-        "location": {
-          "section": "CONCLUSIONS",
-          "page": 14,
-          "char_span": null,
-          "quote": "with increasing\nplasma power, ammonia yields extend further beyond the equilibrium limit, while yields\nre-equilibrate at temperatures at which thermal chemistry becomes dominant."
-        },
-        "recompute_script": null,
-        "expected_output": null,
-        "script_dependencies": []
-      },
-      "details": {}
+      "dimension": "advisory:claims-auditor",
+      "note": "Causal claim that yields extend further past equilibrium with plasma power and re-equilibrate at high T. Direction is consistent with the model, but 'further beyond equilibrium' is a comparative read across power curves. CONFIRM: monotonic ordering of yield vs power (5/10/15 W) at fixed T below the thermal-dominant window, and convergence to the equilibrium line at high T.",
+      "quote": "with increasing\nplasma power, ammonia yields extend further beyond the equilibrium limit, while yields\nre-equilibrate at temperatures at which thermal chemistry becomes dominant."
+    },
+    {
+      "claim_id": "c24",
+      "dimension": "advisory:skeptic",
+      "note": "Pt yields 'significantly exceeding the bulk equilibrium limit' and enhancement until ~1000 K are read off Fig 5a. Weakest link: the equilibrium baseline and the ~1000 K convergence point are figure-extracted, not tabulated. CONFIRM: digitize Fig 5a, overlay the computed equilibrium curve, and confirm the exceedance and the ~1000 K crossover quantitatively.",
+      "quote": "Pt continued to enhance NH3 production over the background\nat higher temperatures until about 1000 K, after which the yields converged."
+    },
+    {
+      "claim_id": "c8",
+      "dimension": "advisory:methodologist",
+      "note": "Volcano-top optimality of EN=-0.6 eV (intermediate binder highest yield of the three) is a microkinetic-model output read from Fig 2/inset. Appropriate within Sabatier/volcano framing, but optimum position depends on the chosen scaling relations and rate constants. CONFIRM: reproduce the volcano with the stated 473 K/1 atm/5% conversion and show -0.6 eV is the maximum.",
+      "quote": "N with intermediate strength (EN = −0.6 eV), sits at the top of the volcano curve (see inset)\nand provides the optimal balance between N2 activation and its subsequent hydrogenation."
+    },
+    {
+      "claim_id": "c13",
+      "dimension": "advisory:claims-auditor",
+      "note": "Beyond-equilibrium for the optimal catalyst at kene=1e-1 s^-1 over 475-600 K is a figure-read threshold from Fig 3b. CONFIRM: extract the Fig 3b curve and verify the T-window and kene at which the model output crosses the equilibrium line.",
+      "quote": "NH3 yields\nexceeding equilibrium for the optimal thermal catalyst are observed at kene = 10−1s\n−1\n, in\nthe temperature window of 475–600 K."
+    },
+    {
+      "claim_id": "c14",
+      "dimension": "advisory:claims-auditor",
+      "note": "Enhancement-over-thermal threshold kene>=1e-2 s^-1 for both materials (Fig 3b,c). Threshold is read from model curves and is sensitive to the plasma-activation rate parameterization. CONFIRM: reproduce the crossover kene for both EN=-0.6 and 0.0 eV.",
+      "quote": "plasma-on models predict enhancements in NH3 produced over thermal catalysis for both\nmaterials if the rate of plasma-activation of N2 is sufficiently high (kene ≥ 10−2s\n−1\n)"
+    },
+    {
+      "claim_id": "c15",
+      "dimension": "advisory:claims-auditor",
+      "note": "Weak binder (EN=0.0 eV) predicted beyond equilibrium for kene>=1e-2 s^-1 (Fig 3c). Same model-threshold dependence as c14. CONFIRM: extract Fig 3c and verify the beyond-equilibrium onset kene.",
+      "quote": "NH3 pressures are\npredicted to go beyond the equilibrium limit for kene ≥ 10−2s\n−1\n."
+    },
+    {
+      "claim_id": "c20",
+      "dimension": "advisory:methodologist",
+      "note": "Background NH3 yield maximizing at ~920 K (Fig 4) is a figure-extracted optimum. CONFIRM: digitize Fig 4 at 5/10/15 W and confirm the maximum location; a code verifier could recompute it from the underlying yield-vs-T data if released.",
+      "quote": "At all plasma powers, NH3 yields maximized at about 920 K, after which they\ndecreased."
+    },
+    {
+      "claim_id": "c26",
+      "dimension": "advisory:methodologist",
+      "note": "Light-off temperatures (Ni ~750 K; Pt and bare Al2O3 ~900 K, Fig 5b) are read off decomposition curves. CONFIRM: digitize Fig 5b and confirm the light-off (e.g. 10%-conversion) temperatures; the Pt~=Al2O3 near-identity implies Pt is decomposition-inactive, supporting the catalyst-selection narrative.",
+      "quote": "Ni/Al2O3 is the most active for NH3\ndecomposition, lighting off at around 750 K. The decomposition curves for Pt/γ-Al2O3 and\nmetal-free γ-Al2O3 are nearly identical, lighting off at approximately 900 K."
+    },
+    {
+      "claim_id": "c32",
+      "dimension": "advisory:methodologist",
+      "note": "Method note: each datum is mean of n=3 GC injections with SD error bars (T3). n=3 is a thin statistical basis and SD of 3 injections captures only short-term GC repeatability, not run-to-run or catalyst-batch variability. CONFIRM: report whether replicates are independent runs vs injections, and consider whether the beyond-equilibrium exceedances (c24, c33) survive the measurement uncertainty.",
+      "quote": "Each data point is based off\nof an average of three injections by the GC and the error bars shown correspond to the\nstandard deviation of these three measurements."
+    },
+    {
+      "claim_id": "c4",
+      "dimension": "advisory:domain-expert",
+      "note": "Prior-work T5 claim (elevated site-time yields at atm/438 K and a shift in optimal catalyst, refs [16,18]). Consistent with this group's DBD plasma-catalysis line of work, but rests on cited literature not reproduced here. CONFIRM: check the cited sources report these conditions and the catalyst-optimum shift as stated.",
+      "quote": "showed elevated site-time yields of NH3 at atmospheric pressure\nand 438 K, as well as a shift in optimal catalyst material"
+    },
+    {
+      "claim_id": "c22",
+      "dimension": "advisory:domain-expert",
+      "note": "N-binding order Ru>Ni>Pt (T5). Qualitatively consistent with the transition-metal N* adsorption trend (earlier/left TMs bind N more strongly; Ru>Ni>Pt is standard surface-science ordering), so the catalyst-selection rationale is sound. CONFIRM against tabulated EN or DFT adsorption energies in the cited references for the exact ordering.",
+      "quote": "the N-metal bond strength follows the order Ru > Ni > Pt"
+    },
+    {
+      "claim_id": "c3",
+      "dimension": "subjective:significance",
+      "note": "Framing claim that plasma catalysis enables 'milder' ammonia-synthesis conditions (~473 K, 1 atm). The conditions themselves are a literature fact (better treated as the c-cluster of transcribed facts), but whether 'milder' constitutes a significant/important advance over Haber-Bosch is a value judgment about the contribution's worth, not a checkable proposition. Route to human.",
+      "quote": "ammonia synthesis can be performed at milder temperatures and pressures (∼473 K, 1 atm) when catalysts are operated alongside non-thermal plas-\nmas"
     }
-  ]
+  ],
+  "abstained": []
 }
