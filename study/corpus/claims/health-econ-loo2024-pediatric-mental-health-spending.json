@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "health-econ-loo2024-pediatric-mental-health-spending",
+  "meta": {
+    "journal": "JAMA Network Open",
+    "doi": "10.1001/jamanetworkopen.2024.1860",
+    "year": 2024,
+    "title": "Medical Spending Among US Households With Children With a Mental Health Condition, 2017-2021",
+    "source": "Journal correction notice (PMC11022109): should read 45.2%",
+    "note": "(4361-3004)/3004 = 45.2%, not the reported 31.1%."
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Total medical spending rose from $3,004 to $4,361, reported as a 31.1% increase.",
+      "location": {
+        "section": "Results",
+        "page": 4,
+        "char_span": null,
+        "quote": "a 31.1% increase"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "percent_change",
+      "strength": "exact",
+      "scope": "reported descriptive/statistic",
+      "evidence_refs": [
+        "ev1"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev1",
+      "kind": "number",
+      "location": {
+        "section": "Results",
+        "page": 4,
+        "char_span": null,
+        "quote": "total medical spending rose from $3004 (2017) to $4361 (2021), a 31.1% increase"
+      },
+      "extracted_values": {
+        "old_value": 3004,
+        "new_value": 4361,
+        "reported_pct_change": 31.1
+      },
+      "confidence": 0.95
+    }
+  ],
+  "bindings": [
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    }
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "global-health-2023-disability-play-opportunities",
+  "meta": {
+    "journal": "eClinicalMedicine (Lancet Discovery Science)",
+    "doi": "10.1016/j.eclinm.2023.102361",
+    "year": 2023,
+    "title": "Do children with disabilities have the same opportunities to play?",
+    "source": "Journal corrigendum (PMC11237678): correct reduction is 12%",
+    "note": "1 - aRR(0.88) = 12% reduction, not the reported 9%."
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Reported 'approximately 9% fewer' play opportunities while reporting aRR=0.88.",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "approximately 9% fewer"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "percent_change",
+      "strength": "exact",
+      "scope": "reported descriptive/statistic",
+      "evidence_refs": [
+        "ev1"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev1",
+      "kind": "number",
+      "location": {
+        "section": "Results",
+        "page": 5,
+        "char_span": null,
+        "quote": "children with disabilities had approximately 9% fewer play opportunities (aRR 0.88)"
+      },
+      "extracted_values": {
+        "old_value": 1.0,
+        "new_value": 0.88,
+        "reported_pct_change": -9.0
+      },
+      "confidence": 0.93
+    }
+  ],
+  "bindings": [
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    }
+  ]
+}

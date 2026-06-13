@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "psychology-kanngiesser2012-merit-sharing",
+  "meta": {
+    "journal": "PLOS ONE",
+    "doi": "10.1371/journal.pone.0043979",
+    "year": 2012,
+    "title": "Young Children Consider Merit when Sharing Resources with Others",
+    "source": "PLOS ONE correction (PMC5703034): decimals dropped in typesetting",
+    "note": "An F of 71 (df 1,32) gives p~1e-9, not .405; the printed p is impossible."
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Reported F(1,32)=71, p=.405.",
+      "location": {
+        "section": "Results",
+        "page": 4,
+        "char_span": null,
+        "quote": "F(1, 32) = 71, p = .405"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "p_value",
+      "strength": "exact",
+      "scope": "reported descriptive/statistic",
+      "evidence_refs": [
+        "ev1"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c2",
+      "text": "Reported F(1,32)=49, p=.488.",
+      "location": {
+        "section": "Results",
+        "page": 4,
+        "char_span": null,
+        "quote": "F(1, 32) = 49, p = .488"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "p_value",
+      "strength": "exact",
+      "scope": "reported descriptive/statistic",
+      "evidence_refs": [
+        "ev2"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev1",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 4,
+        "char_span": null,
+        "quote": "F(1, 32) = 71, p = .405"
+      },
+      "extracted_values": {
+        "test": "F",
+        "statistic": 71,
+        "df1": 1,
+        "df2": 32,
+        "reported_p": 0.405,
+        "stat_decimals": 0,
+        "decimals": 3
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev2",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 4,
+        "char_span": null,
+        "quote": "F(1, 32) = 49, p = .488"
+      },
+      "extracted_values": {
+        "test": "F",
+        "statistic": 49,
+        "df1": 1,
+        "df2": 32,
+        "reported_p": 0.488,
+        "stat_decimals": 0,
+        "decimals": 3
+      },
+      "confidence": 0.95
+    }
+  ],
+  "bindings": [
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    }
+  ]
+}

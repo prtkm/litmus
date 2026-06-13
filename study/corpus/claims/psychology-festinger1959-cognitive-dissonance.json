@@ -1,0 +1,138 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "psychology-festinger1959-cognitive-dissonance",
+  "meta": {
+    "journal": "J. Abnormal and Social Psychology",
+    "doi": "10.1037/h0041593",
+    "year": 1959,
+    "title": "Cognitive consequences of forced compliance",
+    "source": "GRIM literature (Brown & Heathers 2017); psychclassics.yorku.ca full text",
+    "note": "N=20/condition -> every mean must be a multiple of 1/20=0.05."
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Reported cell mean 3.03 with N=20 per condition.",
+      "location": {
+        "section": "Q2 enjoyment, $1 condition",
+        "page": 206,
+        "char_span": null,
+        "quote": "How much they enjoyed (mean 3.03)"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported_mean",
+      "strength": "exact",
+      "scope": "reported descriptive/statistic",
+      "evidence_refs": [
+        "ev1"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c2",
+      "text": "Reported cell mean 2.77 with N=20 per condition.",
+      "location": {
+        "section": "Q2 enjoyment, $20 condition",
+        "page": 206,
+        "char_span": null,
+        "quote": "How much they enjoyed (mean 2.77)"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported_mean",
+      "strength": "exact",
+      "scope": "reported descriptive/statistic",
+      "evidence_refs": [
+        "ev2"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c3",
+      "text": "Reported cell mean 4.88 with N=20 per condition.",
+      "location": {
+        "section": "Q3 importance, $20 condition",
+        "page": 206,
+        "char_span": null,
+        "quote": "Scientific importance (mean 4.88)"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported_mean",
+      "strength": "exact",
+      "scope": "reported descriptive/statistic",
+      "evidence_refs": [
+        "ev3"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev1",
+      "kind": "statistic",
+      "location": {
+        "section": "Q2 enjoyment, $1 condition",
+        "page": 206,
+        "char_span": null,
+        "quote": "How much they enjoyed (mean 3.03)"
+      },
+      "extracted_values": {
+        "reported_mean": 3.03,
+        "n": 20,
+        "n_items": 1,
+        "decimals": 2
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev2",
+      "kind": "statistic",
+      "location": {
+        "section": "Q2 enjoyment, $20 condition",
+        "page": 206,
+        "char_span": null,
+        "quote": "How much they enjoyed (mean 2.77)"
+      },
+      "extracted_values": {
+        "reported_mean": 2.77,
+        "n": 20,
+        "n_items": 1,
+        "decimals": 2
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev3",
+      "kind": "statistic",
+      "location": {
+        "section": "Q3 importance, $20 condition",
+        "page": 206,
+        "char_span": null,
+        "quote": "Scientific importance (mean 4.88)"
+      },
+      "extracted_values": {
+        "reported_mean": 4.88,
+        "n": 20,
+        "n_items": 1,
+        "decimals": 2
+      },
+      "confidence": 0.95
+    }
+  ],
+  "bindings": [
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    }
+  ]
+}

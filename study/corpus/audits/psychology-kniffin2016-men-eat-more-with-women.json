@@ -1,0 +1,146 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "psychology-kniffin2016-men-eat-more-with-women",
+  "meta": {
+    "panel_summary": "The weakest link is data integrity/reproducibility of the reported sample: both audited single-item means (M=1.46, M=2.11) are deterministically GRIM-impossible for N=40 (grim.v1 FAIL severity B, both recompute scripts reproduced in a fresh sandbox), and no common effective N reconciles the two, so these descriptives cannot be accepted as computed from 40 integer responses as stated. Each value sits exactly +0.01 above the nearest achievable mean, consistent with either rounding/transcription error or reported statistics not matching the underlying data; combined with the published 'Statistical heartburn' critique and the Cornell Food & Brand Lab corpus pattern, the panel routes this to a human integrity reviewer for raw item-level data rather than a clerical-erratum narrative. The values are substantively plausible for a relaxed lab meal, but the broad causal headline over-reaches its observational design and is not supported by these rush/discomfort items.",
+    "executor": "managed",
+    "architecture": "coordinator+personas+verifier-tools",
+    "n_claims": 2,
+    "n_verifiers": 9,
+    "confirmation": "managed-tool-sandbox",
+    "personas": [
+      "skeptic",
+      "domain_expert",
+      "methodologist",
+      "claims_auditor",
+      "integrity_screener"
+    ],
+    "tool_calls": {
+      "list_verifiers": 6,
+      "run_verifier": 10,
+      "confirm_recompute": 10
+    },
+    "managed": {
+      "beta": "managed-agents-2026-04-01",
+      "model": "claude-opus-4-8",
+      "agent_id": "agent_01Fqfe9XkCBf6awyKTUn5afX",
+      "environment_id": "env_0183RWa5sYt6SAjvcsRppw4z",
+      "persona_agent_ids": {
+        "skeptic": "agent_01GBu52UYVYnuLg9ejKj7rVA",
+        "domain_expert": "agent_013f8g8gBbuwrhDrPXrhrSXT",
+        "methodologist": "agent_01EFBjjKcmUzsAjSvAQ17QWw",
+        "claims_auditor": "agent_01XKczbgxCFpbwvHtr1Q7VzK",
+        "integrity_screener": "agent_01VLYG8Qgd19uAvdQLfhyttg"
+      },
+      "session_id": "sesn_019HE4axuMqRLAX8tA1Ckw6p"
+    },
+    "registry_load_errors": []
+  },
+  "summary": {
+    "n_findings": 2,
+    "n_flags": 2,
+    "n_dropped": 0,
+    "n_routed_to_human": 4,
+    "n_abstained": 0,
+    "flags_by_trust_tier": {
+      "deterministic_confirmed": 2
+    },
+    "flags_by_severity": {
+      "B": 2
+    }
+  },
+  "findings": [
+    {
+      "verifier_id": "grim.v1",
+      "claim_id": "c1",
+      "status": "fail",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": "B",
+      "message": "reported mean is not achievable as a mean of integer responses (GRIM-inconsistent)",
+      "discrepancy": "mean 1.46 is unreachable for n=40; nearest achievable is 1.45 (=58/40)",
+      "reported": 1.46,
+      "computed": 1.45,
+      "evidence": {
+        "quote": "I felt rushed, M=1.46",
+        "location": {
+          "section": "Results",
+          "page": 41,
+          "char_span": null,
+          "quote": "I felt rushed, M=1.46"
+        },
+        "recompute_script": "# LITMUS recompute script for grim.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only (math), network-less, deterministic.\nimport math\n\nREPORTED_MEAN = 1.46\nN = 40\nN_ITEMS = 1\nDECIMALS = 2\nGRANULARITY = 40\nEPS = 1e-9\n\n\ndef _fmt_mean(value):\n    return format(value, '.' + str(DECIMALS) + 'f')\n\n\napprox = REPORTED_MEAN * GRANULARITY\ntarget_rounded = round(REPORTED_MEAN, DECIMALS)\nlo = max(0, int(math.floor(approx)) - 2)\nhi = int(math.ceil(approx)) + 2\nconsistent = False\nfor k in range(lo, hi + 1):\n    if round(k / GRANULARITY, DECIMALS) == target_rounded:\n        consistent = True\n        break\nnearest_k = min(range(lo, hi + 1), key=lambda k: (abs(k / GRANULARITY - REPORTED_MEAN), k))\nnearest_mean = nearest_k / GRANULARITY\nif consistent:\n    print('OK')\nelse:\n    print(\n        'GRIM-INCONSISTENT mean=' + _fmt_mean(REPORTED_MEAN) + ' '\n        + ('n=' + str(N)) + ' '\n        + 'nearest=' + _fmt_mean(nearest_mean) + '(=' + str(nearest_k) + '/' + str(GRANULARITY) + ')'\n    )\n",
+        "expected_output": "GRIM-INCONSISTENT mean=1.46 n=40 nearest=1.45(=58/40)",
+        "script_dependencies": []
+      },
+      "details": {
+        "n": 40,
+        "n_items": 1,
+        "granularity": 40,
+        "decimals": 2,
+        "nearest_total": 58,
+        "nearest_mean": 1.45
+      }
+    },
+    {
+      "verifier_id": "grim.v1",
+      "claim_id": "c2",
+      "status": "fail",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": "B",
+      "message": "reported mean is not achievable as a mean of integer responses (GRIM-inconsistent)",
+      "discrepancy": "mean 2.11 is unreachable for n=40; nearest achievable is 2.10 (=84/40)",
+      "reported": 2.11,
+      "computed": 2.1,
+      "evidence": {
+        "quote": "physically uncomfortable, M=2.11",
+        "location": {
+          "section": "Results",
+          "page": 41,
+          "char_span": null,
+          "quote": "physically uncomfortable, M=2.11"
+        },
+        "recompute_script": "# LITMUS recompute script for grim.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only (math), network-less, deterministic.\nimport math\n\nREPORTED_MEAN = 2.11\nN = 40\nN_ITEMS = 1\nDECIMALS = 2\nGRANULARITY = 40\nEPS = 1e-9\n\n\ndef _fmt_mean(value):\n    return format(value, '.' + str(DECIMALS) + 'f')\n\n\napprox = REPORTED_MEAN * GRANULARITY\ntarget_rounded = round(REPORTED_MEAN, DECIMALS)\nlo = max(0, int(math.floor(approx)) - 2)\nhi = int(math.ceil(approx)) + 2\nconsistent = False\nfor k in range(lo, hi + 1):\n    if round(k / GRANULARITY, DECIMALS) == target_rounded:\n        consistent = True\n        break\nnearest_k = min(range(lo, hi + 1), key=lambda k: (abs(k / GRANULARITY - REPORTED_MEAN), k))\nnearest_mean = nearest_k / GRANULARITY\nif consistent:\n    print('OK')\nelse:\n    print(\n        'GRIM-INCONSISTENT mean=' + _fmt_mean(REPORTED_MEAN) + ' '\n        + ('n=' + str(N)) + ' '\n        + 'nearest=' + _fmt_mean(nearest_mean) + '(=' + str(nearest_k) + '/' + str(GRANULARITY) + ')'\n    )\n",
+        "expected_output": "GRIM-INCONSISTENT mean=2.11 n=40 nearest=2.10(=84/40)",
+        "script_dependencies": []
+      },
+      "details": {
+        "n": 40,
+        "n_items": 1,
+        "granularity": 40,
+        "decimals": 2,
+        "nearest_total": 84,
+        "nearest_mean": 2.1
+      }
+    }
+  ],
+  "dropped_flags": [],
+  "routed_to_human": [
+    {
+      "claim_id": "c1",
+      "dimension": "integrity:grim_cluster",
+      "note": "Two of two audited single-item means are GRIM-impossible at the same N=40; co-occurrence elevates beyond an isolated typo to a data-integrity signal, matching the published van der Zee/Anaya/Brown 'Statistical heartburn' (2017) critique and the Cornell Food & Brand Lab corpus. Request raw item-level data and the true per-item N; no accusation implied.",
+      "quote": "I felt rushed, M=1.46 / physically uncomfortable, M=2.11 (N=40)"
+    },
+    {
+      "claim_id": null,
+      "dimension": "method",
+      "note": "No single effective N reconciles both means: c1=1.46 is consistent only at N=39 (57/39) or 41 (60/41); c2=2.11 only at N=37 (78/37) or 38 (80/38). The only benign explanation is undisclosed item-specific missingness with no reported handling. Confirm responses are truly single integer Likert (not averaged composites) and that no imputation was applied.",
+      "quote": null
+    },
+    {
+      "claim_id": null,
+      "dimension": "strength_scope",
+      "note": "Means stamped strength='exact' to 2 decimals exceed the 0.025 resolution 40 integer responses support, and the stated values are unattainable at the declared N=40. Using low single-item descriptives as confound-exclusion ('men didn't eat more because rushed/uncomfortable') is an underpowered-null over-reach; the causal/generalizing title 'men eat more in the company of women' over-reaches an observational N=40 field design where c1/c2 do not even measure eating.",
+      "quote": "M = 1.46 ... M = 2.11"
+    },
+    {
+      "claim_id": null,
+      "dimension": "significance",
+      "note": "Headline effect rests on observational, confounded field data; non-adaptationist mechanisms (baseline male energy intake/body mass, social facilitation, companion self-selection) are not excluded, leaving the evolutionary costly-signaling interpretation under-identified. The confirmed descriptive GRIM errors lower prior confidence in the inferential pipeline; recommend recomputing the key inferential tests.",
+      "quote": null
+    }
+  ],
+  "abstained": []
+}

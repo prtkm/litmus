@@ -1,0 +1,420 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "nutrition-wansink2015-buffet-price-regret",
+  "meta": {
+    "panel_summary": "The weakest link is the integrity of the reported descriptive data itself: all five checkable claims failed deterministic verification and reproduced - four Likert means (2.63/N18, 1.97/N17, 1.67/N17, 3.92/N10) are GRIM-impossible for their stated Ns, and Table 2's subgroup sizes sum to 89 rather than the reported 95. Because the core numbers cannot be reconciled, the paper's causal price->regret conclusion is unsupportable, and the panel independently flags post-treatment (collider) stratification, uncorrected multiplicity over tiny cells, headline over-reach, and a high-concern integrity cluster routed to a human. Overall soundness is very low, consistent with the paper's 2017 retraction.",
+    "executor": "managed",
+    "architecture": "coordinator+personas+verifier-tools",
+    "n_claims": 5,
+    "n_verifiers": 9,
+    "confirmation": "managed-tool-sandbox",
+    "personas": [
+      "skeptic",
+      "domain_expert",
+      "methodologist",
+      "claims_auditor",
+      "integrity_screener"
+    ],
+    "tool_calls": {
+      "list_verifiers": 2,
+      "run_verifier": 10,
+      "confirm_recompute": 10
+    },
+    "managed": {
+      "beta": "managed-agents-2026-04-01",
+      "model": "claude-opus-4-8",
+      "agent_id": "agent_01NZ3N1N9Bz7aq14hEFfir6s",
+      "environment_id": "env_019j9wFXX8Yy8kNL8sDLikpQ",
+      "persona_agent_ids": {
+        "skeptic": "agent_01GhPdZAdTyPGmj1AWn5Dph5",
+        "domain_expert": "agent_01TKTuqbwEQGy6iTGxLhbQHp",
+        "methodologist": "agent_01PC4hp8hXHAgY9Zf7mn3a49",
+        "claims_auditor": "agent_01JMxsBf5USvJnXxVpQTAGte",
+        "integrity_screener": "agent_01ECX8HMJD2SG1zhw7ukXBMT"
+      },
+      "session_id": "sesn_01Lat3xac7BEc722Y2oTFYn7"
+    },
+    "registry_load_errors": []
+  },
+  "summary": {
+    "n_findings": 10,
+    "n_flags": 10,
+    "n_dropped": 0,
+    "n_routed_to_human": 6,
+    "n_abstained": 0,
+    "flags_by_trust_tier": {
+      "deterministic_confirmed": 10
+    },
+    "flags_by_severity": {
+      "B": 10
+    }
+  },
+  "findings": [
+    {
+      "verifier_id": "grim.v1",
+      "claim_id": "c1",
+      "status": "fail",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": "B",
+      "message": "reported mean is not achievable as a mean of integer responses (GRIM-inconsistent)",
+      "discrepancy": "mean 2.63 is unreachable for n=18; nearest achievable is 2.61 (=47/18)",
+      "reported": 2.63,
+      "computed": 2.611111111111111,
+      "evidence": {
+        "quote": "I ate more pizza than I should have ($4, one piece) M=2.63",
+        "location": {
+          "section": "Results",
+          "page": 3,
+          "char_span": null,
+          "quote": "I ate more pizza than I should have ($4, one piece) M=2.63"
+        },
+        "recompute_script": "# LITMUS recompute script for grim.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only (math), network-less, deterministic.\nimport math\n\nREPORTED_MEAN = 2.63\nN = 18\nN_ITEMS = 1\nDECIMALS = 2\nGRANULARITY = 18\nEPS = 1e-9\n\n\ndef _fmt_mean(value):\n    return format(value, '.' + str(DECIMALS) + 'f')\n\n\napprox = REPORTED_MEAN * GRANULARITY\ntarget_rounded = round(REPORTED_MEAN, DECIMALS)\nlo = max(0, int(math.floor(approx)) - 2)\nhi = int(math.ceil(approx)) + 2\nconsistent = False\nfor k in range(lo, hi + 1):\n    if round(k / GRANULARITY, DECIMALS) == target_rounded:\n        consistent = True\n        break\nnearest_k = min(range(lo, hi + 1), key=lambda k: (abs(k / GRANULARITY - REPORTED_MEAN), k))\nnearest_mean = nearest_k / GRANULARITY\nif consistent:\n    print('OK')\nelse:\n    print(\n        'GRIM-INCONSISTENT mean=' + _fmt_mean(REPORTED_MEAN) + ' '\n        + ('n=' + str(N)) + ' '\n        + 'nearest=' + _fmt_mean(nearest_mean) + '(=' + str(nearest_k) + '/' + str(GRANULARITY) + ')'\n    )\n",
+        "expected_output": "GRIM-INCONSISTENT mean=2.63 n=18 nearest=2.61(=47/18)",
+        "script_dependencies": []
+      },
+      "details": {
+        "n": 18,
+        "n_items": 1,
+        "granularity": 18,
+        "decimals": 2,
+        "nearest_total": 47,
+        "nearest_mean": 2.611111111111111
+      }
+    },
+    {
+      "verifier_id": "grim.v1",
+      "claim_id": "c2",
+      "status": "fail",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": "B",
+      "message": "reported mean is not achievable as a mean of integer responses (GRIM-inconsistent)",
+      "discrepancy": "mean 1.97 is unreachable for n=17; nearest achievable is 1.94 (=33/17)",
+      "reported": 1.97,
+      "computed": 1.9411764705882353,
+      "evidence": {
+        "quote": "I am physically uncomfortable ($8, one piece) M=1.97",
+        "location": {
+          "section": "Results",
+          "page": 3,
+          "char_span": null,
+          "quote": "I am physically uncomfortable ($8, one piece) M=1.97"
+        },
+        "recompute_script": "# LITMUS recompute script for grim.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only (math), network-less, deterministic.\nimport math\n\nREPORTED_MEAN = 1.97\nN = 17\nN_ITEMS = 1\nDECIMALS = 2\nGRANULARITY = 17\nEPS = 1e-9\n\n\ndef _fmt_mean(value):\n    return format(value, '.' + str(DECIMALS) + 'f')\n\n\napprox = REPORTED_MEAN * GRANULARITY\ntarget_rounded = round(REPORTED_MEAN, DECIMALS)\nlo = max(0, int(math.floor(approx)) - 2)\nhi = int(math.ceil(approx)) + 2\nconsistent = False\nfor k in range(lo, hi + 1):\n    if round(k / GRANULARITY, DECIMALS) == target_rounded:\n        consistent = True\n        break\nnearest_k = min(range(lo, hi + 1), key=lambda k: (abs(k / GRANULARITY - REPORTED_MEAN), k))\nnearest_mean = nearest_k / GRANULARITY\nif consistent:\n    print('OK')\nelse:\n    print(\n        'GRIM-INCONSISTENT mean=' + _fmt_mean(REPORTED_MEAN) + ' '\n        + ('n=' + str(N)) + ' '\n        + 'nearest=' + _fmt_mean(nearest_mean) + '(=' + str(nearest_k) + '/' + str(GRANULARITY) + ')'\n    )\n",
+        "expected_output": "GRIM-INCONSISTENT mean=1.97 n=17 nearest=1.94(=33/17)",
+        "script_dependencies": []
+      },
+      "details": {
+        "n": 17,
+        "n_items": 1,
+        "granularity": 17,
+        "decimals": 2,
+        "nearest_total": 33,
+        "nearest_mean": 1.9411764705882353
+      }
+    },
+    {
+      "verifier_id": "grim.v1",
+      "claim_id": "c3",
+      "status": "fail",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": "B",
+      "message": "reported mean is not achievable as a mean of integer responses (GRIM-inconsistent)",
+      "discrepancy": "mean 1.67 is unreachable for n=17; nearest achievable is 1.65 (=28/17)",
+      "reported": 1.67,
+      "computed": 1.6470588235294117,
+      "evidence": {
+        "quote": "I overate ($8, one piece) M=1.67",
+        "location": {
+          "section": "Results",
+          "page": 3,
+          "char_span": null,
+          "quote": "I overate ($8, one piece) M=1.67"
+        },
+        "recompute_script": "# LITMUS recompute script for grim.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only (math), network-less, deterministic.\nimport math\n\nREPORTED_MEAN = 1.67\nN = 17\nN_ITEMS = 1\nDECIMALS = 2\nGRANULARITY = 17\nEPS = 1e-9\n\n\ndef _fmt_mean(value):\n    return format(value, '.' + str(DECIMALS) + 'f')\n\n\napprox = REPORTED_MEAN * GRANULARITY\ntarget_rounded = round(REPORTED_MEAN, DECIMALS)\nlo = max(0, int(math.floor(approx)) - 2)\nhi = int(math.ceil(approx)) + 2\nconsistent = False\nfor k in range(lo, hi + 1):\n    if round(k / GRANULARITY, DECIMALS) == target_rounded:\n        consistent = True\n        break\nnearest_k = min(range(lo, hi + 1), key=lambda k: (abs(k / GRANULARITY - REPORTED_MEAN), k))\nnearest_mean = nearest_k / GRANULARITY\nif consistent:\n    print('OK')\nelse:\n    print(\n        'GRIM-INCONSISTENT mean=' + _fmt_mean(REPORTED_MEAN) + ' '\n        + ('n=' + str(N)) + ' '\n        + 'nearest=' + _fmt_mean(nearest_mean) + '(=' + str(nearest_k) + '/' + str(GRANULARITY) + ')'\n    )\n",
+        "expected_output": "GRIM-INCONSISTENT mean=1.67 n=17 nearest=1.65(=28/17)",
+        "script_dependencies": []
+      },
+      "details": {
+        "n": 17,
+        "n_items": 1,
+        "granularity": 17,
+        "decimals": 2,
+        "nearest_total": 28,
+        "nearest_mean": 1.6470588235294117
+      }
+    },
+    {
+      "verifier_id": "grim.v1",
+      "claim_id": "c4",
+      "status": "fail",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": "B",
+      "message": "reported mean is not achievable as a mean of integer responses (GRIM-inconsistent)",
+      "discrepancy": "mean 3.92 is unreachable for n=10; nearest achievable is 3.90 (=39/10)",
+      "reported": 3.92,
+      "computed": 3.9,
+      "evidence": {
+        "quote": "I ate more than I should have ($8, three pieces) M=3.92",
+        "location": {
+          "section": "Results",
+          "page": 3,
+          "char_span": null,
+          "quote": "I ate more than I should have ($8, three pieces) M=3.92"
+        },
+        "recompute_script": "# LITMUS recompute script for grim.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only (math), network-less, deterministic.\nimport math\n\nREPORTED_MEAN = 3.92\nN = 10\nN_ITEMS = 1\nDECIMALS = 2\nGRANULARITY = 10\nEPS = 1e-9\n\n\ndef _fmt_mean(value):\n    return format(value, '.' + str(DECIMALS) + 'f')\n\n\napprox = REPORTED_MEAN * GRANULARITY\ntarget_rounded = round(REPORTED_MEAN, DECIMALS)\nlo = max(0, int(math.floor(approx)) - 2)\nhi = int(math.ceil(approx)) + 2\nconsistent = False\nfor k in range(lo, hi + 1):\n    if round(k / GRANULARITY, DECIMALS) == target_rounded:\n        consistent = True\n        break\nnearest_k = min(range(lo, hi + 1), key=lambda k: (abs(k / GRANULARITY - REPORTED_MEAN), k))\nnearest_mean = nearest_k / GRANULARITY\nif consistent:\n    print('OK')\nelse:\n    print(\n        'GRIM-INCONSISTENT mean=' + _fmt_mean(REPORTED_MEAN) + ' '\n        + ('n=' + str(N)) + ' '\n        + 'nearest=' + _fmt_mean(nearest_mean) + '(=' + str(nearest_k) + '/' + str(GRANULARITY) + ')'\n    )\n",
+        "expected_output": "GRIM-INCONSISTENT mean=3.92 n=10 nearest=3.90(=39/10)",
+        "script_dependencies": []
+      },
+      "details": {
+        "n": 10,
+        "n_items": 1,
+        "granularity": 10,
+        "decimals": 2,
+        "nearest_total": 39,
+        "nearest_mean": 3.9
+      }
+    },
+    {
+      "verifier_id": "sum_check.v1",
+      "claim_id": "c5",
+      "status": "fail",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": "B",
+      "message": "reported total does not equal the sum of its parts",
+      "discrepancy": "reported 95 but parts sum to 89",
+      "reported": 95,
+      "computed": 89,
+      "evidence": {
+        "quote": "subgroup sizes by price x pieces; total reported 95",
+        "location": {
+          "section": "Table 2",
+          "page": 3,
+          "char_span": null,
+          "quote": "subgroup sizes by price x pieces; total reported 95"
+        },
+        "recompute_script": "# LITMUS recompute script for sum_check.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only, network-less, deterministic.\nPARTS = [18, 18, 7, 17, 19, 10]\nREPORTED_TOTAL = 95\nTOLERANCE = 1e-09\n\n\ndef _fmt(value):\n    if isinstance(value, bool):\n        value = int(value)\n    if isinstance(value, int):\n        return str(value)\n    if isinstance(value, float) and value.is_integer():\n        return str(int(value))\n    return repr(value)\n\n\ncomputed = sum(PARTS)\nif abs(computed - REPORTED_TOTAL) <= TOLERANCE:\n    print('OK')\nelse:\n    print('MISMATCH reported=' + _fmt(REPORTED_TOTAL) + ' computed=' + _fmt(computed))\n",
+        "expected_output": "MISMATCH reported=95 computed=89",
+        "script_dependencies": []
+      },
+      "details": {
+        "parts": [
+          18,
+          18,
+          7,
+          17,
+          19,
+          10
+        ],
+        "n_parts": 6
+      }
+    },
+    {
+      "verifier_id": "grim.v1",
+      "claim_id": "c-grim-1",
+      "status": "fail",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": "B",
+      "message": "reported mean is not achievable as a mean of integer responses (GRIM-inconsistent)",
+      "discrepancy": "mean 2.63 is unreachable for n=18; nearest achievable is 2.61 (=47/18)",
+      "reported": 2.63,
+      "computed": 2.611111111111111,
+      "evidence": {
+        "quote": null,
+        "location": {
+          "section": null,
+          "page": null,
+          "char_span": null,
+          "quote": null
+        },
+        "recompute_script": "# LITMUS recompute script for grim.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only (math), network-less, deterministic.\nimport math\n\nREPORTED_MEAN = 2.63\nN = 18\nN_ITEMS = 1\nDECIMALS = 2\nGRANULARITY = 18\nEPS = 1e-9\n\n\ndef _fmt_mean(value):\n    return format(value, '.' + str(DECIMALS) + 'f')\n\n\napprox = REPORTED_MEAN * GRANULARITY\ntarget_rounded = round(REPORTED_MEAN, DECIMALS)\nlo = max(0, int(math.floor(approx)) - 2)\nhi = int(math.ceil(approx)) + 2\nconsistent = False\nfor k in range(lo, hi + 1):\n    if round(k / GRANULARITY, DECIMALS) == target_rounded:\n        consistent = True\n        break\nnearest_k = min(range(lo, hi + 1), key=lambda k: (abs(k / GRANULARITY - REPORTED_MEAN), k))\nnearest_mean = nearest_k / GRANULARITY\nif consistent:\n    print('OK')\nelse:\n    print(\n        'GRIM-INCONSISTENT mean=' + _fmt_mean(REPORTED_MEAN) + ' '\n        + ('n=' + str(N)) + ' '\n        + 'nearest=' + _fmt_mean(nearest_mean) + '(=' + str(nearest_k) + '/' + str(GRANULARITY) + ')'\n    )\n",
+        "expected_output": "GRIM-INCONSISTENT mean=2.63 n=18 nearest=2.61(=47/18)",
+        "script_dependencies": []
+      },
+      "details": {
+        "n": 18,
+        "n_items": 1,
+        "granularity": 18,
+        "decimals": 2,
+        "nearest_total": 47,
+        "nearest_mean": 2.611111111111111
+      }
+    },
+    {
+      "verifier_id": "grim.v1",
+      "claim_id": "c-grim-2",
+      "status": "fail",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": "B",
+      "message": "reported mean is not achievable as a mean of integer responses (GRIM-inconsistent)",
+      "discrepancy": "mean 1.97 is unreachable for n=17; nearest achievable is 1.94 (=33/17)",
+      "reported": 1.97,
+      "computed": 1.9411764705882353,
+      "evidence": {
+        "quote": null,
+        "location": {
+          "section": null,
+          "page": null,
+          "char_span": null,
+          "quote": null
+        },
+        "recompute_script": "# LITMUS recompute script for grim.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only (math), network-less, deterministic.\nimport math\n\nREPORTED_MEAN = 1.97\nN = 17\nN_ITEMS = 1\nDECIMALS = 2\nGRANULARITY = 17\nEPS = 1e-9\n\n\ndef _fmt_mean(value):\n    return format(value, '.' + str(DECIMALS) + 'f')\n\n\napprox = REPORTED_MEAN * GRANULARITY\ntarget_rounded = round(REPORTED_MEAN, DECIMALS)\nlo = max(0, int(math.floor(approx)) - 2)\nhi = int(math.ceil(approx)) + 2\nconsistent = False\nfor k in range(lo, hi + 1):\n    if round(k / GRANULARITY, DECIMALS) == target_rounded:\n        consistent = True\n        break\nnearest_k = min(range(lo, hi + 1), key=lambda k: (abs(k / GRANULARITY - REPORTED_MEAN), k))\nnearest_mean = nearest_k / GRANULARITY\nif consistent:\n    print('OK')\nelse:\n    print(\n        'GRIM-INCONSISTENT mean=' + _fmt_mean(REPORTED_MEAN) + ' '\n        + ('n=' + str(N)) + ' '\n        + 'nearest=' + _fmt_mean(nearest_mean) + '(=' + str(nearest_k) + '/' + str(GRANULARITY) + ')'\n    )\n",
+        "expected_output": "GRIM-INCONSISTENT mean=1.97 n=17 nearest=1.94(=33/17)",
+        "script_dependencies": []
+      },
+      "details": {
+        "n": 17,
+        "n_items": 1,
+        "granularity": 17,
+        "decimals": 2,
+        "nearest_total": 33,
+        "nearest_mean": 1.9411764705882353
+      }
+    },
+    {
+      "verifier_id": "grim.v1",
+      "claim_id": "c-grim-3",
+      "status": "fail",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": "B",
+      "message": "reported mean is not achievable as a mean of integer responses (GRIM-inconsistent)",
+      "discrepancy": "mean 1.67 is unreachable for n=17; nearest achievable is 1.65 (=28/17)",
+      "reported": 1.67,
+      "computed": 1.6470588235294117,
+      "evidence": {
+        "quote": null,
+        "location": {
+          "section": null,
+          "page": null,
+          "char_span": null,
+          "quote": null
+        },
+        "recompute_script": "# LITMUS recompute script for grim.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only (math), network-less, deterministic.\nimport math\n\nREPORTED_MEAN = 1.67\nN = 17\nN_ITEMS = 1\nDECIMALS = 2\nGRANULARITY = 17\nEPS = 1e-9\n\n\ndef _fmt_mean(value):\n    return format(value, '.' + str(DECIMALS) + 'f')\n\n\napprox = REPORTED_MEAN * GRANULARITY\ntarget_rounded = round(REPORTED_MEAN, DECIMALS)\nlo = max(0, int(math.floor(approx)) - 2)\nhi = int(math.ceil(approx)) + 2\nconsistent = False\nfor k in range(lo, hi + 1):\n    if round(k / GRANULARITY, DECIMALS) == target_rounded:\n        consistent = True\n        break\nnearest_k = min(range(lo, hi + 1), key=lambda k: (abs(k / GRANULARITY - REPORTED_MEAN), k))\nnearest_mean = nearest_k / GRANULARITY\nif consistent:\n    print('OK')\nelse:\n    print(\n        'GRIM-INCONSISTENT mean=' + _fmt_mean(REPORTED_MEAN) + ' '\n        + ('n=' + str(N)) + ' '\n        + 'nearest=' + _fmt_mean(nearest_mean) + '(=' + str(nearest_k) + '/' + str(GRANULARITY) + ')'\n    )\n",
+        "expected_output": "GRIM-INCONSISTENT mean=1.67 n=17 nearest=1.65(=28/17)",
+        "script_dependencies": []
+      },
+      "details": {
+        "n": 17,
+        "n_items": 1,
+        "granularity": 17,
+        "decimals": 2,
+        "nearest_total": 28,
+        "nearest_mean": 1.6470588235294117
+      }
+    },
+    {
+      "verifier_id": "grim.v1",
+      "claim_id": "c-grim-4",
+      "status": "fail",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": "B",
+      "message": "reported mean is not achievable as a mean of integer responses (GRIM-inconsistent)",
+      "discrepancy": "mean 3.92 is unreachable for n=10; nearest achievable is 3.90 (=39/10)",
+      "reported": 3.92,
+      "computed": 3.9,
+      "evidence": {
+        "quote": null,
+        "location": {
+          "section": null,
+          "page": null,
+          "char_span": null,
+          "quote": null
+        },
+        "recompute_script": "# LITMUS recompute script for grim.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only (math), network-less, deterministic.\nimport math\n\nREPORTED_MEAN = 3.92\nN = 10\nN_ITEMS = 1\nDECIMALS = 2\nGRANULARITY = 10\nEPS = 1e-9\n\n\ndef _fmt_mean(value):\n    return format(value, '.' + str(DECIMALS) + 'f')\n\n\napprox = REPORTED_MEAN * GRANULARITY\ntarget_rounded = round(REPORTED_MEAN, DECIMALS)\nlo = max(0, int(math.floor(approx)) - 2)\nhi = int(math.ceil(approx)) + 2\nconsistent = False\nfor k in range(lo, hi + 1):\n    if round(k / GRANULARITY, DECIMALS) == target_rounded:\n        consistent = True\n        break\nnearest_k = min(range(lo, hi + 1), key=lambda k: (abs(k / GRANULARITY - REPORTED_MEAN), k))\nnearest_mean = nearest_k / GRANULARITY\nif consistent:\n    print('OK')\nelse:\n    print(\n        'GRIM-INCONSISTENT mean=' + _fmt_mean(REPORTED_MEAN) + ' '\n        + ('n=' + str(N)) + ' '\n        + 'nearest=' + _fmt_mean(nearest_mean) + '(=' + str(nearest_k) + '/' + str(GRANULARITY) + ')'\n    )\n",
+        "expected_output": "GRIM-INCONSISTENT mean=3.92 n=10 nearest=3.90(=39/10)",
+        "script_dependencies": []
+      },
+      "details": {
+        "n": 10,
+        "n_items": 1,
+        "granularity": 10,
+        "decimals": 2,
+        "nearest_total": 39,
+        "nearest_mean": 3.9
+      }
+    },
+    {
+      "verifier_id": "sum_check.v1",
+      "claim_id": "c-sum-1",
+      "status": "fail",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": "B",
+      "message": "reported total does not equal the sum of its parts",
+      "discrepancy": "reported 95 but parts sum to 89",
+      "reported": 95,
+      "computed": 89,
+      "evidence": {
+        "quote": null,
+        "location": {
+          "section": null,
+          "page": null,
+          "char_span": null,
+          "quote": null
+        },
+        "recompute_script": "# LITMUS recompute script for sum_check.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only, network-less, deterministic.\nPARTS = [18, 18, 7, 17, 19, 10]\nREPORTED_TOTAL = 95\nTOLERANCE = 1e-09\n\n\ndef _fmt(value):\n    if isinstance(value, bool):\n        value = int(value)\n    if isinstance(value, int):\n        return str(value)\n    if isinstance(value, float) and value.is_integer():\n        return str(int(value))\n    return repr(value)\n\n\ncomputed = sum(PARTS)\nif abs(computed - REPORTED_TOTAL) <= TOLERANCE:\n    print('OK')\nelse:\n    print('MISMATCH reported=' + _fmt(REPORTED_TOTAL) + ' computed=' + _fmt(computed))\n",
+        "expected_output": "MISMATCH reported=95 computed=89",
+        "script_dependencies": []
+      },
+      "details": {
+        "parts": [
+          18,
+          18,
+          7,
+          17,
+          19,
+          10
+        ],
+        "n_parts": 6
+      }
+    }
+  ],
+  "dropped_flags": [],
+  "routed_to_human": [
+    {
+      "claim_id": null,
+      "dimension": "method",
+      "note": "Uncorrected multiplicity across many Likert items x 6 subgroups atop underpowered N=7-10 cells; ad-hoc missing-data handling implied by shifting per-item Ns.",
+      "quote": "Weakest link: uncorrected multiplicity over many Likert items atop N=7-10 cells - inference is not method-supportable."
+    },
+    {
+      "claim_id": null,
+      "dimension": "strength_scope",
+      "note": "Causal, headline-level framing ('how pricing influences regret') and 2-decimal precision over-reach small, self-reported, single-site samples.",
+      "quote": "Conclusions exceed the evidence - causal, headline-level claims outrun small, self-reported, single-site samples."
+    },
+    {
+      "claim_id": null,
+      "dimension": "significance",
+      "note": "Field-plausibility: 'pieces eaten' is a post-treatment outcome, so stratifying price x pieces conditions on a mediator/collider; single-item Likert proxies are unvalidated for 'regret'; effect magnitude implausibly large for a $4 difference.",
+      "quote": "'pieces eaten' is a post-treatment OUTCOME, not a randomized factor. Stratifying diners by price x pieces-eaten (cells 18,18,7,17,19,10) conditions on a mediator/collider - induces selection bias, not causal effect of price."
+    },
+    {
+      "claim_id": "c5",
+      "dimension": "integrity:dataset_reconciliation",
+      "note": "Skeptic weakest-link: central price->regret association rests on a Table 2 that is not internally reconcilable (6-person N gap, no exclusion log).",
+      "quote": "Subgroup Ns (18,18,7,17,19,10) sum to 89, not the stated '95 diners' - a 6-person gap with no exclusion log."
+    },
+    {
+      "claim_id": null,
+      "dimension": "integrity:grim_inconsistency",
+      "note": "Recurring GRIM impossibility across four reported means is a HIGH-concern cluster, not a lone typo; consistent with undisclosed exclusions or post-hoc N/value manipulation. Route to human; request raw response-level data and exclusion logs.",
+      "quote": "FOUR across the table plus a floating denominator is a pattern more consistent with undisclosed exclusions or post-hoc N/value manipulation."
+    },
+    {
+      "claim_id": "c5",
+      "dimension": "integrity:denominator_mismatch",
+      "note": "Stated N=95 vs subgroup sum of 89 with no exclusion accounting; reviewer should reconcile 89 vs 95 against participant-flow logs.",
+      "quote": "Table 2 subgroups (18,18,7,17,19,10) sum to 89, but the paper states N=95; a 6-person gap with no exclusion accounting."
+    }
+  ],
+  "abstained": []
+}

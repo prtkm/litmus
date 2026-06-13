@@ -1,0 +1,224 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "nutrition-wansink2015-buffet-price-regret",
+  "meta": {
+    "journal": "BMC Nutrition",
+    "doi": "10.1186/s40795-015-0030-x",
+    "year": 2015,
+    "title": "Low prices and high regret: how pricing influences regret at all-you-can-eat buffets",
+    "status": "RETRACTED (2017)",
+    "source": "van der Zee, Anaya & Brown, 'Statistical heartburn', BMC Nutrition 2017",
+    "note": "Multiple impossible Likert means; Table 2 Ns sum to 89, not 95."
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Reported Likert mean 2.63 with N=18.",
+      "location": {
+        "section": "Results",
+        "page": 3,
+        "char_span": null,
+        "quote": "I ate more pizza than I should have ($4, one piece) M=2.63"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported_mean",
+      "strength": "exact",
+      "scope": "reported descriptive/statistic",
+      "evidence_refs": [
+        "ev1"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c2",
+      "text": "Reported Likert mean 1.97 with N=17.",
+      "location": {
+        "section": "Results",
+        "page": 3,
+        "char_span": null,
+        "quote": "I am physically uncomfortable ($8, one piece) M=1.97"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported_mean",
+      "strength": "exact",
+      "scope": "reported descriptive/statistic",
+      "evidence_refs": [
+        "ev2"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c3",
+      "text": "Reported Likert mean 1.67 with N=17.",
+      "location": {
+        "section": "Results",
+        "page": 3,
+        "char_span": null,
+        "quote": "I overate ($8, one piece) M=1.67"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported_mean",
+      "strength": "exact",
+      "scope": "reported descriptive/statistic",
+      "evidence_refs": [
+        "ev3"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c4",
+      "text": "Reported Likert mean 3.92 with N=10.",
+      "location": {
+        "section": "Results",
+        "page": 3,
+        "char_span": null,
+        "quote": "I ate more than I should have ($8, three pieces) M=3.92"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported_mean",
+      "strength": "exact",
+      "scope": "reported descriptive/statistic",
+      "evidence_refs": [
+        "ev4"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c5",
+      "text": "Table 2 subgroup sizes (18,18,7,17,19,10) are stated to total 95 diners.",
+      "location": {
+        "section": "Table 2",
+        "page": 3,
+        "char_span": null,
+        "quote": "Total N reported as 95"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "table_total",
+      "strength": "exact",
+      "scope": "reported descriptive/statistic",
+      "evidence_refs": [
+        "ev5"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev1",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 3,
+        "char_span": null,
+        "quote": "I ate more pizza than I should have ($4, one piece) M=2.63"
+      },
+      "extracted_values": {
+        "reported_mean": 2.63,
+        "n": 18,
+        "n_items": 1,
+        "decimals": 2
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev2",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 3,
+        "char_span": null,
+        "quote": "I am physically uncomfortable ($8, one piece) M=1.97"
+      },
+      "extracted_values": {
+        "reported_mean": 1.97,
+        "n": 17,
+        "n_items": 1,
+        "decimals": 2
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev3",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 3,
+        "char_span": null,
+        "quote": "I overate ($8, one piece) M=1.67"
+      },
+      "extracted_values": {
+        "reported_mean": 1.67,
+        "n": 17,
+        "n_items": 1,
+        "decimals": 2
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev4",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 3,
+        "char_span": null,
+        "quote": "I ate more than I should have ($8, three pieces) M=3.92"
+      },
+      "extracted_values": {
+        "reported_mean": 3.92,
+        "n": 10,
+        "n_items": 1,
+        "decimals": 2
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev5",
+      "kind": "table",
+      "location": {
+        "section": "Table 2",
+        "page": 3,
+        "char_span": null,
+        "quote": "subgroup sizes by price x pieces; total reported 95"
+      },
+      "extracted_values": {
+        "parts": [
+          18,
+          18,
+          7,
+          17,
+          19,
+          10
+        ],
+        "reported_total": 95
+      },
+      "confidence": 0.95
+    }
+  ],
+  "bindings": [
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c4",
+      "evidence_id": "ev4",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c5",
+      "evidence_id": "ev5",
+      "relation": "rests_on"
+    }
+  ]
+}

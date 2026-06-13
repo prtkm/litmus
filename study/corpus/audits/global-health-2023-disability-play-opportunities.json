@@ -1,0 +1,58 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "global-health-2023-disability-play-opportunities",
+  "meta": {
+    "executor": "local",
+    "n_claims": 1,
+    "n_verifiers": 9,
+    "synthesis_candidates": [],
+    "confirmation": "fresh-sandbox",
+    "registry_load_errors": []
+  },
+  "summary": {
+    "n_findings": 1,
+    "n_flags": 1,
+    "n_dropped": 0,
+    "n_routed_to_human": 0,
+    "n_abstained": 0,
+    "flags_by_trust_tier": {
+      "deterministic_confirmed": 1
+    },
+    "flags_by_severity": {
+      "B": 1
+    }
+  },
+  "findings": [
+    {
+      "verifier_id": "percent_change.v1",
+      "claim_id": "c1",
+      "status": "fail",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": "B",
+      "message": "reported percent change does not match the recomputed old->new change",
+      "discrepancy": "reported -9% but 1->0.88 is -12%",
+      "reported": -9.0,
+      "computed": -12.0,
+      "evidence": {
+        "quote": "children with disabilities had approximately 9% fewer play opportunities (aRR 0.88)",
+        "location": {
+          "section": "Results",
+          "page": 5,
+          "char_span": null,
+          "quote": "children with disabilities had approximately 9% fewer play opportunities (aRR 0.88)"
+        },
+        "recompute_script": "# LITMUS recompute script for percent_change.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only, network-less, deterministic.\nOLD_VALUE = 1.0\nNEW_VALUE = 0.88\nREPORTED_PCT_CHANGE = -9.0\nTOLERANCE = 1.0\n\n\ndef _fmt(value):\n    if isinstance(value, bool):\n        value = int(value)\n    if isinstance(value, int):\n        return str(value)\n    if isinstance(value, float) and value.is_integer():\n        return str(int(value))\n    return repr(value)\n\n\ncomputed = 100.0 * (NEW_VALUE - OLD_VALUE) / OLD_VALUE\nif abs(computed - REPORTED_PCT_CHANGE) <= TOLERANCE:\n    print('OK')\nelse:\n    print('MISMATCH reported=' + _fmt(REPORTED_PCT_CHANGE) + ' computed=' + _fmt(computed))\n",
+        "expected_output": "MISMATCH reported=-9 computed=-12",
+        "script_dependencies": []
+      },
+      "details": {
+        "old_value": 1.0,
+        "new_value": 0.88
+      }
+    }
+  ],
+  "dropped_flags": [],
+  "routed_to_human": [],
+  "abstained": []
+}

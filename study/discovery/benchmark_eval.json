@@ -1,19 +1,29 @@
 {
   "corpus": {
-    "papers_audited": 24,
-    "confirmed_flags": 1,
-    "emitted_flags": 1,
+    "papers_audited": 31,
+    "confirmed_flags": 18,
+    "emitted_flags": 18,
     "deterministic_precision": 1.0,
-    "passes": 67,
-    "abstained": 487,
-    "routed_to_human": 8,
+    "passes": 80,
+    "abstained": 20,
+    "routed_to_human": 504,
     "flags_by_verifier": {
-      "statcheck.v1": 1
+      "grim.v1": 13,
+      "sum_check.v1": 1,
+      "statcheck.v1": 3,
+      "percent_change.v1": 1
     },
     "flags_by_field": {
+      "?": 17,
       "psychology": 1
     },
     "papers_with_confirmed_flags": {
+      "nutrition-just2014-buffet-taste-satisfaction": 4,
+      "nutrition-wansink2015-buffet-price-regret": 5,
+      "psychology-festinger1959-cognitive-dissonance": 3,
+      "psychology-kanngiesser2012-merit-sharing": 2,
+      "psychology-kniffin2016-men-eat-more-with-women": 2,
+      "health-econ-loo2024-pediatric-mental-health-spending": 1,
       "psychology-bai2025-acute-exercise-executive-function": 1
     }
   },

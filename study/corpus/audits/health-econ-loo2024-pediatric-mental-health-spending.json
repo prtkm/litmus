@@ -1,0 +1,104 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "health-econ-loo2024-pediatric-mental-health-spending",
+  "meta": {
+    "panel_summary": "The weakest link is a confirmed T0 arithmetic error: the reported 31.1% increase does not match the recomputed 45.17% for $3,004->$4,361, a fail that reproduced deterministically and aligns with the journal's own correction to 45.2%. Beyond the arithmetic, the panel notes the claim's 'exact' strength is overstated for a corrected figure and its interpretation is sensitive to nominal-vs-real dollars and a pandemic-year endpoint, and should not be read as causal or population-aggregate. Integrity-wise the error appears benign, conservative in direction, and was properly corrected, so no human escalation on integrity grounds.",
+    "executor": "managed",
+    "architecture": "coordinator+personas+verifier-tools",
+    "n_claims": 1,
+    "n_verifiers": 9,
+    "confirmation": "managed-tool-sandbox",
+    "personas": [
+      "skeptic",
+      "domain_expert",
+      "methodologist",
+      "claims_auditor",
+      "integrity_screener"
+    ],
+    "tool_calls": {
+      "list_verifiers": 1,
+      "run_verifier": 1,
+      "confirm_recompute": 1
+    },
+    "managed": {
+      "beta": "managed-agents-2026-04-01",
+      "model": "claude-opus-4-8",
+      "agent_id": "agent_01CLN4AS2f4XTQdVTjLugVn9",
+      "environment_id": "env_01U3aJhMG3w2EFYnZepimr7G",
+      "persona_agent_ids": {
+        "skeptic": "agent_01Gcv5BZu34h5DWY1euvcExH",
+        "domain_expert": "agent_01DdyLmmB8tUxtyKfU9dfKJv",
+        "methodologist": "agent_019Uxuw3zzxVxUii4oKGyFNz",
+        "claims_auditor": "agent_012btSpqe66kFJJR9ceRBoUp",
+        "integrity_screener": "agent_015k9rSCCZNtgiEgMHYzpmdM"
+      },
+      "session_id": "sesn_014YEFxpPXUqyvTcajGeyXa5"
+    },
+    "registry_load_errors": []
+  },
+  "summary": {
+    "n_findings": 1,
+    "n_flags": 1,
+    "n_dropped": 0,
+    "n_routed_to_human": 3,
+    "n_abstained": 0,
+    "flags_by_trust_tier": {
+      "deterministic_confirmed": 1
+    },
+    "flags_by_severity": {
+      "B": 1
+    }
+  },
+  "findings": [
+    {
+      "verifier_id": "percent_change.v1",
+      "claim_id": "c1",
+      "status": "fail",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": "B",
+      "message": "reported percent change does not match the recomputed old->new change",
+      "discrepancy": "reported 31.1% but 3004->4361 is 45.173102529960055%",
+      "reported": 31.1,
+      "computed": 45.173102529960055,
+      "evidence": {
+        "quote": "total medical spending rose from $3004 (2017) to $4361 (2021), a 31.1% increase",
+        "location": {
+          "section": "Results",
+          "page": 4,
+          "char_span": null,
+          "quote": "total medical spending rose from $3004 (2017) to $4361 (2021), a 31.1% increase"
+        },
+        "recompute_script": "# LITMUS recompute script for percent_change.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only, network-less, deterministic.\nOLD_VALUE = 3004\nNEW_VALUE = 4361\nREPORTED_PCT_CHANGE = 31.1\nTOLERANCE = 0.09080777339047272\n\n\ndef _fmt(value):\n    if isinstance(value, bool):\n        value = int(value)\n    if isinstance(value, int):\n        return str(value)\n    if isinstance(value, float) and value.is_integer():\n        return str(int(value))\n    return repr(value)\n\n\ncomputed = 100.0 * (NEW_VALUE - OLD_VALUE) / OLD_VALUE\nif abs(computed - REPORTED_PCT_CHANGE) <= TOLERANCE:\n    print('OK')\nelse:\n    print('MISMATCH reported=' + _fmt(REPORTED_PCT_CHANGE) + ' computed=' + _fmt(computed))\n",
+        "expected_output": "MISMATCH reported=31.1 computed=45.173102529960055",
+        "script_dependencies": []
+      },
+      "details": {
+        "old_value": 3004,
+        "new_value": 4361
+      }
+    }
+  ],
+  "dropped_flags": [],
+  "routed_to_human": [
+    {
+      "claim_id": "c1",
+      "dimension": "strength_scope",
+      "note": "Strength 'exact' miscalibrated for a figure the authors formally corrected; 'Total medical spending' risks reading as a population aggregate when figures are per-household means; single-arm descriptive trend does not support condition-attributable/causal framing (no comparison group).",
+      "quote": "Total medical spending rose from $3,004 (2017) to $4,361 (2021), a 31.1% increase"
+    },
+    {
+      "claim_id": "c1",
+      "dimension": "method",
+      "note": "Result hinges on nominal vs. inflation-adjusted dollars (CPI-U ~13-14% over 2017-2021); 'total spending' blends insurer- and patient-paid amounts so it does not equal household burden; 2021 endpoint captures pandemic-era anomalies, and a two-point comparison cannot distinguish a durable trend from a spike.",
+      "quote": null
+    },
+    {
+      "claim_id": "c1",
+      "dimension": "integrity:reported_vs_computed_mismatch",
+      "note": "Low/no-action signal: 31.1% is consistent with a wrong-denominator computation (change divided by new value), error direction is conservative (understates the increase), and a published correction (PMC11022109, 45.2%) was appropriately issued. No escalation warranted.",
+      "quote": null
+    }
+  ],
+  "abstained": []
+}

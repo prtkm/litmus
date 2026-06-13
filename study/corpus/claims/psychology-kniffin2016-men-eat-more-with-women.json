@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "psychology-kniffin2016-men-eat-more-with-women",
+  "meta": {
+    "journal": "Evolutionary Psychological Science",
+    "doi": "10.1007/s40806-015-0035-3",
+    "year": 2016,
+    "title": "Eating heavily: men eat more in the company of women",
+    "source": "van der Zee, Anaya & Brown, 'Statistical heartburn', BMC Nutrition 2017",
+    "note": "Impossible means for N=40."
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Reported Likert mean 1.46 with N=40.",
+      "location": {
+        "section": "Results",
+        "page": 41,
+        "char_span": null,
+        "quote": "I felt rushed, M=1.46"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported_mean",
+      "strength": "exact",
+      "scope": "reported descriptive/statistic",
+      "evidence_refs": [
+        "ev1"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c2",
+      "text": "Reported Likert mean 2.11 with N=40.",
+      "location": {
+        "section": "Results",
+        "page": 41,
+        "char_span": null,
+        "quote": "physically uncomfortable, M=2.11"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported_mean",
+      "strength": "exact",
+      "scope": "reported descriptive/statistic",
+      "evidence_refs": [
+        "ev2"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev1",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 41,
+        "char_span": null,
+        "quote": "I felt rushed, M=1.46"
+      },
+      "extracted_values": {
+        "reported_mean": 1.46,
+        "n": 40,
+        "n_items": 1,
+        "decimals": 2
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev2",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 41,
+        "char_span": null,
+        "quote": "physically uncomfortable, M=2.11"
+      },
+      "extracted_values": {
+        "reported_mean": 2.11,
+        "n": 40,
+        "n_items": 1,
+        "decimals": 2
+      },
+      "confidence": 0.95
+    }
+  ],
+  "bindings": [
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    }
+  ]
+}

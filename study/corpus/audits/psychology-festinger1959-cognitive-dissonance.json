@@ -1,0 +1,172 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "psychology-festinger1959-cognitive-dissonance",
+  "meta": {
+    "panel_summary": "The weakest link is arithmetic reproducibility: all three reported single-item cell means (3.03, 2.77, 4.88) are GRIM-impossible at N=20, each off by exactly +/-0.02, and every flag reproduced deterministically (grim.v1, severity B). The convergent panel read is that this is most likely benign \u2014 a denominator/transcription artifact (effective per-item N != 20, given F&C's 11-of-71 exclusions, or 1959 typesetting drift) rather than misconduct (integrity: LOW) \u2014 but as transcribed the integer totals cannot be reconstructed and the descriptives carry no SD/test statistics, so the headline $1>$20 dissonance effect cannot be robustly verified from these numbers alone. Claims are correctly scoped (no strength/scope over-reach); the actionable items are confirming the true per-item N and scale against the primary source.",
+    "executor": "managed",
+    "architecture": "coordinator+personas+verifier-tools",
+    "n_claims": 3,
+    "n_verifiers": 9,
+    "confirmation": "managed-tool-sandbox",
+    "personas": [
+      "skeptic",
+      "domain_expert",
+      "methodologist",
+      "claims_auditor",
+      "integrity_screener"
+    ],
+    "tool_calls": {
+      "list_verifiers": 3,
+      "run_verifier": 9,
+      "confirm_recompute": 9
+    },
+    "managed": {
+      "beta": "managed-agents-2026-04-01",
+      "model": "claude-opus-4-8",
+      "agent_id": "agent_01DdjfswNQ28mFPDmMxoXfpE",
+      "environment_id": "env_01CXmAH4voanSFCcxfnuE3pU",
+      "persona_agent_ids": {
+        "skeptic": "agent_01Atd5RzENr5q9ze73WozpMM",
+        "domain_expert": "agent_01TGKp1U5sgyLNcJFRJHdpDf",
+        "methodologist": "agent_01Hvx8KzbA7bjbtEynEKiqFJ",
+        "claims_auditor": "agent_01T484yyyFvtXmxuey6mBQQ8",
+        "integrity_screener": "agent_01D8ZrjTdpxczK7PmzuMhjMT"
+      },
+      "session_id": "sesn_019fZB4jU1DyT8ps6ykbBhWC"
+    },
+    "registry_load_errors": []
+  },
+  "summary": {
+    "n_findings": 3,
+    "n_flags": 3,
+    "n_dropped": 0,
+    "n_routed_to_human": 3,
+    "n_abstained": 0,
+    "flags_by_trust_tier": {
+      "deterministic_confirmed": 3
+    },
+    "flags_by_severity": {
+      "B": 3
+    }
+  },
+  "findings": [
+    {
+      "verifier_id": "grim.v1",
+      "claim_id": "c1",
+      "status": "fail",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": "B",
+      "message": "reported mean is not achievable as a mean of integer responses (GRIM-inconsistent)",
+      "discrepancy": "mean 3.03 is unreachable for n=20; nearest achievable is 3.05 (=61/20)",
+      "reported": 3.03,
+      "computed": 3.05,
+      "evidence": {
+        "quote": "How much they enjoyed (mean 3.03)",
+        "location": {
+          "section": "Q2 enjoyment, $1 condition",
+          "page": 206,
+          "char_span": null,
+          "quote": "How much they enjoyed (mean 3.03)"
+        },
+        "recompute_script": "# LITMUS recompute script for grim.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only (math), network-less, deterministic.\nimport math\n\nREPORTED_MEAN = 3.03\nN = 20\nN_ITEMS = 1\nDECIMALS = 2\nGRANULARITY = 20\nEPS = 1e-9\n\n\ndef _fmt_mean(value):\n    return format(value, '.' + str(DECIMALS) + 'f')\n\n\napprox = REPORTED_MEAN * GRANULARITY\ntarget_rounded = round(REPORTED_MEAN, DECIMALS)\nlo = max(0, int(math.floor(approx)) - 2)\nhi = int(math.ceil(approx)) + 2\nconsistent = False\nfor k in range(lo, hi + 1):\n    if round(k / GRANULARITY, DECIMALS) == target_rounded:\n        consistent = True\n        break\nnearest_k = min(range(lo, hi + 1), key=lambda k: (abs(k / GRANULARITY - REPORTED_MEAN), k))\nnearest_mean = nearest_k / GRANULARITY\nif consistent:\n    print('OK')\nelse:\n    print(\n        'GRIM-INCONSISTENT mean=' + _fmt_mean(REPORTED_MEAN) + ' '\n        + ('n=' + str(N)) + ' '\n        + 'nearest=' + _fmt_mean(nearest_mean) + '(=' + str(nearest_k) + '/' + str(GRANULARITY) + ')'\n    )\n",
+        "expected_output": "GRIM-INCONSISTENT mean=3.03 n=20 nearest=3.05(=61/20)",
+        "script_dependencies": []
+      },
+      "details": {
+        "n": 20,
+        "n_items": 1,
+        "granularity": 20,
+        "decimals": 2,
+        "nearest_total": 61,
+        "nearest_mean": 3.05
+      }
+    },
+    {
+      "verifier_id": "grim.v1",
+      "claim_id": "c2",
+      "status": "fail",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": "B",
+      "message": "reported mean is not achievable as a mean of integer responses (GRIM-inconsistent)",
+      "discrepancy": "mean 2.77 is unreachable for n=20; nearest achievable is 2.75 (=55/20)",
+      "reported": 2.77,
+      "computed": 2.75,
+      "evidence": {
+        "quote": "How much they enjoyed (mean 2.77)",
+        "location": {
+          "section": "Q2 enjoyment, $20 condition",
+          "page": 206,
+          "char_span": null,
+          "quote": "How much they enjoyed (mean 2.77)"
+        },
+        "recompute_script": "# LITMUS recompute script for grim.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only (math), network-less, deterministic.\nimport math\n\nREPORTED_MEAN = 2.77\nN = 20\nN_ITEMS = 1\nDECIMALS = 2\nGRANULARITY = 20\nEPS = 1e-9\n\n\ndef _fmt_mean(value):\n    return format(value, '.' + str(DECIMALS) + 'f')\n\n\napprox = REPORTED_MEAN * GRANULARITY\ntarget_rounded = round(REPORTED_MEAN, DECIMALS)\nlo = max(0, int(math.floor(approx)) - 2)\nhi = int(math.ceil(approx)) + 2\nconsistent = False\nfor k in range(lo, hi + 1):\n    if round(k / GRANULARITY, DECIMALS) == target_rounded:\n        consistent = True\n        break\nnearest_k = min(range(lo, hi + 1), key=lambda k: (abs(k / GRANULARITY - REPORTED_MEAN), k))\nnearest_mean = nearest_k / GRANULARITY\nif consistent:\n    print('OK')\nelse:\n    print(\n        'GRIM-INCONSISTENT mean=' + _fmt_mean(REPORTED_MEAN) + ' '\n        + ('n=' + str(N)) + ' '\n        + 'nearest=' + _fmt_mean(nearest_mean) + '(=' + str(nearest_k) + '/' + str(GRANULARITY) + ')'\n    )\n",
+        "expected_output": "GRIM-INCONSISTENT mean=2.77 n=20 nearest=2.75(=55/20)",
+        "script_dependencies": []
+      },
+      "details": {
+        "n": 20,
+        "n_items": 1,
+        "granularity": 20,
+        "decimals": 2,
+        "nearest_total": 55,
+        "nearest_mean": 2.75
+      }
+    },
+    {
+      "verifier_id": "grim.v1",
+      "claim_id": "c3",
+      "status": "fail",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": "B",
+      "message": "reported mean is not achievable as a mean of integer responses (GRIM-inconsistent)",
+      "discrepancy": "mean 4.88 is unreachable for n=20; nearest achievable is 4.90 (=98/20)",
+      "reported": 4.88,
+      "computed": 4.9,
+      "evidence": {
+        "quote": "Scientific importance (mean 4.88)",
+        "location": {
+          "section": "Q3 importance, $20 condition",
+          "page": 206,
+          "char_span": null,
+          "quote": "Scientific importance (mean 4.88)"
+        },
+        "recompute_script": "# LITMUS recompute script for grim.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only (math), network-less, deterministic.\nimport math\n\nREPORTED_MEAN = 4.88\nN = 20\nN_ITEMS = 1\nDECIMALS = 2\nGRANULARITY = 20\nEPS = 1e-9\n\n\ndef _fmt_mean(value):\n    return format(value, '.' + str(DECIMALS) + 'f')\n\n\napprox = REPORTED_MEAN * GRANULARITY\ntarget_rounded = round(REPORTED_MEAN, DECIMALS)\nlo = max(0, int(math.floor(approx)) - 2)\nhi = int(math.ceil(approx)) + 2\nconsistent = False\nfor k in range(lo, hi + 1):\n    if round(k / GRANULARITY, DECIMALS) == target_rounded:\n        consistent = True\n        break\nnearest_k = min(range(lo, hi + 1), key=lambda k: (abs(k / GRANULARITY - REPORTED_MEAN), k))\nnearest_mean = nearest_k / GRANULARITY\nif consistent:\n    print('OK')\nelse:\n    print(\n        'GRIM-INCONSISTENT mean=' + _fmt_mean(REPORTED_MEAN) + ' '\n        + ('n=' + str(N)) + ' '\n        + 'nearest=' + _fmt_mean(nearest_mean) + '(=' + str(nearest_k) + '/' + str(GRANULARITY) + ')'\n    )\n",
+        "expected_output": "GRIM-INCONSISTENT mean=4.88 n=20 nearest=4.90(=98/20)",
+        "script_dependencies": []
+      },
+      "details": {
+        "n": 20,
+        "n_items": 1,
+        "granularity": 20,
+        "decimals": 2,
+        "nearest_total": 98,
+        "nearest_mean": 4.9
+      }
+    }
+  ],
+  "dropped_flags": [],
+  "routed_to_human": [
+    {
+      "claim_id": null,
+      "dimension": "method",
+      "note": "Methodologist: cell means reported with no SD/SE/CI or test statistic; single-item ordinal scales treated parametrically; N=20/cell underpowered for the ~0.26 $1-vs-$20 enjoyment gap \u2014 descriptives insufficient to support the forced-compliance inference.",
+      "quote": "How much they enjoyed (mean 3.03)"
+    },
+    {
+      "claim_id": "c3",
+      "dimension": "significance",
+      "note": "Domain expert: direction ($1>$20) is theory-consistent, but absolute levels/scale do not match the canonical published table (enjoyment ~+1.35/$1, ~-0.05/$20 on -5..+5; importance rated on a 0-10 scale, not -5..+5). Treat 3.03/2.77/4.88 as a provenance/scale concern; confirm per-item scale before interpreting.",
+      "quote": "Scientific importance (mean 4.88)"
+    },
+    {
+      "claim_id": null,
+      "dimension": "integrity:effective_n_or_transcription",
+      "note": "Integrity screener (LOW concern) + skeptic: all three means are GRIM-impossible by exactly +/-0.02 from the nearest legal 0.05-grid value across independent cells \u2014 fingerprint of 1959 typesetting/transcription drift or an effective per-item N!=20 (F&C discarded 11 of 71 run subjects). Likely benign; recommend an optional human footnote that 'N=20 per cell' may not be the exact denominator for each single-item mean.",
+      "quote": null
+    }
+  ],
+  "abstained": []
+}

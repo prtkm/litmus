@@ -1,0 +1,178 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "nutrition-just2014-buffet-taste-satisfaction",
+  "meta": {
+    "journal": "Journal of Sensory Studies",
+    "doi": "10.1111/joss.12117",
+    "year": 2014,
+    "title": "Lower buffet prices lead to less taste satisfaction",
+    "source": "van der Zee, Anaya & Brown, 'Statistical heartburn', BMC Nutrition 2017",
+    "note": "Impossible two-decimal means for the stated N."
+  },
+  "claims": [
+    {
+      "id": "c1",
+      "text": "Reported Likert mean 6.62 with N=62.",
+      "location": {
+        "section": "Results",
+        "page": 365,
+        "char_span": null,
+        "quote": "I was hungry when I came in, M=6.62"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported_mean",
+      "strength": "exact",
+      "scope": "reported descriptive/statistic",
+      "evidence_refs": [
+        "ev1"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c2",
+      "text": "Reported Likert mean 1.88 with N=62.",
+      "location": {
+        "section": "Results",
+        "page": 365,
+        "char_span": null,
+        "quote": "I am hungry now, M=1.88"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported_mean",
+      "strength": "exact",
+      "scope": "reported descriptive/statistic",
+      "evidence_refs": [
+        "ev2"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c3",
+      "text": "Reported Likert mean 7.44 with N=60.",
+      "location": {
+        "section": "Results",
+        "page": 365,
+        "char_span": null,
+        "quote": "The pizza tasted really great, M=7.44"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported_mean",
+      "strength": "exact",
+      "scope": "reported descriptive/statistic",
+      "evidence_refs": [
+        "ev3"
+      ],
+      "confidence": 0.95
+    },
+    {
+      "id": "c4",
+      "text": "Reported Likert mean 7.97 with N=26.",
+      "location": {
+        "section": "Results",
+        "page": 365,
+        "char_span": null,
+        "quote": "Middle piece tasted great, M=7.97"
+      },
+      "epistemic_tier": "T0",
+      "predicate": "reported_mean",
+      "strength": "exact",
+      "scope": "reported descriptive/statistic",
+      "evidence_refs": [
+        "ev4"
+      ],
+      "confidence": 0.95
+    }
+  ],
+  "evidence": [
+    {
+      "id": "ev1",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 365,
+        "char_span": null,
+        "quote": "I was hungry when I came in, M=6.62"
+      },
+      "extracted_values": {
+        "reported_mean": 6.62,
+        "n": 62,
+        "n_items": 1,
+        "decimals": 2
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev2",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 365,
+        "char_span": null,
+        "quote": "I am hungry now, M=1.88"
+      },
+      "extracted_values": {
+        "reported_mean": 1.88,
+        "n": 62,
+        "n_items": 1,
+        "decimals": 2
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev3",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 365,
+        "char_span": null,
+        "quote": "The pizza tasted really great, M=7.44"
+      },
+      "extracted_values": {
+        "reported_mean": 7.44,
+        "n": 60,
+        "n_items": 1,
+        "decimals": 2
+      },
+      "confidence": 0.95
+    },
+    {
+      "id": "ev4",
+      "kind": "statistic",
+      "location": {
+        "section": "Results",
+        "page": 365,
+        "char_span": null,
+        "quote": "Middle piece tasted great, M=7.97"
+      },
+      "extracted_values": {
+        "reported_mean": 7.97,
+        "n": 26,
+        "n_items": 1,
+        "decimals": 2
+      },
+      "confidence": 0.95
+    }
+  ],
+  "bindings": [
+    {
+      "claim_id": "c1",
+      "evidence_id": "ev1",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c2",
+      "evidence_id": "ev2",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c3",
+      "evidence_id": "ev3",
+      "relation": "rests_on"
+    },
+    {
+      "claim_id": "c4",
+      "evidence_id": "ev4",
+      "relation": "rests_on"
+    }
+  ]
+}

@@ -1,0 +1,180 @@
+{
+  "schema_version": "1.0",
+  "paper_id": "nutrition-just2014-buffet-taste-satisfaction",
+  "meta": {
+    "executor": "managed:fallback-local",
+    "n_claims": 4,
+    "n_verifiers": 9,
+    "synthesis_candidates": [],
+    "confirmation": "fresh-sandbox (local fallback)",
+    "registry_load_errors": [],
+    "architecture": "coordinator+personas+verifier-tools (fallback to local)",
+    "managed": {
+      "beta": "managed-agents-2026-04-01",
+      "model": "claude-opus-4-8",
+      "agent_id": "agent_01XqvLvfDkm3zgH7tiGHwL5j",
+      "environment_id": "env_01LZaYzVgBeeb25PeS1Vp5UH",
+      "persona_agent_ids": {
+        "skeptic": "agent_01QqXLP3dobjUT5UKq96PaT6",
+        "domain_expert": "agent_01A3KmnwaRFsmpigFkv8V7X4",
+        "methodologist": "agent_01TLp4u1usmqnU8itNieSsMB",
+        "claims_auditor": "agent_013DkUKEknYP1akG93UNWoKB",
+        "integrity_screener": "agent_019wizn85Shq9UQFx8hw8HJQ"
+      },
+      "session_id": "sesn_017PSVKhndeQjQFh9UuJbGBY",
+      "fallback_reason": "no parseable LITMUS_AUDIT result in transcript",
+      "transcript_tail": " checkable claims (c1-c4) are deterministically flaggable: grim.v1 returned fail for every reported single-item Likert mean and all four flags reproduced in a fresh sandbox, so the means cannot arise from integer responses at their stated N. The weakest link the panel converges on is the shifting, unexplained sample size (62/62/60/26, with N=26 for 'middle piece'), which both confounds the wrong-N-vs-wrong-M reading and signals selective subsampling; combined with a 4-of-4 cluster of impossible means and the lab's documented integrity history, this warrants human review of raw data and N provenance. Overall soundness is low: the descriptives are internally incoherent as printed and the causal, broadly-scoped headline over-reaches what these peripheral, near-ceiling item means can support.\"",
+      "tool_calls": {
+        "list_verifiers": 1,
+        "run_verifier": 4,
+        "confirm_recompute": 4
+      }
+    }
+  },
+  "summary": {
+    "n_findings": 4,
+    "n_flags": 4,
+    "n_dropped": 0,
+    "n_routed_to_human": 0,
+    "n_abstained": 0,
+    "flags_by_trust_tier": {
+      "deterministic_confirmed": 4
+    },
+    "flags_by_severity": {
+      "B": 4
+    }
+  },
+  "findings": [
+    {
+      "verifier_id": "grim.v1",
+      "claim_id": "c1",
+      "status": "fail",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": "B",
+      "message": "reported mean is not achievable as a mean of integer responses (GRIM-inconsistent)",
+      "discrepancy": "mean 6.62 is unreachable for n=62; nearest achievable is 6.61 (=410/62)",
+      "reported": 6.62,
+      "computed": 6.612903225806452,
+      "evidence": {
+        "quote": "I was hungry when I came in, M=6.62",
+        "location": {
+          "section": "Results",
+          "page": 365,
+          "char_span": null,
+          "quote": "I was hungry when I came in, M=6.62"
+        },
+        "recompute_script": "# LITMUS recompute script for grim.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only (math), network-less, deterministic.\nimport math\n\nREPORTED_MEAN = 6.62\nN = 62\nN_ITEMS = 1\nDECIMALS = 2\nGRANULARITY = 62\nEPS = 1e-9\n\n\ndef _fmt_mean(value):\n    return format(value, '.' + str(DECIMALS) + 'f')\n\n\napprox = REPORTED_MEAN * GRANULARITY\ntarget_rounded = round(REPORTED_MEAN, DECIMALS)\nlo = max(0, int(math.floor(approx)) - 2)\nhi = int(math.ceil(approx)) + 2\nconsistent = False\nfor k in range(lo, hi + 1):\n    if round(k / GRANULARITY, DECIMALS) == target_rounded:\n        consistent = True\n        break\nnearest_k = min(range(lo, hi + 1), key=lambda k: (abs(k / GRANULARITY - REPORTED_MEAN), k))\nnearest_mean = nearest_k / GRANULARITY\nif consistent:\n    print('OK')\nelse:\n    print(\n        'GRIM-INCONSISTENT mean=' + _fmt_mean(REPORTED_MEAN) + ' '\n        + ('n=' + str(N)) + ' '\n        + 'nearest=' + _fmt_mean(nearest_mean) + '(=' + str(nearest_k) + '/' + str(GRANULARITY) + ')'\n    )\n",
+        "expected_output": "GRIM-INCONSISTENT mean=6.62 n=62 nearest=6.61(=410/62)",
+        "script_dependencies": []
+      },
+      "details": {
+        "n": 62,
+        "n_items": 1,
+        "granularity": 62,
+        "decimals": 2,
+        "nearest_total": 410,
+        "nearest_mean": 6.612903225806452
+      }
+    },
+    {
+      "verifier_id": "grim.v1",
+      "claim_id": "c2",
+      "status": "fail",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": "B",
+      "message": "reported mean is not achievable as a mean of integer responses (GRIM-inconsistent)",
+      "discrepancy": "mean 1.88 is unreachable for n=62; nearest achievable is 1.89 (=117/62)",
+      "reported": 1.88,
+      "computed": 1.8870967741935485,
+      "evidence": {
+        "quote": "I am hungry now, M=1.88",
+        "location": {
+          "section": "Results",
+          "page": 365,
+          "char_span": null,
+          "quote": "I am hungry now, M=1.88"
+        },
+        "recompute_script": "# LITMUS recompute script for grim.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only (math), network-less, deterministic.\nimport math\n\nREPORTED_MEAN = 1.88\nN = 62\nN_ITEMS = 1\nDECIMALS = 2\nGRANULARITY = 62\nEPS = 1e-9\n\n\ndef _fmt_mean(value):\n    return format(value, '.' + str(DECIMALS) + 'f')\n\n\napprox = REPORTED_MEAN * GRANULARITY\ntarget_rounded = round(REPORTED_MEAN, DECIMALS)\nlo = max(0, int(math.floor(approx)) - 2)\nhi = int(math.ceil(approx)) + 2\nconsistent = False\nfor k in range(lo, hi + 1):\n    if round(k / GRANULARITY, DECIMALS) == target_rounded:\n        consistent = True\n        break\nnearest_k = min(range(lo, hi + 1), key=lambda k: (abs(k / GRANULARITY - REPORTED_MEAN), k))\nnearest_mean = nearest_k / GRANULARITY\nif consistent:\n    print('OK')\nelse:\n    print(\n        'GRIM-INCONSISTENT mean=' + _fmt_mean(REPORTED_MEAN) + ' '\n        + ('n=' + str(N)) + ' '\n        + 'nearest=' + _fmt_mean(nearest_mean) + '(=' + str(nearest_k) + '/' + str(GRANULARITY) + ')'\n    )\n",
+        "expected_output": "GRIM-INCONSISTENT mean=1.88 n=62 nearest=1.89(=117/62)",
+        "script_dependencies": []
+      },
+      "details": {
+        "n": 62,
+        "n_items": 1,
+        "granularity": 62,
+        "decimals": 2,
+        "nearest_total": 117,
+        "nearest_mean": 1.8870967741935485
+      }
+    },
+    {
+      "verifier_id": "grim.v1",
+      "claim_id": "c3",
+      "status": "fail",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": "B",
+      "message": "reported mean is not achievable as a mean of integer responses (GRIM-inconsistent)",
+      "discrepancy": "mean 7.44 is unreachable for n=60; nearest achievable is 7.43 (=446/60)",
+      "reported": 7.44,
+      "computed": 7.433333333333334,
+      "evidence": {
+        "quote": "The pizza tasted really great, M=7.44",
+        "location": {
+          "section": "Results",
+          "page": 365,
+          "char_span": null,
+          "quote": "The pizza tasted really great, M=7.44"
+        },
+        "recompute_script": "# LITMUS recompute script for grim.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only (math), network-less, deterministic.\nimport math\n\nREPORTED_MEAN = 7.44\nN = 60\nN_ITEMS = 1\nDECIMALS = 2\nGRANULARITY = 60\nEPS = 1e-9\n\n\ndef _fmt_mean(value):\n    return format(value, '.' + str(DECIMALS) + 'f')\n\n\napprox = REPORTED_MEAN * GRANULARITY\ntarget_rounded = round(REPORTED_MEAN, DECIMALS)\nlo = max(0, int(math.floor(approx)) - 2)\nhi = int(math.ceil(approx)) + 2\nconsistent = False\nfor k in range(lo, hi + 1):\n    if round(k / GRANULARITY, DECIMALS) == target_rounded:\n        consistent = True\n        break\nnearest_k = min(range(lo, hi + 1), key=lambda k: (abs(k / GRANULARITY - REPORTED_MEAN), k))\nnearest_mean = nearest_k / GRANULARITY\nif consistent:\n    print('OK')\nelse:\n    print(\n        'GRIM-INCONSISTENT mean=' + _fmt_mean(REPORTED_MEAN) + ' '\n        + ('n=' + str(N)) + ' '\n        + 'nearest=' + _fmt_mean(nearest_mean) + '(=' + str(nearest_k) + '/' + str(GRANULARITY) + ')'\n    )\n",
+        "expected_output": "GRIM-INCONSISTENT mean=7.44 n=60 nearest=7.43(=446/60)",
+        "script_dependencies": []
+      },
+      "details": {
+        "n": 60,
+        "n_items": 1,
+        "granularity": 60,
+        "decimals": 2,
+        "nearest_total": 446,
+        "nearest_mean": 7.433333333333334
+      }
+    },
+    {
+      "verifier_id": "grim.v1",
+      "claim_id": "c4",
+      "status": "fail",
+      "trust_tier": "deterministic_confirmed",
+      "verifier_kind": "prebuilt",
+      "severity": "B",
+      "message": "reported mean is not achievable as a mean of integer responses (GRIM-inconsistent)",
+      "discrepancy": "mean 7.97 is unreachable for n=26; nearest achievable is 7.96 (=207/26)",
+      "reported": 7.97,
+      "computed": 7.961538461538462,
+      "evidence": {
+        "quote": "Middle piece tasted great, M=7.97",
+        "location": {
+          "section": "Results",
+          "page": 365,
+          "char_span": null,
+          "quote": "Middle piece tasted great, M=7.97"
+        },
+        "recompute_script": "# LITMUS recompute script for grim.v1 (DESIGN \u00a73.2: no script, no flag).\n# Self-contained, stdlib-only (math), network-less, deterministic.\nimport math\n\nREPORTED_MEAN = 7.97\nN = 26\nN_ITEMS = 1\nDECIMALS = 2\nGRANULARITY = 26\nEPS = 1e-9\n\n\ndef _fmt_mean(value):\n    return format(value, '.' + str(DECIMALS) + 'f')\n\n\napprox = REPORTED_MEAN * GRANULARITY\ntarget_rounded = round(REPORTED_MEAN, DECIMALS)\nlo = max(0, int(math.floor(approx)) - 2)\nhi = int(math.ceil(approx)) + 2\nconsistent = False\nfor k in range(lo, hi + 1):\n    if round(k / GRANULARITY, DECIMALS) == target_rounded:\n        consistent = True\n        break\nnearest_k = min(range(lo, hi + 1), key=lambda k: (abs(k / GRANULARITY - REPORTED_MEAN), k))\nnearest_mean = nearest_k / GRANULARITY\nif consistent:\n    print('OK')\nelse:\n    print(\n        'GRIM-INCONSISTENT mean=' + _fmt_mean(REPORTED_MEAN) + ' '\n        + ('n=' + str(N)) + ' '\n        + 'nearest=' + _fmt_mean(nearest_mean) + '(=' + str(nearest_k) + '/' + str(GRANULARITY) + ')'\n    )\n",
+        "expected_output": "GRIM-INCONSISTENT mean=7.97 n=26 nearest=7.96(=207/26)",
+        "script_dependencies": []
+      },
+      "details": {
+        "n": 26,
+        "n_items": 1,
+        "granularity": 26,
+        "decimals": 2,
+        "nearest_total": 207,
+        "nearest_mean": 7.961538461538462
+      }
+    }
+  ],
+  "dropped_flags": [],
+  "routed_to_human": [],
+  "abstained": []
+}
