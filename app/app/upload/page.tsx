@@ -2,9 +2,10 @@
 
 // Upload a paper for auditing (DESIGN §2). A file picker + the pipeline
 // explanation (queued → extracting → auditing → confirming → done) POSTing to
-// /api/upload. The route handler is a STUB today: it returns {status, id} and
-// leaves a TODO for the WS-H managed-agents pipeline. So this page accepts a
-// PDF, shows what *will* happen to it, and reports the queued id — no audit yet.
+// /api/upload. The route computes the content hash and either (a) returns a
+// CACHE HIT — the paper was already audited, so we link straight to its report —
+// or (b) STAGES the upload (PDF → Storage, a queued papers row) for a worker to
+// drain. So this page reports whichever happened: an instant result, or a queued id.
 
 import { useState } from "react";
 import Link from "next/link";
@@ -13,6 +14,9 @@ import { PIPELINE_STAGES } from "@/lib/labels";
 interface UploadResponse {
   status: string;
   id: string;
+  cached?: boolean;
+  title?: string | null;
+  content_hash?: string;
   message?: string;
 }
 
@@ -144,12 +148,18 @@ export default function UploadPage() {
         </form>
       )}
 
-      <Pipeline activeId={state.phase === "queued" ? "queued" : null} />
+      <Pipeline activeId={state.phase === "queued" ? state.res.status : null} />
     </div>
   );
 }
 
 function QueuedPanel({ res }: { res: UploadResponse }) {
+  // A cache hit (DESIGN §2): the paper was already audited — link straight to the report.
+  const cached = res.cached === true && res.status === "done";
+  // A real audit is staged when the server actually queued it (has a content hash).
+  const staged = !cached && Boolean(res.content_hash);
+  const reportHref = `/paper/${encodeURIComponent(res.id)}`;
+
   return (
     <div
       className="space-y-3 rounded-xl border p-5"
@@ -157,12 +167,14 @@ function QueuedPanel({ res }: { res: UploadResponse }) {
     >
       <div className="flex items-center gap-2">
         <span className="text-sm font-semibold" style={{ color: "var(--pass)" }}>
-          ✓ Queued
+          {cached ? "✓ Already audited" : "✓ Queued"}
         </span>
       </div>
       <p className="text-sm leading-relaxed" style={{ color: "var(--foreground)" }}>
         {res.message ??
-          "Your paper has been accepted. The audit pipeline is not wired up in this build, so it will sit at the queued stage."}
+          (cached
+            ? "This exact PDF was audited before — here is its cached report."
+            : "Your paper has been accepted and queued for audit.")}
       </p>
       <dl className="grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-xs">
         <dt style={{ color: "var(--faint)" }}>id</dt>
@@ -174,9 +186,36 @@ function QueuedPanel({ res }: { res: UploadResponse }) {
           {res.status}
         </dd>
       </dl>
-      <Link href="/" className="inline-block text-sm underline" style={{ color: "var(--muted)" }}>
-        Back to the gallery
-      </Link>
+
+      <div className="flex flex-wrap gap-3 pt-1">
+        {cached ? (
+          <Link
+            href={reportHref}
+            className="inline-flex items-center rounded-md px-3 py-1.5 text-sm font-medium text-white"
+            style={{ background: "var(--tier-deterministic)" }}
+          >
+            View the audit report →
+          </Link>
+        ) : staged ? (
+          <Link
+            href={reportHref}
+            className="inline-flex items-center rounded-md px-3 py-1.5 text-sm font-medium text-white"
+            style={{ background: "var(--tier-deterministic)" }}
+          >
+            Track its status →
+          </Link>
+        ) : null}
+        <Link href="/" className="inline-flex items-center text-sm underline" style={{ color: "var(--muted)" }}>
+          Back to the gallery
+        </Link>
+      </div>
+
+      {staged && (
+        <p className="text-xs leading-relaxed" style={{ color: "var(--muted)" }}>
+          The audit runs in a worker, not in this request. Until it finishes, the
+          page above shows the live <span className="font-mono">queued → … → done</span> status.
+        </p>
+      )}
     </div>
   );
 }

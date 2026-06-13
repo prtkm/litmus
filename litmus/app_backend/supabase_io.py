@@ -256,6 +256,20 @@ class SupabaseIO:
         rows = resp.json()
         return rows[0] if isinstance(rows, list) and rows else None
 
+    def list_by_status(
+        self, status: PaperStatus | str, *, limit: int = 100
+    ) -> list[dict[str, Any]]:
+        """Return ``papers`` rows in a given ``status``, oldest first (the queue drainer reads
+        ``status='queued'``). Ordered by ``created_at`` so the queue is FIFO."""
+        status_val = status.value if isinstance(status, PaperStatus) else str(status)
+        url = (
+            f"{self.config.rest_url}/{PAPERS_TABLE}"
+            f"?status=eq.{status_val}&order=created_at.asc&limit={int(limit)}"
+        )
+        resp = self._request("GET", url, headers=self.config.headers())
+        rows = resp.json()
+        return rows if isinstance(rows, list) else []
+
     def persist_audit(
         self,
         *,
