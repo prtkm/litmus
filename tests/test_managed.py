@@ -14,6 +14,7 @@ Three layers, only one of which touches the network:
 
 from __future__ import annotations
 
+import json
 import os
 
 import pytest
@@ -269,35 +270,92 @@ def test_managed_fallback_disabled_raises(monkeypatch):
         run_managed_audit(_tiny_graph(), registry=_focused_registry(), allow_fallback=False)
 
 
-def test_managed_assemble_from_confirmation_unit():
-    """The keep/drop assembly that consumes the managed sandbox's result, in isolation: a
-    confirmed flag is kept, an unconfirmed one becomes a DroppedFlag (DESIGN §13.4)."""
-    f_keep = Finding(
-        verifier_id="v.keep", claim_id="c1", status=Status.FAIL, trust_tier=TrustTier.DETERMINISTIC_CONFIRMED,
-        verifier_kind=VerifierKind.PREBUILT, severity=Severity.A,
-        evidence=EvidencePacket(recompute_script="print('X')", expected_output="X"),
-    )
-    f_drop = Finding(
-        verifier_id="v.drop", claim_id="c2", status=Status.FAIL, trust_tier=TrustTier.DETERMINISTIC_CONFIRMED,
-        verifier_kind=VerifierKind.PREBUILT, severity=Severity.A,
-        evidence=EvidencePacket(recompute_script="print('WRONG')", expected_output="RIGHT"),
-    )
-    pre = AuditReport(paper_id="p", findings=[f_keep, f_drop])
-    result = {"confirmed": [0], "dropped": [{"idx": 1, "reason": "stdout did not match expected_output"}]}
-    out = managed._assemble_from_confirmation(pre, [f_keep, f_drop], result)
-    assert [f.verifier_id for f in out.findings] == ["v.keep"]
-    assert len(out.dropped_flags) == 1 and out.dropped_flags[0].finding.verifier_id == "v.drop"
-    assert schema.validate(out.to_dict(), "audit") == []
+def test_managed_assemble_report_from_tool_records():
+    """The assembler builds the report from the HOST's deterministic verifier Findings (source of
+    truth, DESIGN §3.1), keeping a flag only if confirm_recompute reproduced it; an unconfirmed
+    flag becomes a DroppedFlag (DESIGN §13.4). The coordinator's classification adds routed items."""
+    from litmus.pipeline.managed_tools import VerifierToolHost
+
+    # A graph with one wrong sum (FAIL, reproduces) and one subjective claim.
+    graph = _tiny_graph()
+    host = VerifierToolHost(_focused_registry())
+
+    # Drive the host exactly as the coordinator would: run_verifier on the two T0 claims, then
+    # confirm the flag that comes back.
+    c_bad = graph.claim_by_id("c_bad")
+    out = json.loads(host.handle("run_verifier", {
+        "verifier_id": "sum_check.v1", "claim": c_bad.to_dict(),
+        "evidence": [e.to_dict() for e in graph.evidence_for(c_bad)],
+    }))
+    assert out["status"] == "fail"
+    host.handle("confirm_recompute", {
+        "recompute_script": out["recompute_script"], "expected_output": out["expected_output"]})
+    c_ok = graph.claim_by_id("c_ok")
+    host.handle("run_verifier", {
+        "verifier_id": "sum_check.v1", "claim": c_ok.to_dict(),
+        "evidence": [e.to_dict() for e in graph.evidence_for(c_ok)],
+    })
+
+    final = {
+        "claims": [
+            {"claim_id": "c_bad", "classification": "flaggable", "verifier_id": "sum_check.v1"},
+            {"claim_id": "c_ok", "classification": "correct", "verifier_id": "sum_check.v1"},
+            {"claim_id": "c_subj", "classification": "subjective", "reason": "significance is subjective"},
+        ],
+        "routed_to_human": [{"claim_id": "c_subj", "dimension": "significance", "note": "subjective"}],
+        "panel_summary": "one sum is wrong; the subjective claim is routed.",
+    }
+    out_report = managed._assemble_report(graph, host, final, confirm=True)
+    assert [f.verifier_id for f in out_report.checkable] == ["sum_check.v1"]
+    assert out_report.checkable[0].claim_id == "c_bad"
+    assert any(f.status is Status.PASS for f in out_report.findings)
+    assert len(out_report.routed_to_human) == 1 and out_report.routed_to_human[0].claim_id == "c_subj"
+    assert out_report.dropped_flags == []
+    assert schema.validate(out_report.to_dict(), "audit") == []
 
 
-def test_confirm_result_parser_tolerates_prose():
-    txt = "I ran it. Here is the output:\nLITMUS_CONFIRM {\"confirmed\": [0, 2], \"dropped\": []}\nDone."
-    parsed = managed._parse_confirm_result(txt)
-    assert parsed == {"confirmed": [0, 2], "dropped": []}
-    # Also recover from a fenced/embedded object with no sentinel.
-    txt2 = "result: ```json\n{\"confirmed\": [1], \"dropped\": [{\"idx\": 0, \"reason\": \"x\"}]}\n```"
-    parsed2 = managed._parse_confirm_result(txt2)
-    assert parsed2["confirmed"] == [1] and parsed2["dropped"][0]["idx"] == 0
+def test_managed_assemble_drops_unconfirmed_flag():
+    """A FAIL the coordinator never confirmed (or that doesn't reproduce) is dropped host-side so
+    the §13.4 invariant always holds — no flag ships unconfirmed."""
+    from litmus.pipeline.managed_tools import VerifierToolHost
+
+    reg = Registry()
+    reg.register(_BadFlagVerifier())
+    graph = ClaimGraph(
+        paper_id="managed-drop",
+        claims=[_claim("c1", EpistemicTier.T0, "e1")],
+        evidence=[Evidence(id="e1", kind=EvidenceKind.NUMBER, extracted_values={"x": 1})],
+    )
+    host = VerifierToolHost(reg)
+    c1 = graph.claim_by_id("c1")
+    host.handle("run_verifier", {
+        "verifier_id": "bad_flag.v1", "claim": c1.to_dict(),
+        "evidence": [e.to_dict() for e in graph.evidence_for(c1)],
+    })  # FAIL with a non-reproducing script; the coordinator does NOT confirm it
+    final = {"claims": [{"claim_id": "c1", "classification": "flaggable", "verifier_id": "bad_flag.v1"}]}
+    report = managed._assemble_report(graph, host, final, confirm=True)
+    assert len(report.checkable) == 0  # host-side confirmation caught the bogus flag
+    assert len(report.dropped_flags) == 1
+    assert "did not reproduce" in report.dropped_flags[0].reason
+    assert schema.validate(report.to_dict(), "audit") == []
+
+
+def test_final_parser_tolerates_prose():
+    txt = (
+        "I have completed the audit.\n"
+        'LITMUS_AUDIT {"claims": [{"claim_id": "c1", "classification": "correct"}], '
+        '"routed_to_human": [], "panel_summary": "sound"}\nDone.'
+    )
+    parsed = managed._parse_final(txt)
+    assert parsed is not None and parsed["claims"][0]["claim_id"] == "c1"
+    # Recover from an embedded object with no marker (last balanced {...} with a "claims" key).
+    txt2 = 'noise {"claims": [{"claim_id": "c9", "classification": "subjective"}], "panel_summary": "x"} trailing'
+    parsed2 = managed._parse_final(txt2)
+    assert parsed2["claims"][0]["claim_id"] == "c9"
+    # Brace inside a string must not confuse the balancer.
+    txt3 = 'LITMUS_AUDIT {"claims": [], "panel_summary": "uses a { brace in prose"}'
+    parsed3 = managed._parse_final(txt3)
+    assert parsed3 == {"claims": [], "panel_summary": "uses a { brace in prose"}
 
 
 # ============================================================================
@@ -310,55 +368,50 @@ def _live_enabled() -> bool:
 @pytest.mark.live
 @pytest.mark.skipif(not _live_enabled(), reason="ANTHROPIC_API_KEY not set — skipping live managed-agents test")
 def test_live_managed_session():
-    """Create a REAL managed-agents session and run run_managed_audit on the tiny graph. Asserts
-    a schema-valid AuditReport with the one expected confirmed flag. If the beta is unavailable on
-    this key (404/403/beta error) or the SDK lacks the surface, SKIP with a clear message and the
-    captured error — never fake success."""
+    """Create a REAL managed-agents coordinator session and run run_managed_audit on the tiny
+    graph. Asserts a schema-valid AuditReport with the one expected confirmed flag. If the beta is
+    unavailable on this key (404/403/beta error) or the SDK lacks the surface, SKIP with a clear
+    message — never fake success. (The full-paper live audit lives in test_managed_live.py.)"""
     try:
         import anthropic  # noqa: F401
     except Exception as exc:
         pytest.skip(f"anthropic SDK not importable: {exc}")
 
-    captured: dict[str, object] = {}
+    events: list[str] = []
 
-    def _capture(run):
-        captured["session_id"] = run.session_id
-        captured["error"] = run.error
-        captured["transcript_tail"] = (run.transcript or "")[-600:]
+    def _capture(kind, payload):
+        if kind == "tool_use":
+            events.append(str(payload))
 
     # allow_fallback=True so we always get a report; we then inspect meta.executor to tell whether
-    # the managed sandbox actually did the confirmation, and surface the session id / error either way.
+    # the managed coordinator actually ran, and surface the session id / reason either way.
     report = run_managed_audit(
         _tiny_graph(),
         registry=_focused_registry(),
         allow_fallback=True,
-        timeout_s=300.0,
+        timeout_s=600.0,
         on_event=_capture,
     )
 
     assert isinstance(report, AuditReport)
     assert schema.validate(report.to_dict(), "audit") == []
 
-    executor = report.meta.get("executor")
-    if executor != "managed":
-        # The managed path didn't confirm (beta off / timeout / API error). That's a SKIP, not a
-        # failure — but we print exactly what happened so the run is honest.
-        reason = report.meta.get("managed", {}).get("fallback_reason") or captured.get("error")
+    if report.meta.get("executor") != "managed":
+        reason = report.meta.get("managed", {}).get("fallback_reason")
         pytest.skip(
-            f"managed-agents confirmation unavailable on this key — fell back to local. "
-            f"session_id={captured.get('session_id')!r} reason={reason!r} "
-            f"transcript_tail={captured.get('transcript_tail')!r}"
+            f"managed-agents coordinator unavailable on this key — fell back to local. "
+            f"session_id={report.meta.get('managed', {}).get('session_id')!r} reason={reason!r}"
         )
 
     # Managed path ran: assert the verdict and surface the session id for the report.
     flags = report.checkable
     assert len(flags) == 1 and flags[0].verifier_id == "sum_check.v1", [f.verifier_id for f in flags]
     assert flags[0].status is Status.FAIL
-    assert report.dropped_flags == []  # the one real flag reproduced in the managed sandbox
+    assert report.dropped_flags == []  # the one real flag reproduced via confirm_recompute
     assert report.meta["managed"].get("session_id"), report.meta["managed"]
     print(
         "LIVE managed session OK — session_id=",
         report.meta["managed"].get("session_id"),
-        "confirmed flags=",
-        [f.verifier_id for f in flags],
+        "tool_calls=", report.meta.get("tool_calls"),
+        "confirmed flags=", [f.verifier_id for f in flags],
     )

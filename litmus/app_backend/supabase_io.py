@@ -279,6 +279,62 @@ class SupabaseIO:
             audit_report=audit_report,
         )
 
+    # --- pipeline orchestration (status lifecycle) ---------------------------
+    def run_and_persist(
+        self,
+        graph: ClaimGraph,
+        *,
+        content_hash: str,
+        executor: Any = None,
+        doi: Optional[str] = None,
+        title: Optional[str] = None,
+        field: Optional[str] = None,
+        confirm: bool = True,
+    ) -> AuditReport:
+        """Run the managed audit over ``graph`` and persist it, walking the row's status through
+        the pipeline lifecycle (DESIGN §13, §15): ``auditing → confirming → done`` (or ``error``).
+
+        ``executor`` defaults to a :class:`~litmus.pipeline.executor.ManagedAgentExecutor`. The
+        ClaimGraph is written up front (so the gallery can show it while the audit runs), then the
+        derived ``audit_report`` and final ``done`` status land together. On any failure the row is
+        marked ``error`` and the exception re-raised. App-only; imports the executor lazily so the
+        framework never depends on it.
+        """
+        # Seed the row with the extracted claim graph and mark it auditing.
+        self.upsert_paper(
+            content_hash=content_hash,
+            doi=doi,
+            title=title,
+            field=field,
+            status=PaperStatus.AUDITING,
+            claim_graph=graph,
+        )
+        try:
+            if executor is None:
+                from litmus.pipeline.executor import ManagedAgentExecutor
+
+                executor = ManagedAgentExecutor(confirm=confirm)
+            # Confirmation is the final deterministic beat (DESIGN §13.4) — surface it as a status.
+            if confirm:
+                self.update_status(content_hash, PaperStatus.CONFIRMING)
+            report = executor.audit_graph(graph)
+        except Exception as exc:
+            try:
+                self.update_status(content_hash, PaperStatus.ERROR, error=str(exc))
+            except Exception:
+                pass
+            raise
+        self.persist_audit(
+            content_hash=content_hash,
+            claim_graph=graph,
+            audit_report=report,
+            doi=doi,
+            title=title,
+            field=field,
+            status=PaperStatus.DONE,
+        )
+        return report
+
     # --- pdfs storage bucket -------------------------------------------------
     def download_pdf(self, object_path: str) -> bytes:
         """Download a source PDF from the private ``pdfs`` Storage bucket (service role)."""

@@ -1,33 +1,36 @@
-"""WS-H · the managed-agents executor (DESIGN §13, §15, §19 Track 2).
+"""WS-H · the managed-agents auditor (DESIGN §13, §15, §19 Track 2).
 
-This is the *hosted* half of the ``ExecutorAdapter`` seam (DESIGN §15). The audit pipeline
-is written once in :mod:`litmus.pipeline.executor`; :class:`~litmus.pipeline.executor.LocalExecutor`
-runs it with local subprocess/thread workers (CLI / gate / study, no external services), and
-:class:`~litmus.pipeline.executor.ManagedAgentExecutor` runs it inside a **Claude managed-agents
-session** for the live app. Only this module depends on managed agents.
+The *hosted* half of the ``ExecutorAdapter`` seam (DESIGN §15). The owner's architecture, built
+here against the live managed-agents API (beta ``managed-agents-2026-04-01``):
 
-``run_managed_audit`` is the entry point ``ManagedAgentExecutor`` calls. It:
+A **COORDINATOR** Agent (``multiagent:{type:"coordinator", agents:[personas]}``) runs one audit
+session that **combines deterministic verifier TOOLS with non-deterministic multi-persona LLM
+review**:
 
-  1. creates (or reuses) an **Agent** whose system prompt is the LITMUS auditor, an
-     **Environment** (a cloud sandbox — DESIGN §15: "the session's sandbox is also where
-     recompute scripts + synthesized verifiers execute"), and a **Session** (managed-agents
-     beta ``managed-agents-2026-04-01``: ``client.beta.agents`` / ``environments`` / ``sessions``);
-  2. drives that session to audit the given :class:`~litmus.core.claim.ClaimGraph`; and
-  3. returns a schema-valid :class:`~litmus.core.provenance.AuditReport`.
+  1. It works from the extracted **ClaimGraph** (claims ← evidence ← location/quote, DESIGN §11) —
+     the only model-in-the-loop step for *finding* things (DESIGN §13 step 1).
+  2. For each **CHECKABLE** claim (T0-T2/T6) it CALLS a deterministic verifier **tool**
+     (``run_verifier``). It MUST NEVER judge a checkable claim itself — the host runs the real
+     ``registry.get(id).judge()`` and returns the Finding (DESIGN §3.1). Flags are re-run via
+     ``confirm_recompute`` in the network-less sandbox and dropped if they don't reproduce (§13.4).
+  3. It convenes **persona sub-agents** to review the non-deterministic dimensions: SKEPTIC,
+     DOMAIN-EXPERT, METHODOLOGIST (T3), CLAIMS-AUDITOR (T4), INTEGRITY-SCREENER (T7). Personas
+     REASON and surface concerns but DO NOT override deterministic verdicts (DESIGN §3.1, §3.6).
+  4. It CLASSIFIES every claim — CORRECT | FLAGGABLE | SUBJECTIVE/ROUTE-TO-HUMAN — and emits a
+     final structured JSON.
 
-**Verdicts stay deterministic (DESIGN §3.1).** The agent loop never *renders* a verdict.
-What runs in the hosted sandbox is the part the design assigns to it: the **fresh-context
-confirmation** of DESIGN §13 step 4 — every emitted flag's ``recompute_script`` is re-run in
-the managed sandbox and dropped if it does not reproduce. Judging/planning are the same
-deterministic code as ``LocalExecutor``; we hand the sandbox a self-contained runner, the
-agent executes it with the built-in ``bash`` tool, and we read the confirmation result back.
-This is the v1 contract requested for WS-H: the point is the hosted, sandboxed execution
-surface, not re-deriving verdicts with an LLM.
+The host (:func:`run_managed_audit`) streams the session, answers every ``agent.custom_tool_use``
+with the **real** verifier result, captures the deterministic tool records, and assembles a
+schema-valid :class:`~litmus.core.provenance.AuditReport` from them. **The tool records are the
+source of truth for checkable verdicts; the coordinator's classification only adds the subjective /
+routed dimensions** (DESIGN §3.1, §3.6).
 
-If the managed-agents beta is not enabled on the key (or the API is unreachable), the function
-**falls back to running the deterministic pipeline in-process** (``LocalExecutor`` logic) so the
-seam is always real and callers always get a valid report; ``meta["executor"]`` records which
-path actually ran (``"managed"`` vs ``"managed:fallback-local"``).
+``ManagedAgentExecutor`` (in :mod:`litmus.pipeline.executor`) calls :func:`run_managed_audit`.
+``audit_pdf`` extracts the ClaimGraph (Opus vision, DESIGN §11) then runs the coordinator session.
+A :class:`~litmus.pipeline.executor.LocalExecutor` fallback keeps the seam real if the beta is
+unavailable; ``meta["executor"]`` records which path ran (``"managed"`` vs
+``"managed:fallback-local"``). Persistence to Supabase is via
+:mod:`litmus.app_backend.supabase_io` (status queued→extracting→auditing→confirming→done).
 """
 
 from __future__ import annotations
@@ -36,45 +39,161 @@ import json
 import os
 import textwrap
 import time
-from dataclasses import dataclass
-from typing import Any, Optional
+from dataclasses import dataclass, field
+from typing import Any, Callable, Optional
 
 from litmus.commons.registry import Registry, build_default_registry
-from litmus.core.claim import ClaimGraph
-from litmus.core.finding import Finding, Status
-from litmus.core.provenance import AuditReport, DroppedFlag
+from litmus.core.claim import Claim, ClaimGraph
+from litmus.core.finding import (
+    EvidencePacket,
+    Finding,
+    Severity,
+    Status,
+    TrustTier,
+    VerifierKind,
+)
+from litmus.core.provenance import AuditReport, DroppedFlag, RoutedItem
 from litmus.pipeline.executor import LocalExecutor
+from litmus.pipeline.managed_tools import CUSTOM_TOOL_NAMES, VerifierToolHost, custom_tool_defs
 
 # Beta surface for managed agents (SKILL.md: the SDK sets the header automatically on
 # client.beta.{agents,environments,sessions,...} calls; only raw curl needs it explicitly).
 MANAGED_AGENTS_BETA = "managed-agents-2026-04-01"
 DEFAULT_MODEL = "claude-opus-4-8"
 
-# How long to let one managed session run before giving up and falling back (seconds).
-# A fresh session's first turn includes sandbox cold-start (~45-60s observed) before the agent
-# acts, so keep the default generous; the confirmation itself is sub-second.
-DEFAULT_SESSION_TIMEOUT_S = 300.0
+# How long to let one managed session run before giving up and falling back (seconds). A fresh
+# session's first turn includes sandbox cold-start before the agent acts, and the coordinator
+# fans out to persona sub-agents, so keep this generous.
+DEFAULT_SESSION_TIMEOUT_S = 900.0
 
-LITMUS_AUDITOR_SYSTEM = textwrap.dedent(
-    """\
-    You are the LITMUS audit executor running inside a sandboxed managed-agents session.
+# Sentinel the coordinator wraps its final structured output in, so the host can extract it from
+# a transcript that may also contain prose / persona summaries.
+FINAL_MARKER = "LITMUS_AUDIT"
 
-    LITMUS audits scientific papers with DETERMINISTIC verifiers — code renders every verdict,
-    never the model (DESIGN §3.1). Your job is NOT to judge claims. Your job is to drive the
-    hosted sandbox: run the self-contained Python program you are given (it performs the
-    fresh-context confirmation of DESIGN §13 step 4 — re-running each flagged claim's
-    recompute_script in this clean, network-less sandbox and dropping any flag that does not
-    reproduce its expected output), then return its stdout verbatim.
 
-    Rules:
-      - Use the bash tool to execute exactly the command you are handed, VERBATIM and in a single
-        call. Do NOT inspect, decode, reformat, split, or "check it first" — just run it. Do not
-        edit it, do not substitute your own judgement for its output, do not invent or remove flags.
-      - The program prints a single JSON object on its last line (prefixed `LITMUS_CONFIRM`).
-        Return that line unchanged as your final message, with no commentary, fences, or extra text.
-      - If the program errors, report the stderr verbatim so the orchestrator can fall back.
-    """
-)
+# --------------------------------------------------------------------------------------------
+# Persona sub-agents (DESIGN §13). They REASON about the non-deterministic dimensions and
+# surface concerns; they NEVER render a deterministic verdict (that is the verifier tools' job).
+# --------------------------------------------------------------------------------------------
+@dataclass(frozen=True)
+class Persona:
+    key: str
+    name: str
+    system: str
+
+
+PERSONAS: list[Persona] = [
+    Persona(
+        "skeptic",
+        "Skeptic",
+        "You are the SKEPTIC on a scientific-paper audit panel. Adversarially try to REFUTE the "
+        "paper's central claims and find the weakest link — the assumption that, if wrong, "
+        "collapses the result; the alternative explanation the authors did not rule out; the "
+        "place the conclusion outruns the evidence. You REASON and surface concerns; you do NOT "
+        "decide whether a numeric/checkable claim holds — deterministic verifier tools do that "
+        "(DESIGN §3.1). Be concrete and cite the claim id and quote. If the paper is sound, say so.",
+    ),
+    Persona(
+        "domain_expert",
+        "Domain Expert",
+        "You are the DOMAIN EXPERT on the audit panel. Judge field-level plausibility: are the "
+        "magnitudes, mechanisms, units, and comparisons sensible for this field? Does anything "
+        "violate established domain knowledge or look physically/biologically implausible? You "
+        "surface concerns with reasoning; you never render a deterministic verdict on a checkable "
+        "number (the verifier tools do — DESIGN §3.1). Cite claim ids and quotes.",
+    ),
+    Persona(
+        "methodologist",
+        "Methodologist",
+        "You are the METHODOLOGIST (DESIGN §5 T3). Assess method appropriateness: was the right "
+        "statistical test used for the design? Were multiple comparisons corrected? Is the study "
+        "powered? Are assumptions (normality, independence, stationarity, causal identification) "
+        "met? Surface method concerns as REASONING, not as a deterministic verdict — you flag "
+        "*candidates* for human review; deterministic checks belong to the verifier tools "
+        "(DESIGN §3.1). Cite claim ids.",
+    ),
+    Persona(
+        "claims_auditor",
+        "Claims Auditor",
+        "You are the CLAIMS AUDITOR (DESIGN §5 T4). For each headline claim, check whether its "
+        "STRENGTH and SCOPE match the evidence: over-generalization, extrapolation beyond the "
+        "data range, causal language on an observational design, 'no effect' from an underpowered "
+        "null, an abstract that overstates the body. This is calibrated judgement, surfaced for "
+        "human review — never a deterministic verdict (DESIGN §3.1, §3.5). Cite the claim id, its "
+        "stated strength/scope, and the quote.",
+    ),
+    Persona(
+        "integrity_screener",
+        "Integrity Screener",
+        "You are the INTEGRITY SCREENER (DESIGN §5 T7). Surface integrity SIGNALS only — never a "
+        "verdict: image duplication/manipulation hints, terminal-digit/Benford anomalies, "
+        "too-perfect agreement, tortured phrasing, inconsistent reported Ns. A signal routes to a "
+        "human (DESIGN §3.5); you do not accuse, you flag for review. Cite what you saw and where.",
+    ),
+]
+
+
+def _coordinator_system() -> str:
+    """The coordinator Agent's system prompt: combine deterministic tools + persona review,
+    classify every claim, emit one structured result. Hard invariant inlined (DESIGN §3.1)."""
+    persona_lines = "\n".join(f"      - {p.name}: {p.system.split('.')[0]}." for p in PERSONAS)
+    return textwrap.dedent(
+        f"""\
+        You are the COORDINATOR of the LITMUS audit panel, auditing one scientific paper inside a
+        sandboxed managed-agents session. LITMUS combines DETERMINISTIC verifier tools with
+        non-deterministic multi-persona review. You orchestrate both and emit ONE structured result.
+
+        THE HARD INVARIANT (DESIGN §3.1): for any CHECKABLE claim (tiers T0, T1, T2, T6 — internal
+        arithmetic, fixed-knowledge lookups, internal cross-consistency, reproducibility) you MUST
+        NOT decide whether it holds. You call the `run_verifier` custom tool; the host runs the real
+        verifier CODE and returns the verdict (a Finding). The tool decides, never you. You only
+        decide WHAT to check and route the inputs.
+
+        YOUR PROCEDURE
+        1. You are given the extracted ClaimGraph (claims, evidence, bindings) as JSON. Each claim
+           has a proposed epistemic_tier; each evidence record has extracted_values with the
+           transcribed numbers (often under canonical keys like
+           {{"test":"t","statistic":3.6,"df":41,"reported_p":0.013}} or
+           {{"reported_yield_pct":92}} or {{"parts":[...], "reported_total":...}}).
+        2. Call `list_verifiers` once to see the available deterministic verifiers, what each
+           consumes, and its tier.
+        3. For EVERY checkable claim (T0/T1/T2/T6) that has the numbers a verifier needs, call
+           `run_verifier` with the verifier_id, the claim, and the evidence it rests on (pass the
+           evidence records verbatim — keep the canonical keys in extracted_values). Try the
+           verifier(s) whose `consumes`/tier match. If `run_verifier` returns status "fail", call
+           `confirm_recompute` with the returned recompute_script + expected_output to confirm the
+           flag reproduces in the fresh sandbox; a flag that does not reproduce is a self-caught
+           false positive — drop it (DESIGN §13.4). If every applicable verifier returns
+           "inconclusive", the claim is not deterministically coverable here — record it as
+           subjective/abstained with a short reason, do NOT invent a verdict.
+        4. Convene the persona sub-agents to review the NON-deterministic dimensions and surface
+           concerns (they reason; they never override a tool verdict):
+        {persona_lines}
+           Use their input for method (T3), strength/scope over-reach (T4), field plausibility,
+           the weakest link, and integrity signals (T7) — these route to a human, they are not
+           scored (DESIGN §3.5).
+        5. CLASSIFY every claim into exactly one of:
+             - "correct"   : a deterministic verifier ran and returned pass.
+             - "flaggable" : a deterministic verifier returned fail AND it reproduced via
+                             confirm_recompute (include the verifier_id and the claim id).
+             - "subjective": not deterministically scorable here (T3/T4/T5/T7/T8, or no verifier
+                             covered it / inputs missing) — route to human or abstain, with a reason.
+
+        OUTPUT — when done, emit EXACTLY ONE line that begins with `{FINAL_MARKER} ` followed by a
+        single-line JSON object, no code fences, with this shape:
+
+        {FINAL_MARKER} {{"claims":[{{"claim_id":"c1","classification":"correct|flaggable|subjective",
+          "verifier_id":"<id or null>","status":"pass|fail|inconclusive|null","reproduced":true|false|null,
+          "reason":"<short>"}}, ...],
+          "routed_to_human":[{{"claim_id":"c4 or null","dimension":"method|strength_scope|integrity:...|
+          significance|novelty","note":"<persona concern>","quote":"<verbatim or null>"}}, ...],
+          "panel_summary":"<2-3 sentences on the weakest link and overall soundness>"}}
+
+        Every checkable verdict in your output must come from a `run_verifier` call you actually
+        made — never assert pass/fail for a checkable claim without the tool. Be thorough but do not
+        loop: one verifier attempt per applicable claim is enough.
+        """
+    )
 
 
 # --------------------------------------------------------------------------------------------
@@ -82,11 +201,12 @@ LITMUS_AUDITOR_SYSTEM = textwrap.dedent(
 # --------------------------------------------------------------------------------------------
 @dataclass
 class ManagedResources:
-    """The persisted control-plane handles. Create the agent/environment ONCE and reuse the
-    ids (SKILL.md gotcha #2: don't recreate the agent on the hot path)."""
+    """The persisted control-plane handles. Create the coordinator agent + persona sub-agents +
+    environment ONCE and reuse the ids (SKILL.md gotcha #2: don't recreate on the hot path)."""
 
     agent_id: str
     environment_id: str
+    persona_agent_ids: dict[str, str] = field(default_factory=dict)
 
 
 def _client(api_key: Optional[str] = None):
@@ -96,6 +216,23 @@ def _client(api_key: Optional[str] = None):
     return anthropic.Anthropic(api_key=api_key) if api_key else anthropic.Anthropic()
 
 
+def _create_persona_agents(client: Any, *, model: str) -> dict[str, str]:
+    """Create the five persona sub-agents and return {persona_key: agent_id} (DESIGN §13).
+
+    Each is a plain Agent (model + system, no tools) — the coordinator delegates to them via the
+    multiagent coordinator; they reason in isolated threads sharing the session's container.
+    """
+    ids: dict[str, str] = {}
+    for p in PERSONAS:
+        agent = client.beta.agents.create(
+            name=f"LITMUS {p.name}",
+            model=model,
+            system=p.system,
+        )
+        ids[p.key] = agent.id
+    return ids
+
+
 def ensure_resources(
     client: Any,
     *,
@@ -103,244 +240,138 @@ def ensure_resources(
     model: str = DEFAULT_MODEL,
     networking: str = "limited",
 ) -> ManagedResources:
-    """Create (or reuse) the LITMUS Agent + Environment and return their ids.
+    """Create (or reuse) the LITMUS coordinator Agent (+ persona sub-agents) and Environment.
 
     ``resources`` short-circuits to reuse already-created handles (the app persists these).
-    Otherwise reads ``LITMUS_AGENT_ID`` / ``LITMUS_ENVIRONMENT_ID`` from the env, and only
-    creates fresh ones when neither is available.
+    Otherwise reads ``LITMUS_AGENT_ID`` / ``LITMUS_ENVIRONMENT_ID`` from the env, and only creates
+    fresh ones when neither is available.
 
-    The environment is a **cloud** sandbox (DESIGN §15: Anthropic runs the container). The
-    recompute confirmation we run there is network-less by construction (it only re-executes
-    stdlib recompute scripts), so we default to ``limited`` networking with package managers
-    off — matching the recompute sandbox's safety profile (DESIGN §15, "do not weaken it").
+    The environment is a **cloud** sandbox (DESIGN §15). The recompute confirmation runs in the
+    network-less recompute sandbox host-side (via the ``confirm_recompute`` tool), so the cloud
+    environment defaults to ``limited`` networking with package managers off (DESIGN §15: "do not
+    weaken it").
     """
     if resources is not None:
         return resources
 
     agent_id = os.environ.get("LITMUS_AGENT_ID")
     environment_id = os.environ.get("LITMUS_ENVIRONMENT_ID")
+    persona_ids: dict[str, str] = {}
 
     if environment_id is None:
-        net_cfg: dict[str, Any]
         if networking == "unrestricted":
-            net_cfg = {"type": "unrestricted"}
+            net_cfg: dict[str, Any] = {"type": "unrestricted"}
         else:
             net_cfg = {"type": "limited", "allow_package_managers": False, "allow_mcp_servers": False}
         environment = client.beta.environments.create(
-            name="litmus-recompute-env",
+            name="litmus-audit-env",
             config={"type": "cloud", "networking": net_cfg},
         )
         environment_id = environment.id
 
     if agent_id is None:
+        persona_ids = _create_persona_agents(client, model=model)
         agent = client.beta.agents.create(
-            name="LITMUS Auditor",
+            name="LITMUS Audit Coordinator",
             model=model,
-            system=LITMUS_AUDITOR_SYSTEM,
-            # The built-in cloud toolset; we only need bash/write to run the confirmation
-            # program, but enabling the set keeps the agent capable of the fuller §13 pipeline.
-            tools=[{"type": "agent_toolset_20260401"}],
+            system=_coordinator_system(),
+            tools=custom_tool_defs(),  # the deterministic verifier tools (host runs them)
+            multiagent={
+                "type": "coordinator",
+                "agents": [{"type": "agent", "id": aid} for aid in persona_ids.values()],
+            },
         )
         agent_id = agent.id
 
-    return ManagedResources(agent_id=agent_id, environment_id=environment_id)
-
-
-# --------------------------------------------------------------------------------------------
-# The deterministic core (shared with LocalExecutor) + the sandbox confirmation runner.
-# --------------------------------------------------------------------------------------------
-def _judge_outcomes(graph: ClaimGraph, registry: Registry):
-    """Run plan+judge for every claim using a confirm-disabled LocalExecutor, so judging is
-    byte-for-byte the same deterministic code path as the local pipeline. Returns the report
-    with flags NOT yet confirmed (confirmation happens in the managed sandbox)."""
-    pre = LocalExecutor(confirm=False).audit_graph(graph, registry)
-    return pre
-
-
-# A self-contained program shipped into the managed sandbox. It reads a JSON array of flags
-# (each: {idx, recompute_script, expected_output}) from FLAGS_JSON, re-runs each script in a
-# fresh, network-less subprocess (the same confirmation contract as litmus.core.sandbox), and
-# prints {"confirmed": [idx...], "dropped": [{"idx", "reason"}...]} as its last line.
-# Kept dependency-free (stdlib only) so it runs in any cloud sandbox with no install.
-_CONFIRM_RUNNER = textwrap.dedent(
-    '''\
-    import base64, json, os, subprocess, sys, tempfile, signal
-
-    SITECUSTOMIZE = (
-        "import socket as _s\\n"
-        "def _deny(*a, **k):\\n"
-        "    raise OSError('network disabled in LITMUS recompute sandbox (DESIGN \\u00a715)')\\n"
-        "_s.socket=_deny; _s.create_connection=_deny; _s.getaddrinfo=_deny; _s.gethostbyname=_deny\\n"
+    return ManagedResources(
+        agent_id=agent_id, environment_id=environment_id, persona_agent_ids=persona_ids
     )
 
-    def reproduces(script, expected, timeout_s=15.0):
-        with tempfile.TemporaryDirectory(prefix="litmus-sbx-") as tmp:
-            site = os.path.join(tmp, "_site"); os.mkdir(site)
-            with open(os.path.join(site, "sitecustomize.py"), "w") as f: f.write(SITECUSTOMIZE)
-            sp = os.path.join(tmp, "recompute.py")
-            with open(sp, "w") as f: f.write(script or "")
-            env = {"PATH": "/usr/bin:/bin", "PYTHONPATH": site, "PYTHONHASHSEED": "0",
-                   "PYTHONDONTWRITEBYTECODE": "1", "PYTHONNOUSERSITE": "1", "LANG": "C",
-                   "LC_ALL": "C", "TMPDIR": tmp, "HOME": tmp, "no_proxy": "*", "NO_PROXY": "*"}
-            try:
-                p = subprocess.Popen([sys.executable, sp], cwd=tmp, env=env,
-                                     stdin=subprocess.DEVNULL, stdout=subprocess.PIPE,
-                                     stderr=subprocess.PIPE, text=True, start_new_session=True)
-            except Exception as exc:
-                return False, "spawn failed: %s" % exc
-            try:
-                out, err = p.communicate(timeout=timeout_s)
-            except subprocess.TimeoutExpired:
-                try: os.killpg(os.getpgid(p.pid), signal.SIGKILL)
-                except Exception: p.kill()
-                return False, "wall-clock timeout"
-            if p.returncode != 0:
-                return False, "exit %d: %s" % (p.returncode, (err or "").strip()[:160])
-            if (out or "").strip() != (expected or "").strip():
-                return False, "stdout did not match expected_output"
-            return True, ""
-
-    # Flags are embedded as a base64'd JSON blob (no env plumbing): the orchestrator substitutes
-    # __LITMUS_FLAGS_B64__ before shipping the program. base64 is pure ASCII, so it is safe inside
-    # this Python literal AND inside a single-quoted shell heredoc — unlike a raw JSON literal,
-    # whose escaped newlines/control chars and non-ASCII (e.g. \\u00a7) corrupt a """...""" literal.
-    flags = json.loads(base64.b64decode("__LITMUS_FLAGS_B64__").decode("utf-8"))
-    confirmed, dropped = [], []
-    for fl in flags:
-        ok, why = reproduces(fl.get("recompute_script"), fl.get("expected_output"))
-        if ok:
-            confirmed.append(fl["idx"])
-        else:
-            dropped.append({"idx": fl["idx"],
-                            "reason": "recompute_script did not reproduce expected_output in a "
-                                      "fresh, network-less sandbox (DESIGN \\u00a713.4): " + why})
-    print("LITMUS_CONFIRM " + json.dumps({"confirmed": confirmed, "dropped": dropped}))
-    '''
-)
-
-
-def _build_confirm_program(flags: list[Finding]) -> str:
-    """The complete self-contained program shipped to the sandbox: the runner with the flag array
-    embedded as a base64'd JSON blob. stdlib-only, single file, no env/argv dependency. base64
-    keeps the payload pure-ASCII so it survives both the Python literal and the shell heredoc
-    (a raw JSON literal does not — escaped newlines/control chars/non-ASCII corrupt it)."""
-    import base64
-
-    flags_json = json.dumps(_confirm_payload(flags))
-    flags_b64 = base64.b64encode(flags_json.encode("utf-8")).decode("ascii")
-    return _CONFIRM_RUNNER.replace("__LITMUS_FLAGS_B64__", flags_b64)
-
-
-def _confirm_payload(flags: list[Finding]) -> list[dict[str, Any]]:
-    """Project flags to the minimal JSON the sandbox runner consumes."""
-    out: list[dict[str, Any]] = []
-    for i, f in enumerate(flags):
-        out.append(
-            {
-                "idx": i,
-                "recompute_script": f.evidence.recompute_script or "",
-                "expected_output": f.evidence.expected_output or "",
-            }
-        )
-    return out
-
-
-def _parse_confirm_result(text: str) -> Optional[dict[str, Any]]:
-    """Pull the ``{"confirmed":[...], "dropped":[...]}`` object out of the agent's reply.
-
-    Tolerant of the model wrapping it in prose or fences: we scan for our ``LITMUS_CONFIRM``
-    sentinel first, then fall back to the last balanced JSON object containing "confirmed".
-    """
-    if not text:
-        return None
-    marker = "LITMUS_CONFIRM"
-    if marker in text:
-        tail = text[text.rindex(marker) + len(marker):].strip()
-        try:
-            return json.loads(tail[: tail.index("}") + 1]) if "}" in tail else json.loads(tail)
-        except Exception:
-            pass
-    # Fallback: find the last {...} that parses and has the expected keys.
-    for start in range(len(text)):
-        if text[start] != "{":
-            continue
-        depth = 0
-        for end in range(start, len(text)):
-            if text[end] == "{":
-                depth += 1
-            elif text[end] == "}":
-                depth -= 1
-                if depth == 0:
-                    try:
-                        obj = json.loads(text[start : end + 1])
-                    except Exception:
-                        break
-                    if isinstance(obj, dict) and "confirmed" in obj:
-                        return obj
-                    break
-    return None
-
 
 # --------------------------------------------------------------------------------------------
-# Drive one managed session: ship the runner, run it in the sandbox, collect the result.
+# The session driver: stream, answer every custom-tool call with REAL verifier code, collect
+# the coordinator's final structured output.
 # --------------------------------------------------------------------------------------------
 @dataclass
 class _SessionRun:
     session_id: Optional[str]
-    confirm_result: Optional[dict[str, Any]]
+    final: Optional[dict[str, Any]]
     transcript: str
+    host: VerifierToolHost
     error: Optional[str] = None
 
 
-def _run_confirmation_session(
+def _claimgraph_brief(graph: ClaimGraph) -> str:
+    """The ClaimGraph as compact JSON for the coordinator (claims + evidence + bindings)."""
+    return json.dumps(graph.to_dict(), separators=(",", ":"))
+
+
+def _run_audit_session(
     client: Any,
     resources: ManagedResources,
-    flags: list[Finding],
+    graph: ClaimGraph,
+    host: VerifierToolHost,
     *,
-    paper_id: str,
     timeout_s: float = DEFAULT_SESSION_TIMEOUT_S,
+    on_event: Optional[Callable[[str, Any], None]] = None,
 ) -> _SessionRun:
-    """Create a session, ask the agent to run the confirmation program over ``flags`` in the
-    sandbox, and stream until it returns the result JSON (SKILL.md: stream-first, then send;
-    don't break on bare idle — check stop_reason; break on terminated)."""
-    # Ship the COMPLETE program (runner + embedded flags) in a SINGLE bash command via a
-    # single-quoted heredoc — content is passed byte-for-byte (no shell interpolation), the runner
-    # is pure ASCII Python, and it runs in one tool call so the recompute scripts execute in the
-    # managed sandbox, not here. (Earlier hex+separate-FLAGS_JSON and base64-pipe attempts proved
-    # brittle: the model stalled between two commands, or "inspected"/mangled the blob and
-    # `base64 -d` rejected it. A literal heredoc removes both failure modes.)
-    program = _build_confirm_program(flags)
-    heredoc = f"cat > /tmp/litmus_confirm.py <<'LITMUS_PYEOF'\n{program}\nLITMUS_PYEOF\npython3 /tmp/litmus_confirm.py"
-    kickoff = textwrap.dedent(
-        """\
-        Audit confirmation for paper {pid!r}: re-run {n} flagged claim(s)' recompute_script in this
-        fresh, network-less sandbox and report which reproduce. The verdicts are deterministic — do
-        NOT judge the claims yourself; just run the program and relay its output.
-
-        Make EXACTLY ONE bash tool call, passing this command UNCHANGED (it writes a stdlib-only
-        Python program via a heredoc and runs it; the program prints one `LITMUS_CONFIRM {{...}}`
-        JSON line). Do not inspect, decode, reformat, or split it — run it verbatim:
-
-        ```bash
-        {cmd}
-        ```
-
-        Then return that `LITMUS_CONFIRM ...` line verbatim as your final message — nothing else,
-        no commentary, no code fences.
-        """
-    ).format(pid=paper_id, n=len(flags), cmd=heredoc)
-
+    """Drive one coordinator session over ``graph``: stream-first, answer every custom_tool_use
+    with the host's REAL verifier result, break on terminal idle (SKILL.md gotchas #3/#4/#5)."""
     session = client.beta.sessions.create(
         agent=resources.agent_id,
         environment_id=resources.environment_id,
-        title=f"LITMUS confirm · {paper_id}",
+        title=f"LITMUS audit · {graph.paper_id}",
     )
+    kickoff = textwrap.dedent(
+        f"""\
+        Audit this paper. Its extracted ClaimGraph (claims, evidence with transcribed numbers, and
+        bindings) follows as JSON. Run deterministic verifier tools on every checkable claim, convene
+        the persona panel for the non-deterministic dimensions, classify every claim, and emit the
+        single `{FINAL_MARKER} {{...}}` result line. Remember the hard invariant: never judge a
+        checkable claim yourself — call `run_verifier`.
+
+        ClaimGraph for {graph.paper_id!r}:
+        {_claimgraph_brief(graph)}
+        """
+    )
+
     transcript_parts: list[str] = []
     deadline = time.monotonic() + timeout_s
-    last_text = ""
+    error: Optional[str] = None
+
+    def _emit(kind: str, payload: Any) -> None:
+        if on_event is not None:
+            try:
+                on_event(kind, payload)
+            except Exception:
+                pass
+
+    # ONE stream, held open for the whole session. We flush custom-tool results INLINE (without
+    # closing the stream) the moment the session idles on `requires_action` — closing and reopening
+    # the stream between tool batches loses the `agent.custom_tool_use` events that fire in the gap
+    # (SSE has no replay, SKILL.md gotcha #6), which strands tool calls unanswered and hangs the
+    # session. Keeping the stream open means every tool call the agent makes is delivered to us.
+    pending: list[Any] = []
+
+    def _flush(reason_log: str) -> None:
+        """Answer every buffered custom-tool call with the REAL host result (SKILL.md gotcha #5)."""
+        if not pending:
+            return
+        results = [
+            {
+                "type": "user.custom_tool_result",
+                "custom_tool_use_id": call.id,
+                "content": [{"type": "text", "text": host.handle(
+                    getattr(call, "name", ""), getattr(call, "input", {}) or {})}],
+            }
+            for call in pending
+        ]
+        pending.clear()
+        client.beta.sessions.events.send(session_id=session.id, events=results)
 
     try:
         with client.beta.sessions.events.stream(session_id=session.id) as stream:
+            # Stream-first, THEN send the kickoff (SKILL.md gotcha #3).
             client.beta.sessions.events.send(
                 session_id=session.id,
                 events=[{"type": "user.message", "content": [{"type": "text", "text": kickoff}]}],
@@ -349,41 +380,239 @@ def _run_confirmation_session(
                 if time.monotonic() > deadline:
                     try:
                         client.beta.sessions.events.send(
-                            session_id=session.id,
-                            events=[{"type": "user.interrupt"}],
+                            session_id=session.id, events=[{"type": "user.interrupt"}]
                         )
                     except Exception:
                         pass
-                    return _SessionRun(session.id, None, "".join(transcript_parts), "session timeout")
+                    error = "session timeout"
+                    break
+
                 etype = getattr(event, "type", "")
                 if etype == "agent.message":
                     chunk = "".join(
-                        b.text for b in getattr(event, "content", []) if getattr(b, "type", "") == "text"
+                        b.text
+                        for b in getattr(event, "content", [])
+                        if getattr(b, "type", "") == "text"
                     )
                     if chunk:
                         transcript_parts.append(chunk)
-                        last_text = chunk
+                        _emit("message", chunk)
+                elif etype == "agent.custom_tool_use":
+                    pending.append(event)  # buffer; flush when the session idles on requires_action
+                    _emit("tool_use", getattr(event, "name", ""))
                 elif etype == "session.status_idle":
                     stop = getattr(event, "stop_reason", None)
-                    if getattr(stop, "type", None) != "requires_action":
-                        break  # end_turn / retries_exhausted — terminal
-                    # requires_action with the agent_toolset is a server-run tool confirmation
-                    # under always_allow → shouldn't occur; nothing to answer, keep streaming.
+                    stop_type = getattr(stop, "type", None)
+                    if stop_type == "requires_action":
+                        # The agent is waiting on our custom-tool results. Flush them on the SAME
+                        # stream and keep iterating — the continuation arrives here, no gap.
+                        _flush("requires_action")
+                        continue
+                    # end_turn / retries_exhausted — terminal. Stop driving.
+                    break
                 elif etype == "session.status_terminated":
                     break
                 elif etype == "session.error":
-                    return _SessionRun(
-                        session.id, None, "".join(transcript_parts),
-                        f"session.error: {getattr(event, 'message', '')!r}",
-                    )
+                    error = f"session.error: {getattr(event, 'message', '')!r}"
+                    break
     except Exception as exc:  # network / API / beta-not-enabled surfaced mid-stream
-        return _SessionRun(session.id, None, "".join(transcript_parts), f"{type(exc).__name__}: {exc}")
+        return _SessionRun(
+            session.id, None, "".join(transcript_parts), host, f"{type(exc).__name__}: {exc}"
+        )
 
-    full = "".join(transcript_parts) or last_text
-    result = _parse_confirm_result(full)
-    if result is None:
-        return _SessionRun(session.id, None, full, "no parseable confirmation result in transcript")
-    return _SessionRun(session.id, result, full)
+    full = "".join(transcript_parts)
+    final = _parse_final(full)
+    if error is None and final is None:
+        error = "no parseable LITMUS_AUDIT result in transcript"
+    return _SessionRun(session.id, final, full, host, error)
+
+
+def _parse_final(text: str) -> Optional[dict[str, Any]]:
+    """Extract the coordinator's ``LITMUS_AUDIT {...}`` JSON object from the transcript.
+
+    Tolerant of the model wrapping it in prose/fences: scan from the last marker, then fall back to
+    the last balanced ``{...}`` containing a ``"claims"`` key.
+    """
+    if not text:
+        return None
+    if FINAL_MARKER in text:
+        tail = text[text.rindex(FINAL_MARKER) + len(FINAL_MARKER):].strip()
+        obj = _first_balanced_object(tail)
+        if obj is not None:
+            return obj
+    # Fallback: last balanced object with the expected key.
+    best: Optional[dict[str, Any]] = None
+    for start in range(len(text)):
+        if text[start] != "{":
+            continue
+        obj = _first_balanced_object(text[start:])
+        if isinstance(obj, dict) and "claims" in obj:
+            best = obj
+    return best
+
+
+def _first_balanced_object(s: str) -> Optional[dict[str, Any]]:
+    """Parse the first balanced ``{...}`` (string-aware) at the start of ``s`` as JSON."""
+    if not s or s[0] != "{":
+        # allow leading whitespace
+        s = s.lstrip()
+        if not s or s[0] != "{":
+            return None
+    depth = 0
+    in_str = False
+    esc = False
+    for i, ch in enumerate(s):
+        if in_str:
+            if esc:
+                esc = False
+            elif ch == "\\":
+                esc = True
+            elif ch == '"':
+                in_str = False
+            continue
+        if ch == '"':
+            in_str = True
+        elif ch == "{":
+            depth += 1
+        elif ch == "}":
+            depth -= 1
+            if depth == 0:
+                try:
+                    return json.loads(s[: i + 1])
+                except Exception:
+                    return None
+    return None
+
+
+# --------------------------------------------------------------------------------------------
+# Assemble the AuditReport from the DETERMINISTIC tool records (source of truth), enriched by
+# the coordinator's classification for subjective / routed dimensions (DESIGN §3.1, §3.6, §14).
+# --------------------------------------------------------------------------------------------
+def _assemble_report(
+    graph: ClaimGraph,
+    host: VerifierToolHost,
+    final: Optional[dict[str, Any]],
+    *,
+    confirm: bool,
+) -> AuditReport:
+    """Build the report. CHECKABLE findings come from the host's ``run_verifier`` Findings; a FAIL
+    is kept only if a ``confirm_recompute`` reproduced it (else it is a DroppedFlag, §13.4). The
+    coordinator's ``routed_to_human`` adds the subjective/method/integrity dimensions (§3.5)."""
+    confirmations = host.confirmations()
+    host_findings = host.findings()
+
+    findings: list[Finding] = []
+    dropped: list[DroppedFlag] = []
+    for f in host_findings:
+        if f.status is Status.FAIL:
+            script = f.evidence.recompute_script or ""
+            problems = f.validate()
+            if problems:
+                dropped.append(DroppedFlag(finding=f, reason="; ".join(problems)))
+                continue
+            if not confirm:
+                findings.append(f)
+                continue
+            reproduced = confirmations.get(script)
+            if reproduced is None:
+                # The coordinator didn't confirm via the tool — confirm host-side so the §13.4
+                # invariant always holds (no flag ships unconfirmed).
+                ok, _ = _host_confirm(f)
+                reproduced = ok
+            if reproduced:
+                findings.append(f)
+            else:
+                dropped.append(
+                    DroppedFlag(
+                        finding=f,
+                        reason="recompute_script did not reproduce expected_output in a fresh, "
+                        "network-less sandbox (DESIGN §13.4)",
+                    )
+                )
+        elif f.status is Status.PASS:
+            findings.append(f)
+        # INCONCLUSIVE/ERROR Findings from run_verifier are coverage signals, not report findings.
+
+    # De-dup PASS/FAIL findings by (verifier_id, claim_id) — the model may retry a tool call.
+    findings = _dedup_findings(findings)
+
+    routed: list[RoutedItem] = []
+    abstained: list[Finding] = []
+    seen_routed: set[tuple[Optional[str], str]] = set()
+    if final:
+        for r in final.get("routed_to_human", []) or []:
+            if not isinstance(r, dict):
+                continue
+            dim = str(r.get("dimension") or "unspecified")
+            cid = r.get("claim_id")
+            key = (cid, dim)
+            if key in seen_routed:
+                continue
+            seen_routed.add(key)
+            routed.append(
+                RoutedItem(
+                    claim_id=cid,
+                    dimension=dim,
+                    note=str(r.get("note") or ""),
+                    quote=r.get("quote"),
+                )
+            )
+        # Claims the coordinator marked "subjective" with no deterministic finding → abstained.
+        covered = {f.claim_id for f in findings} | {d.finding.claim_id for d in dropped}
+        for c in final.get("claims", []) or []:
+            if not isinstance(c, dict):
+                continue
+            if c.get("classification") == "subjective":
+                cid = c.get("claim_id")
+                if cid and cid not in covered:
+                    abstained.append(_subjective_abstain(graph, cid, str(c.get("reason") or "")))
+
+    panel_summary = (final or {}).get("panel_summary", "")
+    return AuditReport(
+        paper_id=graph.paper_id,
+        findings=findings,
+        dropped_flags=dropped,
+        routed_to_human=routed,
+        abstained=abstained,
+        meta={"panel_summary": panel_summary},
+    )
+
+
+def _host_confirm(f: Finding) -> tuple[bool, str]:
+    from litmus.core import sandbox
+
+    ok, res = sandbox.reproduces(
+        f.evidence.recompute_script or "", f.evidence.expected_output or ""
+    )
+    return ok, ("" if ok else (res.stderr or "").strip()[:160])
+
+
+def _dedup_findings(findings: list[Finding]) -> list[Finding]:
+    out: list[Finding] = []
+    seen: set[tuple[str, Optional[str], str]] = set()
+    for f in findings:
+        key = (f.verifier_id, f.claim_id, f.status.value)
+        if key in seen:
+            continue
+        seen.add(key)
+        out.append(f)
+    return out
+
+
+def _subjective_abstain(graph: ClaimGraph, claim_id: str, reason: str) -> Finding:
+    claim = graph.claim_by_id(claim_id)
+    loc = claim.location if claim is not None else None
+    return Finding(
+        verifier_id="litmus.coordinator",
+        claim_id=claim_id,
+        status=Status.INCONCLUSIVE,
+        trust_tier=TrustTier.ROUTED_TO_HUMAN,
+        verifier_kind=VerifierKind.ASSISTED,
+        message=reason or "not deterministically scorable; routed for human review (DESIGN §3.5)",
+        evidence=EvidencePacket(
+            quote=loc.quote if loc else None, location=loc if loc else EvidencePacket().location
+        ),
+    )
 
 
 # --------------------------------------------------------------------------------------------
@@ -399,132 +628,85 @@ def run_managed_audit(
     confirm: bool = True,
     timeout_s: float = DEFAULT_SESSION_TIMEOUT_S,
     allow_fallback: bool = True,
-    on_event: Optional[Any] = None,
+    on_event: Optional[Callable[[str, Any], None]] = None,
 ) -> AuditReport:
-    """Audit ``graph`` inside a Claude managed-agents session and return a schema-valid report.
+    """Audit ``graph`` inside a Claude managed-agents coordinator session and return a schema-valid
+    report (DESIGN §13, §15).
 
-    Judging/planning are the same deterministic code as :class:`LocalExecutor` (DESIGN §3.1);
-    the managed **session's sandbox** performs the fresh-context confirmation of DESIGN §13
-    step 4 — every flag's ``recompute_script`` is re-run there and dropped if it doesn't
-    reproduce. ``meta["executor"]`` is ``"managed"`` when the hosted sandbox confirmed the
-    flags, or ``"managed:fallback-local"`` when the beta was unavailable and confirmation ran
-    in-process (so the seam is always real and the caller always gets a valid report).
-
-    Set ``allow_fallback=False`` to surface managed-agents failures instead of degrading.
-    ``resources`` reuses an already-created Agent+Environment (the app persists these ids).
+    The coordinator runs deterministic verifier TOOLS (host-side ``registry.get(id).judge()`` —
+    DESIGN §3.1) and convenes persona sub-agents for the non-deterministic dimensions. CHECKABLE
+    findings + the dropped-flag log come from the host's tool records; the coordinator's
+    classification adds the routed-to-human / abstained items. ``meta["executor"]`` is
+    ``"managed"`` on success, or ``"managed:fallback-local"`` when the beta was unavailable and the
+    deterministic pipeline ran in-process (so the seam is always real). Set
+    ``allow_fallback=False`` to surface managed-agents failures instead of degrading.
     """
     registry = registry or build_default_registry()
+    host = VerifierToolHost(registry)
 
-    # 1) Deterministic plan + judge (flags NOT yet confirmed). Identical to LocalExecutor.
-    pre = _judge_outcomes(graph, registry)
-    flags = [f for f in pre.findings if f.status is Status.FAIL]
-
-    if not confirm:
-        pre.meta.update({"executor": "managed", "confirmation": "disabled", "n_claims": len(graph.claims)})
-        return pre
-
-    # 2) Confirm the flags in the managed sandbox (DESIGN §15 hosted surface).
     managed_meta: dict[str, Any] = {"beta": MANAGED_AGENTS_BETA, "model": model}
     run: Optional[_SessionRun] = None
     fell_back_reason: Optional[str] = None
 
-    if flags:  # only spin up a session when there is something to confirm
-        try:
-            client = _client(api_key)
-            res = ensure_resources(client, resources=resources, model=model)
-            managed_meta["agent_id"] = res.agent_id
-            managed_meta["environment_id"] = res.environment_id
-            run = _run_confirmation_session(
-                client, res, flags, paper_id=graph.paper_id, timeout_s=timeout_s
-            )
-            if run.session_id:
-                managed_meta["session_id"] = run.session_id
-            if on_event is not None:
-                try:
-                    on_event(run)
-                except Exception:
-                    pass
-            if run.error or run.confirm_result is None:
-                fell_back_reason = run.error or "no confirmation result"
-        except Exception as exc:
-            # Beta not enabled on the key, SDK too old, auth/network failure — degrade cleanly.
-            fell_back_reason = f"{type(exc).__name__}: {exc}"
-    else:
-        managed_meta["note"] = "no flags to confirm; no session created"
+    try:
+        client = _client(api_key)
+        res = ensure_resources(client, resources=resources, model=model)
+        managed_meta["agent_id"] = res.agent_id
+        managed_meta["environment_id"] = res.environment_id
+        if res.persona_agent_ids:
+            managed_meta["persona_agent_ids"] = res.persona_agent_ids
+        run = _run_audit_session(
+            client, res, graph, host, timeout_s=timeout_s, on_event=on_event
+        )
+        if run.session_id:
+            managed_meta["session_id"] = run.session_id
+        if run.error:
+            fell_back_reason = run.error
+    except Exception as exc:
+        fell_back_reason = f"{type(exc).__name__}: {exc}"
 
-    # 3a) Managed confirmation succeeded → keep/drop per the sandbox's verdict.
-    if flags and run is not None and run.confirm_result is not None and not fell_back_reason:
-        report = _assemble_from_confirmation(pre, flags, run.confirm_result)
+    # Managed session ran and produced a final classification → assemble from the tool records.
+    if run is not None and run.final is not None and not fell_back_reason:
+        report = _assemble_report(graph, host, run.final, confirm=confirm)
         report.meta.update(
             {
                 "executor": "managed",
+                "architecture": "coordinator+personas+verifier-tools",
                 "n_claims": len(graph.claims),
                 "n_verifiers": len(registry),
-                "confirmation": "managed-sandbox",
+                "confirmation": "managed-tool-sandbox" if confirm else "disabled",
+                "personas": [p.key for p in PERSONAS],
+                "tool_calls": _tool_call_stats(host),
                 "managed": managed_meta,
-                "synthesis_candidates": pre.meta.get("synthesis_candidates", []),
-                "registry_load_errors": pre.meta.get("registry_load_errors", []),
+                "registry_load_errors": registry.load_errors,
             }
         )
         return report
 
-    if not flags:
-        # Nothing to confirm; the pre-report already has zero flags. Mark it managed.
-        pre.meta.update(
-            {
-                "executor": "managed",
-                "confirmation": "managed-sandbox",
-                "managed": managed_meta,
-                "n_claims": len(graph.claims),
-            }
-        )
-        return pre
-
-    # 3b) Fallback: confirm in-process with the local sandbox so the seam still produces a
-    # correct, schema-valid report (documented: meta.executor == "managed:fallback-local").
+    # Fallback: run the deterministic pipeline in-process so the seam always yields a valid report.
     if not allow_fallback:
         raise RuntimeError(
-            f"managed-agents confirmation unavailable and allow_fallback=False: {fell_back_reason}"
+            f"managed-agents audit unavailable and allow_fallback=False: {fell_back_reason}"
         )
-    report = LocalExecutor(confirm=True).audit_graph(graph, registry)
+    report = LocalExecutor(confirm=confirm).audit_graph(graph, registry)
     report.meta.update(
         {
             "executor": "managed:fallback-local",
-            "confirmation": "fresh-sandbox (local fallback)",
-            "managed": {**managed_meta, "fallback_reason": fell_back_reason,
-                        "transcript_tail": (run.transcript[-500:] if run else "")},
+            "architecture": "coordinator+personas+verifier-tools (fallback to local)",
+            "confirmation": "fresh-sandbox (local fallback)" if confirm else "disabled",
+            "managed": {
+                **managed_meta,
+                "fallback_reason": fell_back_reason,
+                "transcript_tail": (run.transcript[-800:] if run else ""),
+                "tool_calls": _tool_call_stats(host),
+            },
         }
     )
     return report
 
 
-def _assemble_from_confirmation(
-    pre: AuditReport, flags: list[Finding], confirm_result: dict[str, Any]
-) -> AuditReport:
-    """Rebuild the report keeping only flags the managed sandbox reproduced; the rest become
-    DroppedFlags (DESIGN §13 step 4 — the dropped-flag log is the autonomy evidence, §14)."""
-    confirmed_idx = set(confirm_result.get("confirmed", []))
-    drop_reasons = {d["idx"]: d.get("reason", "did not reproduce") for d in confirm_result.get("dropped", [])}
-
-    # Non-flag findings (PASS, etc.) carry over untouched.
-    kept_findings: list[Finding] = [f for f in pre.findings if f.status is not Status.FAIL]
-    dropped: list[DroppedFlag] = []
-    for i, f in enumerate(flags):
-        if i in confirmed_idx:
-            kept_findings.append(f)
-        else:
-            reason = drop_reasons.get(
-                i,
-                "recompute_script did not reproduce expected_output in the managed sandbox "
-                "(DESIGN §13.4)",
-            )
-            dropped.append(DroppedFlag(finding=f, reason=reason))
-
-    return AuditReport(
-        paper_id=pre.paper_id,
-        findings=kept_findings,
-        dropped_flags=dropped,
-        routed_to_human=list(pre.routed_to_human),
-        abstained=list(pre.abstained),
-        meta=dict(pre.meta),
-    )
+def _tool_call_stats(host: VerifierToolHost) -> dict[str, int]:
+    stats: dict[str, int] = {}
+    for c in host.calls:
+        stats[c.tool] = stats.get(c.tool, 0) + 1
+    return stats

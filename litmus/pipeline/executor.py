@@ -202,10 +202,14 @@ class LocalExecutor(ExecutorAdapter):
 
 
 class ManagedAgentExecutor(ExecutorAdapter):
-    """Runs the pipeline inside a Claude managed-agents session (DESIGN §13, §15 — WS-H).
+    """Runs the pipeline inside a Claude managed-agents coordinator session (DESIGN §13, §15 — WS-H).
 
-    Only this adapter depends on managed agents. Implemented in WS-H (litmus/pipeline/managed.py);
-    this thin shell keeps the seam visible in the core so the framework never reaches for it.
+    Only this adapter depends on managed agents. The session combines deterministic verifier TOOLS
+    (host-side ``registry.get(id).judge()`` — DESIGN §3.1) with non-deterministic multi-persona LLM
+    review; ``litmus/pipeline/managed.py`` builds it. This shell keeps the seam visible in the core
+    so the framework never reaches for managed agents. Constructor kwargs (``model``, ``confirm``,
+    ``timeout_s``, ``allow_fallback``, ``resources``, ``api_key``, ``on_event``) flow through to
+    :func:`~litmus.pipeline.managed.run_managed_audit`.
     """
 
     def __init__(self, *args, **kwargs) -> None:
@@ -221,3 +225,20 @@ class ManagedAgentExecutor(ExecutorAdapter):
                 "use LocalExecutor for the framework/study/gate (DESIGN §15)."
             ) from exc
         return run_managed_audit(graph, registry=registry, *self._args, **self._kwargs)
+
+    def audit_pdf(
+        self,
+        pdf_path: str,
+        registry: Optional[Registry] = None,
+        *,
+        paper_id: Optional[str] = None,
+        model: str = "claude-opus-4-8",
+    ) -> AuditReport:
+        """Extract a PDF (Opus vision — the only model-in-the-loop *finding* step, DESIGN §11)
+        then audit the resulting ClaimGraph inside the managed-agents coordinator session. The
+        deterministic verdicts still come from the verifier tools, never the model (DESIGN §3.1).
+        """
+        from litmus.extract.extractor import extract_claim_graph
+
+        graph = extract_claim_graph(pdf_path, model=model, paper_id=paper_id)
+        return self.audit_graph(graph, registry)
