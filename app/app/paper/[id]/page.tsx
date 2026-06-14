@@ -214,8 +214,8 @@ export default async function PaperPage({
           </Empty>
         ) : (
           <div className="space-y-5">
-            {checkableFlags.map((f) => (
-              <FindingCard key={f.verifier_id} finding={f} />
+            {checkableFlags.map((f, i) => (
+              <FindingCard key={`${f.verifier_id}:${f.claim_id ?? i}`} finding={f} />
             ))}
           </div>
         )}
@@ -228,8 +228,8 @@ export default async function PaperPage({
         {/* Deterministic checks that ran but reached no verdict (rare). Quiet. */}
         {deterministicOther.length > 0 && (
           <div className="mt-4 space-y-3">
-            {deterministicOther.map((f) => (
-              <MutedFindingRow key={f.verifier_id} finding={f} />
+            {deterministicOther.map((f, i) => (
+              <MutedFindingRow key={`${f.verifier_id}:${f.claim_id ?? i}`} finding={f} />
             ))}
           </div>
         )}
@@ -250,8 +250,8 @@ export default async function PaperPage({
           <div className="space-y-3">
             {/* advisory_assisted findings — reasoned, no recompute_script, so
                 no run button (rendered as a concern row, not a FindingCard). */}
-            {reasonedFindings.map((f) => (
-              <ReviewFindingRow key={f.verifier_id} finding={f} />
+            {reasonedFindings.map((f, i) => (
+              <ReviewFindingRow key={`${f.verifier_id}:${f.claim_id ?? i}`} finding={f} />
             ))}
             {/* advisory:* routed concerns — methodologist / claims-auditor /
                 domain-expert / skeptic notes. Also no run button. */}
@@ -550,9 +550,9 @@ function ConfirmedCorrect({ findings }: { findings: Finding[] }) {
         </span>
       </summary>
       <div className="mt-3 space-y-2 pl-4">
-        {findings.map((f) => (
+        {findings.map((f, i) => (
           <div
-            key={f.verifier_id}
+            key={`${f.verifier_id}:${f.claim_id ?? i}`}
             className="rounded-md border p-3"
             style={{ borderColor: "var(--border)", background: "var(--surface)" }}
           >
@@ -771,8 +771,8 @@ function OutsideChecks({ items }: { items: Finding[] }) {
         </span>
       </summary>
       <div className="mt-3 space-y-2 pl-4">
-        {items.map((f) => (
-          <OutsideRow key={f.verifier_id} finding={f} />
+        {items.map((f, i) => (
+          <OutsideRow key={`${f.verifier_id}:${f.claim_id ?? i}`} finding={f} />
         ))}
       </div>
     </details>

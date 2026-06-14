@@ -6,7 +6,7 @@
 // These functions are safe to call from Server Components (the gallery and the
 // audit page are RSC) — they only use the publishable key + public SELECT RLS.
 
-import type { AuditReport, PaperStatus, PaperSummary, TrustTier } from "@/lib/types";
+import type { AuditReport, Finding, PaperStatus, PaperSummary, TrustTier } from "@/lib/types";
 import { FIXTURES, FIXTURE_BY_ID } from "@/lib/fixtures";
 import { getSupabase, isSupabaseConfigured, type PaperRow } from "@/lib/supabase";
 import { categorize } from "@/lib/labels";
@@ -47,9 +47,38 @@ export function summarize(report: AuditReport): PaperSummary {
   };
 }
 
+// Defensive dedup for findings. Some stored audits merged a deterministic pass and a rich-review
+// pass under DIFFERENT claim-id schemes (e.g. "c-grim-1" vs "c1"), so the same flag appears twice —
+// once with the quote, once without. We collapse those: a deterministic FAIL is identified by its
+// canonical recompute output (verifier + expected_output), which is identical across the duplicates
+// and unique per mean/n; everything else keeps its (verifier, claim, status) identity so genuinely
+// distinct findings are never merged. When duplicates collide we keep the richer one (has a quote).
+function dedupeFindings(findings: Finding[]): Finding[] {
+  if (!Array.isArray(findings)) return findings;
+  const keyOf = (f: Finding): string => {
+    const exp = f.evidence?.expected_output;
+    if (f.status === "fail" && typeof exp === "string" && exp) {
+      return `${f.verifier_id}::fail::${exp}`;
+    }
+    return `${f.verifier_id}::${f.claim_id ?? ""}::${f.status}`;
+  };
+  const hasQuote = (f: Finding): boolean => Boolean(f.evidence?.location?.quote);
+  const byKey = new Map<string, Finding>();
+  for (const f of findings) {
+    const k = keyOf(f);
+    const prev = byKey.get(k);
+    // First wins, but a later duplicate that carries a quote upgrades the kept one.
+    if (!prev || (!hasQuote(prev) && hasQuote(f))) byKey.set(k, f);
+  }
+  return Array.from(byKey.values());
+}
+
 function rowToReport(row: PaperRow): AuditReport | null {
   if (!row.audit_report) return null;
   const report = row.audit_report as AuditReport;
+  if (Array.isArray(report.findings)) {
+    report.findings = dedupeFindings(report.findings);
+  }
   // Backfill meta from columns so the gallery has title/field even if the
   // stored audit_report didn't duplicate them.
   report.meta = {
