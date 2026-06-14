@@ -80,6 +80,14 @@ export async function listPapers(): Promise<PaperSummary[]> {
   return FIXTURES.map(summarize);
 }
 
+// A paper id arriving from the URL is one of: a uuid (the `id` column), a sha256 content_hash
+// (hex), or a paper_id slug. All three are [A-Za-z0-9_-] only. Anything else (commas, parens, dots,
+// spaces) cannot be a real id AND is exactly what would break out of a raw PostgREST `.or()` filter
+// — so we reject it up front rather than interpolate it, closing the filter-injection / malformed-
+// query-500 hole on the public status endpoint.
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+const SAFE_ID_RE = /^[A-Za-z0-9_-]+$/;
+
 /** A single audit report by paper id, or null if not found. */
 export async function getPaper(id: string): Promise<AuditReport | null> {
   if (isSupabaseConfigured()) {
@@ -90,7 +98,8 @@ export async function getPaper(id: string): Promise<AuditReport | null> {
       // the uuid column makes Postgres throw on the cast, so branch on shape:
       // a uuid hits `id`; anything else matches the paper_id slug (with
       // content_hash as a secondary key).
-      const isUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(id);
+      const isUuid = UUID_RE.test(id);
+      if (!isUuid && !SAFE_ID_RE.test(id)) return null; // not a valid id; never reaches the filter
       const base = supabase.from("papers").select("*").limit(1);
       const query = isUuid
         ? base.eq("id", id)
@@ -101,6 +110,73 @@ export async function getPaper(id: string): Promise<AuditReport | null> {
     }
   }
   return FIXTURE_BY_ID[id] ?? null;
+}
+
+// The lightweight live-status view of a paper row, for the polling endpoint and
+// the in-flight <LiveProgress> page. Deliberately NARROW — it never pulls the
+// (potentially large) audit_report/claim_graph, only what the live UI needs:
+// the pipeline status, any error text, and the worker's progress JSONB. `progress`
+// is `unknown` because the worker owns its exact shape (the UI reads it defensively).
+export interface PaperStatusInfo {
+  id: string;
+  status: PaperStatus;
+  error: string | null;
+  progress: unknown | null;
+  // True once the audit_report has a paper_id — i.e. there is a report to render.
+  hasReport: boolean;
+}
+
+/**
+ * Lightweight status for one paper — the poll target for the live page. Selects
+ * ONLY id, content_hash, status, error, progress, and audit_report->>paper_id
+ * (NOT the full report), and resolves the id the same way getPaper does (a uuid
+ * hits the `id` column; a slug/hash matches content_hash or audit_report->>paper_id).
+ * Returns null when no row exists. In fixtures mode every paper is already `done`.
+ */
+export async function getPaperStatus(id: string): Promise<PaperStatusInfo | null> {
+  if (isSupabaseConfigured()) {
+    const supabase = getSupabase();
+    if (supabase) {
+      const isUuid = UUID_RE.test(id);
+      if (!isUuid && !SAFE_ID_RE.test(id)) return null; // reject unsafe ids before the .or() filter
+      // NARROW select — no audit_report/claim_graph payload, just the status fields
+      // plus paper_id (aliased) so we can report whether a report exists yet.
+      const base = supabase
+        .from("papers")
+        .select("id, content_hash, status, error, progress, paper_id:audit_report->>paper_id")
+        .limit(1);
+      const query = isUuid
+        ? base.eq("id", id)
+        : base.or(`content_hash.eq.${id},audit_report->>paper_id.eq.${id}`);
+      const { data, error } = await query.maybeSingle();
+      if (error) throw new Error(`Supabase getPaperStatus failed: ${error.message}`);
+      if (!data) return null;
+      const row = data as {
+        id: string;
+        status: string;
+        error: string | null;
+        progress: unknown | null;
+        paper_id: string | null;
+      };
+      return {
+        id: row.id,
+        status: row.status as PaperStatus,
+        error: row.error ?? null,
+        progress: row.progress ?? null,
+        hasReport: Boolean(row.paper_id),
+      };
+    }
+  }
+  // Fixtures: a fixture exists ⇒ it's a finished (done) report; otherwise null.
+  const fixture = FIXTURE_BY_ID[id];
+  if (!fixture) return null;
+  return {
+    id: fixture.paper_id,
+    status: "done",
+    error: null,
+    progress: null,
+    hasReport: true,
+  };
 }
 
 /** Whether the live data source (Supabase) is active, for UI hints. */

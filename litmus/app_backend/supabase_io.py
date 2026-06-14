@@ -25,6 +25,7 @@ from __future__ import annotations
 
 import os
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from enum import Enum
 from typing import Any, Optional
 
@@ -34,6 +35,12 @@ from litmus.core.provenance import AuditReport
 PAPERS_TABLE = "papers"
 PDFS_BUCKET = "pdfs"
 _REST_TIMEOUT_S = 30.0
+
+
+def _now_iso() -> str:
+    """Current UTC time as an ISO-8601 string PostgREST accepts for a ``timestamptz`` column
+    (the ``updated_at`` the poller watches — migration 0002)."""
+    return datetime.now(timezone.utc).isoformat()
 
 
 class PaperStatus(str, Enum):
@@ -75,13 +82,17 @@ def paper_row_payload(
     status: Optional[PaperStatus | str] = None,
     claim_graph: Optional[ClaimGraph | dict[str, Any]] = None,
     audit_report: Optional[AuditReport | dict[str, Any]] = None,
+    progress: Optional[dict[str, Any]] = None,
+    error: Optional[str] = None,
+    updated_at: Optional[str] = None,
 ) -> dict[str, Any]:
     """Build the JSON body for a ``papers`` upsert, matching the table columns exactly.
 
     Accepts domain objects (``ClaimGraph`` / ``AuditReport``) or already-serialized dicts for the
-    jsonb columns, and a ``PaperStatus`` or raw string for status. Only the keys you pass are
-    included, so this doubles as a partial-update payload (e.g. just ``status``). Pure/no I/O —
-    unit-testable without a network.
+    jsonb columns, and a ``PaperStatus`` or raw string for status. ``progress`` (the coalesced live
+    audit feed — DESIGN §13/§15, migration 0002) and ``error`` / ``updated_at`` are included only
+    when passed. Only the keys you pass are included, so this doubles as a partial-update payload
+    (e.g. just ``status``). Pure/no I/O — unit-testable without a network.
     """
     payload: dict[str, Any] = {}
     if content_hash is not None:
@@ -100,6 +111,12 @@ def paper_row_payload(
         payload["audit_report"] = (
             audit_report.to_dict() if isinstance(audit_report, AuditReport) else audit_report
         )
+    if progress is not None:
+        payload["progress"] = progress
+    if error is not None:
+        payload["error"] = error
+    if updated_at is not None:
+        payload["updated_at"] = updated_at
     return payload
 
 
@@ -234,11 +251,13 @@ class SupabaseIO:
         self, content_hash: str, status: PaperStatus | str, *, error: Optional[str] = None
     ) -> dict[str, Any]:
         """Patch a paper's ``status`` (queued→extracting→auditing→confirming→done | error),
-        matched on ``content_hash``. ``error`` (optional) is recorded — the migration has no
-        error column, so it lands in a best-effort way only if the schema later adds one; we keep
-        the signature so callers can pass it. Returns the updated row."""
+        matched on ``content_hash``, stamping ``updated_at`` so the poller sees movement. ``error``
+        (optional) is written to the ``error`` column (added in migration 0002) — e.g. the terminal
+        failure message when ``status='error'``. Returns the updated row."""
         status_val = status.value if isinstance(status, PaperStatus) else str(status)
-        payload: dict[str, Any] = {"status": status_val}
+        payload: dict[str, Any] = {"status": status_val, "updated_at": _now_iso()}
+        if error is not None:
+            payload["error"] = error
         url = f"{self.config.rest_url}/{PAPERS_TABLE}?content_hash=eq.{content_hash}"
         resp = self._request(
             "PATCH",
@@ -247,6 +266,27 @@ class SupabaseIO:
             json=payload,
         )
         rows = resp.json()
+        return rows[0] if isinstance(rows, list) and rows else (rows or {})
+
+    def update_progress(self, content_hash: str, progress: dict[str, Any]) -> dict[str, Any]:
+        """Patch ONLY the live ``progress`` jsonb (+ ``updated_at``) for one paper, matched on
+        ``content_hash`` (migration 0002). A deliberately small, high-frequency write: the
+        managed-agents worker coalesces+throttles streamy events into ``progress`` and calls this
+        a few times a second at most, so the gallery/audit page's poll reflects the audit live
+        without rewriting the heavy ``claim_graph`` / ``audit_report`` columns. Returns nothing
+        useful by design (``Prefer: return=minimal``) to keep the round-trip cheap."""
+        payload: dict[str, Any] = {"progress": progress, "updated_at": _now_iso()}
+        url = f"{self.config.rest_url}/{PAPERS_TABLE}?content_hash=eq.{content_hash}"
+        resp = self._request(
+            "PATCH",
+            url,
+            headers=self.config.headers(extra={"Prefer": "return=minimal"}),
+            json=payload,
+        )
+        try:
+            rows = resp.json()
+        except Exception:
+            return {}
         return rows[0] if isinstance(rows, list) and rows else (rows or {})
 
     def get_paper(self, content_hash: str) -> Optional[dict[str, Any]]:

@@ -217,7 +217,16 @@ def test_supabase_update_status_patches_by_content_hash():
     assert row["status"] == "confirming"
     assert captured["method"] == "PATCH"
     assert "content_hash=eq.h" in captured["url"]
-    assert captured["json"] == {"status": "confirming"}
+    # status + updated_at are written (the updated_at column exists since migration 0002 so the
+    # poller can detect movement); no error key unless an error is passed.
+    body = captured["json"]
+    assert body["status"] == "confirming"
+    assert "updated_at" in body and isinstance(body["updated_at"], str)
+    assert "error" not in body
+    # When an error IS passed (terminal failure), it lands in the error column too.
+    io.update_status("h", PaperStatus.ERROR, error="boom")
+    assert captured["json"]["status"] == "error"
+    assert captured["json"]["error"] == "boom"
 
 
 # ============================================================================

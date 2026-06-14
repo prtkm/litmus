@@ -322,6 +322,18 @@ def _run_audit_session(
         environment_id=resources.environment_id,
         title=f"LITMUS audit · {graph.paper_id}",
     )
+
+    def _emit(kind: str, payload: Any) -> None:
+        if on_event is not None:
+            try:
+                on_event(kind, payload)
+            except Exception:
+                pass
+
+    # The coordinator session exists — surface it before the kickoff so a live trace / the app's
+    # progress feed has the session + paper to show while the first turn cold-starts.
+    _emit("agent_started", {"session_id": session.id, "paper_id": graph.paper_id})
+
     kickoff = textwrap.dedent(
         f"""\
         Audit this paper. Its extracted ClaimGraph (claims, evidence with transcribed numbers, and
@@ -339,13 +351,6 @@ def _run_audit_session(
     deadline = time.monotonic() + timeout_s
     error: Optional[str] = None
 
-    def _emit(kind: str, payload: Any) -> None:
-        if on_event is not None:
-            try:
-                on_event(kind, payload)
-            except Exception:
-                pass
-
     # ONE stream, held open for the whole session. We flush custom-tool results INLINE (without
     # closing the stream) the moment the session idles on `requires_action` — closing and reopening
     # the stream between tool batches loses the `agent.custom_tool_use` events that fire in the gap
@@ -354,18 +359,25 @@ def _run_audit_session(
     pending: list[Any] = []
 
     def _flush(reason_log: str) -> None:
-        """Answer every buffered custom-tool call with the REAL host result (SKILL.md gotcha #5)."""
+        """Answer every buffered custom-tool call with the REAL host result (SKILL.md gotcha #5).
+
+        Each call's host result is a JSON string (the tool-result content); we parse it best-effort
+        to surface a ``tool_result`` event (tool name + verdict status) for the live progress feed,
+        then send all results on the same open stream."""
         if not pending:
             return
-        results = [
-            {
-                "type": "user.custom_tool_result",
-                "custom_tool_use_id": call.id,
-                "content": [{"type": "text", "text": host.handle(
-                    getattr(call, "name", ""), getattr(call, "input", {}) or {})}],
-            }
-            for call in pending
-        ]
+        results: list[dict[str, Any]] = []
+        for call in pending:
+            name = getattr(call, "name", "")
+            result_text = host.handle(name, getattr(call, "input", {}) or {})
+            _emit("tool_result", _tool_result_payload(name, result_text))
+            results.append(
+                {
+                    "type": "user.custom_tool_result",
+                    "custom_tool_use_id": call.id,
+                    "content": [{"type": "text", "text": result_text}],
+                }
+            )
         pending.clear()
         client.beta.sessions.events.send(session_id=session.id, events=results)
 
@@ -394,15 +406,26 @@ def _run_audit_session(
                         for b in getattr(event, "content", [])
                         if getattr(b, "type", "") == "text"
                     )
+                    # Best-effort persona attribution: in the coordinator/sub-agent setup a message
+                    # may carry the authoring agent. The field name isn't contractually fixed, so we
+                    # probe a few and skip silently if none is exposed (per the task: don't invent it).
+                    persona = _message_author(event)
+                    if persona:
+                        # Emit a dict (not a bare string) so the worker flattens `persona` onto the
+                        # event and the live feed renders the reviewer name instead of "(no detail)".
+                        _emit("persona", {"persona": persona})
                     if chunk:
                         transcript_parts.append(chunk)
                         _emit("message", chunk)
                 elif etype == "agent.custom_tool_use":
                     pending.append(event)  # buffer; flush when the session idles on requires_action
-                    _emit("tool_use", getattr(event, "name", ""))
+                    # Dict payload → the worker flattens `tool` onto the event so the feed shows the
+                    # verifier/tool name (e.g. run_verifier) rather than a blank "(no detail)" row.
+                    _emit("tool_use", {"tool": getattr(event, "name", "") or "tool"})
                 elif etype == "session.status_idle":
                     stop = getattr(event, "stop_reason", None)
                     stop_type = getattr(stop, "type", None)
+                    _emit("status", stop_type)
                     if stop_type == "requires_action":
                         # The agent is waiting on our custom-tool results. Flush them on the SAME
                         # stream and keep iterating — the continuation arrives here, no gap.
@@ -422,9 +445,61 @@ def _run_audit_session(
 
     full = "".join(transcript_parts)
     final = _parse_final(full)
+    if final is not None:
+        _emit("classification", _classification_counts(final))
     if error is None and final is None:
         error = "no parseable LITMUS_AUDIT result in transcript"
     return _SessionRun(session.id, final, full, host, error)
+
+
+def _tool_result_payload(name: str, result_text: str) -> dict[str, Any]:
+    """Shape one ``tool_result`` event for the live feed: the tool name + the verdict ``status``
+    (parsed from the host's JSON result for ``run_verifier``; ``reproduced`` for
+    ``confirm_recompute``). Best-effort — a non-JSON / error result still yields the name."""
+    payload: dict[str, Any] = {"tool": name}
+    try:
+        parsed = json.loads(result_text)
+    except Exception:
+        return payload
+    if not isinstance(parsed, dict):
+        return payload
+    for key in ("status", "verifier_id", "claim_id", "is_flag", "reproduced", "error"):
+        if key in parsed:
+            payload[key] = parsed[key]
+    return payload
+
+
+def _message_author(event: Any) -> Optional[str]:
+    """Best-effort persona/sub-agent attribution off an ``agent.message`` event. The managed-agents
+    coordinator delegates to sub-agents in isolated threads; if the event exposes which agent
+    authored the message we surface it as a ``persona`` event, else return ``None`` and skip (the
+    field name is not contractually fixed — we do not invent an attribute that isn't there)."""
+    for attr in ("author", "agent", "agent_name", "name", "source", "from_agent", "persona"):
+        val = getattr(event, attr, None)
+        if val is None:
+            continue
+        # The attribute may be a nested object (e.g. an agent ref) with a name/id.
+        for sub in ("name", "id"):
+            nested = getattr(val, sub, None)
+            if isinstance(nested, str) and nested:
+                return nested
+        if isinstance(val, str) and val:
+            return val
+    return None
+
+
+def _classification_counts(final: dict[str, Any]) -> dict[str, int]:
+    """Counts of the coordinator's per-claim classifications (correct / flaggable / subjective) +
+    how many it routed to a human — a compact, structured summary for the live feed."""
+    counts = {"correct": 0, "flaggable": 0, "subjective": 0}
+    for c in (final.get("claims") or []):
+        if not isinstance(c, dict):
+            continue
+        cls = str(c.get("classification") or "")
+        if cls in counts:
+            counts[cls] += 1
+    counts["routed_to_human"] = len(final.get("routed_to_human") or [])
+    return counts
 
 
 def _parse_final(text: str) -> Optional[dict[str, Any]]:

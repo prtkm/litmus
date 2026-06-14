@@ -40,7 +40,14 @@ packages = ["litmus"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
-addopts = "-q"
+# Deselect the live API/managed-agents integration tests by default — they make real Anthropic
+# calls with long (600-900s) timeouts (test_managed_live ~9min, test_managed ~2min, test_synth ~90s),
+# which dwarfs the rest of the suite (~35s). Run them explicitly with `pytest -m live` (needs
+# ANTHROPIC_API_KEY + the managed-agents beta). The marker is registered so there's no warning.
+addopts = '-q -m "not live"'
+markers = [
+    "live: makes real Anthropic API / managed-agents calls (slow; deselected by default)",
+]
 
 [tool.ruff]
 line-length = 100

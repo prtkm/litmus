@@ -27,7 +27,8 @@
 
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getPaper, usingLiveData } from "@/lib/data";
+import { getPaper, getPaperStatus, usingLiveData } from "@/lib/data";
+import { LiveProgress } from "@/components/live-progress";
 import { FindingCard } from "@/components/finding-card";
 import { SeverityBadge, StatusBadge, TrustTierBadge } from "@/components/badges";
 import {
@@ -66,6 +67,18 @@ export default async function PaperPage({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
+
+  // Live-status gate (the core in-flight fix). A paper that is still being audited
+  // (queued/extracting/auditing/confirming) — or that errored — has a row but no
+  // finished report yet, so getPaper would 404 it. Check the lightweight status
+  // first: if the row exists and isn't done, render the live progress view and
+  // return. Only the done state falls through to the full two-band layout below;
+  // notFound() fires only when there is no row at all.
+  const statusObj = await getPaperStatus(decodeURIComponent(id));
+  if (statusObj && statusObj.status !== "done") {
+    return <LiveProgress paperId={id} initial={statusObj} />;
+  }
+
   const report = await getPaper(decodeURIComponent(id));
   if (!report) notFound();
 

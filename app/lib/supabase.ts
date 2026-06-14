@@ -30,6 +30,8 @@ export function getSupabase(): SupabaseClient | null {
 }
 
 // Row shape of the `papers` table (see supabase/migrations/0001_init.sql).
+// `progress` / `error` / `updated_at` are written by the audit worker so the
+// page can show live pipeline state for an in-flight paper (managed-agents).
 export interface PaperRow {
   id: string;
   content_hash: string | null;
@@ -40,4 +42,9 @@ export interface PaperRow {
   claim_graph: unknown | null;
   audit_report: unknown | null;
   created_at: string;
+  // Per-paper live progress JSONB (~{step, pct, events:[{kind,payload,…}], seq, executor}).
+  // `unknown` because the UI reads it defensively (the worker owns the exact shape).
+  progress: unknown | null;
+  error: string | null;
+  updated_at: string | null;
 }

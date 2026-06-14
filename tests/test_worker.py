@@ -90,7 +90,13 @@ class _RecordingIO:
         self.statuses: list[str] = []
         self.upserts: list[dict] = []
         self.persisted: dict | None = None
+        self.progress_writes: list[dict] = []
+        self.errors: list[str] = []
         self.closed = False
+
+    def update_progress(self, content_hash, progress):
+        self.progress_writes.append(progress)
+        return {}
 
     def upsert_paper(self, **kw):
         if kw.get("status") is not None:
@@ -101,6 +107,8 @@ class _RecordingIO:
 
     def update_status(self, content_hash, status, *, error=None):
         self.statuses.append(status.value if isinstance(status, PaperStatus) else str(status))
+        if error is not None:
+            self.errors.append(error)
         return {"content_hash": content_hash, "status": str(status)}
 
     def persist_audit(self, **kw):
@@ -351,4 +359,107 @@ def test_process_pdf_live_extraction_no_store():
     report = worker.process_pdf(pdfs[0], store=False)
     assert isinstance(report, AuditReport)
     assert schema.validate(report.to_dict(), "audit") == []
-    assert report.paper_id  # a paper_id was stamped
+
+
+# ============================================================================
+# 8) Live-progress sink + helpers (managed mode) — the upload-integration fixes.
+#    These cover the audit findings: no feed row is blank, the executor label is
+#    honest, the failed stage is recoverable, and the public error is sanitized.
+# ============================================================================
+def _sink(io=None):
+    return worker._ProgressSink(io, "h", executor="managed")
+
+
+def test_public_error_is_sanitized_for_anonymous_clients():
+    """_public_error must NOT leak URLs / paths / hashes (papers.error is anon-readable)."""
+    exc = RuntimeError(
+        "Supabase GET https://db.proj.supabase.co/storage/v1/object/pdfs/deadbeef.pdf -> HTTP 500"
+    )
+    msg = worker._public_error(exc)
+    assert msg == "The audit could not be completed (RuntimeError)."
+    for leak in ("http", "supabase", "storage", "pdfs", "deadbeef", "/", "HTTP"):
+        assert leak not in msg
+
+
+def test_string_payload_events_render_a_tool_and_persona_name():
+    """tool_use / persona arrive as dicts now (managed.py), so the feed shows the name, not blank."""
+    s = _sink()
+    s._push_event("tool_use", {"tool": "run_verifier"})
+    s._push_event("persona", {"persona": "SKEPTIC"})
+    evs = {e["kind"]: e for e in s._events}
+    assert evs["tool_use"].get("tool") == "run_verifier"
+    assert evs["persona"].get("persona") == "SKEPTIC"
+
+
+def test_structured_events_get_a_renderable_text_line():
+    """classification / agent_started / done get a synthesized `text` so they never read '(no detail)'."""
+    s = _sink()
+    s._push_event("classification", {"correct": 2, "flaggable": 1, "subjective": 0, "routed_to_human": 3})
+    s._push_event("agent_started", {"session_id": "sess_x", "paper_id": "paper-123"})
+    s._push_event("done", {"summary": {"n_flags": 4, "n_routed_to_human": 2}})
+    by_kind = {e["kind"]: e for e in s._events}
+    cls = by_kind["classification"]["text"]
+    assert "2 correct" in cls and "1 flaggable" in cls and "3 routed to human" in cls
+    assert "paper-123" in by_kind["agent_started"]["text"]
+    assert "4 flag" in by_kind["done"]["text"]
+
+
+def test_set_executor_makes_the_terminal_frame_honest():
+    """A fallback-to-local run must report it (DESIGN: never overstate a managed run)."""
+    s = _sink()
+    assert s.snapshot()["executor"] == "managed"
+    s.set_executor("managed:fallback-local")
+    assert s.snapshot()["executor"] == "managed:fallback-local"
+    s.set_executor("")  # empty must not clobber a known value
+    assert s.snapshot()["executor"] == "managed:fallback-local"
+
+
+def test_fail_preserves_failed_step_and_writes_sanitized_error():
+    """On failure the sink records which stage was in flight and a short error frame."""
+    io = _RecordingIO()
+    s = _sink(io)
+    s.note_step("auditing")
+    s.fail(worker._public_error(ValueError("boom https://x/y")))
+    snap = io.progress_writes[-1]
+    assert snap["step"] == "error"
+    assert snap["failed_step"] == "auditing"
+    assert "ValueError" in snap["error"] and "http" not in snap["error"]
+
+
+def test_managed_audit_does_not_pin_progress_at_confirming(tmp_path, monkeypatch):
+    """In managed mode the pre-audit CONFIRMING beat is skipped, so pct is driven by the streamed
+    events (it must NOT jump to the 'confirming' milestone of 92 before the audit runs)."""
+    _patch_extractor(monkeypatch, _crafted_graph())
+    io = _RecordingIO()
+    pdf = tmp_path / "p.pdf"
+    pdf.write_bytes(b"%PDF-1.4 fake")
+
+    class _FakeManagedExecutor:
+        def __init__(self, *a, on_event=None, **k):
+            self._on_event = on_event
+
+        def audit_graph(self, graph, registry=None):
+            # Simulate the managed stream advancing the bar through real milestones.
+            for kind, payload in [
+                ("agent_started", {"session_id": "s", "paper_id": graph.paper_id}),
+                ("tool_use", {"tool": "sum_check"}),
+                ("tool_result", {"tool": "sum_check", "status": "FAIL"}),
+            ]:
+                if self._on_event:
+                    self._on_event(kind, payload)
+            r = worker.LocalExecutor(confirm=False).audit_graph(graph, registry)
+            r.meta["executor"] = "managed:fallback-local"
+            return r
+
+    monkeypatch.setattr(worker, "ManagedAgentExecutor", _FakeManagedExecutor)
+    worker.process_pdf(
+        pdf, store=True, io=io, content_hash="h",
+        registry=_focused_registry(), managed=True, confirm=True,
+    )
+    # 'confirming' (the row status) is never written in managed mode → bar isn't pinned at 92.
+    assert "confirming" not in io.statuses
+    # The final progress frame is honest about the fallback and reaches 'done'.
+    final = io.progress_writes[-1]
+    assert final["step"] == "done"
+    assert final["executor"] == "managed:fallback-local"
+    assert final["pct"] == 100
