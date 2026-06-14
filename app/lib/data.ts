@@ -73,11 +73,51 @@ function dedupeFindings(findings: Finding[]): Finding[] {
   return Array.from(byKey.values());
 }
 
+// Back-compat shim: audits generated BEFORE magnitude-graded GRIM severity carry the old constant
+// Severity.B and no cluster stamp. New audits carry both natively (grim.py / gate_fragile_grim); this
+// re-derives them for the stored ones so the de-emphasis is visible without re-running every audit.
+// Mirrors the backend rule: a GRIM gap within one display unit of the nearest achievable mean is Minor;
+// a >=2-flag pattern stamps grim_cluster_size so the Minor cards still read as one finding.
+function regradeGrim(findings: Finding[]): void {
+  if (!Array.isArray(findings)) return;
+  const grim = findings.filter(
+    (f) => f.status === "fail" && (f.verifier_id ?? "").split(".")[0] === "grim",
+  );
+  if (!grim.length) return;
+  for (const f of grim) {
+    const d = (f.details ?? {}) as Record<string, unknown>;
+    let dDisp = d.grid_distance_display_units as number | undefined;
+    if (typeof dDisp !== "number") {
+      const nearest =
+        typeof d.nearest_mean === "number"
+          ? (d.nearest_mean as number)
+          : typeof d.nearest_total === "number" && typeof d.granularity === "number"
+            ? (d.nearest_total as number) / (d.granularity as number)
+            : undefined;
+      const dec = typeof d.decimals === "number" ? (d.decimals as number) : 2;
+      if (nearest !== undefined && typeof f.reported === "number") {
+        dDisp = Math.abs(f.reported - nearest) / Math.pow(10, -dec);
+        d.grid_distance_display_units = dDisp;
+        f.details = d;
+      }
+    }
+    if (typeof dDisp === "number" && dDisp <= 1.0 + 1e-9 && f.severity === "B") {
+      f.severity = "C";
+    }
+  }
+  if (grim.length >= 2) {
+    for (const f of grim) {
+      f.details = { ...(f.details ?? {}), grim_cluster_size: grim.length, grim_cluster: true };
+    }
+  }
+}
+
 function rowToReport(row: PaperRow): AuditReport | null {
   if (!row.audit_report) return null;
   const report = row.audit_report as AuditReport;
   if (Array.isArray(report.findings)) {
     report.findings = dedupeFindings(report.findings);
+    regradeGrim(report.findings);
   }
   // Backfill meta from columns so the gallery has title/field even if the
   // stored audit_report didn't duplicate them.
