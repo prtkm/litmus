@@ -24,7 +24,7 @@ from pathlib import Path
 import pytest
 
 from litmus.app_backend import worker
-from litmus.app_backend.supabase_io import PaperStatus, SupabaseConfig, SupabaseIO
+from litmus.app_backend.supabase_io import PaperStatus, SupabaseConfig, SupabaseError, SupabaseIO
 from litmus.commons.registry import Registry
 from litmus.core import schema
 from litmus.core.claim import (
@@ -443,6 +443,41 @@ def test_status_event_with_no_stop_reason_still_renders_text():
     s._push_event("status", {"stop_reason": None})
     ev = s._events[-1]
     assert ev.get("text") == "coordinator idle"
+
+
+def test_poll_survives_a_transient_queue_failure(monkeypatch):
+    """A transient transport error around the queue fetch (DNS blip, Supabase 5xx, machine asleep)
+    must NOT kill the long-running drainer — poll() logs and retries, then exits cleanly on the
+    next KeyboardInterrupt. (Regression: an uncaught SupabaseError used to take the worker down.)"""
+    calls = {"n": 0}
+
+    def fake_process_queue(**_kw):
+        calls["n"] += 1
+        if calls["n"] == 1:
+            raise SupabaseError("transport error calling Supabase: [Errno 8] nodename nor servname")
+        raise KeyboardInterrupt  # second pass: break the infinite loop cleanly
+
+    monkeypatch.setattr(worker, "process_queue", fake_process_queue)
+    monkeypatch.setattr(worker, "SupabaseIO", lambda *a, **k: _RecordingIO())
+    monkeypatch.setattr(worker.SupabaseConfig, "from_env", classmethod(lambda cls: None))
+    monkeypatch.setattr(worker.time, "sleep", lambda *_a, **_k: None)
+
+    logs: list[str] = []
+    # Must NOT raise the SupabaseError — it is caught and retried.
+    worker.poll(once=False, managed=False, log=logs.append)
+    assert calls["n"] == 2, "poll did not retry after the transient failure"
+    assert any("queue pass failed" in m for m in logs)
+
+
+def test_poll_once_surfaces_a_queue_failure(monkeypatch):
+    """--once mode must surface the error (no silent retry) so a one-shot run fails loudly."""
+    def boom(**_kw):
+        raise SupabaseError("boom")
+    monkeypatch.setattr(worker, "process_queue", boom)
+    monkeypatch.setattr(worker, "SupabaseIO", lambda *a, **k: _RecordingIO())
+    monkeypatch.setattr(worker.SupabaseConfig, "from_env", classmethod(lambda cls: None))
+    with pytest.raises(SupabaseError):
+        worker.poll(once=True, managed=False, log=lambda *_a: None)
 
 
 def test_managed_audit_does_not_pin_progress_at_confirming(tmp_path, monkeypatch):

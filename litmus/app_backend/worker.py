@@ -654,10 +654,21 @@ def poll(
     log(f"[worker] polling Supabase queue (interval={interval}s, once={once}, mode={mode}). Ctrl-C to stop.")
     try:
         while True:
-            n = process_queue(
-                io=io, registry=registry, model=model, confirm=confirm, limit=limit, log=log,
-                managed=managed, resources=resources,
-            )
+            try:
+                n = process_queue(
+                    io=io, registry=registry, model=model, confirm=confirm, limit=limit, log=log,
+                    managed=managed, resources=resources,
+                )
+            except Exception as exc:
+                # A transient transport error around the QUEUE FETCH — a DNS blip, a Supabase 5xx,
+                # the machine sleeping/losing wifi — must NOT kill the long-running drainer (per-row
+                # failures are already isolated inside process_queue). Log and retry after a short
+                # backoff so the worker self-survives network hiccups. In --once mode, surface it.
+                if once:
+                    raise
+                log(f"[worker] WARN: queue pass failed ({type(exc).__name__}: {exc}); retrying in {max(2.0, interval)}s")
+                time.sleep(max(2.0, interval))
+                continue
             if once:
                 return
             if n == 0:
