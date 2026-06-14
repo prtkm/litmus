@@ -110,7 +110,7 @@ export const SEVERITY_STYLE: Record<Severity, Style> = {
     fg: "var(--sev-c)",
     bg: "var(--inconclusive-bg)",
     border: "var(--inconclusive-border)",
-    hint: "Minor — small or cosmetic.",
+    hint: "Minor — small or presentation-level (e.g. a one-unit granularity gap); weigh it with any paper-level pattern.",
   },
 };
 

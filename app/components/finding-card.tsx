@@ -34,6 +34,22 @@ function recomputedDisplay(finding: Finding): unknown {
   return c;
 }
 
+// When a GRIM finding belongs to a paper-level cluster (>=2 impossible means), tie the per-card
+// "Minor" gap to the real signal: the recurring pattern, not this single granularity slip.
+function ClusterNote({ finding }: { finding: Finding }) {
+  const size = finding.details?.grim_cluster_size;
+  if (typeof size !== "number" || size < 2) return null;
+  return (
+    <p
+      className="mt-2 rounded-md px-2.5 py-1.5 text-xs leading-relaxed"
+      style={{ background: "var(--surface-2)", color: "var(--muted)" }}
+    >
+      One of <strong>{size}</strong> reported means in this paper that cannot arise from any
+      whole-number total — individually a granularity slip, together a data-integrity pattern.
+    </p>
+  );
+}
+
 export function FindingCard({ finding }: { finding: Finding }) {
   const ev = finding.evidence ?? {};
   const script = ev.recompute_script ?? "";
@@ -77,6 +93,7 @@ export function FindingCard({ finding }: { finding: Finding }) {
             {finding.message}
           </p>
         )}
+        <ClusterNote finding={finding} />
       </div>
 
       <div className="space-y-4 p-4">

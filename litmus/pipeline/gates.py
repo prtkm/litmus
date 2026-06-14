@@ -36,6 +36,16 @@ def gate_fragile_grim(findings: list[Finding]) -> None:
     def _is_fragile(f: Finding) -> bool:
         return bool((f.details or {}).get("fragile"))
 
+    # A PATTERN of GRIM impossibilities (>=2 means) is the real data-integrity signal — its members
+    # may individually grade Minor (a one-unit granularity gap reads as a rounding nit), so stamp each
+    # with the cluster size. The UI ties them into one high-concern finding ("1 of N impossible means")
+    # rather than N co-equal nitpick cards. This is the durable guarantee the catch stays credible even
+    # as per-card severity is de-emphasized (DESIGN §3.6; owner feedback).
+    if len(grim_fails) >= 2:
+        n = len(grim_fails)
+        for f in grim_fails:
+            f.details = {**(f.details or {}), "grim_cluster_size": n, "grim_cluster": True}
+
     # A pattern (>=2 GRIM flags) or any robust (non-fragile) flag is real evidence — keep it hard.
     has_pattern = len(grim_fails) >= 2 or any(not _is_fragile(f) for f in grim_fails)
     if has_pattern:

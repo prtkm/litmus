@@ -230,10 +230,33 @@ class TestGrimJudge:
         # The canonical GRIM example: mean 3.46 is unreachable for n=20 (69/20=3.45, 70/20=3.50).
         f = _judge_grim(reported_mean=3.46, n=20, decimals=2)
         assert f.status is Status.FAIL
-        assert f.severity is Severity.B
+        # A one-display-unit gap (3.46 vs 3.45, d_disp==1.0) grades Minor (C) — a single such gap
+        # reads as a rounding nit; the pattern of them is what carries weight (gate stamps the cluster).
+        assert f.severity is Severity.C
         assert f.evidence.expected_output == "GRIM-INCONSISTENT mean=3.46 n=20 nearest=3.45(=69/20)"
         assert f.details["nearest_total"] == 69
         assert not f.validate()
+
+    # --- magnitude-graded severity (owner feedback: small GRIM gaps add noise) ---------------
+    def test_substantive_gaps_stay_major_gold_standard_recall(self):
+        """Wansink/Festinger means sit >=1.9 display units off the grid → stay Major (B). This pins
+        the documented-error recall so a future threshold tweak can't silently demote them."""
+        assert _judge_grim(reported_mean=2.63, n=18).severity is Severity.B   # wansink, d_disp 1.89
+        assert _judge_grim(reported_mean=4.88, n=20).severity is Severity.B   # festinger, d_disp 2.00
+        assert _judge_grim(reported_mean=3.92, n=10).severity is Severity.B   # wansink, d_disp 2.00
+
+    def test_marginal_one_unit_gap_is_minor(self):
+        """A one-display-unit gap (kniffin 2.11 vs 2.10) reads as a rounding nit → Minor (C)."""
+        f = _judge_grim(reported_mean=2.11, n=40)
+        assert f.severity is Severity.C
+        assert f.details["grid_distance_display_units"] <= 1.0 + 1e-9
+        assert f.details["convention_reproducible"] is False
+
+    def test_truncation_reproducible_gap_is_minor(self):
+        """just2014 6.62 = trunc(411/62): a rounding-convention artifact, not an impossibility → Minor."""
+        f = _judge_grim(reported_mean=6.62, n=62)
+        assert f.severity is Severity.C
+        assert f.details["convention_reproducible"] is True
 
     @pytest.mark.parametrize(
         "mean, n, total",
@@ -374,6 +397,21 @@ class TestFragileGrimGate:
         gate_fragile_grim([frag, robust])
         assert frag.trust_tier is TrustTier.DETERMINISTIC_CONFIRMED
         assert robust.trust_tier is TrustTier.DETERMINISTIC_CONFIRMED
+
+    def test_pattern_stamps_cluster_size_so_minor_cards_read_as_one_finding(self):
+        """A >=2-flag GRIM pattern stamps every member with grim_cluster_size, so individually-Minor
+        cards still read as one high-concern pattern (the UI shows '1 of N impossible means')."""
+        a = self._fail(reported_mean=2.11, n=40)   # Minor (C)
+        b = self._fail(reported_mean=1.46, n=40)   # Minor (C)
+        gate_fragile_grim([a, b])
+        assert a.details["grim_cluster_size"] == 2 and a.details["grim_cluster"] is True
+        assert b.details["grim_cluster_size"] == 2
+        assert a.trust_tier is TrustTier.DETERMINISTIC_CONFIRMED  # pattern stays a hard catch
+
+    def test_lone_flag_is_not_stamped_as_a_cluster(self):
+        f = self._fail(reported_mean=2.63, n=18)  # robust, lone
+        gate_fragile_grim([f])
+        assert "grim_cluster_size" not in (f.details or {})
 
 
 # ===========================================================================

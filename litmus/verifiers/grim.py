@@ -127,6 +127,23 @@ def _nearest_achievable(reported_mean: float, granularity: int, decimals: int) -
     return False, best_k, best_k / granularity
 
 
+def _reproduces_under_truncation(reported_mean: float, granularity: int, decimals: int) -> bool:
+    """Would the reported mean arise if the authors TRUNCATED ``k/granularity`` to ``decimals``
+    (instead of rounding)? Truncation is a common alternative to rounding, so a mean reproducible
+    this way is a rounding-convention artifact, not a genuine impossibility — used ONLY to soften
+    severity to Minor, never to suppress the FAIL. e.g. just2014 6.62 = trunc(411/62)."""
+    target = round(reported_mean, decimals)
+    scale = 10 ** decimals
+    approx = reported_mean * granularity
+    lo = max(0, int(math.floor(approx)) - 2)
+    hi = int(math.ceil(approx)) + 2
+    for k in range(lo, hi + 1):
+        truncated = math.floor((k / granularity) * scale + EPS) / scale
+        if abs(truncated - target) < EPS:
+            return True
+    return False
+
+
 def _fmt_mean(value: float | int, decimals: int) -> str:
     """Render a mean to its reported precision identically on both sides (live + script)."""
     return f"{value:.{decimals}f}"
@@ -320,10 +337,25 @@ class Grim(Verifier):
                 fragile = True
                 rescued_at_n = f["n"] - 1
 
+        # Magnitude grade (owner feedback). How many PRINTED display units the reported mean sits
+        # from the nearest achievable value: a one-unit gap (kniffin 2.11 vs 2.10) — or a value the
+        # authors would have produced by TRUNCATING rather than rounding (just2014 6.62 = trunc 411/62)
+        # — is a marginal inconsistency that reads as a rounding nit on its own, so it is graded Minor
+        # (C). A larger gap (Wansink/Festinger, >=1.9 units) stays Major (B). The cluster of them is
+        # what carries the data-integrity weight (gate_fragile_grim stamps grim_cluster_size). Severity
+        # is display-only — the calibration kernel branches on Status, never severity — so this cannot
+        # move recall / FPR / G3. We compare against the true nearest_mean, not its rounded display.
+        d_disp = abs(f["reported_mean"] - nearest_mean) / (10 ** -decimals)
+        convention_reproducible = f["n_items"] == 1 and _reproduces_under_truncation(
+            f["reported_mean"], granularity, decimals
+        )
+        marginal = d_disp <= 1.0 + EPS or convention_reproducible
+        grim_severity = Severity.C if marginal else Severity.B
+
         return self.make_finding(
             claim=claim,
             status=Status.FAIL,
-            severity=Severity.B,
+            severity=grim_severity,
             message="reported mean is not achievable as a mean of integer responses (GRIM-inconsistent)",
             discrepancy=(
                 f"mean {_fmt_mean(f['reported_mean'], decimals)} is unreachable for n={f['n']}"
@@ -348,6 +380,10 @@ class Grim(Verifier):
                 # Fragility (see probe above): is this lone-mean inconsistency sensitive to N?
                 "fragile": fragile,
                 "rescued_at_n": rescued_at_n,
+                # Magnitude grade inputs (see severity computation above): how many printed display
+                # units off the nearest achievable mean, and whether truncation reproduces it.
+                "grid_distance_display_units": d_disp,
+                "convention_reproducible": convention_reproducible,
             },
         )
 
