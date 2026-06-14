@@ -426,6 +426,25 @@ def test_fail_preserves_failed_step_and_writes_sanitized_error():
     assert "ValueError" in snap["error"] and "http" not in snap["error"]
 
 
+def test_fail_normalizes_managed_event_kind_to_a_renderable_stage():
+    """If failure strikes mid-stream (step is a managed event kind like tool_use), failed_step is
+    normalized to 'auditing' so the page's StageStrip can map it."""
+    io = _RecordingIO()
+    s = _sink(io)
+    s.note_step("auditing")
+    s.on_event("tool_use", {"tool": "sum_check"})  # step is now 'tool_use' (not a pipeline stage)
+    s.fail("The audit could not be completed (RuntimeError).")
+    assert io.progress_writes[-1]["failed_step"] == "auditing"
+
+
+def test_status_event_with_no_stop_reason_still_renders_text():
+    """A typeless session_idle must not produce a blank '(no detail)' feed row."""
+    s = _sink()
+    s._push_event("status", {"stop_reason": None})
+    ev = s._events[-1]
+    assert ev.get("text") == "coordinator idle"
+
+
 def test_managed_audit_does_not_pin_progress_at_confirming(tmp_path, monkeypatch):
     """In managed mode the pre-audit CONFIRMING beat is skipped, so pct is driven by the streamed
     events (it must NOT jump to the 'confirming' milestone of 92 before the audit runs)."""

@@ -81,12 +81,13 @@ export async function listPapers(): Promise<PaperSummary[]> {
 }
 
 // A paper id arriving from the URL is one of: a uuid (the `id` column), a sha256 content_hash
-// (hex), or a paper_id slug. All three are [A-Za-z0-9_-] only. Anything else (commas, parens, dots,
-// spaces) cannot be a real id AND is exactly what would break out of a raw PostgREST `.or()` filter
-// — so we reject it up front rather than interpolate it, closing the filter-injection / malformed-
-// query-500 hole on the public status endpoint.
+// (hex), or a paper_id slug. Slugs include arXiv ids, so a literal '.' is legitimate (e.g.
+// "chemistry-arxiv-2604.14784-water-nanodroplet-efields"). The chars that would actually break out
+// of a raw PostgREST `.or()` filter are ',', '(', ')' (and whitespace) — NOT '.' — so we allow
+// [A-Za-z0-9._-] and reject everything else up front, closing the filter-injection / malformed-
+// query-500 hole on the public status endpoint without 404-ing real dotted slugs.
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-const SAFE_ID_RE = /^[A-Za-z0-9_-]+$/;
+const SAFE_ID_RE = /^[A-Za-z0-9._-]+$/;
 
 /** A single audit report by paper id, or null if not found. */
 export async function getPaper(id: string): Promise<AuditReport | null> {

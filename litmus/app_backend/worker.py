@@ -110,6 +110,10 @@ _STEP_PCT = {
 }
 _PROGRESS_MIN_INTERVAL_S = 0.75  # throttle: at most ~1.3 writes/sec to the `progress` jsonb
 _PROGRESS_EVENTS_KEEP = 12       # rolling tail of recent events kept in the feed
+# The pipeline stages the page's StageStrip can render (must match app/lib/labels PIPELINE_STAGES).
+# A mid-stream `step` is often a managed event kind (tool_use/persona/…) — those are sub-steps of
+# 'auditing', so failed_step is normalized to one of these before it's stored.
+_PIPELINE_STEPS = frozenset({"queued", "extracting", "auditing", "confirming"})
 
 # String fields the frontend's eventText() scans for a renderable line. If an event carries none of
 # these (as a non-empty string), it would render "(no detail)" — so _push_event synthesizes a `text`.
@@ -132,7 +136,7 @@ def _event_text(kind: str, ev: dict[str, Any]) -> str:
         return f"audit session started{f' · {pid}' if pid else ''}"
     if kind == "status":
         sr = ev.get("stop_reason")
-        return f"coordinator idle: {sr}" if sr else ""
+        return f"coordinator idle: {sr}" if sr else "coordinator idle"
     if kind == "done":
         s = ev.get("summary")
         if isinstance(s, dict):
@@ -229,7 +233,9 @@ class _ProgressSink:
         page can mark which stage failed (PIPELINE_STAGES has no 'error' entry)."""
         try:
             if self._step not in ("error", "done"):
-                self._failed_step = self._step
+                # Normalize to a stage the page can render (mid-stream `step` is often a managed
+                # event kind like tool_use/persona — all sub-steps of 'auditing').
+                self._failed_step = self._step if self._step in _PIPELINE_STEPS else "auditing"
             self._set_step("error")
             self._push_event("error", {"text": message[:300]})
             self._write(force=True, extra={"error": message[:500]})
