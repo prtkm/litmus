@@ -60,26 +60,38 @@ def content_hash_of(pdf_bytes: bytes) -> str:
     return hashlib.sha256(pdf_bytes).hexdigest()
 
 
+# Research-field words a corpus-style id prefix can start with (``chemistry-foo-21`` → chemistry).
+_FIELD_WORDS = {
+    "nutrition", "psychology", "health", "chemistry", "biology", "medicine",
+    "economics", "physics", "ml", "econ", "neuroscience", "materials", "engineering",
+}
+
+
 def _humanize(stem: str) -> str:
     """Turn a filename stem into a passable title when the claim graph carries no ``title``.
 
     Mirrors the corpus loader's humanizer closely enough to be recognizable: strip a citekey
-    token (``smith21``), drop a leading field word, title-case the rest. Falls back to the stem.
+    token (``smith21``) and a trailing ``pdf`` (from ``foo.pdf`` → stem ``foo-pdf``), drop a leading
+    field word, title-case the rest. Falls back to the stem.
     """
-    toks = [t for t in re.split(r"[-_\s]+", stem) if t and not re.match(r"^[a-z]+\d{2,4}[a-z]?$", t)]
-    fields = {
-        "nutrition", "psychology", "health", "chemistry", "biology", "medicine",
-        "economics", "physics", "ml", "econ",
-    }
-    if toks and toks[0].lower() in fields:
+    toks = [
+        t
+        for t in re.split(r"[-_\s]+", stem)
+        if t and t.lower() != "pdf" and not re.match(r"^[a-z]+\d{2,4}[a-z]?$", t)
+    ]
+    if toks and toks[0].lower() in _FIELD_WORDS:
         toks = toks[1:]
     return " ".join(w.capitalize() for w in toks) or stem
 
 
 def _meta_field(stem: str) -> str:
-    """Best-effort ``field`` from the id prefix (``chemistry-foo-21`` → ``chemistry``)."""
-    head = re.split(r"[-_]", stem)[0]
-    return head or "unknown"
+    """Best-effort ``field`` from a corpus-style id prefix (``chemistry-foo-21`` → ``chemistry``).
+
+    For an arbitrary UPLOAD filename the first token is meaningless (``real-1810-…`` → "real",
+    ``understanding-ionic-…`` → "understanding"), so only trust it when it is a known field word.
+    Otherwise emit a neutral em-dash the gallery renders cleanly, never a garbage field chip."""
+    head = re.split(r"[-_]", stem)[0].lower()
+    return head if head in _FIELD_WORDS else "—"
 
 
 def _bib_from_graph(graph: ClaimGraph, *, fallback_stem: str) -> dict[str, Optional[str]]:
