@@ -16,7 +16,8 @@ import pytest
 from litmus.core import sandbox
 from litmus.core.calibration import AdmissionStatus, calibrate
 from litmus.core.claim import Claim, Evidence, EvidenceKind, Location
-from litmus.core.finding import Severity, Status
+from litmus.core.finding import Severity, Status, TrustTier
+from litmus.pipeline.gates import gate_fragile_grim
 from litmus.verifiers import grim as grim_mod
 from litmus.verifiers import statcheck as statcheck_mod
 from litmus.verifiers.grim import Grim
@@ -311,6 +312,68 @@ class TestDeterminism:
         ev = [_grim_ev(reported_mean=3.46, n=20, decimals=2)]
         outs = {Grim().judge(_claim(), ev).evidence.expected_output for _ in range(5)}
         assert len(outs) == 1
+
+    # --- fragility annotation (owner feedback, DESIGN §3.6) ------------------
+    def test_grim_marks_a_fragile_single_mean(self):
+        """M=6.62 is impossible at n=62 but achievable at n=61 (404/61=6.62), so it is FRAGILE —
+        a single missing response would reconcile it. Still a FAIL with executable evidence; the
+        nearest value is rendered at the reported precision, not a 16-digit float."""
+        f = _judge_grim(reported_mean=6.62, n=62)
+        assert f.status is Status.FAIL
+        assert f.details["fragile"] is True
+        assert f.details["rescued_at_n"] == 61
+        assert f.details["nearest_mean_str"] == "6.61"
+        assert f.details["nearest_fraction"] == "410/62"
+
+    def test_grim_marks_a_robust_single_mean(self):
+        """A mean that stays impossible when one response is dropped is ROBUST — not n-sensitive."""
+        assert _judge_grim(reported_mean=2.63, n=18).details["fragile"] is False
+        # The Wansink gold-standard mean is robust too, so it survives even as a lone flag.
+        assert _judge_grim(reported_mean=1.67, n=17).details["fragile"] is False
+
+    def test_grim_multi_item_scale_is_not_marked_fragile(self):
+        """Fragility (drop-one-respondent) only maps to single-item scales."""
+        f = _judge_grim(reported_mean=3.40, n=5, n_items=3)
+        # whatever the verdict, the drop-one heuristic must not fire for a multi-item grid
+        assert (f.details or {}).get("fragile") in (False, None)
+
+
+# ===========================================================================
+# Paper-level fragile-GRIM gate (DESIGN §3.6) — lone fragile -> advisory; pattern stays hard.
+# ===========================================================================
+class TestFragileGrimGate:
+    def _fail(self, **vals):
+        f = _judge_grim(**vals)
+        assert f.status is Status.FAIL
+        # the gate only acts on flags that arrived as deterministic_confirmed
+        f.trust_tier = TrustTier.DETERMINISTIC_CONFIRMED
+        return f
+
+    def test_lone_fragile_flag_is_downgraded_to_advisory(self):
+        f = self._fail(reported_mean=6.62, n=62)
+        gate_fragile_grim([f])
+        assert f.trust_tier is TrustTier.ADVISORY_ASSISTED
+        assert "achievable if N were 61" in (f.discrepancy or "")
+
+    def test_lone_robust_flag_stays_deterministic(self):
+        f = self._fail(reported_mean=2.63, n=18)  # not rescued by dropping one
+        gate_fragile_grim([f])
+        assert f.trust_tier is TrustTier.DETERMINISTIC_CONFIRMED
+
+    def test_two_grim_flags_are_a_pattern_and_stay_deterministic(self):
+        """Even two individually-fragile means are a pattern — the Wansink/Festinger case."""
+        a = self._fail(reported_mean=6.62, n=62)
+        b = self._fail(reported_mean=1.07, n=62)  # also fragile, but together they're a pattern
+        gate_fragile_grim([a, b])
+        assert a.trust_tier is TrustTier.DETERMINISTIC_CONFIRMED
+        assert b.trust_tier is TrustTier.DETERMINISTIC_CONFIRMED
+
+    def test_fragile_plus_robust_keeps_both_deterministic(self):
+        frag = self._fail(reported_mean=6.62, n=62)
+        robust = self._fail(reported_mean=2.63, n=18)
+        gate_fragile_grim([frag, robust])
+        assert frag.trust_tier is TrustTier.DETERMINISTIC_CONFIRMED
+        assert robust.trust_tier is TrustTier.DETERMINISTIC_CONFIRMED
 
 
 # ===========================================================================

@@ -298,6 +298,28 @@ class Grim(Verifier):
             expected_output=expected,
             script_dependencies=[],  # stdlib-only (DESIGN §3.8 P8)
         )
+
+        # Fragility probe (owner feedback, DESIGN §3.6). A SINGLE GRIM-impossible mean is sensitive
+        # to the exact N: if dropping ONE response (n-1) makes the mean achievable, the flag is
+        # "fragile" — plausibly explained by one missing/excluded item (e.g. 6.62 is impossible at
+        # n=62 but 397/61... here 6.62 is achievable at n=61). The FAIL and its executable evidence
+        # are unchanged (the arithmetic is true at the reported N, so calibration — which tests the
+        # judge verdict, not the trust tier — and G3 reproducibility are untouched). Downstream, the
+        # report assembler softens a LONE fragile flag to advisory/review; a PATTERN of GRIM hits or
+        # any robust one still stands as deterministic (gate_fragile_grim). k=1 only: it cleanly
+        # separates the borderline owner case from the gold-standard catches, none of which are
+        # rescued by dropping a single response. Single-item scales only (n_items==1) — a multi-item
+        # grid does not map to dropping one respondent.
+        fragile = False
+        rescued_at_n: Optional[int] = None
+        if f["n_items"] == 1 and f["n"] - 1 >= 1:
+            rescued_ok, _, _ = _nearest_achievable(
+                f["reported_mean"], (f["n"] - 1) * f["n_items"], decimals
+            )
+            if rescued_ok:
+                fragile = True
+                rescued_at_n = f["n"] - 1
+
         return self.make_finding(
             claim=claim,
             status=Status.FAIL,
@@ -319,6 +341,13 @@ class Grim(Verifier):
                 "decimals": decimals,
                 "nearest_total": nearest_k,
                 "nearest_mean": nearest_mean,
+                # Presentation: the formatted nearest-achievable mean + its fraction, so the UI shows
+                # "6.61 (410/62)" rather than a raw 16-digit float that reads like a rounding nit.
+                "nearest_mean_str": _fmt_mean(nearest_mean, decimals),
+                "nearest_fraction": f"{nearest_k}/{granularity}",
+                # Fragility (see probe above): is this lone-mean inconsistency sensitive to N?
+                "fragile": fragile,
+                "rescued_at_n": rescued_at_n,
             },
         )
 

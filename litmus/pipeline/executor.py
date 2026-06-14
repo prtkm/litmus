@@ -27,6 +27,7 @@ from litmus.core import sandbox
 from litmus.core.claim import Claim, ClaimGraph
 from litmus.core.finding import EvidencePacket, Finding, Status, TrustTier, VerifierKind
 from litmus.core.provenance import AuditReport, DroppedFlag, RoutedItem
+from litmus.pipeline.gates import gate_fragile_grim
 from litmus.plan.planner import CHECKABLE_TIERS, Action, plan_audit
 
 
@@ -138,6 +139,10 @@ class LocalExecutor(ExecutorAdapter):
                     findings.append(f)
                 elif f.status is Status.FAIL and f in kept:
                     findings.append(f)
+
+        # Paper-level gates (whole-findings view): soften a lone fragile GRIM flag to advisory while
+        # keeping a pattern of GRIM hits deterministic (DESIGN §3.6).
+        gate_fragile_grim(findings)
 
         report = AuditReport(
             paper_id=graph.paper_id,

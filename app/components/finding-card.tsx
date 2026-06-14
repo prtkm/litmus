@@ -11,6 +11,29 @@ import { SeverityBadge, StatusBadge, TrustTierBadge } from "@/components/badges"
 import { RecomputeRunner } from "@/components/recompute-runner";
 import { verifierKindLabel, epistemicTier } from "@/lib/labels";
 
+// Decimal places in a number printed plainly (6.62 -> 2, 7 -> 0). Used to render a long recomputed
+// float at the SAME precision the paper reported, so e.g. a GRIM "recomputed" reads "6.61", not the
+// raw "6.612903225806452" (which looks like a third-decimal rounding nit, not the real claim).
+function decimalsOf(v: unknown): number | null {
+  if (typeof v !== "number" || !Number.isFinite(v)) return null;
+  const s = String(v);
+  const i = s.indexOf(".");
+  return i < 0 ? 0 : s.length - i - 1;
+}
+
+// What to show in the "Recomputed" box. Prefer the verifier's own formatted value (grim's
+// details.nearest_mean_str); else round a long float to the reported value's precision.
+function recomputedDisplay(finding: Finding): unknown {
+  const pretty = finding.details?.nearest_mean_str as string | undefined;
+  if (typeof pretty === "string" && pretty) return pretty;
+  const c = finding.computed;
+  if (typeof c === "number" && Number.isFinite(c) && !Number.isInteger(c)) {
+    const dec = decimalsOf(finding.reported);
+    if (dec !== null && dec < 6) return c.toFixed(dec);
+  }
+  return c;
+}
+
 export function FindingCard({ finding }: { finding: Finding }) {
   const ev = finding.evidence ?? {};
   const script = ev.recompute_script ?? "";
@@ -76,7 +99,7 @@ export function FindingCard({ finding }: { finding: Finding }) {
         {(finding.reported !== undefined || finding.computed !== undefined) && (
           <div className="grid gap-3 sm:grid-cols-2">
             <ValueBox label="Reported" value={finding.reported} tone="reported" />
-            <ValueBox label="Recomputed" value={finding.computed} tone="computed" />
+            <ValueBox label="Recomputed" value={recomputedDisplay(finding)} tone="computed" />
           </div>
         )}
 

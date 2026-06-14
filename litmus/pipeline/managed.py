@@ -53,6 +53,7 @@ from litmus.core.finding import (
     VerifierKind,
 )
 from litmus.core.provenance import AuditReport, DroppedFlag, RoutedItem
+from litmus.pipeline.gates import gate_fragile_grim
 from litmus.pipeline.executor import LocalExecutor
 from litmus.pipeline.managed_tools import CUSTOM_TOOL_NAMES, VerifierToolHost, custom_tool_defs
 
@@ -641,6 +642,10 @@ def _assemble_report(
                 cid = c.get("claim_id")
                 if cid and cid not in covered:
                     abstained.append(_subjective_abstain(graph, cid, str(c.get("reason") or "")))
+
+    # Paper-level gates (whole-findings view): soften a lone fragile GRIM flag to advisory while
+    # keeping a pattern of GRIM hits deterministic (DESIGN §3.6).
+    gate_fragile_grim(findings)
 
     panel_summary = (final or {}).get("panel_summary", "")
     return AuditReport(
