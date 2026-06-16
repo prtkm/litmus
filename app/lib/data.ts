@@ -106,27 +106,24 @@ function regradeGrim(findings: Finding[]): void {
     }
   }
   // Relevance gate (mirrors litmus/pipeline/gates.gate_grim_relevance, for audits stored before it):
-  // a member is an ANCHOR if its gap exceeds ~1.5 display units AND isn't convention-reproducible; a
-  // cluster with no anchor is re-tiered to one routed-to-human screening note.
+  // a GRIM cluster stays hard only when an INDEPENDENT (non-GRIM) deterministic error corroborates it
+  // on the same paper; otherwise the whole cluster is re-tiered to one routed-to-human screening note.
   const n = grim.length;
-  let hasAnchor = false;
+  const corroborated = findings.some(
+    (f) =>
+      f.status === "fail" &&
+      f.trust_tier === "deterministic_confirmed" &&
+      (f.verifier_id ?? "").split(".")[0] !== "grim",
+  );
   for (const f of grim) {
-    const d = (f.details ?? {}) as Record<string, unknown>;
-    const dDisp = d.grid_distance_display_units as number | undefined;
-    const anchor =
-      typeof d.grim_anchor === "boolean"
-        ? d.grim_anchor
-        : typeof dDisp === "number" && dDisp > 1.5 + 1e-9 && !Boolean(d.convention_reproducible);
-    d.grim_anchor = anchor;
-    f.details = { ...d, grim_cluster_size: n, grim_cluster: n >= 2 };
-    if (anchor) hasAnchor = true;
+    f.details = { ...(f.details ?? {}), grim_cluster_size: n, grim_cluster: n >= 2, grim_corroborated: corroborated };
   }
-  if (!hasAnchor) {
+  if (!corroborated) {
     const note =
-      `${n} reported mean${n !== 1 ? "s" : ""} on this paper ${n !== 1 ? "are" : "is"} GRIM-impossible, ` +
-      "but each is marginal — within ~1 display unit of an achievable value, or reproducible under a " +
-      "normal rounding convention. Individually consistent with rounding or transcription, so this is a " +
-      "screening signal routed for review, not a confirmed error.";
+      `${n} reported mean${n !== 1 ? "s" : ""} on this paper ${n !== 1 ? "are" : "is"} GRIM-impossible ` +
+      "(cannot arise from whole-number responses at the stated N), but each sits within ~1-3 hundredths " +
+      "of an achievable value and there is no other arithmetic error on the paper — individually " +
+      "consistent with rounding or typesetting. Surfaced for review, not a confirmed error.";
     for (const f of grim) {
       if (f.trust_tier === "deterministic_confirmed") f.trust_tier = "routed_to_human";
       f.details = { ...(f.details ?? {}), grim_screening_note: true, grim_cluster_note: note };

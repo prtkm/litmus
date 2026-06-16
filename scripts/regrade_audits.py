@@ -44,7 +44,13 @@ def regrade_grim(findings: list[dict]) -> bool:
         return False
     n = len(grim)
     changed = False
-    has_anchor = False
+    # Corroboration: an independent (non-GRIM) deterministic error on the same paper.
+    corroborated = any(
+        f.get("status") == "fail"
+        and f.get("trust_tier") == "deterministic_confirmed"
+        and (f.get("verifier_id") or "").split(".")[0] != "grim"
+        for f in findings
+    )
     for f in grim:
         d = dict(f.get("details") or {})
         gran = d.get("granularity")
@@ -67,9 +73,10 @@ def regrade_grim(findings: list[dict]) -> bool:
                 "grid_distance_display_units": d_disp,
                 "convention_reproducible": conv_ok,
                 "convention": conv_name,
-                "grim_anchor": anchor,
+                "grim_anchor": anchor,  # informational only — the gate keys on corroboration
                 "grim_cluster_size": n,
                 "grim_cluster": n >= 2,
+                "grim_corroborated": corroborated,
             }
         )
         d.setdefault("nearest_mean_str", _fmt_mean(nearest, dec))
@@ -79,16 +86,14 @@ def regrade_grim(findings: list[dict]) -> bool:
             changed = True
         f["severity"] = new_sev
         f["details"] = d
-        if anchor:
-            has_anchor = True
-    if not has_anchor:
+    if not corroborated:
         plural = n != 1
         note = (
             f"{n} reported mean{'s' if plural else ''} on this paper "
-            f"{'are' if plural else 'is'} GRIM-impossible, but each is marginal — within ~1 display "
-            "unit of an achievable value, or reproducible under a normal rounding convention. "
-            "Individually consistent with rounding or transcription, so this is a screening signal "
-            "routed for review, not a confirmed error."
+            f"{'are' if plural else 'is'} GRIM-impossible (cannot arise from whole-number responses at "
+            "the stated N), but each sits within ~1-3 hundredths of an achievable value and there is no "
+            "other arithmetic error on the paper — individually consistent with rounding or typesetting. "
+            "Surfaced for review, not a confirmed error."
         )
         for f in grim:
             if f.get("trust_tier") == "deterministic_confirmed":

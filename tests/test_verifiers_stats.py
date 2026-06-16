@@ -16,7 +16,7 @@ import pytest
 from litmus.core import sandbox
 from litmus.core.calibration import AdmissionStatus, calibrate
 from litmus.core.claim import Claim, Evidence, EvidenceKind, Location
-from litmus.core.finding import Severity, Status, TrustTier
+from litmus.core.finding import Finding, Severity, Status, TrustTier, VerifierKind
 from litmus.pipeline.gates import gate_grim_relevance
 from litmus.verifiers import grim as grim_mod
 from litmus.verifiers import statcheck as statcheck_mod
@@ -365,8 +365,9 @@ class TestDeterminism:
 # Paper-level fragile-GRIM gate (DESIGN §3.6) — lone fragile -> advisory; pattern stays hard.
 # ===========================================================================
 class TestGrimRelevanceGate:
-    """The relevance gate: a GRIM cluster ships hard iff it has >=1 ANCHOR (gap >1.5 display units and
-    not convention-reproducible); an anchor-less group becomes one routed-to-human screening note.
+    """The relevance gate keys on CORROBORATION, not magnitude: a GRIM cluster stays a hard
+    deterministic_confirmed flag only when an INDEPENDENT (non-GRIM) deterministic error backs it up
+    on the same paper; otherwise the whole cluster becomes one routed-to-human screening note.
     Mutates trust_tier/details only — status/severity/evidence (and thus calibration) are untouched."""
 
     def _fail(self, **vals):
@@ -375,52 +376,49 @@ class TestGrimRelevanceGate:
         f.trust_tier = TrustTier.DETERMINISTIC_CONFIRMED
         return f
 
-    # --- gold-standard recall: anchored clusters stay hard ------------------
-    def test_wansink_cluster_stays_deterministic(self):
+    def _corroborator(self):
+        # A stub INDEPENDENT deterministic error (e.g. sum_check: subgroup totals don't add up) — the
+        # kind of un-roundable error that turns a GRIM screen into a real concern (Wansink: 89 vs 95).
+        return Finding(
+            verifier_id="sum_check.v1", claim_id="cs", status=Status.FAIL,
+            trust_tier=TrustTier.DETERMINISTIC_CONFIRMED, verifier_kind=VerifierKind.PREBUILT,
+            severity=Severity.A,
+        )
+
+    def test_corroborated_cluster_stays_deterministic(self):
+        """Wansink-style: GRIM cluster + an independent sum error → stays hard (gold-standard recall)."""
         wansink = [self._fail(reported_mean=m, n=n) for m, n in [(2.63, 18), (1.97, 17), (1.67, 17), (3.92, 10)]]
-        gate_grim_relevance(wansink)
+        gate_grim_relevance([*wansink, self._corroborator()])
         assert all(f.trust_tier is TrustTier.DETERMINISTIC_CONFIRMED for f in wansink)
+        assert all(f.details.get("grim_corroborated") is True for f in wansink)
         assert not any(f.details.get("grim_screening_note") for f in wansink)
 
-    def test_festinger_cluster_stays_deterministic(self):
+    def test_uncorroborated_cluster_becomes_routed_screening_note(self):
+        """Festinger/kniffin/just2014-style: GRIM only, no independent error → one screening note."""
         fest = [self._fail(reported_mean=m, n=20) for m in (3.03, 2.77, 4.88)]
         gate_grim_relevance(fest)
-        assert all(f.trust_tier is TrustTier.DETERMINISTIC_CONFIRMED for f in fest)
+        assert all(f.trust_tier is TrustTier.ROUTED_TO_HUMAN for f in fest)
+        assert all(f.details.get("grim_screening_note") for f in fest)
+        assert all(f.details.get("grim_corroborated") is False for f in fest)
+        assert all(f.details["grim_cluster_size"] == 3 for f in fest)
 
-    # --- the owner's noise: anchor-less clusters become a screening note ----
-    def test_kniffin_cluster_becomes_routed_screening_note(self):
-        kniffin = [self._fail(reported_mean=m, n=40) for m in (2.11, 1.46)]  # both d_disp 1.0, no anchor
-        gate_grim_relevance(kniffin)
-        assert all(f.trust_tier is TrustTier.ROUTED_TO_HUMAN for f in kniffin)
-        assert all(f.details.get("grim_screening_note") for f in kniffin)
-        assert all(f.details.get("grim_cluster_note") for f in kniffin)
-        assert all(f.details["grim_cluster_size"] == 2 for f in kniffin)
+    def test_a_second_grim_flag_does_not_corroborate(self):
+        """Only a NON-GRIM independent error corroborates — two GRIM fails are still a screen."""
+        a = self._fail(reported_mean=2.63, n=18)
+        b = self._fail(reported_mean=1.97, n=17)
+        gate_grim_relevance([a, b])
+        assert a.trust_tier is TrustTier.ROUTED_TO_HUMAN
+        assert b.trust_tier is TrustTier.ROUTED_TO_HUMAN
 
-    def test_just2014_truncation_cluster_becomes_routed(self):
-        just = [self._fail(reported_mean=m, n=n) for m, n in [(6.62, 62), (1.88, 62), (7.44, 60), (7.97, 26)]]
-        gate_grim_relevance(just)
-        assert all(f.trust_tier is TrustTier.ROUTED_TO_HUMAN for f in just)
-
-    # --- mixed + lone -------------------------------------------------------
-    def test_one_anchor_keeps_whole_cluster_hard(self):
-        anchor = self._fail(reported_mean=2.63, n=18)   # d_disp 1.89 → anchor
-        benign = self._fail(reported_mean=6.62, n=62)   # truncation-reproducible → not anchor
-        gate_grim_relevance([anchor, benign])
-        assert anchor.trust_tier is TrustTier.DETERMINISTIC_CONFIRMED
-        assert benign.trust_tier is TrustTier.DETERMINISTIC_CONFIRMED  # any anchor keeps the cluster loud
-
-    def test_lone_benign_routes_and_lone_anchor_stays(self):
-        benign = self._fail(reported_mean=6.62, n=62)
-        gate_grim_relevance([benign])
-        assert benign.trust_tier is TrustTier.ROUTED_TO_HUMAN
-        anchor = self._fail(reported_mean=2.63, n=18)
-        gate_grim_relevance([anchor])
-        assert anchor.trust_tier is TrustTier.DETERMINISTIC_CONFIRMED
+    def test_lone_grim_routes(self):
+        f = self._fail(reported_mean=2.63, n=18)  # even a 1.89-unit gap, uncorroborated → screen
+        gate_grim_relevance([f])
+        assert f.trust_tier is TrustTier.ROUTED_TO_HUMAN
 
     def test_gate_touches_only_tier_and_details(self):
         f = self._fail(reported_mean=2.11, n=40)
         before = (f.status, f.severity, f.evidence.recompute_script, f.evidence.expected_output)
-        gate_grim_relevance([f])
+        gate_grim_relevance([f, self._corroborator()])
         after = (f.status, f.severity, f.evidence.recompute_script, f.evidence.expected_output)
         assert after == before  # calibration-safe: status/severity/evidence unchanged
 

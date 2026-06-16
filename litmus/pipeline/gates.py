@@ -41,26 +41,46 @@ def gate_grim_relevance(findings: list[Finding]) -> None:
         return
 
     n = len(grim_fails)
-    has_anchor = any(bool((f.details or {}).get("grim_anchor")) for f in grim_fails)
+
+    # CORROBORATION is the relevance bar, not magnitude. A single GRIM-impossible mean is, on its own,
+    # within rounding/transcription noise (a 0.01-0.03 gap is exactly what a typo or a half-up-vs-
+    # truncate choice produces — owner: "most read as close enough and not wrong"). It becomes a real,
+    # CONFIRMED concern only when an INDEPENDENT deterministic error on the same paper — one that CAN'T
+    # be a rounding artifact, like a subgroup total that doesn't add up (sum_check), a p-value that
+    # flips significance (statcheck), or an impossible yield — backs it up. Wansink: its subgroup
+    # totals are 89 vs a stated 95, so its GRIM cluster is corroborated and stays hard. Festinger /
+    # kniffin / just2014 have GRIM only -> screening note. Status/severity/evidence untouched.
+    corroborated = any(
+        f.status is Status.FAIL
+        and f.trust_tier is TrustTier.DETERMINISTIC_CONFIRMED
+        and (f.verifier_id or "").split(".")[0] != "grim"
+        for f in findings
+    )
 
     # Cluster bookkeeping the UI uses to consolidate members into one finding.
     for f in grim_fails:
-        f.details = {**(f.details or {}), "grim_cluster_size": n, "grim_cluster": n >= 2}
+        f.details = {
+            **(f.details or {}),
+            "grim_cluster_size": n,
+            "grim_cluster": n >= 2,
+            "grim_corroborated": corroborated,
+        }
 
-    if has_anchor:
-        # >=1 substantive, non-convention impossibility → a relevant hard flag. Keep the cluster hard.
+    if corroborated:
+        # An independent, un-roundable error backs up the GRIM cluster → a relevant hard flag. Keep it.
         return
 
-    # No anchor: every member is a marginal or convention-reproducible inconsistency, individually
-    # consistent with rounding/transcription. Re-tier the whole group to ONE human-review screening
-    # note — NOT suppressed (status + recompute evidence intact, promotable by corroboration).
+    # No corroboration: every member is within rounding distance and there is no other arithmetic
+    # error on the paper, so this is individually consistent with rounding/typesetting. Re-tier the
+    # whole group to ONE human-review screening note — NOT suppressed (status + scripts intact,
+    # promotable the moment any independent error or external integrity signal appears).
     plural = n != 1
     note = (
         f"{n} reported mean{'s' if plural else ''} on this paper "
-        f"{'are' if plural else 'is'} GRIM-impossible, but each is marginal — within ~1 display unit "
-        f"of an achievable value, or reproducible under a normal rounding convention (round-half-up / "
-        f"truncation). Individually consistent with rounding or transcription, so this is a screening "
-        f"signal routed for review, not a confirmed error. Each recompute script is attached."
+        f"{'are' if plural else 'is'} GRIM-impossible (cannot arise from whole-number responses at the "
+        f"stated N), but each sits within ~1-3 hundredths of an achievable value and there is no other "
+        f"arithmetic error on the paper — individually consistent with rounding or typesetting. "
+        f"Surfaced for review, not asserted as a confirmed error. Each recompute script is attached."
     )
     for f in grim_fails:
         f.trust_tier = TrustTier.ROUTED_TO_HUMAN
