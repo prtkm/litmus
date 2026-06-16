@@ -385,13 +385,17 @@ class TestGrimRelevanceGate:
             severity=Severity.A,
         )
 
-    def test_corroborated_cluster_stays_deterministic(self):
-        """Wansink-style: GRIM cluster + an independent sum error → stays hard (gold-standard recall)."""
+    def test_grim_always_screens_corroborator_stays_hard(self):
+        """Wansink-style: GRIM means are NEVER hard quantitative flags — they screen even when an
+        independent error corroborates them. Only the independent error (sum_check) stays hard; the
+        GRIM cluster's note is marked corroborated so it reads as high-concern."""
         wansink = [self._fail(reported_mean=m, n=n) for m, n in [(2.63, 18), (1.97, 17), (1.67, 17), (3.92, 10)]]
-        gate_grim_relevance([*wansink, self._corroborator()])
-        assert all(f.trust_tier is TrustTier.DETERMINISTIC_CONFIRMED for f in wansink)
-        assert all(f.details.get("grim_corroborated") is True for f in wansink)
-        assert not any(f.details.get("grim_screening_note") for f in wansink)
+        corroborator = self._corroborator()
+        gate_grim_relevance([*wansink, corroborator])
+        assert all(f.trust_tier is TrustTier.ROUTED_TO_HUMAN for f in wansink)   # GRIM never hard
+        assert all(f.details.get("grim_corroborated") is True for f in wansink)  # but flagged corroborated
+        assert all(f.details.get("grim_screening_note") for f in wansink)
+        assert corroborator.trust_tier is TrustTier.DETERMINISTIC_CONFIRMED      # the real catch stays hard
 
     def test_uncorroborated_cluster_becomes_routed_screening_note(self):
         """Festinger/kniffin/just2014-style: GRIM only, no independent error → one screening note."""

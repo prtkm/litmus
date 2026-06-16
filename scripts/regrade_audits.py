@@ -86,8 +86,17 @@ def regrade_grim(findings: list[dict]) -> bool:
             changed = True
         f["severity"] = new_sev
         f["details"] = d
-    if not corroborated:
-        plural = n != 1
+    # GRIM is always a screening signal — re-tier the whole cluster. Corroboration only sets wording.
+    plural = n != 1
+    if corroborated:
+        note = (
+            f"{n} reported mean{'s' if plural else ''} on this paper "
+            f"{'are' if plural else 'is'} GRIM-impossible — and an INDEPENDENT arithmetic error (one "
+            "that can't be a rounding artifact, flagged separately) was found on the same paper. Each "
+            "mean is individually within rounding distance, but together with the corroborating error "
+            "this is worth a close look at the raw data."
+        )
+    else:
         note = (
             f"{n} reported mean{'s' if plural else ''} on this paper "
             f"{'are' if plural else 'is'} GRIM-impossible (cannot arise from whole-number responses at "
@@ -95,14 +104,14 @@ def regrade_grim(findings: list[dict]) -> bool:
             "other arithmetic error on the paper — individually consistent with rounding or typesetting. "
             "Surfaced for review, not a confirmed error."
         )
-        for f in grim:
-            if f.get("trust_tier") == "deterministic_confirmed":
-                f["trust_tier"] = "routed_to_human"
-                changed = True
-            d = dict(f.get("details") or {})
-            d["grim_screening_note"] = True
-            d["grim_cluster_note"] = note
-            f["details"] = d
+    for f in grim:
+        if f.get("trust_tier") == "deterministic_confirmed":
+            f["trust_tier"] = "routed_to_human"
+            changed = True
+        d = dict(f.get("details") or {})
+        d["grim_screening_note"] = True
+        d["grim_cluster_note"] = note
+        f["details"] = d
     return changed
 
 

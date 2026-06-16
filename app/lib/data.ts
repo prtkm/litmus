@@ -106,8 +106,9 @@ function regradeGrim(findings: Finding[]): void {
     }
   }
   // Relevance gate (mirrors litmus/pipeline/gates.gate_grim_relevance, for audits stored before it):
-  // a GRIM cluster stays hard only when an INDEPENDENT (non-GRIM) deterministic error corroborates it
-  // on the same paper; otherwise the whole cluster is re-tiered to one routed-to-human screening note.
+  // GRIM is always a screening signal, never a confirmed quantitative error — re-tier the whole
+  // cluster to one routed-to-human screening note. Corroboration (an independent non-GRIM error) only
+  // sets the note's prominence; it never promotes the GRIM means to hard flags.
   const n = grim.length;
   const corroborated = findings.some(
     (f) =>
@@ -115,19 +116,26 @@ function regradeGrim(findings: Finding[]): void {
       f.trust_tier === "deterministic_confirmed" &&
       (f.verifier_id ?? "").split(".")[0] !== "grim",
   );
-  for (const f of grim) {
-    f.details = { ...(f.details ?? {}), grim_cluster_size: n, grim_cluster: n >= 2, grim_corroborated: corroborated };
-  }
-  if (!corroborated) {
-    const note =
-      `${n} reported mean${n !== 1 ? "s" : ""} on this paper ${n !== 1 ? "are" : "is"} GRIM-impossible ` +
+  const plural = n !== 1;
+  const note = corroborated
+    ? `${n} reported mean${plural ? "s" : ""} on this paper ${plural ? "are" : "is"} GRIM-impossible ` +
+      "— and an INDEPENDENT arithmetic error (one that can't be a rounding artifact, flagged separately) " +
+      "was found on the same paper. Each mean is individually within rounding distance, but together " +
+      "with the corroborating error this is worth a close look at the raw data."
+    : `${n} reported mean${plural ? "s" : ""} on this paper ${plural ? "are" : "is"} GRIM-impossible ` +
       "(cannot arise from whole-number responses at the stated N), but each sits within ~1-3 hundredths " +
       "of an achievable value and there is no other arithmetic error on the paper — individually " +
       "consistent with rounding or typesetting. Surfaced for review, not a confirmed error.";
-    for (const f of grim) {
-      if (f.trust_tier === "deterministic_confirmed") f.trust_tier = "routed_to_human";
-      f.details = { ...(f.details ?? {}), grim_screening_note: true, grim_cluster_note: note };
-    }
+  for (const f of grim) {
+    if (f.trust_tier === "deterministic_confirmed") f.trust_tier = "routed_to_human";
+    f.details = {
+      ...(f.details ?? {}),
+      grim_cluster_size: n,
+      grim_cluster: n >= 2,
+      grim_corroborated: corroborated,
+      grim_screening_note: true,
+      grim_cluster_note: note,
+    };
   }
 }
 
