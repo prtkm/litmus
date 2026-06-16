@@ -1,13 +1,14 @@
-"""One-off maintenance: re-derive GRIM magnitude-graded severity + cluster stamps, dedupe duplicate
-findings, and add the formatted recompute fields, INTO the stored Supabase audit_report records — so
-the data itself matches the current grim.py / gate_fragile_grim logic instead of relying on the
-frontend back-compat shim. Idempotent: safe to re-run. Reads/writes via the service key (SupabaseIO).
+"""One-off maintenance: bring stored Supabase audit_report records up to the current GRIM logic —
+dedupe duplicate findings, re-derive magnitude-graded severity + the formatted recompute fields, and
+apply the RELEVANCE gate (an anchor-less GRIM cluster is re-tiered to a routed-to-human screening
+note). Matches litmus/verifiers/grim.py + litmus/pipeline/gates.gate_grim_relevance so the data
+itself is correct, not just the frontend shim. Idempotent. Reads/writes via the service key.
 """
 
 from __future__ import annotations
 
 from litmus.app_backend.supabase_io import PAPERS_TABLE, SupabaseConfig, SupabaseIO
-from litmus.verifiers.grim import _fmt_mean, _reproduces_under_truncation
+from litmus.verifiers.grim import _fmt_mean, _reproduces_under_convention
 
 EPS = 1e-9
 
@@ -33,13 +34,17 @@ def dedup(findings: list[dict]) -> list[dict]:
     return list(out.values())
 
 
-def regrade(findings: list[dict]) -> tuple[bool, list[dict]]:
-    changed = False
+def regrade_grim(findings: list[dict]) -> bool:
     grim = [
         f
         for f in findings
         if f.get("status") == "fail" and (f.get("verifier_id") or "").split(".")[0] == "grim"
     ]
+    if not grim:
+        return False
+    n = len(grim)
+    changed = False
+    has_anchor = False
     for f in grim:
         d = dict(f.get("details") or {})
         gran = d.get("granularity")
@@ -52,26 +57,48 @@ def regrade(findings: list[dict]) -> tuple[bool, list[dict]]:
         if nearest is None or rep is None or not gran:
             continue
         d_disp = abs(rep - nearest) / (10 ** -dec)
-        conv = (nitems == 1) and _reproduces_under_truncation(rep, gran, dec)
-        new_sev = "C" if (d_disp <= 1.0 + EPS or conv) else "B"
-        d["grid_distance_display_units"] = d_disp
-        d["convention_reproducible"] = conv
+        conv_ok, conv_name = (
+            _reproduces_under_convention(rep, gran, dec) if nitems == 1 else (False, None)
+        )
+        anchor = (d_disp > 1.5 + EPS) and not conv_ok
+        new_sev = "C" if (d_disp <= 1.0 + EPS or conv_ok) else "B"
+        d.update(
+            {
+                "grid_distance_display_units": d_disp,
+                "convention_reproducible": conv_ok,
+                "convention": conv_name,
+                "grim_anchor": anchor,
+                "grim_cluster_size": n,
+                "grim_cluster": n >= 2,
+            }
+        )
         d.setdefault("nearest_mean_str", _fmt_mean(nearest, dec))
         if d.get("nearest_total") is not None:
             d.setdefault("nearest_fraction", f"{d['nearest_total']}/{gran}")
-        if f.get("severity") != new_sev or f.get("details") != d:
+        if f.get("severity") != new_sev:
             changed = True
         f["severity"] = new_sev
         f["details"] = d
-    if len(grim) >= 2:
+        if anchor:
+            has_anchor = True
+    if not has_anchor:
+        plural = n != 1
+        note = (
+            f"{n} reported mean{'s' if plural else ''} on this paper "
+            f"{'are' if plural else 'is'} GRIM-impossible, but each is marginal — within ~1 display "
+            "unit of an achievable value, or reproducible under a normal rounding convention. "
+            "Individually consistent with rounding or transcription, so this is a screening signal "
+            "routed for review, not a confirmed error."
+        )
         for f in grim:
-            d = dict(f.get("details") or {})
-            if d.get("grim_cluster_size") != len(grim):
-                d["grim_cluster_size"] = len(grim)
-                d["grim_cluster"] = True
-                f["details"] = d
+            if f.get("trust_tier") == "deterministic_confirmed":
+                f["trust_tier"] = "routed_to_human"
                 changed = True
-    return changed, findings
+            d = dict(f.get("details") or {})
+            d["grim_screening_note"] = True
+            d["grim_cluster_note"] = note
+            f["details"] = d
+    return changed
 
 
 def main() -> None:
@@ -91,7 +118,7 @@ def main() -> None:
             continue
         deduped = dedup(findings)
         c1 = len(deduped) != len(findings)
-        c2, deduped = regrade(deduped)
+        c2 = regrade_grim(deduped)
         if c1 or c2:
             ar["findings"] = deduped
             purl = f"{io.config.rest_url}/{PAPERS_TABLE}?content_hash=eq.{ch}"
@@ -102,7 +129,7 @@ def main() -> None:
                 json={"audit_report": ar},
             )
             n_upd += 1
-            tags = (" deduped" if c1 else "") + (" regraded" if c2 else "")
+            tags = (" deduped" if c1 else "") + (" regraded/gated" if c2 else "")
             print(f"  updated {ar.get('paper_id')}: {len(findings)}->{len(deduped)} findings{tags}")
     io.close()
     print(f"DONE — updated {n_upd} records.")

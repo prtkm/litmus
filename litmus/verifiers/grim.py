@@ -127,21 +127,35 @@ def _nearest_achievable(reported_mean: float, granularity: int, decimals: int) -
     return False, best_k, best_k / granularity
 
 
-def _reproduces_under_truncation(reported_mean: float, granularity: int, decimals: int) -> bool:
-    """Would the reported mean arise if the authors TRUNCATED ``k/granularity`` to ``decimals``
-    (instead of rounding)? Truncation is a common alternative to rounding, so a mean reproducible
-    this way is a rounding-convention artifact, not a genuine impossibility — used ONLY to soften
-    severity to Minor, never to suppress the FAIL. e.g. just2014 6.62 = trunc(411/62)."""
+def _reproduces_under_convention(
+    reported_mean: float, granularity: int, decimals: int
+) -> tuple[bool, Optional[str]]:
+    """Would the reported mean arise from some integer total ``k/granularity`` under a COMMON rounding
+    convention — round-half-even (Python's ``round``), round-half-up, or truncation? Such a mean is a
+    rounding-convention artifact, not a genuine impossibility (e.g. just2014 6.62 = trunc(411/62)).
+    Returns ``(reproducible, convention_name)``.
+
+    Deliberately EXCLUDES ``ceil``: the critique verified ceil reproduces all of just2014 AND two
+    Wansink means, so admitting it would excuse documented fraud. ``half_even`` can never fire inside
+    the FAIL branch (it is the very rule GRIM already failed), but is kept for documentation and to
+    stay correct if the base convention ever changes. Used to soften severity AND — with the grid
+    distance — to decide whether a GRIM inconsistency is a relevant hard flag or a screening note."""
     target = round(reported_mean, decimals)
     scale = 10 ** decimals
     approx = reported_mean * granularity
     lo = max(0, int(math.floor(approx)) - 2)
     hi = int(math.ceil(approx)) + 2
     for k in range(lo, hi + 1):
-        truncated = math.floor((k / granularity) * scale + EPS) / scale
-        if abs(truncated - target) < EPS:
-            return True
-    return False
+        m = k / granularity
+        x = m * scale
+        for name, val in (
+            ("half_even", round(m, decimals)),
+            ("half_up", math.floor(x + 0.5) / scale),
+            ("truncation", math.floor(x + EPS) / scale),
+        ):
+            if abs(val - target) < EPS:
+                return True, name
+    return False, None
 
 
 def _fmt_mean(value: float | int, decimals: int) -> str:
@@ -346,11 +360,22 @@ class Grim(Verifier):
         # is display-only — the calibration kernel branches on Status, never severity — so this cannot
         # move recall / FPR / G3. We compare against the true nearest_mean, not its rounded display.
         d_disp = abs(f["reported_mean"] - nearest_mean) / (10 ** -decimals)
-        convention_reproducible = f["n_items"] == 1 and _reproduces_under_truncation(
-            f["reported_mean"], granularity, decimals
+        conv_ok, conv_name = (
+            _reproduces_under_convention(f["reported_mean"], granularity, decimals)
+            if f["n_items"] == 1
+            else (False, None)
         )
+        convention_reproducible = conv_ok
         marginal = d_disp <= 1.0 + EPS or convention_reproducible
         grim_severity = Severity.C if marginal else Severity.B
+        # RELEVANCE anchor (critique, DESIGN §3.6). A GRIM inconsistency is a relevant HARD flag only
+        # when it is a genuine impossibility of real magnitude: the gap exceeds ~1.5 printed display
+        # units AND is not reproducible by a normal rounding convention. Otherwise it is a screening
+        # signal, not a confirmed error. The paper-level gate (gate_grim_relevance) keeps a cluster
+        # hard iff it has >=1 anchor (Wansink 1.89-2.88, Festinger 2.00), and routes an anchor-less
+        # cluster (kniffin 1.00, just2014 0.67-0.85) to a single human-review note. 1.5 (not 1.0) is
+        # the safe midpoint: Festinger's 2.0 clears it, kniffin's 1.0 does not.
+        grim_anchor = (d_disp > 1.5 + EPS) and not convention_reproducible
 
         return self.make_finding(
             claim=claim,
@@ -381,9 +406,13 @@ class Grim(Verifier):
                 "fragile": fragile,
                 "rescued_at_n": rescued_at_n,
                 # Magnitude grade inputs (see severity computation above): how many printed display
-                # units off the nearest achievable mean, and whether truncation reproduces it.
+                # units off the nearest achievable mean, and whether a rounding convention reproduces it.
                 "grid_distance_display_units": d_disp,
                 "convention_reproducible": convention_reproducible,
+                "convention": conv_name,
+                # Relevance anchor: a genuine, substantive impossibility (vs a screening signal). The
+                # paper-level gate keeps a cluster hard iff >=1 member is an anchor.
+                "grim_anchor": grim_anchor,
             },
         )
 

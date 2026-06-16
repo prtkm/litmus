@@ -105,9 +105,31 @@ function regradeGrim(findings: Finding[]): void {
       f.severity = "C";
     }
   }
-  if (grim.length >= 2) {
+  // Relevance gate (mirrors litmus/pipeline/gates.gate_grim_relevance, for audits stored before it):
+  // a member is an ANCHOR if its gap exceeds ~1.5 display units AND isn't convention-reproducible; a
+  // cluster with no anchor is re-tiered to one routed-to-human screening note.
+  const n = grim.length;
+  let hasAnchor = false;
+  for (const f of grim) {
+    const d = (f.details ?? {}) as Record<string, unknown>;
+    const dDisp = d.grid_distance_display_units as number | undefined;
+    const anchor =
+      typeof d.grim_anchor === "boolean"
+        ? d.grim_anchor
+        : typeof dDisp === "number" && dDisp > 1.5 + 1e-9 && !Boolean(d.convention_reproducible);
+    d.grim_anchor = anchor;
+    f.details = { ...d, grim_cluster_size: n, grim_cluster: n >= 2 };
+    if (anchor) hasAnchor = true;
+  }
+  if (!hasAnchor) {
+    const note =
+      `${n} reported mean${n !== 1 ? "s" : ""} on this paper ${n !== 1 ? "are" : "is"} GRIM-impossible, ` +
+      "but each is marginal — within ~1 display unit of an achievable value, or reproducible under a " +
+      "normal rounding convention. Individually consistent with rounding or transcription, so this is a " +
+      "screening signal routed for review, not a confirmed error.";
     for (const f of grim) {
-      f.details = { ...(f.details ?? {}), grim_cluster_size: grim.length, grim_cluster: true };
+      if (f.trust_tier === "deterministic_confirmed") f.trust_tier = "routed_to_human";
+      f.details = { ...(f.details ?? {}), grim_screening_note: true, grim_cluster_note: note };
     }
   }
 }

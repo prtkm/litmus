@@ -367,7 +367,7 @@ export interface AuditCategorization {
 }
 
 export function categorize(report: {
-  findings?: { status: string }[];
+  findings?: { status: string; trust_tier?: string; details?: Record<string, unknown> }[];
   routed_to_human?: { dimension: string; note?: string }[];
 }): AuditCategorization {
   const counts: Record<IssueCategory, number> = {
@@ -375,10 +375,20 @@ export function categorize(report: {
   };
   let passes = 0;
   let reviewedClean = 0;
+  let grimScreeningCluster = false; // a borderline GRIM cluster counts as ONE integrity signal, not N
   for (const f of report.findings ?? []) {
-    if (f.status === "fail") counts.quantitative++;
-    else if (f.status === "pass") passes++;
+    if (f.status === "pass") { passes++; continue; }
+    if (f.status !== "fail") continue;
+    const tier = f.trust_tier;
+    // Only a recomputation-grade fail is a confirmed "quantitative issue". A fail that was re-tiered
+    // by a relevance gate (e.g. a marginal GRIM cluster -> routed_to_human screening note) is a
+    // data-integrity *signal*, not a hard error — count it as integrity, and only once per cluster.
+    const hard = tier === undefined || tier === "deterministic_confirmed" || tier === "calibrated_synthesized";
+    if (hard) { counts.quantitative++; continue; }
+    if (f.details?.grim_screening_note) grimScreeningCluster = true;
+    else counts.integrity++;
   }
+  if (grimScreeningCluster) counts.integrity++;
   for (const r of report.routed_to_human ?? []) {
     const c = routedToCategory(r.dimension, r.note);
     if (c === null) reviewedClean++;

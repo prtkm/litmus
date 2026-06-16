@@ -17,7 +17,7 @@ from litmus.core import sandbox
 from litmus.core.calibration import AdmissionStatus, calibrate
 from litmus.core.claim import Claim, Evidence, EvidenceKind, Location
 from litmus.core.finding import Severity, Status, TrustTier
-from litmus.pipeline.gates import gate_fragile_grim
+from litmus.pipeline.gates import gate_grim_relevance
 from litmus.verifiers import grim as grim_mod
 from litmus.verifiers import statcheck as statcheck_mod
 from litmus.verifiers.grim import Grim
@@ -364,54 +364,65 @@ class TestDeterminism:
 # ===========================================================================
 # Paper-level fragile-GRIM gate (DESIGN §3.6) — lone fragile -> advisory; pattern stays hard.
 # ===========================================================================
-class TestFragileGrimGate:
+class TestGrimRelevanceGate:
+    """The relevance gate: a GRIM cluster ships hard iff it has >=1 ANCHOR (gap >1.5 display units and
+    not convention-reproducible); an anchor-less group becomes one routed-to-human screening note.
+    Mutates trust_tier/details only — status/severity/evidence (and thus calibration) are untouched."""
+
     def _fail(self, **vals):
         f = _judge_grim(**vals)
         assert f.status is Status.FAIL
-        # the gate only acts on flags that arrived as deterministic_confirmed
         f.trust_tier = TrustTier.DETERMINISTIC_CONFIRMED
         return f
 
-    def test_lone_fragile_flag_is_downgraded_to_advisory(self):
-        f = self._fail(reported_mean=6.62, n=62)
-        gate_fragile_grim([f])
-        assert f.trust_tier is TrustTier.ADVISORY_ASSISTED
-        assert "achievable if N were 61" in (f.discrepancy or "")
+    # --- gold-standard recall: anchored clusters stay hard ------------------
+    def test_wansink_cluster_stays_deterministic(self):
+        wansink = [self._fail(reported_mean=m, n=n) for m, n in [(2.63, 18), (1.97, 17), (1.67, 17), (3.92, 10)]]
+        gate_grim_relevance(wansink)
+        assert all(f.trust_tier is TrustTier.DETERMINISTIC_CONFIRMED for f in wansink)
+        assert not any(f.details.get("grim_screening_note") for f in wansink)
 
-    def test_lone_robust_flag_stays_deterministic(self):
-        f = self._fail(reported_mean=2.63, n=18)  # not rescued by dropping one
-        gate_fragile_grim([f])
-        assert f.trust_tier is TrustTier.DETERMINISTIC_CONFIRMED
+    def test_festinger_cluster_stays_deterministic(self):
+        fest = [self._fail(reported_mean=m, n=20) for m in (3.03, 2.77, 4.88)]
+        gate_grim_relevance(fest)
+        assert all(f.trust_tier is TrustTier.DETERMINISTIC_CONFIRMED for f in fest)
 
-    def test_two_grim_flags_are_a_pattern_and_stay_deterministic(self):
-        """Even two individually-fragile means are a pattern — the Wansink/Festinger case."""
-        a = self._fail(reported_mean=6.62, n=62)
-        b = self._fail(reported_mean=1.07, n=62)  # also fragile, but together they're a pattern
-        gate_fragile_grim([a, b])
-        assert a.trust_tier is TrustTier.DETERMINISTIC_CONFIRMED
-        assert b.trust_tier is TrustTier.DETERMINISTIC_CONFIRMED
+    # --- the owner's noise: anchor-less clusters become a screening note ----
+    def test_kniffin_cluster_becomes_routed_screening_note(self):
+        kniffin = [self._fail(reported_mean=m, n=40) for m in (2.11, 1.46)]  # both d_disp 1.0, no anchor
+        gate_grim_relevance(kniffin)
+        assert all(f.trust_tier is TrustTier.ROUTED_TO_HUMAN for f in kniffin)
+        assert all(f.details.get("grim_screening_note") for f in kniffin)
+        assert all(f.details.get("grim_cluster_note") for f in kniffin)
+        assert all(f.details["grim_cluster_size"] == 2 for f in kniffin)
 
-    def test_fragile_plus_robust_keeps_both_deterministic(self):
-        frag = self._fail(reported_mean=6.62, n=62)
-        robust = self._fail(reported_mean=2.63, n=18)
-        gate_fragile_grim([frag, robust])
-        assert frag.trust_tier is TrustTier.DETERMINISTIC_CONFIRMED
-        assert robust.trust_tier is TrustTier.DETERMINISTIC_CONFIRMED
+    def test_just2014_truncation_cluster_becomes_routed(self):
+        just = [self._fail(reported_mean=m, n=n) for m, n in [(6.62, 62), (1.88, 62), (7.44, 60), (7.97, 26)]]
+        gate_grim_relevance(just)
+        assert all(f.trust_tier is TrustTier.ROUTED_TO_HUMAN for f in just)
 
-    def test_pattern_stamps_cluster_size_so_minor_cards_read_as_one_finding(self):
-        """A >=2-flag GRIM pattern stamps every member with grim_cluster_size, so individually-Minor
-        cards still read as one high-concern pattern (the UI shows '1 of N impossible means')."""
-        a = self._fail(reported_mean=2.11, n=40)   # Minor (C)
-        b = self._fail(reported_mean=1.46, n=40)   # Minor (C)
-        gate_fragile_grim([a, b])
-        assert a.details["grim_cluster_size"] == 2 and a.details["grim_cluster"] is True
-        assert b.details["grim_cluster_size"] == 2
-        assert a.trust_tier is TrustTier.DETERMINISTIC_CONFIRMED  # pattern stays a hard catch
+    # --- mixed + lone -------------------------------------------------------
+    def test_one_anchor_keeps_whole_cluster_hard(self):
+        anchor = self._fail(reported_mean=2.63, n=18)   # d_disp 1.89 → anchor
+        benign = self._fail(reported_mean=6.62, n=62)   # truncation-reproducible → not anchor
+        gate_grim_relevance([anchor, benign])
+        assert anchor.trust_tier is TrustTier.DETERMINISTIC_CONFIRMED
+        assert benign.trust_tier is TrustTier.DETERMINISTIC_CONFIRMED  # any anchor keeps the cluster loud
 
-    def test_lone_flag_is_not_stamped_as_a_cluster(self):
-        f = self._fail(reported_mean=2.63, n=18)  # robust, lone
-        gate_fragile_grim([f])
-        assert "grim_cluster_size" not in (f.details or {})
+    def test_lone_benign_routes_and_lone_anchor_stays(self):
+        benign = self._fail(reported_mean=6.62, n=62)
+        gate_grim_relevance([benign])
+        assert benign.trust_tier is TrustTier.ROUTED_TO_HUMAN
+        anchor = self._fail(reported_mean=2.63, n=18)
+        gate_grim_relevance([anchor])
+        assert anchor.trust_tier is TrustTier.DETERMINISTIC_CONFIRMED
+
+    def test_gate_touches_only_tier_and_details(self):
+        f = self._fail(reported_mean=2.11, n=40)
+        before = (f.status, f.severity, f.evidence.recompute_script, f.evidence.expected_output)
+        gate_grim_relevance([f])
+        after = (f.status, f.severity, f.evidence.recompute_script, f.evidence.expected_output)
+        assert after == before  # calibration-safe: status/severity/evidence unchanged
 
 
 # ===========================================================================

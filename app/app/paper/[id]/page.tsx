@@ -92,7 +92,11 @@ export default async function PaperPage({
   // Band 2 (expert review): advisory_assisted findings (reasoned, no script) and
   //   the advisory:* routed concerns.
   const deterministic = report.findings.filter(isDeterministic);
-  const reasonedFindings = report.findings.filter((f) => !isDeterministic(f));
+  const reasonedAll = report.findings.filter((f) => !isDeterministic(f));
+  // A borderline GRIM cluster the relevance gate re-tiered to a screening note: pull its members out
+  // so they render as ONE consolidated note (not N co-equal rows), with the recompute scripts inside.
+  const grimScreening = reasonedAll.filter((f) => f.details?.grim_screening_note);
+  const reasonedFindings = reasonedAll.filter((f) => !f.details?.grim_screening_note);
 
   const checkableFlags = deterministic.filter((f) => f.status === "fail");
   const confirmedPasses = deterministic.filter((f) => f.status === "pass");
@@ -113,8 +117,10 @@ export default async function PaperPage({
   const reviewedCleanRouted = advisoryAll.length - advisoryRouted.length;
   const humanRouted = routed.filter((r) => routedGroup(r.dimension) === "human");
 
-  // Band 2's reviewer-concern count = advisory findings + GENUINE advisory routed items.
-  const reviewerConcerns = reasonedFindings.length + advisoryRouted.length;
+  // Band 2's reviewer-concern count = advisory findings + GENUINE advisory routed items + (if any)
+  // the single consolidated GRIM screening note.
+  const reviewerConcerns =
+    reasonedFindings.length + advisoryRouted.length + (grimScreening.length > 0 ? 1 : 0);
 
   // Category breakdown for the at-a-glance strip (deterministic + non-deterministic).
   const cat = categorize(report);
@@ -248,6 +254,9 @@ export default async function PaperPage({
           microcopy="Reasoned concerns from a careful multi-perspective read — methodologist, domain expert, skeptic. These are judgment, not computation: there's nothing to re-run, so weigh them yourself."
         >
           <div className="space-y-3">
+            {/* A borderline GRIM cluster (impossible means, but each marginal / rounding-explained):
+                ONE consolidated screening note, scripts one click away — not N co-equal flags. */}
+            {grimScreening.length > 0 && <GrimScreeningNote findings={grimScreening} />}
             {/* advisory_assisted findings — reasoned, no recompute_script, so
                 no run button (rendered as a concern row, not a FindingCard). */}
             {reasonedFindings.map((f, i) => (
@@ -648,6 +657,51 @@ function ReviewFindingRow({ finding }: { finding: Finding }) {
         </p>
       )}
       {/* No ▶ run button: advisory findings carry no recompute_script. */}
+    </div>
+  );
+}
+
+// BAND 2 — a borderline GRIM cluster the relevance gate re-tiered to ONE screening note. The means
+// ARE arithmetically impossible (each ships a runnable recompute script), but each is marginal /
+// rounding-explained, so the group is surfaced as a single human-review signal, not N confirmed
+// flags. The scripts are one disclosure-click away — visible and promotable, never suppressed.
+function GrimScreeningNote({ findings }: { findings: Finding[] }) {
+  if (!findings.length) return null;
+  const note =
+    (findings[0].details?.grim_cluster_note as string | undefined) ??
+    `${findings.length} reported means on this paper are GRIM-impossible, but each is marginal — a screening signal, not a confirmed error.`;
+  return (
+    <div
+      className="rounded-lg border p-4"
+      style={{ borderColor: "var(--tier-advisory-border)", background: "var(--tier-advisory-bg)" }}
+    >
+      <div className="flex flex-wrap items-center gap-2">
+        <span
+          className="rounded-full border px-2.5 py-0.5 text-xs font-medium"
+          style={{
+            color: "var(--tier-advisory)",
+            background: "var(--surface)",
+            borderColor: "var(--tier-advisory-border)",
+          }}
+          title="A GRIM screening signal — the means are impossible but each is marginal / rounding-explained, so it's routed for review, not asserted as a confirmed error."
+        >
+          GRIM screening signal
+        </span>
+        <TrustTierBadge tier={findings[0].trust_tier} />
+      </div>
+      <p className="mt-3 text-sm leading-relaxed" style={{ color: "var(--foreground)" }}>
+        {note}
+      </p>
+      <details className="group mt-3">
+        <summary className="cursor-pointer text-xs underline" style={{ color: "var(--muted)" }}>
+          Show the {findings.length} mean{findings.length === 1 ? "" : "s"} (each with a runnable recompute script)
+        </summary>
+        <div className="mt-3 space-y-4">
+          {findings.map((f, i) => (
+            <FindingCard key={`${f.verifier_id}:${f.claim_id ?? i}`} finding={f} />
+          ))}
+        </div>
+      </details>
     </div>
   );
 }

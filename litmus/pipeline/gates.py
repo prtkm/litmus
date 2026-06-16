@@ -11,19 +11,26 @@ from __future__ import annotations
 from litmus.core.finding import Finding, Status, TrustTier
 
 
-def gate_fragile_grim(findings: list[Finding]) -> None:
-    """Soften a LONE, fragile GRIM inconsistency from a hard deterministic flag to advisory/review.
+def gate_grim_relevance(findings: list[Finding]) -> None:
+    """Decide whether a paper's GRIM inconsistencies are RELEVANT hard flags or a screening note.
 
-    Owner feedback (DESIGN §3.6): a single GRIM-impossible mean is *fragile* when dropping one
-    response makes it achievable (``grim`` marks ``details['fragile']`` — e.g. M=6.62 is impossible
-    at n=62 but achievable at n=61, consistent with one missing item). In isolation that is weak
-    evidence and should be reviewed, not asserted as a confirmed error. But a PATTERN — two or more
-    GRIM flags, or any *robust* one — is exactly what catches real data-integrity problems
-    (Wansink/Festinger), so those stay ``deterministic_confirmed``.
+    GRIM is a paper-level SCREEN, not a per-mean verdict (Brown & Heathers; owner feedback: "we need
+    judgment of when things are actually relevant before flagging"). That a reported mean is
+    arithmetically impossible is a FACT — we never touch ``status`` / ``severity`` / the recompute
+    evidence, so the calibration kernel and G3 are untouched — but whether it is a CONFIRMED
+    data-integrity error or a screening signal is a relevance call.
 
-    Rule: if there is exactly one GRIM FAIL and it is fragile, downgrade it to ``advisory_assisted``
-    and append the honest "achievable at n-1" context to its discrepancy. Otherwise leave every GRIM
-    flag untouched. The FAIL, severity, and executable evidence are unchanged either way.
+    The discriminating quantity is the ANCHOR test (computed in ``grim.py``): a member whose gap
+    exceeds ~1.5 printed display units AND is not reproducible by a normal rounding convention
+    (round-half-up / truncation). A paper's GRIM cluster ships HARD (``deterministic_confirmed``) iff
+    it has >=1 anchor — which keeps the documented-fraud catches (Wansink 1.89-2.88, Festinger 2.00).
+    An anchor-LESS group (kniffin 1.00; just2014 0.67-0.85, two truncation-reproducible) is re-tiered
+    to a single ``routed_to_human`` screening note: still FAIL, still reproducible, still visible and
+    promotable — just not asserted as a confirmed error. Mutates ``trust_tier`` + ``details`` only.
+
+    NOTE: a rate/count gate cannot split kniffin (100% cluster of 2) from Festinger (100% cluster of
+    3), and an N-perturbation suppressor would wrongly rescue Festinger 2.77/4.88 — both verified
+    recall-fatal in the critique. The anchor (magnitude + convention) is the load-bearing signal.
     """
     grim_fails = [
         f
@@ -33,34 +40,34 @@ def gate_fragile_grim(findings: list[Finding]) -> None:
     if not grim_fails:
         return
 
-    def _is_fragile(f: Finding) -> bool:
-        return bool((f.details or {}).get("fragile"))
+    n = len(grim_fails)
+    has_anchor = any(bool((f.details or {}).get("grim_anchor")) for f in grim_fails)
 
-    # A PATTERN of GRIM impossibilities (>=2 means) is the real data-integrity signal — its members
-    # may individually grade Minor (a one-unit granularity gap reads as a rounding nit), so stamp each
-    # with the cluster size. The UI ties them into one high-concern finding ("1 of N impossible means")
-    # rather than N co-equal nitpick cards. This is the durable guarantee the catch stays credible even
-    # as per-card severity is de-emphasized (DESIGN §3.6; owner feedback).
-    if len(grim_fails) >= 2:
-        n = len(grim_fails)
-        for f in grim_fails:
-            f.details = {**(f.details or {}), "grim_cluster_size": n, "grim_cluster": True}
+    # Cluster bookkeeping the UI uses to consolidate members into one finding.
+    for f in grim_fails:
+        f.details = {**(f.details or {}), "grim_cluster_size": n, "grim_cluster": n >= 2}
 
-    # A pattern (>=2 GRIM flags) or any robust (non-fragile) flag is real evidence — keep it hard.
-    has_pattern = len(grim_fails) >= 2 or any(not _is_fragile(f) for f in grim_fails)
-    if has_pattern:
+    if has_anchor:
+        # >=1 substantive, non-convention impossibility → a relevant hard flag. Keep the cluster hard.
         return
 
-    # Exactly one GRIM flag, and it's fragile → soften to advisory + add honest N-sensitivity context.
+    # No anchor: every member is a marginal or convention-reproducible inconsistency, individually
+    # consistent with rounding/transcription. Re-tier the whole group to ONE human-review screening
+    # note — NOT suppressed (status + recompute evidence intact, promotable by corroboration).
+    plural = n != 1
+    note = (
+        f"{n} reported mean{'s' if plural else ''} on this paper "
+        f"{'are' if plural else 'is'} GRIM-impossible, but each is marginal — within ~1 display unit "
+        f"of an achievable value, or reproducible under a normal rounding convention (round-half-up / "
+        f"truncation). Individually consistent with rounding or transcription, so this is a screening "
+        f"signal routed for review, not a confirmed error. Each recompute script is attached."
+    )
     for f in grim_fails:
-        if not _is_fragile(f) or f.trust_tier is not TrustTier.DETERMINISTIC_CONFIRMED:
-            continue
-        f.trust_tier = TrustTier.ADVISORY_ASSISTED
-        rescued = (f.details or {}).get("rescued_at_n")
-        rescued_note = f"achievable if N were {rescued}" if rescued else "achievable at a nearby N"
-        ctx = (
-            f" — {rescued_note} (consistent with one missing or excluded response). A single GRIM "
-            f"inconsistency is sensitive to the exact N, so this is routed for review rather than "
-            f"asserted as a hard error."
-        )
-        f.discrepancy = (f.discrepancy or "") + ctx
+        f.trust_tier = TrustTier.ROUTED_TO_HUMAN
+        f.details = {**(f.details or {}), "grim_screening_note": True, "grim_cluster_note": note}
+
+
+# Back-compat: the relevance gate subsumes the old lone-fragile behavior. Kept so existing imports/
+# call sites keep working.
+def gate_fragile_grim(findings: list[Finding]) -> None:
+    gate_grim_relevance(findings)
